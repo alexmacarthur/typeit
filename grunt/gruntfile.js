@@ -33,7 +33,7 @@ module.exports = function(grunt) {
 			]
 		},
 
-		// concat and minify the JS
+		// minify the JS
 		uglify: {
 			dist: {
 				files: {
