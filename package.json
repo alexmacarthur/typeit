@@ -1,0 +1,17 @@
+{
+  "name": "grunt-jquery-centerit",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/alexmacarthur/typeit"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.7.2",
+    "grunt-contrib-watch": "~0.4.3",
+    "grunt-contrib-uglify": "~0.2.5",
+    "grunt-contrib-sass": "~0.6.0",
+    "grunt-postcss":"~0.6.0",
+    "autoprefixer":"~6.0.3",
+    "matchdep": "~0.1.2"
+  }
+}

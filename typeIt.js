@@ -12,7 +12,8 @@
     var settings = $.extend({
        stringToType : 'This is the default string. Please replace this string with your own.',
        typeSpeed: 500,
-       lifeLike: true
+       lifeLike: true,
+       showCursor: true
     }, options);
 
     var theElement = this;
@@ -21,12 +22,10 @@
     var theString = settings.stringToType;
     var characterArray = theString.split('');
 
-    // set up the CSS
-    theElement.css({
-      'position':'relative',
-      'border-right':'.1em solid black',
-      'padding-right':'4px'
-    });
+    if(settings.showCursor === true){
+      theElement.addClass('ti-cursor');
+      theElement.css('position','relative');
+    }
 
     // output the string
     var i = 0;
