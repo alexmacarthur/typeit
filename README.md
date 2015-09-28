@@ -1,5 +1,8 @@
 # TypeIt: A jQuery Animated Typing Plugin
 
+##Description
+A light jQuery plugin that outputs text like it's being typed. 
+
 ##Setup
 
 1. Create an empty HTML element to select.
@@ -15,9 +18,13 @@
   <script src="typeit.js"></script>
   ```
 
-3. Select the element and initialize the `typeit()` function.
+3. Select the element and initialize the `typeit()` function. While you're doing this, enter the string you'd like to output.
 
-  ``$('.type-it').typeit();``
+  ``
+  $('.type-it').typeit({
+    stringToType:'Enter your string here!'
+  });
+  ``
 
 ##Options
 
