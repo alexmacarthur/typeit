@@ -22,11 +22,11 @@
     var characterArray = theString.split('');
 
     // set up the CSS
-    theElement.css('position','relative');
-    $('body').append("<style type='text/css'>@keyframes blink {0% {opacity: 1;} 50% {opacity: 0;} 100% {opacity: 1;}} .ti-cursor{-webkit-animation: blink 1s infinite; animation: blink 1s infinite; position:absolute; right:-5px;}</style>");
-
-    // add cursor
-    theElement.append("<span class='ti-cursor'>|</span>");
+    theElement.css({
+      'position':'relative',
+      'border-right':'.1em solid black',
+      'padding-right':'4px'
+    });
 
     // output the string
     var i = 0;
