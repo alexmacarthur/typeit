@@ -8,18 +8,35 @@
  (function($){
 
    $.fn.typeIt = function(options){
-     var settings = $.extend({
-       stringToType : 'This will be typed!'
+
+    var settings = $.extend({
+       stringToType : 'This will be typed!',
+       typeSpeed: 200
     }, options);
 
     var theElement = this;
     var theString = settings.stringToType;
     var characterArray = theString.split('');
 
-    for (var i = 0; i < characterArray.length; i++) {
-        theElement.append(characterArray[i]);
-    }
+    // set up the right CSS
+    theElement.css('position','relative');
+    $('body').append("<style type='text/css'>@keyframes blink {0% {opacity: 1;} 50% {opacity: 0;} 100% {opacity: 1;}} .ti-cursor{-webkit-animation: blink 1s infinite; animation: blink 1s infinite; position:absolute; right:-5px;}</style>");
 
-   };
+    // add cursor
+    theElement.append("<span class='ti-cursor'>|</span>");
+
+    var i = 0;
+    function typeLoop () {
+      setTimeout(function () {
+        theElement.append(characterArray[i]);
+        i++;
+        if (i < characterArray.length) {
+          typeLoop();
+        }
+      }, settings.typeSpeed)
+    }
+    typeLoop();
+
+  };
 
  }(jQuery));
