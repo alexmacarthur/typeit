@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="css/typeit.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
 
-    <span class="box"></span>
+    <div class="content-box">
+      <h1 class="main-header">TypeIt.js</h1>
+      <a href="https://github.com/alexmacarthur/typeit">Learn more on Github.</a>
+      <br>
+      <br>
+      <span class="typeit-box"></span>
+    </div>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="js/typeit.js"></script>
+    <script src="js/typeit.min.js"></script>
     <script>
 
-      $('.box').typeIt({
-        stringToType : "This is a test string."
+      $('.typeit-box').typeIt({
+        stringToType : "TypeIt will type things for you. Like this!",
+        typeSpeed:350
       });
 
     </script>
