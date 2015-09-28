@@ -29,7 +29,7 @@ module.exports = function(grunt) {
 			},
 			all: [
 				'gruntfile.js',
-				'typeit.js'
+				'../js/typeit.js'
 			]
 		},
 
@@ -37,8 +37,8 @@ module.exports = function(grunt) {
 		uglify: {
 			dist: {
 				files: {
-					'typeit.min.js': [
-						'typeit.js'
+					'../js/typeit.min.js': [
+						'../js/typeit.js'
 					]
 				}
 			}
@@ -54,7 +54,7 @@ module.exports = function(grunt) {
         ]
       },
       dist: {
-          src: 'typeit.css'
+          src: '../css/typeit.css'
       }
     },
 
@@ -65,19 +65,16 @@ module.exports = function(grunt) {
 					style: 'compressed'
 				},
 				files: {
-					'style.css':'style.scss',
-					'typeit.css':'typeit.scss'
+					'../css/style.css':'../scss/style.scss',
+					'../css/typeit.css':'../scss/typeit.scss'
 				}
 			}
 		},
 
 		// watch for changes
 		watch: {
-			grunt: {
-				files: ['gruntfile.js'],
-			},
 			scss: {
-				files: ['*.scss'],
+				files: ['../scss/*.scss'],
 				tasks: [
 					'sass',
 					'postcss'
