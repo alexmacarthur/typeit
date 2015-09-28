@@ -40,7 +40,7 @@
         if (i < characterArray.length) {
           typeLoop();
         }
-      }, delayTime)
+      }, delayTime);
     }
     typeLoop();
 
