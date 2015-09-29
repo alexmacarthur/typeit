@@ -25,7 +25,39 @@ A light jQuery plugin that outputs text like it's being typed.
     stringToType:'Enter your string here!'
   });
   ``
+  
+##Usage
 
+You can modify the options for the plugin in two different ways -- either by inserting them directly into the function call, or by using data attributes. 
+  
+  ```
+  <span class="type-it" 
+  data-typeit-string="A new string to type." 
+  data-typeit-speed="100" 
+  data-typeit-lifelike="true" 
+  data-typeit-showcursor="true">
+  
+  </span>
+  ```
+  
+  ``
+  $('.type-it').typeit();
+  ``
+
+  or...
+
+  ``
+   <span class="type-it"></span>
+  ``
+
+ ```
+  $('.type-it').typeit({
+    stringToType:'Enter your string here!',
+    typeSpeed: 300,
+    lifeLike: false,
+    showCursor: true
+  });
+  ```
 ##Options
 
 There are a number of options you may use to customize typeIt. 
