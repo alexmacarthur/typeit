@@ -9,12 +9,19 @@
 
    $.fn.typeIt = function(options){
 
+    var dataSettings = {
+      stringToType : this.data('typeitString'),
+      typeSpeed: this.data('typeitSpeed'),
+      lifeLike: this.data('typeitLifelike'),
+      showCursor: this.data('typeitShowcursor')
+    };
+
     var settings = $.extend({
-       stringToType : 'This is the default string. Please replace this string with your own.',
+       stringToType : 'This is the default string.',
        typeSpeed: 500,
        lifeLike: true,
        showCursor: true
-    }, options);
+    }, options, dataSettings);
 
     var theElement = this;
     var typeSpeed = settings.typeSpeed;

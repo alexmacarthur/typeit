@@ -12,17 +12,14 @@
       <a href="https://github.com/alexmacarthur/typeit">Learn more on Github.</a>
       <br>
       <br>
-      <span class="typeit-box"></span>
+      <span class="typeit-box" data-typeit-string="A new string to type." data-typeit-speed="100" data-typeit-lifelike="true" data-typeit-showcursor="true"></span>
     </div>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="js/typeit.min.js"></script>
+    <script src="js/typeit.js"></script>
     <script>
 
-      $('.typeit-box').typeIt({
-        stringToType : "TypeIt will type things for you. Like this!",
-        typeSpeed:350
-      });
+      $('.typeit-box').typeIt();
 
     </script>
 
