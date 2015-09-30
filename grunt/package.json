@@ -1,9 +1,9 @@
 {
-  "name": "grunt-jquery-centerit",
+  "name": "grunt-jquery-typeit",
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/alexmacarthur/typeit"
+    "url": "https://github.com/alexmacarthur/typeitt"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.7.2",
