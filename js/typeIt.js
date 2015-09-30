@@ -65,6 +65,26 @@
         }, delayTime);
       }
       typeLoop();
+
+      function deleteLoop () {
+
+        var shortenedText;
+
+        setTimeout(function () {
+
+          // get the string from the element and cut it by one character at the end
+          shortenedText = theElement.text().substring(0, theElement.text().length - 1);
+
+          // then, put that shortened text into the element so it looks like it's being deleted
+          theElement.text(shortenedText);
+
+          i++;
+          if (i < string.length) {
+            deleteLoop();
+          }
+        }, delayTime);
+      }
+      deleteLoop();
     }
 
   };
