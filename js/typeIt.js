@@ -19,7 +19,7 @@
 
     // default settings; merge with data attribute settings & function settings
     var settings = $.extend({
-       whatToType : ['This is a test string.','Another test.'],
+       whatToType : ['Test1.','asndlfasdfasas!'],
        typeSpeed: 100,
        lifeLike: true,
        showCursor: true
@@ -45,11 +45,9 @@
       var delayTime = settings.typeSpeed;
 
       // get the lengths of each array item (strong)
-      if(stringArray.length > 1){
-        var lengths = {};
-        for(j=0; j < stringArray.length; j++){
-          lengths[j] = stringArray[j].length;
-        }
+      var lengths = {};
+      for(j=0; j < stringArray.length; j++){
+        lengths[j] = stringArray[j].length;
       }
 
       function typeLoop (phraseLength) {
@@ -62,16 +60,23 @@
           theElement.append(string[typeCount+stringPlaceCount]);
           typeCount++;
           if (typeCount < phraseLength) {
+
             // type out the string
             typeLoop(lengths[stringCount]);
+
+            // if there are no more characters to print and there is more than one string to be typed, delete the string just printed
           } else if(stringArray.length > 1) {
 
             // update the stringPlaceCount so that we're appending starting at the correct spot in the merged string
             stringPlaceCount = phraseLength;
+
             // reset typeCount in case this function needs to be reused
             typeCount = 0;
-            // if there are no more characters to print and there is more than one string to be typed, delete the string just printed
-            deleteLoop(lengths[stringCount]);
+
+            // if we're not on the last string, then continue to delete.
+            if(stringCount+1 < stringArray.length){
+              deleteLoop(lengths[stringCount]);
+            }
           }
         }, delayTime);
 
@@ -93,7 +98,7 @@
             stringCount++;
             typeLoop(lengths[stringCount]);
           }
-          // make backspacing much smaller by dividing delayTime (arbitrarily) by three
+          // make backspacing much quicker by dividing delayTime (arbitrarily) by three
         }, delayTime*.333);
       }
 
