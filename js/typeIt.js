@@ -19,8 +19,8 @@
 
     // default settings; merge with data attribute settings & function settings
     var settings = $.extend({
-       whatToType : ['aaaaa','xxxxx','yyyyy'],
-       typeSpeed: 500,
+       whatToType : ['Test1.','asndlfasdfasas!'],
+       typeSpeed: 100,
        lifeLike: true,
        showCursor: true
     }, options, dataSettings);
@@ -38,53 +38,72 @@
     // the function that types out text
     function typeStuff(string, lifelike, speed, stringArray){
 
-      var i = 0;
+      var typeCount = 0;
+      var deleteCount = 0;
+      var stringCount = 0;
+      var stringPlaceCount = 0;
       var delayTime = settings.typeSpeed;
 
-      if(stringArray.length > 1){
-        var lengths = {};
-        for(j=0; j < stringArray.length; j++){
-          lengths[j] = stringArray[j].length;
-        }
+      // get the lengths of each array item (strong)
+      var lengths = {};
+      for(j=0; j < stringArray.length; j++){
+        lengths[j] = stringArray[j].length;
       }
 
-      function typeLoop () {
+      function typeLoop (phraseLength) {
 
         if(lifelike === true){
           delayTime = speed*Math.random();
         }
+
         setTimeout(function () {
+          theElement.append(string[typeCount+stringPlaceCount]);
+          typeCount++;
+          if (typeCount < phraseLength) {
 
-          theElement.append(string[i]);
+            // type out the string
+            typeLoop(lengths[stringCount]);
 
-          i++;
+            // if there are no more characters to print and there is more than one string to be typed, delete the string just printed
+          } else if(stringArray.length > 1) {
 
-          if (i < string.length) {
-            typeLoop();
+            // update the stringPlaceCount so that we're appending starting at the correct spot in the merged string
+            stringPlaceCount = phraseLength;
+
+            // reset typeCount in case this function needs to be reused
+            typeCount = 0;
+
+            // if we're not on the last string, then continue to delete.
+            if(stringCount+1 < stringArray.length){
+              deleteLoop(lengths[stringCount]);
+            }
           }
         }, delayTime);
+
       }
-      typeLoop();
 
-      function deleteLoop () {
-
+      function deleteLoop (phraseLength) {
         var shortenedText;
-
         setTimeout(function () {
-
           // get the string from the element and cut it by one character at the end
           shortenedText = theElement.text().substring(0, theElement.text().length - 1);
-
           // then, put that shortened text into the element so it looks like it's being deleted
           theElement.text(shortenedText);
-
-          i++;
-          if (i < string.length) {
-            deleteLoop();
+          // if there are still characters in the string, run the function again
+          deleteCount++;
+          if (deleteCount < phraseLength) {
+            deleteLoop(phraseLength);
+          } else if(stringArray[stringCount+1] !== undefined){
+            deleteCount = 0;
+            stringCount++;
+            typeLoop(lengths[stringCount]);
           }
-        }, delayTime);
+          // make backspacing much quicker by dividing delayTime (arbitrarily) by three
+        }, delayTime/3);
       }
-      deleteLoop();
+
+      typeLoop(lengths[stringCount]);
+
     }
 
   };

@@ -1,3 +1,4 @@
 node_modules
 .sass-cache
 .DS_store*
+npm-debug.log
