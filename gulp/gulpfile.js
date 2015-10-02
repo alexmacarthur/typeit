@@ -16,7 +16,7 @@ gulp.task('jshint',function(){
 // concat and minify JavaScript
 gulp.task('scripts', function() {
   gulp.src('../js/typeIt.js')
-    .pipe(uglify())
+    //.pipe(uglify())
     .pipe(rename('typeit.min.js'))
     .pipe(gulp.dest('../js'));
 });

@@ -7,6 +7,34 @@
 
  (function($){
 
+   var _proto;
+
+   $.fn.typeIt = function(options){
+     return this;
+   };
+
+   $.fn.typeIt.defaults = {
+    //  whatToType : this.data('typeitString'),
+    //  typeSpeed: this.data('typeitSpeed'),
+    //  lifeLike: this.data('typeitLifelike'),
+    //  showCursor: this.data('typeitShowcursor')
+  };
+
+   // create the class
+   $.fn.typeIt.typeItClass = function(options){
+     this.defaults = $.fn.typeIt.defaults;
+     this.init(options);
+   }
+
+   // create a new prototype
+   _proto = $.fn.typeIt.typeItClass.prototype;
+
+   _proto.init = function(options){
+     this.settings = $.extend(this.defaults, options);
+   }
+
+   // OLD STUFF BELOW....
+
    $.fn.typeIt = function(options){
 
     // user-defined attribute settings
@@ -19,7 +47,7 @@
 
     // default settings; merge with data attribute settings & function settings
     var settings = $.extend({
-       whatToType : ['Test1.','asndlfasdfasas!'],
+       whatToType : ['Hi, my name is Test.','And I am a dad.'],
        typeSpeed: 100,
        lifeLike: true,
        showCursor: true
