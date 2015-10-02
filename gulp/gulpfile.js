@@ -4,6 +4,7 @@ var jshint = require('gulp-jshint');
 var uglify = require('gulp-uglify');
 var autoprefix = require('gulp-autoprefixer');
 var sass = require('gulp-sass');
+var rename = require("gulp-rename");
 
 // check JavaScript
 gulp.task('jshint',function(){
@@ -16,6 +17,7 @@ gulp.task('jshint',function(){
 gulp.task('scripts', function() {
   gulp.src('../js/typeIt.js')
     .pipe(uglify())
+    .pipe(rename('typeit.min.js'))
     .pipe(gulp.dest('../js'));
 });
 
