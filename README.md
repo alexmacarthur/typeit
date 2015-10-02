@@ -68,3 +68,13 @@ There are a number of options you may use to customize typeIt.
 | typeSpeed     | The typing speed.             | 500  |
 | lifeLike      | Will make the typing pace irregular, as if a real person is doing it.  | true |
 | showCursor    | Show a blinking cursor at the end of the string.  | true  |
+
+##Ideas for Improvement?
+
+I'm still a web dev noob, so ideas for improvement are always welcome! If you choose to develop it locally, Gulp is configured to check & minify JavaScript and compile & compress SASS. In the root of the repo, use these commands to run these default tasks and watch for file changes (make sure Node.js and Gulp are installed on your computer):
+
+```
+cd gulp
+npm install
+gulp
+```
