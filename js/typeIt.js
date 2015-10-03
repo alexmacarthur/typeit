@@ -9,131 +9,118 @@
 
    var _proto;
 
+   // the actual jQuery function
    $.fn.typeIt = function(options){
-     return this;
+     return this.each(function(){
+       var typeItInstance = new $.fn.typeIt.typeItClass($(this), options);
+     });
    };
 
-   $.fn.typeIt.defaults = {
-    //  whatToType : this.data('typeitString'),
-    //  typeSpeed: this.data('typeitSpeed'),
-    //  lifeLike: this.data('typeitLifelike'),
-    //  showCursor: this.data('typeitShowcursor')
-  };
+   // plugin default settings
+   var defaults = {
+     whatToType : ['Hi, my name is Test.','And I am a dad.','one more test.'],
+     typeSpeed: 100,
+     lifeLike: false,
+     showCursor: true
+   },
+    typeCount = 0,
+    deleteCount = 0,
+    stringCount = 0,
+    stringPlaceCount = 0,
+    shortenedText,
+    phraseLength;
 
    // create the class
-   $.fn.typeIt.typeItClass = function(options){
-     this.defaults = $.fn.typeIt.defaults;
-     this.init(options);
-   }
+   $.fn.typeIt.typeItClass = function(theElement, options){
+     var dataDefaults = {
+      //  whatToType : theElement.data('typeitWhattotype'),
+      //  typeSpeed: theElement.data('typeitSpeed'),
+      //  lifeLike: theElement.data('typeitLifelike'),
+      //  showCursor: theElement.data('typeitShowcursor')
+     };
+     this.theElement = theElement;
+     this.settings = $.extend(defaults, options, dataDefaults);
+     this.init(theElement);
+   };
 
    // create a new prototype
    _proto = $.fn.typeIt.typeItClass.prototype;
 
-   _proto.init = function(options){
-     this.settings = $.extend(this.defaults, options);
-   }
+   // initialize the plugin
+   _proto.init = function(theElement){
 
-   // OLD STUFF BELOW....
+     this.stringArray = this.settings.whatToType;
+     this.mergedStrings = this.stringArray.join('');
+     this.stringLengths = {};
+     phraseLength = this.stringLengths[stringCount];
 
-   $.fn.typeIt = function(options){
+     // get the string lengths and save to array
+     for(j=0; j < this.stringArray.length; j++){
+        this.stringLengths[j] = this.stringArray[j].length;
+     }
 
-    // user-defined attribute settings
-    var dataSettings = {
-      whatToType : this.data('typeitString'),
-      typeSpeed: this.data('typeitSpeed'),
-      lifeLike: this.data('typeitLifelike'),
-      showCursor: this.data('typeitShowcursor')
-    };
+     // if settings say so, turn on the blinking cursor
+     if(this.settings.showCursor === true){
+       theElement.addClass('ti-cursor');
+       theElement.css('position','relative');
+     }
 
-    // default settings; merge with data attribute settings & function settings
-    var settings = $.extend({
-       whatToType : ['Hi, my name is Test.','And I am a dad.'],
-       typeSpeed: 100,
-       lifeLike: true,
-       showCursor: true
-    }, options, dataSettings);
+     // start to type the string(s)
+     this.typeLoop();
 
-    var theElement = this;
+   };
 
-    if(settings.showCursor === true){
-      theElement.addClass('ti-cursor');
-      theElement.css('position','relative');
+   _proto.typeLoop = function(){
+
+    // set the length of the phrase for this time around
+    phraseLength = this.stringLengths[stringCount];
+
+     // make it human-like if specified in the settings
+    if(this.settings.lifeLike === true){
+      this.delayTime = this.settings.typeSpeed*Math.random();
+    } else {
+      this.delayTime = this.settings.typeSpeed;
     }
 
-    // call function to output text
-    typeStuff(settings.whatToType.join(''), settings.lifeLike, settings.typeSpeed, settings.whatToType);
-
-    // the function that types out text
-    function typeStuff(string, lifelike, speed, stringArray){
-
-      var typeCount = 0;
-      var deleteCount = 0;
-      var stringCount = 0;
-      var stringPlaceCount = 0;
-      var delayTime = settings.typeSpeed;
-
-      // get the lengths of each array item (strong)
-      var lengths = {};
-      for(j=0; j < stringArray.length; j++){
-        lengths[j] = stringArray[j].length;
-      }
-
-      function typeLoop (phraseLength) {
-
-        if(lifelike === true){
-          delayTime = speed*Math.random();
+    setTimeout(function () {
+      this.theElement.append(this.mergedStrings[typeCount+stringPlaceCount]);
+      typeCount++;
+      if (typeCount < phraseLength) {
+        // type out the string
+        this.typeLoop(this.stringLengths[stringCount]);
+        // if there are no more characters to print and there is more than one string to be typed, delete the string just printed
+      } else if(this.stringArray.length > 1) {
+        // update the stringPlaceCount so that we're appending starting at the correct spot in the merged string
+        stringPlaceCount = phraseLength;
+        // reset typeCount in case this function needs to be reused
+        typeCount = 0;
+        // if we're not on the last string, then continue to delete.
+        if(stringCount+1 < this.stringArray.length){
+          this.deleteLoop(this.stringLengths[stringCount]);
         }
-
-        setTimeout(function () {
-          theElement.append(string[typeCount+stringPlaceCount]);
-          typeCount++;
-          if (typeCount < phraseLength) {
-
-            // type out the string
-            typeLoop(lengths[stringCount]);
-
-            // if there are no more characters to print and there is more than one string to be typed, delete the string just printed
-          } else if(stringArray.length > 1) {
-
-            // update the stringPlaceCount so that we're appending starting at the correct spot in the merged string
-            stringPlaceCount = phraseLength;
-
-            // reset typeCount in case this function needs to be reused
-            typeCount = 0;
-
-            // if we're not on the last string, then continue to delete.
-            if(stringCount+1 < stringArray.length){
-              deleteLoop(lengths[stringCount]);
-            }
-          }
-        }, delayTime);
-
       }
+    }.bind(this), this.delayTime);
 
-      function deleteLoop (phraseLength) {
-        var shortenedText;
-        setTimeout(function () {
-          // get the string from the element and cut it by one character at the end
-          shortenedText = theElement.text().substring(0, theElement.text().length - 1);
-          // then, put that shortened text into the element so it looks like it's being deleted
-          theElement.text(shortenedText);
-          // if there are still characters in the string, run the function again
-          deleteCount++;
-          if (deleteCount < phraseLength) {
-            deleteLoop(phraseLength);
-          } else if(stringArray[stringCount+1] !== undefined){
-            deleteCount = 0;
-            stringCount++;
-            typeLoop(lengths[stringCount]);
-          }
-          // make backspacing much quicker by dividing delayTime (arbitrarily) by three
-        }, delayTime/3);
-      }
+   };
 
-      typeLoop(lengths[stringCount]);
+   _proto.deleteLoop = function() {
 
-    }
-
-  };
+     setTimeout(function () {
+       // get the string from the element and cut it by one character at the end
+       shortenedText = this.theElement.text().substring(0, this.theElement.text().length - 1);
+       // then, put that shortened text into the element so it looks like it's being deleted
+       this.theElement.text(shortenedText);
+       // if there are still characters in the string, run the function again
+       deleteCount++;
+       if (deleteCount < phraseLength) {
+         this.deleteLoop(phraseLength);
+       } else if(this.stringArray[stringCount+1] !== undefined){
+         deleteCount = 0;
+         stringCount++;
+         this.typeLoop(this.stringLengths[stringCount]);
+       }
+       // make backspacing much quicker by dividing delayTime (arbitrarily) by three
+     }.bind(this), this.delayTime/3);
+   };
 
  }(jQuery));
