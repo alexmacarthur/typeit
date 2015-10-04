@@ -18,7 +18,7 @@
 
    // plugin default settings
    var defaults = {
-     whatToType : ['Hi, my name is Test.','And I am a dad.','one more test.'],
+     whatToType : ['One','Two','Three'],
      typeSpeed: 100,
      lifeLike: false,
      showCursor: true
@@ -91,7 +91,7 @@
         // if there are no more characters to print and there is more than one string to be typed, delete the string just printed
       } else if(this.stringArray.length > 1) {
         // update the stringPlaceCount so that we're appending starting at the correct spot in the merged string
-        stringPlaceCount = phraseLength;
+        stringPlaceCount = stringPlaceCount + phraseLength;
         // reset typeCount in case this function needs to be reused
         typeCount = 0;
         // if we're not on the last string, then continue to delete.
