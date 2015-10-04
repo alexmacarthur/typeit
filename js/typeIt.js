@@ -18,7 +18,7 @@
 
    // plugin default settings
    var defaults = {
-     whatToType : ['One','Two','Three'],
+     whatToType :['teaste','test','testsd','sdfasdfas'],
      typeSpeed: 100,
      lifeLike: false,
      showCursor: true
@@ -50,6 +50,12 @@
    _proto.init = function(theElement){
 
      this.stringArray = this.settings.whatToType;
+     // check if the value is an array or just a string
+     if(Object.prototype.toString.call(this.stringArray) !== '[object Array]'){
+       // since it's not already an array, turn it into one, since later functionality depends on it being one
+       this.stringArray = '["' + this.stringArray + '"]';
+       this.stringArray = JSON.parse(this.stringArray);
+     };
      this.mergedStrings = this.stringArray.join('');
      this.stringLengths = {};
      phraseLength = this.stringLengths[stringCount];
