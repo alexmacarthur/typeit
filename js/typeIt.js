@@ -33,10 +33,10 @@
    // create the class
    $.fn.typeIt.typeItClass = function(theElement, options){
      var dataDefaults = {
-      //  whatToType : theElement.data('typeitWhattotype'),
-      //  typeSpeed: theElement.data('typeitSpeed'),
-      //  lifeLike: theElement.data('typeitLifelike'),
-      //  showCursor: theElement.data('typeitShowcursor')
+       whatToType : theElement.data('typeitWhattotype'),
+       typeSpeed: theElement.data('typeitSpeed'),
+       lifeLike: theElement.data('typeitLifelike'),
+       showCursor: theElement.data('typeitShowcursor')
      };
      this.theElement = theElement;
      this.settings = $.extend(defaults, options, dataDefaults);
