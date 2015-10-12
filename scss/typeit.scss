@@ -10,13 +10,12 @@
   }
 }
 .ti-cursor {
-  &:after{
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 1px;
-    margin-left: 2px;
-    background:black;
-    animation: blink 1s infinite;
-  }
+  content: '';
+  position: absolute;
+  width: 1px;
+  right: 0;
+  bottom: 0;
+  margin-left: 2px;
+  background:black;
+  animation: blink 1s infinite;
 }

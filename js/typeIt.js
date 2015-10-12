@@ -21,7 +21,8 @@
      whatToType :['teaste','test','testsd','sdfasdfas'],
      typeSpeed: 100,
      lifeLike: false,
-     showCursor: true
+     showCursor: true,
+     breakLines: true
    },
     typeCount = 0,
     deleteCount = 0,
@@ -36,7 +37,8 @@
        whatToType : theElement.data('typeitWhattotype'),
        typeSpeed: theElement.data('typeitSpeed'),
        lifeLike: theElement.data('typeitLifelike'),
-       showCursor: theElement.data('typeitShowcursor')
+       showCursor: theElement.data('typeitShowcursor'),
+       breakLines: theElement.data('typeitBreakLines')
      };
      this.theElement = theElement;
      this.settings = $.extend(defaults, options, dataDefaults);
@@ -49,13 +51,15 @@
    // initialize the plugin
    _proto.init = function(theElement){
 
+     var elementHeight = $(theElement).css('font-size');
+
      this.stringArray = this.settings.whatToType;
      // check if the value is an array or just a string
      if(Object.prototype.toString.call(this.stringArray) !== '[object Array]'){
        // since it's not already an array, turn it into one, since later functionality depends on it being one
        this.stringArray = '["' + this.stringArray + '"]';
        this.stringArray = JSON.parse(this.stringArray);
-     };
+     }
      this.mergedStrings = this.stringArray.join('');
      this.stringLengths = {};
      phraseLength = this.stringLengths[stringCount];
@@ -65,11 +69,19 @@
         this.stringLengths[j] = this.stringArray[j].length;
      }
 
+     theElement.css('display','inline-block');
+     
      // if settings say so, turn on the blinking cursor
      if(this.settings.showCursor === true){
-       theElement.addClass('ti-cursor');
+       var fontSize = theElement.css('font-size');
+       //theElement.addClass('ti-cursor');
+       theElement.prepend('<span class="ti-cursor"></span>');
+       $('.ti-cursor').css('height',fontSize);
+
+       $('.ti-cursor:after').css('height', '16px');
        theElement.css('position','relative');
      }
+
 
      // start to type the string(s)
      this.typeLoop();
@@ -100,9 +112,14 @@
         stringPlaceCount = stringPlaceCount + phraseLength;
         // reset typeCount in case this function needs to be reused
         typeCount = 0;
-        // if we're not on the last string, then continue to delete.
-        if(stringCount+1 < this.stringArray.length){
+        // if we're not on the last string, then continue to delete, unless the user wants to break lines
+        if((stringCount+1 < this.stringArray.length) && this.settings.breakLines === false){
           this.deleteLoop(this.stringLengths[stringCount]);
+        // if breakLines is true and we still have strings left to type, break it and continue
+        } else if (stringCount+1 < this.stringArray.length && this.settings.breakLines === true){
+          stringCount++;
+          this.theElement.append('<br>');
+          this.typeLoop(this.stringLengths[stringCount]);
         }
       }
     }.bind(this), this.delayTime);
