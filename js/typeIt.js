@@ -18,7 +18,7 @@
 
    // plugin default settings
    var defaults = {
-     whatToType :['teaste','test','testsd','sdfasdfas'],
+     whatToType :['teaste','test'],
      typeSpeed: 100,
      lifeLike: false,
      showCursor: true,
@@ -70,18 +70,12 @@
      }
 
      theElement.css('display','inline-block');
-     
+
      // if settings say so, turn on the blinking cursor
      if(this.settings.showCursor === true){
        var fontSize = theElement.css('font-size');
-       //theElement.addClass('ti-cursor');
-       theElement.prepend('<span class="ti-cursor"></span>');
-       $('.ti-cursor').css('height',fontSize);
-
-       $('.ti-cursor:after').css('height', '16px');
        theElement.css('position','relative');
      }
-
 
      // start to type the string(s)
      this.typeLoop();
@@ -101,7 +95,7 @@
     }
 
     setTimeout(function () {
-      this.theElement.append(this.mergedStrings[typeCount+stringPlaceCount]);
+      this.theElement.append('<span class="ti-letter">' + this.mergedStrings[typeCount+stringPlaceCount] + '</span>');
       typeCount++;
       if (typeCount < phraseLength) {
         // type out the string

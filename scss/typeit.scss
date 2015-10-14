@@ -9,13 +9,18 @@
     opacity: 1;
   }
 }
-.ti-cursor {
-  content: '';
-  position: absolute;
-  width: 1px;
-  right: 0;
-  bottom: 0;
-  margin-left: 2px;
-  background:black;
-  animation: blink 1s infinite;
+
+.ti-letter {
+  position: relative;
+
+  &:last-of-type {
+
+    &:after {
+      content: '|';
+      position: absolute;
+      background-color: inherit;
+      animation: blink 1s infinite;
+      top: -3%;
+    }
+  }
 }
