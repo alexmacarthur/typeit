@@ -21,7 +21,7 @@
      whatToType :['teaste','test'],
      typeSpeed: 100,
      lifeLike: false,
-     showCursor: true,
+     showCursor: false,
      breakLines: true
    },
     typeCount = 0,
@@ -29,7 +29,8 @@
     stringCount = 0,
     stringPlaceCount = 0,
     shortenedText,
-    phraseLength;
+    phraseLength,
+    cursor;
 
    // create the class
    $.fn.typeIt.typeItClass = function(theElement, options){
@@ -73,8 +74,9 @@
 
      // if settings say so, turn on the blinking cursor
      if(this.settings.showCursor === true){
-       var fontSize = theElement.css('font-size');
-       theElement.css('position','relative');
+       cursor = '<span class="ti-cursor">|</span>';
+     } else {
+       cursor = '';
      }
 
      // start to type the string(s)
@@ -95,7 +97,7 @@
     }
 
     setTimeout(function () {
-      this.theElement.append('<span class="ti-letter">' + this.mergedStrings[typeCount+stringPlaceCount] + '</span>');
+      this.theElement.append('<span class="ti-letter">' + this.mergedStrings[typeCount+stringPlaceCount] + cursor + '</span>');
       typeCount++;
       if (typeCount < phraseLength) {
         // type out the string

@@ -13,14 +13,19 @@
 .ti-letter {
   position: relative;
 
+  .ti-cursor {
+    display: none;
+  }
+
   &:last-of-type {
 
-    &:after {
-      content: '|';
+    .ti-cursor {
+      display: inline;
       position: absolute;
       background-color: inherit;
       animation: blink 1s infinite;
       top: -3%;
     }
+
   }
 }
