@@ -1,21 +1,28 @@
-*{
+* {
   font-family: 'Source Sans Pro', sans-serif;
   text-decoration: none;
 }
-html,body{
+
+html,
+body {
+  font-size: 40px;
   height: 100%;
   text-align: center;
 }
-a{
-  color:blue;
+
+a {
+  color: blue;
 }
-.content-box{
-  position:relative;
+
+.content-box {
+  position: relative;
   margin-top: 10%;
-  h1{
+
+  h1 {
     margin-bottom: 0;
   }
 }
-.typeit-box{
-  display:block;
+
+.typeit-box {
+  display: block;
 }

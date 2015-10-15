@@ -18,11 +18,12 @@
 
    // plugin default settings
    var defaults = {
-     whatToType :['teaste','test'],
-     typeSpeed: 100,
+     whatToType :['first string','string 2'],
+     typeSpeed: 200,
      lifeLike: false,
-     showCursor: false,
-     breakLines: true
+     showCursor: true,
+     breakLines: true,
+     breakWait: 500
    },
     typeCount = 0,
     deleteCount = 0,
@@ -39,7 +40,8 @@
        typeSpeed: theElement.data('typeitSpeed'),
        lifeLike: theElement.data('typeitLifelike'),
        showCursor: theElement.data('typeitShowcursor'),
-       breakLines: theElement.data('typeitBreakLines')
+       breakLines: theElement.data('typeitBreaklines'),
+       breakWait: theElement.data('typeitBreakWait')
      };
      this.theElement = theElement;
      this.settings = $.extend(defaults, options, dataDefaults);
@@ -72,13 +74,6 @@
 
      theElement.css('display','inline-block');
 
-     // if settings say so, turn on the blinking cursor
-     if(this.settings.showCursor === true){
-       cursor = '<span class="ti-cursor">|</span>';
-     } else {
-       cursor = '';
-     }
-
      // start to type the string(s)
      this.typeLoop();
 
@@ -97,6 +92,14 @@
     }
 
     setTimeout(function () {
+
+      // if settings say so, turn on the blinking cursor
+      if(this.settings.showCursor === true && this.mergedStrings[typeCount+stringPlaceCount] != ' '){
+        cursor = '<span class="ti-cursor">|</span>';
+      } else {
+        cursor = '';
+      }
+
       this.theElement.append('<span class="ti-letter">' + this.mergedStrings[typeCount+stringPlaceCount] + cursor + '</span>');
       typeCount++;
       if (typeCount < phraseLength) {
@@ -114,8 +117,18 @@
         // if breakLines is true and we still have strings left to type, break it and continue
         } else if (stringCount+1 < this.stringArray.length && this.settings.breakLines === true){
           stringCount++;
-          this.theElement.append('<br>');
-          this.typeLoop(this.stringLengths[stringCount]);
+
+          setTimeout(function(){
+            // after slight delay, break line and just blink cursor to show start of new line
+            this.theElement.append('<br><span class="ti-letter">' + cursor + '</span>');
+
+            // after another slight delay, continue typing the next string
+            setTimeout(function(){
+              this.typeLoop(this.stringLengths[stringCount]);
+            }.bind(this), this.settings.breakWait);
+
+          }.bind(this), this.settings.breakWait);
+
         }
       }
     }.bind(this), this.delayTime);
