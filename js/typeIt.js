@@ -101,7 +101,8 @@
         cursor = '';
       }
 
-      $('.ti-container').append('<span class="ti-letter">' + this.mergedStrings[typeCount+stringPlaceCount] + cursor + '</span>');
+      // WORK HERE....
+      $('.ti-container:nth-child(' + stringCount + 1 + ')').append('<span class="ti-letter">' + this.mergedStrings[typeCount+stringPlaceCount] + cursor + '</span>');
 
       typeCount++;
       if (typeCount < phraseLength) {
@@ -114,6 +115,7 @@
         // reset typeCount in case this function needs to be reused
         typeCount = 0;
         // if we're not on the last string, then continue to delete, unless the user wants to break lines
+
         if((stringCount+1 < this.stringArray.length) && this.settings.breakLines === false){
           this.deleteLoop(this.stringLengths[stringCount]);
         // if breakLines is true and we still have strings left to type, break it and continue
@@ -122,7 +124,7 @@
 
           setTimeout(function(){
             // after slight delay, break line and just blink cursor to show start of new line
-            this.theElement.append('<br><span class="ti-letter">' + cursor + '</span>');
+            this.theElement.append('<span class="ti-letter">' + cursor + '</span>');
 
             // after another slight delay, continue typing the next string
             setTimeout(function(){

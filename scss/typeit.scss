@@ -10,6 +10,14 @@
   }
 }
 
+.ti-container {
+
+  &:after {
+    content:" ";
+   }
+   
+}
+
 .ti-letter {
   position: relative;
 
