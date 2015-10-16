@@ -70,6 +70,7 @@
      // get the string lengths and save to array
      for(j=0; j < this.stringArray.length; j++){
         this.stringLengths[j] = this.stringArray[j].length;
+        theElement.append('<span class="ti-container"></span>');
      }
 
      theElement.css('display','inline-block');
@@ -100,7 +101,8 @@
         cursor = '';
       }
 
-      this.theElement.append('<span class="ti-letter">' + this.mergedStrings[typeCount+stringPlaceCount] + cursor + '</span>');
+      $('.ti-container').append('<span class="ti-letter">' + this.mergedStrings[typeCount+stringPlaceCount] + cursor + '</span>');
+
       typeCount++;
       if (typeCount < phraseLength) {
         // type out the string
