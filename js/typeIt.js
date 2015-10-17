@@ -12,7 +12,7 @@
    // the actual jQuery function
    $.fn.typeIt = function(options){
      return this.each(function(){
-       var typeItInstance = new $.fn.typeIt.typeItClass($(this), options);
+       $(this).data("typeit", new $.fn.typeIt.typeItClass($(this), options));
      });
    };
 
@@ -44,7 +44,7 @@
        breakWait: theElement.data('typeitBreakWait')
      };
      this.theElement = theElement;
-     this.settings = $.extend(defaults, options, dataDefaults);
+     this.settings = $.extend({}, defaults, options, dataDefaults);
      this.init(theElement);
    };
 
