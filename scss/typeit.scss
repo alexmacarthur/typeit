@@ -11,29 +11,26 @@
 }
 
 .ti-container {
+  display: block;
 
-  &:after {
-    content:" ";
-   }
-   
+  &.active-container {
+    .ti-letter:last-of-type {
+
+      .ti-cursor {
+        display: inline;
+      }
+    }
+  }
 }
 
 .ti-letter {
   position: relative;
+}
 
-  .ti-cursor {
-    display: none;
-  }
-
-  &:last-of-type {
-
-    .ti-cursor {
-      display: inline;
-      position: absolute;
-      background-color: inherit;
-      animation: blink 1s infinite;
-      top: -3%;
-    }
-
-  }
+.ti-cursor {
+  display: none;
+  position: absolute;
+  background-color: inherit;
+  animation: blink 1s infinite;
+  top: -3%;
 }

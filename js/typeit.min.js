@@ -101,8 +101,8 @@
         cursor = '';
       }
 
-      // WORK HERE....
-      $('.ti-container:nth-child(' + stringCount + 1 + ')').append('<span class="ti-letter">' + this.mergedStrings[typeCount+stringPlaceCount] + cursor + '</span>');
+      // append the string of letters to the respective .ti-container
+      $('.ti-container:nth-child(' + (stringCount + 1) + ')').addClass('active-container').append('<span class="ti-letter">' + this.mergedStrings[typeCount+stringPlaceCount] + cursor + '</span>');
 
       typeCount++;
       if (typeCount < phraseLength) {
@@ -124,14 +124,18 @@
 
           setTimeout(function(){
             // after slight delay, break line and just blink cursor to show start of new line
-            this.theElement.append('<span class="ti-letter">' + cursor + '</span>');
+            
+            // remove any 'active-container' classes fromt the elements
+            $('.ti-container').removeClass('active-container');
+            // give 'active-container' class to next container, so the cursor can start blinking
+            $('.ti-container:nth-child(' + (stringCount + 1) + ')').addClass('active-container').append('<span class="ti-letter">' + cursor + '</span>');
 
             // after another slight delay, continue typing the next string
             setTimeout(function(){
               this.typeLoop(this.stringLengths[stringCount]);
             }.bind(this), this.settings.breakWait);
 
-          }.bind(this), this.settings.breakWait);
+          }.bind(this), 1000);
 
         }
       }
