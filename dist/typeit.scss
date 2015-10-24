@@ -13,6 +13,10 @@
 .ti-container {
   display: block;
 
+  &:after {
+    content: "\00a0";
+  }
+
   &.active-container {
     .ti-letter:last-of-type {
 
@@ -33,4 +37,6 @@
   background-color: inherit;
   animation: blink 1s infinite;
   top: -3%;
+  line-height: 100%;
+  font-size: inherit;
 }

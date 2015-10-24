@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="src/typeit.css">
+    <link rel="stylesheet" type="text/css" href="src/style.css">
+  </head>
+  <body>
+
+    <header>
+        <h1 class="main-header">TypeIt</h1>
+        <hr>
+        <span class="typeit-box"></span>
+        <br>
+        <a href="https://github.com/alexmacarthur/typeit" class="github-link">
+          <span class="github-text">See the Project on <strong>GitHub.</strong></span>
+        </a>
+    </header>
+
+    <div class="container">
+
+      <section>
+
+        <div class="left">
+          <h3>To get it going, just initialize with a string:</h3>
+
+          <button class="btn-example1">Rerun</button>
+        </div>
+
+        <div class="right">
+
+          <div class="code-block code-input">
+            <small>Code</small>
+
+            &lt;p class=&quot;example1&quot;&gt;&lt;/p&gt;
+
+            <br>
+            <br>
+
+            $('.example1').typeIt({<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;whatToType: "You've just initialized this bad boy.",<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typeSpeed: 100<br>
+            });
+
+          </div>
+
+          <div class="code-block code-output">
+            <small>Output</small>
+            <p class="example1"></p>
+          </div>
+
+        </div>
+
+      </section>
+
+      <hr class="section-divider">
+
+      <section>
+
+        <div class="left">
+
+          <h3>Or, do it with data-typeit-* attributes:</h3>
+
+          <button class="btn-example2">Rerun</button>
+
+        </div>
+
+        <div class="right">
+
+          <div class="code-block code-input">
+            <small>Code</small>
+
+            &lt;p class=&quot;example2&quot; data-typeit-whattotype=&quot;This was defined with a data-typeit-* attribute.&quot; data-typeit-typeSpeed=&quot;100&quot;&gt;&lt;/p&gt;
+
+            <br>
+            <br>
+
+            $('.example2').typeIt();
+
+          </div>
+
+          <div class="code-block code-output">
+            <small>Output</small>
+            <p class="example2" data-typeit-whattotype="This was defined with a data-typeit-* attribute." data-typeit-typeSpeed="100"></p>
+          </div>
+
+        </div>
+
+      </section>
+
+      <hr class="section-divider">
+
+      <section>
+
+        <div class="left">
+          <h3>You can even use multiple strings that stack on each other:</h3>
+
+          <button class="btn-example3">Rerun</button>
+        </div>
+
+        <div class="right">
+
+          <div class="code-block code-input">
+            <small>Code</small>
+
+            &lt;p class=&quot;example3&quot;&gt;&lt;/p&gt;
+
+            <br>
+            <br>
+
+             $('.example3').typeIt({<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;whatToType: ["This is a string!", "And here's another one."],<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typeSpeed: 100<br>
+            });
+
+          </div>
+
+          <div class="code-block code-output">
+            <small>Output</small>
+            <p class="example3"></p>
+          </div>
+
+        </div>
+
+      </section>
+
+      <hr class="section-divider">
+
+      <section>
+
+        <div class="left">
+
+          <h3>Or use multiple strings that delete &amp; replace each other:</h3>
+
+          <button class="btn-example4">Rerun</button>
+
+        </div>
+
+        <div class="right">
+
+          <div class="code-block code-input">
+            <small>Code</small>
+
+            &lt;p class=&quot;example4&quot;&gt;&lt;/p&gt;
+
+            <br>
+            <br>
+
+             $('.example4').typeIt({<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;whatToType: ["This is a great string.", "But here is a better one."],<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typeSpeed: 100,<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;breakLines: false<br>
+            });
+
+          </div>
+
+          <div class="code-block code-output">
+            <small>Output</small>
+            <p class="example4"></p>
+          </div>
+
+        </div>
+
+      </section>
+
+      <hr class="section-divider">
+
+      <section>
+
+          <h3>There are plenty of settings to tweak how you desire:</h3>
+
+          <table>
+
+            <tr>
+
+              <th>Option</th>
+              <th>Description</th>
+              <th>Default</th>
+
+            </tr>
+
+            <tr>
+              <td>whatToType</td>
+              <td>The string or strings you'd like to type.</td>
+              <td>"You probably want to replace this string."</td>
+            </tr>
+
+            <tr>
+              <td>typeSpeed</td>
+              <td>The speed (milliseconds) at which you want to type.</td>
+              <td>500</td>
+            </tr>
+
+            <tr>
+              <td>lifeLike</td>
+              <td>Choose whether the plugin types at a constant pace or irregular, lifelike pace.</td>
+              <td>true</td>
+            </tr>
+
+            <tr>
+              <td>showCursor</td>
+              <td>Choose whether you want the blinking cursor to appear when typing.</td>
+              <td>true</td>
+            </tr>
+
+            <tr>
+              <td>breakLines</td>
+              <td>Choose whether you want multiple strings to be printed on top of each other (breakLines = true), or if you want each string to be deleted and replaced by the next one (breakLines = false).</td>
+              <td>true</td>
+            </tr>
+
+            <tr>
+              <td>breakWait</td>
+              <td>The amount of time between typing multiple strings.</td>
+              <td>500</td>
+            </tr>
+
+            <tr>
+              <td>delayStart</td>
+              <td>The amount of time before the plugin begins typing after initializing.</td>
+              <td>100</td>
+            </tr>
+
+          </table>
+
+      </section>
+
+      <hr class="section-divider">
+
+      <section>
+        <h3 class="like-it">Like it? Let me know!</h3>
+        <i class="fa fa-chevron-down"></i>
+      </section>
+
+    </div>
+
+    <footer>
+
+      <ul class="connect-list">
+        <li class="connect-item"><a href="http://www.github.com/alexmacarthur"><i class="fa fa-github"></i></a></li>
+        <li class="connect-item"><a href="http://www.twitter.com/amacarthur"><i class="fa fa-twitter"></i></a></li>
+        <li class="connect-item"><a href="https://www.linkedin.com/in/alexmacarthur"><i class="fa fa-linkedin"></i></a></li>
+        <li class="connect-item"><a href="http://macarthur.me"><i class="fa fa-globe"></i></a></li>
+      </ul>
+
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="src/typeit.js"></script>
+    <script>
+
+      $('.typeit-box').typeIt({
+        whatToType: ['A jQuery plugin that types stuff for you.'],
+        typeSpeed: 100
+      });
+
+      $('.example1').typeIt({
+        whatToType: "You've just initialized this bad boy.",
+        typeSpeed: 100
+      });
+
+      $('section').on('click','.btn-example1',function() {
+        $('.example1').data().typeit.stopTyping();
+        $('.example1').html('');
+        $('.example1').typeIt({
+          whatToType: "You've just initialized this bad boy.",
+          typeSpeed: 100
+        });
+      });
+
+      $('.example2').typeIt();
+
+      $('section').on('click','.btn-example2',function() {
+        $('.example2').data().typeit.stopTyping();
+        $('.example2').html('');
+        $('.example2').typeIt();
+      });
+
+      $('.example3').typeIt({
+        whatToType: ["This is a string!", "And here's another one."],
+        typeSpeed: 100
+      });
+
+      $('section').on('click','.btn-example3',function() {
+        $('.example3').data().typeit.stopTyping();
+        $('.example3').html('');
+        $('.example3').typeIt({
+          whatToType: ["This is a string!", "And here's another one."],
+          typeSpeed: 100
+        });
+      });
+
+      $('.example4').typeIt({
+        whatToType: ["This is a great string.", "But here is a better one."],
+        typeSpeed: 100,
+        breakLines: false
+      });
+
+      $('section').on('click','.btn-example4',function() {
+        $('.example4').data().typeit.stopTyping();
+        $('.example4').html('');
+        $('.example4').typeIt({
+          whatToType: ["This is a great string.", "But here is a better one."],
+          typeSpeed: 100,
+          breakLines: false
+        });
+      });
+
+
+    </script>
+
+  </body>
+</html>

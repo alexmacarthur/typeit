@@ -1,0 +1,133 @@
+* {
+  font-family: 'Source Sans Pro', sans-serif;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-size: 62.5%;
+  height: 100%;
+  text-align: center;
+}
+
+hr {
+  display: block;
+  width: 50%;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.09);
+  border: 0;
+  margin-top: 2.1rem;
+}
+
+.section-divider {
+  margin: 4rem auto 1rem;
+}
+
+h1 {
+  font-size: 5rem;
+}
+
+h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+span {
+  font-size: 2rem;
+}
+
+a,p,code,.code-block,th,td {
+  font-size: 1.5rem;
+}
+
+table {
+  border: 1px solid rgba(128,128,128,0.1);
+}
+
+th,td {
+  text-align: left;
+  padding: 1rem;
+}
+
+tr:nth-child(2n) {
+  background: rgba(128,128,128,0.08);
+}
+
+button {
+  background: #5BBD8C;
+  border: 2px solid rgba(69, 138, 103, 0.58);
+  padding: 1rem 5rem;
+  color: white;
+  font-size: 1.5rem;
+  margin: 2rem 0 3.5rem;
+}
+
+pre {
+  margin: 0;
+}
+
+a {
+  font-weight: 600;
+}
+
+section {
+  @extend %clearfix;
+}
+
+.right {
+  width: 70%;
+}
+
+.left {
+  width: 30%;
+}
+
+.left,
+.right {
+  float: left;
+  padding: 0 2rem;
+
+  @media screen and (max-width: 992px) {
+    width: 100%;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.code-block{
+  display: block;
+  position: relative;
+  text-align: left;
+  padding: 1rem 2rem 1rem;
+  border: 1px solid rgba(128,128,128,0.1);
+  background: $light-gray;
+}
+
+.code-input {
+  margin-bottom: 3rem;
+}
+
+small {
+  position: absolute;
+  line-height: 25px;
+  height: 25px;
+  width: 75px;
+  text-align: center;
+  display: block;
+  top: -25px;
+  left: 0;
+  border: 1px solid rgba(128,128,128,0.1);
+  border-bottom: 0;
+}
+
+.fa-chevron-down {
+  position: absolute;
+  padding: 0;
+  font-size: 1.5rem;
+  animation: upDown .45s ease-in-out infinite alternate;
+}

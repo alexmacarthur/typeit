@@ -1,16 +1,27 @@
 {
   "name": "typeit",
-  "description": "jQuery plugin that types and deletes specified text.",
-  "private": true,
+  "license": "GPL-2.0",
+  "author": "Alex MacArthur",
+  "description": "jQuery plugin that types text for you.",
   "license": "General Public License",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/alexmacarthur/typeit.git"
   },
+  "keywords": [
+    "jquery",
+    "plugin",
+    "animated",
+    "typing"
+  ],
+  "main": "dist/typeit.min.js",
+  "bugs": {
+    "url": "https://github.com/gitcom/repo/issues"
+  },
   "devDependencies": {
     "gulp": "^3.8.11",
     "gulp-jshint": "^1.9.2",
-    "gulp-concat": "^2.6.0",
     "gulp-uglify": "^1.1.0",
     "gulp-autoprefixer": "^3.0.2",
     "gulp-sass": "^2.0.4",
