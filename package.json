@@ -2,7 +2,7 @@
   "name": "typeit",
   "license": "GPL-2.0",
   "author": "Alex MacArthur",
-  "description": "jQuery plugin that types text for you.",
+  "description": "jQuery animated typing plugin that types text for you.",
   "license": "General Public License",
   "version": "1.0.3",
   "repository": {
