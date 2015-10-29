@@ -4,7 +4,7 @@
   "author": "Alex MacArthur",
   "description": "jQuery plugin that types text for you.",
   "license": "General Public License",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/alexmacarthur/typeit.git"
@@ -18,6 +18,9 @@
   "main": "dist/typeit.min.js",
   "bugs": {
     "url": "https://github.com/gitcom/repo/issues"
+  },
+  "dependencies": {
+    "jquery": "^1.11.3"
   },
   "devDependencies": {
     "gulp": "^3.8.11",

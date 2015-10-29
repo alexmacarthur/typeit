@@ -12,31 +12,33 @@
 
 .ti-container {
   display: block;
+  font-size: inherit;
+}
 
-  &:after {
-    content: "\00a0";
-  }
+.ti-text-container {
+  position: relative;
+  display: inline;
+  font-size: inherit;
 
   &.active-container {
-    .ti-letter:last-of-type {
 
-      .ti-cursor {
+    &.ti-cursor {
+
+      &:after {
         display: inline;
       }
     }
   }
 }
 
-.ti-letter {
-  position: relative;
-}
-
 .ti-cursor {
-  display: none;
-  position: absolute;
-  background-color: inherit;
-  animation: blink 1s infinite;
-  top: -3%;
-  line-height: 100%;
-  font-size: inherit;
+
+  &:after {
+    display: none;
+    content: '|';
+    bottom: .05em;
+    position: relative;
+    vertical-align: baseline;
+    animation: blink 1s infinite;
+  }
 }

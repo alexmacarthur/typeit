@@ -1,6 +1,7 @@
 /**
  * jQuery TypeIt
  * @author Alex MacArthur (http://macarthur.me)
+ * @version 1.0.3
  * @copyright 2015 Alex MacArthur
  * @description Types out a given string or strings.
  */
@@ -47,6 +48,7 @@
     this.cursor = '';
     this.deleteTimeout = null;
     this.typeTimeout = null;
+    this.shortenedText = null;
 
     this.init(theElement);
    };
@@ -71,27 +73,26 @@
      // get the string lengths and save to array
      for(j=0; j < this.stringArray.length; j++){
         this.stringLengths[j] = this.stringArray[j].length;
-        theElement.append('<span class="ti-container" style="font-size:inherit;"></span>');
+        theElement.append('<span class="ti-container"><span class="ti-text-container ti-cursor"></span></span>');
      }
 
      // if breakLines is false, then we for sure only need ONE ti-container even if there multiple strings, so make sure of that
      if(this.settings.breakLines === false) {
         theElement.find('.ti-container').remove();
-        theElement.append('<span class="ti-container" style="font-size:inherit;"></span>');
+        theElement.append('<span class="ti-container"><span class="ti-text-container ti-cursor"></span></span>');
      }
 
      theElement.css('display','inline-block');
 
-     // start to type the string(s)
-     if(this.settings.showCursor === true) {
+     // if showCursor is false, then remove the ti-cursor class
+     if(this.settings.showCursor === false) {
+      $(this.theElement).find('.ti-text-container').removeClass('ti-cursor');
+     } 
 
-      $(this.theElement).find('.ti-container:nth-child(1)').addClass('active-container').append('<span class="ti-letter" style="font-size: inherit;"><span class="ti-cursor">|</span></span>');
+      // start to type the string(s)
       setTimeout(function() {
         this.typeLoop();
       }.bind(this), this.settings.delayStart);
-     } else {
-        this.typeLoop();
-     }
 
    };
 
@@ -99,13 +100,6 @@
 
     // set the length of the phrase for this time around
     this.phraseLength = this.stringLengths[this.stringCount];
-
-    // if settings say so, turn on the blinking cursor
-    if(this.settings.showCursor === true && this.mergedStrings[this.typeCount+this.stringPlaceCount] != ' '){
-      this.cursor = '<span class="ti-cursor">|</span>';
-    } else {
-      this.cursor = '';
-    }
 
      // make it human-like if specified in the settings
     if(this.settings.lifeLike === true){
@@ -116,13 +110,13 @@
 
     this.typeTimeout = setTimeout(function () {
 
-      // append the string of letters to the respective .ti-container
+      // append the string of letters to the respective .ti-text-container
       // use find() so that we select the class only for the element on which we're instantiated
 
       if(this.settings.breakLines === true) {
-        $(this.theElement).find('.ti-container:nth-child(' + (this.stringCount + 1) + ')').addClass('active-container').append('<span class="ti-letter" style="font-size: inherit;">' + this.mergedStrings[this.typeCount+this.stringPlaceCount] + this.cursor + '</span>');
+        $(this.theElement).find('.ti-text-container:eq('+ this.stringCount +')').addClass('active-container').append(this.mergedStrings[this.typeCount+this.stringPlaceCount]);
       } else {
-        $(this.theElement).find('.ti-container').append('<span class="ti-letter" style="font-size: inherit;">' + this.mergedStrings[this.typeCount+this.stringPlaceCount] + this.cursor + '</span>');
+        $(this.theElement).find('.ti-text-container').addClass('active-container').append(this.mergedStrings[this.typeCount+this.stringPlaceCount]);
       }
 
       this.typeCount++;
@@ -149,10 +143,10 @@
           setTimeout(function(){
 
             // remove any 'active-container' classes fromt the elements
-            $(this.theElement).find('.ti-container').removeClass('active-container');
-            
+            $(this.theElement).find('.ti-text-container').removeClass('active-container');
+
             // give 'active-container' class to next container, so the cursor can start blinking
-            $(this.theElement).find('.ti-container:nth-child(' + (this.stringCount + 1) + ')').addClass('active-container').append('<span class="ti-letter">' + this.cursor + '</span>');
+            $(this.theElement).find('.ti-text-container:eq('+ this.stringCount +')').addClass('active-container');
 
             // after another slight delay, continue typing the next string
             setTimeout(function(){
@@ -170,8 +164,13 @@
    _proto.deleteLoop = function() {
 
     this.deleteTimeout = setTimeout(function () {
-       // find the .ti-container and delete the last letter in that parent over and over again
-       $(this.theElement).find('.ti-container').find('.ti-letter:last-child').remove();
+
+      // get the string from the element and cut it by one character at the end
+      shortenedText = $(this.theElement).find('.ti-text-container').text().substring(0, $(this.theElement).find('.ti-text-container').text().length - 1);
+
+      // then, put that shortened text into the element so it looks like it's being deleted
+      $(this.theElement).find('.ti-text-container').text(shortenedText);
+
        // if there are still characters in the string, run the function again
        this.deleteCount++;
        if (this.deleteCount < this.phraseLength) {
@@ -185,7 +184,7 @@
      }.bind(this), this.delayTime/3);
    };
 
-  // stop the plugin from typing or deleting stuff whenever you
+  // stop the plugin from typing or deleting stuff whenever it's called
    _proto.stopTyping = function() {
       clearTimeout(this.typeTimeout);
       clearTimeout(this.deleteTimeout);

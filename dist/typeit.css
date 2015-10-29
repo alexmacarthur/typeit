@@ -24,27 +24,25 @@
 
 .ti-container {
   display: block;
+  font-size: inherit;
 }
 
-.ti-container:after {
-  content: "\00a0";
+.ti-text-container {
+  position: relative;
+  display: inline;
+  font-size: inherit;
 }
 
-.ti-container.active-container .ti-letter:last-of-type .ti-cursor {
+.ti-text-container.active-container.ti-cursor:after {
   display: inline;
 }
 
-.ti-letter {
-  position: relative;
-}
-
-.ti-cursor {
+.ti-cursor:after {
   display: none;
-  position: absolute;
-  background-color: inherit;
+  content: '|';
+  bottom: .05em;
+  position: relative;
+  vertical-align: baseline;
   -webkit-animation: blink 1s infinite;
           animation: blink 1s infinite;
-  top: -3%;
-  line-height: 100%;
-  font-size: inherit;
 }

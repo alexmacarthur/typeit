@@ -20,6 +20,12 @@ gulp.task('scripts', function() {
     .pipe(rename('typeit.min.js'))
     .pipe(gulp.dest('dist'));
 
+  // minify demo scripts
+  gulp.src('src/scripts.js')
+    .pipe(uglify())
+    .pipe(rename('scripts.min.js'))
+    .pipe(gulp.dest('src'));
+
   // put the unminified JavaScript into /dist
   gulp.src('src/typeit.js')
     .pipe(gulp.dest('dist'));
@@ -65,7 +71,7 @@ gulp.task('demoSass',function(){
 gulp.task('default', ['jshint','scripts','typeItSass','demoSass'], function() {
 
   // watch for JavaScript changes
-  gulp.watch('src/typeit.js', ['jshint', 'scripts']);
+  gulp.watch('src/*.js', ['jshint', 'scripts']);
 
   // watch for SASS changes
   gulp.watch('src/typeit.scss', ['typeItSass']);

@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="shortcut icon" href="src/img/favicon.ico" type="image/x-icon"/>
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="src/typeit.css">
+    <link rel="stylesheet" type="text/css" href="dist/typeit.min.css">
     <link rel="stylesheet" type="text/css" href="src/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A jQuery plugin that types text for you.">
+    <meta name="keywords" content="jQuery,animated typing,JavaScript plugin,jQuery plugin">
+    <meta name="author" content="Alex MacArthur">
+    <title>TypeIt | A jQuery Typing Plugin</title>
   </head>
+
   <body>
+    <a name="top"></a>
 
     <header>
         <h1 class="main-header">TypeIt</h1>
@@ -21,6 +30,82 @@
     <div class="container">
 
       <section>
+
+        <form id="TIInput">
+
+          <h2 class="ti-header">Try it!</h2>
+          <span class="info">Tweak the settings (optional), enter at least one string, and watch it go!</span>
+
+          <div class="options-holder">
+
+            <div class="ti-option-box">
+              <label>Type Speed</labeL>
+              <input class="ti-option" type="number" id="iTypeSpeed" placeholder="typeSpeed">
+            </div>
+
+            <div class="ti-option-box">
+              <label>Life-Like</labeL>
+              <select class="ti-option" id="iLifeLike">
+                <option value="true" selected>True</option>
+                <option value="false">False</option>
+              </select>
+            </div>
+
+            <div class="ti-option-box">
+              <label>Show Cursor</labeL>
+              <select class="ti-option" id="iShowCursor">
+                <option value="true" selected>True</option>
+                <option value="false">False</option>
+              </select>
+            </div>
+
+            <div class="ti-option-box">
+              <label>Break Lines</labeL>
+              <select class="ti-option" id="iBreakLines">
+                <option value="true" selected>True</option>
+                <option value="false">False</option>
+              </select>
+            </div>
+
+            <div class="ti-option-box">
+              <label>Break Wait</labeL>
+              <input class="ti-option" type="number" id="iBreakWait" placeholder="breakWait">
+            </div>
+
+            <div class="ti-option-box">
+              <label>Delay Start</labeL>
+              <input class="ti-option" type="number" id="iDelayStart" placeholder="breakStart">
+            </div>
+
+            <a href="#options" class="settings-link">Wait, what do these settings actually do?</a>
+
+            <textarea rows="3" id="stringTI" placeholder="Enter one or multiple strings per line here."></textarea>
+
+          </div>
+
+          <input type="submit" id="TISubmit" value="Type it!">
+
+        </form>
+
+        <div class="ti-output-box">
+
+          <div id="TIOutput">
+
+            <span class="temp-text">output box</span>
+
+          </div>
+
+        </div>
+
+        <a id="scrollTo"></a>
+
+      </section>
+
+      <hr class="section-divider">
+
+      <section>
+
+        <h2>Start Typing on Your Site!</h2>
 
         <div class="left">
           <h3>To get it going, just initialize with a string:</h3>
@@ -167,8 +252,10 @@
       <hr class="section-divider">
 
       <section>
+        <a name="options"></a>
 
           <h3>There are plenty of settings to tweak how you desire:</h3>
+          <br>
 
           <table>
 
@@ -226,10 +313,13 @@
 
       </section>
 
+      <br>
+      <a href="#top">Back to Top</a>
+
       <hr class="section-divider">
 
       <section>
-        <h3 class="like-it">Like it? Let me know!</h3>
+        <h3 class="like-it">Like it? Hate it with a burning, insatiable passion? Let me know!</h3>
         <i class="fa fa-chevron-down"></i>
       </section>
 
@@ -247,66 +337,17 @@
     </footer>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="src/typeit.js"></script>
+    <script src="dist/typeit.min.js"></script>
+    <script src="src/scripts.min.js"></script>
+
     <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      $('.typeit-box').typeIt({
-        whatToType: ['A jQuery plugin that types stuff for you.'],
-        typeSpeed: 100
-      });
-
-      $('.example1').typeIt({
-        whatToType: "You've just initialized this bad boy.",
-        typeSpeed: 100
-      });
-
-      $('section').on('click','.btn-example1',function() {
-        $('.example1').data().typeit.stopTyping();
-        $('.example1').html('');
-        $('.example1').typeIt({
-          whatToType: "You've just initialized this bad boy.",
-          typeSpeed: 100
-        });
-      });
-
-      $('.example2').typeIt();
-
-      $('section').on('click','.btn-example2',function() {
-        $('.example2').data().typeit.stopTyping();
-        $('.example2').html('');
-        $('.example2').typeIt();
-      });
-
-      $('.example3').typeIt({
-        whatToType: ["This is a string!", "And here's another one."],
-        typeSpeed: 100
-      });
-
-      $('section').on('click','.btn-example3',function() {
-        $('.example3').data().typeit.stopTyping();
-        $('.example3').html('');
-        $('.example3').typeIt({
-          whatToType: ["This is a string!", "And here's another one."],
-          typeSpeed: 100
-        });
-      });
-
-      $('.example4').typeIt({
-        whatToType: ["This is a great string.", "But here is a better one."],
-        typeSpeed: 100,
-        breakLines: false
-      });
-
-      $('section').on('click','.btn-example4',function() {
-        $('.example4').data().typeit.stopTyping();
-        $('.example4').html('');
-        $('.example4').typeIt({
-          whatToType: ["This is a great string.", "But here is a better one."],
-          typeSpeed: 100,
-          breakLines: false
-        });
-      });
-
+      ga('create', 'UA-69226290-1', 'auto');
+      ga('send', 'pageview');
 
     </script>
 

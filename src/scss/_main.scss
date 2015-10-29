@@ -11,6 +11,20 @@ body {
   text-align: center;
 }
 
+a{
+  color: black;
+  cursor: pointer;
+
+  &:hover {
+    color: $pink;
+  }
+}
+
+p {
+  margin: 0 0 3px;
+  opacity: .65;
+}
+
 hr {
   display: block;
   width: 50%;
@@ -21,11 +35,24 @@ hr {
 }
 
 .section-divider {
-  margin: 4rem auto 1rem;
+  margin: 4rem auto 5rem;
+
+  @media screen and(max-width: 600px) {
+    margin-bottom: 1rem;
+  }
 }
 
 h1 {
   font-size: 5rem;
+}
+
+h2 {
+  font-size: 3.5rem;
+  margin-bottom: 4rem;
+
+  @media screen and (max-width: 992px) {
+    margin-bottom: 1rem;
+  }
 }
 
 h3 {
@@ -54,13 +81,23 @@ tr:nth-child(2n) {
   background: rgba(128,128,128,0.08);
 }
 
-button {
-  background: #5BBD8C;
+button,
+input[type="submit"] {
+  background: $light-green;
   border: 2px solid rgba(69, 138, 103, 0.58);
   padding: 1rem 5rem;
   color: white;
   font-size: 1.5rem;
   margin: 2rem 0 3.5rem;
+
+  &:hover {
+    background: $green;
+  }
+}
+
+input[type="submit"]{
+  padding: 0;
+  height: auto;
 }
 
 pre {

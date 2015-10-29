@@ -1,0 +1,88 @@
+.info {
+  	font-size: 1.5rem;
+	display: block;
+	margin: 2rem 0;
+}
+
+.ti-header {
+	margin-bottom: 0;
+}
+
+#stringTI {
+	width: 100%;
+  	padding: 1rem;
+}
+
+.temp-text {
+  position: absolute;
+  width: 100%;
+  display: block;
+  opacity: .1;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+input,
+textarea,
+select {
+	border-radius: 3px;
+	border: 1px solid $light-gray2;
+	font-size: 2rem;
+	text-align: center;
+	margin-bottom: 2rem;
+	width: 100%;
+	height: 35px;
+	line-height: 35px;
+	padding: 0 1rem;
+	background: none;
+}
+
+textarea {
+	height: auto;
+}
+
+.ti-output-box {
+	background: $light-gray;
+	width: 100%;
+	min-height: 75px;
+	position: relative;
+  padding: 2rem 0;
+}
+
+.expand-output-box {
+  transition: all .25s ease-in-out;
+  max-height: 1000px;
+}
+
+#TIOutput {
+	font-size: 3rem;
+}
+
+label {
+	font-size: 1.5rem;
+	display: block;
+	width: 100%;
+	text-align: left;
+    margin: 0 0 .5rem;
+    opacity: .65;
+}
+
+.options-holder {
+	@extend %clearfix;
+	width: 100%;
+	text-align: center;
+
+	.ti-option-box {
+		width: 49%;
+		float: left;
+
+		&:nth-child(2n-1) {
+			margin-right: 2%;
+		}
+	}
+}
+
+.settings-link {
+	display: block;
+    margin-bottom: 1rem;
+}
