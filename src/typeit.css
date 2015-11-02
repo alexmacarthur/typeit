@@ -33,6 +33,14 @@
   font-size: inherit;
 }
 
+.ti-text-container:before {
+  content: '';
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  position: relative;
+}
+
 .ti-text-container.active-container.ti-cursor:after {
   display: inline;
 }
@@ -41,8 +49,10 @@
   display: none;
   content: '|';
   bottom: .05em;
-  position: relative;
-  vertical-align: baseline;
+  right: -.25em;
+  position: absolute;
+  line-height: normal;
+  font-size: inherit;
   -webkit-animation: blink 1s infinite;
           animation: blink 1s infinite;
 }

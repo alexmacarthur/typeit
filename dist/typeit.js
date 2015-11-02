@@ -1,7 +1,7 @@
 /**
  * jQuery TypeIt
  * @author Alex MacArthur (http://macarthur.me)
- * @version 1.0.3
+ * @version 1.0.4
  * @copyright 2015 Alex MacArthur
  * @description Types out a given string or strings.
  */
@@ -25,7 +25,7 @@
        showCursor: true,
        breakLines: true,
        breakWait: 500,
-       delayStart: 100
+       delayStart: 250
      };
 
     this.dataDefaults = {
@@ -73,16 +73,18 @@
      // get the string lengths and save to array
      for(j=0; j < this.stringArray.length; j++){
         this.stringLengths[j] = this.stringArray[j].length;
+        // set up the number of ti-containers we'll need to hold the strings
         theElement.append('<span class="ti-container"><span class="ti-text-container ti-cursor"></span></span>');
      }
+
+      // add .active-container to the first .ti-text-container so the cursor starts blinking before a string is printed
+      theElement.find('.ti-container:first-child').find('.ti-text-container').addClass('active-container');
 
      // if breakLines is false, then we for sure only need ONE ti-container even if there multiple strings, so make sure of that
      if(this.settings.breakLines === false) {
         theElement.find('.ti-container').remove();
         theElement.append('<span class="ti-container"><span class="ti-text-container ti-cursor"></span></span>');
      }
-
-     theElement.css('display','inline-block');
 
      // if showCursor is false, then remove the ti-cursor class
      if(this.settings.showCursor === false) {
@@ -113,10 +115,13 @@
       // append the string of letters to the respective .ti-text-container
       // use find() so that we select the class only for the element on which we're instantiated
 
+      characterToAppend = this.mergedStrings[this.typeCount+this.stringPlaceCount];
+
+      // if breakLines is set to true, add the 'active-container' class to the next .ti-text-container in the list. 
       if(this.settings.breakLines === true) {
-        $(this.theElement).find('.ti-text-container:eq('+ this.stringCount +')').addClass('active-container').append(this.mergedStrings[this.typeCount+this.stringPlaceCount]);
+        $(this.theElement).find('.ti-text-container:eq('+ this.stringCount +')').addClass('active-container').append(characterToAppend);
       } else {
-        $(this.theElement).find('.ti-text-container').addClass('active-container').append(this.mergedStrings[this.typeCount+this.stringPlaceCount]);
+        $(this.theElement).find('.ti-text-container').addClass('active-container').append(characterToAppend);
       }
 
       this.typeCount++;

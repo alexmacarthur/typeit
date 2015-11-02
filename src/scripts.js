@@ -57,9 +57,9 @@ $('section').on('click','.btn-example4',function() {
 
 (function() {
 
-  $('#iTypeSpeed').val('100');
-  $('#iBreakWait').val('100');
-  $('#iDelayStart').val('100');
+  $('#iTypeSpeed').val('250');
+  $('#iBreakWait').val('500');
+  $('#iDelayStart').val('250');
 
   $('#TIInput').on('click','#TISubmit', function(e){
 

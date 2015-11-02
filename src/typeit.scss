@@ -20,6 +20,15 @@
   display: inline;
   font-size: inherit;
 
+  // :before pseudo element is necessary so that when lines with no text hold the cursor, the cursor stays in the correct space on the screen
+  &:before {
+    content: '';
+    display: inline-block;
+    width: 1px;
+    height: 1em;
+    position: relative;
+  }
+
   &.active-container {
 
     &.ti-cursor {
@@ -37,8 +46,10 @@
     display: none;
     content: '|';
     bottom: .05em;
-    position: relative;
-    vertical-align: baseline;
+    right: -.25em;
+    position: absolute;
+    line-height: normal;
+    font-size: inherit;
     animation: blink 1s infinite;
   }
 }

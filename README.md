@@ -1,7 +1,7 @@
 # TypeIt: A jQuery Animated Typing Plugin
 
 ## Description
-A jQuery plugin that outputs text like it's being typed. It allows you to type single strings, multiple strings that stack, and multiple strings that delete & replace each other. It's lightweight, scalable, and super easy to implement.
+A jQuery plugin that outputs text like it's being typed. It allows you to type single strings, multiple strings that stack, and multiple strings that delete & replace each other. It's lightweight, scalable, responsive, and super easy to implement.
 
 ## Demo
 Checkout several demos and a sandbox where you can try it out at <a href="http://alexmacarthur.github.io/typeit">alexmacarthur.github.io/typeit</a>.
@@ -10,7 +10,7 @@ Checkout several demos and a sandbox where you can try it out at <a href="http:/
 
 ### Download the Plugin
 
-Download the ZIP, clone this repo, or use npm with `npm install typeit`. 
+Download the ZIP, clone this repo, or install via npm with `npm install typeit`. 
 
 ### Initializing on Your Site
 
@@ -90,12 +90,12 @@ There are a number of options you may use to customize typeIt.
 | Option        | Description   | Default Value
 | ------------- | ------------- | ------------- |
 | whatToType  | The string to be typed.       | 'This is the default string. Please replace this string with your own.' |
-| typeSpeed     | The typing speed.             | 500  |
+| typeSpeed     | The typing speed.             | 200  |
 | lifeLike      | Will make the typing pace irregular, as if a real person is doing it.  | true |
 | showCursor    | Show a blinking cursor at the end of the string.  | true  |
-| breakLines    | Choose whether you want multiple strings to be printed on top of eachother (breakLines = true), or if you want each string to be deleted and replaced by the next one (breakLines = false).  | true  |
+| breakLines    | Choose whether you want multiple strings to be printed on top of each other (breakLines = true), or if you want each string to be deleted and replaced by the next one (breakLines = false).  | true  |
 | breakWait    | The amount of time between typing multiple strings.  | 500  |
-| delayStart    | The amount of time before the plugin begins typing after initalizing.  | 100  |
+| delayStart    | The amount of time before the plugin begins typing after initalizing.  | 250  |
 
 ## Ideas for Improvement?
 
