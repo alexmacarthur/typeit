@@ -46,7 +46,7 @@ You can modify the options for the plugin in two different ways -- either by ins
   ```
 
   ``
-  $('.type-it').typeit();
+  $('.type-it').typeIt();
   ``
 
   or...
@@ -56,7 +56,7 @@ You can modify the options for the plugin in two different ways -- either by ins
   ``
 
  ```
-  $('.type-it').typeit({
+  $('.type-it').typeIt({
     whatToType:'Enter your string here!',
     typeSpeed: 300,
     lifeLike: false,
@@ -69,7 +69,7 @@ You can modify the options for the plugin in two different ways -- either by ins
 Aside from simply typing a single string, you can configure TypeIt to type multiple strings. By default, they stack on top of each other. To use this feature, just enter an array of several strings.
 
 ```
-  $('.type-it').typeit({
+  $('.type-it').typeIt({
     whatToType:['Enter your string here!', 'Another string!']
   });
 ```
@@ -77,7 +77,7 @@ Aside from simply typing a single string, you can configure TypeIt to type multi
 Or, you can have type strings that delete & replace each other. Do this, set the 'breakLines' setting to `false`.
 
 ```
-  $('.type-it').typeit({
+  $('.type-it').typeIt({
     whatToType: ['Enter your string here!', 'Another string!'],
     breakLines: false
   });
