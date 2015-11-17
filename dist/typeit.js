@@ -9,14 +9,15 @@
  (function($){
 
    // the actual jQuery function
-   $.fn.typeIt = function(options){
+   $.fn.typeIt = function(options, callback){
+    // now call a callback function
      return this.each(function(){
-       $(this).data("typeit", new $.fn.typeIt.typeItClass($(this), options));
+       $(this).data("typeit", new $.fn.typeIt.typeItClass($(this), options, callback));
      });
    };
 
    // create the class
-   $.fn.typeIt.typeItClass = function(theElement, options){
+   $.fn.typeIt.typeItClass = function(theElement, options, callback){
     // plugin default settings
     this.defaults = {
        whatToType:'This is the default string. Please replace this string with your own.',
@@ -38,17 +39,32 @@
      delayStart : theElement.data('typeitDelayStart')
     };
 
+    // the element that holds the text
     this.theElement = theElement;
+    // callback function that executes after strings have been printed
+    this.callback = callback;
+    // the settings for the plugin instance
     this.settings = $.extend({}, this.defaults, options, this.dataDefaults);
+    // the number of types a character has been typed for each pass over a string
     this.typeCount = 0;
+    // the character number of a string that's currently being deleted
     this.deleteCount = 0;
+    // the string number that's currently being typed or deleted
     this.stringCount = 0;
+
     this.stringPlaceCount = 0;
+    // the length of the current string being handled
     this.phraseLength = 0;
     this.cursor = '';
     this.deleteTimeout = null;
     this.typeTimeout = null;
     this.shortenedText = null;
+
+    if(typeof this.callback != 'function'){
+      this.callback = function() {
+        console.log('This is not a valid function, punk.');
+      };
+    }
 
     this.init(theElement);
    };
@@ -70,7 +86,7 @@
      this.stringLengths = {};
      this.phraseLength = this.stringLengths[this.stringCount];
 
-     // get the string lengths and save to array
+     // get the string lengths and save to array, set up ti-containers for each string
      for(j=0; j < this.stringArray.length; j++){
         this.stringLengths[j] = this.stringArray[j].length;
         // set up the number of ti-containers we'll need to hold the strings
@@ -100,7 +116,7 @@
 
    _proto.typeLoop = function(){
 
-    // set the length of the phrase for this time around
+    // set the length of the current phrase being typed
     this.phraseLength = this.stringLengths[this.stringCount];
 
      // make it human-like if specified in the settings
@@ -113,9 +129,7 @@
     this.typeTimeout = setTimeout(function () {
 
       // append the string of letters to the respective .ti-text-container
-      // use find() so that we select the class only for the element on which we're instantiated
-
-      characterToAppend = this.mergedStrings[this.typeCount+this.stringPlaceCount];
+      var characterToAppend = this.mergedStrings[this.typeCount+this.stringPlaceCount];
 
       // if breakLines is set to true, add the 'active-container' class to the next .ti-text-container in the list. 
       if(this.settings.breakLines === true) {
@@ -125,8 +139,8 @@
       }
 
       this.typeCount++;
+      // if there are still characters to be typed, call the same function again
       if (this.typeCount < this.phraseLength) {
-        // type out the string
         this.typeLoop(this.stringLengths[this.stringCount]);
         // if there are no more characters to print and there is more than one string to be typed, delete the string just printed
       } else if(this.stringArray.length > 1) {
@@ -134,8 +148,12 @@
         this.stringPlaceCount = this.stringPlaceCount + this.phraseLength;
         // reset this.typeCount in case this function needs to be reused
         this.typeCount = 0;
-        // if we're not on the last string, then continue to delete, unless the user wants to break lines
-        if((this.stringCount+1 < this.stringArray.length) && this.settings.breakLines === false){
+
+          // if the stringCount is the same as the number of strings we started with, we're done, so call the callback function
+        if(this.stringCount+1 === this.stringArray.length) {
+          this.callback();
+          // if we're not on the last string, then move on to to delete, unless the user wants to break lines
+        } else if((this.stringCount+1 < this.stringArray.length) && this.settings.breakLines === false){
 
           setTimeout(function(){
             this.deleteLoop();
@@ -161,6 +179,10 @@
           }.bind(this), this.settings.breakWait);
 
         }
+
+        // since there are no more strings to be typed, we're done and can call the callback function
+      } else {
+        this.callback(); 
       }
     }.bind(this), this.delayTime);
 
@@ -176,15 +198,16 @@
       // then, put that shortened text into the element so it looks like it's being deleted
       $(this.theElement).find('.ti-text-container').text(shortenedText);
 
-       // if there are still characters in the string, run the function again
        this.deleteCount++;
+        // if there are still characters in the string, run the function again
        if (this.deleteCount < this.phraseLength) {
          this.deleteLoop();
+        // if there are still strings in the array, go back to typing.
        } else if(this.stringArray[this.stringCount+1] !== undefined){
          this.deleteCount = 0;
          this.stringCount++;
          this.typeLoop();
-       }
+       } 
        // make backspacing much quicker by dividing delayTime (arbitrarily) by three
      }.bind(this), this.delayTime/3);
    };

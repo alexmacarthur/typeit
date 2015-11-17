@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../dist/typeit.min.css">
+    <title>typeIt | A jQuery Typing Plugin</title>
+  </head>
+
+  <style type="text/css">
+
+  </style>
+
+  <body>
+
+    <section>
+      <span class="typeit-box"></span>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="../dist/typeit.min.js"></script>
+    <script>
+      $('.typeit-box').typeIt({
+        whatToType: ['A jQuery plugin.', 'for you.', 'asldfasdfas'],
+        typeSpeed: 100,
+        breakLines: false
+      }, function() {
+        console.log('callback!');
+      });
+    </script>
+
+  </body>
+</html>
