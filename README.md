@@ -91,7 +91,7 @@ TypeIt allows you to use a custom callback function when you've completed typing
   $('.typeit-box').typeIt({
     whatToType: 'Here is a string!',
   }, function() {
-    console.log('This is your callback function!!);
+    console.log('This is your callback function!');
   });
 </script>
 ```

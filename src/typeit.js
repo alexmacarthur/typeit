@@ -1,7 +1,7 @@
 /**
  * jQuery TypeIt
  * @author Alex MacArthur (http://macarthur.me)
- * @version 1.0.4
+ * @version 1.2.0
  * @copyright 2015 Alex MacArthur
  * @description Types out a given string or strings.
  */
