@@ -10,7 +10,7 @@ Checkout several demos and a sandbox where you can try it out at <a href="http:/
 
 ### Download the Plugin
 
-Download the ZIP, clone this repo, or install via npm with `npm install typeit`. 
+Download the ZIP, clone this repo, or install via npm with `npm install typeit`.
 
 ### Initializing on Your Site
 
@@ -27,7 +27,7 @@ Download the ZIP, clone this repo, or install via npm with `npm install typeit`.
   <script src="typeit.js"></script>
   ```
 
-You're ready to initialize it! 
+You're ready to initialize it!
 
 ## Usage
 
@@ -63,7 +63,7 @@ You can modify the options for the plugin in two different ways -- either by ins
     showCursor: true
   });
   ```
-  
+
 ### Typing Multiple Strings
 
 Aside from simply typing a single string, you can configure TypeIt to type multiple strings. By default, they stack on top of each other. To use this feature, just enter an array of several strings.
@@ -73,7 +73,7 @@ Aside from simply typing a single string, you can configure TypeIt to type multi
     whatToType:['Enter your string here!', 'Another string!']
   });
 ```
-  
+
 Or, you can have type strings that delete & replace each other. Do this, set the 'breakLines' setting to `false`.
 
 ```
@@ -81,6 +81,19 @@ Or, you can have type strings that delete & replace each other. Do this, set the
     whatToType: ['Enter your string here!', 'Another string!'],
     breakLines: false
   });
+```
+
+### Using a Callback Function
+
+TypeIt allows you to use a custom callback function when you've completed typing. To use one, simply add it as the second argument when it's initialized.
+
+```
+  $('.typeit-box').typeIt({
+    whatToType: 'Here is a string!',
+  }, function() {
+    console.log('This is your callback function!!);
+  });
+</script>
 ```
 
 ## Options

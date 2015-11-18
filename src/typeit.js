@@ -51,7 +51,6 @@
     this.deleteCount = 0;
     // the string number that's currently being typed or deleted
     this.stringCount = 0;
-
     this.stringPlaceCount = 0;
     // the length of the current string being handled
     this.phraseLength = 0;
@@ -61,9 +60,7 @@
     this.shortenedText = null;
 
     if(typeof this.callback != 'function'){
-      this.callback = function() {
-        console.log('This is not a valid function, punk.');
-      };
+      console.log('Your callback is not a valid function. Please format your callback as "function(){...}" when it is defined.');
     }
 
     this.init(theElement);
@@ -105,7 +102,7 @@
      // if showCursor is false, then remove the ti-cursor class
      if(this.settings.showCursor === false) {
       $(this.theElement).find('.ti-text-container').removeClass('ti-cursor');
-     } 
+     }
 
       // start to type the string(s)
       setTimeout(function() {
@@ -131,7 +128,7 @@
       // append the string of letters to the respective .ti-text-container
       var characterToAppend = this.mergedStrings[this.typeCount+this.stringPlaceCount];
 
-      // if breakLines is set to true, add the 'active-container' class to the next .ti-text-container in the list. 
+      // if breakLines is set to true, add the 'active-container' class to the next .ti-text-container in the list.
       if(this.settings.breakLines === true) {
         $(this.theElement).find('.ti-text-container:eq('+ this.stringCount +')').addClass('active-container').append(characterToAppend);
       } else {
@@ -182,7 +179,7 @@
 
         // since there are no more strings to be typed, we're done and can call the callback function
       } else {
-        this.callback(); 
+        this.callback();
       }
     }.bind(this), this.delayTime);
 
@@ -207,7 +204,7 @@
          this.deleteCount = 0;
          this.stringCount++;
          this.typeLoop();
-       } 
+       }
        // make backspacing much quicker by dividing delayTime (arbitrarily) by three
      }.bind(this), this.delayTime/3);
    };
