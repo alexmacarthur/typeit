@@ -1,7 +1,7 @@
 /**
  * jQuery TypeIt
  * @author Alex MacArthur (http://macarthur.me)
- * @version 1.2.0
+ * @version 1.1.1
  * @copyright 2015 Alex MacArthur
  * @description Types out a given string or strings.
  */
@@ -19,7 +19,7 @@
   };
 
  // create the class
- $.fn.typeIt.typeItClass = function(theElement, options, callback){
+$.fn.typeIt.typeItClass = function(theElement, options, callback){
   // plugin default settings
   this.defaults = {
      whatToType:'This is the default string. Please replace this string with your own.',
@@ -31,7 +31,7 @@
      delayStart: 250
    };
 
-  this.dataDefaults = {
+  this.dataAttDefaults = {
    whatToType : theElement.data('typeitWhattotype'),
    typeSpeed: theElement.data('typeitSpeed'),
    lifeLike: theElement.data('typeitLifelike'),
@@ -76,18 +76,14 @@
 
  _proto.init = function(options){
 
-  // merge settings into this.settings object
-  $.extend(this.settings, this.defaults, options, this.dataDefaults);
-
   // make sure the callback function is all good
-  this.validateCallbackFunction();
-
+  if(this.validateCallbackFunction() === false){ return false; }
+  // merge settings into this.settings object
+  $.extend(this.settings, this.defaults, options, this.dataAttDefaults);
   // process the whatToType data to get it so we can use it
   this.processWhatToType();
-
   // add all the elements & classes we'll be needing
   this.setupDOMComponents();
-
   // start to type the string(s) after the specified delay
   setTimeout(function() {
     this.typeLoop();
@@ -95,7 +91,7 @@
 
  };
 
- _proto.setupDOMComponents = function() {
+_proto.setupDOMComponents = function() {
   // get the string lengths and save to array, set up ti-containers for each string
   for(j=0; j < this.stringArray.length; j++){
     this.stringLengths[j] = this.stringArray[j].length;
@@ -114,11 +110,11 @@
 
   // if showCursor is false, then remove the ti-cursor class
   if(this.settings.showCursor === false) {
-    $(this.theElement).find('.ti-text-container').removeClass('ti-cursor');
+    this.theElement.find('.ti-text-container').removeClass('ti-cursor');
   }
  };
 
-  _proto.processWhatToType = function() {
+_proto.processWhatToType = function() {
     this.stringArray = this.settings.whatToType;
     // check if the value is an array or just a string
     if(Object.prototype.toString.call(this.stringArray) !== '[object Array]'){
@@ -130,13 +126,16 @@
     this.mergedStrings = this.stringArray.join('');
   };
 
- _proto.validateCallbackFunction = function() {
-  if(typeof this.callback != 'function'){
-    console.log('Your callback is not a valid function. Please format your callback as "function(){...}" when it is defined.');
+_proto.validateCallbackFunction = function() {
+
+  // if undefined, assign blank callback
+  if(typeof this.callback === 'undefined') {
+    this.callback = function(){return true;};
   }
+  
  };
 
- _proto.typeLoop = function(){
+_proto.typeLoop = function(){
 
   // set the length of the current phrase being typed
   this.phraseLength = this.stringLengths[this.stringCount];
@@ -155,9 +154,9 @@
 
     // if breakLines is set to true, add the 'active-container' class to the next .ti-text-container in the list.
     if(this.settings.breakLines === true) {
-      $(this.theElement).find('.ti-text-container:eq('+ this.stringCount +')').addClass('active-container').append(characterToAppend);
+      this.theElement.find('.ti-text-container:eq('+ this.stringCount +')').addClass('active-container').append(characterToAppend);
     } else {
-      $(this.theElement).find('.ti-text-container').addClass('active-container').append(characterToAppend);
+      this.theElement.find('.ti-text-container').addClass('active-container').append(characterToAppend);
     }
 
     this.typeCount++;
@@ -171,7 +170,7 @@
       // reset this.typeCount in case this function needs to be reused
       this.typeCount = 0;
 
-        // if the stringCount is the same as the number of strings we started with, we're done, so call the callback function
+      // if the stringCount is the same as the number of strings we started with, we're done, so call the callback function
       if(this.stringCount+1 === this.stringArray.length) {
         this.callback();
         // if we're not on the last string, then move on to to delete, unless the user wants to break lines
@@ -188,10 +187,10 @@
         setTimeout(function(){
 
           // remove any 'active-container' classes fromt the elements
-          $(this.theElement).find('.ti-text-container').removeClass('active-container');
+          this.theElement.find('.ti-text-container').removeClass('active-container');
 
           // give 'active-container' class to next container, so the cursor can start blinking
-          $(this.theElement).find('.ti-text-container:eq('+ this.stringCount +')').addClass('active-container');
+          this.theElement.find('.ti-text-container:eq('+ this.stringCount +')').addClass('active-container');
 
           // after another slight delay, continue typing the next string
           setTimeout(function(){
@@ -215,10 +214,10 @@
   this.deleteTimeout = setTimeout(function () {
 
     // get the string from the element and cut it by one character at the end
-    shortenedText = $(this.theElement).find('.ti-text-container').text().substring(0, $(this.theElement).find('.ti-text-container').text().length - 1);
+    shortenedText = this.theElement.find('.ti-text-container').text().substring(0, this.theElement.find('.ti-text-container').text().length - 1);
 
     // then, put that shortened text into the element so it looks like it's being deleted
-    $(this.theElement).find('.ti-text-container').text(shortenedText);
+    this.theElement.find('.ti-text-container').text(shortenedText);
 
      this.deleteCount++;
       // if there are still characters in the string, run the function again
@@ -230,7 +229,7 @@
        this.stringCount++;
        this.typeLoop();
      }
-     // make backspacing much quicker by dividing delayTime (arbitrarily) by three
+    // make backspacing much quicker by dividing delayTime (arbitrarily) by three
    }.bind(this), this.delayTime/3);
  };
 
