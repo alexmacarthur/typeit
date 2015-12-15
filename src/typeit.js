@@ -80,15 +80,28 @@ $.fn.typeIt.typeItClass = function(theElement, options, callback){
   if(this.validateCallbackFunction() === false){ return false; }
   // merge settings into this.settings object
   $.extend(this.settings, this.defaults, options, this.dataAttDefaults);
+
+  // string override
+  this.testForElementStringOverride();
+
   // process the whatToType data to get it so we can use it
   this.processWhatToType();
   // add all the elements & classes we'll be needing
   this.setupDOMComponents();
+
   // start to type the string(s) after the specified delay
   setTimeout(function() {
     this.typeLoop();
   }.bind(this), this.settings.delayStart);
 
+ };
+
+ _proto.testForElementStringOverride = function() {
+  // only redefine what to type if there's actually something in the element
+  if(this.theElement.text().length > 0) {
+    this.settings.whatToType = this.theElement.text();
+    this.theElement.text('');
+  }
  };
 
 _proto.setupDOMComponents = function() {
