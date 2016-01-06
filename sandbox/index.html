@@ -5,26 +5,25 @@
     <title>typeIt | A jQuery Typing Plugin</title>
   </head>
 
-  <style type="text/css">
-
-  </style>
-
   <body>
 
     <section>
-      <span class="typeit-box">testing in element!</span>
+
+       <span class="typeit-box"
+  data-typeit-whattotype='["A new string to type.","hello..."]'
+  data-typeit-speed="100"
+  data-typeit-lifelike="true"
+  data-typeit-showcursor="true"
+  data-typeit-loop="true"
+  data-typeit-loopdelay="1000">
+      </span>
+
     </section>
 
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="../src/jquery-2.1.4.min.js"></script>
     <script src="../dist/typeit.min.js"></script>
     <script>
-      $('.typeit-box').typeIt({
-        whatToType: ['A jQuery plugin.', 'for you.'],
-        typeSpeed: 100,
-        breakLines: false
-      }, function() {
-        console.log('callback!');
-      });
+      $('.typeit-box').typeIt();
     </script>
 
   </body>

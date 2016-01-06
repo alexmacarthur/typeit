@@ -6,11 +6,12 @@ header {
   border-top: 2px solid $light-gray;
 }
 
-.typeit-box {
+#typeit-box {
   line-height: 6rem;
   font-size: 5rem;
   margin: 2rem 0 3rem;
-  font-weight: bold;
+  font-weight: 200;
+  line-height: 6rem;
 }
 
 .github-link {
@@ -28,9 +29,15 @@ header {
 
 .main-header {
   margin: 0;
-  font-weight: normal;
+  font-weight: 600;
 }
 
-.typeit-box {
-  line-height: 6rem;
+.emphasized {
+  font-size: inherit;
+  font-weight: 400;
+}
+
+.emphasized-duh {
+  font-weight: 200;
+  font-style: italic;
 }

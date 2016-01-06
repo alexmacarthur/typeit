@@ -2,7 +2,7 @@
 <html>
   <head>
     <link rel="shortcut icon" href="src/img/favicon.ico" type="image/x-icon"/>
-    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200italic,400,600,600italic,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="dist/typeit.min.css">
     <link rel="stylesheet" type="text/css" href="src/style.css">
@@ -20,11 +20,18 @@
     <header>
         <h1 class="main-header">TypeIt</h1>
         <hr>
-        <span class="typeit-box"></span>
+        <span id="typeit-box"></span>
         <a href="https://github.com/alexmacarthur/typeit" class="github-link">
           <span class="github-text">See the Project on <strong>GitHub.</strong></span>
         </a>
     </header>
+
+    <ul class="features-list">
+      <li>Lightweight</li>
+      <li>Multiple Ways to Initialize</li>
+      <li>Handles HTML Tags</li>
+      <li>Tons of Settings to Customize As Needed</li>
+    </ul>
 
     <div class="container">
 
@@ -67,18 +74,18 @@
             </div>
 
             <div class="ti-option-box">
-              <label>Break Wait</labeL>
-              <input class="ti-option" type="number" id="iBreakWait" placeholder="breakWait">
+              <label>Break Delay</labeL>
+              <input class="ti-option" type="number" id="ibreakDelay" placeholder="breakDelay">
             </div>
 
             <div class="ti-option-box">
-              <label>Delay Start</labeL>
-              <input class="ti-option" type="number" id="iDelayStart" placeholder="breakStart">
+              <label>Start Delay</labeL>
+              <input class="ti-option" type="number" id="istartDelay" placeholder="breakStart">
             </div>
 
             <a href="#options" class="settings-link">Wait, what do these settings actually do?</a>
 
-            <textarea rows="3" id="stringTI" placeholder="Enter one or multiple strings per line here."></textarea>
+            <textarea rows="3" id="stringTI" placeholder="Enter one or multiple strings per line. You can use HTML tags too!"></textarea>
 
           </div>
 
@@ -86,11 +93,11 @@
 
         </form>
 
-        <div class="ti-output-box">
+        <div id="TIOutputBox">
 
           <div id="TIOutput">
 
-            <span class="temp-text">output box</span>
+            <span id="tempText">output box</span>
 
           </div>
 
@@ -102,72 +109,60 @@
 
       <hr class="section-divider">
 
-      <section>
+      <section class="setup-section">
 
-        <h2>Start Typing on Your Site!</h2>
+        <h2>Three Ways to Get Started</h2>
 
-        <div class="left">
-          <h3>To get it going, just initialize with a string:</h3>
+        <div class="setup-blocks setup-blocks-title">
 
-          <button class="btn-example1">Rerun</button>
-        </div>
-
-        <div class="right">
-
-          <div class="code-block code-input">
-            <small>Code</small>
-
-            &lt;p class=&quot;example1&quot;&gt;&lt;/p&gt;
-
-            <br>
-            <br>
-
-            $('.example1').typeIt({<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;whatToType: "You've just initialized this bad boy.",<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typeSpeed: 100<br>
-            });
-
-          </div>
-
-          <div class="code-block code-output">
-            <small>Output</small>
-            <p class="example1"></p>
-          </div>
+          <div class="setup-block"><h3>pass in settings object</h3></div>
+          <div class="setup-block"><h3>data-typeit-* attributes</h3></div>
+          <div class="setup-block"><h3>directly in HTML element</h3></div>
 
         </div>
 
-      </section>
+        <div class="setup-blocks setup-blocks-description">
 
-      <hr class="section-divider">
-
-      <section>
-
-        <div class="left">
-
-          <h3>Or, do it with data-typeit-* attributes:</h3>
-
-          <button class="btn-example2">Rerun</button>
+          <div class="setup-block"><p class="description">The easiest way to start it up, and the default. Pass in at least one string and other optional settings, and you're all set.</p></div>
+          <div class="setup-block"><p class="description">Every TypeIt setting can be defined by data-typeit-* attributes, so you can keep the code of multiple instances easier to manage.</p></div>
+          <div class="setup-block"><p class="description">You an define your string by dropping it directly in the HTML element. It serves as a fallback if the user doesn't have JavaScript enabled.</p></div>
 
         </div>
 
-        <div class="right">
+        <div class="setup-blocks setup-blocks-code">
 
-          <div class="code-block code-input">
-            <small>Code</small>
+          <div class="setup-block code-block setup-code-block">
 
-            &lt;p class=&quot;example2&quot; data-typeit-whattotype=&quot;This was defined with a data-typeit-* attribute.&quot; data-typeit-typeSpeed=&quot;100&quot;&gt;&lt;/p&gt;
+              &lt;p id=&quot;example1&quot;&gt;&lt;/p&gt;
 
-            <br>
-            <br>
+              <br>
+              <br>
 
-            $('.example2').typeIt();
+              $('#example1').typeIt({<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;whatToType: "You've just initialized this bad boy."<br>
+              });
 
-          </div>
+            </div>
+          <div class="setup-block code-block setup-code-block">
 
-          <div class="code-block code-output">
-            <small>Output</small>
-            <p class="example2" data-typeit-whattotype="This was defined with a data-typeit-* attribute." data-typeit-typeSpeed="100"></p>
-          </div>
+              &lt;p id=&quot;example2&quot; data-typeit-whattotype=&quot;This was defined with a data-typeit-* attribute.&quot;&gt;&lt;/p&gt;
+
+              <br>
+              <br>
+
+              $('#example2').typeIt();
+
+            </div>
+          <div class="setup-block code-block setup-code-block">
+
+              &lt;p id=&quot;example3&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This is the string that will be typed!<br>&lt;/p&gt;
+
+              <br>
+              <br>
+
+              $('#example3').typeIt();
+
+            </div>
 
         </div>
 
@@ -176,11 +171,12 @@
       <hr class="section-divider">
 
       <section>
+        <h2>Type More Than Just Single Strings</h2>
 
         <div class="left">
-          <h3>You can even use multiple strings that stack on each other:</h3>
+          <h3>Type multiple strings that stack on each other:</h3>
 
-          <button class="btn-example3">Rerun</button>
+          <button id="btn-example4">Rerun</button>
         </div>
 
         <div class="right">
@@ -188,12 +184,12 @@
           <div class="code-block code-input">
             <small>Code</small>
 
-            &lt;p class=&quot;example3&quot;&gt;&lt;/p&gt;
+            &lt;p id=&quot;example4&quot;&gt;&lt;/p&gt;
 
             <br>
             <br>
 
-             $('.example3').typeIt({<br>
+             $('#example4').typeIt({<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;whatToType: ["This is a string!", "And here's another one."],<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typeSpeed: 100<br>
             });
@@ -202,7 +198,7 @@
 
           <div class="code-block code-output">
             <small>Output</small>
-            <p class="example3"></p>
+            <p id="example4"></p>
           </div>
 
         </div>
@@ -215,9 +211,9 @@
 
         <div class="left">
 
-          <h3>Or use multiple strings that delete &amp; replace each other:</h3>
+          <h3>Or type multiple strings that delete &amp; replace each other:</h3>
 
-          <button class="btn-example4">Rerun</button>
+          <button id="btn-example5">Rerun</button>
 
         </div>
 
@@ -226,12 +222,12 @@
           <div class="code-block code-input">
             <small>Code</small>
 
-            &lt;p class=&quot;example4&quot;&gt;&lt;/p&gt;
+            &lt;p id=&quot;example5&quot;&gt;&lt;/p&gt;
 
             <br>
             <br>
 
-             $('.example4').typeIt({<br>
+             $('#example5').typeIt({<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;whatToType: ["This is a great string.", "But here is a better one."],<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typeSpeed: 100,<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;breakLines: false<br>
@@ -241,7 +237,45 @@
 
           <div class="code-block code-output">
             <small>Output</small>
-            <p class="example4"></p>
+            <p id="example5"></p>
+          </div>
+
+        </div>
+
+      </section>
+
+      <hr class="section-divider">
+
+      <section>
+
+        <div class="left">
+
+          <h3>Or type strings wrapped in HTML tags:</h3>
+
+          <button id="btn-example6">Rerun</button>
+
+        </div>
+
+        <div class="right">
+
+          <div class="code-block code-input">
+            <small>Code</small>
+
+            &lt;p id=&quot;example6&quot;&gt;&lt;/p&gt;
+
+            <br>
+            <br>
+
+             $('#example6').typeIt({<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;whatToType: ["Here's text &lt;span class='just-a-class'&gt;wrapped in HTML&lt;/span&gt;."],<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typeSpeed: 100
+            });
+
+          </div>
+
+          <div class="code-block code-output">
+            <small>Output</small>
+            <p id="example6"></p>
           </div>
 
         </div>
@@ -259,23 +293,21 @@
           <table>
 
             <tr>
-
               <th>Option</th>
               <th>Description</th>
               <th>Default</th>
-
             </tr>
 
             <tr>
               <td>whatToType</td>
               <td>The string or strings you'd like to type.</td>
-              <td>"You probably want to replace this string."</td>
+              <td>"You probably want to use your own string."</td>
             </tr>
 
             <tr>
               <td>typeSpeed</td>
               <td>The speed (milliseconds) at which you want to type.</td>
-              <td>250</td>
+              <td>100</td>
             </tr>
 
             <tr>
@@ -297,15 +329,27 @@
             </tr>
 
             <tr>
-              <td>breakWait</td>
+              <td>breakDelay</td>
               <td>The amount of time between typing multiple strings.</td>
-              <td>500</td>
+              <td>750</td>
             </tr>
 
             <tr>
-              <td>delayStart</td>
+              <td>startDelay</td>
               <td>The amount of time before the plugin begins typing after initializing.</td>
               <td>250</td>
+            </tr>
+
+            <tr>
+              <td>loop</td>
+              <td>Have your string or strings continuously loop after completing.</td>
+              <td>false</td>
+            </tr>
+
+            <tr>
+              <td>loopDelay</td>
+              <td>The amount of time between looping over a string or set of strings again.</td>
+              <td>750</td>
             </tr>
 
           </table>

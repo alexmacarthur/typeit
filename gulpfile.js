@@ -16,13 +16,13 @@ gulp.task('jshint',function(){
 // minify JavaScript and put it into /dist
 gulp.task('scripts', function() {
   gulp.src('src/typeit.js')
-    .pipe(uglify())
+    //.pipe(uglify())
     .pipe(rename('typeit.min.js'))
     .pipe(gulp.dest('dist'));
 
   // minify demo scripts
   gulp.src('src/scripts.js')
-    .pipe(uglify())
+    //.pipe(uglify())
     .pipe(rename('scripts.min.js'))
     .pipe(gulp.dest('src'));
 
