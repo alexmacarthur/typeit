@@ -1,0 +1,28 @@
+ul {
+	padding: 0;
+}
+
+li {
+	display: inline;
+}
+
+.features-list {
+	display: block;
+	padding: 0 2rem 3rem 2rem;
+	border-bottom: 2px solid $light-gray;
+
+	li {
+		font-size: 1.75rem;
+    	padding-right: 1rem;
+
+		&:before {
+		    font: normal normal normal 14px/1 FontAwesome;
+		    font-size: inherit;
+		    text-rendering: auto;
+		    -webkit-font-smoothing: antialiased;
+		    -moz-osx-font-smoothing: grayscale;
+			content: "\f00c";
+		    padding-right: .35rem;
+		}
+	}
+}
