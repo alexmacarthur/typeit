@@ -1,8 +1,8 @@
 /**
  * jQuery TypeIt
  * @author Alex MacArthur (http://macarthur.me)
- * @version 2.0.0
- * @copyright 2015 Alex MacArthur
+ * @version 2.0.1
+ * @copyright 2016 Alex MacArthur
  * @description Types out a given string or strings.
  */
 
@@ -412,7 +412,7 @@ _proto.deleteLoop = function(undefined) {
     this.stringToDelete = this.thisTiTextContainer.last().html();
 
     // convert to array
-    this.arrayToDelete = this.stringToDelete.split("");
+    this.arrayToDelete = (typeof this.arrayToDelete !== undefined) ? this.stringToDelete.split("") : [];
 
     // loop over array 
     for (var n = this.arrayToDelete.length-1; n > -1; n--) {
