@@ -1,65 +1,68 @@
-$('.typeit-box').typeIt({
-  whatToType: ['A jQuery plugin that types stuff for you.'],
-  typeSpeed: 100
+$('#typeit-box').typeIt({
+  whatToType: ['A jQuery plugin that <span class="emphasized">types</span> stuff for you.', '<span class="emphasized emphasized-duh">(Duh.)</span>'],
+  typeSpeed: 100,
+  breakLines: true,
+  breakDelay: 1000
 });
 
-$('.example1').typeIt({
-  whatToType: "You've just initialized this bad boy.",
-  typeSpeed: 100
-});
+var $example1 = $('#example1');
+var $example2 = $('#example2');
+var $example3 = $('#example3');
+var $example4 = $('#example4');
+var $example5 = $('#example5');
+var $example6 = $('#example6');
 
-$('section').on('click','.btn-example1',function() {
-  $('.example1').data().typeit.stopTyping();
-  $('.example1').html('');
-  $('.example1').typeIt({
-    whatToType: "You've just initialized this bad boy.",
-    typeSpeed: 100
-  });
-});
-
-$('.example2').typeIt();
-
-$('section').on('click','.btn-example2',function() {
-  $('.example2').data().typeit.stopTyping();
-  $('.example2').html('');
-  $('.example2').typeIt();
-});
-
-$('.example3').typeIt({
-  whatToType: ["This is a string!", "And here's another one."],
-  typeSpeed: 100
-});
-
-$('section').on('click','.btn-example3',function() {
-  $('.example3').data().typeit.stopTyping();
-  $('.example3').html('');
-  $('.example3').typeIt({
+function example4() {
+  $example4.typeIt({
     whatToType: ["This is a string!", "And here's another one."],
     typeSpeed: 100
   });
+}
+
+example4();
+
+$('section').on('click','#btn-example4',function() {
+  $example4.data('typeit').stop();
+  $example4.html('');
+  example4();
 });
 
-$('.example4').typeIt({
-  whatToType: ["This is a great string.", "But here is a better one."],
-  typeSpeed: 100,
-  breakLines: false
-});
-
-$('section').on('click','.btn-example4',function() {
-  $('.example4').data().typeit.stopTyping();
-  $('.example4').html('');
-  $('.example4').typeIt({
-    whatToType: ["This is a great string.", "But here is a better one."],
+function example5() {
+  $example5.typeIt({
+    whatToType: ["This is a great string.","But here is a better one."],
     typeSpeed: 100,
     breakLines: false
   });
+}
+
+example5();
+
+$('section').on('click','#btn-example5',function() {
+  $example5.data('typeit').stop();
+  $example5.html('');
+  example5();
+});
+
+function example6() {
+  $example6.typeIt({
+    whatToType: ["Here's text <span class='just-a-class'>wrapped in HTML</span>."],
+    typeSpeed: 100
+  });
+}
+
+example6();
+
+$('section').on('click','#btn-example6', function() {
+  $example6.data('typeit').stop();
+  $example6.html('');
+  example6();
 });
 
 (function() {
 
   $('#iTypeSpeed').val('250');
-  $('#iBreakWait').val('500');
-  $('#iDelayStart').val('250');
+  $('#ibreakDelay').val('500');
+  $('#istartDelay').val('250');
 
   $('#TIInput').on('click','#TISubmit', function(e){
 
@@ -67,7 +70,7 @@ $('section').on('click','.btn-example4',function() {
 
     // if there's another process going on, stop it and wipe the output box
     if($.hasData($(this))) {
-      $(this).data().typeit.stopTyping();
+      $(this).data('typeit').stop();
     }
     $('#TIOutput').html('');
 
@@ -106,34 +109,34 @@ $('section').on('click','.btn-example4',function() {
       } else {
         breakLines = false;
       }
-    var breakWait = $('#iBreakWait').val();
+    var breakDelay = $('#ibreakDelay').val();
     var breakStart = $('#iBreakStart').val();
-    var delayStart = $('#iDelayStart').val();
+    var startDelay = $('#istartDelay').val();
 
     // hide the temp text
-    $('.temp-text').animate({
+    $('#tempText').animate({
       opacity: 0
     });
 
     // expand the container
-    $('.ti-output-box').animate({
+    $('#TIOutputBox').animate({
       height: newHeight
     }, function() {
 
       $('html, body').animate({
-          scrollTop: $(".ti-output-box").offset().top - 200
+          scrollTop: $("#TIOutputBox").offset().top - 200
       }, 800);
 
       setTimeout(function() {
+
         $('#TIOutput').typeIt({
             whatToType: cleanedWhatToType,
-            typeSpeed: typeSpeed,
+            typeSpeed: Number(typeSpeed),
             lifeLike: lifeLike,
             showCursor: showCursor,
             breakLines: breakLines,
-            breakWait: breakWait,
-            breakStart: breakStart,
-            delayStart: delayStart
+            breakDelay: Number(breakDelay),
+            startDelay: Number(startDelay)
           });
       }, 800);
 

@@ -13,7 +13,7 @@
   	padding: 1rem;
 }
 
-.temp-text {
+#tempText {
   position: absolute;
   width: 100%;
   display: block;
@@ -41,12 +41,12 @@ textarea {
 	height: auto;
 }
 
-.ti-output-box {
+#TIOutputBox {
 	background: $light-gray;
 	width: 100%;
 	min-height: 75px;
 	position: relative;
-  padding: 2rem 0;
+  	padding: 2rem 0;
 }
 
 .expand-output-box {
