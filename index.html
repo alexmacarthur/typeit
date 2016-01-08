@@ -75,12 +75,25 @@
 
             <div class="ti-option-box">
               <label>Break Delay</labeL>
-              <input class="ti-option" type="number" id="ibreakDelay" placeholder="breakDelay">
+              <input class="ti-option" type="number" id="iBreakDelay" placeholder="breakDelay">
             </div>
 
             <div class="ti-option-box">
               <label>Start Delay</labeL>
-              <input class="ti-option" type="number" id="istartDelay" placeholder="breakStart">
+              <input class="ti-option" type="number" id="iStartDelay" placeholder="breakStart">
+            </div>
+
+            <div class="ti-option-box">
+              <label>Loop</labeL>
+              <select class="ti-option" id="iLoop">
+                <option value="true">True</option>
+                <option value="false" selected>False</option>
+              </select>
+            </div>
+
+            <div class="ti-option-box">
+              <label>Loop Delay</labeL>
+              <input class="ti-option" type="number" id="iLoopDelay" placeholder="loopDelay">
             </div>
 
             <a href="#options" class="settings-link">Wait, what do these settings actually do?</a>
@@ -113,25 +126,12 @@
 
         <h2>Three Ways to Get Started</h2>
 
-        <div class="setup-blocks setup-blocks-title">
+        <div class="setup-blocks">
 
-          <div class="setup-block"><h3>pass in settings object</h3></div>
-          <div class="setup-block"><h3>data-typeit-* attributes</h3></div>
-          <div class="setup-block"><h3>directly in HTML element</h3></div>
-
-        </div>
-
-        <div class="setup-blocks setup-blocks-description">
-
-          <div class="setup-block"><p class="description">The easiest way to start it up, and the default. Pass in at least one string and other optional settings, and you're all set.</p></div>
-          <div class="setup-block"><p class="description">Every TypeIt setting can be defined by data-typeit-* attributes, so you can keep the code of multiple instances easier to manage.</p></div>
-          <div class="setup-block"><p class="description">You an define your string by dropping it directly in the HTML element. It serves as a fallback if the user doesn't have JavaScript enabled.</p></div>
-
-        </div>
-
-        <div class="setup-blocks setup-blocks-code">
-
-          <div class="setup-block code-block setup-code-block">
+          <div class="setup-block">
+            <h3>pass in settings object</h3>
+            <p class="description">The easiest way to start it up, and the default. Pass in at least one string and other optional settings, and you're all set.</p>
+            <div class="code-block setup-code-block">
 
               &lt;p id=&quot;example1&quot;&gt;&lt;/p&gt;
 
@@ -143,7 +143,12 @@
               });
 
             </div>
-          <div class="setup-block code-block setup-code-block">
+          </div>
+
+          <div class="setup-block">
+            <h3>data-typeit-* attributes</h3>
+            <p class="description">Every TypeIt setting can be defined by data-typeit-* attributes, so you can keep the code of multiple instances easier to manage.</p>
+            <div class="code-block setup-code-block">
 
               &lt;p id=&quot;example2&quot; data-typeit-whattotype=&quot;This was defined with a data-typeit-* attribute.&quot;&gt;&lt;/p&gt;
 
@@ -153,7 +158,12 @@
               $('#example2').typeIt();
 
             </div>
-          <div class="setup-block code-block setup-code-block">
+          </div>
+
+          <div class="setup-block">
+            <h3>directly in HTML element</h3>
+            <p class="description">You an define your string by dropping it directly in the HTML element. It serves as a fallback if the user doesn't have JavaScript enabled.</p>
+            <div class="code-block setup-code-block">
 
               &lt;p id=&quot;example3&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This is the string that will be typed!<br>&lt;/p&gt;
 
@@ -163,6 +173,7 @@
               $('#example3').typeIt();
 
             </div>
+          </div>
 
         </div>
 

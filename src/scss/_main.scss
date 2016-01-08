@@ -27,6 +27,7 @@ p {
 
 .description {
   margin-bottom: 1.5rem;
+  min-height: 60px;
 }
 
 hr {
@@ -176,10 +177,16 @@ small {
 
 .setup-code-block {
   padding: 1rem 2rem;
+  height: 136px;
 }
 
 .setup-blocks {
+  @extend %clearfix;
   display: flex;
+
+  @media screen and (max-width: 992px) {
+    display: block;
+  }
 }
 
 .setup-block {
@@ -190,6 +197,10 @@ small {
 
   &:last-child {
     margin-right: 0;
+  }
+
+  @media screen and (max-width: 992px) {
+    width: 100%;
   }
 }
 

@@ -60,18 +60,21 @@ $('section').on('click','#btn-example6', function() {
 
 (function() {
 
-  $('#iTypeSpeed').val('250');
-  $('#ibreakDelay').val('500');
-  $('#istartDelay').val('250');
+  $('#iTypeSpeed').val('100');
+  $('#iBreakDelay').val('750');
+  $('#iStartDelay').val('250');
+  $('#iLoopDelay').val('750');
 
   $('#TIInput').on('click','#TISubmit', function(e){
 
     e.preventDefault();
 
     // if there's another process going on, stop it and wipe the output box
-    if($.hasData($(this))) {
-      $(this).data('typeit').stop();
+    if($('#TIOutput').data('typeit') !== undefined) {
+      $('#TIOutput').data('typeit').stop();
+      $('#TIOutput').removeData();
     }
+
     $('#TIOutput').html('');
 
     // get variables figured out
@@ -109,9 +112,16 @@ $('section').on('click','#btn-example6', function() {
       } else {
         breakLines = false;
       }
-    var breakDelay = $('#ibreakDelay').val();
+    var breakDelay = $('#iBreakDelay').val();
     var breakStart = $('#iBreakStart').val();
-    var startDelay = $('#istartDelay').val();
+    var startDelay = $('#iStartDelay').val();
+    var loop = $('#iLoop').val();
+      if(loop === 'true'){
+        loop = true;
+      } else {
+        loop = false;
+      }
+    var loopDelay = $('#iLoopDelay').val();
 
     // hide the temp text
     $('#tempText').animate({
@@ -136,7 +146,9 @@ $('section').on('click','#btn-example6', function() {
             showCursor: showCursor,
             breakLines: breakLines,
             breakDelay: Number(breakDelay),
-            startDelay: Number(startDelay)
+            startDelay: Number(startDelay),
+            loop: loop,
+            loopDelay: Number(loopDelay)
           });
       }, 800);
 
