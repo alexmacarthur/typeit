@@ -9,13 +9,8 @@
 
     <section>
 
-       <span class="typeit-box"
-  data-typeit-whattotype='["A new string to type.","hello..."]'
-  data-typeit-speed="100"
-  data-typeit-lifelike="true"
-  data-typeit-showcursor="true"
-  data-typeit-loop="true"
-  data-typeit-loopdelay="1000">
+       <span id="typeItBox">
+        Testing an in-element string!
       </span>
 
     </section>
@@ -23,7 +18,9 @@
     <script src="../src/jquery-2.1.4.min.js"></script>
     <script src="../dist/typeit.min.js"></script>
     <script>
-      $('.typeit-box').typeIt();
+      $('#typeItBox').typeIt({
+        loop: true
+      });
     </script>
 
   </body>

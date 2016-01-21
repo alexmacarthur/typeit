@@ -1,7 +1,7 @@
 /**
  * jQuery TypeIt
  * @author Alex MacArthur (http://macarthur.me)
- * @version 2.0.1
+ * @version 2.0.2
  * @copyright 2016 Alex MacArthur
  * @description Types out a given string or strings.
  */
@@ -125,11 +125,10 @@ $.fn.typeIt.typeItClass = function(theElement, options, callback){
 
  _proto.testForElementStringOverride = function() {
   // if there's a string already typed in the element, replace whatToType with it
-
-  if(this.theElement.text().length > 0 && !this.theElement.has('.ti-container')) {
-    this.settings.whatToType = this.theElement.html();
+  if(this.theElement.text().length > 0) {
+    this.settings.whatToType = this.theElement.text().trim();
   }
-
+  
  };
 
 _proto.setupDOMComponents = function() {
