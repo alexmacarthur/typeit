@@ -1,6 +1,6 @@
 {
   "name": "typeit",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "license": "GPL-2.0",
   "author": "Alex MacArthur <alex@macarthur.me>",
   "description": "A lightweight, easy-to-implement jQuery animated typing plugin that types text for you.",
@@ -11,10 +11,10 @@
   },
   "keywords": [
     "jquery",
-    "plugin",
     "animated",
     "typing",
-    "typewriter"
+    "typewriter",
+    "type effect"
   ],
   "main": "dist/typeit.min.js",
   "bugs": {

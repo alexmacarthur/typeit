@@ -1,6 +1,6 @@
 footer {
   background: black;
-  margin-top: 4rem;
+  margin-top: 6rem;
 }
 
 .connect-list {
@@ -11,6 +11,17 @@ footer {
 .connect-item {
   display: inline-block;
   padding: 2rem;
+  position: relative;
+
+  a {
+    display: block;
+  }
+
+  &:hover {
+    svg, path {
+      fill: $pink;
+    }
+  }
 
   i {
     color: white;
@@ -19,5 +30,26 @@ footer {
     &:hover {
       color: $pink;
     }
+  }
+
+  &:nth-child(1){
+    svg {
+      max-height: 32px;
+    }
+  }
+
+  &:nth-child(3) {
+    svg {
+      width: 40px;
+    }
+  }
+
+  svg {
+    fill: white;
+    width: 35px;
+  }
+
+  path {
+    fill: white;
   }
 }

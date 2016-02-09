@@ -1,7 +1,18 @@
+function setHeaderSize() {
+  var windowHeight = $( window ).height();
+  var header = $('#header');
+  header.height(windowHeight);
+}
+
+setHeaderSize();
+$( window ).resize(function() {
+  setHeaderSize();
+});
+
 $('#typeit-box').typeIt({
-  whatToType: ['A jQuery plugin that <span class="emphasized">types</span> stuff for you.', '<span class="emphasized emphasized-duh">(Duh.)</span>'],
-  typeSpeed: 100,
-  breakLines: true,
+  strings: ['A jQuery plugin that <strong class="emphasized">types</strong> stuff for you.'],
+  speed: 75,
+  breakLines: false,
   breakDelay: 1000
 });
 
@@ -14,54 +25,62 @@ var $example6 = $('#example6');
 
 function example4() {
   $example4.typeIt({
-    whatToType: ["This is a string!", "And here's another one."],
-    typeSpeed: 100
+    strings: ["This is a string!", "And here's another one."],
+    speed: 50
   });
 }
 
-example4();
-
-$('section').on('click','#btn-example4',function() {
-  $example4.data('typeit').stop();
-  $example4.html('');
-  example4();
-});
-
 function example5() {
   $example5.typeIt({
-    whatToType: ["This is a great string.","But here is a better one."],
-    typeSpeed: 100,
+    strings: ["This is a great string.","But here is a better one."],
+    speed: 50,
     breakLines: false
   });
 }
 
-example5();
-
-$('section').on('click','#btn-example5',function() {
-  $example5.data('typeit').stop();
-  $example5.html('');
-  example5();
-});
-
 function example6() {
   $example6.typeIt({
-    whatToType: ["Here's text <span class='just-a-class'>wrapped in HTML</span>."],
-    typeSpeed: 100
+    strings: ["Card games are <span class='just-a-class'>great!</span> &spades; &hearts; &clubs; &diams;"],
+    speed: 50
   });
 }
 
-example6();
-
 $('section').on('click','#btn-example6', function() {
-  $example6.data('typeit').stop();
+  if ($example6.data('typeit') !== undefined) {
+    clearTimeout($example6.data('typeit').tTO);
+    clearTimeout($example6.data('typeit').dTO);
+  }
   $example6.html('');
   example6();
 });
 
+$('section').on('click','#btn-example5',function() {
+  if ($example5.data('typeit') !== undefined) {
+    clearTimeout($example5.data('typeit').tTO);
+    clearTimeout($example5.data('typeit').dTO);
+  }
+  $example5.html('');
+  example5();
+});
+
+$('section').on('click','#btn-example4',function() {
+  if ($example4.data('typeit') !== undefined) {
+    clearTimeout($example4.data('typeit').tTO);
+    clearTimeout($example4.data('typeit').dTO);
+  }
+  $example4.html('');
+  example4();
+});
+
+example4();
+example5();
+example6();
+
 (function() {
 
-  $('#iTypeSpeed').val('100');
+  $('#iSpeed').val('100');
   $('#iBreakDelay').val('750');
+  $('#iCursorSpeed').val('1000');
   $('#iStartDelay').val('250');
   $('#iLoopDelay').val('750');
 
@@ -69,58 +88,45 @@ $('section').on('click','#btn-example6', function() {
 
     e.preventDefault();
 
+    var tiOutput = $('#TIOutput');
+    var curData = tiOutput.data('typeit');
+
     // if there's another process going on, stop it and wipe the output box
-    if($('#TIOutput').data('typeit') !== undefined) {
-      $('#TIOutput').data('typeit').stop();
-      $('#TIOutput').removeData();
+    if(curData !== undefined) {
+      clearTimeout(curData.tTO);
+      clearTimeout(curData.dTO);
+      curData.s.loop = false;
+      tiOutput.removeData();
     }
 
-    $('#TIOutput').html('');
+    tiOutput.html('');
 
     // get variables figured out
-    var whatToType;
-    var cleanedWhatToType = [];
+    var strings;
+    var cleanedstrings = [];
     if($('#stringTI').val() === '') {
-      cleanedWhatToType = 'You didn\'t enter a string!';
+      cleanedstrings = 'You didn\'t enter a string!';
     } else {
-      whatToType = $('#stringTI').val().split('\n');
+      strings = $('#stringTI').val().split('\n');
       // remove empty array item
-      for (var i = 0; i < whatToType.length; i++) {
-        if (whatToType[i] !== undefined && whatToType[i] !== null && whatToType[i] !== "") {
-          cleanedWhatToType.push(whatToType[i]);
+      for (var i = 0; i < strings.length; i++) {
+        if (strings[i] !== undefined && strings[i] !== null && strings[i] !== "") {
+          cleanedstrings.push(strings[i]);
         }
       }
     }
 
-    var newHeight = ($('#stringTI').val()) ? (cleanedWhatToType.length * 38) + 40 : 75;
-    var typeSpeed = $('#iTypeSpeed').val();
-    var lifeLike = $('#iLifeLike').val();
-      if(lifeLike === 'true'){
-        lifeLike = true;
-      } else {
-        lifeLike = false;
-      }
-    var showCursor = $('#iShowCursor').val();
-      if(showCursor === 'true'){
-        showCursor = true;
-      } else {
-        showCursor = false;
-      }
-    var breakLines = $('#iBreakLines').val();
-      if(breakLines === 'true'){
-        breakLines = true;
-      } else {
-        breakLines = false;
-      }
+    var newHeight = ($('#stringTI').val()) ? (cleanedstrings.length * 38) + 40 : 75;
+    var speed = $('#iSpeed').val();
+    var html = $('#iHTML').val() === 'true' ? true : false;
+    var lifeLike = $('#iLifeLike').val() === 'true' ? true : false;
+    var cursor = $('#iCursor').val() === 'true' ? true : false;
+    var cursorSpeed = $('#iCursorSpeed').val();
+    var breakLines = $('#iBreakLines').val() === 'true' ? true : false;
     var breakDelay = $('#iBreakDelay').val();
     var breakStart = $('#iBreakStart').val();
     var startDelay = $('#iStartDelay').val();
-    var loop = $('#iLoop').val();
-      if(loop === 'true'){
-        loop = true;
-      } else {
-        loop = false;
-      }
+    var loop = $('#iLoop').val() === 'true' ? true : false;
     var loopDelay = $('#iLoopDelay').val();
 
     // hide the temp text
@@ -139,16 +145,18 @@ $('section').on('click','#btn-example6', function() {
 
       setTimeout(function() {
 
-        $('#TIOutput').typeIt({
-            whatToType: cleanedWhatToType,
-            typeSpeed: Number(typeSpeed),
+        tiOutput.typeIt({
+            strings: cleanedstrings,
+            speed: Number(speed),
             lifeLike: lifeLike,
-            showCursor: showCursor,
+            cursor: cursor,
+            cursorSpeed: Number(cursorSpeed),
             breakLines: breakLines,
             breakDelay: Number(breakDelay),
             startDelay: Number(startDelay),
             loop: loop,
-            loopDelay: Number(loopDelay)
+            loopDelay: Number(loopDelay),
+            html: html
           });
       }, 800);
 

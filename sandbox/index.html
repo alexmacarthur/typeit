@@ -1,26 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="../dist/typeit.min.css">
-    <title>typeIt | A jQuery Typing Plugin</title>
+    <style>
+      section {
+        height: 500px;
+        position: relative;
+      }
+      #typeItBox {
+        display: block;
+      }
+
+/*      .c {
+        font-weight: 800;
+        font-size: 35px;
+      }*/
+    </style>
   </head>
 
   <body>
 
     <section>
 
-       <span id="typeItBox">
-        Testing an in-element string!
-      </span>
+       <span id="typeItBox"></span>
 
     </section>
 
-    <script src="../src/jquery-2.1.4.min.js"></script>
+    <!--<script src="../src/jquery-2.1.4.min.js"></script>-->
+
+    <script src="https://code.jquery.com/jquery-1.8.0.js"></script>
+
     <script src="../dist/typeit.min.js"></script>
+
     <script>
       $('#typeItBox').typeIt({
-        loop: true
-      });
+      strings: ['hello, <strong>how are you?</strong>'],
+      speed: 50,
+      breakLines: false,
+      loop: true,
+      loopDelay: 3000
+    });
     </script>
 
   </body>

@@ -7,22 +7,30 @@ li {
 }
 
 .features-list {
+    word-break: break-word;
 	display: block;
 	padding: 0 2rem 3rem 2rem;
 	border-bottom: 2px solid $light-gray;
 
 	li {
+		position: relative;
 		font-size: 1.75rem;
-    	padding-right: 1rem;
+    	padding: 0 1rem 0 2.65rem;
 
-		&:before {
-		    font: normal normal normal 14px/1 FontAwesome;
-		    font-size: inherit;
-		    text-rendering: auto;
-		    -webkit-font-smoothing: antialiased;
-		    -moz-osx-font-smoothing: grayscale;
-			content: "\f00c";
-		    padding-right: .35rem;
-		}
+    	svg {
+    		position: absolute;
+		    height: 20px;
+    		left: 0;
+
+    		@media screen and (max-width: 600px) {
+	    		height: 15px;
+    		    margin-top: 1px;
+	    	}
+    	}
+
+    	@media screen and (max-width: 600px) {
+    		font-size: 1.5rem;
+		    line-height: 2rem;
+    	}
 	}
 }

@@ -40,7 +40,7 @@ hr {
 }
 
 .section-divider {
-  margin: 4rem auto 5rem;
+  margin: 6rem auto 7rem;
 
   @media screen and(max-width: 600px) {
     margin-bottom: 1rem;
@@ -140,6 +140,10 @@ section {
   max-width: 1200px;
   width: 80%;
   margin: 0 auto;
+
+  @media screen and (max-width: 600px) {
+    width: 90%;
+  }
 }
 
 .code-block{
@@ -149,6 +153,7 @@ section {
   padding: 1rem 2rem 1rem;
   border: 1px solid rgba(128,128,128,0.1);
   background: $light-gray;
+  min-height: 75px;
 }
 
 .code-input {
@@ -157,27 +162,35 @@ section {
 
 small {
   position: absolute;
-  line-height: 25px;
-  height: 25px;
+  height: 45px;
   width: 75px;
   text-align: center;
   display: block;
-  top: -25px;
-  left: 0;
-  border: 1px solid rgba(128,128,128,0.1);
+  right: -45px;
+  transform: rotate(90deg);
   border-bottom: 0;
+  font-size: 2rem;
+  opacity: .25;
 }
 
-.fa-chevron-down {
+.chevron {
+  width: 35px;
   position: absolute;
   padding: 0;
   font-size: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
   animation: upDown .45s ease-in-out infinite alternate;
 }
 
 .setup-code-block {
   padding: 1rem 2rem;
   height: 136px;
+
+  @media screen and (max-width: 992px) {
+    height: auto;
+    padding: 2rem;
+  }
 }
 
 .setup-blocks {
@@ -204,9 +217,41 @@ small {
   }
 }
 
+.install-blocks {
+  @extend %clearfix;
+}
+
+.install-block {
+  float: left;
+  width: 50%;
+  padding: 0 1rem;
+
+  p {
+    display: block;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.step-num {
+  font-size: 25px;
+  margin: 1.5rem auto 2rem;
+  width: 50px;
+  height: 50px;
+  border: 3px solid black;
+  border-radius: 50%;
+  line-height: 40px;
+}
+
 .just-a-class {
   font-size: inherit;
   font-weight: 800;
   font-style: italic;
   color: $green;
+}
+
+.middle-th {
+  width: 75%;
 }
