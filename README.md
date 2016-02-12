@@ -1,9 +1,9 @@
 # TypeIt: A jQuery Animated Typing Plugin
 
-## Description
+### Description
 A lightweight jQuery plugin that outputs text like it's being typed. It allows you to type single strings, multiple strings that stack, multiple strings that delete & replace each other, and even HTML tags &amp; entities. You can also loop strings or sets of strings continuously.
 
-## Some of the Perks
+### Some of the Perks
 * Capable of looping your string(s).
 * Features JavaScript fallback / SEO optimization option for your strings.
 * Multiple easy ways to set up & initialize.
@@ -12,14 +12,17 @@ A lightweight jQuery plugin that outputs text like it's being typed. It allows y
 * Supported by jQuery 1.8.0 or higher.
 * Lightweight. (~3.5kb, single JavaScript file)
 
-## Demo
+### Demo
 Checkout several demos and a sandbox where you can try it out at <a href="http://macarthur.me/typeit">macarthur.me/typeit</a>.
 
 ## Getting Started
 
 ### Download the Plugin
 
-Download the ZIP, clone this repo, or install via npm with `npm install typeit`.
+Get it from this repo, or from the following sources: 
+
+* <strong><a href="https://www.jsdelivr.com/projects/jquery.typeit">CDN:</a></strong> Include  `https://cdn.jsdelivr.net/jquery.typeit/3.0.0/typeit.min.js` on your page.
+* <strong><a href="https://www.npmjs.com/package/typeit">npm:</a></strong> Install with `npm install typeit`.
 
 ### Prepare to Initialize on Your Site
 
