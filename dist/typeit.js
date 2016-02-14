@@ -1,7 +1,7 @@
 /**
  * jQuery TypeIt
  * @author Alex MacArthur (http://macarthur.me)
- * @version 3.0.0
+ * @version 3.0.1
  * @copyright 2016 Alex MacArthur
  * @description Types out a given string or strings.
  */
@@ -19,17 +19,17 @@
     var t = this;
 
     t.d = {
-      strings: 'Your default string.', // strings
-      speed: 100, // speed
-      lifeLike: true, // lifeLike
-      cursor: true, // cursor
-      cursorSpeed: 1000, // cursorSpeed
-      breakLines: true, // newLine
-      breakDelay: 750, // newLineDelay
-      startDelay: 250, // startDelay
-      loop: false, // loop
-      loopDelay: 750, // loopDelay
-      html: true // html
+      strings: 'Your default string.',
+      speed: 100,
+      lifeLike: true,
+      cursor: true,
+      cursorSpeed: 1000,
+      breakLines: true,
+      breakDelay: 750,
+      startDelay: 250,
+      loop: false,
+      loopDelay: 750,
+      html: true 
      };
 
     t.dd = {
@@ -57,10 +57,10 @@
  var p = $.fn.typeIt.tClass.prototype;
 
  p.init = function(t){
-  t.CI = 0; // stringArrayCharacterIndex
-  t.SEI = 0; // contentStartEndIndex
-  t.SI = 0; // stringArrayIndex
-  t.SA = []; // stringArray
+  t.CI = 0;
+  t.SEI = 0; 
+  t.SI = 0; 
+  t.SA = []; 
   t.BD = t.s.breakDelay;
   t.span = '<span style="display:inline-block;width:0;height:0;overflow:hidden;">_</span>';
 
@@ -78,7 +78,7 @@
  };
 
   p.valCB = function(t) {
-    t.cb = t.db === undefined ? function(){return;} : t.cb;
+    t.cb = t.cb === undefined ? function(){return;} : t.cb;
   };
 
   p.to = function(fn, t) {
