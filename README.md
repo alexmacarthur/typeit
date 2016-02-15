@@ -28,11 +28,13 @@ Get it from this repo, or from the following sources:
 
 1. Create an empty HTML element to select. (If you want to have a fallback for users without JavaScript, you can put a string or strings right into this element. More on that later.)
 
-  ```<span class="type-it"></span>```
+  ```html
+  <span class="type-it"></span>
+  ```
 
 2. Load jQuery and typeit.js on your page.
 
-  ```
+  ```html
   <script src="jquery-2.1.4.min.js"></script>
   <script src="typeit.js"></script>
   ```
@@ -51,11 +53,11 @@ You can modify the options for the plugin in two different ways -- either by ins
 
 Example:
 
-  ``
+  ```html
    <span class="type-it"></span>
-  ``
+  ```
 
- ```
+ ```js
   $('.type-it').typeIt({
     strings: 'Enter your string here!',
     speed: 300,
@@ -70,7 +72,7 @@ Example:
 
 Example:
 
-  ```
+  ```html
   <span class="type-it"
   data-typeit-strings="A new string to type."
   data-typeit-speed="100"
@@ -80,13 +82,13 @@ Example:
   </span>
   ```
 
-  ``
+  ```js
   $('.type-it').typeIt();
-  ``
+  ```
 
 You can also define what to type a third way -- by simply filling the element with a string or strings of text. This is convenient because if a user doesn't have JavaScript enabled, they'll still be able to read the text, and the text will be available for SEO purposes. **Note: by default, the plugin will use the string that's in the element. If strings are defined either in the function call or data-* attributes, they will be overridden.**
 
-  ```
+  ```html
   <span class="type-it">This is the string that will be typed.</span> 
   ```
 
@@ -94,12 +96,12 @@ You can also define what to type a third way -- by simply filling the element wi
 
 Aside from simply typing a single string, you can configure TypeIt to type multiple strings. If you define your strings within your HTML element, just separate them with `<br>` tags:
 
-  ```
+  ```html
   <span class="type-it">Here is a string. <br>And here is another!</span> 
   ```
 If they're defined in the settings object, it's possible to put them inside quotation marks separated by `<br>` tags, but it's recommended that you use an array:
 
-```
+```js
   $('.type-it').typeIt({
     strings: ['Enter your string here!', 'Another string!']
   });
@@ -107,7 +109,7 @@ If they're defined in the settings object, it's possible to put them inside quot
 
 By default, multiple strings will stack on top of each other (breakLines = true). However, you can also set them to delete and replace each other:
 
-```
+```js
   $('.type-it').typeIt({
     strings: ['Enter your string here!', 'Another string!'],
     breakLines: false
@@ -116,14 +118,14 @@ By default, multiple strings will stack on top of each other (breakLines = true)
 ### Handling HTML Tags
 TypeIt will handle HTML tags in your strings, as long as they're only one level deep: 
 
-```
+```js
   // GOOD! :)
   $('.typeit-box').typeIt({
     strings: '<h1 class="your-class">This is a string!</h1>',
   }
 ```
 
-```
+```js
   // BAD! :(
   $('.typeit-box').typeIt({
     strings: '<h1 class="your-class"><span>This is a string!</span></h1>',
@@ -132,7 +134,7 @@ TypeIt will handle HTML tags in your strings, as long as they're only one level 
 
 And it'll also handle HTML entities: 
 
-```
+```js
   $('.typeit-box').typeIt({
     strings: '<h1 class="your-class">One thing &amp; another!<h1>',
   }
@@ -144,7 +146,7 @@ To disable all HTML rendering, set 'html' to false.
 
 TypeIt allows you to use a custom callback function when you've completed typing. To use one, simply add it as the second argument when it's initialized. **Note: if you've enabled `loop`, this is useless.**
 
-```
+```js
   $('.typeit-box').typeIt({
     strings: 'Here is a string!',
   }, function() {
