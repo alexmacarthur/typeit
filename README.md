@@ -1,5 +1,12 @@
 # TypeIt: A jQuery Animated Typing Plugin
 
+**Table of Contents**
+- [Choose a License](#choose-a-license)
+- [Setup](#setup)
+- [Usage](#usage)
+- [Options](#options)
+- [Contributions](#contributions)
+
 ### Description
 A lightweight jQuery plugin that outputs text like it's being typed. It allows you to type single strings, multiple strings that stack, multiple strings that delete & replace each other, and even HTML tags &amp; entities. You can also loop strings or sets of strings continuously.
 
@@ -15,7 +22,13 @@ A lightweight jQuery plugin that outputs text like it's being typed. It allows y
 ### Demo
 Checkout several demos and a sandbox where you can try it out at <a href="http://macarthur.me/typeit">macarthur.me/typeit</a>.
 
-## Getting Started
+## Choose a License
+To get started, first select a license: 
+* Personal - [FREE](#setup)
+* Single Commercial License - [Purchase Here](http://www.uplabs.com/posts/typeit-a-jquery-animated-typing-plugin)
+* Extended Commercial License - [Purchase Here](http://www.uplabs.com/posts/typeit-a-jquery-animated-typing-plugin)
+
+## Setup
 
 ### Download the Plugin
 
@@ -173,9 +186,9 @@ There are a number of options you may use to customize typeIt.
 | html    | Handle strings as HTML, which will process tags and HTML entities. If 'false,' strings will be typed literally.  | true  |
 
 
-## Ideas for Improvement?
+## Contributions
 
-Let me know! Otherwise, play with it yourself. Gulp is configured to check & minify the JavaScript. In the root of the repo, use these commands to run these default tasks and watch for file changes (make sure Node.js, npm, and Gulp are installed on your computer):
+Gulp is configured to check & minify the JavaScript. In the root of the repo, use these commands to run these default tasks and watch for file changes (make sure Node.js, npm, and Gulp are installed on your computer):
 
 ```
 npm install
