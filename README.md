@@ -35,7 +35,9 @@ To get started, first select a license:
 
 Get it from this repo, or from the following sources: 
 
-* <strong><a href="https://www.jsdelivr.com/projects/jquery.typeit">CDN:</a></strong> Include  `https://cdn.jsdelivr.net/jquery.typeit/3.0.1/typeit.min.js` on your page.
+* <strong><a href="https://www.jsdelivr.com/projects/jquery.typeit">CDN:</a></strong>Include one of the urls on your page:
+  - `https://cdnjs.cloudflare.com/ajax/libs/typeit/3.0.1/typeit.min.js`
+  - `https://cdn.jsdelivr.net/jquery.typeit/3.0.1/typeit.min.js`
 * <strong><a href="https://www.npmjs.com/package/typeit">npm:</a></strong> Install with `npm install typeit`.
 
 ### Prepare to Initialize on Your Site
