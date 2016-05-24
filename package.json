@@ -1,9 +1,9 @@
 {
   "name": "typeit",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "license": "GPL-2.0",
   "author": "Alex MacArthur <alex@macarthur.me>",
-  "description": "A lightweight, easy-to-implement jQuery animated typing plugin that types text for you.",
+  "description": "A versatile, easy-to-implement jQuery animated typing plugin that types text for you.",
   "license": "General Public License",
   "repository": {
     "type": "git",
@@ -14,14 +14,15 @@
     "animated",
     "typing",
     "typewriter",
-    "type effect"
+    "type effect",
+    "text effects"
   ],
   "main": "dist/typeit.min.js",
   "bugs": {
-    "url": "https://github.com/gitcom/repo/issues"
+    "url": "https://github.com/alexmacarthur/typeit/issues"
   },
   "dependencies": {
-    "jquery": "^1.11.3"
+    "jquery": "^1.8.0"
   },
   "devDependencies": {
     "gulp": "^3.8.11",
@@ -29,6 +30,7 @@
     "gulp-uglify": "^1.1.0",
     "gulp-autoprefixer": "^3.0.2",
     "gulp-sass": "^2.0.4",
-    "gulp-rename": "^1.2.2"
+    "gulp-rename": "^1.2.2",
+    "browser-sync": "^2.9.11"
   }
 }

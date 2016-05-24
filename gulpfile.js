@@ -1,51 +1,66 @@
-// load our plugins
 var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var uglify = require('gulp-uglify');
 var autoprefix = require('gulp-autoprefixer');
 var sass = require('gulp-sass');
 var rename = require("gulp-rename");
+var browserSync = require('browser-sync');
+var cp = require('child_process');
 
-// check JavaScript
-gulp.task('jshint',function(){
-  gulp.src('src/typeit.js')
-      .pipe(jshint())
-      .pipe(jshint.reporter('default'));
+gulp.task('build', function (done) {
+  return cp.spawn('jekyll', ['build'], {stdio: 'inherit'})
+  .on('close', done);
 });
 
-// minify JavaScript and put it into /dist
+gulp.task('rebuild', ['build'], function () {
+  browserSync.reload();
+});
+
+gulp.task('browserSync', ['sass','scripts','build'], function() {
+  browserSync({
+    server: {
+      baseDir: '_site'
+    }
+  });
+});
+
+gulp.task('jshint',function(){
+  gulp.src('dev/typeit.js')
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'));
+});
+
 gulp.task('scripts', function() {
-  gulp.src('src/typeit.js')
+
+  gulp.src('dev/typeit.js')
+    .pipe(gulp.dest('dist'))
     .pipe(uglify())
     .pipe(rename('typeit.min.js'))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('dev'))
+    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('_includes'));
 
-  // minify demo scripts
-  gulp.src('src/scripts.js')
+  gulp.src('assets/js/scripts.js')
     .pipe(uglify())
     .pipe(rename('scripts.min.js'))
-    .pipe(gulp.dest('src'));
-
-  // put the unminified JavaScript into /dist
-  gulp.src('src/typeit.js')
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('_includes'));
 });
 
-gulp.task('demoSass',function(){
-  // compile our local demo SCSS
-  gulp.src('src/style.scss')
+gulp.task('sass',function(){
+  gulp.src('assets/scss/style.scss')
     .pipe(sass({outputStyle: 'compressed'}))
-    .pipe(autoprefix('last 2 versions'))
-    .pipe(gulp.dest('src'));
+    .pipe(autoprefix('last 3 versions'))
+    .pipe(gulp.dest('_includes'));
 });
 
-// run our default gulp tasks and watch for changes
-gulp.task('default', ['jshint','scripts','demoSass'], function() {
+gulp.task('watchSite', function() {
+  gulp.watch('assets/js/*.js', ['jshint', 'scripts', 'rebuild']);
+  gulp.watch(['index.html', '_layouts/*', '_includes/*', 'docs/*'], ['rebuild']);
+  gulp.watch('assets/scss/**/*.scss', ['sass', 'rebuild']);
+});
 
-  // watch for JavaScript changes
-  gulp.watch('src/*.js', ['jshint', 'scripts']);
+gulp.task('default', ['browserSync', 'watchSite']);
 
-  // watch for SASS changes
-  gulp.watch('src/**/*.scss', ['demoSass']);
-
+gulp.task('develop', ['scripts'], function() {
+  gulp.watch('dev/*', ['jshint', 'scripts']);
 });
