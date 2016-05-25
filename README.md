@@ -48,7 +48,7 @@ To get started, first select a license:
 
 Get it from this repo, or from the following sources: 
 
-* <strong><a href="https://www.jsdelivr.com/projects/jquery.typeit">CDN:</a></strong> Include  `https://cdn.jsdelivr.net/jquery.typeit/4.0.0/typeit.min.js` on your page.
+* <strong><a href="https://www.jsdelivr.com/projects/jquery.typeit">CDN:</a></strong> Include  `https://cdn.jsdelivr.net/jquery.typeit/4.0.0/typeit.min.js` or `https://cdnjs.cloudflare.com/ajax/libs/typeit/4.0.0/typeit.min.js` on your page.
 * <strong><a href="https://www.npmjs.com/package/typeit">npm:</a></strong> Install with `npm install typeit`.
 
 ### Hook It Up
@@ -107,6 +107,8 @@ For example:
 | tiPause() | (number) Number of milliseconds to pause before continuing. | Will pause the specified number of milliseconds.|
 | tiPause() | (number) Number of milliseconds to pause before continuing. | Will pause the specified number of milliseconds.|
 | tiBreak() | (none) | Will break the typing to a new line.|
+| tiSettings() | (JSON) Options you'd like to update | Will redefine your options on the fly. This will only work for updating the `speed`, `lifeLike`, and `html` options.|
+
 
 
 ## Options
@@ -117,17 +119,18 @@ There are a number of options you may use to customize typeIt.
 
 | Option        | Description   | Default Value
 | ------------- | ------------- | ------------- |
-| strings  | The string(s) to be typed.       | 'Your default string.' |
-| speed     | The typing speed.             | 100  |
-| lifeLike      | Will make the typing pace irregular, as if a real person is doing it.  | true |
-| cursor    | Show a blinking cursor at the end of the string(s).  | true  |
-| cursorSpeed    | The blinking speed of the cursor.  | 1000  |
-| breakLines    | Choose whether you want multiple strings to be printed on top of each other (breakLines = true), or if you want each string to be deleted and replaced by the next one (breakLines = false).  | true  |
-| breakDelay    | The amount of time between typing multiple strings.  | 750  |
-| startDelay    | The amount of time before the plugin begins typing after initalizing.  | 250  |
-| loop    | Have your string or strings continuously loop after completing.  | false  |
-| loopDelay    | The amount of time between looping over a string or set of strings again.  | 750  |
-| html    | Handle strings as HTML, which will process tags and HTML entities. If 'false,' strings will be typed literally.  | true  |
+| strings  | (string or array) The string(s) to be typed.       | 'Your default string.' |
+| speed     | (number in millseconds) The typing speed.             | 100  |
+| lifeLike      | (boolean) Will make the typing pace irregular, as if a real person is doing it.  | true |
+| cursor    | (boolean) Show a blinking cursor at the end of the string(s).  | true  |
+| cursorSpeed    | (number in milliseconds) The blinking speed of the cursor.  | 1000  |
+| breakLines    | (boolean) Choose whether you want multiple strings to be printed on top of each other (`breakLines: true`), or if you want each string to be deleted and replaced by the next one (`breakLines: false`).  | true  |
+| breakDelay    | (number in milliseconds) The amount of time between typing multiple strings.  | 750  |
+| startDelay    | (number in milliseconds) The amount of time before the plugin begins typing after initalizing.  | 250  |
+| loop    | (boolean) Have your string or strings continuously loop after completing.  | false  |
+| loopDelay    | (number in milliseconds) The amount of time between looping over a string or set of strings again.  | 750  |
+| html    | (boolean) Handle strings as HTML, which will process tags and HTML entities. If 'false,' strings will be typed literally.  | true  |
+| callback    | (function) A function that executes after your typing has completed. | nuthin' |
 
 ## Contributions
 
