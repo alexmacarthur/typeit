@@ -121,6 +121,7 @@ There are a number of options you may use to customize typeIt.
 | ------------- | ------------- | ------------- |
 | strings  | (string or array) The string(s) to be typed.       | 'Your default string.' |
 | speed     | (number in millseconds) The typing speed.             | 100  |
+| deleteSpeed     | (number in millseconds) The deletion speed. If left undefined, will be 1/3 of the type speed.           | undefined  |
 | lifeLike      | (boolean) Will make the typing pace irregular, as if a real person is doing it.  | true |
 | cursor    | (boolean) Show a blinking cursor at the end of the string(s).  | true  |
 | cursorSpeed    | (number in milliseconds) The blinking speed of the cursor.  | 1000  |
