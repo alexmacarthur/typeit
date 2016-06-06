@@ -1,7 +1,7 @@
 /**
  * jQuery TypeIt
  * @author Alex MacArthur (http://macarthur.me)
- * @version 4.0.0
+ * @version 4.1.0
  * @copyright 2016 Alex MacArthur
  * @description Types out a given string or strings.
  */
@@ -13,15 +13,13 @@
   $.fn.typeIt = function(opt){
     return this.each(function(){
       var $t = $(this);
-      if($t.data('typeit') === undefined) {
-        $t.data('typeit', new $.typeIt($t, opt));
-      }
+      $t.data('typeit', new $.typeIt($t, opt));
     });
   };
 
   $.typeIt = function(el, opt) {
     this.d = {
-      strings: 'You need a string!',
+      strings: [],
       speed: 100,
       lifeLike: true,
       cursor: true,
@@ -29,6 +27,7 @@
       breakLines: true,
       breakDelay: 750,
       startDelay: 250,
+      startDelete: false,
       loop: false,
       loopDelay: 750,
       html: true,
@@ -36,11 +35,12 @@
       callback: function(){}
     };
 
-    this.pruned = false;
     this.queue = [];
     this.queueIndex = 0;
     this.hasStarted = false;
     this.inTag = false;
+    this.stringsToDelete = '';
+    this.style = 'style="display:inline;position:relative;font:inherit;color:inherit;"';
     this.s = $.extend({}, this.d, opt);
     this.el = el; 
     this._init();
@@ -49,21 +49,51 @@
  $.typeIt.prototype = {
 
   _init : function() {
-    this.style = 'style="display:inline;position:relative;font:inherit;color:inherit;"';
-    this._elCheck(); 
-    this.s.strings = this._toArray(this.s.strings);
-    this.el.html('<span ' + this.style + '></span>');
+    this.el.find('.ti-container, .ti-cursor, .ti-placeholder').remove(); 
+    this._elCheck();
+    this.s.strings = this._toArray(this.s.strings);  
+    this.el.html('<i class="ti-placeholder" style="display:inline-block;width:0;line-height:0;overflow:hidden;">.</i><span ' + this.style + ' class="ti-container"></span>');
     this.tel = this.el.find('span');
+   
     this.insert = function(c) { 
       this.tel.append(c);
     };
+    
+    if(this.s.startDelete) {
+      this.tel.html(this.stringsToDelete);
+      this.queue.push([this.delete]);
+    }
 
+    this._generateQueue();
+    this._kickoff(); 
+  }, 
+   
+  _kickoff : function() {
+    this._cursor();
+
+    if(this.s.autoStart) {
+      this._startQueue();
+    } else {
+      if(this._isVisible()) {
+        this.hasStarted = true;
+        this._startQueue();
+      } else {
+        $doc.on('scroll', function() {
+          if(this._isVisible() && !this.hasStarted) {
+            this.hasStarted = true;
+            this._startQueue();
+          }
+        }.bind(this));
+      }
+    }
+  },
+   
+  _generateQueue : function() {
     for(i = 0; i < this.s.strings.length; i++) {
-
+      
       this.queue.push([this.type, this.s.strings[i]]);
 
       if(i < (this.s.strings.length - 1)) {
-
         var curPos = this.queue.length;
         this.queue.push([this.s.breakLines ? this.break : this.delete]);
 
@@ -73,26 +103,9 @@
         }
       }
     } 
+  },
 
-    if(this.s.autoStart) {
-      this._begin();
-    } else {
-      if(this._isVisible()) {
-        this.hasStarted = true;
-        this._begin();
-      } else {
-        $doc.on('scroll', function() {
-          if(this._isVisible() && !this.hasStarted) {
-            this.hasStarted = true;
-            this._begin();
-          }
-        }.bind(this));
-      }
-    }
-  }, 
-
-  _begin : function() {
-    this._cursor();
+  _startQueue : function() {
     this._to(function() {
       this._executeQueue();
     }.bind(this), this.s.startDelay);
@@ -121,7 +134,7 @@
       // _randomize the timeout each time, if that's your thing
       this._random(this);
 
-      // "_print" the stringacter 
+      // "_print" the character
       // if an opening HTML tag is found and we're not already pringing inside a tag
       if(this.s.html && (string[0].indexOf('<') !== -1 && string[0].indexOf('</') === -1) && (!this.inTag)){
 
@@ -306,8 +319,10 @@
   },
 
   _elCheck : function() {
-    if(this.el.html().length > 0) {
+    if(!this.s.startDelete && this.el.html().length > 0) {
       this.s.strings = this.el.html().trim();
+    } else if(this.s.startDelete) {
+      this.stringsToDelete = this.el.html();
     }
   }, 
 
@@ -317,11 +332,11 @@
 
   _cursor : function() {
     if(this.s.cursor) {
-      this.el.append('<span ' + this.style + 'class="c">|</span>');
+      this.el.append('<span ' + this.style + 'class="ti-cursor">|</span>');
       var s = this.s.cursorSpeed;
       var t = this;
       (function loop() {
-        t.el.find('.c').fadeTo(s/2, 0).fadeTo(s/2, 1);
+        t.el.find('.ti-cursor').fadeTo(s/2, 0).fadeTo(s/2, 1);
         t._to(loop, s);
       })();
     }
@@ -379,16 +394,8 @@
   }
 };
 
-$.prep = function(i) {
-  if(i !== undefined && !i.pruned) {
-    i.queue.shift();
-    i.pruned = true;
-  }
-};
-
 $.fn.tiType = function(str){
   var i = $(this).data('typeit');
-  $.prep(i);
   if (i === undefined) return $doc;
   i.queue.push([i.type, str]);
   return this;
@@ -396,7 +403,6 @@ $.fn.tiType = function(str){
 
 $.fn.tiDelete = function(num){
   var i = $(this).data('typeit');
-  $.prep(i);
   if (i === undefined) return $doc;
   i.queue.push([i.delete, num]);
   return this;
@@ -404,7 +410,6 @@ $.fn.tiDelete = function(num){
 
 $.fn.tiPause = function(time){
   var i = $(this).data('typeit');
-  $.prep(i);
   if (i === undefined) return $doc;
   i.queue.push([i.pause, time]);
   return this;
@@ -412,7 +417,6 @@ $.fn.tiPause = function(time){
 
 $.fn.tiBreak = function(){
   var i = $(this).data('typeit');
-  $.prep(i);
   if (i === undefined) return $doc;
   i.queue.push([i.break]);
   return this;
@@ -420,7 +424,6 @@ $.fn.tiBreak = function(){
 
 $.fn.tiSettings = function(settings) {
   var i = $(this).data('typeit');
-  $.prep(i);
   if (i === undefined) return $doc;
   i.queue.push([i.mergeSet, settings]);
   return this;

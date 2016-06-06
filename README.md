@@ -48,7 +48,7 @@ To get started, first select a license:
 
 Get it from this repo, or from the following sources: 
 
-* <strong><a href="https://www.jsdelivr.com/projects/jquery.typeit">CDN:</a></strong> Include  `https://cdn.jsdelivr.net/jquery.typeit/4.0.0/typeit.min.js` or `https://cdnjs.cloudflare.com/ajax/libs/typeit/4.0.0/typeit.min.js` on your page.
+* <strong><a href="https://www.jsdelivr.com/projects/jquery.typeit">CDN:</a></strong> Include  `https://cdn.jsdelivr.net/jquery.typeit/4.0.1/typeit.min.js` or `https://cdnjs.cloudflare.com/ajax/libs/typeit/4.0.1/typeit.min.js` on your page.
 * <strong><a href="https://www.npmjs.com/package/typeit">npm:</a></strong> Install with `npm install typeit`.
 
 ### Hook It Up
@@ -126,6 +126,7 @@ There are a number of options you may use to customize typeIt.
 | cursorSpeed    | (number in milliseconds) The blinking speed of the cursor.  | 1000  |
 | breakLines    | (boolean) Choose whether you want multiple strings to be printed on top of each other (`breakLines: true`), or if you want each string to be deleted and replaced by the next one (`breakLines: false`).  | true  |
 | breakDelay    | (number in milliseconds) The amount of time between typing multiple strings.  | 750  |
+| startDelete    | (boolean) Whether to begin instance by deleting strings inside element, and then typing what strings are defined via JSON or companion functions. | false  |
 | startDelay    | (number in milliseconds) The amount of time before the plugin begins typing after initalizing.  | 250  |
 | loop    | (boolean) Have your string or strings continuously loop after completing.  | false  |
 | loopDelay    | (number in milliseconds) The amount of time between looping over a string or set of strings again.  | 750  |
