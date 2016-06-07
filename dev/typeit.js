@@ -1,7 +1,7 @@
 /**
  * jQuery TypeIt
  * @author Alex MacArthur (http://macarthur.me)
- * @version 4.2.0
+ * @version 4.2.1
  * @copyright 2016 Alex MacArthur
  * @description Types out a given string or strings.
  */
@@ -57,7 +57,7 @@
     this.tel = this.el.find('span');
    
     this.insert = function(c) { 
-      this.tel.append(c);
+     this.tel.append(c);
     };
     
     if(this.s.startDelete) {
@@ -273,15 +273,40 @@
   },
 
   _isVisible : function() {
-    var $win = $(window);
-
-    var docTop = $win.scrollTop();
-    var docBottom = docTop + $win.height();
-
-    var elTop = this.el.offset().top;
-    var elBottom = elTop + this.el.height();
-
-    return ((elBottom <= docBottom) && (elTop >= docTop));
+    var win = $(window);
+    
+    var viewport = {
+        top : win.scrollTop(),
+        left : win.scrollLeft()
+    };
+    viewport.right = viewport.left + win.width();
+    viewport.bottom = viewport.top + win.height();
+    
+    var height = this.el.outerHeight();
+    var width = this.el.outerWidth();
+ 
+    if(!width || !height){
+        return false;
+    }
+    
+    var bounds = this.el.offset();
+    bounds.right = bounds.left + width;
+    bounds.bottom = bounds.top + height;
+    
+    var visible = (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
+    
+    if(!visible){
+        return false;   
+    }
+    
+    var deltas = {
+        top : Math.min( 1, ( bounds.bottom - viewport.top ) / height),
+        bottom : Math.min(1, ( viewport.bottom - bounds.top ) / height),
+        left : Math.min(1, ( bounds.right - viewport.left ) / width),
+        right : Math.min(1, ( viewport.right - bounds.left ) / width)
+    };
+    
+    return (deltas.left * deltas.right) >= 1 && (deltas.top * deltas.bottom) >= 1;
   },
 
   /* 

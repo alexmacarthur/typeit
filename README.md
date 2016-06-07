@@ -48,7 +48,7 @@ To get started, first select a license:
 
 Get it from this repo, or from the following sources: 
 
-* <strong><a href="https://www.jsdelivr.com/projects/jquery.typeit">CDN:</a></strong> Include  `https://cdn.jsdelivr.net/jquery.typeit/4.2.0/typeit.min.js` or `https://cdnjs.cloudflare.com/ajax/libs/typeit/4.2.0/typeit.min.js` on your page.
+* <strong><a href="https://www.jsdelivr.com/projects/jquery.typeit">CDN:</a></strong> Include  `https://cdn.jsdelivr.net/jquery.typeit/4.2.1/typeit.min.js` or `https://cdnjs.cloudflare.com/ajax/libs/typeit/4.2.1/typeit.min.js` on your page.
 * <strong><a href="https://www.npmjs.com/package/typeit">npm:</a></strong> Install with `npm install typeit`.
 
 ### Hook It Up
@@ -60,7 +60,7 @@ Get it from this repo, or from the following sources:
   <script src="typeit.js"></script>
   ```
   
-2. Create an empty HTML element to select. (If you want to have a fallback for users without JavaScript, you can put a string or strings right into this element. More on that later.)
+2. Create an empty HTML element to select. (If you want to have a fallback for users without JavaScript, you can put a string or strings right into this element. For more on that, see the <a href="http://macarthur.me/typeit/docs">full documentation.</a>.)
 
   ```html
   <span class="type-it"></span>
@@ -115,7 +115,7 @@ For example:
 
 You can modify the options for the plugin by passging in JSON. 
 
-There are a number of options you may use to customize typeIt.
+There are a number of options you may use to customize TypeIt. For more details on these options, view the <a href="http://macarthur.me/typeit/docs">full documentation</a>.
 
 | Option        | Description   | Default Value
 | ------------- | ------------- | ------------- |
@@ -140,7 +140,7 @@ This project is setup with Gulp to lint & minify the JavaScript. In the root of 
 
 ```
 npm install
-gulp develop
+gulp
 ```
 ## Donations
 
