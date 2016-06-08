@@ -3,3 +3,4 @@ node_modules
 .DS_store*
 npm-debug.log
 _site
+.jekyll-metadata
