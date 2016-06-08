@@ -48,7 +48,7 @@ To get started, first select a license:
 
 Get it from this repo, or from the following sources: 
 
-* <strong><a href="https://www.jsdelivr.com/projects/jquery.typeit">CDN:</a></strong> Include  `https://cdn.jsdelivr.net/jquery.typeit/4.2.1/typeit.min.js` or `https://cdnjs.cloudflare.com/ajax/libs/typeit/4.2.1/typeit.min.js` on your page.
+* <strong><a href="https://www.jsdelivr.com/projects/jquery.typeit">CDN:</a></strong> Include  `https://cdn.jsdelivr.net/jquery.typeit/4.2.2/typeit.min.js` or `https://cdnjs.cloudflare.com/ajax/libs/typeit/4.2.2/typeit.min.js` on your page.
 * <strong><a href="https://www.npmjs.com/package/typeit">npm:</a></strong> Install with `npm install typeit`.
 
 ### Hook It Up
@@ -60,7 +60,7 @@ Get it from this repo, or from the following sources:
   <script src="typeit.js"></script>
   ```
   
-2. Create an empty HTML element to select. (If you want to have a fallback for users without JavaScript, you can put a string or strings right into this element. For more on that, see the <a href="http://macarthur.me/typeit/docs">full documentation.</a>.)
+2. Create an empty HTML element to select. (If you want to have a fallback for users without JavaScript, you can put a string or strings right into this element. For more on that, see the <a href="http://macarthur.me/typeit/docs">full documentation</a>.)
 
   ```html
   <span class="type-it"></span>
