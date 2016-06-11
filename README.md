@@ -1,3 +1,5 @@
+<pre>Update: TypeIt is fully compatible with jQuery 3.0!</pre>
+
 # TypeIt: The Most Versatile jQuery Animated Typing Plugin on the Planet
 
 ---
