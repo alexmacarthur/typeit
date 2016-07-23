@@ -115,7 +115,7 @@ For example:
 
 ## Options
 
-You can modify the options for the plugin by passging in JSON. 
+You can modify the options for the plugin by passing in JSON. 
 
 There are a number of options you may use to customize TypeIt. For more details on these options, view the <a href="http://macarthur.me/typeit/docs">full documentation</a>.
 
