@@ -106,6 +106,12 @@
           if (this.s.breakLines) {
             this.queue.splice(curPos, 0, [this.pause, this.s.breakDelay / 2]);
             this.queue.splice(curPos + 2, 0, [this.pause, this.s.breakDelay / 2]);
+          }else{
+            // Run this when breakLines is false but breakDelay is provided
+            if(this.s.breakDelay != 750){
+              this.queue.splice(curPos, 0, [this.pause, this.s.breakDelay / 2]);
+              this.queue.splice(curPos + 2, 0, [this.pause, this.s.breakDelay / 2]);
+            }
           }
         }
       }
