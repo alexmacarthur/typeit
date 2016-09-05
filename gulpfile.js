@@ -14,7 +14,6 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('dist'))
     .pipe(uglify())
     .pipe(rename('typeit.min.js'))
-    .pipe(gulp.dest('dev'))
     .pipe(gulp.dest('dist'));
 });
 
