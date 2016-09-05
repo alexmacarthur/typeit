@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Example usage for TypeIt.js</title>
+	<meta charset="utf-8">
+	<!-- Style -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css">
+	<style>
+	.container{
+		padding: 100px;
+	}
+	h1{
+		padding-bottom: 50px;
+	}
+	</style>
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<!-- TypeIt -->
+	<script src="../dist/typeit.min.js"></script>
+	<script>
+	$(document).ready(function() {
+		$('.typing').typeIt({
+			strings: ['Hello there!', 'This is cool.', 'It works!'],
+			cursor: true,
+			loop: true,
+			deleteSpeed: 200,
+			speed: 200,
+			lifeLike: true,
+			breakDelay: 4000,
+			breakLines: false,
+			breakDelayPause: true
+		});
+	});
+	</script>
+</head>
+<body>
+	<div class="container">
+		<h1>The following should be typing: </h1>
+		<h2 class="typing"></h2>
+	</div>
+</body>
+</html>

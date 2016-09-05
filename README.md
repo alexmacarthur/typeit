@@ -58,7 +58,7 @@ Get it from this repo, or from the following sources:
 1. Load jQuery and typeit.js on your page.
 
   ```html
-  <script src="jquery.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script src="typeit.js"></script>
   ```
   
@@ -129,6 +129,7 @@ There are a number of options you may use to customize TypeIt. For more details 
 | cursorSpeed    | (number in milliseconds) The blinking speed of the cursor.  | 1000  |
 | breakLines    | (boolean) Choose whether you want multiple strings to be printed on top of each other (`breakLines: true`), or if you want each string to be deleted and replaced by the next one (`breakLines: false`).  | true  |
 | breakDelay    | (number in milliseconds) The amount of time between typing multiple strings.  | 750  |
+| breakDelayPause    | (boolean) If `breakDelay: true` then before the new line, the typing will pause for `breakDelay` milliseconds.  | false  |
 | startDelete    | (boolean) Whether to begin instance by deleting strings inside element, and then typing what strings are defined via JSON or companion functions. | false  |
 | startDelay    | (number in milliseconds) The amount of time before the plugin begins typing after initalizing.  | 250  |
 | loop    | (boolean) Have your string or strings continuously loop after completing.  | false  |

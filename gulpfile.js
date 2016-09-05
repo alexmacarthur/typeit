@@ -1,7 +1,7 @@
-var gulp = require('gulp');
-var jshint = require('gulp-jshint');
-var uglify = require('gulp-uglify');
-var rename = require("gulp-rename");
+var gulp = require('gulp'),
+  jshint = require('gulp-jshint'),
+  uglify = require('gulp-uglify'),
+  rename = require("gulp-rename");
 
 gulp.task('jshint',function(){
   gulp.src('dev/typeit.js')
@@ -14,7 +14,6 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('dist'))
     .pipe(uglify())
     .pipe(rename('typeit.min.js'))
-    .pipe(gulp.dest('dev'))
     .pipe(gulp.dest('dist'));
 });
 
