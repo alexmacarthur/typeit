@@ -1,4 +1,4 @@
-<pre>Update: TypeIt is fully compatible with jQuery 3.0!</pre>
+<pre>Update: TypeIt is fully compatible with jQuery 3.1.1+!</pre>
 
 # TypeIt: The Most Versatile jQuery Animated Typing Plugin on the Planet
 
@@ -39,7 +39,7 @@ Checkout several demos and a sandbox where you can try it out at <a href="http:/
 View the full documentation for using TypeIt here: <a href="http://macarthur.me/typeit/docs">macarthur.me/typeit/docs</a>.
 
 ## Choose a License
-To get started, first select a license: 
+The code is out there to check out and use for any personal project, 100% free. But if you're thinking about using TypeIt commercially, check out the license options below that'll get you full support if it's ever needed.
 * Personal - [FREE](#setup)
 * Single Commercial License - [Purchase Here](http://www.uplabs.com/posts/typeit-a-jquery-animated-typing-plugin)
 * Extended Commercial License - [Purchase Here](http://www.uplabs.com/posts/typeit-a-jquery-animated-typing-plugin)
@@ -50,7 +50,7 @@ To get started, first select a license:
 
 Get it from this repo, or from the following sources: 
 
-* <strong><a href="https://www.jsdelivr.com/projects/jquery.typeit">CDN:</a></strong> Include  `https://cdn.jsdelivr.net/jquery.typeit/4.2.3/typeit.min.js` or `https://cdnjs.cloudflare.com/ajax/libs/typeit/4.2.3/typeit.min.js` on your page.
+* <strong><a href="https://www.jsdelivr.com/projects/jquery.typeit">CDN:</a></strong> Include  `https://cdn.jsdelivr.net/jquery.typeit/4.3.0/typeit.min.js` or `https://cdnjs.cloudflare.com/ajax/libs/typeit/4.3.0/typeit.min.js` on your page.
 * <strong><a href="https://www.npmjs.com/package/typeit">npm:</a></strong> Install with `npm install typeit`.
 
 ### Hook It Up
@@ -128,7 +128,8 @@ There are a number of options you may use to customize TypeIt. For more details 
 | cursor    | (boolean) Show a blinking cursor at the end of the string(s).  | true  |
 | cursorSpeed    | (number in milliseconds) The blinking speed of the cursor.  | 1000  |
 | breakLines    | (boolean) Choose whether you want multiple strings to be printed on top of each other (`breakLines: true`), or if you want each string to be deleted and replaced by the next one (`breakLines: false`).  | true  |
-| breakDelay    | (number in milliseconds) The amount of time between typing multiple strings.  | 750  |
+| breakDelay    | (number in milliseconds) The amount of time (milliseconds) between line breaks when typing multiple strings. Only effective when `breakLines: true`.  | 750  |
+| deleteDelay    | (number in milliseconds) The amount of time (milliseconds) between deleting the current string and typing the next. Only effective when `breakLines: false`.  | 750  |
 | startDelete    | (boolean) Whether to begin instance by deleting strings inside element, and then typing what strings are defined via JSON or companion functions. | false  |
 | startDelay    | (number in milliseconds) The amount of time before the plugin begins typing after initalizing.  | 250  |
 | loop    | (boolean) Have your string or strings continuously loop after completing.  | false  |

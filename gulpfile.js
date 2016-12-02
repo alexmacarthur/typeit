@@ -18,6 +18,8 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('dist'));
 });
 
+gulp.task('build', ['jshint', 'scripts']);
+
 gulp.task('default', ['jshint', 'scripts'], function() {
   gulp.watch('dev/*', ['jshint', 'scripts']);
 });

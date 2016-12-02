@@ -1,7 +1,7 @@
 /**
  * jQuery TypeIt
  * @author Alex MacArthur (http://macarthur.me)
- * @version 4.2.3
+ * @version 4.3.0
  * @copyright 2016 Alex MacArthur
  * @description Types out a given string or strings.
  */
@@ -18,6 +18,12 @@
   $.fn.typeIt = function(opt) {
     return this.each(function() {
       var $t = $(this);
+      var tData = $t.data('typeit');
+      if(tData !== undefined) {
+        clearTimeout(tData.tTO);
+        clearTimeout(tData.dTO);
+        $t.removeData('typeit');
+      }
       $t.data('typeit', new $.typeIt($t, opt));
     });
   };
@@ -32,6 +38,7 @@
       cursorSpeed: 1000,
       breakLines: true,
       breakDelay: 750,
+      deleteDelay: 750,
       startDelay: 250,
       startDelete: false,
       loop: false,
@@ -101,12 +108,10 @@
 
         if (i < (this.s.strings.length - 1)) {
           var curPos = this.queue.length;
+          var delay = this.s.breakLines ? this.s.breakDelay : this.s.deleteDelay;
           this.queue.push([this.s.breakLines ? this.break : this.delete]);
-
-          if (this.s.breakLines) {
-            this.queue.splice(curPos, 0, [this.pause, this.s.breakDelay / 2]);
-            this.queue.splice(curPos + 2, 0, [this.pause, this.s.breakDelay / 2]);
-          }
+          this.queue.splice(curPos, 0, [this.pause, delay / 2]);
+          this.queue.splice(curPos + 2, 0, [this.pause, delay / 2]);
         }
       }
     },
@@ -206,7 +211,7 @@
   */
     delete: function(chars) {
 
-      this.dTO = setTimeout(function() {
+      this.deleteTimeout = setTimeout(function() {
 
         this._setPace();
 
@@ -312,7 +317,7 @@
       return (deltas.left * deltas.right) >= 1 && (deltas.top * deltas.bottom) >= 1;
     },
 
-    /* 
+    /*
       Advance the function queue to execute the next function after the previous one has finished.
     */
     _executeQueue: function() {
@@ -348,7 +353,7 @@
     },
 
     _elCheck: function() {
-      if (!this.s.startDelete && this.el.html().length > 0) {
+      if (!this.s.startDelete && this.el.html().replace(/(\r\n|\n|\r)/gm,"").length > 0) {
         this.s.strings = this.el.html().trim();
       } else if (this.s.startDelete) {
         this.stringsToDelete = this.el.html();
@@ -386,8 +391,8 @@
     },
 
     /*
-    Convert each string in the array to a sub-array. While happening, search the subarrays for HTML tags. 
-    When a complete tag is found, slice the subarray to get the complete tag, insert it at the correct index, 
+    Convert each string in the array to a sub-array. While happening, search the subarrays for HTML tags.
+    When a complete tag is found, slice the subarray to get the complete tag, insert it at the correct index,
     and delete the range of indexes where the indexed tag used to be.
     */
     _rake: function(array) {
@@ -421,7 +426,7 @@
     },
 
     /*
-      Get the start & ending positions of the string inside HTML opening & closing angle brackets, 
+      Get the start & ending positions of the string inside HTML opening & closing angle brackets,
       and then create a DOM element of that string/tag name.
     */
     _makeNode: function(char) {
