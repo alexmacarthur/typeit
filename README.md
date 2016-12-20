@@ -105,7 +105,8 @@ For example:
 | Function        | Arguments   | Description
 | ------------- | ------------- | ------------- |
 | tiType() | (string) Characters (including those wrapped in HTML) to be typed. | Will type the characters. |
-| tiDelete() | (number) Number of characters to be deleted from what's already been typed. | Will delete the number of
+| tiDelete() | (number) Number of characters to be deleted from what's already been typed. | Will delete the specified number of characters. |
+| tiEmpty() | (none) | Will delete everything that has already been typed
 | tiPause() | (number) Number of milliseconds to pause before continuing. | Will pause the specified number of milliseconds.|
 | tiBreak() | (none) | Will break the typing to a new line.|
 | tiSettings() | (JSON) Options you'd like to update | Will redefine your options on the fly. This will only work for updating the `speed`, `lifeLike`, and `html` options.|
