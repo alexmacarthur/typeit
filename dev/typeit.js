@@ -204,6 +204,14 @@
         this.insert(chr);
       }
     },
+   
+    /*
+    Empty the existing text, clearing it instantly.
+    */
+    empty: function() {
+      this.tel.html('');
+      this._executeQueue();
+    },
 
     /*
     If show cursor is enabled, move array starting point for the for loop back one,
@@ -440,6 +448,13 @@
     var i = $(this).data('typeit');
     if (i === undefined) return $doc;
     i.queue.push([i.type, str]);
+    return this;
+  };
+ 
+  $.fn.tiEmpty = function() {
+    var i = $(this).data('typeit');
+    if (i === undefined) return $doc;
+    i.queue.push([i.empty]);
     return this;
   };
 
