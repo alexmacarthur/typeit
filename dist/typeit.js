@@ -1,7 +1,7 @@
 /**
  * jQuery TypeIt
  * @author Alex MacArthur (http://macarthur.me)
- * @version 4.3.0
+ * @version 4.4.0
  * @copyright 2016 Alex MacArthur
  * @description Types out a given string or strings.
  */
@@ -203,6 +203,14 @@
       } else {
         this.insert(chr);
       }
+    },
+
+    /*
+      Empty the existing text, clearing it instantly.
+    */
+    empty: function() {
+      this.tel.html('');
+      this._executeQueue();
     },
 
     /*
@@ -440,6 +448,13 @@
     var i = $(this).data('typeit');
     if (i === undefined) return $doc;
     i.queue.push([i.type, str]);
+    return this;
+  };
+
+  $.fn.tiEmpty = function() {
+    var i = $(this).data('typeit');
+    if (i === undefined) return $doc;
+    i.queue.push([i.empty]);
     return this;
   };
 
