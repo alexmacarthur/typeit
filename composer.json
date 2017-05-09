@@ -7,12 +7,6 @@
       "email": "alex@macarthur.me",
       "homepage": "https://macarthur.me",
       "role": "Author"
-    },
-    {
-      "name": "Kael Shipman",
-      "email": "kael.shipman@gmail.com",
-      "homepage": "https://colors.kaelshipman.me",
-      "role": "Minor Contributor"
     }
   ],
   "description": "The most versatile jQuery animated typing plugin on the planet.",
