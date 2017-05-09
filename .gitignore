@@ -4,3 +4,5 @@ node_modules
 npm-debug.log
 _site
 .jekyll-metadata
+vendor
+composer.lock
