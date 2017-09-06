@@ -30,7 +30,7 @@ For more advanced, controlled typing effects, TypeIt comes with companion functi
 * Handle HTML tags (including those with classes, ID's, etc.) and entities with ease.
 * Use companion functions to chain individual commands together to fine tune your typing. 
 * Supported by jQuery 1.8.0 or higher.
-* Lightweight. (~5kb, single JavaScript file)
+* Lightweight. (~2.2kb, gzipped)
 
 ### Demos
 Checkout several demos and a sandbox where you can try it out at <a href="http://macarthur.me/typeit">macarthur.me/typeit</a>.
@@ -50,7 +50,7 @@ The code is out there to check out and use for any personal project, 100% free. 
 
 Get it from this repo, or from the following sources: 
 
-* <strong><a href="https://www.jsdelivr.com/projects/jquery.typeit">CDN:</a></strong> Include  `https://cdn.jsdelivr.net/npm/typeit@4.4.0/dist/typeit.min.js` or `https://cdnjs.cloudflare.com/ajax/libs/typeit/4.3.0/typeit.min.js` on your page.
+* <strong><a href="https://www.jsdelivr.com/projects/jquery.typeit">CDN:</a></strong> Include  `https://cdn.jsdelivr.net/npm/typeit@4.4.1/dist/typeit.min.js` or `https://cdnjs.cloudflare.com/ajax/libs/typeit/4.4.1/typeit.min.js` on your page.
 * <strong><a href="https://www.npmjs.com/package/typeit">npm:</a></strong> Install with `npm install typeit`.
 
 ### Hook It Up

@@ -1,6 +1,6 @@
 {
   "name": "typeit",
-  "version": "4.4.0",
+  "version": "4.4.1",
   "license": "GPL-2.0",
   "author": "Alex MacArthur <alex@macarthur.me>",
   "description": "The most versatile jQuery animated typing plugin on the planet.",
@@ -13,6 +13,7 @@
     "animated",
     "typing",
     "typewriter",
+    "typewriter effect",
     "type effect",
     "text effects"
   ],

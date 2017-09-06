@@ -1,8 +1,8 @@
 /**
  * jQuery TypeIt
  * @author Alex MacArthur (http://macarthur.me)
- * @version 4.4.0
- * @copyright 2016 Alex MacArthur
+ * @version 4.4.1
+ * @copyright 2017 Alex MacArthur
  * @description Types out a given string or strings.
  */
 
@@ -65,7 +65,7 @@
       this.el.find('.ti-container, .ti-cursor, .ti-placeholder').remove();
       this._elCheck();
       this.s.strings = this._toArray(this.s.strings);
-      this.el.html('<i class="ti-placeholder" style="display:inline-block;width:0;line-height:0;overflow:hidden;">.</i><span ' + this.style + ' class="ti-container"></span>');
+      this.el.html('<i class="ti-placeholder" style="display:inline-block;line-height:0;visibility:hidden;overflow:hidden;">.</i><span ' + this.style + ' class="ti-container"></span>');
       this.tel = this.el.find('span');
 
       this.insert = function(c) {
