@@ -50,7 +50,7 @@ The code is out there to check out and use for any personal project, 100% free. 
 
 Get it from this repo, or from the following sources: 
 
-* <strong><a href="https://www.jsdelivr.com/projects/jquery.typeit">CDN:</a></strong> Include  `https://cdn.jsdelivr.net/jquery.typeit/4.3.0/typeit.min.js` or `https://cdnjs.cloudflare.com/ajax/libs/typeit/4.3.0/typeit.min.js` on your page.
+* <strong><a href="https://www.jsdelivr.com/projects/jquery.typeit">CDN:</a></strong> Include  `https://cdn.jsdelivr.net/npm/typeit@4.4.0/dist/typeit.min.js` or `https://cdnjs.cloudflare.com/ajax/libs/typeit/4.3.0/typeit.min.js` on your page.
 * <strong><a href="https://www.npmjs.com/package/typeit">npm:</a></strong> Install with `npm install typeit`.
 
 ### Hook It Up
