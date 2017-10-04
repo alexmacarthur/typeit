@@ -45,7 +45,8 @@
       loopDelay: 750,
       html: true,
       autoStart: true,
-      callback: function() {}
+      callback: function() {},
+      coreStyle: "display:inline;position:relative;"
     };
 
     this.queue = [];
@@ -53,7 +54,7 @@
     this.hasStarted = false;
     this.inTag = false;
     this.stringsToDelete = '';
-    this.style = 'style="display:inline;position:relative;font:inherit;color:inherit;"';
+    //this.style = 'style="display:inline;position:relative;font:inherit;color:inherit;"';
     this.s = $.extend({}, this.d, opt);
     this.el = el;
     this._init();
@@ -65,7 +66,10 @@
       this.el.find('.ti-container, .ti-cursor, .ti-placeholder').remove();
       this._elCheck();
       this.s.strings = this._toArray(this.s.strings);
-      this.el.html('<i class="ti-placeholder" style="display:inline-block;line-height:0;visibility:hidden;overflow:hidden;">.</i><span ' + this.style + ' class="ti-container"></span>');
+      if (this.s.style != null) { //if options contain style than populate. 
+        this.s.coreStyle = this.s.coreStyle + this.s.style;
+      }
+      this.el.html('<i class="ti-placeholder" style="display:inline-block;line-height:0;visibility:hidden;overflow:hidden;">.</i><span style="' + this.coreStyle + '" class="ti-container"></span>');
       this.tel = this.el.find('span');
 
       this.insert = function(c) {
