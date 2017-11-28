@@ -1,15 +1,22 @@
 {
   "name": "typeit",
-  "version": "4.4.1",
+  "version": "5.0.0",
+  "description": "The most versatile animated typing utility on the planet.",
+  "author": "Alex MacArthur <alex@macarthur.me> (https://macarthur.me)",
   "license": "GPL-2.0",
-  "author": "Alex MacArthur <alex@macarthur.me>",
-  "description": "The most versatile jQuery animated typing plugin on the planet.",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/alexmacarthur/typeit.git"
+  "bugs": {
+    "url": "https://github.com/alexmacarthur/typeit/issues"
+  },
+  "homepage": "https://typeitjs.com",
+  "main": "dist/typeit.js",
+  "scripts": {
+    "watch": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=webpack.config.js && prettier src/* --write",
+    "unminified": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=webpack.config.js",
+    "minified": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=webpack.config.js",
+    "build": "yarn run unminified && yarn run minified && prettier src/* --write"
   },
   "keywords": [
-    "jquery",
+    "javascript",
     "animated",
     "typing",
     "typewriter",
@@ -17,20 +24,18 @@
     "type effect",
     "text effects"
   ],
-  "main": "dist/typeit.min.js",
-  "bugs": {
-    "url": "https://github.com/alexmacarthur/typeit/issues"
-  },
-  "dependencies": {
-    "jquery": "^1.8.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexmacarthur/typeit.git"
   },
   "devDependencies": {
-    "gulp": "^3.8.11",
-    "gulp-jshint": "^1.9.2",
-    "gulp-uglify": "^1.1.0",
-    "gulp-autoprefixer": "^3.0.2",
-    "gulp-sass": "^2.0.4",
-    "gulp-rename": "^1.2.2",
-    "browser-sync": "^2.9.11"
+    "@babel/core": "^7.0.0-beta.32",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babili-webpack-plugin": "^0.1.2",
+    "banner-webpack-plugin": "^0.2.3",
+    "prettier": "^1.8.2",
+    "webpack": "^3.8.1"
   }
 }

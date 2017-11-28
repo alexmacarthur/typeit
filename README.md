@@ -1,8 +1,6 @@
-<pre>Update: TypeIt is fully compatible with jQuery 3.2.1+!</pre>
+<pre>Update: TypeIt is now vanilla JavaScript, and no longer dependent upon jQuery!</pre>
 
-# TypeIt: The Most Versatile jQuery Animated Typing Plugin on the Planet
-
----
+# TypeIt: The Most Versatile JavaScript Animated Typing Utility on the Planet
 
 ### Table of Contents
 - [Overview](#overview)
@@ -12,37 +10,37 @@
 - [Advanced Usage (Chaining Companion Functions)](#advanced-usage)
 - [Options](#options)
 - [Contributions](#contributions)
-- [Documentation (offsite)](http://macarthur.me/typeit/docs)
+- [Documentation (offsite)](https://typeitjs.com/docs)
 
 ---
 
 ## Overview
 
-TypeIt is the most versatile, user-friendly jQuery animated typing plugin on the planet. In simple use, it allows you to type single or multiple strings that break lines, delete & replace each other, and it even handles HTML tags &amp; entities. 
+TypeIt is the most versatile JavaScript animated typing utility on the planet. With simple, straightforward configuration, it allows you to type single or multiple strings that break lines, delete & replace each other, and it even handles strings that contain HTML.
 
-For more advanced, controlled typing effects, TypeIt comes with companion functions that can be chained to tweak your typing down to the smallest character, enabling you to type not just a few strings of text, but an entire narrative, with complete control over speed, characters, line breaks, deletions, pauses, everything.
+For more advanced, controlled typing effects, TypeIt comes with companion functions that can be chained to control your typing down to a single character, enabling you to type an dynamic narrative, with complete control over speed changes, line breaks, deletions, and pauses. 
 
 ### Some of the Perks
-* Choose to start typing only when your element becomes visible on the screen. 
+* Choose to start typing only when your container element becomes visible on the screen. 
 * Loop your string(s) continuously.
-* Define you strings via JSON or in the HTML (useful in case user doesn't have JavaScript enabled).
-* Create several unique instances on a single page.
+* Define you strings via an options object or in the HTML (useful in case user doesn't have JavaScript enabled, as well as for SEO).
+* Use a single TypeIt instance to control several different elements on a page.
 * Handle HTML tags (including those with classes, ID's, etc.) and entities with ease.
 * Use companion functions to chain individual commands together to fine tune your typing. 
-* Supported by jQuery 1.8.0 or higher.
-* Lightweight. (~2.2kb, gzipped)
+* Ready to be included via JS module, or as a separate script loaded on your page.
+* No dependencies!
 
 ### Demos
-Checkout several demos and a sandbox where you can try it out at <a href="http://macarthur.me/typeit">macarthur.me/typeit</a>.
+Checkout several demos and a sandbox where you can try it out at <a href="https://typeitjs.com">typeitjs.com</a>.
 
 ### Documentation
-View the full documentation for using TypeIt here: <a href="http://macarthur.me/typeit/docs">macarthur.me/typeit/docs</a>.
+View the full documentation for using TypeIt here: <a href="https://typeitjs.com/docs">typeitjs.com/docs</a>.
 
 ## Choose a License
-The code is out there to check out and use for any personal project, 100% free. But if you're thinking about using TypeIt commercially, check out the license options below that'll get you full support if it's ever needed.
-* Personal - [FREE](#setup)
-* Single Commercial License - [Purchase Here](http://www.uplabs.com/posts/typeit-a-jquery-animated-typing-plugin)
-* Extended Commercial License - [Purchase Here](http://www.uplabs.com/posts/typeit-a-jquery-animated-typing-plugin)
+Using TypeIt for an open source or personal project is completely free. To use it in a commercial project, purchase a single license, or an unlimited license that'll never expire, no matter how many times you use it. 
+* Personal or Open Source - [FREE](#setup)
+* Single Commercial License - [Purchase Here](https://www.uplabs.com/posts/typeit-a-jquery-animated-typing-plugin)
+* Extended Commercial License - [Purchase Here](https://www.uplabs.com/posts/typeit-a-jquery-animated-typing-plugin)
 
 ## Setup
 
@@ -50,19 +48,22 @@ The code is out there to check out and use for any personal project, 100% free. 
 
 Get it from this repo, or from the following sources: 
 
-* <strong><a href="https://www.jsdelivr.com/projects/jquery.typeit">CDN:</a></strong> Include  `https://cdn.jsdelivr.net/npm/typeit@4.4.1/dist/typeit.min.js` or `https://cdnjs.cloudflare.com/ajax/libs/typeit/4.4.1/typeit.min.js` on your page.
-* <strong><a href="https://www.npmjs.com/package/typeit">npm:</a></strong> Install with `npm install typeit`.
+* <strong><a href="https://cdnjs.com/libraries/typeit">CDN:</a></strong> Include `https://cdnjs.cloudflare.com/ajax/libs/typeit/{ VERSION }/typeit.min.js` on your page.
+* <strong><a href="https://www.npmjs.com/package/typeit">npm / yarn:</a></strong> Install with `npm install typeit` or `yarn install typeit` and import into your project with `import TypeIt from 'typeit'`.
 
 ### Hook It Up
 
-1. Load jQuery and typeit.js on your page.
+1. Load TypeIt into your page or application.
 
   ```html
-  <script src="jquery.js"></script>
   <script src="typeit.js"></script>
   ```
-  
-2. Create an empty HTML element to select. (If you want to have a fallback for users without JavaScript, you can put a string or strings right into this element. For more on that, see the <a href="http://macarthur.me/typeit/docs">full documentation</a>.)
+  or
+  ```js
+  import TypeIt from 'typeit'; 
+  ```
+
+2. Create an empty HTML element to select. (If you want to have a fallback for users without JavaScript, you can put a string or strings right into this element. For more on that, see the <a href="https://typeitjs.com/docs">full documentation</a>.)
 
   ```html
   <span class="type-it"></span>
@@ -72,52 +73,50 @@ You're ready to start typing!
 
 ## Simple Usage
 
-In it's simplest use, just call `typeIt()` on any element and include your [options](#options).
+At its simplest use, just create a new TypeIt instance, pass an empty element, and define your [options](#options).
 
 Example: 
 
 ```js
-  $('.type-it').typeIt({
+  new TypeIt('.type-it', {
     strings: ['Enter your string here!', 'Another string!']
   });
 ```
 
 ## Advanced Usage
-To control your typing down to the smallest character, there are five companion functions available to use. Simply chain them together following a typeIt() call on an element, and your chain will execute. You can define your global settings within the function call like usual, and can even change settings on the fly throughout the chain. 
+To control a typewriter effect to the smallest character, pause, speed, or more, there are six companion functions available. Simply chain them together on an instance of TypeIt, and your chain will execute. You'll be able to create a dynamic, realistic narrative with just a few lines of code.
 
 For example:
 
 ```js
-  $('.type-it').typeIt({
+  new TypeIt('.type-it', {
     speed: 900,
     lifeLike: false,
     autoStart: false
   })
-  .tiType('I am typing slowly,')
-  .tiSettings({speed: 100})
-  .tiType('but now I am typing pretty fasst')
-  .tiDelete(2)
-  .tiType('t!');
+  .type('I am typing slowly,')
+  .options({speed: 100})
+  .type('but now I am typing pretty fasst')
+  .delete(2)
+  .type('t!');
 ```
 
 ### Companion Functions
 
 | Function        | Arguments   | Description
 | ------------- | ------------- | ------------- |
-| tiType() | (string) Characters (including those wrapped in HTML) to be typed. | Will type the characters. |
-| tiDelete() | (number) Number of characters to be deleted from what's already been typed. | Will delete the specified number of characters. |
-| tiEmpty() | (none) | Will instantly delete everything that has already been typed.
-| tiPause() | (number) Number of milliseconds to pause before continuing. | Will pause the specified number of milliseconds.|
-| tiBreak() | (none) | Will break the typing to a new line.|
-| tiSettings() | (JSON) Options you'd like to update | Will redefine your options on the fly. This will only work for updating the `speed`, `lifeLike`, and `html` options.|
-
-
+| type() | (string) Characters (including those wrapped in HTML) to be typed. | Will type the characters. |
+| delete() | (number) Number of characters to be deleted from what's already been typed. | Will delete the specified number of characters. |
+| empty() | (none) | Will instantly delete everything that has already been typed.
+| pause() | (number) Number of milliseconds to pause before continuing. | Will pause the specified number of milliseconds.|
+| break() | (none) | Will break the typing to a new line.|
+| options() | (JSON) Options you'd like to update | Will redefine your options on the fly. This will only work for updating the `speed`, `lifeLike`, and `html` options.|
 
 ## Options
 
 You can modify the options for the plugin by passing in JSON. 
 
-There are a number of options you may use to customize TypeIt. For more details on these options, view the <a href="http://macarthur.me/typeit/docs">full documentation</a>.
+There are a number of options you may use to customize TypeIt. For more details on these options, view the <a href="https://typeitjs.com/docs">full documentation</a>.
 
 | Option        | Description   | Default Value
 | ------------- | ------------- | ------------- |
@@ -128,8 +127,7 @@ There are a number of options you may use to customize TypeIt. For more details 
 | cursor    | (boolean) Show a blinking cursor at the end of the string(s).  | true  |
 | cursorSpeed    | (number in milliseconds) The blinking speed of the cursor.  | 1000  |
 | breakLines    | (boolean) Choose whether you want multiple strings to be printed on top of each other (`breakLines: true`), or if you want each string to be deleted and replaced by the next one (`breakLines: false`).  | true  |
-| breakDelay    | (number in milliseconds) The amount of time (milliseconds) between line breaks when typing multiple strings. Only effective when `breakLines: true`.  | 750  |
-| deleteDelay    | (number in milliseconds) The amount of time (milliseconds) between deleting the current string and typing the next. Only effective when `breakLines: false`.  | 750  |
+| nextStringDelay    | (number in milliseconds) The amount of time (milliseconds) between typing the next string when multiple strings are defined.  | 750  |
 | startDelete    | (boolean) Whether to begin instance by deleting strings inside element, and then typing what strings are defined via JSON or companion functions. | false  |
 | startDelay    | (number in milliseconds) The amount of time before the plugin begins typing after initalizing.  | 250  |
 | loop    | (boolean) Have your string or strings continuously loop after completing.  | false  |
@@ -139,16 +137,4 @@ There are a number of options you may use to customize TypeIt. For more details 
 
 ## Contributions
 
-This project is setup with Gulp to lint & minify the JavaScript. In the root of the repo, use these commands to run these default tasks and watch for file changes (make sure Node.js, npm, and Gulp are installed on your computer):
-
-```
-npm install
-gulp
-```
-## Donations
-
-If I've made your life eaiser in some way by creating this thing and want to kick a small "thank you" my way, I'd very much appreciate it! 
-
-PayPal: <a href="http://paypal.me/alexmacarthur">paypal.me/alexmacarthur</a>
-
-Venmo: <a href="https://venmo.com/amacarthur">venmo.com/amacarthur</a>
+Please do! The code is available on Github. Spin it up, make a PR, and let's improve TypeIt together!

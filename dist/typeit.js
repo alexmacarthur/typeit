@@ -1,35 +1,206 @@
-/**
- * jQuery TypeIt
- * @author Alex MacArthur (http://macarthur.me)
- * @version 4.4.1
- * @copyright 2017 Alex MacArthur
- * @description Types out a given string or strings.
+/*!
+ * 
+ *   typeit - The most versatile animated typing utility on the planet.
+ *   Author: Alex MacArthur <alex@macarthur.me> (https://macarthur.me)
+ *   Version: v5.0.0
+ *   URL: https://typeitjs.com
+ *   License: GPL-2.0
+ * 
  */
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["TypeIt"] = factory();
+	else
+		root["TypeIt"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
 
- /* jslint browser: true */
- /* globals jQuery:false */
+"use strict";
 
-(function($, undefined) {
 
-  'use strict';
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-  var $doc = $(document);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-  $.fn.typeIt = function(opt) {
-    return this.each(function() {
-      var $t = $(this);
-      var tData = $t.data('typeit');
-      if(tData !== undefined) {
-        clearTimeout(tData.tTO);
-        clearTimeout(tData.dTO);
-        $t.removeData('typeit');
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Instance = __webpack_require__(1).default;
+
+module.exports = function () {
+  function TypeIt(element, options) {
+    _classCallCheck(this, TypeIt);
+
+    this.elements = [];
+    this.instances = [];
+
+    if ((typeof element === "undefined" ? "undefined" : _typeof(element)) === "object") {
+      //-- There's only one!
+      if (element.length === undefined) {
+        this.elements.push(element);
+      } else {
+        //-- It's already an array!
+        this.elements = element;
       }
-      $t.data('typeit', new $.typeIt($t, opt));
-    });
-  };
+    }
 
-  $.typeIt = function(el, opt) {
-    this.d = {
+    //-- Convert to array of elements.
+    if (typeof element === "string") {
+      this.elements = document.querySelectorAll(element);
+    }
+
+    this.createInstances(options);
+  }
+
+  _createClass(TypeIt, [{
+    key: "createInstances",
+    value: function createInstances(options) {
+      var _this = this;
+
+      [].slice.call(this.elements).forEach(function (element) {
+        _this.instances.push(new Instance(element, options));
+      });
+    }
+  }, {
+    key: "pushAction",
+    value: function pushAction(func) {
+      var argument = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+      this.instances.forEach(function (instance) {
+        instance.queue.push([instance[func], argument]);
+      });
+    }
+  }, {
+    key: "type",
+    value: function type(string) {
+      this.pushAction("type", string);
+      return this;
+    }
+  }, {
+    key: "delete",
+    value: function _delete(numCharacters) {
+      this.pushAction("delete", numCharacters);
+      return this;
+    }
+  }, {
+    key: "empty",
+    value: function empty() {
+      this.pushAction("empty");
+      return this;
+    }
+  }, {
+    key: "pause",
+    value: function pause(ms) {
+      this.pushAction("pause", ms);
+      return this;
+    }
+  }, {
+    key: "break",
+    value: function _break() {
+      this.pushAction("break");
+      return this;
+    }
+  }, {
+    key: "options",
+    value: function options(_options) {
+      this.pushAction("setOptions", _options);
+      return this;
+    }
+  }]);
+
+  return TypeIt;
+}();
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Instance = function () {
+  function Instance(element, options) {
+    _classCallCheck(this, Instance);
+
+    this.defaults = {
       strings: [],
       speed: 100,
       deleteSpeed: undefined,
@@ -37,453 +208,504 @@
       cursor: true,
       cursorSpeed: 1000,
       breakLines: true,
-      breakDelay: 750,
-      deleteDelay: 750,
       startDelay: 250,
       startDelete: false,
+      nextStringDelay: 750,
       loop: false,
       loopDelay: 750,
       html: true,
       autoStart: true,
-      callback: function() {}
+      callback: function callback() {}
     };
 
+    this.id = "";
     this.queue = [];
     this.queueIndex = 0;
     this.hasStarted = false;
     this.inTag = false;
-    this.stringsToDelete = '';
+    this.stringsToDelete = "";
     this.style = 'style="display:inline;position:relative;font:inherit;color:inherit;"';
-    this.s = $.extend({}, this.d, opt);
-    this.el = el;
-    this._init();
-  };
+    this.element = element;
 
-  $.typeIt.prototype = {
+    this.setOptions(options, this.defaults);
+    this.init();
+  }
 
-    _init: function() {
-      this.el.find('.ti-container, .ti-cursor, .ti-placeholder').remove();
-      this._elCheck();
-      this.s.strings = this._toArray(this.s.strings);
-      this.el.html('<i class="ti-placeholder" style="display:inline-block;line-height:0;visibility:hidden;overflow:hidden;">.</i><span ' + this.style + ' class="ti-container"></span>');
-      this.tel = this.el.find('span');
+  _createClass(Instance, [{
+    key: "init",
+    value: function init() {
+      this.checkElement();
 
-      this.insert = function(c) {
-        this.tel.append(c);
+      this.options.strings = this.toArray(this.options.strings);
+
+      //-- We don't have anything. Get out of here.
+      if (this.options.strings.length >= 1 && this.options.strings[0] === "") {
+        return;
+      }
+
+      this.element.innerHTML = '<i class="ti-placeholder" style="display:inline-block;width:0;line-height:0;overflow:hidden;">.</i><span ' + this.style + ' class="ti-container"></span>';
+
+      this.id = this.generateHash();
+      this.element.dataset["typeitid"] = this.id;
+      this.elementContainer = this.element.querySelector("span");
+
+      if (this.options.startDelete) {
+        this.insert(this.stringsToDelete);
+        this.queue.push([this.delete]);
+        this.insertPauseIntoQueue(1);
+      }
+
+      this.generateQueue();
+      this.kickoff();
+    }
+  }, {
+    key: "generateQueue",
+    value: function generateQueue() {
+      for (var i = 0; i < this.options.strings.length; i++) {
+        this.queue.push([this.type, this.options.strings[i]]);
+
+        if (i < this.options.strings.length - 1) {
+          this.queue.push([this.options.breakLines ? this.break : this.delete]);
+          this.insertPauseIntoQueue(this.queue.length);
+        }
+      }
+    }
+  }, {
+    key: "insertPauseIntoQueue",
+    value: function insertPauseIntoQueue(position) {
+      var halfDelay = this.options.nextStringDelay / 2;
+      this.queue.splice(position - 1, 0, [this.pause, halfDelay]);
+      this.queue.splice(position + 2, 0, [this.pause, halfDelay]);
+    }
+  }, {
+    key: "kickoff",
+    value: function kickoff() {
+      this.cursor();
+
+      if (this.options.autoStart) {
+        this.startQueue();
+      } else {
+        if (this.isVisible()) {
+          this.hasStarted = true;
+          this.startQueue();
+        } else {
+          var that = this;
+
+          window.addEventListener("scroll", function checkForStart(event) {
+            if (that.isVisible() && !that.hasStarted) {
+              that.hasStarted = true;
+              that.startQueue();
+              event.currentTarget.removeEventListener(event.type, checkForStart);
+            }
+          });
+        }
+      }
+    }
+  }, {
+    key: "startQueue",
+    value: function startQueue() {
+      var _this = this;
+
+      setTimeout(function () {
+        _this.executeQueue();
+      }, this.options.startDelay);
+    }
+  }, {
+    key: "isVisible",
+    value: function isVisible() {
+      var coordinates = this.element.getBoundingClientRect();
+
+      var viewport = {
+        height: window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight,
+        width: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
       };
 
-      if (this.s.startDelete) {
-        this.tel.html(this.stringsToDelete);
-        this.queue.push([this.delete]);
+      //-- Element extends outside of viewport.
+      if (coordinates.right > viewport.width || coordinates.bottom > viewport.height) {
+        return false;
       }
 
-      this._generateQueue();
-      this._kickoff();
-    },
+      //-- Top or left aren't visible.
+      if (coordinates.top < 0 || coordinates.left < 0) {
+        return false;
+      }
 
-    _kickoff: function() {
-      this._cursor();
+      return true;
+    }
+  }, {
+    key: "generateHash",
+    value: function generateHash() {
+      return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    }
+  }, {
+    key: "cursor",
+    value: function cursor() {
+      if (!this.options.cursor) return;
 
-      if (this.s.autoStart) {
-        this._startQueue();
+      var hash = this.generateHash();
+
+      var styleBlock = document.createElement("style");
+
+      var styles = "\n          @keyframes blink-" + hash + " {\n            0% {opacity: 0}\n            49%{opacity: 0}\n            50% {opacity: 1}\n          }\n\n          [data-typeitid='" + this.id + "'] .ti-cursor {\n            animation: blink-" + hash + " " + this.options.cursorSpeed / 1000 + "s infinite;\n          }\n        ";
+
+      styleBlock.appendChild(document.createTextNode(styles));
+
+      document.head.appendChild(styleBlock);
+
+      this.element.insertAdjacentHTML("beforeend", "<span " + this.style + 'class="ti-cursor">|</span>');
+    }
+
+    /**
+     * Appends string to element container.
+     */
+
+  }, {
+    key: "insert",
+    value: function insert(content) {
+      var toChildNode = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+      if (toChildNode) {
+        this.elementContainer.lastChild.insertAdjacentHTML("beforeend", content);
       } else {
-        if (this._isVisible()) {
-          this.hasStarted = true;
-          this._startQueue();
-        } else {
-          $doc.on('scroll', function() {
-            if (this._isVisible() && !this.hasStarted) {
-              this.hasStarted = true;
-              this._startQueue();
-            }
-          }.bind(this));
-        }
+        this.elementContainer.insertAdjacentHTML("beforeend", content);
       }
-    },
+    }
 
-    _generateQueue: function() {
-      for (var i = 0; i < this.s.strings.length; i++) {
+    /**
+     * Converts a string to an array, if it's not already.
+     *
+     * @return array
+     */
 
-        this.queue.push([this.type, this.s.strings[i]]);
+  }, {
+    key: "toArray",
+    value: function toArray(string) {
+      return string.constructor === Array ? string.slice(0) : string.split("<br>");
+    }
 
-        if (i < (this.s.strings.length - 1)) {
-          var curPos = this.queue.length;
-          var delay = this.s.breakLines ? this.s.breakDelay : this.s.deleteDelay;
-          this.queue.push([this.s.breakLines ? this.break : this.delete]);
-          this.queue.splice(curPos, 0, [this.pause, delay / 2]);
-          this.queue.splice(curPos + 2, 0, [this.pause, delay / 2]);
-        }
+    /**
+     * Depending on if we're starting by deleting an existing string or typing
+     * from nothing, set a specific variable to what's in the HTML.
+     */
+
+  }, {
+    key: "checkElement",
+    value: function checkElement() {
+      if (!this.options.startDelete && this.element.innerHTML.length > 0) {
+        this.options.strings = this.element.innerHTML.trim();
+      } else {
+        this.stringsToDelete = this.element.innerHTML;
       }
-    },
+    }
+  }, {
+    key: "break",
+    value: function _break() {
+      this.insert("<br>");
+      this.executeQueue();
+    }
+  }, {
+    key: "pause",
+    value: function pause(time) {
+      var _this2 = this;
 
-    _startQueue: function() {
-      this._to(function() {
-        this._executeQueue();
-      }.bind(this), this.s.startDelay);
-    },
+      time = time === undefined ? this.options.nextStringDelay : time;
+
+      setTimeout(function () {
+        _this2.executeQueue();
+      }, time);
+    }
 
     /*
-      Pass in a string, and loop over that string until empty. Then return true.
+      Convert each string in the array to a sub-array. While happening, search the subarrays for HTML tags.
+      When a complete tag is found, slice the subarray to get the complete tag, insert it at the correct index,
+      and delete the range of indexes where the indexed tag used to be.
     */
-    type: function(string, rake) {
 
-      // set default 'rake' value
-      rake = typeof rake === 'undefined' ? true : rake;
+  }, {
+    key: "rake",
+    value: function rake(array) {
+      var _this3 = this;
 
-      // convert to array
-      string = this._toArray(string);
+      return array.map(function (item) {
+        //-- Convert string to array.
+        item = item.split("");
 
-      // if it's designated, rake that bad boy for HTML tags and stuff
-      if (rake) {
-        string = this._rake(string);
-        string = string[0];
-      }
+        //-- If we're parsing HTML, group tags into their own array items.
+        if (_this3.options.html) {
+          var tPosition = [];
+          var tag = void 0;
+          var isEntity = false;
 
-      // do the work that matters
-      this.tTO = setTimeout(function() {
+          for (var j = 0; j < item.length; j++) {
+            if (item[j] === "<" || item[j] === "&") {
+              tPosition[0] = j;
+              isEntity = item[j] === "&";
+            }
 
-        // randomize the timeout each time, if that's your thing
-        this._setPace(this);
-
-        // "_print" the character
-        // if an opening HTML tag is found and we're not already pringing inside a tag
-        if (this.s.html && (string[0].indexOf('<') !== -1 && string[0].indexOf('</') === -1) && (!this.inTag)) {
-
-          // loop the string to find where the tag ends
-          for (var i = string.length - 1; i >= 0; i--) {
-            if (string[i].indexOf('</') !== -1) {
-              this.tagCount = 1;
-              this.tagDuration = i;
+            if (item[j] === ">" || item[j] === ";" && isEntity) {
+              tPosition[1] = j;
+              j = 0;
+              tag = item.slice(tPosition[0], tPosition[1] + 1).join("");
+              item.splice(tPosition[0], tPosition[1] - tPosition[0] + 1, tag);
+              isEntity = false;
             }
           }
-
-          this._makeNode(string[0]);
-        } else {
-          this._print(string[0]);
         }
 
-        // shorten it
-        string.splice(0, 1);
-
-        // if there's more to it, run again until fully printed
-        if (string.length) {
-          this.type(string, false);
-        } else {
-          this._executeQueue();
-        }
-
-      }.bind(this), this.typePace);
-    },
-
-    pause: function(time) {
-      time = time === undefined ? this.s.breakDelay : time;
-      this._to(function() {
-        this._executeQueue();
-      }.bind(this), time);
-    },
-
-    break: function() {
-      this.insert('<br>');
-      this._executeQueue();
-    },
-
-    mergeSet: function(s) {
-      this.s = $.extend({}, this.s, s);
-      this._executeQueue();
-    },
-
-    _print: function(chr) {
+        return item;
+      });
+    }
+  }, {
+    key: "print",
+    value: function print(character) {
       if (this.inTag) {
-        $(this.tag, this.el).last().append(chr);
+        this.insert(character, true);
+
         if (this.tagCount < this.tagDuration) {
           this.tagCount++;
         } else {
           this.inTag = false;
         }
       } else {
-        this.insert(chr);
+        this.insert(character);
       }
-    },
+    }
 
-    /*
-      Empty the existing text, clearing it instantly.
-    */
-    empty: function() {
-      this.tel.html('');
-      this._executeQueue();
-    },
+    /**
+     * Pass in a string, and loop over that string until empty. Then return true.
+     */
 
-    /*
-    If show cursor is enabled, move array starting point for the for loop back one,
-    so that the loop will not find the closing tag and delete the cursor.
-  */
-    delete: function(chars) {
+  }, {
+    key: "type",
+    value: function type(string) {
+      var _this4 = this;
 
-      this.deleteTimeout = setTimeout(function() {
+      var rake = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
 
-        this._setPace();
+      string = this.toArray(string);
 
-        var a = this.tel.html().split("");
+      //-- If it's designated, rake that bad boy for HTML tags and stuff.
+      if (rake) {
+        string = this.rake(string);
+        string = string[0];
+      }
 
-        var amount = chars === undefined || chars === null ? a.length - 1 : chars + 1;
+      this.typingTimeout = setTimeout(function () {
+        //-- Randomize the timeout each time, if that's your thing.
+        _this4.setPace(_this4);
 
-        // cut the array by a character
-        for (var n = a.length - 1; n > -1; n--) {
+        //-- If an opening HTML tag is found and we're not already printing inside a tag
+        if (_this4.options.html && string[0].indexOf("<") !== -1 && string[0].indexOf("</") === -1 && !_this4.inTag) {
+          //-- loop the string to find where the tag ends
+          for (var i = string.length - 1; i >= 0; i--) {
+            if (string[i].indexOf("</") !== -1) {
+              _this4.tagCount = 1;
+              _this4.tagDuration = i;
+            }
+          }
 
-          if ((a[n] === '>' || a[n] === ';') && this.s.html) {
+          _this4.inTag = true;
+
+          //-- Create node of that string name.
+          var matches = string[0].match(/\<(.*?)\>/);
+          var doc = document.implementation.createHTMLDocument();
+          doc.body.innerHTML = "<" + matches[1] + "></" + matches[1] + ">";
+
+          //-- Add that new node to the element.
+          _this4.elementContainer.appendChild(doc.body.children[0]);
+        } else {
+          _this4.print(string[0]);
+        }
+
+        //-- Shorten it by one character.
+        string.splice(0, 1);
+
+        //-- If there's more to it, run again until fully printed.
+        if (string.length) {
+          _this4.type(string, false);
+        } else {
+          _this4.executeQueue();
+        }
+      }, this.typePace);
+    }
+
+    /**
+     * Removes helper elements with certain classes from the TypeIt element.
+     */
+
+  }, {
+    key: "removeHelperElements",
+    value: function removeHelperElements() {
+      var _this5 = this;
+
+      var helperElements = this.element.querySelectorAll(".ti-container, .ti-cursor, .ti-placeholder");
+      [].forEach.call(helperElements, function (helperElement) {
+        _this5.element.removeChild(helperElement);
+      });
+    }
+  }, {
+    key: "setOptions",
+    value: function setOptions(settings) {
+      var defaults = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+      var mergedSettings = {};
+
+      if (defaults === null) {
+        defaults = this.options;
+      }
+
+      for (var attrname in defaults) {
+        mergedSettings[attrname] = defaults[attrname];
+      }
+
+      for (var _attrname in settings) {
+        mergedSettings[_attrname] = settings[_attrname];
+      }
+
+      this.options = mergedSettings;
+
+      //-- If we've already started, I must be a step in the queue,
+      //-- and can continue once finished.
+      if (this.hasStarted) {
+        this.executeQueue();
+      }
+    }
+  }, {
+    key: "randomInRange",
+    value: function randomInRange(value, range) {
+      return Math.abs(Math.random() * (value + range - (value - range)) + (value - range));
+    }
+  }, {
+    key: "setPace",
+    value: function setPace() {
+      var typeSpeed = this.options.speed;
+      var deleteSpeed = this.options.deleteSpeed !== undefined ? this.options.deleteSpeed : this.options.speed / 3;
+      var typeRange = typeSpeed / 2;
+      var deleteRange = deleteSpeed / 2;
+
+      this.typePace = this.options.lifeLike ? this.randomInRange(typeSpeed, typeRange) : typeSpeed;
+      this.deletePace = this.options.lifeLike ? this.randomInRange(deleteSpeed, deleteRange) : deleteSpeed;
+    }
+  }, {
+    key: "delete",
+    value: function _delete() {
+      var _this6 = this;
+
+      var chars = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
+      this.deleteTimeout = setTimeout(function () {
+        _this6.setPace();
+
+        var textArray = _this6.elementContainer.innerHTML.split("");
+
+        var amount = chars === null ? textArray.length - 1 : chars + 1;
+
+        //-- Cut the array by a character.
+        for (var n = textArray.length - 1; n > -1; n--) {
+          if ((textArray[n] === ">" || textArray[n] === ";") && _this6.options.html) {
             for (var o = n; o > -1; o--) {
-
-              if (a.slice(o - 3, o + 1).join('') === '<br>') {
-                a.splice(o - 3, 4);
+              if (textArray.slice(o - 3, o + 1).join("") === "<br>") {
+                textArray.splice(o - 3, 4);
                 break;
               }
 
-              if (a[o] === '&') {
-                a.splice(o, n - o + 1);
+              if (textArray[o] === "&") {
+                textArray.splice(o, n - o + 1);
                 break;
               }
 
-              if (a[o] === '<') {
-                if (a[o - 1] !== '>') {
-                  if (a[o - 1] === ';') {
+              if (textArray[o] === "<") {
+                if (textArray[o - 1] !== ">") {
+                  if (textArray[o - 1] === ";") {
                     for (var p = o - 1; p > -1; p--) {
-                      if (a[p] === '&') {
-                        a.splice(p, o - p);
+                      if (textArray[p] === "&") {
+                        textArray.splice(p, o - p);
                         break;
                       }
                     }
                   }
 
-                  a.splice(o - 1, 1);
+                  textArray.splice(o - 1, 1);
                   break;
                 }
               }
             }
             break;
           } else {
-            a.pop();
+            textArray.pop();
             break;
           }
-
         }
 
-        // if we've found an empty set of HTML tags...
-        if (this.tel.html().indexOf('></') > -1) {
-          for (var i = this.tel.html().indexOf('></') - 2; i >= 0; i--) {
-            if (a[i] === '<') {
-              a.splice(i, a.length - i);
+        //-- If we've found an empty set of HTML tags...
+        if (_this6.elementContainer.innerHTML.indexOf("></") > -1) {
+          for (var i = _this6.elementContainer.innerHTML.indexOf("></") - 2; i >= 0; i--) {
+            if (textArray[i] === "<") {
+              textArray.splice(i, textArray.length - i);
               break;
             }
           }
         }
 
-        this.tel.html(a.join(''));
+        _this6.elementContainer.innerHTML = textArray.join("");
 
-        // characters still in the string.
-        if (amount > (chars === undefined ? 0 : 2)) {
-          this.delete(chars === undefined ? undefined : chars - 1);
+        //-- Characters still in the string.
+        if (amount > (chars === null ? 0 : 2)) {
+          _this6.delete(chars === null ? null : chars - 1);
         } else {
-          this._executeQueue();
+          _this6.executeQueue();
         }
-      }.bind(this), this.deletePace);
-    },
-
-    _isVisible: function() {
-      var win = $(window);
-
-      var viewport = {
-        top: win.scrollTop(),
-        left: win.scrollLeft()
-      };
-      viewport.right = viewport.left + win.width();
-      viewport.bottom = viewport.top + win.height();
-
-      var height = this.el.outerHeight();
-      var width = this.el.outerWidth();
-
-      if (!width || !height) {
-        return false;
-      }
-
-      var bounds = this.el.offset();
-      bounds.right = bounds.left + width;
-      bounds.bottom = bounds.top + height;
-
-      var visible = (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
-
-      if (!visible) {
-        return false;
-      }
-
-      var deltas = {
-        top: Math.min(1, (bounds.bottom - viewport.top) / height),
-        bottom: Math.min(1, (viewport.bottom - bounds.top) / height),
-        left: Math.min(1, (bounds.right - viewport.left) / width),
-        right: Math.min(1, (viewport.right - bounds.left) / width)
-      };
-
-      return (deltas.left * deltas.right) >= 1 && (deltas.top * deltas.bottom) >= 1;
-    },
+      }, this.deletePace);
+    }
 
     /*
-      Advance the function queue to execute the next function after the previous one has finished.
+      Empty the existing text, clearing it instantly.
     */
-    _executeQueue: function() {
+
+  }, {
+    key: "empty",
+    value: function empty() {
+      this.elementContainer.innerHTML = "";
+      this.executeQueue();
+    }
+  }, {
+    key: "executeQueue",
+    value: function executeQueue() {
+      var _this7 = this;
+
       if (this.queueIndex < this.queue.length) {
         var thisFunc = this.queue[this.queueIndex];
         this.queueIndex++;
 
-        // delay execution if looping back to the beginning of the queue.
+        //-- Delay execution if looping back to the beginning of the queue.
         if (this.isLooping && this.queueIndex === 1) {
-          this._to(function() {
-            thisFunc[0].bind(this)(thisFunc[1]);
-          }.bind(this), this.s.loopDelay / 2);
+          setTimeout(function () {
+            thisFunc[0].call(_this7, thisFunc[1]);
+          }, this.options.loopDelay / 2);
         } else {
-          thisFunc[0].bind(this)(thisFunc[1]);
+          thisFunc[0].call(this, thisFunc[1]);
         }
-      } else {
-        if (this.s.loop) {
-          this.queueIndex = 0;
-          this.isLooping = true;
-          this._to(function() {
-            this.delete();
-          }.bind(this), this.s.loopDelay / 2);
-        } else {
-          this.s.callback();
-        }
-      }
-    },
 
-    _to: function(fn, time) {
-      setTimeout(function() {
-        fn();
-      }.bind(this), time);
-    },
-
-    _elCheck: function() {
-      if (!this.s.startDelete && this.el.html().replace(/(\r\n|\n|\r)/gm,"").length > 0) {
-        this.s.strings = this.el.html().trim();
-      } else if (this.s.startDelete) {
-        this.stringsToDelete = this.el.html();
-      }
-    },
-
-    _toArray: function(str) {
-      return str.constructor === Array ? str.slice(0) : str.split('<br>');
-    },
-
-    _cursor: function() {
-      if (this.s.cursor) {
-        this.el.append('<span ' + this.style + 'class="ti-cursor">|</span>');
-        var s = this.s.cursorSpeed;
-        var t = this;
-        (function loop() {
-          t.el.find('.ti-cursor').fadeTo(s / 2, 0).fadeTo(s / 2, 1);
-          t._to(loop, s);
-        })();
-      }
-    },
-
-    _setPace: function() {
-      var typeSpeed = this.s.speed;
-      var deleteSpeed = this.s.deleteSpeed !== undefined ? this.s.deleteSpeed : this.s.speed / 3;
-      var typeRange = typeSpeed / 2;
-      var deleteRange = deleteSpeed / 2;
-
-      this.typePace = this.s.lifeLike ? this._randomInRange(typeSpeed, typeRange) : typeSpeed;
-      this.deletePace = this.s.lifeLike ? this._randomInRange(deleteSpeed, deleteRange) : deleteSpeed;
-    },
-
-    _randomInRange: function(value, range) {
-      return Math.abs(Math.random() * ((value + range) - (value - range)) + (value - range));
-    },
-
-    /*
-    Convert each string in the array to a sub-array. While happening, search the subarrays for HTML tags.
-    When a complete tag is found, slice the subarray to get the complete tag, insert it at the correct index,
-    and delete the range of indexes where the indexed tag used to be.
-    */
-    _rake: function(array) {
-      for (var i = 0; i < array.length; i++) {
-        array[i] = array[i].split('');
-
-        if (this.s.html) {
-          this.tPos = [];
-          var p = this.tPos;
-          var tag;
-          var en = false;
-          for (var j = 0; j < array[i].length; j++) {
-
-            if (array[i][j] === '<' || array[i][j] === '&') {
-              p[0] = j;
-              en = array[i][j] === '&' ? true : false;
-            }
-
-            if (array[i][j] === '>' || (array[i][j] === ';' && en)) {
-              p[1] = j;
-              j = 0;
-              tag = (array[i].slice(p[0], p[1] + 1)).join('');
-              array[i].splice(p[0], (p[1] - p[0] + 1), tag);
-              en = false;
-            }
-          }
-        }
+        return;
       }
 
-      return array;
-    },
+      this.options.callback();
 
-    /*
-      Get the start & ending positions of the string inside HTML opening & closing angle brackets,
-      and then create a DOM element of that string/tag name.
-    */
-    _makeNode: function(char) {
-      this.tag = $($.parseHTML(char));
-      this._print(this.tag);
-      this.inTag = true;
+      if (this.options.loop) {
+        this.queueIndex = 0;
+        this.isLooping = true;
+        setTimeout(function () {
+          _this7.delete();
+        }, this.options.loopDelay / 2);
+      }
     }
-  };
+  }]);
 
-  $.fn.tiType = function(str) {
-    var i = $(this).data('typeit');
-    if (i === undefined) return $doc;
-    i.queue.push([i.type, str]);
-    return this;
-  };
+  return Instance;
+}();
 
-  $.fn.tiEmpty = function() {
-    var i = $(this).data('typeit');
-    if (i === undefined) return $doc;
-    i.queue.push([i.empty]);
-    return this;
-  };
+exports.default = Instance;
 
-  $.fn.tiDelete = function(num) {
-    var i = $(this).data('typeit');
-    if (i === undefined) return $doc;
-    i.queue.push([i.delete, num]);
-    return this;
-  };
-
-  $.fn.tiPause = function(time) {
-    var i = $(this).data('typeit');
-    if (i === undefined) return $doc;
-    i.queue.push([i.pause, time]);
-    return this;
-  };
-
-  $.fn.tiBreak = function() {
-    var i = $(this).data('typeit');
-    if (i === undefined) return $doc;
-    i.queue.push([i.break]);
-    return this;
-  };
-
-  $.fn.tiSettings = function(settings) {
-    var i = $(this).data('typeit');
-    if (i === undefined) return $doc;
-    i.queue.push([i.mergeSet, settings]);
-    return this;
-  };
-
-}(jQuery));
+/***/ })
+/******/ ]);
+});
