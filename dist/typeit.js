@@ -2,7 +2,7 @@
  * 
  *   typeit - The most versatile animated typing utility on the planet.
  *   Author: Alex MacArthur <alex@macarthur.me> (https://macarthur.me)
- *   Version: v5.0.0
+ *   Version: v5.0.1
  *   URL: https://typeitjs.com
  *   License: GPL-2.0
  * 
@@ -227,7 +227,7 @@ var Instance = function () {
     this.style = 'style="display:inline;position:relative;font:inherit;color:inherit;"';
     this.element = element;
 
-    this.setOptions(options, this.defaults);
+    this.setOptions(options, this.defaults, false);
     this.init();
   }
 
@@ -547,6 +547,7 @@ var Instance = function () {
     key: "setOptions",
     value: function setOptions(settings) {
       var defaults = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      var autoExecuteQueue = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
 
       var mergedSettings = {};
 
@@ -564,9 +565,7 @@ var Instance = function () {
 
       this.options = mergedSettings;
 
-      //-- If we've already started, I must be a step in the queue,
-      //-- and can continue once finished.
-      if (this.hasStarted) {
+      if (autoExecuteQueue) {
         this.executeQueue();
       }
     }

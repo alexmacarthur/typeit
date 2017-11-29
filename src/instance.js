@@ -28,7 +28,7 @@ export default class Instance {
       'style="display:inline;position:relative;font:inherit;color:inherit;"';
     this.element = element;
 
-    this.setOptions(options, this.defaults);
+    this.setOptions(options, this.defaults, false);
     this.init();
   }
 
@@ -342,7 +342,7 @@ export default class Instance {
     });
   }
 
-  setOptions(settings, defaults = null) {
+  setOptions(settings, defaults = null, autoExecuteQueue = true) {
     let mergedSettings = {};
 
     if (defaults === null) {
@@ -359,9 +359,7 @@ export default class Instance {
 
     this.options = mergedSettings;
 
-    //-- If we've already started, I must be a step in the queue,
-    //-- and can continue once finished.
-    if (this.hasStarted) {
+    if (autoExecuteQueue) {
       this.executeQueue();
     }
   }
