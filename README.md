@@ -18,15 +18,15 @@
 
 TypeIt is the most versatile JavaScript animated typing utility on the planet. With simple, straightforward configuration, it allows you to type single or multiple strings that break lines, delete & replace each other, and it even handles strings that contain HTML.
 
-For more advanced, controlled typing effects, TypeIt comes with companion functions that can be chained to control your typing down to a single character, enabling you to type an dynamic narrative, with complete control over speed changes, line breaks, deletions, and pauses. 
+For more advanced, controlled typing effects, TypeIt comes with companion functions that can be chained to control your typing down to a single character, enabling you to type an dynamic narrative, with complete control over speed changes, line breaks, deletions, and pauses.
 
 ### Some of the Perks
-* Choose to start typing only when your container element becomes visible on the screen. 
+* Choose to start typing only when your container element becomes visible on the screen.
 * Loop your string(s) continuously.
 * Define you strings via an options object or in the HTML (useful in case user doesn't have JavaScript enabled, as well as for SEO).
 * Use a single TypeIt instance to control several different elements on a page.
 * Handle HTML tags (including those with classes, ID's, etc.) and entities with ease.
-* Use companion functions to chain individual commands together to fine tune your typing. 
+* Use companion functions to chain individual commands together to fine tune your typing.
 * Ready to be included via JS module, or as a separate script loaded on your page.
 * No dependencies!
 
@@ -37,7 +37,7 @@ Checkout several demos and a sandbox where you can try it out at <a href="https:
 View the full documentation for using TypeIt here: <a href="https://typeitjs.com/docs">typeitjs.com/docs</a>.
 
 ## Choose a License
-Using TypeIt for an open source or personal project is completely free. To use it in a commercial project, purchase a single license, or an unlimited license that'll never expire, no matter how many times you use it. 
+Using TypeIt for an open source or personal project is completely free. To use it in a commercial project, purchase a single license, or an unlimited license that'll never expire, no matter how many times you use it.
 * Personal or Open Source - [FREE](#setup)
 * Single Commercial License - [Purchase Here](https://www.uplabs.com/posts/typeit-a-jquery-animated-typing-plugin)
 * Extended Commercial License - [Purchase Here](https://www.uplabs.com/posts/typeit-a-jquery-animated-typing-plugin)
@@ -46,7 +46,7 @@ Using TypeIt for an open source or personal project is completely free. To use i
 
 ### Get the Code
 
-Get it from this repo, or from the following sources: 
+Get it from this repo, or from the following sources:
 
 * <strong><a href="https://cdnjs.com/libraries/typeit">CDN:</a></strong> Include `https://cdnjs.cloudflare.com/ajax/libs/typeit/{ VERSION }/typeit.min.js` on your page.
 * <strong><a href="https://www.npmjs.com/package/typeit">npm / yarn:</a></strong> Install with `npm install typeit` or `yarn install typeit` and import into your project with `import TypeIt from 'typeit'`.
@@ -60,7 +60,7 @@ Get it from this repo, or from the following sources:
   ```
   or
   ```js
-  import TypeIt from 'typeit'; 
+  import TypeIt from 'typeit';
   ```
 
 2. Create an empty HTML element to select. (If you want to have a fallback for users without JavaScript, you can put a string or strings right into this element. For more on that, see the <a href="https://typeitjs.com/docs">full documentation</a>.)
@@ -75,7 +75,7 @@ You're ready to start typing!
 
 At its simplest use, just create a new TypeIt instance, pass an empty element, and define your [options](#options).
 
-Example: 
+Example:
 
 ```js
   new TypeIt('.type-it', {
@@ -114,7 +114,7 @@ For example:
 
 ## Options
 
-You can modify the options for the plugin by passing in JSON. 
+You can modify the options for the plugin by passing in JSON.
 
 There are a number of options you may use to customize TypeIt. For more details on these options, view the <a href="https://typeitjs.com/docs">full documentation</a>.
 
