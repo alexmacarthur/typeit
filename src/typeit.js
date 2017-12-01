@@ -1,6 +1,6 @@
-const Instance = require("./instance").default;
+import Instance from "./instance";
 
-module.exports = class TypeIt {
+export default class TypeIt {
   constructor(element, options) {
     this.elements = [];
     this.instances = [];
@@ -64,4 +64,4 @@ module.exports = class TypeIt {
     this.pushAction("setOptions", options);
     return this;
   }
-};
+}

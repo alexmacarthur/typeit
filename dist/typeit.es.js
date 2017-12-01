@@ -7,12 +7,6 @@
  *   License: GPL-2.0
  *
  */
-(function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-	typeof define === 'function' && define.amd ? define(factory) :
-	(global.TypeIt = factory());
-}(this, (function () { 'use strict';
-
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
   return typeof obj;
 } : function (obj) {
@@ -642,6 +636,4 @@ var TypeIt = function () {
   return TypeIt;
 }();
 
-return TypeIt;
-
-})));
+export default TypeIt;
