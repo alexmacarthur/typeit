@@ -9,11 +9,10 @@
   },
   "homepage": "https://typeitjs.com",
   "main": "dist/typeit.js",
+  "module": "dist/typeit.es.js",
   "scripts": {
-    "watch": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=webpack.config.js",
-    "unminified": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=webpack.config.js",
-    "minified": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=webpack.config.js",
-    "build": "yarn run unminified && yarn run minified && prettier src/* --write"
+    "build": "rollup -c && prettier src/* --write",
+    "watch": "rollup -c -w"
   },
   "keywords": [
     "javascript",
@@ -29,13 +28,12 @@
     "url": "git+https://github.com/alexmacarthur/typeit.git"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.32",
-    "babel-cli": "^6.26.0",
-    "babel-loader": "^7.1.2",
+    "babel-core": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-env": "^1.6.1",
-    "babili-webpack-plugin": "^0.1.2",
-    "banner-webpack-plugin": "^0.2.3",
     "prettier": "^1.8.2",
-    "webpack": "^3.8.1"
+    "rollup": "^0.52.0",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-uglify": "^2.0.1"
   }
 }
