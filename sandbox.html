@@ -1,0 +1,102 @@
+<html>
+	<head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200italic,400,600,600italic,700">
+
+    <style>
+      * {
+        font-family: 'Source Sans Pro', sans-serif;
+      }
+
+      body {
+        padding: 0 50px;
+      }
+
+      h3 {
+        font-weight: normal;
+      }
+
+      section {
+        padding: 20px;
+      }
+
+      section:nth-child(2n) {
+        background: #d3d3d396;
+      }
+    </style>
+
+	</head>
+
+	<body>
+
+    <section>
+      <h2>Single String</h2>
+      <h3 id="example1"></h3>
+    </section>
+
+    <section>
+      <h2>Multiple Strings</h2>
+      <h3 id="example2"></h3>
+    </section>
+
+    <section>
+      <h2>HTML, Delete &amp; Replace Each Other</h2>
+      <h3 id="example3"></h3>
+    </section>
+
+    <section>
+      <h2>Looping Strings</h2>
+      <h3 id="example4"></h3>
+    </section>
+
+    <section>
+      <h2>Companion Functions</h2>
+      <h3 id="example5"></h3>
+    </section>
+
+    <script src="dist/typeit.js"></script>
+
+		<script>
+      new TypeIt('#example1', {
+        speed: 50,
+        strings: 'Just a simple string.'
+      });
+
+      new TypeIt('#example2', {
+        speed: 50,
+        strings: ['This is my first example.', 'It has several strings!']
+      });
+
+      new TypeIt('#example3', {
+        speed: 50,
+        strings: [
+          'This is my <strong>second</strong> example.',
+          'This should <strong>replace</strong> the second string!'
+        ],
+        breakLines: false
+      });
+
+      new TypeIt('#example4', {
+        speed: 50,
+        strings: ['My first string.', 'My second string.'],
+        loop: true
+      });
+
+      new TypeIt('#example5', {
+        speed: 100
+      })
+        .type('Here\'s my first sting.')
+        .pause(500)
+        .delete(4)
+        .pause(500)
+        .type('ring.')
+        .pause(500)
+        .delete()
+        .pause(500)
+        .options({
+          speed: 25
+        })
+        .type('And here it is faster!');
+		</script>
+	</body>
+</html>

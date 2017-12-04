@@ -187,6 +187,11 @@ export default class Instance {
     } else {
       this.elementContainer.insertAdjacentHTML("beforeend", content);
     }
+
+    //-- Split & rejoin to avoid odd spacing issues in some browsers.
+    this.elementContainer.innerHTML = this.elementContainer.innerHTML
+      .split("")
+      .join("");
   }
 
   /**
