@@ -137,4 +137,4 @@ There are a number of options you may use to customize TypeIt. For more details 
 
 ## Contributions
 
-Please do! The code is available on Github. Spin it up, make a PR, and let's improve TypeIt together!
+Please do! The code is available on Github. Check out the [CONTRIBUTING.md](CONTRIBUTING.md) file to see how to get started.

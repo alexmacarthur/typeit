@@ -2,7 +2,7 @@
  *
  *   typeit - The most versatile animated typing utility on the planet.
  *   Author: Alex MacArthur <alex@macarthur.me> (https://macarthur.me)
- *   Version: v5.0.1
+ *   Version: v5.0.2
  *   URL: https://typeitjs.com
  *   License: GPL-2.0
  *
@@ -226,6 +226,9 @@ var Instance = function () {
       } else {
         this.elementContainer.insertAdjacentHTML("beforeend", content);
       }
+
+      //-- Split & rejoin to avoid odd spacing issues in some browsers.
+      this.elementContainer.innerHTML = this.elementContainer.innerHTML.split("").join("");
     }
 
     /**
