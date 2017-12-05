@@ -36,6 +36,7 @@ export default class Instance {
     this.checkElement();
 
     this.options.strings = this.toArray(this.options.strings);
+    this.options.strings = this.removeComments(this.options.strings);
 
     //-- We don't have anything. Get out of here.
     if (this.options.strings.length >= 1 && this.options.strings[0] === "") {
@@ -59,6 +60,12 @@ export default class Instance {
 
     this.generateQueue();
     this.kickoff();
+  }
+
+  removeComments(arrayOfStrings) {
+    return arrayOfStrings.map(string => {
+      return string.replace(/<\!--.*?-->/g, "");
+    });
   }
 
   generateQueue() {
