@@ -2,6 +2,8 @@
 
 # TypeIt: The Most Versatile JavaScript Animated Typing Utility on the Planet
 
+[![Build Status](https://travis-ci.org/alexmacarthur/typeit.svg?branch=master)](https://travis-ci.org/alexmacarthur/typeit)
+
 ### Table of Contents
 - [Overview](#overview)
 - [Choose a License](#choose-a-license)

@@ -103,7 +103,7 @@ var Instance = function () {
       this.element.innerHTML = '<i class="ti-placeholder" style="display:inline-block;width:0;line-height:0;overflow:hidden;">.</i><span ' + this.style + ' class="ti-container"></span>';
 
       this.id = this.generateHash();
-      this.element.dataset["typeitid"] = this.id;
+      this.element.setAttribute("data-typeitid", this.id);
       this.elementContainer = this.element.querySelector("span");
 
       if (this.options.startDelete) {

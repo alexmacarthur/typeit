@@ -48,7 +48,7 @@ export default class Instance {
       ' class="ti-container"></span>';
 
     this.id = this.generateHash();
-    this.element.dataset["typeitid"] = this.id;
+    this.element.setAttribute("data-typeitid", this.id);
     this.elementContainer = this.element.querySelector("span");
 
     if (this.options.startDelete) {

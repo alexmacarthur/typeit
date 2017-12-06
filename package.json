@@ -16,7 +16,8 @@
   "scripts": {
     "build": "rollup -c && prettier src/* --write",
     "watch": "rollup -c -w",
-    "serve": "concurrently --kill-others \"rollup -c -w\" \"node serve.js\""
+    "serve": "concurrently --kill-others \"rollup -c -w\" \"node serve.js\"",
+    "test": "jest tests"
   },
   "keywords": [
     "javascript",
@@ -33,11 +34,14 @@
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
+    "babel-jest": "^21.2.0",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-env": "^1.6.1",
     "concurrently": "^3.5.1",
     "express": "^4.16.2",
+    "jest-cli": "^21.2.1",
     "prettier": "^1.8.2",
+    "regenerator-runtime": "^0.11.0",
     "rollup": "^0.52.0",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-uglify": "^2.0.1"
