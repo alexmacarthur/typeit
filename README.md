@@ -1,20 +1,17 @@
-<pre>Update: TypeIt is now vanilla JavaScript, and no longer dependent upon jQuery!</pre>
+# TypeIt
 
-# TypeIt: The Most Versatile JavaScript Animated Typing Utility on the Planet
+The Most Versatile JavaScript Animated Typing Utility on the Planet
 
 [![Build Status](https://travis-ci.org/alexmacarthur/typeit.svg?branch=master)](https://travis-ci.org/alexmacarthur/typeit)
 
-### Table of Contents
+## Table of Contents
 - [Overview](#overview)
 - [Choose a License](#choose-a-license)
-- [Setup](#setup)
-- [Simple Usage](#simple-usage)
-- [Advanced Usage (Chaining Companion Functions)](#advanced-usage)
+- [Usage](#Usage)
 - [Options](#options)
-- [Contributions](#contributions)
-- [Documentation (offsite)](https://typeitjs.com/docs)
-
----
+- [Contribute](#contribute)
+- [License](#license)
+- [Full Documentation (offsite)](https://typeitjs.com/docs)
 
 ## Overview
 
@@ -35,7 +32,7 @@ For more advanced, controlled typing effects, TypeIt comes with companion functi
 ### Demos
 Checkout several demos and a sandbox where you can try it out at <a href="https://typeitjs.com">typeitjs.com</a>.
 
-### Documentation
+### Full Documentation
 View the full documentation for using TypeIt here: <a href="https://typeitjs.com/docs">typeitjs.com/docs</a>.
 
 ## Choose a License
@@ -44,13 +41,11 @@ Using TypeIt for an open source or personal project is completely free. To use i
 * Single Commercial License - [Purchase Here](https://www.uplabs.com/posts/typeit-a-jquery-animated-typing-plugin)
 * Extended Commercial License - [Purchase Here](https://www.uplabs.com/posts/typeit-a-jquery-animated-typing-plugin)
 
-## Setup
+## Usage
 
 ### Get the Code
 
-Get it from this repo, or from the following sources:
-
-* <strong><a href="https://cdnjs.com/libraries/typeit">CDN:</a></strong> Include `https://cdnjs.cloudflare.com/ajax/libs/typeit/{ VERSION }/typeit.min.js` on your page.
+* <strong><a href="https://cdnjs.com/libraries/typeit">CDN:</a></strong> Include `https://cdn.jsdelivr.net/npm/typeit@VERSION_NUMBER/dist/typeit.min.js` on your page.
 * <strong><a href="https://www.npmjs.com/package/typeit">npm / yarn:</a></strong> Install with `npm install typeit` or `yarn install typeit` and import into your project with `import TypeIt from 'typeit'`.
 
 ### Hook It Up
@@ -73,7 +68,7 @@ Get it from this repo, or from the following sources:
 
 You're ready to start typing!
 
-## Simple Usage
+### Simple Usage
 
 At its simplest use, just create a new TypeIt instance, pass an empty element, and define your [options](#options).
 
@@ -85,7 +80,7 @@ Example:
   });
 ```
 
-## Advanced Usage
+### Advanced Usage
 To control a typewriter effect to the smallest character, pause, speed, or more, there are six companion functions available. Simply chain them together on an instance of TypeIt, and your chain will execute. You'll be able to create a dynamic, realistic narrative with just a few lines of code.
 
 For example:
@@ -137,6 +132,10 @@ There are a number of options you may use to customize TypeIt. For more details 
 | html    | (boolean) Handle strings as HTML, which will process tags and HTML entities. If 'false,' strings will be typed literally.  | true  |
 | callback    | (function) A function that executes after your typing has completed. | nuthin' |
 
-## Contributions
+## Contribute
 
 Please do! The code is available on Github. Check out the [CONTRIBUTING.md](CONTRIBUTING.md) file to see how to get started.
+
+## License
+
+[GPL-2.0](LICENSE) © Alex MacArthur
