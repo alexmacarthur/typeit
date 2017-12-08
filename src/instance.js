@@ -1,5 +1,5 @@
 export default class Instance {
-  constructor(element, options) {
+  constructor(element, id, options) {
     this.defaults = {
       strings: [],
       speed: 100,
@@ -18,7 +18,8 @@ export default class Instance {
       callback: function() {}
     };
 
-    this.id = "";
+    this.timeouts = [];
+    this.id = id;
     this.queue = [];
     this.queueIndex = 0;
     this.hasStarted = false;
@@ -48,7 +49,6 @@ export default class Instance {
       this.style +
       ' class="ti-container"></span>';
 
-    this.id = this.generateHash();
     this.element.setAttribute("data-typeitid", this.id);
     this.elementContainer = this.element.querySelector("span");
 
@@ -144,33 +144,22 @@ export default class Instance {
     return true;
   }
 
-  generateHash() {
-    return (
-      Math.random()
-        .toString(36)
-        .substring(2, 15) +
-      Math.random()
-        .toString(36)
-        .substring(2, 15)
-    );
-  }
-
   cursor() {
     if (!this.options.cursor) return;
 
-    let hash = this.generateHash();
-
     let styleBlock = document.createElement("style");
 
+    styleBlock.id = this.id;
+
     let styles = `
-          @keyframes blink-${hash} {
+          @keyframes blink-${this.id} {
             0% {opacity: 0}
             49%{opacity: 0}
             50% {opacity: 1}
           }
 
           [data-typeitid='${this.id}'] .ti-cursor {
-            animation: blink-${hash} ${this.options.cursorSpeed /
+            animation: blink-${this.id} ${this.options.cursorSpeed /
       1000}s infinite;
           }
         `;
@@ -299,7 +288,7 @@ export default class Instance {
       string = string[0];
     }
 
-    this.typingTimeout = setTimeout(() => {
+    this.timeouts[0] = setTimeout(() => {
       //-- Randomize the timeout each time, if that's your thing.
       this.setPace(this);
 
@@ -400,7 +389,7 @@ export default class Instance {
   }
 
   delete(chars = null) {
-    this.deleteTimeout = setTimeout(() => {
+    this.timeouts[1] = setTimeout(() => {
       this.setPace();
 
       let textArray = this.elementContainer.innerHTML.split("");

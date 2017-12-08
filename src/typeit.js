@@ -1,9 +1,11 @@
 import Instance from "./instance";
 
 export default class TypeIt {
-  constructor(element, options) {
-    this.elements = [];
+  constructor(element, args) {
+    this.id = this.generateHash();
     this.instances = [];
+    this.elements = [];
+    this.args = args;
 
     if (typeof element === "object") {
       //-- There's only one!
@@ -20,12 +22,23 @@ export default class TypeIt {
       this.elements = document.querySelectorAll(element);
     }
 
-    this.createInstances(options);
+    this.createInstances();
   }
 
-  createInstances(options) {
+  generateHash() {
+    return (
+      Math.random()
+        .toString(36)
+        .substring(2, 15) +
+      Math.random()
+        .toString(36)
+        .substring(2, 15)
+    );
+  }
+
+  createInstances() {
     [].slice.call(this.elements).forEach(element => {
-      this.instances.push(new Instance(element, options));
+      this.instances.push(new Instance(element, this.id, this.args));
     });
   }
 
@@ -38,6 +51,22 @@ export default class TypeIt {
   type(string) {
     this.pushAction("type", string);
     return this;
+  }
+
+  destroy(removeCursor = true) {
+    this.instances.forEach(instance => {
+      instance.timeouts.forEach(timeout => {
+        clearTimeout(timeout);
+      });
+
+      if (removeCursor) {
+        instance.element.removeChild(
+          instance.element.querySelector(".ti-cursor")
+        );
+      }
+    });
+
+    this.instances = [];
   }
 
   delete(numCharacters) {

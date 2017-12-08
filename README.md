@@ -8,6 +8,7 @@ The Most Versatile JavaScript Animated Typing Utility on the Planet
 - [Overview](#overview)
 - [Choose a License](#choose-a-license)
 - [Usage](#Usage)
+- [API](#api)
 - [Options](#options)
 - [Contribute](#contribute)
 - [License](#license)
@@ -99,18 +100,11 @@ For example:
   .type('t!');
 ```
 
-### Companion Functions
+To view these functions and how they work, see the [API](#api) section.
 
-| Function        | Arguments   | Description
-| ------------- | ------------- | ------------- |
-| type() | (string) Characters (including those wrapped in HTML) to be typed. | Will type the characters. |
-| delete() | (number) Number of characters to be deleted from what's already been typed. | Will delete the specified number of characters. |
-| empty() | (none) | Will instantly delete everything that has already been typed.
-| pause() | (number) Number of milliseconds to pause before continuing. | Will pause the specified number of milliseconds.|
-| break() | (none) | Will break the typing to a new line.|
-| options() | (JSON) Options you'd like to update | Will redefine your options on the fly. This will only work for updating the `speed`, `lifeLike`, and `html` options.|
+## API
 
-## Options
+### Options
 
 You can modify the options for the plugin by passing in JSON.
 
@@ -132,6 +126,36 @@ There are a number of options you may use to customize TypeIt. For more details 
 | loopDelay    | (number in milliseconds) The amount of time between looping over a string or set of strings again.  | 750  |
 | html    | (boolean) Handle strings as HTML, which will process tags and HTML entities. If 'false,' strings will be typed literally.  | true  |
 | callback    | (function) A function that executes after your typing has completed. | nuthin' |
+
+### Companion Functions
+
+Use these functions to chain typing commands together upon initialization.
+
+| Function        | Arguments   | Description
+| ------------- | ------------- | ------------- |
+| type() | (string) Characters (including those wrapped in HTML) to be typed. | Will type the characters. |
+| delete() | (number) Number of characters to be deleted from what's already been typed. | Will delete the specified number of characters. |
+| empty() | (none) | Will instantly delete everything that has already been typed.
+| pause() | (number) Number of milliseconds to pause before continuing. | Will pause the specified number of milliseconds.|
+| break() | (none) | Will break the typing to a new line.|
+| options() | (JSON) Options you'd like to update | Will redefine your options on the fly. This will only work for updating the `speed`, `lifeLike`, and `html` options.|
+
+### Other Handy Functions
+
+#### Destroy an Instance
+
+| Function        | Arguments   | Description
+| ------------- | ------------- | ------------- |
+| destroy() | (bool) Whether you want to remove the cursor after destroying. Default is `true`.| Destroys the instance on whatever elements to which it's attached.
+
+```js
+var instance = new TypeIt('#id', {
+    strings: 'This is my string'
+});
+
+//-- Will preserve the cursor. If you want to destory that too, pass 'false'.
+instance.destroy();
+```
 
 ## Contribute
 
