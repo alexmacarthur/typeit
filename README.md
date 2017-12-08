@@ -47,13 +47,14 @@ Using TypeIt for an open source or personal project is completely free. To use i
 
 * <strong><a href="https://cdnjs.com/libraries/typeit">CDN:</a></strong> Include `https://cdn.jsdelivr.net/npm/typeit@VERSION_NUMBER/dist/typeit.min.js` on your page.
 * <strong><a href="https://www.npmjs.com/package/typeit">npm / yarn:</a></strong> Install with `npm install typeit` or `yarn install typeit` and import into your project with `import TypeIt from 'typeit'`.
+* <strong>Build It Yourself: </strong> If, for some weird reason, you want to clone the repository and build the code yourself, first run `yarn install` and then `yarn run build`. The compiled source files will be in the `/dist` directory.
 
 ### Hook It Up
 
 1. Load TypeIt into your page or application.
 
   ```html
-  <script src="typeit.js"></script>
+  <script src="typeit.min.js"></script>
   ```
   or
   ```js
