@@ -5,14 +5,16 @@ The Most Versatile JavaScript Animated Typing Utility on the Planet
 [![Build Status](https://travis-ci.org/alexmacarthur/typeit.svg?branch=master)](https://travis-ci.org/alexmacarthur/typeit)
 
 ## Table of Contents
-- [Overview](#overview)
-- [Choose a License](#choose-a-license)
-- [Usage](#Usage)
-- [API](#api)
-- [Options](#options)
-- [Contribute](#contribute)
-- [License](#license)
-- [Full Documentation (offsite)](https://typeitjs.com/docs)
+* [Overview](#overview)
+* [Choose a License](#choose-a-license)
+* [Usage](#usage)
+* [API](#api)
+    * [Options](#options)
+    * [Companion Functions](#companion-functions)
+    * [Other Handy Functions](#other-handy-functions)
+* [Contribute](#contribute)
+* [License](#license)
+* [Full Documentation (offsite)](https://typeitjs.com/docs)
 
 ## Overview
 
@@ -106,6 +108,7 @@ To view these functions and how they work, see the [API](#api) section.
 
 ### Options
 
+#### Defining Your Options
 You can modify the options for the plugin by passing in JSON.
 
 There are a number of options you may use to customize TypeIt. For more details on these options, view the <a href="https://typeitjs.com/docs">full documentation</a>.
@@ -126,6 +129,19 @@ There are a number of options you may use to customize TypeIt. For more details 
 | loopDelay    | (number in milliseconds) The amount of time between looping over a string or set of strings again.  | 750  |
 | html    | (boolean) Handle strings as HTML, which will process tags and HTML entities. If 'false,' strings will be typed literally.  | true  |
 | callback    | (function) A function that executes after your typing has completed. | nuthin' |
+
+#### Changing Option Defaults
+
+If you're creating several instances of TypeIt on a page, and don't wish to repeatedly set an option of the same value for each of them, you can redefine the default options beforehand. Change the default value(s) before creating any instances, and you'll be set.
+
+```js
+    window.TypeItDefaults.speed = 50;
+
+    //-- This and all following instances will now have a default speed of 50.
+    new TypeIt('#id', {
+        strings: 'A string!'
+    });
+```
 
 ### Companion Functions
 

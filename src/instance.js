@@ -1,23 +1,7 @@
+import "./defaults.js";
+
 export default class Instance {
   constructor(element, id, options) {
-    this.defaults = {
-      strings: [],
-      speed: 100,
-      deleteSpeed: undefined,
-      lifeLike: true,
-      cursor: true,
-      cursorSpeed: 1000,
-      breakLines: true,
-      startDelay: 250,
-      startDelete: false,
-      nextStringDelay: 750,
-      loop: false,
-      loopDelay: 750,
-      html: true,
-      autoStart: true,
-      callback: function() {}
-    };
-
     this.timeouts = [];
     this.id = id;
     this.queue = [];
@@ -29,7 +13,7 @@ export default class Instance {
       'style="display:inline;position:relative;font:inherit;color:inherit;"';
     this.element = element;
 
-    this.setOptions(options, this.defaults, false);
+    this.setOptions(options, window.TypeItDefaults, false);
     this.init();
   }
 

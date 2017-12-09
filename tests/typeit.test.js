@@ -36,3 +36,18 @@ test('Destroys instances successfully.', () => {
 
   document.body.innerHTML = '';
 });
+
+test('Redefines defaults correct.', () => {
+  document.body.innerHTML =
+    `<div>'
+      <span id="element"></span>
+    </div>`;
+
+  expect(typeof window.TypeItDefaults).toBe('object');
+
+  window.TypeItDefaults.speed = 25;
+  const instance = new TypeIt('#element', {});
+
+  expect(instance.instances[0].options.speed).toEqual(25);
+  expect(instance.instances[0].options.speed).not.toEqual(26);
+});
