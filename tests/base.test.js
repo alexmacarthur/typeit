@@ -10,8 +10,6 @@ test('Returns an object with base properties.', () => {
   const instance = new TypeIt('#element', {});
 
   expect(Object.keys(instance).sort()).toEqual(['elements', 'id', 'instances', 'args'].sort());
-
-  document.body.innerHTML = '';
 });
 
 test('Destroys instances successfully.', () => {
@@ -33,11 +31,9 @@ test('Destroys instances successfully.', () => {
 
   expect(instance.instances).toHaveLength(0);
   expect(document.body.querySelector('.ti-cursor')).toEqual(null);
-
-  document.body.innerHTML = '';
 });
 
-test('Redefines defaults correct.', () => {
+test('Redefines defaults correctly.', () => {
   document.body.innerHTML =
     `<div>'
       <span id="element"></span>

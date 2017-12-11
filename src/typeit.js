@@ -25,6 +25,10 @@ export default class TypeIt {
     this.createInstances();
   }
 
+  get isComplete() {
+    return this.instances[0].isComplete;
+  }
+
   generateHash() {
     return (
       Math.random()
@@ -45,11 +49,60 @@ export default class TypeIt {
   pushAction(func, argument = null) {
     this.instances.forEach(instance => {
       instance.queue.push([instance[func], argument]);
+
+      if (instance.isComplete === true) {
+        instance.next();
+      }
     });
   }
 
-  type(string) {
-    this.pushAction("type", string);
+  /**
+   * If used after typing has started, will append strings to the end of the existing queue. If used when typing is paused, will restart it.
+   *
+   * @param  {string} string The string to be typed.
+   * @return {object} TypeIt instance
+   */
+  type(string = "") {
+    this.instances.forEach(instance => {
+      //-- Queue up a string right off the bat.
+      instance.queueUpString(string);
+
+      if (instance.isComplete === true) {
+        instance.next();
+      }
+    });
+
+    return this;
+  }
+
+  /**
+   * If null is passed, will delete whatever's currently in the element.
+   *
+   * @param  { number } numCharacters Number of characters to delete.
+   * @return { TypeIt }
+   */
+  delete(numCharacters = null) {
+    this.pushAction("delete", numCharacters);
+    return this;
+  }
+
+  freeze() {
+    this.instances.forEach(instance => {
+      instance.isFrozen = true;
+    });
+  }
+
+  unfreeze() {
+    this.instances.forEach(instance => {
+      if (!instance.isFrozen) return;
+
+      instance.isFrozen = false;
+      instance.next();
+    });
+  }
+
+  pause(ms = null) {
+    this.pushAction("pause", ms);
     return this;
   }
 
@@ -69,18 +122,8 @@ export default class TypeIt {
     this.instances = [];
   }
 
-  delete(numCharacters) {
-    this.pushAction("delete", numCharacters);
-    return this;
-  }
-
   empty() {
     this.pushAction("empty");
-    return this;
-  }
-
-  pause(ms) {
-    this.pushAction("pause", ms);
     return this;
   }
 

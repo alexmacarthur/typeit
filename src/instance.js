@@ -5,12 +5,12 @@ export default class Instance {
     this.timeouts = [];
     this.id = id;
     this.queue = [];
-    this.queueIndex = 0;
     this.hasStarted = false;
-    this.inTag = false;
+    this.isFrozen = false;
+    this.isComplete = false;
+    this.isInTag = false;
     this.stringsToDelete = "";
-    this.style =
-      'style="display:inline;position:relative;font:inherit;color:inherit;"';
+    this.style = "display:inline;position:relative;font:inherit;color:inherit;";
     this.element = element;
 
     this.setOptions(options, window.TypeItDefaults, false);
@@ -28,10 +28,9 @@ export default class Instance {
       return;
     }
 
-    this.element.innerHTML =
-      '<i class="ti-placeholder" style="display:inline-block;width:0;line-height:0;overflow:hidden;">.</i><span ' +
-      this.style +
-      ' class="ti-container"></span>';
+    this.element.innerHTML = `
+        <span style="${this.style}" class="ti-container"></span>
+      `;
 
     this.element.setAttribute("data-typeitid", this.id);
     this.elementContainer = this.element.querySelector("span");
@@ -39,9 +38,10 @@ export default class Instance {
     if (this.options.startDelete) {
       this.insert(this.stringsToDelete);
       this.queue.push([this.delete]);
-      this.insertPauseIntoQueue(1);
+      this.insertSplitPause(1);
     }
 
+    this.cursor();
     this.generateQueue();
     this.kickoff();
   }
@@ -52,50 +52,124 @@ export default class Instance {
     });
   }
 
-  generateQueue() {
-    for (let i = 0; i < this.options.strings.length; i++) {
-      this.queue.push([this.type, this.options.strings[i]]);
+  generateQueue(initialStep = null) {
+    initialStep =
+      initialStep === null
+        ? [this.pause, this.options.startDelay]
+        : initialStep;
 
-      if (i < this.options.strings.length - 1) {
-        this.queue.push([this.options.breakLines ? this.break : this.delete]);
-        this.insertPauseIntoQueue(this.queue.length);
+    this.queue.push(initialStep);
+
+    this.options.strings.forEach((string, index) => {
+      this.queueUpString(string);
+
+      //-- This is not the last string,so insert a pause for between strings.
+      if (index + 1 < this.options.strings.length) {
+        if (this.options.breakLines) {
+          this.queue.push([this.break]);
+          this.insertSplitPause(this.queue.length);
+        } else {
+          this.queueUpDeletions(string);
+          this.insertSplitPause(this.queue.length, string.length);
+        }
       }
+    });
+  }
+
+  /**
+   * Delete each character from a string.
+   */
+  queueUpDeletions(stringOrNumber = null) {
+    let number =
+      typeof stringOrNumber === "string"
+        ? stringOrNumber.length
+        : stringOrNumber;
+
+    for (let i = 0; i < number; i++) {
+      this.queue.push([this.delete, 1]);
     }
   }
 
-  insertPauseIntoQueue(position) {
+  /**
+   * Add steps to the queue for each character in a given string.
+   */
+  queueUpString(string, rake = true) {
+    if (!string) return;
+
+    string = this.toArray(string);
+
+    var doc = document.implementation.createHTMLDocument();
+    doc.body.innerHTML = string;
+
+    //-- If it's designated, rake that bad boy for HTML tags and stuff.
+    if (rake) {
+      string = this.rake(string);
+      string = string[0];
+    }
+
+    //-- If an opening HTML tag is found and we're not already printing inside a tag
+    if (
+      this.options.html &&
+      (string[0].startsWith("<") && !string[0].startsWith("</"))
+    ) {
+      //-- Create node of that string name.
+      let matches = string[0].match(/\<(.*?)\>/);
+      let doc = document.implementation.createHTMLDocument();
+      doc.body.innerHTML = "<" + matches[1] + "></" + matches[1] + ">";
+
+      //-- Add to the queue.
+      this.queue.push([this.type, doc.body.children[0]]);
+    } else {
+      this.queue.push([this.type, string[0]]);
+    }
+
+    //-- Shorten it by one character.
+    string.splice(0, 1);
+
+    //-- If there's more to it, run again until fully printed.
+    if (string.length) {
+      this.queueUpString(string, false);
+    }
+  }
+
+  /**
+   * Insert a split pause around a range of queue items.
+   *
+   * @param  {Number} startPosition The position at which to start wrapping.
+   * @param  {Number} numberOfActionsToWrap The number of actions in the queue to wrap.
+   * @return {void}
+   */
+  insertSplitPause(startPosition, numberOfActionsToWrap = 1) {
     let halfDelay = this.options.nextStringDelay / 2;
-    this.queue.splice(position - 1, 0, [this.pause, halfDelay]);
-    this.queue.splice(position + 2, 0, [this.pause, halfDelay]);
+    this.queue.splice(startPosition, 0, [this.pause, halfDelay]);
+    this.queue.splice(startPosition - numberOfActionsToWrap, 0, [
+      this.pause,
+      halfDelay
+    ]);
   }
 
   kickoff() {
-    this.cursor();
-
     if (this.options.autoStart) {
-      this.startQueue();
-    } else {
-      if (this.isVisible()) {
-        this.hasStarted = true;
-        this.startQueue();
-      } else {
-        let that = this;
-
-        window.addEventListener("scroll", function checkForStart(event) {
-          if (that.isVisible() && !that.hasStarted) {
-            that.hasStarted = true;
-            that.startQueue();
-            event.currentTarget.removeEventListener(event.type, checkForStart);
-          }
-        });
-      }
+      this.hasStarted = true;
+      this.next();
+      return;
     }
-  }
 
-  startQueue() {
-    setTimeout(() => {
-      this.executeQueue();
-    }, this.options.startDelay);
+    if (this.isVisible()) {
+      this.hasStarted = true;
+      this.next();
+      return;
+    }
+
+    let that = this;
+
+    window.addEventListener("scroll", function checkForStart(event) {
+      if (that.isVisible() && !that.hasStarted) {
+        that.hasStarted = true;
+        that.next();
+        event.currentTarget.removeEventListener(event.type, checkForStart);
+      }
+    });
   }
 
   isVisible() {
@@ -129,37 +203,41 @@ export default class Instance {
   }
 
   cursor() {
-    if (!this.options.cursor) return;
+    let visibilityStyle = "visibility: hidden;";
 
-    let styleBlock = document.createElement("style");
+    if (this.options.cursor) {
+      let styleBlock = document.createElement("style");
 
-    styleBlock.id = this.id;
+      styleBlock.id = this.id;
 
-    let styles = `
-          @keyframes blink-${this.id} {
-            0% {opacity: 0}
-            49%{opacity: 0}
-            50% {opacity: 1}
-          }
+      let styles = `
+            @keyframes blink-${this.id} {
+              0% {opacity: 0}
+              49% {opacity: 0}
+              50% {opacity: 1}
+            }
 
-          [data-typeitid='${this.id}'] .ti-cursor {
-            animation: blink-${this.id} ${this.options.cursorSpeed /
-      1000}s infinite;
-          }
-        `;
+            [data-typeitid='${this.id}'] .ti-cursor {
+              animation: blink-${this.id} ${this.options.cursorSpeed /
+        1000}s infinite;
+            }
+          `;
 
-    styleBlock.appendChild(document.createTextNode(styles));
+      styleBlock.appendChild(document.createTextNode(styles));
 
-    document.head.appendChild(styleBlock);
+      document.head.appendChild(styleBlock);
+
+      visibilityStyle = "";
+    }
 
     this.element.insertAdjacentHTML(
       "beforeend",
-      "<span " + this.style + 'class="ti-cursor">|</span>'
+      `<span style="${this.style}${visibilityStyle}" class="ti-cursor">|</span>`
     );
   }
 
   /**
-   * Appends string to element container.
+   * Inserts string to element container.
    */
   insert(content, toChildNode = false) {
     if (toChildNode) {
@@ -199,15 +277,13 @@ export default class Instance {
 
   break() {
     this.insert("<br>");
-    this.executeQueue();
+    this.next();
   }
 
   pause(time) {
-    time = time === undefined ? this.options.nextStringDelay : time;
-
     setTimeout(() => {
-      this.executeQueue();
-    }, time);
+      this.next();
+    }, time === undefined ? this.options.nextStringDelay : time);
   }
 
   /*
@@ -246,72 +322,29 @@ export default class Instance {
     });
   }
 
-  print(character) {
-    if (this.inTag) {
-      this.insert(character, true);
-
-      if (this.tagCount < this.tagDuration) {
-        this.tagCount++;
-      } else {
-        this.inTag = false;
-      }
-    } else {
-      this.insert(character);
-    }
-  }
-
-  /**
-   * Pass in a string, and loop over that string until empty. Then return true.
-   */
-  type(string, rake = true) {
-    string = this.toArray(string);
-
-    //-- If it's designated, rake that bad boy for HTML tags and stuff.
-    if (rake) {
-      string = this.rake(string);
-      string = string[0];
-    }
+  type(character) {
+    this.setPace();
 
     this.timeouts[0] = setTimeout(() => {
-      //-- Randomize the timeout each time, if that's your thing.
-      this.setPace(this);
-
-      //-- If an opening HTML tag is found and we're not already printing inside a tag
-      if (
-        this.options.html &&
-        (string[0].indexOf("<") !== -1 && string[0].indexOf("</") === -1) &&
-        !this.inTag
-      ) {
-        //-- loop the string to find where the tag ends
-        for (let i = string.length - 1; i >= 0; i--) {
-          if (string[i].indexOf("</") !== -1) {
-            this.tagCount = 1;
-            this.tagDuration = i;
-          }
-        }
-
-        this.inTag = true;
-
-        //-- Create node of that string name.
-        let matches = string[0].match(/\<(.*?)\>/);
-        let doc = document.implementation.createHTMLDocument();
-        doc.body.innerHTML = "<" + matches[1] + "></" + matches[1] + ">";
-
-        //-- Add that new node to the element.
-        this.elementContainer.appendChild(doc.body.children[0]);
-      } else {
-        this.print(string[0]);
+      //-- We must have an HTML tag!
+      if (typeof character !== "string") {
+        character.innerHTML = "";
+        this.elementContainer.appendChild(character);
+        this.isInTag = true;
+        this.next();
+        return;
       }
 
-      //-- Shorten it by one character.
-      string.splice(0, 1);
-
-      //-- If there's more to it, run again until fully printed.
-      if (string.length) {
-        this.type(string, false);
-      } else {
-        this.executeQueue();
+      //-- When we hit the end of the tag, turn it off!
+      if (character.startsWith("</")) {
+        this.isInTag = false;
+        this.next();
+        return;
       }
+
+      this.insert(character, this.isInTag);
+
+      this.next();
     }, this.typePace);
   }
 
@@ -320,14 +353,15 @@ export default class Instance {
    */
   removeHelperElements() {
     let helperElements = this.element.querySelectorAll(
-      ".ti-container, .ti-cursor, .ti-placeholder"
+      ".ti-container, .ti-cursor"
     );
+
     [].forEach.call(helperElements, helperElement => {
       this.element.removeChild(helperElement);
     });
   }
 
-  setOptions(settings, defaults = null, autoExecuteQueue = true) {
+  setOptions(settings, defaults = null, autonext = true) {
     let mergedSettings = {};
 
     if (defaults === null) {
@@ -344,8 +378,8 @@ export default class Instance {
 
     this.options = mergedSettings;
 
-    if (autoExecuteQueue) {
-      this.executeQueue();
+    if (autonext) {
+      this.next();
     }
   }
 
@@ -378,7 +412,7 @@ export default class Instance {
 
       let textArray = this.elementContainer.innerHTML.split("");
 
-      let amount = chars === null ? textArray.length - 1 : chars + 1;
+      let amount = chars + 1;
 
       //-- Cut the array by a character.
       for (let n = textArray.length - 1; n > -1; n--) {
@@ -436,12 +470,16 @@ export default class Instance {
 
       this.elementContainer.innerHTML = textArray.join("");
 
-      //-- Characters still in the string.
-      if (amount > (chars === null ? 0 : 2)) {
-        this.delete(chars === null ? null : chars - 1);
-      } else {
-        this.executeQueue();
+      //-- Delete again! Don't call directly, to respect possible pauses.
+      if (chars === null) {
+        this.queue.unshift([this.delete, textArray.length]);
       }
+
+      if (chars > 1) {
+        this.queue.unshift([this.delete, chars - 1]);
+      }
+
+      this.next();
     }, this.deletePace);
   }
 
@@ -450,34 +488,33 @@ export default class Instance {
   */
   empty() {
     this.elementContainer.innerHTML = "";
-    this.executeQueue();
+    this.next();
   }
 
-  executeQueue() {
-    if (this.queueIndex < this.queue.length) {
-      let thisFunc = this.queue[this.queueIndex];
-      this.queueIndex++;
+  next() {
+    if (this.isFrozen) {
+      return;
+    }
 
-      //-- Delay execution if looping back to the beginning of the queue.
-      if (this.isLooping && this.queueIndex === 1) {
-        setTimeout(() => {
-          thisFunc[0].call(this, thisFunc[1]);
-        }, this.options.loopDelay / 2);
-      } else {
-        thisFunc[0].call(this, thisFunc[1]);
-      }
-
+    //-- We haven't reached the end of the queue, go again.
+    if (this.queue.length > 0) {
+      let thisStep = this.queue[0];
+      this.queue.shift();
+      thisStep[0].call(this, thisStep[1]);
       return;
     }
 
     this.options.callback();
 
     if (this.options.loop) {
-      this.queueIndex = 0;
-      this.isLooping = true;
+      this.queueUpDeletions(this.elementContainer.innerHTML);
+      this.generateQueue([this.pause, this.options.loopDelay / 2]);
+
       setTimeout(() => {
-        this.delete();
+        this.next();
       }, this.options.loopDelay / 2);
+    } else {
+      this.isComplete = true;
     }
   }
 }

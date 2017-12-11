@@ -3,18 +3,17 @@
 The Most Versatile JavaScript Animated Typing Utility on the Planet
 
 [![Build Status](https://travis-ci.org/alexmacarthur/typeit.svg?branch=master)](https://travis-ci.org/alexmacarthur/typeit)
+[![npm downloads](https://img.shields.io/npm/dm/typeit.svg?style=flat-square)](http://npm-stat.com/charts.html?package=typeit)
 
 ## Table of Contents
 * [Overview](#overview)
 * [Choose a License](#choose-a-license)
 * [Usage](#usage)
 * [API](#api)
-    * [Options](#options)
-    * [Companion Functions](#companion-functions)
-    * [Other Handy Functions](#other-handy-functions)
+* [Options](#options)
+* [CodePen Examples](#codepen-examples)
 * [Contribute](#contribute)
 * [License](#license)
-* [Full Documentation (offsite)](https://typeitjs.com/docs)
 
 ## Overview
 
@@ -33,10 +32,7 @@ For more advanced, controlled typing effects, TypeIt comes with companion functi
 * No dependencies!
 
 ### Demos
-Checkout several demos and a sandbox where you can try it out at <a href="https://typeitjs.com">typeitjs.com</a>.
-
-### Full Documentation
-View the full documentation for using TypeIt here: <a href="https://typeitjs.com/docs">typeitjs.com/docs</a>.
+See some more examples and try out the sandbox (here)[https://typeitjs.com].
 
 ## Choose a License
 Using TypeIt for an open source or personal project is completely free. To use it in a commercial project, purchase a single license, or an unlimited license that'll never expire, no matter how many times you use it.
@@ -48,7 +44,10 @@ Using TypeIt for an open source or personal project is completely free. To use i
 
 ### Get the Code
 
-* <strong><a href="https://cdnjs.com/libraries/typeit">CDN:</a></strong> Include `https://cdn.jsdelivr.net/npm/typeit@VERSION_NUMBER/dist/typeit.min.js` on your page.
+* <strong><a href="https://cdnjs.com/libraries/typeit">CDN:</a></strong> Include this on your page:
+```
+https://cdn.jsdelivr.net/npm/typeit@VERSION_NUMBER/dist/typeit.min.js
+```
 * <strong><a href="https://www.npmjs.com/package/typeit">npm / yarn:</a></strong> Install with `npm install typeit` or `yarn install typeit` and import into your project with `import TypeIt from 'typeit'`.
 * <strong>Build It Yourself: </strong> If, for some weird reason, you want to clone the repository and build the code yourself, first run `yarn install` and then `yarn run build`. The compiled source files will be in the `/dist` directory.
 
@@ -72,7 +71,7 @@ Using TypeIt for an open source or personal project is completely free. To use i
 
 You're ready to start typing!
 
-### Simple Usage
+### Create an Instance
 
 At its simplest use, just create a new TypeIt instance, pass an empty element, and define your [options](#options).
 
@@ -84,10 +83,25 @@ Example:
   });
 ```
 
-### Advanced Usage
-To control a typewriter effect to the smallest character, pause, speed, or more, there are six companion functions available. Simply chain them together on an instance of TypeIt, and your chain will execute. You'll be able to create a dynamic, realistic narrative with just a few lines of code.
+## API
 
-For example:
+#### Companion Functions
+To control a typewriter effect to the smallest character, pause, speed, or more, there companion functions available. Simply chain them together on an instance of TypeIt, and your chain will execute. You'll be able to create a dynamic, realistic narrative with just a few lines of code.
+
+| Function        | Arguments   | Description
+| ------------- | ------------- | ------------- |
+| type() | (string) Characters (including those wrapped in HTML) to be typed. | Will type the characters. If instance has already begun, will add the typing action to the end of the queue. |
+| delete() | (number) Number of characters to be deleted from what's already been typed. | Will delete the specified number of characters. If left empty, will delete all of what's been typed. |
+| empty() | (none) | Will instantly delete everything that has already been typed.
+| pause() | (number) Number of milliseconds to pause before continuing. | Will pause the specified number of milliseconds.|
+| break() | (none) | Will break the typing to a new line.|
+| options() | (JSON) Options you'd like to update | Will redefine your options on the fly. This will only work for updating the `speed`, `lifeLike`, and `html` options.|
+| destroy() | (bool) Whether you want to remove the cursor after destroying. Default is `true`.| Destroys the instance on whatever elements to which it's attached.
+| freeze() | none | Will pause/freeze an instance.
+| unfreeze() | none | Will resume an instance.
+
+#### Chaining on Initializing
+You may use these functions to generate a queue of typing events immediately upon creating the instance.
 
 ```js
   new TypeIt('.type-it', {
@@ -102,16 +116,62 @@ For example:
   .type('t!');
 ```
 
-To view these functions and how they work, see the [API](#api) section.
+#### Pausing/Resuming Typing
+Additionally, you may use these functions to manipulate an instance after it's been created. A common use case for this is pausing and resuming an instance.
 
-## API
+```js
+var instance = new TypeIt('#element', {
+  strings: "This is what I'm choosing to type right now."
+});
 
-### Options
+//-- Pause after one second.
+setTimeout(() => {
+  instance.freeze();
+}, 1000);
 
-#### Defining Your Options
-You can modify the options for the plugin by passing in JSON.
+//-- Resume after three seconds.
+setTimeout(() => {
+  instance.unfreeze();
+}, 3000);
 
-There are a number of options you may use to customize TypeIt. For more details on these options, view the <a href="https://typeitjs.com/docs">full documentation</a>.
+```
+
+#### Respond to User Action
+This is also helpful if you want your typing to respond to user action of any sort.
+
+```js
+var instance = new TypeIt('#element');
+
+document.querySelector('button').addEventListener('click', (event) => {
+  instance.type('You just clicked a button!');
+});
+
+```
+
+### Tack on Strings Later
+You can also use the `type()` function to add more strings onto the queue at a later time. If the instance has already finished, the string will be added to the queue and typed when it's time.
+
+```js
+var instance = new TypeIt('#element', {
+  strings: "What I'm first going to type."
+});
+
+instance.type("I just decided to add this on too, but it won't be typed until the active queue has finished.");
+```
+
+### Check If Instance Is Complete
+At any moment, you may check if the instance is complete. Access the 'isComplete' property to do so. If `loop` is set to `true`, the instance will never be marked complete.
+
+```js
+var instance = new TypeIt('#element', { /* options... */ });
+
+if(instance.isComplete) {
+    //-- Do something.
+}
+```
+
+## Options
+You can modify the options for the plugin by passing in JSON upon instantiation.
 
 | Option        | Description   | Default Value
 | ------------- | ------------- | ------------- |
@@ -143,40 +203,17 @@ If you're creating several instances of TypeIt on a page, and don't wish to repe
     });
 ```
 
-### Companion Functions
+## CodePen Examples
+I have a few CodePen examples that illustrate to do a few interesting implementations of TypeIt.
 
-Use these functions to chain typing commands together upon initialization.
-
-| Function        | Arguments   | Description
-| ------------- | ------------- | ------------- |
-| type() | (string) Characters (including those wrapped in HTML) to be typed. | Will type the characters. |
-| delete() | (number) Number of characters to be deleted from what's already been typed. | Will delete the specified number of characters. |
-| empty() | (none) | Will instantly delete everything that has already been typed.
-| pause() | (number) Number of milliseconds to pause before continuing. | Will pause the specified number of milliseconds.|
-| break() | (none) | Will break the typing to a new line.|
-| options() | (JSON) Options you'd like to update | Will redefine your options on the fly. This will only work for updating the `speed`, `lifeLike`, and `html` options.|
-
-### Other Handy Functions
-
-#### Destroy an Instance
-
-| Function        | Arguments   | Description
-| ------------- | ------------- | ------------- |
-| destroy() | (bool) Whether you want to remove the cursor after destroying. Default is `true`.| Destroys the instance on whatever elements to which it's attached.
-
-```js
-var instance = new TypeIt('#id', {
-    strings: 'This is my string'
-});
-
-//-- Will preserve the cursor. If you want to destory that too, pass 'false'.
-instance.destroy();
-```
+* [TypeIt as a React Component](https://codepen.io/alexmacarthur/pen/gXNyBJ)
+* [Chained Typing Animations](https://codepen.io/alexmacarthur/pen/MOPQvp)
+* ['Fill in the Blank' Effect](https://codepen.io/alexmacarthur/pen/pdXLRG)
 
 ## Contribute
 
-Please do! The code is available on Github. Check out the [CONTRIBUTING.md](CONTRIBUTING.md) file to see how to get started.
+Please do! The code is available on Github. Check out the [CONTRIBUTING.md](https://github.com/alexmacarthur/typeit/blob/master/CONTRIBUTING.md) file to see how to get started.
 
 ## License
 
-[GPL-2.0](LICENSE) © Alex MacArthur
+[GPL-2.0](https://github.com/alexmacarthur/typeit/blob/master/LICENSE) © Alex MacArthur
