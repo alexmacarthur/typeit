@@ -231,7 +231,8 @@ export default class Instance {
     }
 
     this.element.insertAdjacentHTML(
-      "beforeend", `<span style="${this.style}${visibilityStyle}" class="ti-cursor">${this.options.cursorChar}</span>`
+      "beforeend",
+      `<span style="${this.style}${visibilityStyle}" class="ti-cursor">${this.options.cursorChar}</span>`
     );
   }
 
