@@ -4,6 +4,7 @@ window.TypeItDefaults = {
   deleteSpeed: undefined,
   lifeLike: true,
   cursor: true,
+  cursorChar: "|",
   cursorSpeed: 1000,
   breakLines: true,
   startDelay: 250,
