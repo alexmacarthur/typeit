@@ -64,12 +64,16 @@
 		<script>
       new TypeIt('#example1', {
         speed: 50,
-        strings: 'Just a simple string.'
+        strings: 'Just a simple string.',
+        cursorChar: '<strong>hello</strong>',
+        cursor: false
       });
 
       new TypeIt('#example2', {
         speed: 50,
-        strings: ['This is my first example.', 'It has several strings!']
+        strings: ['This is my first example.', 'It has several strings!'],
+        cursor: false,
+        startDelay: 3000
       });
 
       new TypeIt('#example3', {

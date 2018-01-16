@@ -67,10 +67,10 @@ If you want to have a fallback for users without JavaScript, you can put a strin
 Create a new TypeIt instance, pass a reference to element, and define your [options](#options).
 
 ```js
-  // The simplest example
-  new TypeIt('.type-it', {
-    strings: 'This is my string!'
-  });
+// The simplest example
+new TypeIt('.type-it', {
+strings: 'This is my string!'
+});
 ```
 
 ### Defining Strings
@@ -126,7 +126,7 @@ ASCII HTML entities must begin with & and end with ;
 
 ```js
 new TypeIt('.typeit-box', {
-     strings: '<h1 class="your-class">I really &hearts; Life cereal.<h1>',
+    strings: '<h1 class="your-class">I really &hearts; Life cereal.<h1>',
 });
 ```
 
@@ -149,16 +149,16 @@ To control a typewriter effect to the smallest character, pause, speed, or more,
 You may use these functions to generate a queue of typing events immediately upon creating the instance. This is probably the more common way of using these methods.
 
 ```js
-  new TypeIt('.type-it', {
-    speed: 900,
-    lifeLike: false,
-    autoStart: false
-  })
-  .type('I am typing slowly,')
-  .options({speed: 100})
-  .type('but now I am typing pretty fasst')
-  .delete(2)
-  .type('t!');
+new TypeIt('.type-it', {
+speed: 900,
+lifeLike: false,
+autoStart: false
+})
+.type('I am typing slowly,')
+.options({speed: 100})
+.type('but now I am typing pretty fasst')
+.delete(2)
+.type('t!');
 ```
 
 #### Pausing/Resuming Typing
@@ -178,7 +178,6 @@ setTimeout(() => {
 setTimeout(() => {
   instance.unfreeze();
 }, 3000);
-
 ```
 
 #### Respond to User Action
@@ -190,7 +189,6 @@ var instance = new TypeIt('#element');
 document.querySelector('button').addEventListener('click', (event) => {
   instance.type('You just clicked a button!');
 });
-
 ```
 
 ### Tack on Strings Later
@@ -226,6 +224,7 @@ You can modify the options for the plugin by passing in JSON upon instantiation.
 | lifeLike      | (boolean) Will make the typing pace irregular, as if a real person is doing it.  | true |
 | cursor    | (boolean) Show a blinking cursor at the end of the string(s).  | true  |
 | cursorSpeed    | (number in milliseconds) The blinking speed of the cursor.  | 1000  |
+| cursorChar    | (string) The character used for the cursor. HTMl works too! | '|' |
 | breakLines    | (boolean) Choose whether you want multiple strings to be printed on top of each other (`breakLines: true`), or if you want each string to be deleted and replaced by the next one (`breakLines: false`).  | true  |
 | nextStringDelay    | (number in milliseconds) The amount of time (milliseconds) between typing the next string when multiple strings are defined.  | 750  |
 | startDelete    | (boolean) Whether to begin instance by deleting strings inside element, and then typing what strings are defined via JSON or companion functions. | false  |
@@ -239,12 +238,12 @@ You can modify the options for the plugin by passing in JSON upon instantiation.
 If you're creating several instances of TypeIt on a page, and don't wish to repeatedly set an option of the same value for each of them, you can redefine the default options beforehand. Change the default value(s) before creating any instances, and you'll be set.
 
 ```js
-  window.TypeItDefaults.speed = 50;
+window.TypeItDefaults.speed = 50;
 
-  //-- This and all following instances will now have a default speed of 50.
-  new TypeIt('#id', {
-      strings: 'A string!'
-  });
+//-- This and all following instances will now have a default speed of 50.
+new TypeIt('#id', {
+  strings: 'A string!'
+});
 ```
 
 ## CodePen Examples
