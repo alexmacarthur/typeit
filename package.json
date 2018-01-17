@@ -17,7 +17,8 @@
     "build": "rollup -c && prettier src/* --write",
     "watch": "rollup -c -w",
     "serve": "concurrently --kill-others \"rollup -c -w\" \"node serve.js\"",
-    "test": "jest tests"
+    "test": "jest tests",
+    "postinstall": "node ./notice.js"
   },
   "keywords": [
     "javascript",

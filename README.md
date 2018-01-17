@@ -35,8 +35,8 @@ See some more examples and try out the sandbox [here](https://typeitjs.com).
 ## Choose a License
 Using TypeIt for an open source or personal project is completely free. To use it in a commercial project, purchase a single license, or an unlimited license that'll never expire, no matter how many times you use it.
 * Personal or Open Source - [FREE](#setup)
-* Single Commercial License - [Purchase Here](https://www.uplabs.com/posts/typeit-a-jquery-animated-typing-plugin)
-* Extended Commercial License - [Purchase Here](https://www.uplabs.com/posts/typeit-a-jquery-animated-typing-plugin)
+* Single Commercial License - [Purchase Here](https://typeitjs.com#license)
+* Extended Commercial License - [Purchase Here](https://typeitjs.com#license)
 
 ## Installation
 
@@ -69,7 +69,7 @@ Create a new TypeIt instance, pass a reference to element, and define your [opti
 ```js
 // The simplest example
 new TypeIt('.type-it', {
-strings: 'This is my string!'
+    strings: 'This is my string!'
 });
 ```
 
@@ -224,7 +224,7 @@ You can modify the options for the plugin by passing in JSON upon instantiation.
 | lifeLike      | (boolean) Will make the typing pace irregular, as if a real person is doing it.  | true |
 | cursor    | (boolean) Show a blinking cursor at the end of the string(s).  | true  |
 | cursorSpeed    | (number in milliseconds) The blinking speed of the cursor.  | 1000  |
-| cursorChar    | (string) The character used for the cursor. HTMl works too! | '|' |
+| cursorChar    | (string) The character used for the cursor. HTML works too! | '|' |
 | breakLines    | (boolean) Choose whether you want multiple strings to be printed on top of each other (`breakLines: true`), or if you want each string to be deleted and replaced by the next one (`breakLines: false`).  | true  |
 | nextStringDelay    | (number in milliseconds) The amount of time (milliseconds) between typing the next string when multiple strings are defined.  | 750  |
 | startDelete    | (boolean) Whether to begin instance by deleting strings inside element, and then typing what strings are defined via JSON or companion functions. | false  |
@@ -247,7 +247,7 @@ new TypeIt('#id', {
 ```
 
 ## CodePen Examples
-I have a few CodePen examples that illustrate to do a few interesting implementations of TypeIt.
+I have a few CodePen examples that illustrate how to do some interesting things with TypeIt.
 
 * [TypeIt as a React Component](https://codepen.io/alexmacarthur/pen/gXNyBJ)
 * [Chained Typing Animations](https://codepen.io/alexmacarthur/pen/MOPQvp)
