@@ -232,7 +232,9 @@ export default class Instance {
 
     this.element.insertAdjacentHTML(
       "beforeend",
-      `<span style="${this.style}${visibilityStyle}" class="ti-cursor">${this.options.cursorChar}</span>`
+      `<span style="${this.style}${visibilityStyle}" class="ti-cursor">${
+        this.options.cursorChar
+      }</span>`
     );
   }
 
@@ -468,7 +470,13 @@ export default class Instance {
         }
       }
 
-      this.elementContainer.innerHTML = textArray.join("");
+      //-- Make the content a string again, AND strip out any empty HTML tags.
+      //-- We want do strip empty tags here and ONLY here because when we're
+      //-- typing new content inside an HTML tag, there is momentarily an empty
+      //-- tag we want to keep.
+      this.elementContainer.innerHTML = textArray
+        .join("")
+        .replace(/<[^\/>][^>]*><\/[^>]+>/, "");
 
       //-- Delete again! Don't call directly, to respect possible pauses.
       if (chars === null) {
