@@ -3,6 +3,7 @@ The Most Versatile JavaScript Animated Typing Utility on the Planet
 
 [![Build Status](https://travis-ci.org/alexmacarthur/typeit.svg?branch=master)](https://travis-ci.org/alexmacarthur/typeit)
 [![npm downloads](https://img.shields.io/npm/dm/typeit.svg?style=flat-square)](http://npm-stat.com/charts.html?package=typeit)
+[![](https://data.jsdelivr.com/v1/package/npm/typeit/badge)](https://www.jsdelivr.com/package/npm/typeit)
 
 ## Table of Contents
 * [Overview](#overview)
@@ -226,7 +227,7 @@ You can modify the options for the plugin by passing in JSON upon instantiation.
 | cursorSpeed    | (number in milliseconds) The blinking speed of the cursor.  | 1000  |
 | cursorChar    | (string) The character used for the cursor. HTML works too! | pipe |
 | breakLines    | (boolean) Choose whether you want multiple strings to be printed on top of each other (`breakLines: true`), or if you want each string to be deleted and replaced by the next one (`breakLines: false`).  | true  |
-| nextStringDelay    | (number in milliseconds) The amount of time (milliseconds) between typing the next string when multiple strings are defined.  | 750  |
+| nextStringDelay    | (number in milliseconds or array) The amount of time (milliseconds) between typing the next string when multiple strings are defined. You may either pass a number in milliseconds, or an array of values. The first value will be used as the delay before a new string starts, and the second value will be used as the delay after a string ends. For example, passing `[1000, 2000]` will tell TypeIt to pause 1000ms before typing a new string, and wait 2000ms after a string has just completed. | 750 |
 | startDelete    | (boolean) Whether to begin instance by deleting strings inside element, and then typing what strings are defined via JSON or companion functions. | false  |
 | startDelay    | (number in milliseconds) The amount of time before the plugin begins typing after initalizing.  | 250  |
 | loop    | (boolean) Have your string or strings continuously loop after completing.  | false  |

@@ -12,9 +12,28 @@ export default class Instance {
     this.stringsToDelete = "";
     this.style = "display:inline;position:relative;font:inherit;color:inherit;";
     this.element = element;
-
     this.setOptions(options, window.TypeItDefaults, false);
+    this.setNextStringDelay();
     this.init();
+  }
+
+  /**
+   * Based on options, set the before and after values for the delay that is inserted when typing new strings.
+   */
+  setNextStringDelay() {
+    let isArray = Array.isArray(this.options.nextStringDelay);
+
+    let halfDelay = !isArray ? this.options.nextStringDelay / 2 : null;
+
+    this.options.nextStringDelay = {
+      before: isArray ? this.options.nextStringDelay[0] : halfDelay,
+      after: isArray ? this.options.nextStringDelay[1] : halfDelay,
+      total: isArray
+        ? this.options.nextStringDelay.reduce((accumulator, currentValue) => {
+            return accumulator + currentValue;
+          })
+        : this.options.nextStringDelay
+    };
   }
 
   init() {
@@ -140,11 +159,13 @@ export default class Instance {
    * @return {void}
    */
   insertSplitPause(startPosition, numberOfActionsToWrap = 1) {
-    let halfDelay = this.options.nextStringDelay / 2;
-    this.queue.splice(startPosition, 0, [this.pause, halfDelay]);
+    this.queue.splice(startPosition, 0, [
+      this.pause,
+      this.options.nextStringDelay.before
+    ]);
     this.queue.splice(startPosition - numberOfActionsToWrap, 0, [
       this.pause,
-      halfDelay
+      this.options.nextStringDelay.after
     ]);
   }
 
@@ -272,9 +293,10 @@ export default class Instance {
   checkElement() {
     if (!this.options.startDelete && this.element.innerHTML.length > 0) {
       this.options.strings = this.element.innerHTML.trim();
-    } else {
-      this.stringsToDelete = this.element.innerHTML;
+      return;
     }
+
+    this.stringsToDelete = this.element.innerHTML;
   }
 
   break() {
@@ -282,10 +304,10 @@ export default class Instance {
     this.next();
   }
 
-  pause(time) {
+  pause(time = null) {
     setTimeout(() => {
       this.next();
-    }, time === undefined ? this.options.nextStringDelay : time);
+    }, time === null ? this.options.nextStringDelay.total : time);
   }
 
   /*

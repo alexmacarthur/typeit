@@ -109,6 +109,35 @@ test("Can type new string after completion.", () => {
   expect(typedString).toEqual("Ham over turkey. Obviously.");
 });
 
+test("Generates correct pauses.", () => {
+  document.body.innerHTML = `<div>'
+      <span id="element"></span>
+    </div>`;
+
+  const instance1 = new TypeIt("#element", {
+    nextStringDelay: 500,
+    strings: ["Free markets...", "win."]
+  });
+
+  let nextStringDelay = instance1.instances[0].options.nextStringDelay;
+
+  expect(typeof nextStringDelay).toBe("object");
+  expect(nextStringDelay.before).toBe(250);
+  expect(nextStringDelay.after).toBe(250);
+  expect(nextStringDelay.total).toBe(500);
+
+  const instance2 = new TypeIt("#element", {
+    nextStringDelay: [150, 400],
+    strings: ["Free markets...", "win."]
+  });
+
+  nextStringDelay = instance2.instances[0].options.nextStringDelay;
+
+  expect(nextStringDelay.before).toBe(150);
+  expect(nextStringDelay.after).toBe(400);
+  expect(nextStringDelay.total).toBe(550);
+});
+
 test("Wraps pauses correctly when replacing lines.", () => {
   document.body.innerHTML = `<div>'
       <span id="element"></span>
@@ -118,14 +147,18 @@ test("Wraps pauses correctly when replacing lines.", () => {
     strings: ["Free markets...", "win."],
     breakLines: false
   });
+
   const firstInstance = instance.instances[0];
-  const pause = firstInstance.options.nextStringDelay / 2;
 
   expect(firstInstance.queue[15][0].name).toBe("pause");
-  expect(firstInstance.queue[15][1]).toBe(pause);
+  expect(firstInstance.queue[15][1]).toBe(
+    firstInstance.options.nextStringDelay.before
+  );
 
   expect(firstInstance.queue[31][0].name).toBe("pause");
-  expect(firstInstance.queue[31][1]).toBe(pause);
+  expect(firstInstance.queue[31][1]).toBe(
+    firstInstance.options.nextStringDelay.after
+  );
 });
 
 test("Wraps pauses correctly when breaking lines.", () => {
