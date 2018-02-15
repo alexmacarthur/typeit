@@ -372,19 +372,6 @@ export default class Instance {
     }, this.typePace);
   }
 
-  /**
-   * Removes helper elements with certain classes from the TypeIt element.
-   */
-  removeHelperElements() {
-    let helperElements = this.element.querySelectorAll(
-      ".ti-container, .ti-cursor"
-    );
-
-    [].forEach.call(helperElements, helperElement => {
-      this.element.removeChild(helperElement);
-    });
-  }
-
   setOptions(settings, defaults = null, autonext = true) {
     let mergedSettings = {};
 

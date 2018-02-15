@@ -451,22 +451,6 @@ var Instance = function () {
         _this4.next();
       }, this.typePace);
     }
-
-    /**
-     * Removes helper elements with certain classes from the TypeIt element.
-     */
-
-  }, {
-    key: "removeHelperElements",
-    value: function removeHelperElements() {
-      var _this5 = this;
-
-      var helperElements = this.element.querySelectorAll(".ti-container, .ti-cursor");
-
-      [].forEach.call(helperElements, function (helperElement) {
-        _this5.element.removeChild(helperElement);
-      });
-    }
   }, {
     key: "setOptions",
     value: function setOptions(settings) {
@@ -512,17 +496,17 @@ var Instance = function () {
   }, {
     key: "delete",
     value: function _delete() {
-      var _this6 = this;
+      var _this5 = this;
 
       var chars = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
       this.timeouts[1] = setTimeout(function () {
-        _this6.setPace();
+        _this5.setPace();
 
-        var textArray = _this6.elementContainer.innerHTML.split("");
+        var textArray = _this5.elementContainer.innerHTML.split("");
 
         for (var n = textArray.length - 1; n > -1; n--) {
-          if ((textArray[n] === ">" || textArray[n] === ";") && _this6.options.html) {
+          if ((textArray[n] === ">" || textArray[n] === ";") && _this5.options.html) {
             for (var o = n; o > -1; o--) {
               if (textArray.slice(o - 3, o + 1).join("") === "<br>") {
                 textArray.splice(o - 3, 4);
@@ -558,8 +542,8 @@ var Instance = function () {
         }
 
         //-- If we've found an empty set of HTML tags...
-        if (_this6.elementContainer.innerHTML.indexOf("></") > -1) {
-          for (var i = _this6.elementContainer.innerHTML.indexOf("></") - 2; i >= 0; i--) {
+        if (_this5.elementContainer.innerHTML.indexOf("></") > -1) {
+          for (var i = _this5.elementContainer.innerHTML.indexOf("></") - 2; i >= 0; i--) {
             if (textArray[i] === "<") {
               textArray.splice(i, textArray.length - i);
               break;
@@ -571,18 +555,18 @@ var Instance = function () {
         //-- We want do strip empty tags here and ONLY here because when we're
         //-- typing new content inside an HTML tag, there is momentarily an empty
         //-- tag we want to keep.
-        _this6.elementContainer.innerHTML = textArray.join("").replace(/<[^\/>][^>]*><\/[^>]+>/, "");
+        _this5.elementContainer.innerHTML = textArray.join("").replace(/<[^\/>][^>]*><\/[^>]+>/, "");
 
         //-- Delete again! Don't call directly, to respect possible pauses.
         if (chars === null) {
-          _this6.queue.unshift([_this6.delete, textArray.length]);
+          _this5.queue.unshift([_this5.delete, textArray.length]);
         }
 
         if (chars > 1) {
-          _this6.queue.unshift([_this6.delete, chars - 1]);
+          _this5.queue.unshift([_this5.delete, chars - 1]);
         }
 
-        _this6.next();
+        _this5.next();
       }, this.deletePace);
     }
 
@@ -599,7 +583,7 @@ var Instance = function () {
   }, {
     key: "next",
     value: function next() {
-      var _this7 = this;
+      var _this6 = this;
 
       if (this.isFrozen) {
         return;
@@ -620,7 +604,7 @@ var Instance = function () {
         this.generateQueue([this.pause, this.options.loopDelay / 2]);
 
         setTimeout(function () {
-          _this7.next();
+          _this6.next();
         }, this.options.loopDelay / 2);
       } else {
         this.isComplete = true;
