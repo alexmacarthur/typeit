@@ -53,7 +53,8 @@ export default [
           comments: function(node, comment) {
             const text = comment.value
             const type = comment.type
-            if (type === 'comment2') {
+            const line = comment.line
+            if (type === 'comment2' && line === 1) {
               return /typeit/i.test(text)
             }
           }
