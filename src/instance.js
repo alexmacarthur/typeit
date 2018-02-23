@@ -291,6 +291,16 @@ export default class Instance {
    * from nothing, set a specific variable to what's in the HTML.
    */
   checkElement() {
+    //-- If any of the existing children nodes have .ti-container, clear it out because this is a remnant of a previous instance.
+    this.element.childNodes.forEach(node => {
+      if (node.classList === undefined) return;
+
+      if (node.classList.contains("ti-container")) {
+        this.element.innerHTML = "";
+      }
+    });
+
+    //-- Set the hard-coded string as the string(s) we'll type.
     if (!this.options.startDelete && this.element.innerHTML.length > 0) {
       this.options.strings = this.element.innerHTML.trim();
       return;

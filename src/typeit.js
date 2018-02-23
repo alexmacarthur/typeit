@@ -108,8 +108,9 @@ export default class TypeIt {
 
   destroy(removeCursor = true) {
     this.instances.forEach(instance => {
-      instance.timeouts.forEach(timeout => {
+      instance.timeouts = instance.timeouts.map(timeout => {
         clearTimeout(timeout);
+        return null;
       });
 
       if (removeCursor) {

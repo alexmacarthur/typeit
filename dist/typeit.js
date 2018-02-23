@@ -357,6 +357,18 @@ var Instance = function () {
   }, {
     key: "checkElement",
     value: function checkElement() {
+      var _this2 = this;
+
+      //-- If any of the existing children nodes have .ti-container, clear it out because this is a remnant of a previous instance.
+      this.element.childNodes.forEach(function (node) {
+        if (node.classList === undefined) return;
+
+        if (node.classList.contains("ti-container")) {
+          _this2.element.innerHTML = "";
+        }
+      });
+
+      //-- Set the hard-coded string as the string(s) we'll type.
       if (!this.options.startDelete && this.element.innerHTML.length > 0) {
         this.options.strings = this.element.innerHTML.trim();
         return;
@@ -373,12 +385,12 @@ var Instance = function () {
   }, {
     key: "pause",
     value: function pause() {
-      var _this2 = this;
+      var _this3 = this;
 
       var time = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
       setTimeout(function () {
-        _this2.next();
+        _this3.next();
       }, time === null ? this.options.nextStringDelay.total : time);
     }
 
@@ -391,14 +403,14 @@ var Instance = function () {
   }, {
     key: "rake",
     value: function rake(array) {
-      var _this3 = this;
+      var _this4 = this;
 
       return array.map(function (item) {
         //-- Convert string to array.
         item = item.split("");
 
         //-- If we're parsing HTML, group tags into their own array items.
-        if (_this3.options.html) {
+        if (_this4.options.html) {
           var tPosition = [];
           var tag = void 0;
           var isEntity = false;
@@ -425,7 +437,7 @@ var Instance = function () {
   }, {
     key: "type",
     value: function type(character) {
-      var _this4 = this;
+      var _this5 = this;
 
       this.setPace();
 
@@ -433,22 +445,22 @@ var Instance = function () {
         //-- We must have an HTML tag!
         if (typeof character !== "string") {
           character.innerHTML = "";
-          _this4.elementContainer.appendChild(character);
-          _this4.isInTag = true;
-          _this4.next();
+          _this5.elementContainer.appendChild(character);
+          _this5.isInTag = true;
+          _this5.next();
           return;
         }
 
         //-- When we hit the end of the tag, turn it off!
         if (character.startsWith("</")) {
-          _this4.isInTag = false;
-          _this4.next();
+          _this5.isInTag = false;
+          _this5.next();
           return;
         }
 
-        _this4.insert(character, _this4.isInTag);
+        _this5.insert(character, _this5.isInTag);
 
-        _this4.next();
+        _this5.next();
       }, this.typePace);
     }
   }, {
@@ -496,17 +508,17 @@ var Instance = function () {
   }, {
     key: "delete",
     value: function _delete() {
-      var _this5 = this;
+      var _this6 = this;
 
       var chars = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
       this.timeouts[1] = setTimeout(function () {
-        _this5.setPace();
+        _this6.setPace();
 
-        var textArray = _this5.elementContainer.innerHTML.split("");
+        var textArray = _this6.elementContainer.innerHTML.split("");
 
         for (var n = textArray.length - 1; n > -1; n--) {
-          if ((textArray[n] === ">" || textArray[n] === ";") && _this5.options.html) {
+          if ((textArray[n] === ">" || textArray[n] === ";") && _this6.options.html) {
             for (var o = n; o > -1; o--) {
               if (textArray.slice(o - 3, o + 1).join("") === "<br>") {
                 textArray.splice(o - 3, 4);
@@ -542,8 +554,8 @@ var Instance = function () {
         }
 
         //-- If we've found an empty set of HTML tags...
-        if (_this5.elementContainer.innerHTML.indexOf("></") > -1) {
-          for (var i = _this5.elementContainer.innerHTML.indexOf("></") - 2; i >= 0; i--) {
+        if (_this6.elementContainer.innerHTML.indexOf("></") > -1) {
+          for (var i = _this6.elementContainer.innerHTML.indexOf("></") - 2; i >= 0; i--) {
             if (textArray[i] === "<") {
               textArray.splice(i, textArray.length - i);
               break;
@@ -555,18 +567,18 @@ var Instance = function () {
         //-- We want do strip empty tags here and ONLY here because when we're
         //-- typing new content inside an HTML tag, there is momentarily an empty
         //-- tag we want to keep.
-        _this5.elementContainer.innerHTML = textArray.join("").replace(/<[^\/>][^>]*><\/[^>]+>/, "");
+        _this6.elementContainer.innerHTML = textArray.join("").replace(/<[^\/>][^>]*><\/[^>]+>/, "");
 
         //-- Delete again! Don't call directly, to respect possible pauses.
         if (chars === null) {
-          _this5.queue.unshift([_this5.delete, textArray.length]);
+          _this6.queue.unshift([_this6.delete, textArray.length]);
         }
 
         if (chars > 1) {
-          _this5.queue.unshift([_this5.delete, chars - 1]);
+          _this6.queue.unshift([_this6.delete, chars - 1]);
         }
 
-        _this5.next();
+        _this6.next();
       }, this.deletePace);
     }
 
@@ -583,7 +595,7 @@ var Instance = function () {
   }, {
     key: "next",
     value: function next() {
-      var _this6 = this;
+      var _this7 = this;
 
       if (this.isFrozen) {
         return;
@@ -604,7 +616,7 @@ var Instance = function () {
         this.generateQueue([this.pause, this.options.loopDelay / 2]);
 
         setTimeout(function () {
-          _this6.next();
+          _this7.next();
         }, this.options.loopDelay / 2);
       } else {
         this.isComplete = true;
@@ -739,8 +751,9 @@ var TypeIt = function () {
       var removeCursor = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
 
       this.instances.forEach(function (instance) {
-        instance.timeouts.forEach(function (timeout) {
+        instance.timeouts = instance.timeouts.map(function (timeout) {
           clearTimeout(timeout);
+          return null;
         });
 
         if (removeCursor) {
