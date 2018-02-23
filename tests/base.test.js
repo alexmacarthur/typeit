@@ -1,5 +1,39 @@
 import TypeIt from "../src/typeit";
 
+test("Clears out remnants of previous instances correctly.", () => {
+  jest.useFakeTimers();
+
+  document.body.innerHTML = `
+    <div>
+      <span id="element">
+        <span style="display:inline;position:relative;font:inherit;color:inherit;" class="ti-container">Previous string.</span>
+      </span>
+    </div>
+  `;
+
+  let instance = new TypeIt("#element", { strings: "My string." });
+
+  expect(
+    !instance.instances[0].options.strings[0].includes("ti-container")
+  ).toEqual(true);
+});
+
+test("Defines hard-coded string correctly.", () => {
+  jest.useFakeTimers();
+
+  document.body.innerHTML = `
+    <div>
+      <span id="element">
+        Hard-coded string.
+      </span>
+    </div>
+  `;
+
+  let instance = new TypeIt("#element", { strings: "My string." });
+
+  expect(instance.instances[0].options.strings).toEqual(["Hard-coded string."]);
+});
+
 test("Returns an object with base properties.", () => {
   document.body.innerHTML = `<div>'
       <span id="element"></span>
