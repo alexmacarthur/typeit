@@ -2,7 +2,7 @@
  *
  *   typeit - The most versatile animated typing utility on the planet.
  *   Author: Alex MacArthur <alex@macarthur.me> (https://macarthur.me)
- *   Version: v5.5.1
+ *   Version: v5.5.2
  *   URL: https://typeitjs.com
  *   License: GPL-2.0
  *
@@ -25,6 +25,16 @@ window.TypeItDefaults = {
   autoStart: true,
   callback: function callback() {}
 };
+
+if (!String.prototype.startsWith) {
+  Object.defineProperty(String.prototype, "startsWith", {
+    value: function value(search) {
+      return this.indexOf(search) === 0;
+    },
+    configurable: true,
+    writable: true
+  });
+}
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
   return typeof obj;
@@ -196,7 +206,7 @@ var Instance = function () {
 
       string = this.toArray(string);
 
-      var doc = document.implementation.createHTMLDocument();
+      var doc = document.implementation.createHTMLDocument("");
       doc.body.innerHTML = string;
 
       //-- If it's designated, rake that bad boy for HTML tags and stuff.
@@ -209,7 +219,7 @@ var Instance = function () {
       if (this.options.html && string[0].startsWith("<") && !string[0].startsWith("</")) {
         //-- Create node of that string name.
         var matches = string[0].match(/\<(.*?)\>/);
-        var _doc = document.implementation.createHTMLDocument();
+        var _doc = document.implementation.createHTMLDocument("");
         _doc.body.innerHTML = "<" + matches[1] + "></" + matches[1] + ">";
 
         //-- Add to the queue.
@@ -354,7 +364,7 @@ var Instance = function () {
       var _this2 = this;
 
       //-- If any of the existing children nodes have .ti-container, clear it out because this is a remnant of a previous instance.
-      this.element.childNodes.forEach(function (node) {
+      [].slice.call(this.element.childNodes).forEach(function (node) {
         if (node.classList === undefined) return;
 
         if (node.classList.contains("ti-container")) {

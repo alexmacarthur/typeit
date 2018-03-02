@@ -1,4 +1,5 @@
 import "./defaults.js";
+import "./startsWith";
 
 export default class Instance {
   constructor(element, id, options) {
@@ -117,7 +118,7 @@ export default class Instance {
 
     string = this.toArray(string);
 
-    var doc = document.implementation.createHTMLDocument();
+    var doc = document.implementation.createHTMLDocument("");
     doc.body.innerHTML = string;
 
     //-- If it's designated, rake that bad boy for HTML tags and stuff.
@@ -133,7 +134,7 @@ export default class Instance {
     ) {
       //-- Create node of that string name.
       let matches = string[0].match(/\<(.*?)\>/);
-      let doc = document.implementation.createHTMLDocument();
+      let doc = document.implementation.createHTMLDocument("");
       doc.body.innerHTML = "<" + matches[1] + "></" + matches[1] + ">";
 
       //-- Add to the queue.
@@ -292,7 +293,7 @@ export default class Instance {
    */
   checkElement() {
     //-- If any of the existing children nodes have .ti-container, clear it out because this is a remnant of a previous instance.
-    this.element.childNodes.forEach(node => {
+    [].slice.call(this.element.childNodes).forEach(node => {
       if (node.classList === undefined) return;
 
       if (node.classList.contains("ti-container")) {
