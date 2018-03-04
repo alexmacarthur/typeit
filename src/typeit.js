@@ -65,7 +65,7 @@ export default class TypeIt {
   type(string = "") {
     this.instances.forEach(instance => {
       //-- Queue up a string right off the bat.
-      instance.queueUpString(string);
+      instance.queueString(string);
 
       if (instance.isComplete === true) {
         instance.next();

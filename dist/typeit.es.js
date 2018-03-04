@@ -26,14 +26,38 @@ window.TypeItDefaults = {
   callback: function callback() {}
 };
 
-if (!String.prototype.startsWith) {
-  Object.defineProperty(String.prototype, "startsWith", {
-    value: function value(search) {
-      return this.indexOf(search) === 0;
-    },
-    configurable: true,
-    writable: true
+function isVisible(element) {
+  var coordinates = element.getBoundingClientRect();
+
+  //-- Element extends past bottom or right.
+  if (coordinates.right > window.innerWidth || coordinates.bottom > window.innerHeight) {
+    return false;
+  }
+
+  //-- Element extends past top or left.
+  if (coordinates.top < 0 || coordinates.left < 0) {
+    return false;
+  }
+
+  return true;
+}
+
+function randomInRange(value, range) {
+  return Math.abs(Math.random() * (value + range - (value - range)) + (value - range));
+}
+
+function removeComments(arrayOfStrings) {
+  return arrayOfStrings.map(function (string) {
+    return string.replace(/<\!--.*?-->/g, "");
   });
+}
+
+function startsWith(string, search) {
+  return string.indexOf(search) === 0;
+}
+
+function toArray(string) {
+  return Array.isArray(string) ? string.slice(0) : string.split("<br>");
 }
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
@@ -120,8 +144,8 @@ var Instance = function () {
     value: function init() {
       this.checkElement();
 
-      this.options.strings = this.toArray(this.options.strings);
-      this.options.strings = this.removeComments(this.options.strings);
+      this.options.strings = toArray(this.options.strings);
+      this.options.strings = removeComments(this.options.strings);
 
       //-- We don't have anything. Get out of here.
       if (this.options.strings.length >= 1 && this.options.strings[0] === "") {
@@ -144,13 +168,6 @@ var Instance = function () {
       this.kickoff();
     }
   }, {
-    key: "removeComments",
-    value: function removeComments(arrayOfStrings) {
-      return arrayOfStrings.map(function (string) {
-        return string.replace(/<\!--.*?-->/g, "");
-      });
-    }
-  }, {
     key: "generateQueue",
     value: function generateQueue() {
       var _this = this;
@@ -162,7 +179,7 @@ var Instance = function () {
       this.queue.push(initialStep);
 
       this.options.strings.forEach(function (string, index) {
-        _this.queueUpString(string);
+        _this.queueString(string);
 
         //-- This is not the last string,so insert a pause for between strings.
         if (index + 1 < _this.options.strings.length) {
@@ -170,7 +187,7 @@ var Instance = function () {
             _this.queue.push([_this.break]);
             _this.insertSplitPause(_this.queue.length);
           } else {
-            _this.queueUpDeletions(string);
+            _this.queueDeletions(string);
             _this.insertSplitPause(_this.queue.length, string.length);
           }
         }
@@ -182,8 +199,8 @@ var Instance = function () {
      */
 
   }, {
-    key: "queueUpDeletions",
-    value: function queueUpDeletions() {
+    key: "queueDeletions",
+    value: function queueDeletions() {
       var stringOrNumber = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
       var number = typeof stringOrNumber === "string" ? stringOrNumber.length : stringOrNumber;
@@ -198,13 +215,13 @@ var Instance = function () {
      */
 
   }, {
-    key: "queueUpString",
-    value: function queueUpString(string) {
+    key: "queueString",
+    value: function queueString(string) {
       var rake = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
 
       if (!string) return;
 
-      string = this.toArray(string);
+      string = toArray(string);
 
       var doc = document.implementation.createHTMLDocument("");
       doc.body.innerHTML = string;
@@ -216,7 +233,7 @@ var Instance = function () {
       }
 
       //-- If an opening HTML tag is found and we're not already printing inside a tag
-      if (this.options.html && string[0].startsWith("<") && !string[0].startsWith("</")) {
+      if (this.options.html && startsWith(string[0], "<") && !startsWith(string[0], "</")) {
         //-- Create node of that string name.
         var matches = string[0].match(/\<(.*?)\>/);
         var _doc = document.implementation.createHTMLDocument("");
@@ -233,7 +250,7 @@ var Instance = function () {
 
       //-- If there's more to it, run again until fully printed.
       if (string.length) {
-        this.queueUpString(string, false);
+        this.queueString(string, false);
       }
     }
 
@@ -262,7 +279,7 @@ var Instance = function () {
         return;
       }
 
-      if (this.isVisible()) {
+      if (isVisible(this.element)) {
         this.hasStarted = true;
         this.next();
         return;
@@ -271,34 +288,12 @@ var Instance = function () {
       var that = this;
 
       window.addEventListener("scroll", function checkForStart(event) {
-        if (that.isVisible() && !that.hasStarted) {
+        if (isVisible(that.element) && !that.hasStarted) {
           that.hasStarted = true;
           that.next();
           event.currentTarget.removeEventListener(event.type, checkForStart);
         }
       });
-    }
-  }, {
-    key: "isVisible",
-    value: function isVisible() {
-      var coordinates = this.element.getBoundingClientRect();
-
-      var viewport = {
-        height: window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight,
-        width: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
-      };
-
-      //-- Element extends outside of viewport.
-      if (coordinates.right > viewport.width || coordinates.bottom > viewport.height) {
-        return false;
-      }
-
-      //-- Top or left aren't visible.
-      if (coordinates.top < 0 || coordinates.left < 0) {
-        return false;
-      }
-
-      return true;
     }
   }, {
     key: "cursor",
@@ -339,18 +334,6 @@ var Instance = function () {
 
       //-- Split & rejoin to avoid odd spacing issues in some browsers.
       this.elementContainer.innerHTML = this.elementContainer.innerHTML.split("").join("");
-    }
-
-    /**
-     * Converts a string to an array, if it's not already.
-     *
-     * @return array
-     */
-
-  }, {
-    key: "toArray",
-    value: function toArray$$1(string) {
-      return string.constructor === Array ? string.slice(0) : string.split("<br>");
     }
 
     /**
@@ -456,7 +439,7 @@ var Instance = function () {
         }
 
         //-- When we hit the end of the tag, turn it off!
-        if (character.startsWith("</")) {
+        if (startsWith(character, "</")) {
           _this5.isInTag = false;
           _this5.next();
           return;
@@ -494,11 +477,6 @@ var Instance = function () {
       }
     }
   }, {
-    key: "randomInRange",
-    value: function randomInRange(value, range) {
-      return Math.abs(Math.random() * (value + range - (value - range)) + (value - range));
-    }
-  }, {
     key: "setPace",
     value: function setPace() {
       var typeSpeed = this.options.speed;
@@ -506,8 +484,8 @@ var Instance = function () {
       var typeRange = typeSpeed / 2;
       var deleteRange = deleteSpeed / 2;
 
-      this.typePace = this.options.lifeLike ? this.randomInRange(typeSpeed, typeRange) : typeSpeed;
-      this.deletePace = this.options.lifeLike ? this.randomInRange(deleteSpeed, deleteRange) : deleteSpeed;
+      this.typePace = this.options.lifeLike ? randomInRange(typeSpeed, typeRange) : typeSpeed;
+      this.deletePace = this.options.lifeLike ? randomInRange(deleteSpeed, deleteRange) : deleteSpeed;
     }
   }, {
     key: "delete",
@@ -616,7 +594,7 @@ var Instance = function () {
       this.options.callback();
 
       if (this.options.loop) {
-        this.queueUpDeletions(this.elementContainer.innerHTML);
+        this.queueDeletions(this.elementContainer.innerHTML);
         this.generateQueue([this.pause, this.options.loopDelay / 2]);
 
         setTimeout(function () {
@@ -699,7 +677,7 @@ var TypeIt = function () {
 
       this.instances.forEach(function (instance) {
         //-- Queue up a string right off the bat.
-        instance.queueUpString(string);
+        instance.queueString(string);
 
         if (instance.isComplete === true) {
           instance.next();

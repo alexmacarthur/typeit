@@ -1,5 +1,11 @@
 import "./defaults.js";
-import "./startsWith";
+import {
+  isVisible,
+  randomInRange,
+  removeComments,
+  startsWith,
+  toArray
+} from "./utilities";
 
 export default class Instance {
   constructor(element, id, options) {
@@ -40,8 +46,8 @@ export default class Instance {
   init() {
     this.checkElement();
 
-    this.options.strings = this.toArray(this.options.strings);
-    this.options.strings = this.removeComments(this.options.strings);
+    this.options.strings = toArray(this.options.strings);
+    this.options.strings = removeComments(this.options.strings);
 
     //-- We don't have anything. Get out of here.
     if (this.options.strings.length >= 1 && this.options.strings[0] === "") {
@@ -66,12 +72,6 @@ export default class Instance {
     this.kickoff();
   }
 
-  removeComments(arrayOfStrings) {
-    return arrayOfStrings.map(string => {
-      return string.replace(/<\!--.*?-->/g, "");
-    });
-  }
-
   generateQueue(initialStep = null) {
     initialStep =
       initialStep === null
@@ -81,7 +81,7 @@ export default class Instance {
     this.queue.push(initialStep);
 
     this.options.strings.forEach((string, index) => {
-      this.queueUpString(string);
+      this.queueString(string);
 
       //-- This is not the last string,so insert a pause for between strings.
       if (index + 1 < this.options.strings.length) {
@@ -89,7 +89,7 @@ export default class Instance {
           this.queue.push([this.break]);
           this.insertSplitPause(this.queue.length);
         } else {
-          this.queueUpDeletions(string);
+          this.queueDeletions(string);
           this.insertSplitPause(this.queue.length, string.length);
         }
       }
@@ -99,7 +99,7 @@ export default class Instance {
   /**
    * Delete each character from a string.
    */
-  queueUpDeletions(stringOrNumber = null) {
+  queueDeletions(stringOrNumber = null) {
     let number =
       typeof stringOrNumber === "string"
         ? stringOrNumber.length
@@ -113,10 +113,10 @@ export default class Instance {
   /**
    * Add steps to the queue for each character in a given string.
    */
-  queueUpString(string, rake = true) {
+  queueString(string, rake = true) {
     if (!string) return;
 
-    string = this.toArray(string);
+    string = toArray(string);
 
     var doc = document.implementation.createHTMLDocument("");
     doc.body.innerHTML = string;
@@ -130,7 +130,7 @@ export default class Instance {
     //-- If an opening HTML tag is found and we're not already printing inside a tag
     if (
       this.options.html &&
-      (string[0].startsWith("<") && !string[0].startsWith("</"))
+      (startsWith(string[0], "<") && !startsWith(string[0], "</"))
     ) {
       //-- Create node of that string name.
       let matches = string[0].match(/\<(.*?)\>/);
@@ -148,7 +148,7 @@ export default class Instance {
 
     //-- If there's more to it, run again until fully printed.
     if (string.length) {
-      this.queueUpString(string, false);
+      this.queueString(string, false);
     }
   }
 
@@ -177,7 +177,7 @@ export default class Instance {
       return;
     }
 
-    if (this.isVisible()) {
+    if (isVisible(this.element)) {
       this.hasStarted = true;
       this.next();
       return;
@@ -186,42 +186,12 @@ export default class Instance {
     let that = this;
 
     window.addEventListener("scroll", function checkForStart(event) {
-      if (that.isVisible() && !that.hasStarted) {
+      if (isVisible(that.element) && !that.hasStarted) {
         that.hasStarted = true;
         that.next();
         event.currentTarget.removeEventListener(event.type, checkForStart);
       }
     });
-  }
-
-  isVisible() {
-    let coordinates = this.element.getBoundingClientRect();
-
-    let viewport = {
-      height:
-        window.innerHeight ||
-        document.documentElement.clientHeight ||
-        document.body.clientHeight,
-      width:
-        window.innerWidth ||
-        document.documentElement.clientWidth ||
-        document.body.clientWidth
-    };
-
-    //-- Element extends outside of viewport.
-    if (
-      coordinates.right > viewport.width ||
-      coordinates.bottom > viewport.height
-    ) {
-      return false;
-    }
-
-    //-- Top or left aren't visible.
-    if (coordinates.top < 0 || coordinates.left < 0) {
-      return false;
-    }
-
-    return true;
   }
 
   cursor() {
@@ -274,17 +244,6 @@ export default class Instance {
     this.elementContainer.innerHTML = this.elementContainer.innerHTML
       .split("")
       .join("");
-  }
-
-  /**
-   * Converts a string to an array, if it's not already.
-   *
-   * @return array
-   */
-  toArray(string) {
-    return string.constructor === Array
-      ? string.slice(0)
-      : string.split("<br>");
   }
 
   /**
@@ -371,7 +330,7 @@ export default class Instance {
       }
 
       //-- When we hit the end of the tag, turn it off!
-      if (character.startsWith("</")) {
+      if (startsWith(character, "</")) {
         this.isInTag = false;
         this.next();
         return;
@@ -405,12 +364,6 @@ export default class Instance {
     }
   }
 
-  randomInRange(value, range) {
-    return Math.abs(
-      Math.random() * (value + range - (value - range)) + (value - range)
-    );
-  }
-
   setPace() {
     let typeSpeed = this.options.speed;
     let deleteSpeed =
@@ -421,10 +374,10 @@ export default class Instance {
     let deleteRange = deleteSpeed / 2;
 
     this.typePace = this.options.lifeLike
-      ? this.randomInRange(typeSpeed, typeRange)
+      ? randomInRange(typeSpeed, typeRange)
       : typeSpeed;
     this.deletePace = this.options.lifeLike
-      ? this.randomInRange(deleteSpeed, deleteRange)
+      ? randomInRange(deleteSpeed, deleteRange)
       : deleteSpeed;
   }
 
@@ -535,7 +488,7 @@ export default class Instance {
     this.options.callback();
 
     if (this.options.loop) {
-      this.queueUpDeletions(this.elementContainer.innerHTML);
+      this.queueDeletions(this.elementContainer.innerHTML);
       this.generateQueue([this.pause, this.options.loopDelay / 2]);
 
       setTimeout(() => {
