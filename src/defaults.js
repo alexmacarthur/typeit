@@ -1,7 +1,7 @@
 window.TypeItDefaults = {
   strings: [],
   speed: 100,
-  deleteSpeed: undefined,
+  deleteSpeed: null,
   lifeLike: true,
   cursor: true,
   cursorChar: "|",
@@ -14,5 +14,10 @@ window.TypeItDefaults = {
   loopDelay: 750,
   html: true,
   autoStart: true,
-  callback: function() {}
+  callback: false,
+  beforeString: false,
+  afterString: false,
+  beforeStep: false,
+  afterStep: false,
+  afterComplete: false
 };

@@ -2,7 +2,7 @@
  *
  *   typeit - The most versatile animated typing utility on the planet.
  *   Author: Alex MacArthur <alex@macarthur.me> (https://macarthur.me)
- *   Version: v5.5.2
+ *   Version: v5.6.0
  *   URL: https://typeitjs.com
  *   License: GPL-2.0
  *
@@ -16,7 +16,7 @@
 window.TypeItDefaults = {
   strings: [],
   speed: 100,
-  deleteSpeed: undefined,
+  deleteSpeed: null,
   lifeLike: true,
   cursor: true,
   cursorChar: "|",
@@ -29,7 +29,12 @@ window.TypeItDefaults = {
   loopDelay: 750,
   html: true,
   autoStart: true,
-  callback: function callback() {}
+  callback: false,
+  beforeString: false,
+  afterString: false,
+  beforeStep: false,
+  afterStep: false,
+  afterComplete: false
 };
 
 function isVisible(element) {
@@ -64,6 +69,29 @@ function startsWith(string, search) {
 
 function toArray(string) {
   return Array.isArray(string) ? string.slice(0) : string.split("<br>");
+}
+
+function groupHTMLTags(arr) {
+  var tPosition = [];
+  var tag = void 0;
+  var isEntity = false;
+
+  for (var j = 0; j < arr.length; j++) {
+    if (arr[j] === "<" || arr[j] === "&") {
+      tPosition[0] = j;
+      isEntity = arr[j] === "&";
+    }
+
+    if (arr[j] === ">" || arr[j] === ";" && isEntity) {
+      tPosition[1] = j;
+      j = 0;
+      tag = arr.slice(tPosition[0], tPosition[1] + 1).join("");
+      arr.splice(tPosition[0], tPosition[1] - tPosition[0] + 1, tag);
+      isEntity = false;
+    }
+  }
+
+  return arr;
 }
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
@@ -107,9 +135,10 @@ var createClass = function () {
 }();
 
 var Instance = function () {
-  function Instance(element, id, options) {
+  function Instance(element, id, options, typeit) {
     classCallCheck(this, Instance);
 
+    this.typeit = typeit;
     this.timeouts = [];
     this.id = id;
     this.queue = [];
@@ -171,6 +200,7 @@ var Instance = function () {
 
       this.cursor();
       this.generateQueue();
+
       this.kickoff();
     }
   }, {
@@ -187,16 +217,17 @@ var Instance = function () {
       this.options.strings.forEach(function (string, index) {
         _this.queueString(string);
 
-        //-- This is not the last string,so insert a pause for between strings.
-        if (index + 1 < _this.options.strings.length) {
-          if (_this.options.breakLines) {
-            _this.queue.push([_this.break]);
-            _this.insertSplitPause(_this.queue.length);
-          } else {
-            _this.queueDeletions(string);
-            _this.insertSplitPause(_this.queue.length, string.length);
-          }
+        //-- This is the last string. Get outta here.
+        if (index + 1 === _this.options.strings.length) return;
+
+        if (_this.options.breakLines) {
+          _this.queue.push([_this.break]);
+          _this.insertSplitPause(_this.queue.length);
+          return;
         }
+
+        _this.queueDeletions(string);
+        _this.insertSplitPause(_this.queue.length, string.length);
       });
     }
 
@@ -254,10 +285,19 @@ var Instance = function () {
       //-- Shorten it by one character.
       string.splice(0, 1);
 
+      //-- If rake is true, this is the first time we've queued this string.
+      if (rake) {
+        this.queue[this.queue.length - 1].push("first-of-string");
+      }
+
       //-- If there's more to it, run again until fully printed.
       if (string.length) {
         this.queueString(string, false);
+        return;
       }
+
+      //-- End of string!
+      this.queue[this.queue.length - 1].push("last-of-string");
     }
 
     /**
@@ -380,11 +420,11 @@ var Instance = function () {
     value: function pause() {
       var _this3 = this;
 
-      var time = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      var time = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
 
       setTimeout(function () {
         _this3.next();
-      }, time === null ? this.options.nextStringDelay.total : time);
+      }, time ? time : this.options.nextStringDelay.total);
     }
 
     /*
@@ -404,24 +444,7 @@ var Instance = function () {
 
         //-- If we're parsing HTML, group tags into their own array items.
         if (_this4.options.html) {
-          var tPosition = [];
-          var tag = void 0;
-          var isEntity = false;
-
-          for (var j = 0; j < item.length; j++) {
-            if (item[j] === "<" || item[j] === "&") {
-              tPosition[0] = j;
-              isEntity = item[j] === "&";
-            }
-
-            if (item[j] === ">" || item[j] === ";" && isEntity) {
-              tPosition[1] = j;
-              j = 0;
-              tag = item.slice(tPosition[0], tPosition[1] + 1).join("");
-              item.splice(tPosition[0], tPosition[1] - tPosition[0] + 1, tag);
-              isEntity = false;
-            }
-          }
+          return groupHTMLTags(item);
         }
 
         return item;
@@ -486,7 +509,7 @@ var Instance = function () {
     key: "setPace",
     value: function setPace() {
       var typeSpeed = this.options.speed;
-      var deleteSpeed = this.options.deleteSpeed !== undefined ? this.options.deleteSpeed : this.options.speed / 3;
+      var deleteSpeed = this.options.deleteSpeed !== null ? this.options.deleteSpeed : this.options.speed / 3;
       var typeRange = typeSpeed / 2;
       var deleteRange = deleteSpeed / 2;
 
@@ -505,6 +528,7 @@ var Instance = function () {
 
         var textArray = _this6.elementContainer.innerHTML.split("");
 
+        //-- Cut the array by a character.
         for (var n = textArray.length - 1; n > -1; n--) {
           if ((textArray[n] === ">" || textArray[n] === ";") && _this6.options.html) {
             for (var o = n; o > -1; o--) {
@@ -571,7 +595,7 @@ var Instance = function () {
     }
 
     /*
-      Empty the existing text, clearing it instantly.
+    * Empty the existing text, clearing it instantly.
     */
 
   }, {
@@ -591,13 +615,38 @@ var Instance = function () {
 
       //-- We haven't reached the end of the queue, go again.
       if (this.queue.length > 0) {
-        var thisStep = this.queue[0];
-        this.queue.shift();
-        thisStep[0].call(this, thisStep[1]);
+        this.step = this.queue.shift();
+
+        if (this.step[2] === "first-of-string" && this.options.beforeString) {
+          this.options.beforeString(this.step, this.queue, this.typeit);
+        }
+
+        if (this.options.beforeStep) {
+          this.options.beforeStep(this.step, this.queue, this.typeit);
+        }
+
+        //-- Execute this step!
+        this.step[0].call(this, this.step[1], this.step[2]);
+
+        if (this.step[2] === "last-of-string" && this.options.afterString) {
+          this.options.afterString(this.step, this.queue, this.typeit);
+        }
+
+        if (this.options.afterStep) {
+          this.options.afterStep(this.step, this.queue, this.typeit);
+        }
+
         return;
       }
 
-      this.options.callback();
+      //-- @todo: Remove in next major release.
+      if (this.options.callback) {
+        this.options.callback();
+      }
+
+      if (this.options.afterComplete) {
+        this.options.afterComplete(this.step, this.typeit);
+      }
 
       if (this.options.loop) {
         this.queueDeletions(this.elementContainer.innerHTML);
@@ -606,9 +655,11 @@ var Instance = function () {
         setTimeout(function () {
           _this7.next();
         }, this.options.loopDelay / 2);
-      } else {
-        this.isComplete = true;
+
+        return;
       }
+
+      this.isComplete = true;
     }
   }]);
   return Instance;
@@ -652,7 +703,7 @@ var TypeIt = function () {
       var _this = this;
 
       [].slice.call(this.elements).forEach(function (element) {
-        _this.instances.push(new Instance(element, _this.id, _this.args));
+        _this.instances.push(new Instance(element, _this.id, _this.args, _this));
       });
     }
   }, {
@@ -772,6 +823,8 @@ var TypeIt = function () {
   }, {
     key: "isComplete",
     get: function get$$1() {
+      if (!this.instances.length) return false;
+
       return this.instances[0].isComplete;
     }
   }]);

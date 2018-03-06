@@ -1,6 +1,7 @@
 import "./defaults.js";
 import {
   isVisible,
+  groupHTMLTags,
   randomInRange,
   removeComments,
   startsWith,
@@ -8,7 +9,8 @@ import {
 } from "./utilities";
 
 export default class Instance {
-  constructor(element, id, options) {
+  constructor(element, id, options, typeit) {
+    this.typeit = typeit;
     this.timeouts = [];
     this.id = id;
     this.queue = [];
@@ -69,6 +71,7 @@ export default class Instance {
 
     this.cursor();
     this.generateQueue();
+
     this.kickoff();
   }
 
@@ -83,16 +86,17 @@ export default class Instance {
     this.options.strings.forEach((string, index) => {
       this.queueString(string);
 
-      //-- This is not the last string,so insert a pause for between strings.
-      if (index + 1 < this.options.strings.length) {
-        if (this.options.breakLines) {
-          this.queue.push([this.break]);
-          this.insertSplitPause(this.queue.length);
-        } else {
-          this.queueDeletions(string);
-          this.insertSplitPause(this.queue.length, string.length);
-        }
+      //-- This is the last string. Get outta here.
+      if (index + 1 === this.options.strings.length) return;
+
+      if (this.options.breakLines) {
+        this.queue.push([this.break]);
+        this.insertSplitPause(this.queue.length);
+        return;
       }
+
+      this.queueDeletions(string);
+      this.insertSplitPause(this.queue.length, string.length);
     });
   }
 
@@ -146,10 +150,19 @@ export default class Instance {
     //-- Shorten it by one character.
     string.splice(0, 1);
 
+    //-- If rake is true, this is the first time we've queued this string.
+    if (rake) {
+      this.queue[this.queue.length - 1].push("first-of-string");
+    }
+
     //-- If there's more to it, run again until fully printed.
     if (string.length) {
       this.queueString(string, false);
+      return;
     }
+
+    //-- End of string!
+    this.queue[this.queue.length - 1].push("last-of-string");
   }
 
   /**
@@ -274,10 +287,10 @@ export default class Instance {
     this.next();
   }
 
-  pause(time = null) {
+  pause(time = false) {
     setTimeout(() => {
       this.next();
-    }, time === null ? this.options.nextStringDelay.total : time);
+    }, time ? time : this.options.nextStringDelay.total);
   }
 
   /*
@@ -292,24 +305,7 @@ export default class Instance {
 
       //-- If we're parsing HTML, group tags into their own array items.
       if (this.options.html) {
-        let tPosition = [];
-        let tag;
-        let isEntity = false;
-
-        for (let j = 0; j < item.length; j++) {
-          if (item[j] === "<" || item[j] === "&") {
-            tPosition[0] = j;
-            isEntity = item[j] === "&";
-          }
-
-          if (item[j] === ">" || (item[j] === ";" && isEntity)) {
-            tPosition[1] = j;
-            j = 0;
-            tag = item.slice(tPosition[0], tPosition[1] + 1).join("");
-            item.splice(tPosition[0], tPosition[1] - tPosition[0] + 1, tag);
-            isEntity = false;
-          }
-        }
+        return groupHTMLTags(item);
       }
 
       return item;
@@ -367,7 +363,7 @@ export default class Instance {
   setPace() {
     let typeSpeed = this.options.speed;
     let deleteSpeed =
-      this.options.deleteSpeed !== undefined
+      this.options.deleteSpeed !== null
         ? this.options.deleteSpeed
         : this.options.speed / 3;
     let typeRange = typeSpeed / 2;
@@ -386,8 +382,6 @@ export default class Instance {
       this.setPace();
 
       let textArray = this.elementContainer.innerHTML.split("");
-
-      let amount = chars + 1;
 
       //-- Cut the array by a character.
       for (let n = textArray.length - 1; n > -1; n--) {
@@ -465,7 +459,7 @@ export default class Instance {
   }
 
   /*
-    Empty the existing text, clearing it instantly.
+  * Empty the existing text, clearing it instantly.
   */
   empty() {
     this.elementContainer.innerHTML = "";
@@ -479,13 +473,38 @@ export default class Instance {
 
     //-- We haven't reached the end of the queue, go again.
     if (this.queue.length > 0) {
-      let thisStep = this.queue[0];
-      this.queue.shift();
-      thisStep[0].call(this, thisStep[1]);
+      this.step = this.queue.shift();
+
+      if (this.step[2] === "first-of-string" && this.options.beforeString) {
+        this.options.beforeString(this.step, this.queue, this.typeit);
+      }
+
+      if (this.options.beforeStep) {
+        this.options.beforeStep(this.step, this.queue, this.typeit);
+      }
+
+      //-- Execute this step!
+      this.step[0].call(this, this.step[1], this.step[2]);
+
+      if (this.step[2] === "last-of-string" && this.options.afterString) {
+        this.options.afterString(this.step, this.queue, this.typeit);
+      }
+
+      if (this.options.afterStep) {
+        this.options.afterStep(this.step, this.queue, this.typeit);
+      }
+
       return;
     }
 
-    this.options.callback();
+    //-- @todo: Remove in next major release.
+    if (this.options.callback) {
+      this.options.callback();
+    }
+
+    if (this.options.afterComplete) {
+      this.options.afterComplete(this.step, this.typeit);
+    }
 
     if (this.options.loop) {
       this.queueDeletions(this.elementContainer.innerHTML);
@@ -494,8 +513,10 @@ export default class Instance {
       setTimeout(() => {
         this.next();
       }, this.options.loopDelay / 2);
-    } else {
-      this.isComplete = true;
+
+      return;
     }
+
+    this.isComplete = true;
   }
 }

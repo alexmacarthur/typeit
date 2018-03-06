@@ -78,3 +78,21 @@ test("Redefines defaults correctly.", () => {
   expect(instance.instances[0].options.speed).toEqual(25);
   expect(instance.instances[0].options.speed).not.toEqual(26);
 });
+
+test("Typing doesn't end with a break tag.", () => {
+  jest.useFakeTimers();
+
+  document.body.innerHTML = `<div>'
+    <span id="element"></span>
+  </div>`;
+
+  const instance = new TypeIt("#element", {
+    strings: ["One string.", "Two string", "Three string."]
+  });
+
+  jest.runAllTimers();
+
+  expect(
+    instance.instances[0].elementContainer.innerHTML.endsWith("<br>")
+  ).not.toBe(true);
+});

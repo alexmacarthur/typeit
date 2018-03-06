@@ -11,6 +11,7 @@ The Most Versatile JavaScript Animated Typing Utility on the Planet
 * [Usage](#usage)
 * [API](#api)
 * [Options](#options)
+* [Callback Methods](#callback-methods)
 * [CodePen Examples](#codepen-examples)
 * [Contribute](#contribute)
 * [License](#license)
@@ -132,7 +133,13 @@ new TypeIt('.typeit-box', {
 ```
 
 #### Companion Functions
-To control a typewriter effect to the smallest character, pause, speed, or more, there companion functions available. Simply chain them together on an instance of TypeIt, and your chain will execute. You'll be able to create a dynamic, realistic narrative with just a few lines of code.
+To control a typewriter effect to the smallest character, pause, speed, or more, there companion functions available. Simply chain them together on an instance of TypeIt, and your chain will execute. You'll be able to create a dynamic, realistic narrative with just a few lines of code that looks something like this:
+
+```js
+new TypeIt('#element', {
+    speed: 50
+}).type('I want to type this.').pause(500).type('And type some more!');
+```
 
 | Function        | Arguments   | Description
 | ------------- | ------------- | ------------- |
@@ -215,26 +222,32 @@ if(instance.isComplete) {
 ```
 
 ## Options
-You can modify the options for the plugin by passing in JSON upon instantiation.
+You can modify the options for the plugin by passing in JSON upon instantiation. It'll look something like this:
+
+```js
+new TypeIt('#element', {
+    strings: "Your default string.", // or, ["String #1", "String #2"]
+    speed: 100
+})
+```
 
 | Option        | Description   | Default Value
 | ------------- | ------------- | ------------- |
 | strings  | (string or array) The string(s) to be typed.       | 'Your default string.' |
 | speed     | (number in millseconds) The typing speed.             | 100  |
-| deleteSpeed     | (number in millseconds) The deletion speed. If left undefined, will be 1/3 of the type speed.           | undefined  |
+| deleteSpeed     | (number in millseconds) The deletion speed. If left null, will be 1/3 of the type speed.           | null |
 | lifeLike      | (boolean) Will make the typing pace irregular, as if a real person is doing it.  | true |
 | cursor    | (boolean) Show a blinking cursor at the end of the string(s).  | true  |
 | cursorSpeed    | (number in milliseconds) The blinking speed of the cursor.  | 1000  |
 | cursorChar    | (string) The character used for the cursor. HTML works too! | pipe |
 | breakLines    | (boolean) Choose whether you want multiple strings to be printed on top of each other (`breakLines: true`), or if you want each string to be deleted and replaced by the next one (`breakLines: false`).  | true  |
 | nextStringDelay    | (number in milliseconds or array) The amount of time (milliseconds) between typing the next string when multiple strings are defined. You may either pass a number in milliseconds, or an array of values. The first value will be used as the delay before a new string starts, and the second value will be used as the delay after a string ends. For example, passing `[1000, 2000]` will tell TypeIt to pause 1000ms before typing a new string, and wait 2000ms after a string has just completed. | 750 |
-| autoStart    | (boolean) Defines if the instance start typing automatically, whatever is the position of the element in the viewport. Turn this option to `false` if you want to tell the instance to start typing only when the element reach the viewport.  | true  |
+| autoStart    | (boolean) Determines if the instance will typing automatically on page load, or only when the target element becomes visible in the viewport. If you don't want instances far down on the page to begin until they're visible, set this option to `false.` | true  |
 | startDelete    | (boolean) Whether to begin instance by deleting strings inside element, and then typing what strings are defined via JSON or companion functions. | false  |
 | startDelay    | (number in milliseconds) The amount of time before the plugin begins typing after initalizing.  | 250  |
 | loop    | (boolean) Have your string or strings continuously loop after completing.  | false  |
 | loopDelay    | (number in milliseconds) The amount of time between looping over a string or set of strings again.  | 750  |
 | html    | (boolean) Handle strings as HTML, which will process tags and HTML entities. If 'false,' strings will be typed literally.  | true  |
-| callback    | (function) A function that executes after your typing has completed. | nuthin' |
 
 #### Changing Option Defaults
 If you're creating several instances of TypeIt on a page, and don't wish to repeatedly set an option of the same value for each of them, you can redefine the default options beforehand. Change the default value(s) before creating any instances, and you'll be set.
@@ -247,6 +260,46 @@ new TypeIt('#id', {
   strings: 'A string!'
 });
 ```
+
+## Callback Methods
+Along all of these options, there are several callback method options you may use to trigger JavaScript at different points in time.
+
+```js
+new TypeIt('#id', {
+  strings: 'A string!'
+  afterString: function(step, queue, instance) {
+    //-- Execute your code here.
+  }
+});
+```
+
+### Passed Arguments
+
+Most callback methods will be passed the following arguments.
+
+| Argument | Description
+| ------------- | -------------
+| step | Each character, deletion, pause, line break, etc. are "steps" in a queue of actions that are run with each instance. Each step is an array with the method that's called, an argument for the method, and a tag if it's the first or last character in a string that's been queued to be typed. So, a typical step will look something like this: `[Function type, 'm']`.
+| queue | This is the rest of the queue that is yet to be typed. Each step in the queue is yet to be typed. Any steps that have already been typed will have been removed at this point.
+| instance | The instance of TypeIt itself.
+
+### Available Methods
+Remember, each of these methods is passed as an option into your instance when you create it:
+
+```js
+new TypeIt('#id', {
+  afterString: function (step, queue, instance) {},
+  afterComplete: function (instance) {}
+});
+```
+
+| Method | Description | Included Arguments
+| ------------- | ------------- | ------------- |
+| beforeString()  | Before a new string is about to be typed. For example, if you pass two strings in an array when you set up TypeIt, this callback method will execute twice. | step, queue, instance |
+| beforeStep() | Before each step in the queue is executed (including individual pauses, deletions, and new characters). | step, queue, instance
+| afterString() | After a string is typed. | step, queue, instance
+| afterStep() | After each step in the queue is executed. | step, queue, instance
+| afterComplete() | After the entire instance is complete. This runs when all of the steps in the queue have been executed. So, technically, if you let the instance run out of steps and then add new steps later, this method could run more than once. | instance
 
 ## CodePen Examples
 I have a few CodePen examples that illustrate how to do some interesting things with TypeIt.

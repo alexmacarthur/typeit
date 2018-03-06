@@ -1,6 +1,6 @@
 {
   "name": "typeit",
-  "version": "5.5.2",
+  "version": "5.6.0",
   "description": "The most versatile animated typing utility on the planet.",
   "author": "Alex MacArthur <alex@macarthur.me> (https://macarthur.me)",
   "license": "GPL-2.0",
@@ -47,5 +47,8 @@
     "rollup": "^0.52.0",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-uglify": "^2.0.1"
+  },
+  "dependencies": {
+    "jest": "^22.4.2"
   }
 }

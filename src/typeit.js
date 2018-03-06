@@ -26,6 +26,8 @@ export default class TypeIt {
   }
 
   get isComplete() {
+    if (!this.instances.length) return false;
+
     return this.instances[0].isComplete;
   }
 
@@ -42,7 +44,7 @@ export default class TypeIt {
 
   createInstances() {
     [].slice.call(this.elements).forEach(element => {
-      this.instances.push(new Instance(element, this.id, this.args));
+      this.instances.push(new Instance(element, this.id, this.args, this));
     });
   }
 
