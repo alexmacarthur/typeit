@@ -305,6 +305,7 @@ new TypeIt('#id', {
 I have a few CodePen examples that illustrate how to do some interesting things with TypeIt.
 
 * [TypeIt as a React Component](https://codepen.io/alexmacarthur/pen/gXNyBJ)
+* [Cute Rainbow Effect Using a Callback Method](https://codepen.io/alexmacarthur/pen/jzybpB)
 * [Chained Typing Animations](https://codepen.io/alexmacarthur/pen/MOPQvp)
 * ['Fill in the Blank' Effect](https://codepen.io/alexmacarthur/pen/pdXLRG)
 
