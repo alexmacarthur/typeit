@@ -65,8 +65,7 @@
       new TypeIt('#example1', {
         speed: 50,
         strings: 'Just a simple string.',
-        cursorChar: '<strong>hello</strong>',
-        cursor: false
+        cursorChar: '<strong>CUSTOM CURSOR!</strong>'
       });
 
       new TypeIt('#example2', {
@@ -107,7 +106,9 @@
         })
         .type('And here it is faster!');
 
-      new TypeIt('#example6');
+      new TypeIt('#example6', {
+        autoStart: false
+      });
 		</script>
 	</body>
 </html>

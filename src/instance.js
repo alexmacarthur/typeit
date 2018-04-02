@@ -27,6 +27,29 @@ export default class Instance {
   }
 
   /**
+   * If argument is passed, set to content according to `html` option.
+   * If not, just return the contents of the element, based on `html` option.
+   * @param {string | null} content
+   */
+  contents(content = null) {
+    //-- Just return the contents of the element.
+    if (content === null) {
+      return this.options.html
+        ? this.elementContainer.innerHTML
+        : this.elementContainer.innerText;
+    }
+
+    //-- Reset the contents of the element.
+    if (this.options.html) {
+      this.elementContainer.innerHTML = content;
+    } else {
+      this.elementContainer.innerText = content;
+    }
+
+    return content;
+  }
+
+  /**
    * Based on options, set the before and after values for the delay that is inserted when typing new strings.
    */
   setNextStringDelay() {
@@ -253,10 +276,11 @@ export default class Instance {
       this.elementContainer.insertAdjacentHTML("beforeend", content);
     }
 
-    //-- Split & rejoin to avoid odd spacing issues in some browsers.
-    this.elementContainer.innerHTML = this.elementContainer.innerHTML
-      .split("")
-      .join("");
+    this.contents(
+      this.contents()
+        .split("")
+        .join("")
+    );
   }
 
   /**
@@ -381,7 +405,7 @@ export default class Instance {
     this.timeouts[1] = setTimeout(() => {
       this.setPace();
 
-      let textArray = this.elementContainer.innerHTML.split("");
+      let textArray = this.contents().split("");
 
       //-- Cut the array by a character.
       for (let n = textArray.length - 1; n > -1; n--) {
@@ -424,12 +448,8 @@ export default class Instance {
       }
 
       //-- If we've found an empty set of HTML tags...
-      if (this.elementContainer.innerHTML.indexOf("></") > -1) {
-        for (
-          let i = this.elementContainer.innerHTML.indexOf("></") - 2;
-          i >= 0;
-          i--
-        ) {
+      if (this.options.html && this.contents().indexOf("></") > -1) {
+        for (let i = this.contents().indexOf("></") - 2; i >= 0; i--) {
           if (textArray[i] === "<") {
             textArray.splice(i, textArray.length - i);
             break;
@@ -441,9 +461,7 @@ export default class Instance {
       //-- We want do strip empty tags here and ONLY here because when we're
       //-- typing new content inside an HTML tag, there is momentarily an empty
       //-- tag we want to keep.
-      this.elementContainer.innerHTML = textArray
-        .join("")
-        .replace(/<[^\/>][^>]*><\/[^>]+>/, "");
+      this.contents(textArray.join("").replace(/<[^\/>][^>]*><\/[^>]+>/, ""));
 
       //-- Delete again! Don't call directly, to respect possible pauses.
       if (chars === null) {
@@ -462,7 +480,7 @@ export default class Instance {
   * Empty the existing text, clearing it instantly.
   */
   empty() {
-    this.elementContainer.innerHTML = "";
+    this.contents("");
     this.next();
   }
 
@@ -503,11 +521,11 @@ export default class Instance {
     }
 
     if (this.options.afterComplete) {
-      this.options.afterComplete(this.step, this.typeit);
+      this.options.afterComplete(this.typeit);
     }
 
     if (this.options.loop) {
-      this.queueDeletions(this.elementContainer.innerHTML);
+      this.queueDeletions(this.contents());
       this.generateQueue([this.pause, this.options.loopDelay / 2]);
 
       setTimeout(() => {

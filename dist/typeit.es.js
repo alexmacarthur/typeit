@@ -2,7 +2,7 @@
  *
  *   typeit - The most versatile animated typing utility on the planet.
  *   Author: Alex MacArthur <alex@macarthur.me> (https://macarthur.me)
- *   Version: v5.6.0
+ *   Version: v5.6.1
  *   URL: https://typeitjs.com
  *   License: GPL-2.0
  *
@@ -94,16 +94,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
 };
 
-
-
-
-
-
-
-
-
-
-
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -149,11 +139,37 @@ var Instance = function () {
   }
 
   /**
-   * Based on options, set the before and after values for the delay that is inserted when typing new strings.
+   * If argument is passed, set to content according to `html` option.
+   * If not, just return the contents of the element, based on `html` option.
+   * @param {string | null} content
    */
 
 
   createClass(Instance, [{
+    key: "contents",
+    value: function contents() {
+      var content = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
+      //-- Just return the contents of the element.
+      if (content === null) {
+        return this.options.html ? this.elementContainer.innerHTML : this.elementContainer.innerText;
+      }
+
+      //-- Reset the contents of the element.
+      if (this.options.html) {
+        this.elementContainer.innerHTML = content;
+      } else {
+        this.elementContainer.innerText = content;
+      }
+
+      return content;
+    }
+
+    /**
+     * Based on options, set the before and after values for the delay that is inserted when typing new strings.
+     */
+
+  }, {
     key: "setNextStringDelay",
     value: function setNextStringDelay() {
       var isArray = Array.isArray(this.options.nextStringDelay);
@@ -372,8 +388,7 @@ var Instance = function () {
         this.elementContainer.insertAdjacentHTML("beforeend", content);
       }
 
-      //-- Split & rejoin to avoid odd spacing issues in some browsers.
-      this.elementContainer.innerHTML = this.elementContainer.innerHTML.split("").join("");
+      this.contents(this.contents().split("").join(""));
     }
 
     /**
@@ -520,7 +535,7 @@ var Instance = function () {
       this.timeouts[1] = setTimeout(function () {
         _this6.setPace();
 
-        var textArray = _this6.elementContainer.innerHTML.split("");
+        var textArray = _this6.contents().split("");
 
         //-- Cut the array by a character.
         for (var n = textArray.length - 1; n > -1; n--) {
@@ -560,8 +575,8 @@ var Instance = function () {
         }
 
         //-- If we've found an empty set of HTML tags...
-        if (_this6.elementContainer.innerHTML.indexOf("></") > -1) {
-          for (var i = _this6.elementContainer.innerHTML.indexOf("></") - 2; i >= 0; i--) {
+        if (_this6.options.html && _this6.contents().indexOf("></") > -1) {
+          for (var i = _this6.contents().indexOf("></") - 2; i >= 0; i--) {
             if (textArray[i] === "<") {
               textArray.splice(i, textArray.length - i);
               break;
@@ -573,7 +588,7 @@ var Instance = function () {
         //-- We want do strip empty tags here and ONLY here because when we're
         //-- typing new content inside an HTML tag, there is momentarily an empty
         //-- tag we want to keep.
-        _this6.elementContainer.innerHTML = textArray.join("").replace(/<[^\/>][^>]*><\/[^>]+>/, "");
+        _this6.contents(textArray.join("").replace(/<[^\/>][^>]*><\/[^>]+>/, ""));
 
         //-- Delete again! Don't call directly, to respect possible pauses.
         if (chars === null) {
@@ -595,7 +610,7 @@ var Instance = function () {
   }, {
     key: "empty",
     value: function empty() {
-      this.elementContainer.innerHTML = "";
+      this.contents("");
       this.next();
     }
   }, {
@@ -639,11 +654,11 @@ var Instance = function () {
       }
 
       if (this.options.afterComplete) {
-        this.options.afterComplete(this.step, this.typeit);
+        this.options.afterComplete(this.typeit);
       }
 
       if (this.options.loop) {
-        this.queueDeletions(this.elementContainer.innerHTML);
+        this.queueDeletions(this.contents());
         this.generateQueue([this.pause, this.options.loopDelay / 2]);
 
         setTimeout(function () {
