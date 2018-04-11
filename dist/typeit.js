@@ -2,7 +2,7 @@
  *
  *   typeit - The most versatile animated typing utility on the planet.
  *   Author: Alex MacArthur <alex@macarthur.me> (https://macarthur.me)
- *   Version: v5.7.0
+ *   Version: v5.8.0
  *   URL: https://typeitjs.com
  *   License: GPL-2.0
  *
@@ -135,6 +135,7 @@
       this.hasStarted = false;
       this.isFrozen = false;
       this.isComplete = false;
+      this.hasBeenDestroyed = false;
       this.isInTag = false;
       this.stringsToDelete = "";
       this.style = "display:inline;position:relative;font:inherit;color:inherit;";
@@ -145,13 +146,23 @@
     }
 
     /**
-     * If argument is passed, set to content according to `html` option.
-     * If not, just return the contents of the element, based on `html` option.
-     * @param {string | null} content
+     * Reset the instance to new status.
      */
 
 
     createClass(Instance, [{
+      key: "reset",
+      value: function reset() {
+        return new Instance(this.element, this.id, this.options, this.typeit);
+      }
+
+      /**
+       * If argument is passed, set to content according to `html` option.
+       * If not, just return the contents of the element, based on `html` option.
+       * @param {string | null} content
+       */
+
+    }, {
       key: "contents",
       value: function contents() {
         var content = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
@@ -690,7 +701,6 @@
       this.instances = [];
       this.elements = [];
       this.args = args;
-      this.hasBeenDestroyed = false;
 
       if ((typeof element === "undefined" ? "undefined" : _typeof(element)) === "object") {
         //-- There's only one!
@@ -808,18 +818,18 @@
         var removeCursor = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
 
         this.instances.forEach(function (instance) {
-          instance.timeouts = instance.timeouts.map(function (timeout) {
+          instance.timeouts.forEach(function (timeout) {
             clearTimeout(timeout);
-            return null;
           });
+
+          instance.timeouts = [];
 
           if (removeCursor) {
             instance.element.removeChild(instance.element.querySelector(".ti-cursor"));
           }
-        });
 
-        this.hasBeenDestroyed = true;
-        this.instances = [];
+          instance.hasBeenDestroyed = true;
+        });
       }
     }, {
       key: "empty",
@@ -840,11 +850,25 @@
         return this;
       }
     }, {
+      key: "reset",
+      value: function reset() {
+        this.instances = this.instances.map(function (instance) {
+          return instance.reset();
+        });
+      }
+    }, {
       key: "isComplete",
       get: function get$$1() {
         if (!this.instances.length) return false;
 
         return this.instances[0].isComplete;
+      }
+    }, {
+      key: "hasBeenDestroyed",
+      get: function get$$1() {
+        if (!this.instances.length) return false;
+
+        return this.instances[0].hasBeenDestroyed;
       }
     }]);
     return TypeIt;

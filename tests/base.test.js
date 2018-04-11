@@ -42,8 +42,24 @@ test("Returns an object with base properties.", () => {
   const instance = new TypeIt("#element", {});
 
   expect(Object.keys(instance).sort()).toEqual(
-    ["elements", "id", "instances", "args", "hasBeenDestroyed"].sort()
+    ["elements", "id", "instances", "args"].sort()
   );
+});
+
+test("Successfully resets when called.", () => {
+  document.body.innerHTML = `<div>'
+      <span id="element"></span>
+    </div>`;
+
+  const instance = new TypeIt("#element", {
+    strings: "This is my string!"
+  });
+
+  instance.destroy();
+  instance.reset();
+
+  expect(instance.instances).toHaveLength(1);
+  expect(instance.hasBeenDestroyed).toBe(false);
 });
 
 test("Destroys instances successfully.", () => {
@@ -63,8 +79,7 @@ test("Destroys instances successfully.", () => {
 
   instance.destroy();
 
-  expect(instance.instances).toHaveLength(0);
-  expect(instance.hasBeenDestroyed).toBe(true);
+  expect(instance.instances[0].timeouts).toEqual([]);
   expect(document.body.querySelector(".ti-cursor")).toEqual(null);
 });
 

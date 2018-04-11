@@ -14,18 +14,19 @@ The Most Versatile JavaScript Animated Typing Utility on the Planet
 * [Callback Methods](#callback-methods)
 * [CodePen Examples](#codepen-examples)
 * [Contribute](#contribute)
+* [Need Help?](#need-help)
 * [License](#license)
 
 ## Overview
-TypeIt is the most versatile JavaScript animated typing utility on the planet. With simple, straightforward configuration, it allows you to type single or multiple strings that break lines, delete & replace each other, and it even handles strings that contain HTML.
+TypeIt is the most versatile JavaScript typewriter effect utility on the planet. With simple, straightforward configuration, it allows you to type single or multiple strings that break lines, delete & replace each other, and it even handles strings that contain HTML.
 
-For more advanced, controlled typing effects, TypeIt comes with companion functions that can be chained to control your typing down to a single character, enabling you to type an dynamic narrative, with complete control over speed changes, line breaks, deletions, and pauses.
+For more advanced, controlled typing effects, TypeIt comes with companion functions that can be chained to control your typing down to a single character, enabling you to type an dynamic narrative, with complete reign over speed changes, line breaks, deletions, and pauses.
 
 ### Key Features
-* Choose to start typing only when your container element becomes visible on the screen.
+* Choose to start typing only when your target element becomes visible on the screen.
 * Loop your string(s) continuously.
 * Define you strings via an options object or in the HTML (useful in case user doesn't have JavaScript enabled, as well as for SEO).
-* Use a single TypeIt instance to control several different elements on a page.
+* Use a single TypeIt instance to target several different elements on a page.
 * Handle HTML tags (including those with classes, ID's, etc.) and entities with ease.
 * Use companion functions to chain individual commands together to fine tune your typing.
 * Ready to be included via JS module, or as a separate script loaded on your page.
@@ -44,8 +45,8 @@ Using TypeIt for an open source or personal project is completely free. To use i
 
 ### Get the Code
 * <strong><a href="https://www.jsdelivr.com/package/npm/typeit">CDN:</a></strong> Include this on your page: <em>https://cdn.jsdelivr.net/npm/typeit@VERSION_NUMBER/dist/typeit.min.js</em>
-* <strong><a href="https://www.npmjs.com/package/typeit">npm / yarn:</a></strong> Install with `npm install typeit` or `yarn install typeit` and import into your project with `import TypeIt from 'typeit'`.
-* <strong>Build It Yourself: </strong> If, for some weird reason, you want to clone the repository and build the code yourself, first run `yarn install` and then `yarn run build`. The compiled source files will be in the `/dist` directory.
+* <strong><a href="https://www.npmjs.com/package/typeit">npm / yarn:</a></strong> Install with `npm install typeit` or `yarn add typeit` and import into your project with `import TypeIt from 'typeit'`.
+* <strong><a href="https://github.com/alexmacarthur/typeit">Clone the Repo:</a></strong> The compiled source files will be in the `/dist` directory.
 
 ### Load the Script
 Either load it via `script` tag, or import.
@@ -59,7 +60,7 @@ import TypeIt from 'typeit';
 ```
 
 ### Create an Element to Be Typed Into
-If you want to have a fallback for users without JavaScript, you can put a string or strings right into this element. For more on that, see the [Defining Strings](#defining-strings) section.
+If you want a fallback for users without JavaScript, you can put a string or strings right into this element. For more on that, see the [Defining Strings](#defining-strings) section.
 
 ```html
 <span class="type-it"></span>
@@ -77,15 +78,18 @@ new TypeIt('.type-it', {
 
 ### Defining Strings
 
+#### In the Options Object
+The most common way to define strings to type is to pass them via the option object's `string` property, either as a string or array of strings.
+
 #### In Your HTML
-As a fallback for users without JavaScript, you may define strings in your HTML element.
+As a fallback for users without JavaScript, you can define strings in your HTML element.
 
 ```html
 <span class="type-it">Here is a string.</span>
 ```
 
 #### Using the type() Method
-See more on that in the [Companion Functions](#companion-functions) section.
+Or, you can create a base instance, and define your strings using the `type()` method. See more on that in the [Companion Functions](#companion-functions) section.
 
 ### Typing Multiple Strings
 To define multiple strings, either use `<br>` tag to separate them in your target element, or pass an array into the instance you create.
@@ -96,7 +100,7 @@ To define multiple strings, either use `<br>` tag to separate them in your targe
 
 ```js
 new TypeIt('.type-it', {
-     strings: ['Enter your string here!', 'Another string!']
+    strings: ['Enter your string here!', 'Another string!']
 });
 ```
 
@@ -149,9 +153,10 @@ new TypeIt('#element', {
 | pause() | (number) Number of milliseconds to pause before continuing. | Will pause the specified number of milliseconds.|
 | break() | (none) | Will break the typing to a new line.|
 | options() | (JSON) Options you'd like to update | Will redefine your options on the fly. This will only work for updating the `speed`, `lifeLike`, and `html` options.|
-| destroy() | (bool) Whether you want to remove the cursor after destroying. Default is `true`.| Destroys the instance on whatever elements to which it's attached.
+| destroy() | (bool) Whether you want to remove the cursor after destroying. Default is `true`.| Destroys the instance on whatever elements to which it's attached. Destroying an instance will not remove the text itself -- it'll just kill the activity of the instance.
 | freeze() | none | Will pause/freeze an instance.
 | unfreeze() | none | Will resume an instance.
+| reset() | none | Will reset an instance back to its starting position, as if nothing ever happened.
 
 #### Chaining on Initializing
 You may use these functions to generate a queue of typing events immediately upon creating the instance. This is probably the more common way of using these methods.
@@ -322,6 +327,9 @@ I have a few CodePen examples that illustrate how to do some interesting things 
 
 ## Contribute
 Please do! The code is available on Github. Check out the [CONTRIBUTING.md](https://github.com/alexmacarthur/typeit/blob/master/CONTRIBUTING.md) file to see how to get started.
+
+## Need Help?
+If you're working with a custom implementation of TypeIt and would like some help, I'm available for hire. [Get in touch!](https://macarthur.me/contact)
 
 ## License
 [GPL-2.0](https://github.com/alexmacarthur/typeit/blob/master/LICENSE) © Alex MacArthur

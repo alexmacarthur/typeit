@@ -17,6 +17,7 @@ export default class Instance {
     this.hasStarted = false;
     this.isFrozen = false;
     this.isComplete = false;
+    this.hasBeenDestroyed = false;
     this.isInTag = false;
     this.stringsToDelete = "";
     this.style = "display:inline;position:relative;font:inherit;color:inherit;";
@@ -24,6 +25,13 @@ export default class Instance {
     this.setOptions(options, window.TypeItDefaults, false);
     this.setNextStringDelay();
     this.init();
+  }
+
+  /**
+   * Reset the instance to new status.
+   */
+  reset() {
+    return new Instance(this.element, this.id, this.options, this.typeit);
   }
 
   /**

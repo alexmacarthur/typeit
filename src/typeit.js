@@ -6,7 +6,6 @@ export default class TypeIt {
     this.instances = [];
     this.elements = [];
     this.args = args;
-    this.hasBeenDestroyed = false;
 
     if (typeof element === "object") {
       //-- There's only one!
@@ -30,6 +29,12 @@ export default class TypeIt {
     if (!this.instances.length) return false;
 
     return this.instances[0].isComplete;
+  }
+
+  get hasBeenDestroyed() {
+    if (!this.instances.length) return false;
+
+    return this.instances[0].hasBeenDestroyed;
   }
 
   generateHash() {
@@ -111,20 +116,20 @@ export default class TypeIt {
 
   destroy(removeCursor = true) {
     this.instances.forEach(instance => {
-      instance.timeouts = instance.timeouts.map(timeout => {
+      instance.timeouts.forEach(timeout => {
         clearTimeout(timeout);
-        return null;
       });
+
+      instance.timeouts = [];
 
       if (removeCursor) {
         instance.element.removeChild(
           instance.element.querySelector(".ti-cursor")
         );
       }
-    });
 
-    this.hasBeenDestroyed = true;
-    this.instances = [];
+      instance.hasBeenDestroyed = true;
+    });
   }
 
   empty() {
@@ -140,5 +145,11 @@ export default class TypeIt {
   options(options) {
     this.pushAction("setOptions", options);
     return this;
+  }
+
+  reset() {
+    this.instances = this.instances.map(instance => {
+      return instance.reset();
+    });
   }
 }
