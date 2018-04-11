@@ -6,6 +6,7 @@ export default class TypeIt {
     this.instances = [];
     this.elements = [];
     this.args = args;
+    this.hasBeenDestroyed = false;
 
     if (typeof element === "object") {
       //-- There's only one!
@@ -122,6 +123,7 @@ export default class TypeIt {
       }
     });
 
+    this.hasBeenDestroyed = true;
     this.instances = [];
   }
 

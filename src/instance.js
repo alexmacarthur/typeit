@@ -221,13 +221,15 @@ export default class Instance {
 
     let that = this;
 
-    window.addEventListener("scroll", function checkForStart(event) {
+    function checkForStart(event) {
       if (isVisible(that.element) && !that.hasStarted) {
         that.hasStarted = true;
         that.next();
         event.currentTarget.removeEventListener(event.type, checkForStart);
       }
-    });
+    }
+
+    window.addEventListener("scroll", checkForStart);
   }
 
   cursor() {

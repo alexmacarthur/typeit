@@ -221,6 +221,17 @@ if(instance.isComplete) {
 }
 ```
 
+### Check If Instance Has Been Destroyed
+You can also, at any time, check if the instance has been destroyed using the `destroy()` method.
+
+```js
+var instance = new TypeIt('#element', { /* options... */ });
+
+if(instance.hasBeenDestroyed) {
+    //-- Do something.
+}
+```
+
 ## Options
 You can modify the options for the plugin by passing in JSON upon instantiation. It'll look something like this:
 
