@@ -47,6 +47,8 @@ test("Returns an object with base properties.", () => {
 });
 
 test("Successfully resets when called.", () => {
+  jest.useFakeTimers();
+
   document.body.innerHTML = `<div>'
       <span id="element"></span>
     </div>`;
@@ -55,10 +57,17 @@ test("Successfully resets when called.", () => {
     strings: "This is my string!"
   });
 
+  jest.runAllTimers();
+
   instance.destroy();
+
+  expect(instance.isComplete).toBe(true);
+  expect(instance.hasBeenDestroyed).toBe(true);
+
   instance.reset();
 
   expect(instance.instances).toHaveLength(1);
+  expect(instance.isComplete).toBe(false);
   expect(instance.hasBeenDestroyed).toBe(false);
 });
 
