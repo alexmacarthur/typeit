@@ -67,6 +67,12 @@ If you want a fallback for users without JavaScript, you can put a string or str
 ```
 
 ## Usage
+Out of the box, a fresh instance of TypeIt accepts three arguments:
+
+* element: The element where text will be typed. This can be a DOM node, or a string reference to an element, class, or ID.
+* options: An object that determines how the instance will behave. [More about setting options here.](#options)
+* autoInit: A boolean that determines if TypeIt will initialize immediately, or wait until the `.init()` method is called on it later. [More on `autoInit` here.](#creating-an-inactive-instance)
+
 Create a new TypeIt instance, pass a reference to element, and define your [options](#options).
 
 ```js
@@ -115,10 +121,10 @@ new TypeIt('.type-it', {
 
 ## API
 
-#### Handing HTML
+### Handling HTML
 TypeIt is fully prepared to handle HTML in your strings, so it's easy to style a portion of what you type, or just do something like bold a couple of words.
 
-##### HTML Elements
+#### HTML Elements
 Tags must be one level deep and be inline elements.
 
 ```js
@@ -127,7 +133,7 @@ new TypeIt('.typeit-box', {
 });
 ```
 
-##### HTML Entities
+#### HTML Entities
 ASCII HTML entities must begin with & and end with ;
 
 ```js
@@ -136,7 +142,7 @@ new TypeIt('.typeit-box', {
 });
 ```
 
-#### Companion Functions
+### Companion Functions
 To control a typewriter effect to the smallest character, pause, speed, or more, there companion functions available. Simply chain them together on an instance of TypeIt, and your chain will execute. You'll be able to create a dynamic, realistic narrative with just a few lines of code that looks something like this:
 
 ```js
@@ -153,12 +159,12 @@ new TypeIt('#element', {
 | pause() | (number) Number of milliseconds to pause before continuing. | Will pause the specified number of milliseconds.|
 | break() | (none) | Will break the typing to a new line.|
 | options() | (JSON) Options you'd like to update | Will redefine your options on the fly. This will only work for updating the `speed`, `lifeLike`, and `html` options.|
-| destroy() | (bool) Whether you want to remove the cursor after destroying. Default is `true`.| Destroys the instance on whatever elements to which it's attached. Destroying an instance will not remove the text itself -- it'll just kill the activity of the instance.
 | freeze() | none | Will pause/freeze an instance.
 | unfreeze() | none | Will resume an instance.
-| reset() | none | Will reset an instance back to its starting position, as if nothing ever happened.
+| reset() | none | Will reset an instance back to its starting position, as if nothing ever happened. This method is **not** chainable.
+| destroy() | (bool) Whether you want to remove the cursor after destroying. Default is `true`.| Destroys the instance on whatever elements to which it's attached. Destroying an instance will not remove the text itself -- it'll just kill the activity of the instance. This method is **not** chainable.
 
-#### Chaining on Initializing
+### Chaining on Initializing
 You may use these functions to generate a queue of typing events immediately upon creating the instance. This is probably the more common way of using these methods.
 
 ```js
@@ -174,7 +180,7 @@ autoStart: false
 .type('t!');
 ```
 
-#### Pausing/Resuming Typing
+### Pausing/Resuming Typing
 Additionally, you may use these functions to manipulate an instance after it's been created. A common use case for this is pausing and resuming an instance.
 
 ```js
@@ -193,7 +199,7 @@ setTimeout(() => {
 }, 3000);
 ```
 
-#### Respond to User Action
+### Respond to User Action
 This is also helpful if you want your typing to respond to user action of any sort.
 
 ```js
@@ -215,8 +221,22 @@ var instance = new TypeIt('#element', {
 instance.type("I just decided to add this on too, but it won't be typed until the active queue has finished.");
 ```
 
-### Check If Instance Is Complete
-At any moment, you may check if the instance is complete. Access the 'isComplete' property to do so. If `loop` is set to `true`, the instance will never be marked complete.
+### Creating an Inactive Instance
+Sometimes, you might want to create an instance, but not trigger it until a later time. To this, set `autoInit` to `false` by passing it as the third argument of your TypeIt instance.
+
+```js
+var myInstance = new TypeIt('#element', {
+    strings: "This won't start typing automatically."
+}, false);
+
+myInstance.init(); //-- Now it's initialized!
+```
+
+### Check for Instance States
+There are several properties attached to each instance of TypeIt that reveal current states.
+
+#### Is my instance complete?
+Use the `isComplete` property:
 
 ```js
 var instance = new TypeIt('#element', { /* options... */ });
@@ -226,13 +246,35 @@ if(instance.isComplete) {
 }
 ```
 
-### Check If Instance Has Been Destroyed
-You can also, at any time, check if the instance has been destroyed using the `destroy()` method.
+#### Has my instance been destroyed?
+Use the `hasBeenDestroyed` property:
 
 ```js
 var instance = new TypeIt('#element', { /* options... */ });
 
 if(instance.hasBeenDestroyed) {
+    //-- Do something.
+}
+```
+
+#### Is my instance frozen?
+Use the `isFrozen` property:
+
+```js
+var instance = new TypeIt('#element', { /* options... */ });
+
+if(instance.isFrozen) {
+    //-- Do something.
+}
+```
+
+#### Has my instance started?
+Use the `hasStarted` property.
+
+```js
+var instance = new TypeIt('#element', { /* options... */ }, false);
+
+if(!instance.hasStarted) {
     //-- Do something.
 }
 ```

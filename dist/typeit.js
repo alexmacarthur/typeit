@@ -2,7 +2,7 @@
  *
  *   typeit - The most versatile animated typing utility on the planet.
  *   Author: Alex MacArthur <alex@macarthur.me> (https://macarthur.me)
- *   Version: v5.8.0
+ *   Version: v5.9.0
  *   URL: https://typeitjs.com
  *   License: GPL-2.0
  *
@@ -12,30 +12,6 @@
   typeof define === 'function' && define.amd ? define(factory) :
   (global.TypeIt = factory());
 }(this, (function () { 'use strict';
-
-  window.TypeItDefaults = {
-    strings: [],
-    speed: 100,
-    deleteSpeed: null,
-    lifeLike: true,
-    cursor: true,
-    cursorChar: "|",
-    cursorSpeed: 1000,
-    breakLines: true,
-    startDelay: 250,
-    startDelete: false,
-    nextStringDelay: 750,
-    loop: false,
-    loopDelay: 750,
-    html: true,
-    autoStart: true,
-    callback: false,
-    beforeString: false,
-    afterString: false,
-    beforeStep: false,
-    afterStep: false,
-    afterComplete: false
-  };
 
   function isVisible(element) {
     var coordinates = element.getBoundingClientRect();
@@ -55,6 +31,10 @@
 
   function randomInRange(value, range) {
     return Math.abs(Math.random() * (value + range - (value - range)) + (value - range));
+  }
+
+  function generateHash() {
+    return Math.random().toString(36).substring(2, 15);
   }
 
   function removeComments(arrayOfStrings) {
@@ -94,6 +74,30 @@
     return arr;
   }
 
+  window.TypeItDefaults = {
+    strings: [],
+    speed: 100,
+    deleteSpeed: null,
+    lifeLike: true,
+    cursor: true,
+    cursorChar: "|",
+    cursorSpeed: 1000,
+    breakLines: true,
+    startDelay: 250,
+    startDelete: false,
+    nextStringDelay: 750,
+    loop: false,
+    loopDelay: 750,
+    html: true,
+    autoStart: true,
+    callback: false,
+    beforeString: false,
+    afterString: false,
+    beforeStep: false,
+    afterStep: false,
+    afterComplete: false
+  };
+
   var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
     return typeof obj;
   } : function (obj) {
@@ -125,24 +129,50 @@
   }();
 
   var Instance = function () {
-    function Instance(element, id, options, typeit) {
+    function Instance(element, id, options, autoInit, typeit) {
       classCallCheck(this, Instance);
 
       this.typeit = typeit;
       this.timeouts = [];
       this.id = id;
-      this.queue = [];
+      this.autoInit = autoInit;
       this.hasStarted = false;
       this.isFrozen = false;
       this.isComplete = false;
       this.hasBeenDestroyed = false;
+      this.queue = [];
       this.isInTag = false;
       this.stringsToDelete = "";
       this.style = "display:inline;position:relative;font:inherit;color:inherit;";
       this.element = element;
       this.setOptions(options, window.TypeItDefaults, false);
+      this.checkElement();
       this.setNextStringDelay();
-      this.init();
+
+      this.options.strings = toArray(this.options.strings);
+      this.options.strings = removeComments(this.options.strings);
+
+      //-- We don't have anything. Get out of here.
+      if (this.options.strings.length >= 1 && this.options.strings[0] === "") {
+        return;
+      }
+
+      this.element.innerHTML = "\n        <span style=\"" + this.style + "\" class=\"ti-container\"></span>\n      ";
+
+      this.element.setAttribute("data-typeitid", this.id);
+      this.elementContainer = this.element.querySelector("span");
+
+      if (this.options.startDelete) {
+        this.insert(this.stringsToDelete);
+        this.queue.push([this.delete]);
+        this.insertSplitPause(1);
+      }
+
+      this.generateQueue();
+
+      if (this.autoInit) {
+        this.init();
+      }
     }
 
     /**
@@ -200,35 +230,6 @@
             return accumulator + currentValue;
           }) : this.options.nextStringDelay
         };
-      }
-    }, {
-      key: "init",
-      value: function init() {
-        this.checkElement();
-
-        this.options.strings = toArray(this.options.strings);
-        this.options.strings = removeComments(this.options.strings);
-
-        //-- We don't have anything. Get out of here.
-        if (this.options.strings.length >= 1 && this.options.strings[0] === "") {
-          return;
-        }
-
-        this.element.innerHTML = "\n        <span style=\"" + this.style + "\" class=\"ti-container\"></span>\n      ";
-
-        this.element.setAttribute("data-typeitid", this.id);
-        this.elementContainer = this.element.querySelector("span");
-
-        if (this.options.startDelete) {
-          this.insert(this.stringsToDelete);
-          this.queue.push([this.delete]);
-          this.insertSplitPause(1);
-        }
-
-        this.cursor();
-        this.generateQueue();
-
-        this.kickoff();
       }
     }, {
       key: "generateQueue",
@@ -344,8 +345,12 @@
         this.queue.splice(startPosition - numberOfActionsToWrap, 0, [this.pause, this.options.nextStringDelay.after]);
       }
     }, {
-      key: "kickoff",
-      value: function kickoff() {
+      key: "init",
+      value: function init() {
+        if (this.hasStarted) return;
+
+        this.cursor();
+
         if (this.options.autoStart) {
           this.hasStarted = true;
           this.next();
@@ -695,12 +700,14 @@
 
   var TypeIt = function () {
     function TypeIt(element, args) {
+      var autoInit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
       classCallCheck(this, TypeIt);
 
-      this.id = this.generateHash();
+      this.id = generateHash();
       this.instances = [];
       this.elements = [];
       this.args = args;
+      this.autoInit = autoInit;
 
       if ((typeof element === "undefined" ? "undefined" : _typeof(element)) === "object") {
         //-- There's only one!
@@ -717,30 +724,34 @@
         this.elements = document.querySelectorAll(element);
       }
 
-      this.createInstances();
+      this.generateInstances();
     }
 
     createClass(TypeIt, [{
-      key: "generateHash",
-      value: function generateHash() {
-        return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-      }
-    }, {
-      key: "createInstances",
-      value: function createInstances() {
+      key: "generateInstances",
+      value: function generateInstances() {
         var _this = this;
 
         [].slice.call(this.elements).forEach(function (element) {
-          _this.instances.push(new Instance(element, _this.id, _this.args, _this));
+          _this.instances.push(new Instance(element, _this.id, _this.args, _this.autoInit, _this));
         });
       }
+
+      /**
+       * Push a specific action into the queue of each instance.
+       * If an instance has already completed, trigger the queeu again.
+       *
+       * @param {string} function
+       * @param {*} argument
+       */
+
     }, {
-      key: "pushAction",
-      value: function pushAction(func) {
+      key: "queueUp",
+      value: function queueUp(action) {
         var argument = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
         this.instances.forEach(function (instance) {
-          instance.queue.push([instance[func], argument]);
+          instance.queue.push([instance[action], argument]);
 
           if (instance.isComplete === true) {
             instance.next();
@@ -784,7 +795,33 @@
       value: function _delete() {
         var numCharacters = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
-        this.pushAction("delete", numCharacters);
+        this.queueUp("delete", numCharacters);
+        return this;
+      }
+    }, {
+      key: "pause",
+      value: function pause() {
+        var ms = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
+        this.queueUp("pause", ms);
+        return this;
+      }
+    }, {
+      key: "empty",
+      value: function empty() {
+        this.queueUp("empty");
+        return this;
+      }
+    }, {
+      key: "break",
+      value: function _break() {
+        this.queueUp("break");
+        return this;
+      }
+    }, {
+      key: "options",
+      value: function options(_options) {
+        this.queueUp("setOptions", _options);
         return this;
       }
     }, {
@@ -805,14 +842,6 @@
         });
       }
     }, {
-      key: "pause",
-      value: function pause() {
-        var ms = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-
-        this.pushAction("pause", ms);
-        return this;
-      }
-    }, {
       key: "destroy",
       value: function destroy() {
         var removeCursor = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
@@ -824,36 +853,30 @@
 
           instance.timeouts = [];
 
-          if (removeCursor) {
+          if (removeCursor && instance.options.cursor) {
             instance.element.removeChild(instance.element.querySelector(".ti-cursor"));
           }
 
           instance.hasBeenDestroyed = true;
         });
       }
-    }, {
-      key: "empty",
-      value: function empty() {
-        this.pushAction("empty");
-        return this;
-      }
-    }, {
-      key: "break",
-      value: function _break() {
-        this.pushAction("break");
-        return this;
-      }
-    }, {
-      key: "options",
-      value: function options(_options) {
-        this.pushAction("setOptions", _options);
-        return this;
-      }
+
+      /**
+       * Reset each instance with a new instance.
+       */
+
     }, {
       key: "reset",
       value: function reset() {
         this.instances = this.instances.map(function (instance) {
           return instance.reset();
+        });
+      }
+    }, {
+      key: "init",
+      value: function init() {
+        this.instances.forEach(function (instance) {
+          instance.init();
         });
       }
     }, {
@@ -869,6 +892,20 @@
         if (!this.instances.length) return false;
 
         return this.instances[0].hasBeenDestroyed;
+      }
+    }, {
+      key: "hasStarted",
+      get: function get$$1() {
+        if (!this.instances.length) return false;
+
+        return this.instances[0].hasStarted;
+      }
+    }, {
+      key: "isFrozen",
+      get: function get$$1() {
+        if (!this.instances.length) return false;
+
+        return this.instances[0].isFrozen;
       }
     }]);
     return TypeIt;

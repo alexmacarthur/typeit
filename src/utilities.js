@@ -23,6 +23,12 @@ export function randomInRange(value, range) {
   );
 }
 
+export function generateHash() {
+  return Math.random()
+    .toString(36)
+    .substring(2, 15);
+}
+
 export function removeComments(arrayOfStrings) {
   return arrayOfStrings.map(string => {
     return string.replace(/<\!--.*?-->/g, "");

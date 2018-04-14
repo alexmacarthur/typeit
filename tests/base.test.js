@@ -42,8 +42,32 @@ test("Returns an object with base properties.", () => {
   const instance = new TypeIt("#element", {});
 
   expect(Object.keys(instance).sort()).toEqual(
-    ["elements", "id", "instances", "args"].sort()
+    ["autoInit", "elements", "id", "instances", "args"].sort()
   );
+});
+
+test("Disabling autoInit works.", () => {
+  jest.useFakeTimers();
+
+  document.body.innerHTML = `<div>'
+      <span id="element"></span>
+    </div>`;
+
+  const instance = new TypeIt(
+    "#element",
+    {
+      strings: "hello!"
+    },
+    false
+  );
+
+  jest.runAllTimers();
+
+  expect(instance.hasStarted).toBe(false);
+
+  instance.init();
+
+  expect(instance.hasStarted).toBe(true);
 });
 
 test("Successfully resets when called.", () => {

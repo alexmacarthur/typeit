@@ -1,11 +1,13 @@
+import { generateHash } from "./utilities";
 import Instance from "./instance";
 
 export default class TypeIt {
-  constructor(element, args) {
-    this.id = this.generateHash();
+  constructor(element, args, autoInit = true) {
+    this.id = generateHash();
     this.instances = [];
     this.elements = [];
     this.args = args;
+    this.autoInit = autoInit;
 
     if (typeof element === "object") {
       //-- There's only one!
@@ -22,7 +24,7 @@ export default class TypeIt {
       this.elements = document.querySelectorAll(element);
     }
 
-    this.createInstances();
+    this.generateInstances();
   }
 
   get isComplete() {
@@ -37,26 +39,36 @@ export default class TypeIt {
     return this.instances[0].hasBeenDestroyed;
   }
 
-  generateHash() {
-    return (
-      Math.random()
-        .toString(36)
-        .substring(2, 15) +
-      Math.random()
-        .toString(36)
-        .substring(2, 15)
-    );
+  get hasStarted() {
+    if (!this.instances.length) return false;
+
+    return this.instances[0].hasStarted;
   }
 
-  createInstances() {
+  get isFrozen() {
+    if (!this.instances.length) return false;
+
+    return this.instances[0].isFrozen;
+  }
+
+  generateInstances() {
     [].slice.call(this.elements).forEach(element => {
-      this.instances.push(new Instance(element, this.id, this.args, this));
+      this.instances.push(
+        new Instance(element, this.id, this.args, this.autoInit, this)
+      );
     });
   }
 
-  pushAction(func, argument = null) {
+  /**
+   * Push a specific action into the queue of each instance.
+   * If an instance has already completed, trigger the queeu again.
+   *
+   * @param {string} function
+   * @param {*} argument
+   */
+  queueUp(action, argument = null) {
     this.instances.forEach(instance => {
-      instance.queue.push([instance[func], argument]);
+      instance.queue.push([instance[action], argument]);
 
       if (instance.isComplete === true) {
         instance.next();
@@ -90,7 +102,27 @@ export default class TypeIt {
    * @return { TypeIt }
    */
   delete(numCharacters = null) {
-    this.pushAction("delete", numCharacters);
+    this.queueUp("delete", numCharacters);
+    return this;
+  }
+
+  pause(ms = null) {
+    this.queueUp("pause", ms);
+    return this;
+  }
+
+  empty() {
+    this.queueUp("empty");
+    return this;
+  }
+
+  break() {
+    this.queueUp("break");
+    return this;
+  }
+
+  options(options) {
+    this.queueUp("setOptions", options);
     return this;
   }
 
@@ -109,11 +141,6 @@ export default class TypeIt {
     });
   }
 
-  pause(ms = null) {
-    this.pushAction("pause", ms);
-    return this;
-  }
-
   destroy(removeCursor = true) {
     this.instances.forEach(instance => {
       instance.timeouts.forEach(timeout => {
@@ -122,7 +149,7 @@ export default class TypeIt {
 
       instance.timeouts = [];
 
-      if (removeCursor) {
+      if (removeCursor && instance.options.cursor) {
         instance.element.removeChild(
           instance.element.querySelector(".ti-cursor")
         );
@@ -132,24 +159,18 @@ export default class TypeIt {
     });
   }
 
-  empty() {
-    this.pushAction("empty");
-    return this;
-  }
-
-  break() {
-    this.pushAction("break");
-    return this;
-  }
-
-  options(options) {
-    this.pushAction("setOptions", options);
-    return this;
-  }
-
+  /**
+   * Reset each instance with a new instance.
+   */
   reset() {
     this.instances = this.instances.map(instance => {
       return instance.reset();
+    });
+  }
+
+  init() {
+    this.instances.forEach(instance => {
+      instance.init();
     });
   }
 }

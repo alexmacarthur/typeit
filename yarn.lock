@@ -909,8 +909,8 @@ camelcase@^4.1.0:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
 
 caniuse-lite@^1.0.30000792:
-  version "1.0.30000827"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000827.tgz#2dad2354e4810c3c9bb1cfc57f655c270c25fa52"
+  version "1.0.30000828"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000828.tgz#048f98de213f7a3c047bf78a9523c611855d4fdd"
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -3388,8 +3388,8 @@ preserve@^0.2.0:
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
 prettier@^1.8.2:
-  version "1.11.1"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.11.1.tgz#61e43fc4cd44e68f2b0dfc2c38cd4bb0fccdcc75"
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.12.0.tgz#d26fc5894b9230de97629b39cae225b503724ce8"
 
 pretty-format@^21.2.1:
   version "21.2.1"

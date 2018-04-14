@@ -9,22 +9,50 @@ import {
 } from "./utilities";
 
 export default class Instance {
-  constructor(element, id, options, typeit) {
+  constructor(element, id, options, autoInit, typeit) {
     this.typeit = typeit;
     this.timeouts = [];
     this.id = id;
-    this.queue = [];
+    this.autoInit = autoInit;
     this.hasStarted = false;
     this.isFrozen = false;
     this.isComplete = false;
     this.hasBeenDestroyed = false;
+    this.queue = [];
     this.isInTag = false;
     this.stringsToDelete = "";
     this.style = "display:inline;position:relative;font:inherit;color:inherit;";
     this.element = element;
     this.setOptions(options, window.TypeItDefaults, false);
+    this.checkElement();
     this.setNextStringDelay();
-    this.init();
+
+    this.options.strings = toArray(this.options.strings);
+    this.options.strings = removeComments(this.options.strings);
+
+    //-- We don't have anything. Get out of here.
+    if (this.options.strings.length >= 1 && this.options.strings[0] === "") {
+      return;
+    }
+
+    this.element.innerHTML = `
+        <span style="${this.style}" class="ti-container"></span>
+      `;
+
+    this.element.setAttribute("data-typeitid", this.id);
+    this.elementContainer = this.element.querySelector("span");
+
+    if (this.options.startDelete) {
+      this.insert(this.stringsToDelete);
+      this.queue.push([this.delete]);
+      this.insertSplitPause(1);
+    }
+
+    this.generateQueue();
+
+    if (this.autoInit) {
+      this.init();
+    }
   }
 
   /**
@@ -74,36 +102,6 @@ export default class Instance {
           })
         : this.options.nextStringDelay
     };
-  }
-
-  init() {
-    this.checkElement();
-
-    this.options.strings = toArray(this.options.strings);
-    this.options.strings = removeComments(this.options.strings);
-
-    //-- We don't have anything. Get out of here.
-    if (this.options.strings.length >= 1 && this.options.strings[0] === "") {
-      return;
-    }
-
-    this.element.innerHTML = `
-        <span style="${this.style}" class="ti-container"></span>
-      `;
-
-    this.element.setAttribute("data-typeitid", this.id);
-    this.elementContainer = this.element.querySelector("span");
-
-    if (this.options.startDelete) {
-      this.insert(this.stringsToDelete);
-      this.queue.push([this.delete]);
-      this.insertSplitPause(1);
-    }
-
-    this.cursor();
-    this.generateQueue();
-
-    this.kickoff();
   }
 
   generateQueue(initialStep = null) {
@@ -214,7 +212,11 @@ export default class Instance {
     ]);
   }
 
-  kickoff() {
+  init() {
+    if (this.hasStarted) return;
+
+    this.cursor();
+
     if (this.options.autoStart) {
       this.hasStarted = true;
       this.next();
