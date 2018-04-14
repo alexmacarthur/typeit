@@ -47,8 +47,5 @@
     "rollup": "^0.57.1",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-uglify": "^3.0.0"
-  },
-  "dependencies": {
-    "jest": "^22.4.2"
   }
 }
