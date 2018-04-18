@@ -1,3 +1,4 @@
+import TypeItDefaults from "../src/defaults.js";
 import TypeIt from "../src/typeit";
 
 test("Clears out remnants of previous instances correctly.", () => {
@@ -121,9 +122,9 @@ test("Redefines defaults correctly.", () => {
       <span id="element"></span>
     </div>`;
 
-  expect(typeof window.TypeItDefaults).toBe("object");
+  expect(typeof TypeItDefaults).toBe("object");
 
-  window.TypeItDefaults.speed = 25;
+  TypeItDefaults.speed = 25;
   const instance = new TypeIt("#element", {});
 
   expect(instance.instances[0].options.speed).toEqual(25);
