@@ -1,4 +1,4 @@
-import "./defaults.js";
+import TypeItDefaults from "./defaults.js";
 import {
   isVisible,
   groupHTMLTags,
@@ -23,7 +23,7 @@ export default class Instance {
     this.stringsToDelete = "";
     this.style = "display:inline;position:relative;font:inherit;color:inherit;";
     this.element = element;
-    this.setOptions(options, window.TypeItDefaults, false);
+    this.setOptions(options, TypeItDefaults, false);
     this.checkElement();
     this.setNextStringDelay();
 

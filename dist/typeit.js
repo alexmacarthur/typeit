@@ -74,7 +74,7 @@
     return arr;
   }
 
-  window.TypeItDefaults = {
+  var TypeItDefaults = {
     strings: [],
     speed: 100,
     deleteSpeed: null,
@@ -145,7 +145,7 @@
       this.stringsToDelete = "";
       this.style = "display:inline;position:relative;font:inherit;color:inherit;";
       this.element = element;
-      this.setOptions(options, window.TypeItDefaults, false);
+      this.setOptions(options, TypeItDefaults, false);
       this.checkElement();
       this.setNextStringDelay();
 

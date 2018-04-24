@@ -1,4 +1,4 @@
-window.TypeItDefaults = {
+const TypeItDefaults = {
   strings: [],
   speed: 100,
   deleteSpeed: null,
@@ -21,3 +21,5 @@ window.TypeItDefaults = {
   afterStep: false,
   afterComplete: false
 };
+
+export default TypeItDefaults;
