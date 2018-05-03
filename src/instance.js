@@ -24,23 +24,15 @@ export default class Instance {
     this.style = "display:inline;position:relative;font:inherit;color:inherit;";
     this.element = element;
     this.setOptions(options, window.TypeItDefaults, false);
-    this.checkElement();
-    this.setNextStringDelay();
+    this.prepareTargetElement();
+    this.prepareDelay("nextStringDelay");
+    this.prepareDelay("loopDelay");
 
-    this.options.strings = toArray(this.options.strings);
-    this.options.strings = removeComments(this.options.strings);
-
-    //-- We don't have anything. Get out of here.
-    if (this.options.strings.length >= 1 && this.options.strings[0] === "") {
+    if (!this.prepareStrings()) {
       return;
     }
 
-    this.element.innerHTML = `
-        <span style="${this.style}" class="ti-container"></span>
-      `;
-
-    this.element.setAttribute("data-typeitid", this.id);
-    this.elementContainer = this.element.querySelector("span");
+    this.prepareDOM();
 
     if (this.options.startDelete) {
       this.insert(this.stringsToDelete);
@@ -53,6 +45,32 @@ export default class Instance {
     if (this.autoInit) {
       this.init();
     }
+  }
+
+  /**
+   * Prepares strings for processing.
+   */
+  prepareStrings() {
+    this.options.strings = toArray(this.options.strings);
+    this.options.strings = removeComments(this.options.strings);
+
+    //-- We don't have anything. Get out of here.
+    if (this.options.strings.length >= 1 && this.options.strings[0] === "") {
+      return false;
+    }
+
+    return true;
+  }
+
+  /**
+   * Performs DOM-related work to prepare for typing.
+   */
+  prepareDOM() {
+    this.element.innerHTML = `
+        <span style="${this.style}" class="ti-container"></span>
+      `;
+    this.element.setAttribute("data-typeitid", this.id);
+    this.elementContainer = this.element.querySelector("span");
   }
 
   /**
@@ -75,32 +93,25 @@ export default class Instance {
         : this.elementContainer.innerText;
     }
 
-    //-- Reset the contents of the element.
-    if (this.options.html) {
-      this.elementContainer.innerHTML = content;
-    } else {
-      this.elementContainer.innerText = content;
-    }
+    this.elementContainer[
+      this.options.html ? "innerHTML" : "innerText"
+    ] = content;
 
     return content;
   }
 
-  /**
-   * Based on options, set the before and after values for the delay that is inserted when typing new strings.
-   */
-  setNextStringDelay() {
-    let isArray = Array.isArray(this.options.nextStringDelay);
+  prepareDelay(delayType) {
+    let delay = this.options[delayType];
 
-    let halfDelay = !isArray ? this.options.nextStringDelay / 2 : null;
+    if (!delay) return;
 
-    this.options.nextStringDelay = {
-      before: isArray ? this.options.nextStringDelay[0] : halfDelay,
-      after: isArray ? this.options.nextStringDelay[1] : halfDelay,
-      total: isArray
-        ? this.options.nextStringDelay.reduce((accumulator, currentValue) => {
-            return accumulator + currentValue;
-          })
-        : this.options.nextStringDelay
+    let isArray = Array.isArray(delay);
+    let halfDelay = !isArray ? delay / 2 : null;
+
+    this.options[delayType] = {
+      before: isArray ? delay[0] : halfDelay,
+      after: isArray ? delay[1] : halfDelay,
+      total: isArray ? delay[0] + delay[1] : delay
     };
   }
 
@@ -160,12 +171,13 @@ export default class Instance {
       string = string[0];
     }
 
+    //-- @todo Improve this check by using regex.
     //-- If an opening HTML tag is found and we're not already printing inside a tag
     if (
       this.options.html &&
       (startsWith(string[0], "<") && !startsWith(string[0], "</"))
     ) {
-      //-- Create node of that string name.
+      //-- Create node of that string name, by regexing for the closing tag.
       let matches = string[0].match(/\<(.*?)\>/);
       let doc = document.implementation.createHTMLDocument("");
       doc.body.innerHTML = "<" + matches[1] + "></" + matches[1] + ">";
@@ -299,7 +311,7 @@ export default class Instance {
    * Depending on if we're starting by deleting an existing string or typing
    * from nothing, set a specific variable to what's in the HTML.
    */
-  checkElement() {
+  prepareTargetElement() {
     //-- If any of the existing children nodes have .ti-container, clear it out because this is a remnant of a previous instance.
     [].slice.call(this.element.childNodes).forEach(node => {
       if (node.classList === undefined) return;
@@ -537,12 +549,15 @@ export default class Instance {
     }
 
     if (this.options.loop) {
+      let delay = this.options.loopDelay
+        ? this.options.loopDelay
+        : this.options.nextStringDelay;
       this.queueDeletions(this.contents());
-      this.generateQueue([this.pause, this.options.loopDelay / 2]);
+      this.generateQueue([this.pause, delay.before]);
 
       setTimeout(() => {
         this.next();
-      }, this.options.loopDelay / 2);
+      }, delay.after);
 
       return;
     }

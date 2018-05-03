@@ -109,7 +109,7 @@ test("Can type new string after completion.", () => {
   expect(typedString).toEqual("Ham over turkey. Obviously.");
 });
 
-test("Generates correct pauses.", () => {
+test("Generates correct `nextStringDelay`.", () => {
   document.body.innerHTML = `<div>'
       <span id="element"></span>
     </div>`;
@@ -136,6 +136,34 @@ test("Generates correct pauses.", () => {
   expect(nextStringDelay.before).toBe(150);
   expect(nextStringDelay.after).toBe(400);
   expect(nextStringDelay.total).toBe(550);
+});
+
+test("Generates correct `loopDelay`.", () => {
+  document.body.innerHTML = `<div>'
+      <span id="element"></span>
+    </div>`;
+
+  const instance1 = new TypeIt("#element", {
+    nextStringDelay: 500,
+    strings: ["Free markets...", "win."]
+  });
+
+  let nextStringDelay = instance1.instances[0].options.nextStringDelay;
+  let loopDelay = instance1.instances[0].options.loopDelay;
+
+  expect(loopDelay).toBe(false);
+
+  const instance2 = new TypeIt("#element", {
+    loopDelay: [3000, 5000],
+    strings: ["Free markets...", "win."]
+  });
+
+  loopDelay = instance2.instances[0].options.loopDelay;
+
+  expect(typeof loopDelay).toBe("object");
+  expect(loopDelay.before).toBe(3000);
+  expect(loopDelay.after).toBe(5000);
+  expect(loopDelay.total).toBe(8000);
 });
 
 test("Wraps pauses correctly when replacing lines.", () => {

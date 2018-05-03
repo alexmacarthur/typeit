@@ -11,7 +11,7 @@ window.TypeItDefaults = {
   startDelete: false,
   nextStringDelay: 750,
   loop: false,
-  loopDelay: 750,
+  loopDelay: false,
   html: true,
   autoStart: true,
   callback: false,

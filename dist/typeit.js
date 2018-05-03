@@ -2,7 +2,7 @@
  *
  *   typeit - The most versatile animated typing utility on the planet.
  *   Author: Alex MacArthur <alex@macarthur.me> (https://macarthur.me)
- *   Version: v5.9.0
+ *   Version: v5.10.0
  *   URL: https://typeitjs.com
  *   License: GPL-2.0
  *
@@ -87,7 +87,7 @@
     startDelete: false,
     nextStringDelay: 750,
     loop: false,
-    loopDelay: 750,
+    loopDelay: false,
     html: true,
     autoStart: true,
     callback: false,
@@ -146,21 +146,15 @@
       this.style = "display:inline;position:relative;font:inherit;color:inherit;";
       this.element = element;
       this.setOptions(options, window.TypeItDefaults, false);
-      this.checkElement();
-      this.setNextStringDelay();
+      this.prepareTargetElement();
+      this.prepareDelay("nextStringDelay");
+      this.prepareDelay("loopDelay");
 
-      this.options.strings = toArray(this.options.strings);
-      this.options.strings = removeComments(this.options.strings);
-
-      //-- We don't have anything. Get out of here.
-      if (this.options.strings.length >= 1 && this.options.strings[0] === "") {
+      if (!this.prepareStrings()) {
         return;
       }
 
-      this.element.innerHTML = "\n        <span style=\"" + this.style + "\" class=\"ti-container\"></span>\n      ";
-
-      this.element.setAttribute("data-typeitid", this.id);
-      this.elementContainer = this.element.querySelector("span");
+      this.prepareDOM();
 
       if (this.options.startDelete) {
         this.insert(this.stringsToDelete);
@@ -176,11 +170,41 @@
     }
 
     /**
-     * Reset the instance to new status.
+     * Prepares strings for processing.
      */
 
 
     createClass(Instance, [{
+      key: "prepareStrings",
+      value: function prepareStrings() {
+        this.options.strings = toArray(this.options.strings);
+        this.options.strings = removeComments(this.options.strings);
+
+        //-- We don't have anything. Get out of here.
+        if (this.options.strings.length >= 1 && this.options.strings[0] === "") {
+          return false;
+        }
+
+        return true;
+      }
+
+      /**
+       * Performs DOM-related work to prepare for typing.
+       */
+
+    }, {
+      key: "prepareDOM",
+      value: function prepareDOM() {
+        this.element.innerHTML = "\n        <span style=\"" + this.style + "\" class=\"ti-container\"></span>\n      ";
+        this.element.setAttribute("data-typeitid", this.id);
+        this.elementContainer = this.element.querySelector("span");
+      }
+
+      /**
+       * Reset the instance to new status.
+       */
+
+    }, {
       key: "reset",
       value: function reset() {
         return new Instance(this.element, this.id, this.options, this.typeit);
@@ -202,33 +226,24 @@
           return this.options.html ? this.elementContainer.innerHTML : this.elementContainer.innerText;
         }
 
-        //-- Reset the contents of the element.
-        if (this.options.html) {
-          this.elementContainer.innerHTML = content;
-        } else {
-          this.elementContainer.innerText = content;
-        }
+        this.elementContainer[this.options.html ? "innerHTML" : "innerText"] = content;
 
         return content;
       }
-
-      /**
-       * Based on options, set the before and after values for the delay that is inserted when typing new strings.
-       */
-
     }, {
-      key: "setNextStringDelay",
-      value: function setNextStringDelay() {
-        var isArray = Array.isArray(this.options.nextStringDelay);
+      key: "prepareDelay",
+      value: function prepareDelay(delayType) {
+        var delay = this.options[delayType];
 
-        var halfDelay = !isArray ? this.options.nextStringDelay / 2 : null;
+        if (!delay) return;
 
-        this.options.nextStringDelay = {
-          before: isArray ? this.options.nextStringDelay[0] : halfDelay,
-          after: isArray ? this.options.nextStringDelay[1] : halfDelay,
-          total: isArray ? this.options.nextStringDelay.reduce(function (accumulator, currentValue) {
-            return accumulator + currentValue;
-          }) : this.options.nextStringDelay
+        var isArray = Array.isArray(delay);
+        var halfDelay = !isArray ? delay / 2 : null;
+
+        this.options[delayType] = {
+          before: isArray ? delay[0] : halfDelay,
+          after: isArray ? delay[1] : halfDelay,
+          total: isArray ? delay[0] + delay[1] : delay
         };
       }
     }, {
@@ -297,9 +312,10 @@
           string = string[0];
         }
 
+        //-- @todo Improve this check by using regex.
         //-- If an opening HTML tag is found and we're not already printing inside a tag
         if (this.options.html && startsWith(string[0], "<") && !startsWith(string[0], "</")) {
-          //-- Create node of that string name.
+          //-- Create node of that string name, by regexing for the closing tag.
           var matches = string[0].match(/\<(.*?)\>/);
           var _doc = document.implementation.createHTMLDocument("");
           _doc.body.innerHTML = "<" + matches[1] + "></" + matches[1] + ">";
@@ -421,8 +437,8 @@
        */
 
     }, {
-      key: "checkElement",
-      value: function checkElement() {
+      key: "prepareTargetElement",
+      value: function prepareTargetElement() {
         var _this2 = this;
 
         //-- If any of the existing children nodes have .ti-container, clear it out because this is a remnant of a previous instance.
@@ -682,12 +698,13 @@
         }
 
         if (this.options.loop) {
+          var delay = this.options.loopDelay ? this.options.loopDelay : this.options.nextStringDelay;
           this.queueDeletions(this.contents());
-          this.generateQueue([this.pause, this.options.loopDelay / 2]);
+          this.generateQueue([this.pause, delay.before]);
 
           setTimeout(function () {
             _this7.next();
-          }, this.options.loopDelay / 2);
+          }, delay.after);
 
           return;
         }
