@@ -77,7 +77,7 @@ export default class Instance {
    * Reset the instance to new status.
    */
   reset() {
-    return new Instance(this.element, this.id, this.options, this.typeit);
+    return new Instance(this.element, this.id, this.options, this.autoInit, this.typeit);
   }
 
   /**
