@@ -90,6 +90,13 @@ test("Successfully resets when called.", () => {
 
   instance.reset();
 
+  //-- Ensure the arguments that define these properties were passed.
+  expect(instance.instances[0].element).not.toBe(undefined);
+  expect(instance.instances[0].id).not.toBe(undefined);
+  expect(instance.instances[0].options).not.toBe(undefined);
+  expect(instance.instances[0].autoInit).not.toBe(undefined);
+  expect(instance.instances[0].typeit).not.toBe(undefined);
+
   expect(instance.instances).toHaveLength(1);
   expect(instance.isComplete).toBe(false);
   expect(instance.hasBeenDestroyed).toBe(false);
