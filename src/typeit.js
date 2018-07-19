@@ -1,30 +1,8 @@
-import { generateHash } from "./utilities";
-import Instance from "./instance";
+import Core from "./core";
 
-export default class TypeIt {
+export default class TypeIt extends Core {
   constructor(element, args, autoInit = true) {
-    this.id = generateHash();
-    this.instances = [];
-    this.elements = [];
-    this.args = args;
-    this.autoInit = autoInit;
-
-    if (typeof element === "object") {
-      //-- There's only one!
-      if (element.length === undefined) {
-        this.elements.push(element);
-      } else {
-        //-- It's already an array!
-        this.elements = element;
-      }
-    }
-
-    //-- Convert to array of elements.
-    if (typeof element === "string") {
-      this.elements = document.querySelectorAll(element);
-    }
-
-    this.generateInstances();
+    super(element, args, autoInit);
   }
 
   get isComplete() {
@@ -51,31 +29,6 @@ export default class TypeIt {
     return this.instances[0].isFrozen;
   }
 
-  generateInstances() {
-    [].slice.call(this.elements).forEach(element => {
-      this.instances.push(
-        new Instance(element, this.id, this.args, this.autoInit, this)
-      );
-    });
-  }
-
-  /**
-   * Push a specific action into the queue of each instance.
-   * If an instance has already completed, trigger the queeu again.
-   *
-   * @param {string} function
-   * @param {*} argument
-   */
-  queueUp(action, argument = null) {
-    this.instances.forEach(instance => {
-      instance.queue.push([instance[action], argument]);
-
-      if (instance.isComplete === true) {
-        instance.next();
-      }
-    });
-  }
-
   /**
    * If used after typing has started, will append strings to the end of the existing queue. If used when typing is paused, will restart it.
    *
@@ -83,6 +36,8 @@ export default class TypeIt {
    * @return {object} TypeIt instance
    */
   type(string = "") {
+    this.init(true);
+
     this.instances.forEach(instance => {
       //-- Queue up a string right off the bat.
       instance.queueString(string);
@@ -90,6 +45,9 @@ export default class TypeIt {
       if (instance.isComplete === true) {
         instance.next();
       }
+
+      //-- We KNOW we have items to process now, so make sure we set this to false.
+      instance.isComplete = false;
     });
 
     return this;
@@ -168,9 +126,16 @@ export default class TypeIt {
     });
   }
 
-  init() {
+  init(requireAutoInit = false) {
     this.instances.forEach(instance => {
-      instance.init();
+      if (!requireAutoInit) {
+        instance.init();
+        return;
+      }
+
+      if (instance.autoInit) {
+        instance.init();
+      }
     });
   }
 }
