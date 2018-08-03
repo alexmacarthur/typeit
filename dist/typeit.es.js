@@ -2,7 +2,7 @@
  *
  *   typeit - The most versatile animated typing utility on the planet.
  *   Author: Alex MacArthur <alex@macarthur.me> (https://macarthur.me)
- *   Version: v5.10.3
+ *   Version: v5.10.4
  *   URL: https://typeitjs.com
  *   License: GPL-2.0
  *
@@ -28,7 +28,7 @@ function randomInRange(value, range) {
 }
 
 function appendStyleBlock(styles) {
-  var id = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  var id = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
 
   var styleBlock = document.createElement("style");
   styleBlock.id = id;
@@ -173,7 +173,7 @@ var Instance = function () {
     this.stringsToDelete = "";
     this.inlineStyles = {
       base: "display:inline;position:relative;font:inherit;color:inherit;line-height:inherit;",
-      cursor: "position:absolute;bottom:0;left:calc(100% + .15em);"
+      cursor: "position:absolute;top:auto;left:calc(100% + .15em);"
     };
     this.setOptions(options, window.TypeItDefaults, false);
     this.prepareTargetElement();
@@ -420,7 +420,6 @@ var Instance = function () {
       var visibilityStyle = "visibility: hidden;";
 
       if (this.options.cursor) {
-
         appendStyleBlock("\n        @keyframes blink-" + this.id + " {\n          0% {opacity: 0}\n          49% {opacity: 0}\n          50% {opacity: 1}\n        }\n\n        [data-typeitid='" + this.id + "'] .ti-cursor {\n          animation: blink-" + this.id + " " + this.options.cursorSpeed / 1000 + "s infinite;\n        }\n      ", this.id);
 
         visibilityStyle = "";

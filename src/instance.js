@@ -26,7 +26,7 @@ export default class Instance {
     this.inlineStyles = {
       base:
         "display:inline;position:relative;font:inherit;color:inherit;line-height:inherit;",
-      cursor: "position:absolute;bottom:0;left:calc(100% + .15em);"
+      cursor: "position:absolute;top:auto;left:calc(100% + .15em);"
     };
     this.setOptions(options, window.TypeItDefaults, false);
     this.prepareTargetElement();
