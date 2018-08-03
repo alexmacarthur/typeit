@@ -5,7 +5,8 @@ import {
   randomInRange,
   removeComments,
   startsWith,
-  toArray
+  toArray,
+  appendStyleBlock
 } from "./utilities";
 
 export default class Instance {
@@ -22,7 +23,11 @@ export default class Instance {
     this.queue = [];
     this.isInTag = false;
     this.stringsToDelete = "";
-    this.style = "display:inline;position:relative;font:inherit;color:inherit;";
+    this.inlineStyles = {
+      base:
+        "display:inline;position:relative;font:inherit;color:inherit;line-height:inherit;",
+      cursor: "position:absolute;bottom:0;left:calc(100% + .15em);"
+    };
     this.setOptions(options, window.TypeItDefaults, false);
     this.prepareTargetElement();
     this.prepareDelay("nextStringDelay");
@@ -58,10 +63,24 @@ export default class Instance {
    */
   prepareDOM() {
     this.element.innerHTML = `
-        <span style="${this.style}" class="ti-container"></span>
+      <span style="${this.inlineStyles.base}" class="ti-wrapper">
+        <span style="${this.inlineStyles.base}" class="ti-container"></span>
+      </span>
       `;
     this.element.setAttribute("data-typeitid", this.id);
-    this.elementContainer = this.element.querySelector("span");
+    this.elementContainer = this.element.querySelector(".ti-container");
+    this.elementWrapper = this.element.querySelector(".ti-wrapper");
+
+    appendStyleBlock(
+      `
+        .${this.elementContainer.className}:before {
+          content: '.';
+          display: inline-block;
+          width: 0;
+          visibility: hidden;
+        }
+      `
+    );
   }
 
   /**
@@ -254,35 +273,30 @@ export default class Instance {
     let visibilityStyle = "visibility: hidden;";
 
     if (this.options.cursor) {
-      let styleBlock = document.createElement("style");
+      appendStyleBlock(
+        `
+        @keyframes blink-${this.id} {
+          0% {opacity: 0}
+          49% {opacity: 0}
+          50% {opacity: 1}
+        }
 
-      styleBlock.id = this.id;
-
-      let styles = `
-            @keyframes blink-${this.id} {
-              0% {opacity: 0}
-              49% {opacity: 0}
-              50% {opacity: 1}
-            }
-
-            [data-typeitid='${this.id}'] .ti-cursor {
-              animation: blink-${this.id} ${this.options.cursorSpeed /
-        1000}s infinite;
-            }
-          `;
-
-      styleBlock.appendChild(document.createTextNode(styles));
-
-      document.head.appendChild(styleBlock);
+        [data-typeitid='${this.id}'] .ti-cursor {
+          animation: blink-${this.id} ${this.options.cursorSpeed /
+          1000}s infinite;
+        }
+      `,
+        this.id
+      );
 
       visibilityStyle = "";
     }
 
-    this.element.insertAdjacentHTML(
+    this.elementWrapper.insertAdjacentHTML(
       "beforeend",
-      `<span style="${this.style}${visibilityStyle}" class="ti-cursor">${
-        this.options.cursorChar
-      }</span>`
+      `<span style="${this.inlineStyles.base}${
+        this.inlineStyles.cursor
+      }${visibilityStyle}" class="ti-cursor">${this.options.cursorChar}</span>`
     );
   }
 

@@ -108,8 +108,8 @@ export default class TypeIt extends Core {
       instance.timeouts = [];
 
       if (removeCursor && instance.options.cursor) {
-        instance.element.removeChild(
-          instance.element.querySelector(".ti-cursor")
+        instance.elementWrapper.removeChild(
+          instance.elementWrapper.querySelector(".ti-cursor")
         );
       }
 

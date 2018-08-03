@@ -2,7 +2,7 @@
  *
  *   typeit - The most versatile animated typing utility on the planet.
  *   Author: Alex MacArthur <alex@macarthur.me> (https://macarthur.me)
- *   Version: v5.10.2
+ *   Version: v5.10.3
  *   URL: https://typeitjs.com
  *   License: GPL-2.0
  *
@@ -25,6 +25,15 @@ function isVisible(element) {
 
 function randomInRange(value, range) {
   return Math.abs(Math.random() * (value + range - (value - range)) + (value - range));
+}
+
+function appendStyleBlock(styles) {
+  var id = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+  var styleBlock = document.createElement("style");
+  styleBlock.id = id;
+  styleBlock.appendChild(document.createTextNode(styles));
+  document.head.appendChild(styleBlock);
 }
 
 function generateHash() {
@@ -162,7 +171,10 @@ var Instance = function () {
     this.queue = [];
     this.isInTag = false;
     this.stringsToDelete = "";
-    this.style = "display:inline;position:relative;font:inherit;color:inherit;";
+    this.inlineStyles = {
+      base: "display:inline;position:relative;font:inherit;color:inherit;line-height:inherit;",
+      cursor: "position:absolute;bottom:0;left:calc(100% + .15em);"
+    };
     this.setOptions(options, window.TypeItDefaults, false);
     this.prepareTargetElement();
     this.prepareDelay("nextStringDelay");
@@ -204,9 +216,12 @@ var Instance = function () {
   }, {
     key: "prepareDOM",
     value: function prepareDOM() {
-      this.element.innerHTML = "\n        <span style=\"" + this.style + "\" class=\"ti-container\"></span>\n      ";
+      this.element.innerHTML = "\n      <span style=\"" + this.inlineStyles.base + "\" class=\"ti-wrapper\">\n        <span style=\"" + this.inlineStyles.base + "\" class=\"ti-container\"></span>\n      </span>\n      ";
       this.element.setAttribute("data-typeitid", this.id);
-      this.elementContainer = this.element.querySelector("span");
+      this.elementContainer = this.element.querySelector(".ti-container");
+      this.elementWrapper = this.element.querySelector(".ti-wrapper");
+
+      appendStyleBlock("\n        ." + this.elementContainer.className + ":before {\n          content: '.';\n          display: inline-block;\n          width: 0;\n          visibility: hidden;\n        }\n      ");
     }
 
     /**
@@ -405,20 +420,13 @@ var Instance = function () {
       var visibilityStyle = "visibility: hidden;";
 
       if (this.options.cursor) {
-        var styleBlock = document.createElement("style");
 
-        styleBlock.id = this.id;
-
-        var styles = "\n            @keyframes blink-" + this.id + " {\n              0% {opacity: 0}\n              49% {opacity: 0}\n              50% {opacity: 1}\n            }\n\n            [data-typeitid='" + this.id + "'] .ti-cursor {\n              animation: blink-" + this.id + " " + this.options.cursorSpeed / 1000 + "s infinite;\n            }\n          ";
-
-        styleBlock.appendChild(document.createTextNode(styles));
-
-        document.head.appendChild(styleBlock);
+        appendStyleBlock("\n        @keyframes blink-" + this.id + " {\n          0% {opacity: 0}\n          49% {opacity: 0}\n          50% {opacity: 1}\n        }\n\n        [data-typeitid='" + this.id + "'] .ti-cursor {\n          animation: blink-" + this.id + " " + this.options.cursorSpeed / 1000 + "s infinite;\n        }\n      ", this.id);
 
         visibilityStyle = "";
       }
 
-      this.element.insertAdjacentHTML("beforeend", "<span style=\"" + this.style + visibilityStyle + "\" class=\"ti-cursor\">" + this.options.cursorChar + "</span>");
+      this.elementWrapper.insertAdjacentHTML("beforeend", "<span style=\"" + this.inlineStyles.base + this.inlineStyles.cursor + visibilityStyle + "\" class=\"ti-cursor\">" + this.options.cursorChar + "</span>");
     }
 
     /**
@@ -902,7 +910,7 @@ var TypeIt = function (_Core) {
         instance.timeouts = [];
 
         if (removeCursor && instance.options.cursor) {
-          instance.element.removeChild(instance.element.querySelector(".ti-cursor"));
+          instance.elementWrapper.removeChild(instance.elementWrapper.querySelector(".ti-cursor"));
         }
 
         instance.hasBeenDestroyed = true;
