@@ -27,7 +27,7 @@ export default class Instance {
       base:
         "display:inline;position:relative;font:inherit;color:inherit;line-height:inherit;",
       cursor:
-        "position:absolute;bottom:0;left:calc(100%+.15em);line-height:normal;"
+        "position:absolute;bottom:0;left:calc(100% + .15em);line-height:normal;"
     };
     this.setOptions(options, window.TypeItDefaults, false);
     this.prepareTargetElement();

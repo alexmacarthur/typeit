@@ -2,7 +2,7 @@
  *
  *   typeit - The most versatile animated typing utility on the planet.
  *   Author: Alex MacArthur <alex@macarthur.me> (https://macarthur.me)
- *   Version: v5.10.5
+ *   Version: v5.10.6
  *   URL: https://typeitjs.com
  *   License: GPL-2.0
  *
@@ -173,7 +173,7 @@ var Instance = function () {
     this.stringsToDelete = "";
     this.inlineStyles = {
       base: "display:inline;position:relative;font:inherit;color:inherit;line-height:inherit;",
-      cursor: "position:absolute;bottom:0;left:calc(100%+.15em);line-height:normal;"
+      cursor: "position:absolute;bottom:0;left:calc(100% + .15em);line-height:normal;"
     };
     this.setOptions(options, window.TypeItDefaults, false);
     this.prepareTargetElement();
