@@ -25,9 +25,7 @@ export default class Instance {
     this.stringsToDelete = "";
     this.inlineStyles = {
       base:
-        "display:inline;position:relative;font:inherit;color:inherit;line-height:inherit;",
-      cursor:
-        "position:absolute;bottom:0;left:calc(100% + .15em);line-height:normal;"
+        "display:inline;position:relative;font:inherit;color:inherit;line-height:inherit;"
     };
     this.setOptions(options, window.TypeItDefaults, false);
     this.prepareTargetElement();
@@ -295,9 +293,11 @@ export default class Instance {
 
     this.elementWrapper.insertAdjacentHTML(
       "beforeend",
-      `<span style="${this.inlineStyles.base}${
-        this.inlineStyles.cursor
-      }${visibilityStyle}" class="ti-cursor">${this.options.cursorChar}</span>`
+      `<span style="${
+        this.inlineStyles.base
+      }${visibilityStyle}left: -.25ch;" class="ti-cursor">${
+        this.options.cursorChar
+      }</span>`
     );
   }
 
