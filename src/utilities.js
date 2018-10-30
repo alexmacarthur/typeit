@@ -45,30 +45,3 @@ export function removeComments(arrayOfStrings) {
 export function startsWith(string, search) {
   return string.indexOf(search) === 0;
 }
-
-export function toArray(string) {
-  return Array.isArray(string) ? string.slice(0) : string.split("<br>");
-}
-
-export function groupHTMLTags(arr) {
-  let tPosition = [];
-  let tag;
-  let isEntity = false;
-
-  for (let j = 0; j < arr.length; j++) {
-    if (arr[j] === "<" || arr[j] === "&") {
-      tPosition[0] = j;
-      isEntity = arr[j] === "&";
-    }
-
-    if (arr[j] === ">" || (arr[j] === ";" && isEntity)) {
-      tPosition[1] = j;
-      j = 0;
-      tag = arr.slice(tPosition[0], tPosition[1] + 1).join("");
-      arr.splice(tPosition[0], tPosition[1] - tPosition[0] + 1, tag);
-      isEntity = false;
-    }
-  }
-
-  return arr;
-}

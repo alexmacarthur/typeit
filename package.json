@@ -1,6 +1,6 @@
 {
   "name": "typeit",
-  "version": "5.10.7",
+  "version": "6.0.0",
   "description": "The most versatile animated typing utility on the planet.",
   "author": "Alex MacArthur <alex@macarthur.me> (https://macarthur.me)",
   "license": "GPL-2.0",
@@ -8,16 +8,18 @@
     "url": "https://github.com/alexmacarthur/typeit/issues"
   },
   "homepage": "https://typeitjs.com",
-  "main": "dist/typeit.js",
-  "module": "dist/typeit.es.js",
+  "main": "dist/typeit.min.js",
+  "module": "dist/typeit.min.js",
   "files": [
     "dist/"
   ],
   "scripts": {
-    "build": "rollup -c && prettier src/* --write && prettier tests/* --write",
-    "watch": "rollup -c -w",
-    "serve": "concurrently --kill-others \"rollup -c -w\" \"node serve.js\"",
-    "test": "jest tests",
+    "build": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=webpack.config.js && prettier src/* --write && prettier __tests__/* --write",
+    "watch": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=webpack.config.js && prettier src/* --write && prettier __tests__/* --write",
+    "serve": "concurrently --kill-others \"npm run watch\" \"node serve.js\"",
+    "analyze": "node_modules/webpack/bin/webpack.js --profile --json > stats.json",
+    "prettify-and-add": "prettier \"./**/*.js\" --write && git add -A",
+    "test": "jest",
     "postinstall": "node ./notice.js"
   },
   "keywords": [
@@ -30,22 +32,26 @@
     "type effect",
     "text effects"
   ],
+  "pre-commit": [
+    "prettify-and-add"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alexmacarthur/typeit.git"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-jest": "^21.2.0",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-preset-env": "^1.6.1",
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.4",
     "concurrently": "^3.5.1",
     "express": "^4.16.2",
     "jest-cli": "^21.2.1",
-    "prettier": "^1.8.2",
-    "regenerator-runtime": "^0.11.0",
-    "rollup": "^0.57.1",
-    "rollup-plugin-babel": "^3.0.3",
-    "rollup-plugin-uglify": "^3.0.0"
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.15.3",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2"
   }
 }

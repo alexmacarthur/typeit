@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Initial queue only contains startDelay pause. 1`] = `
+_default {
+  "executed": Array [],
+  "waiting": Array [
+    Array [
+      [Function],
+      250,
+    ],
+  ],
+}
+`;
+
+exports[`queueUp() Correctly enqueues anonymous function. 1`] = `
+"function () {
+      return true;
+    }"
+`;
+
+exports[`queueUp() If invalid function name is passed, will save as undefined 1`] = `
+Array [
+  Array [
+    [Function],
+    250,
+  ],
+  Array [
+    undefined,
+    "someArg",
+  ],
+]
+`;
+
+exports[`queueUp() It duplicates the action a certain number of times per instance, if specified. 1`] = `
+Array [
+  Array [
+    [Function],
+    250,
+  ],
+  Array [
+    [Function],
+    1,
+  ],
+  Array [
+    [Function],
+    1,
+  ],
+  Array [
+    [Function],
+    1,
+  ],
+]
+`;
+
+exports[`queueUp() It duplicates the action a certain number of times per instance, if specified. 2`] = `
+Array [
+  Array [
+    [Function],
+    250,
+  ],
+  Array [
+    [Function],
+    1,
+  ],
+  Array [
+    [Function],
+    1,
+  ],
+  Array [
+    [Function],
+    1,
+  ],
+  Array [
+    [Function],
+    1,
+  ],
+]
+`;
+
+exports[`queueUp() It should add function name by string w/ correct arguments. 1`] = `
+Array [
+  Array [
+    [Function],
+    250,
+  ],
+  Array [
+    [Function],
+    "someArg",
+  ],
+]
+`;

@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should leave other markup alone. 1`] = `true`;
+
+exports[`Should remove .ti-wrapper markup. 1`] = `true`;

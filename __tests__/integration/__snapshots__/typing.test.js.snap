@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Generates a queue correctly. 1`] = `
+_default {
+  "executed": Array [],
+  "waiting": Array [
+    Array [
+      [Function],
+      250,
+    ],
+    Array [
+      [Function],
+      "T",
+      Object {
+        "isFirst": true,
+      },
+    ],
+    Array [
+      [Function],
+      "a",
+    ],
+    Array [
+      [Function],
+      "x",
+    ],
+    Array [
+      [Function],
+      "a",
+    ],
+    Array [
+      [Function],
+      "t",
+    ],
+    Array [
+      [Function],
+      "i",
+    ],
+    Array [
+      [Function],
+      "o",
+    ],
+    Array [
+      [Function],
+      "n",
+    ],
+    Array [
+      [Function],
+      " ",
+    ],
+    Array [
+      [Function],
+      "i",
+    ],
+    Array [
+      [Function],
+      "s",
+    ],
+    Array [
+      [Function],
+      ".",
+    ],
+    Array [
+      [Function],
+      ".",
+    ],
+    Array [
+      [Function],
+      ".",
+      Object {
+        "isLast": true,
+      },
+    ],
+    Array [
+      [Function],
+      375,
+    ],
+    Array [
+      [Function],
+      "<br>",
+    ],
+    Array [
+      [Function],
+      375,
+    ],
+    Array [
+      [Function],
+      "t",
+      Object {
+        "isFirst": true,
+      },
+    ],
+    Array [
+      [Function],
+      "h",
+    ],
+    Array [
+      [Function],
+      "e",
+    ],
+    Array [
+      [Function],
+      "f",
+    ],
+    Array [
+      [Function],
+      "t",
+    ],
+    Array [
+      [Function],
+      ".",
+      Object {
+        "isLast": true,
+      },
+    ],
+  ],
+}
+`;

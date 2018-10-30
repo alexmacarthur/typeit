@@ -1,0 +1,581 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`addSplitPause() Inserts split pause around first item. 1`] = `
+Array [
+  Array [
+    [Function],
+    375,
+  ],
+  "a",
+  Array [
+    [Function],
+    375,
+  ],
+  "b",
+  "c",
+  "d",
+  "e",
+]
+`;
+
+exports[`addSplitPause() Inserts split pause around last item. 1`] = `
+Array [
+  "a",
+  "b",
+  "c",
+  "d",
+  Array [
+    [Function],
+    375,
+  ],
+  "e",
+  Array [
+    [Function],
+    375,
+  ],
+]
+`;
+
+exports[`addSplitPause() Inserts split pause around one item. 1`] = `
+Array [
+  "a",
+  "b",
+  Array [
+    [Function],
+    375,
+  ],
+  "c",
+  Array [
+    [Function],
+    375,
+  ],
+  "d",
+  "e",
+]
+`;
+
+exports[`addSplitPause() Inserts split pause around one item. 2`] = `
+Array [
+  "a",
+  "b",
+  Array [
+    [Function],
+    375,
+  ],
+  "c",
+  "d",
+  Array [
+    [Function],
+    375,
+  ],
+  "e",
+]
+`;
+
+exports[`loopify() Should queue correct number of deletions when HTML is present. 1`] = `
+Array [
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    2000,
+  ],
+]
+`;
+
+exports[`loopify() Should queue correct number of deletions. 1`] = `
+Array [
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    null,
+    Object {
+      "isPhantom": true,
+    },
+  ],
+  Array [
+    [Function],
+    2000,
+  ],
+]
+`;
+
+exports[`maybeNoderize() Should leave string be, but split it into array when setting is disabled. 1`] = `
+Array [
+  "A",
+  " ",
+  "<",
+  "e",
+  "m",
+  ">",
+  "f",
+  "a",
+  "n",
+  "c",
+  "y",
+  "<",
+  "/",
+  "e",
+  "m",
+  ">",
+  " ",
+  "s",
+  "t",
+  "r",
+  "i",
+  "n",
+  "g",
+  ".",
+]
+`;
+
+exports[`maybeNoderize() Should return noderized string when setting is enabled. 1`] = `
+Array [
+  "A",
+  " ",
+  Object {
+    "attributes": Array [],
+    "content": "f",
+    "isFirstCharacter": true,
+    "isLastCharacter": false,
+    "tag": "EM",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "a",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "EM",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "n",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "EM",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "c",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "EM",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "y",
+    "isFirstCharacter": false,
+    "isLastCharacter": true,
+    "tag": "EM",
+  },
+  " ",
+  "s",
+  "t",
+  "r",
+  "i",
+  "n",
+  "g",
+  ".",
+]
+`;
+
+exports[`queueDeletions() Queues correct length when HTML is passed. 1`] = `
+Array [
+  Array [
+    [Function],
+    250,
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+]
+`;
+
+exports[`queueDeletions() Queues correct length when multiple HTML tags are passed. 1`] = `
+Array [
+  Array [
+    [Function],
+    250,
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+]
+`;
+
+exports[`queueDeletions() Queues number when number is passed. 1`] = `
+Array [
+  Array [
+    [Function],
+    250,
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+]
+`;
+
+exports[`queueDeletions() Queues string length when simple string is passed. 1`] = `
+Array [
+  Array [
+    [Function],
+    250,
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
+  ],
+]
+`;

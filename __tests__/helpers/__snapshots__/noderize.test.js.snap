@@ -1,0 +1,747 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Parses HTML tag at beginning of string. 1`] = `
+Array [
+  Object {
+    "attributes": Array [],
+    "content": "H",
+    "isFirstCharacter": true,
+    "isLastCharacter": false,
+    "tag": "STRONG",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "e",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "STRONG",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "l",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "STRONG",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "l",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "STRONG",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "o",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "STRONG",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "!",
+    "isFirstCharacter": false,
+    "isLastCharacter": true,
+    "tag": "STRONG",
+  },
+  " ",
+  "T",
+  "h",
+  "i",
+  "s",
+  " ",
+  "i",
+  "s",
+  " ",
+  "s",
+  "o",
+  "m",
+  "e",
+  " ",
+  "t",
+  "e",
+  "x",
+  "t",
+  " ",
+  "w",
+  "i",
+  "t",
+  "h",
+  " ",
+  "H",
+  "T",
+  "M",
+  "L",
+  " ",
+  "a",
+  "t",
+  " ",
+  "t",
+  "h",
+  "e",
+  " ",
+  "b",
+  "e",
+  "g",
+  "i",
+  "n",
+  "n",
+  "i",
+  "n",
+  "g",
+  ".",
+]
+`;
+
+exports[`Parses HTML tag at end of string. 1`] = `
+Array [
+  "T",
+  "h",
+  "i",
+  "s",
+  " ",
+  "i",
+  "s",
+  " ",
+  "s",
+  "o",
+  "m",
+  "e",
+  " ",
+  "t",
+  "e",
+  "x",
+  "t",
+  " ",
+  "w",
+  "i",
+  "t",
+  "h",
+  " ",
+  "H",
+  "T",
+  "M",
+  "L",
+  " ",
+  "a",
+  "t",
+  " ",
+  "t",
+  "h",
+  "e",
+  " ",
+  Object {
+    "attributes": Array [],
+    "content": "b",
+    "isFirstCharacter": true,
+    "isLastCharacter": false,
+    "tag": "EM",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "e",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "EM",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "g",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "EM",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "i",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "EM",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "n",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "EM",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "n",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "EM",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "i",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "EM",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "n",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "EM",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "g",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "EM",
+  },
+  Object {
+    "attributes": Array [],
+    "content": ".",
+    "isFirstCharacter": false,
+    "isLastCharacter": true,
+    "tag": "EM",
+  },
+]
+`;
+
+exports[`Parses HTML tag with attributes. 1`] = `
+Array [
+  "T",
+  "h",
+  "i",
+  "s",
+  " ",
+  "s",
+  "t",
+  "r",
+  "i",
+  "n",
+  "g",
+  " ",
+  "h",
+  "a",
+  "s",
+  " ",
+  "a",
+  "n",
+  " ",
+  Object {
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "strong-class",
+      },
+      Object {
+        "name": "id",
+        "value": "strong-id",
+      },
+      Object {
+        "name": "data-whatever",
+        "value": "data-att",
+      },
+    ],
+    "content": "e",
+    "isFirstCharacter": true,
+    "isLastCharacter": false,
+    "tag": "STRONG",
+  },
+  Object {
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "strong-class",
+      },
+      Object {
+        "name": "id",
+        "value": "strong-id",
+      },
+      Object {
+        "name": "data-whatever",
+        "value": "data-att",
+      },
+    ],
+    "content": "l",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "STRONG",
+  },
+  Object {
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "strong-class",
+      },
+      Object {
+        "name": "id",
+        "value": "strong-id",
+      },
+      Object {
+        "name": "data-whatever",
+        "value": "data-att",
+      },
+    ],
+    "content": "e",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "STRONG",
+  },
+  Object {
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "strong-class",
+      },
+      Object {
+        "name": "id",
+        "value": "strong-id",
+      },
+      Object {
+        "name": "data-whatever",
+        "value": "data-att",
+      },
+    ],
+    "content": "m",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "STRONG",
+  },
+  Object {
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "strong-class",
+      },
+      Object {
+        "name": "id",
+        "value": "strong-id",
+      },
+      Object {
+        "name": "data-whatever",
+        "value": "data-att",
+      },
+    ],
+    "content": "e",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "STRONG",
+  },
+  Object {
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "strong-class",
+      },
+      Object {
+        "name": "id",
+        "value": "strong-id",
+      },
+      Object {
+        "name": "data-whatever",
+        "value": "data-att",
+      },
+    ],
+    "content": "n",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "STRONG",
+  },
+  Object {
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "strong-class",
+      },
+      Object {
+        "name": "id",
+        "value": "strong-id",
+      },
+      Object {
+        "name": "data-whatever",
+        "value": "data-att",
+      },
+    ],
+    "content": "t",
+    "isFirstCharacter": false,
+    "isLastCharacter": true,
+    "tag": "STRONG",
+  },
+  " ",
+  "w",
+  "i",
+  "t",
+  "h",
+  " ",
+  "a",
+  "t",
+  "t",
+  "r",
+  "i",
+  "b",
+  "u",
+  "t",
+  "e",
+  "s",
+  ".",
+]
+`;
+
+exports[`Parses multiple HTML tags. 1`] = `
+Array [
+  "H",
+  "e",
+  "l",
+  "l",
+  "o",
+  ",",
+  " ",
+  "t",
+  "h",
+  "i",
+  "s",
+  " ",
+  "i",
+  "s",
+  " ",
+  "s",
+  "o",
+  "m",
+  "e",
+  " ",
+  Object {
+    "attributes": Array [],
+    "content": "b",
+    "isFirstCharacter": true,
+    "isLastCharacter": false,
+    "tag": "STRONG",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "o",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "STRONG",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "l",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "STRONG",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "d",
+    "isFirstCharacter": false,
+    "isLastCharacter": true,
+    "tag": "STRONG",
+  },
+  " ",
+  "t",
+  "e",
+  "x",
+  "t",
+  ",",
+  " ",
+  "a",
+  "n",
+  "d",
+  " ",
+  "s",
+  "o",
+  "m",
+  "e",
+  " ",
+  Object {
+    "attributes": Array [],
+    "content": "i",
+    "isFirstCharacter": true,
+    "isLastCharacter": false,
+    "tag": "I",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "t",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "I",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "a",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "I",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "l",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "I",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "i",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "I",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "c",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "I",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "i",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "I",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "z",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "I",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "e",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "I",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "d",
+    "isFirstCharacter": false,
+    "isLastCharacter": true,
+    "tag": "I",
+  },
+  " ",
+  "t",
+  "e",
+  "x",
+  "t",
+  ".",
+]
+`;
+
+exports[`Parses normal string correctly. 1`] = `
+Array [
+  "H",
+  "e",
+  "l",
+  "l",
+  "o",
+  ",",
+  " ",
+  "t",
+  "h",
+  "i",
+  "s",
+  " ",
+  "i",
+  "s",
+  " ",
+  "m",
+  "y",
+  " ",
+  "s",
+  "t",
+  "r",
+  "i",
+  "n",
+  "g",
+  ".",
+]
+`;
+
+exports[`Parses single HTML tag. 1`] = `
+Array [
+  "H",
+  "e",
+  "l",
+  "l",
+  "o",
+  ",",
+  " ",
+  "t",
+  "h",
+  "i",
+  "s",
+  " ",
+  "i",
+  "s",
+  " ",
+  "s",
+  "o",
+  "m",
+  "e",
+  " ",
+  Object {
+    "attributes": Array [],
+    "content": "b",
+    "isFirstCharacter": true,
+    "isLastCharacter": false,
+    "tag": "STRONG",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "o",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "STRONG",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "l",
+    "isFirstCharacter": false,
+    "isLastCharacter": false,
+    "tag": "STRONG",
+  },
+  Object {
+    "attributes": Array [],
+    "content": "d",
+    "isFirstCharacter": false,
+    "isLastCharacter": true,
+    "tag": "STRONG",
+  },
+  " ",
+  "t",
+  "e",
+  "x",
+  "t",
+  ".",
+]
+`;
+
+exports[`placeholderize() Removes empty tags that live with filled tags. 1`] = `
+Object {
+  "nodes": Array [
+    <em>
+      italics!
+    </em>,
+  ],
+  "string": " {%}",
+}
+`;
+
+exports[`placeholderize() Removes empty tags with text surrounding them. 1`] = `
+Object {
+  "nodes": Array [],
+  "string": "text!  text!",
+}
+`;
+
+exports[`placeholderize() Removes empty tags. 1`] = `
+Object {
+  "nodes": Array [],
+  "string": "",
+}
+`;
+
+exports[`placeholderize() Sets placeholder for a self-closing tag with no closing slash. 1`] = `
+Object {
+  "nodes": Array [
+    <br />,
+  ],
+  "string": "This is a string with a {%} break in it.",
+}
+`;
+
+exports[`placeholderize() Sets placeholder for a self-closing tag. 1`] = `
+Object {
+  "nodes": Array [
+    <br />,
+  ],
+  "string": "This is a string with a {%} break in it.",
+}
+`;
+
+exports[`placeholderize() Sets placeholder for single regular HTML tag. 1`] = `
+Object {
+  "nodes": Array [
+    <strong>
+      bold text
+    </strong>,
+  ],
+  "string": "This is a string with some {%}.",
+}
+`;
+
+exports[`placeholderize() Sets placeholder for strings with both standard tags and self-closing. 1`] = `
+Object {
+  "nodes": Array [
+    <br />,
+    <em>
+      italized
+    </em>,
+  ],
+  "string": "This is a string with a {%} break in it, as well as some {%} text.",
+}
+`;
+
+exports[`removePlaceholderRemnants() It does not touch array if last character is not followed by remnants. 1`] = `
+Array [
+  "x",
+  Object {
+    "isLastCharacter": false,
+  },
+  Object {
+    "isLastCharacter": false,
+  },
+  Object {
+    "isLastCharacter": true,
+  },
+  "%",
+  "%",
+]
+`;
+
+exports[`removePlaceholderRemnants() It properly handles arrays completely filled with node objects. 1`] = `
+Array [
+  Object {
+    "isLastCharacter": false,
+  },
+  Object {
+    "isLastCharacter": false,
+  },
+  Object {
+    "isLastCharacter": true,
+  },
+]
+`;
+
+exports[`removePlaceholderRemnants() It properly handles arrays whose node objects are at the very beginning. 1`] = `
+Array [
+  Object {
+    "isLastCharacter": false,
+  },
+  Object {
+    "isLastCharacter": false,
+  },
+  Object {
+    "isLastCharacter": true,
+  },
+  "%",
+  "%",
+]
+`;
+
+exports[`removePlaceholderRemnants() It removes placeholder remnants following the end of a tag. 1`] = `
+Array [
+  "x",
+  Object {
+    "isLastCharacter": false,
+  },
+  Object {
+    "isLastCharacter": false,
+  },
+  Object {
+    "isLastCharacter": true,
+  },
+]
+`;

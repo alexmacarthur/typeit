@@ -59,21 +59,21 @@
       <h3 id="example6"><!-- This comment should be removed automatically. Don't worry about it being typed. -->This string is hard-coded!</h3>
     </section>
 
-    <script src="dist/typeit.js"></script>
+    <script src="dist/typeit.min.js"></script>
 
 		<script>
       window.instance = new TypeIt('#example1', {
         speed: 50,
         strings: 'Just a simple string.',
         cursorChar: '<strong>CUSTOM CURSOR!</strong>'
-      });
+      }).go();
 
       new TypeIt('#example2', {
         speed: 50,
         strings: ['This is my first example.', 'It has several strings!'],
         cursor: false,
         startDelay: 3000
-      });
+      }).go();
 
       new TypeIt('#example3', {
         speed: 50,
@@ -82,13 +82,13 @@
           'This should <strong>replace</strong> the second string!'
         ],
         breakLines: false
-      });
+      }).go();
 
       new TypeIt('#example4', {
         speed: 50,
         strings: ['My first string.', 'My second string.'],
         loop: true
-      });
+      }).go();
 
       new TypeIt('#example5', {
         speed: 100
@@ -104,11 +104,12 @@
         .options({
           speed: 25
         })
-        .type('And here it is faster!');
+        .type('And here it is faster!')
+        .go();
 
       new TypeIt('#example6', {
-        autoStart: false
-      });
+        waitUntilVisible: true
+      }).go();
 		</script>
 	</body>
 </html>
