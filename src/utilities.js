@@ -41,7 +41,3 @@ export function removeComments(arrayOfStrings) {
     return string.replace(/<\!--.*?-->/g, "");
   });
 }
-
-export function startsWith(string, search) {
-  return string.indexOf(search) === 0;
-}
