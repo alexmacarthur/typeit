@@ -374,7 +374,7 @@ export default class Instance {
   cursor() {
     if (this.isInput) return;
 
-    let visibilityStyle = "visibility: hidden;";
+    let visibilityStyle = "display: none;";
 
     if (this.opts.cursor) {
       appendStyleBlock(
