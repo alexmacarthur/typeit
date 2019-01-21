@@ -1,3 +1,5 @@
+import convertHTMLEntities from "./convertHTMLEntities";
+
 const PLACEHOLDER_PATTERN = "{%}";
 
 /**
@@ -21,12 +23,11 @@ export function placeholderize(string) {
     return true;
   });
 
-  //-- Replace node strings with placeholders.
+  //-- Replace node strings with placeholders. I'm not concerned with WHICH -- just want them all converted.
   nodes.forEach(item => {
-    let chopped = item.outerHTML.slice(0, -1);
-
+    //-- Accounts for standard AND self closing tags (note the optional content & closing tag).
     string = string.replace(
-      new RegExp(`${chopped}\/?>`, "i"),
+      new RegExp(`<${item.tagName}(.*?)\/?>((.*?)<\/${item.tagName}>)?`, "i"),
       PLACEHOLDER_PATTERN
     );
   });
@@ -74,7 +75,7 @@ export function removePlaceholderRemnants(items) {
 export default function(rawString) {
   let { string, nodes } = placeholderize(rawString);
 
-  let stringArray = string.split("");
+  let stringArray = convertHTMLEntities(string).split("");
   let nodifiedArray = [];
 
   stringArray.forEach((item, index) => {
@@ -87,7 +88,7 @@ export default function(rawString) {
     //-- Replace placeholder w/ node objects.
     let firstCharacterIndex = index;
     let node = nodes.shift();
-    let nodeContents = node.innerHTML.split("");
+    let nodeContents = convertHTMLEntities(node.innerHTML).split("");
     let nodeAttributes = [].slice.call(node.attributes).map(att => {
       return {
         name: att.name,

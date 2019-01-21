@@ -59,6 +59,11 @@
       <h3 id="example6"><!-- This comment should be removed automatically. Don't worry about it being typed. -->This string is hard-coded!</h3>
     </section>
 
+    <section>
+      <h2>HTML Entities</h2>
+      <h3 id="example7"></h3>
+    </section>
+
     <script src="dist/typeit.min.js"></script>
 
 		<script>
@@ -109,6 +114,13 @@
 
       new TypeIt('#example6', {
         waitUntilVisible: true
+      }).go();
+
+      new TypeIt('#example7', {
+        speed: 50,
+        strings: ["Apples & bananas.", "Oats <strong>&amp;</strong> beans."],
+        waitUntilVisible: true,
+        loop: true
       }).go();
 		</script>
 	</body>
