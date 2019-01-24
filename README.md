@@ -5,6 +5,10 @@ The Most Versatile JavaScript Animated Typing Utility on the Planet
 [![npm downloads](https://img.shields.io/npm/dm/typeit.svg?style=flat-square)](http://npm-stat.com/charts.html?package=typeit)
 [![](https://data.jsdelivr.com/v1/package/npm/typeit/badge)](https://www.jsdelivr.com/package/npm/typeit)
 
+<p align="center">
+    <img src="demo.gif" alt="" style="border: 5px solid #24292e;">
+</p>
+
 ## Overview
 TypeIt is the most versatile JavaScript typewriter effect utility on the planet. With its simple yet flexible configuration, you're empowerd to type single or multiple strings that break lines, delete & replace each other, easily handle string containing HTML, loop, and a whole lot more.
 
