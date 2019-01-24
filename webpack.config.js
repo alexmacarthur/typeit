@@ -1,5 +1,6 @@
 const webpack = require("webpack");
 const pkg = require("./package.json");
+const PrepackWebpackPlugin = require("prepack-webpack-plugin").default;
 
 const banner = `
   ${pkg.name} - ${pkg.description}
@@ -8,6 +9,18 @@ const banner = `
   URL: ${pkg.homepage}
   License: ${pkg.license}
 `;
+
+const plugins = [];
+
+if (process.env.NODE_ENV === "production") {
+  plugins.push(new PrepackWebpackPlugin({}));
+}
+
+plugins.push(
+  new webpack.BannerPlugin({
+    banner
+  })
+);
 
 module.exports = {
   mode: process.env.NODE_ENV,
@@ -33,5 +46,5 @@ module.exports = {
       }
     ]
   },
-  plugins: [new webpack.BannerPlugin({ banner })]
+  plugins
 };
