@@ -18,7 +18,7 @@ For more advanced, controlled typing effects, TypeIt comes with companion functi
 ## Key Features
 * Choose to start typing only when your target element becomes visible on the screen.
 * Loop your string(s) continuously.
-* Define you strings via an options object or in the HTML (a useful fallback in case user doesn't have JavaScript enabled, as well as for SEO).
+* Define your strings via an options object or in the HTML (a useful fallback in case user doesn't have JavaScript enabled, as well as for SEO).
 * Use a single TypeIt instance to target several different elements on a page.
 * Handle HTML tags (while preserving attributes) with ease.
 * Use companion functions to chain individual commands together to fine tune your typing.
