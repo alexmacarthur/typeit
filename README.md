@@ -27,14 +27,14 @@ For more advanced, controlled typing effects, TypeIt comes with companion functi
 
 ## License Options
 Using TypeIt for an open source or personal project is completely free. To use it in a commercial project, purchase a single license, or an unlimited license that'll never expire, no matter how many times you use it.
-* Personal or Open Source - [FREE](#setup)
+* Personal or Open Source - [FREE, go install it!](https://typeitjs.com/docs/#installation)
 * Single Commercial License - [Purchase Here](https://typeitjs.com#license)
 * Extended Commercial License - [Purchase Here](https://typeitjs.com#license)
 
 ## Demos
 See some more examples and try out the sandbox at [https://typeitjs.com](https://typeitjs.com).
 
-## Documenation
+## Documentation
 All of TypeIt's documentation can be found at [https://typeitjs.com/docs](https://typeitjs.com/docs).
 
 ## Contribute
