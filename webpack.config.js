@@ -1,6 +1,5 @@
 const webpack = require("webpack");
 const pkg = require("./package.json");
-const PrepackWebpackPlugin = require("prepack-webpack-plugin").default;
 
 const banner = `
   ${pkg.name} - ${pkg.description}
@@ -11,10 +10,6 @@ const banner = `
 `;
 
 const plugins = [];
-
-if (process.env.NODE_ENV === "production") {
-  plugins.push(new PrepackWebpackPlugin({}));
-}
 
 plugins.push(
   new webpack.BannerPlugin({
