@@ -27,7 +27,8 @@ module.exports = {
     library: "TypeIt",
     libraryTarget: "umd",
     libraryExport: "default",
-    filename: "typeit.min.js"
+    filename: "typeit.min.js",
+    globalObject: "this"
   },
   module: {
     rules: [
