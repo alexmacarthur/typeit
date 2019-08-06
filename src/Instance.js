@@ -397,9 +397,7 @@ export default class Instance {
 
     this.$eWrapper.insertAdjacentHTML(
       "beforeend",
-      `<span style="${baseInlineStyles}${visibilityStyle}left: -.25ch;" class="ti-cursor">${
-        this.opts.cursorChar
-      }</span>`
+      `<span style="${baseInlineStyles}${visibilityStyle}left: -.25ch;" class="ti-cursor">${this.opts.cursorChar}</span>`
     );
   }
 
