@@ -1,9 +1,8 @@
 export default function(things, property, value) {
   if (!things.length) return false;
 
-  let result = things.filter(thing => {
-    return thing.status[property] === value;
+  // If any items lack the property, return `false.`
+  return !things.some(function(thing) {
+    return thing.status[property] !== value;
   });
-
-  return result.length === things.length;
 }
