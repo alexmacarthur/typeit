@@ -43,14 +43,14 @@
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
-    "babel-jest": "^24.8.0",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
-    "concurrently": "^4.1.1",
+    "concurrently": "^4.1.2",
     "express": "^4.17.1",
-    "jest-cli": "^24.8.0",
+    "jest-cli": "^24.9.0",
     "pre-commit": "^1.2.2",
     "prettier": "^1.18.2",
-    "webpack": "^4.39.1",
-    "webpack-cli": "^3.3.6"
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.7"
   }
 }
