@@ -64,6 +64,21 @@
       <h3 id="example7"></h3>
     </section>
 
+    <section>
+      <h2>More HTML</h2>
+      <h3 id="example8"></h3>
+    </section>
+
+    <section>
+      <h2>Even More HTML</h2>
+      <h3 id="example9"></h3>
+    </section>
+
+    <section>
+      <h2>Plus More HTML</h2>
+      <h3 id="example10"></h3>
+    </section>
+
     <script src="dist/typeit.min.js"></script>
 
 		<script>
@@ -118,7 +133,28 @@
 
       new TypeIt('#example7', {
         speed: 50,
-        strings: ["Apples & bananas.", "Oats <strong>&amp;</strong> beans."],
+        strings: ["<em>Apples & bananas.</em>", "Oats <strong>&amp;</strong> beans."],
+        waitUntilVisible: true,
+        loop: true
+      }).go();
+
+      new TypeIt('#example8', {
+        speed: 50,
+        strings: ["<strong id='strong1'>aaa<em id='em1'><i>bbb</i></em></strong>ccc<em id='em2'><strong id='strong2'>ddd</strong></em>"],
+        waitUntilVisible: true,
+        loop: true
+      }).go();
+
+      new TypeIt('#example9', {
+        speed: 50,
+        strings: "<strong id='strong1'><strong id='strong2'>Here, two strong tags are nested.</strong></strong>",
+        waitUntilVisible: true,
+        loop: true
+      }).go();
+
+      new TypeIt('#example10', {
+        speed: 50,
+        strings: "<strong id='strong1'>This starts strong, and <em class='italic'>then gets italicized </em>before just being strong again.</strong>",
         waitUntilVisible: true,
         loop: true
       }).go();

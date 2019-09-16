@@ -72,168 +72,7 @@ Array [
 ]
 `;
 
-exports[`loopify() Should queue correct number of deletions when HTML is present. 1`] = `
-Array [
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    2000,
-  ],
-]
-`;
+exports[`insert() Should insert a nested character object. 1`] = `"<i class=\\"ti-char\\"><em><i class=\\"ti-char\\"><span><i class=\\"ti-char\\">y</i></span></i></em></i>"`;
 
 exports[`loopify() Should queue correct number of deletions. 1`] = `
 Array [
@@ -376,39 +215,46 @@ Array [
   "A",
   " ",
   Object {
+    "ancestorTree": Array [
+      "EM",
+    ],
+    "attributes": Array [],
+    "content": "",
+  },
+  Object {
+    "ancestorTree": Array [
+      "EM",
+    ],
     "attributes": Array [],
     "content": "f",
-    "isFirstCharacter": true,
-    "isLastCharacter": false,
-    "tag": "EM",
   },
   Object {
+    "ancestorTree": Array [
+      "EM",
+    ],
     "attributes": Array [],
     "content": "a",
-    "isFirstCharacter": false,
-    "isLastCharacter": false,
-    "tag": "EM",
   },
   Object {
+    "ancestorTree": Array [
+      "EM",
+    ],
     "attributes": Array [],
     "content": "n",
-    "isFirstCharacter": false,
-    "isLastCharacter": false,
-    "tag": "EM",
   },
   Object {
+    "ancestorTree": Array [
+      "EM",
+    ],
     "attributes": Array [],
     "content": "c",
-    "isFirstCharacter": false,
-    "isLastCharacter": false,
-    "tag": "EM",
   },
   Object {
+    "ancestorTree": Array [
+      "EM",
+    ],
     "attributes": Array [],
     "content": "y",
-    "isFirstCharacter": false,
-    "isLastCharacter": true,
-    "tag": "EM",
   },
   " ",
   "s",
@@ -457,6 +303,9 @@ Array [
   Array [
     [Function],
   ],
+  Array [
+    [Function],
+  ],
 ]
 `;
 
@@ -465,6 +314,12 @@ Array [
   Array [
     [Function],
     250,
+  ],
+  Array [
+    [Function],
+  ],
+  Array [
+    [Function],
   ],
   Array [
     [Function],

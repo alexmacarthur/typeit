@@ -37,13 +37,13 @@ describe("queueDeletions()", () => {
 
   test("Queues correct length when HTML is passed.", () => {
     instance.queueDeletions("Some <strong>HTML</strong>.");
-    expect(instance.queue.waiting).toHaveLength(11);
+    expect(instance.queue.waiting).toHaveLength(12);
     expect(instance.queue.waiting).toMatchSnapshot();
   });
 
   test("Queues correct length when multiple HTML tags are passed.", () => {
     instance.queueDeletions("Some <strong>HTML</strong>. And <i>more</i>.");
-    expect(instance.queue.waiting).toHaveLength(21);
+    expect(instance.queue.waiting).toHaveLength(23);
     expect(instance.queue.waiting).toMatchSnapshot();
   });
 });
@@ -130,15 +130,119 @@ describe("loopify()", () => {
 
   test("Should queue correct number of deletions.", () => {
     instance.$eContainer.innerHTML = "Just a string.";
+
+    instance.$eContainer.innerHTML = `
+      <i class="ti-char">
+        J
+      </i>
+      <i class="ti-char">
+        u
+      </i>
+      <i class="ti-char">
+        s
+      </i>
+      <i class="ti-char">
+        t
+      </i>
+      <i class="ti-char">
+
+      </i>
+       <i class="ti-char">
+        a
+      </i>
+      <i class="ti-char">
+
+      </i>
+       <i class="ti-char">
+        s
+      </i>
+      <i class="ti-char">
+        t
+      </i>
+      <i class="ti-char">
+        r
+      </i>
+      <i class="ti-char">
+        i
+      </i>
+      <i class="ti-char">
+        n
+      </i>
+      <i class="ti-char">
+        g
+      </i>
+      <i class="ti-char">
+        .
+      </i>
+    `;
+
     instance.loopify({ before: 2000 });
 
     expect(instance.queue.waiting).toMatchSnapshot();
   });
+});
 
-  test("Should queue correct number of deletions when HTML is present.", () => {
-    instance.$eContainer.innerHTML = "String with <strong>bold text.</strong>";
-    instance.loopify({ before: 2000 });
+describe("insert()", () => {
+  test("Should insert a simple character correctly.", () => {
+    instance.insert("x");
+    expect(instance.$eContainer.innerHTML).toBe(`<i class="ti-char">x</i>`);
+  });
 
-    expect(instance.queue.waiting).toMatchSnapshot();
+  test("Should insert a character object.", () => {
+    let characterObject = {
+      ancestorTree: ["SPAN"],
+      attributes: [],
+      content: "y",
+      isFirstChar: true
+    };
+    instance.insert(characterObject);
+
+    expect(instance.$eContainer.innerHTML).toBe(
+      `<i class="ti-char"><span><i class="ti-char">y</i></span></i>`
+    );
+  });
+
+  test("Should insert a nested character object.", () => {
+    let characterObject = {
+      ancestorTree: ["SPAN", "EM"],
+      attributes: [],
+      content: "y",
+      isFirstChar: false
+    };
+    instance.$eContainer.innerHTML = `<i class="ti-char"><em></em></i>`;
+    instance.insert(characterObject);
+    expect(instance.$eContainer.innerHTML).toMatchSnapshot();
+  });
+
+  test("Should insert content into input.", () => {
+    document.body.innerHTML = `
+      <div>
+        <input id="inputElement" type="text" />
+      </div>
+    `;
+
+    Object.assign(args, { element: document.getElementById("inputElement") });
+
+    instance = new Instance(args);
+
+    instance.insert("some value");
+
+    expect(instance.$e.value).toBe("some value");
+  });
+
+  test("Should insert raw HTML content into input.", () => {
+    document.body.innerHTML = `
+      <div>
+        <input id="inputElement" type="text" />
+      </div>
+    `;
+
+    Object.assign(args, { element: document.getElementById("inputElement") });
+
+    instance = new Instance(args);
+
+    instance.insert("<span>sup</span>");
+
+    expect(instance.$e.value).toBe("<span>sup</span>");
   });
 });

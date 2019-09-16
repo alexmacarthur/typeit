@@ -1,0 +1,2174 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Parses HTML tag at beginning of string. 1`] = `
+Array [
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "H",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "e",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "l",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "l",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "o",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "!",
+  },
+  " ",
+  "T",
+  "h",
+  "i",
+  "s",
+  " ",
+  "i",
+  "s",
+  " ",
+  "s",
+  "o",
+  "m",
+  "e",
+  " ",
+  "t",
+  "e",
+  "x",
+  "t",
+  " ",
+  "w",
+  "i",
+  "t",
+  "h",
+  " ",
+  "H",
+  "T",
+  "M",
+  "L",
+  " ",
+  "a",
+  "t",
+  " ",
+  "t",
+  "h",
+  "e",
+  " ",
+  "b",
+  "e",
+  "g",
+  "i",
+  "n",
+  "n",
+  "i",
+  "n",
+  "g",
+  ".",
+]
+`;
+
+exports[`Parses HTML tag at end of string. 1`] = `
+Array [
+  "T",
+  "h",
+  "i",
+  "s",
+  " ",
+  "i",
+  "s",
+  " ",
+  "s",
+  "o",
+  "m",
+  "e",
+  " ",
+  "t",
+  "e",
+  "x",
+  "t",
+  " ",
+  "w",
+  "i",
+  "t",
+  "h",
+  " ",
+  "H",
+  "T",
+  "M",
+  "L",
+  " ",
+  "a",
+  "t",
+  " ",
+  "t",
+  "h",
+  "e",
+  " ",
+  Object {
+    "ancestorTree": Array [
+      "EM",
+    ],
+    "attributes": Array [],
+    "content": "",
+  },
+  Object {
+    "ancestorTree": Array [
+      "EM",
+    ],
+    "attributes": Array [],
+    "content": "b",
+  },
+  Object {
+    "ancestorTree": Array [
+      "EM",
+    ],
+    "attributes": Array [],
+    "content": "e",
+  },
+  Object {
+    "ancestorTree": Array [
+      "EM",
+    ],
+    "attributes": Array [],
+    "content": "g",
+  },
+  Object {
+    "ancestorTree": Array [
+      "EM",
+    ],
+    "attributes": Array [],
+    "content": "i",
+  },
+  Object {
+    "ancestorTree": Array [
+      "EM",
+    ],
+    "attributes": Array [],
+    "content": "n",
+  },
+  Object {
+    "ancestorTree": Array [
+      "EM",
+    ],
+    "attributes": Array [],
+    "content": "n",
+  },
+  Object {
+    "ancestorTree": Array [
+      "EM",
+    ],
+    "attributes": Array [],
+    "content": "i",
+  },
+  Object {
+    "ancestorTree": Array [
+      "EM",
+    ],
+    "attributes": Array [],
+    "content": "n",
+  },
+  Object {
+    "ancestorTree": Array [
+      "EM",
+    ],
+    "attributes": Array [],
+    "content": "g",
+  },
+  Object {
+    "ancestorTree": Array [
+      "EM",
+    ],
+    "attributes": Array [],
+    "content": ".",
+  },
+]
+`;
+
+exports[`Parses HTML tag with attributes. 1`] = `
+Array [
+  "T",
+  "h",
+  "i",
+  "s",
+  " ",
+  "s",
+  "t",
+  "r",
+  "i",
+  "n",
+  "g",
+  " ",
+  "h",
+  "a",
+  "s",
+  " ",
+  "a",
+  "n",
+  " ",
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "strong-class",
+      },
+      Object {
+        "name": "id",
+        "value": "strong-id",
+      },
+      Object {
+        "name": "data-whatever",
+        "value": "data-att",
+      },
+    ],
+    "content": "",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "strong-class",
+      },
+      Object {
+        "name": "id",
+        "value": "strong-id",
+      },
+      Object {
+        "name": "data-whatever",
+        "value": "data-att",
+      },
+    ],
+    "content": "e",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "strong-class",
+      },
+      Object {
+        "name": "id",
+        "value": "strong-id",
+      },
+      Object {
+        "name": "data-whatever",
+        "value": "data-att",
+      },
+    ],
+    "content": "l",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "strong-class",
+      },
+      Object {
+        "name": "id",
+        "value": "strong-id",
+      },
+      Object {
+        "name": "data-whatever",
+        "value": "data-att",
+      },
+    ],
+    "content": "e",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "strong-class",
+      },
+      Object {
+        "name": "id",
+        "value": "strong-id",
+      },
+      Object {
+        "name": "data-whatever",
+        "value": "data-att",
+      },
+    ],
+    "content": "m",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "strong-class",
+      },
+      Object {
+        "name": "id",
+        "value": "strong-id",
+      },
+      Object {
+        "name": "data-whatever",
+        "value": "data-att",
+      },
+    ],
+    "content": "e",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "strong-class",
+      },
+      Object {
+        "name": "id",
+        "value": "strong-id",
+      },
+      Object {
+        "name": "data-whatever",
+        "value": "data-att",
+      },
+    ],
+    "content": "n",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "strong-class",
+      },
+      Object {
+        "name": "id",
+        "value": "strong-id",
+      },
+      Object {
+        "name": "data-whatever",
+        "value": "data-att",
+      },
+    ],
+    "content": "t",
+  },
+  " ",
+  "w",
+  "i",
+  "t",
+  "h",
+  " ",
+  "a",
+  "t",
+  "t",
+  "r",
+  "i",
+  "b",
+  "u",
+  "t",
+  "e",
+  "s",
+  ".",
+]
+`;
+
+exports[`Parses multiple HTML tags. 1`] = `
+Array [
+  "H",
+  "e",
+  "l",
+  "l",
+  "o",
+  ",",
+  " ",
+  "t",
+  "h",
+  "i",
+  "s",
+  " ",
+  "i",
+  "s",
+  " ",
+  "s",
+  "o",
+  "m",
+  "e",
+  " ",
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "b",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "o",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "l",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "d",
+  },
+  " ",
+  "t",
+  "e",
+  "x",
+  "t",
+  ",",
+  " ",
+  "a",
+  "n",
+  "d",
+  " ",
+  "s",
+  "o",
+  "m",
+  "e",
+  " ",
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": "",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": "i",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": "t",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": "a",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": "l",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": "i",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": "c",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": "i",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": "z",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": "e",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": "d",
+  },
+  " ",
+  "t",
+  "e",
+  "x",
+  "t",
+  ".",
+]
+`;
+
+exports[`Parses normal string correctly. 1`] = `
+Array [
+  "H",
+  "e",
+  "l",
+  "l",
+  "o",
+  ",",
+  " ",
+  "t",
+  "h",
+  "i",
+  "s",
+  " ",
+  "i",
+  "s",
+  " ",
+  "m",
+  "y",
+  " ",
+  "s",
+  "t",
+  "r",
+  "i",
+  "n",
+  "g",
+  ".",
+]
+`;
+
+exports[`Parses single HTML tag. 1`] = `
+Array [
+  "H",
+  "e",
+  "l",
+  "l",
+  "o",
+  ",",
+  " ",
+  "t",
+  "h",
+  "i",
+  "s",
+  " ",
+  "i",
+  "s",
+  " ",
+  "s",
+  "o",
+  "m",
+  "e",
+  " ",
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "b",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "o",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "l",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "d",
+  },
+  " ",
+  "t",
+  "e",
+  "x",
+  "t",
+  ".",
+]
+`;
+
+exports[`convertNodesToItems() Correctly processes raw queue with multiple element in it. 1`] = `
+Array [
+  "T",
+  "h",
+  "i",
+  "s",
+  " ",
+  "i",
+  "s",
+  " ",
+  "m",
+  "y",
+  " ",
+  "b",
+  "o",
+  "d",
+  "y",
+  " ",
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "w",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "i",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "t",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "h",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": " ",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "s",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "o",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "m",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "e",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": " ",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "b",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "o",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "l",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "d",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": " ",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "t",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "e",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "x",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "t",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": ".",
+  },
+  " ",
+  "a",
+  "n",
+  "d",
+  " ",
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": "",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": "i",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": "t",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": "a",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": "l",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": "i",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": "c",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": "i",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": "z",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": "e",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": "d",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": " ",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": "t",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": "e",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": "x",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": "t",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+    ],
+    "attributes": Array [],
+    "content": ".",
+  },
+]
+`;
+
+exports[`convertNodesToItems() Correctly processes raw queue with nested elements in it. 1`] = `
+Array [
+  "T",
+  "h",
+  "i",
+  "s",
+  " ",
+  "i",
+  "s",
+  " ",
+  "m",
+  "y",
+  " ",
+  "b",
+  "o",
+  "d",
+  "y",
+  " ",
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "data-test",
+        "value": "test-attribute",
+      },
+    ],
+    "content": "",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "data-test",
+        "value": "test-attribute",
+      },
+    ],
+    "content": "w",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "data-test",
+        "value": "test-attribute",
+      },
+    ],
+    "content": "i",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "data-test",
+        "value": "test-attribute",
+      },
+    ],
+    "content": "t",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "data-test",
+        "value": "test-attribute",
+      },
+    ],
+    "content": "h",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "data-test",
+        "value": "test-attribute",
+      },
+    ],
+    "content": " ",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "data-test",
+        "value": "test-attribute",
+      },
+    ],
+    "content": "s",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "data-test",
+        "value": "test-attribute",
+      },
+    ],
+    "content": "o",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "data-test",
+        "value": "test-attribute",
+      },
+    ],
+    "content": "m",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "data-test",
+        "value": "test-attribute",
+      },
+    ],
+    "content": "e",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "data-test",
+        "value": "test-attribute",
+      },
+    ],
+    "content": " ",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "data-test",
+        "value": "test-attribute",
+      },
+    ],
+    "content": "b",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "data-test",
+        "value": "test-attribute",
+      },
+    ],
+    "content": "o",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "data-test",
+        "value": "test-attribute",
+      },
+    ],
+    "content": "l",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "data-test",
+        "value": "test-attribute",
+      },
+    ],
+    "content": "d",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "data-test",
+        "value": "test-attribute",
+      },
+    ],
+    "content": " ",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "test-class",
+      },
+    ],
+    "content": "",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "test-class",
+      },
+    ],
+    "content": "a",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "test-class",
+      },
+    ],
+    "content": "n",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "test-class",
+      },
+    ],
+    "content": "d",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "test-class",
+      },
+    ],
+    "content": " ",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "test-class",
+      },
+    ],
+    "content": "i",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "test-class",
+      },
+    ],
+    "content": "t",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "test-class",
+      },
+    ],
+    "content": "a",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "test-class",
+      },
+    ],
+    "content": "l",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "test-class",
+      },
+    ],
+    "content": "i",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "test-class",
+      },
+    ],
+    "content": "c",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "test-class",
+      },
+    ],
+    "content": "i",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "test-class",
+      },
+    ],
+    "content": "z",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "test-class",
+      },
+    ],
+    "content": "e",
+  },
+  Object {
+    "ancestorTree": Array [
+      "I",
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "test-class",
+      },
+    ],
+    "content": "d",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "data-test",
+        "value": "test-attribute",
+      },
+    ],
+    "content": " ",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "data-test",
+        "value": "test-attribute",
+      },
+    ],
+    "content": "t",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "data-test",
+        "value": "test-attribute",
+      },
+    ],
+    "content": "e",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "data-test",
+        "value": "test-attribute",
+      },
+    ],
+    "content": "x",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "data-test",
+        "value": "test-attribute",
+      },
+    ],
+    "content": "t",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [
+      Object {
+        "name": "data-test",
+        "value": "test-attribute",
+      },
+    ],
+    "content": ".",
+  },
+]
+`;
+
+exports[`convertNodesToItems() Correctly processes raw queue with one element in it. 1`] = `
+Array [
+  "T",
+  "h",
+  "i",
+  "s",
+  " ",
+  "i",
+  "s",
+  " ",
+  "m",
+  "y",
+  " ",
+  "b",
+  "o",
+  "d",
+  "y",
+  " ",
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "w",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "i",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "t",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "h",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": " ",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "s",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "o",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "m",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "e",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": " ",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "b",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "o",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "l",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "d",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": " ",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "t",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "e",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "x",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": "t",
+  },
+  Object {
+    "ancestorTree": Array [
+      "STRONG",
+    ],
+    "attributes": Array [],
+    "content": ".",
+  },
+]
+`;
+
+exports[`extractChildTextNodes() Returns array with text nodes expanded. 1`] = `
+Array [
+  Array [
+    "T",
+    "h",
+    "i",
+    "s",
+    " ",
+    "i",
+    "s",
+    " ",
+    "m",
+    "y",
+    " ",
+  ],
+  <em>
+    string.
+  </em>,
+]
+`;
+
+exports[`extractChildTextNodes() Returns correct array with only non-text nodes. 1`] = `
+Array [
+  <i>
+    Hello, 
+  </i>,
+  <em>
+    buddy!
+  </em>,
+]
+`;
+
+exports[`extractChildTextNodes() Returns correct array with only text nodes. 1`] = `
+Array [
+  Array [
+    "N",
+    "o",
+    "t",
+    "h",
+    "i",
+    "n",
+    "g",
+    " ",
+    "b",
+    "u",
+    "t",
+    " ",
+    "s",
+    "t",
+    "r",
+    "i",
+    "n",
+    "g",
+    "s",
+    " ",
+    "i",
+    "n",
+    " ",
+    "h",
+    "e",
+    "r",
+    "e",
+    ".",
+  ],
+]
+`;
+
+exports[`extractChildTextNodes() Returns text as a split array 1`] = `
+Array [
+  Array [
+    "T",
+    "h",
+    "i",
+    "s",
+    " ",
+    "i",
+    "s",
+    " ",
+    "m",
+    "y",
+    " ",
+    "b",
+    "o",
+    "d",
+    "y",
+  ],
+]
+`;
+
+exports[`extractChildTextNodes() Splits text and leaves nodes as they are. 1`] = `
+Array [
+  Array [
+    "T",
+    "h",
+    "i",
+    "s",
+    " ",
+    "i",
+    "s",
+    " ",
+    "m",
+    "y",
+    " ",
+    "b",
+    "o",
+    "d",
+    "y",
+    " ",
+  ],
+  <strong>
+    with some bold text.
+  </strong>,
+]
+`;
+
+exports[`getNodeAttributes() Gets attributes from node. 1`] = `
+Array [
+  Object {
+    "name": "att1",
+    "value": "attValue1",
+  },
+  Object {
+    "name": "att2",
+    "value": "attValue1",
+  },
+]
+`;
+
+exports[`transformNodeToQueue() Attaches attributes as node is transformed. 1`] = `
+Array [
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "my-class",
+      },
+      Object {
+        "name": "data-att",
+        "value": "my-att",
+      },
+    ],
+    "content": "",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "my-class",
+      },
+      Object {
+        "name": "data-att",
+        "value": "my-att",
+      },
+    ],
+    "content": "H",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "my-class",
+      },
+      Object {
+        "name": "data-att",
+        "value": "my-att",
+      },
+    ],
+    "content": "e",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "my-class",
+      },
+      Object {
+        "name": "data-att",
+        "value": "my-att",
+      },
+    ],
+    "content": "l",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "my-class",
+      },
+      Object {
+        "name": "data-att",
+        "value": "my-att",
+      },
+    ],
+    "content": "l",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "my-class",
+      },
+      Object {
+        "name": "data-att",
+        "value": "my-att",
+      },
+    ],
+    "content": "o",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "my-class",
+      },
+      Object {
+        "name": "data-att",
+        "value": "my-att",
+      },
+    ],
+    "content": ",",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "my-class",
+      },
+      Object {
+        "name": "data-att",
+        "value": "my-att",
+      },
+    ],
+    "content": " ",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "my-class",
+      },
+      Object {
+        "name": "data-att",
+        "value": "my-att",
+      },
+    ],
+    "content": "p",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "my-class",
+      },
+      Object {
+        "name": "data-att",
+        "value": "my-att",
+      },
+    ],
+    "content": "a",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "my-class",
+      },
+      Object {
+        "name": "data-att",
+        "value": "my-att",
+      },
+    ],
+    "content": "l",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [
+      Object {
+        "name": "class",
+        "value": "my-class",
+      },
+      Object {
+        "name": "data-att",
+        "value": "my-att",
+      },
+    ],
+    "content": ".",
+  },
+]
+`;
+
+exports[`transformNodeToQueue() Transforms node with nested nodes. 1`] = `
+Array [
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": "",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": "H",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": "e",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": "l",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": "l",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": "o",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": ".",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": " ",
+  },
+  <em>
+    What is up?
+  </em>,
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": " ",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": "S",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": "e",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": "e",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": " ",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": "y",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": "o",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": "u",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": "!",
+  },
+]
+`;
+
+exports[`transformNodeToQueue() Transforms node with no specified ancestors into queue items. 1`] = `
+Array [
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": "",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": "H",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": "e",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": "l",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": "l",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": "o",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": ",",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": " ",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": "p",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": "a",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": "l",
+  },
+  Object {
+    "ancestorTree": Array [],
+    "attributes": Array [],
+    "content": ".",
+  },
+]
+`;
+
+exports[`transformNodeToQueue() Transforms node with specified ancestors. 1`] = `
+Array [
+  Object {
+    "ancestorTree": Array [
+      "div",
+      "span",
+    ],
+    "attributes": Array [],
+    "content": "",
+  },
+  Object {
+    "ancestorTree": Array [
+      "div",
+      "span",
+    ],
+    "attributes": Array [],
+    "content": "H",
+  },
+  Object {
+    "ancestorTree": Array [
+      "div",
+      "span",
+    ],
+    "attributes": Array [],
+    "content": "e",
+  },
+  Object {
+    "ancestorTree": Array [
+      "div",
+      "span",
+    ],
+    "attributes": Array [],
+    "content": "l",
+  },
+  Object {
+    "ancestorTree": Array [
+      "div",
+      "span",
+    ],
+    "attributes": Array [],
+    "content": "l",
+  },
+  Object {
+    "ancestorTree": Array [
+      "div",
+      "span",
+    ],
+    "attributes": Array [],
+    "content": "o",
+  },
+  Object {
+    "ancestorTree": Array [
+      "div",
+      "span",
+    ],
+    "attributes": Array [],
+    "content": ",",
+  },
+  Object {
+    "ancestorTree": Array [
+      "div",
+      "span",
+    ],
+    "attributes": Array [],
+    "content": " ",
+  },
+  Object {
+    "ancestorTree": Array [
+      "div",
+      "span",
+    ],
+    "attributes": Array [],
+    "content": "p",
+  },
+  Object {
+    "ancestorTree": Array [
+      "div",
+      "span",
+    ],
+    "attributes": Array [],
+    "content": "a",
+  },
+  Object {
+    "ancestorTree": Array [
+      "div",
+      "span",
+    ],
+    "attributes": Array [],
+    "content": "l",
+  },
+  Object {
+    "ancestorTree": Array [
+      "div",
+      "span",
+    ],
+    "attributes": Array [],
+    "content": ".",
+  },
+]
+`;

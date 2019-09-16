@@ -2,6 +2,7 @@ import Instance from "./Instance";
 import allHaveStatus from "./helpers/allHaveStatus";
 import { generateHash } from "./utilities";
 import toArrayOfNodes from "./helpers/toArrayOfNodes";
+import stringToQueue from "./helpers/stringToQueue";
 
 export default class TypeIt {
   constructor(element, options) {

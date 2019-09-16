@@ -255,41 +255,51 @@ Array [
   Array [
     [Function],
     Object {
+      "ancestorTree": Array [
+        "STRONG",
+      ],
+      "attributes": Array [],
+      "content": "",
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "ancestorTree": Array [
+        "STRONG",
+      ],
       "attributes": Array [],
       "content": "B",
-      "isFirstCharacter": true,
-      "isLastCharacter": false,
-      "tag": "STRONG",
     },
   ],
   Array [
     [Function],
     Object {
+      "ancestorTree": Array [
+        "STRONG",
+      ],
       "attributes": Array [],
       "content": "O",
-      "isFirstCharacter": false,
-      "isLastCharacter": false,
-      "tag": "STRONG",
     },
   ],
   Array [
     [Function],
     Object {
+      "ancestorTree": Array [
+        "STRONG",
+      ],
       "attributes": Array [],
       "content": "L",
-      "isFirstCharacter": false,
-      "isLastCharacter": false,
-      "tag": "STRONG",
     },
   ],
   Array [
     [Function],
     Object {
+      "ancestorTree": Array [
+        "STRONG",
+      ],
       "attributes": Array [],
       "content": "D",
-      "isFirstCharacter": false,
-      "isLastCharacter": true,
-      "tag": "STRONG",
     },
   ],
   Array [
@@ -382,121 +392,131 @@ Array [
   Array [
     [Function],
     Object {
+      "ancestorTree": Array [
+        "STRONG",
+      ],
+      "attributes": Array [],
+      "content": "",
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "ancestorTree": Array [
+        "STRONG",
+      ],
       "attributes": Array [],
       "content": "a",
-      "isFirstCharacter": true,
-      "isLastCharacter": false,
-      "tag": "STRONG",
     },
   ],
   Array [
     [Function],
     Object {
+      "ancestorTree": Array [
+        "STRONG",
+      ],
       "attributes": Array [],
       "content": "n",
-      "isFirstCharacter": false,
-      "isLastCharacter": false,
-      "tag": "STRONG",
     },
   ],
   Array [
     [Function],
     Object {
+      "ancestorTree": Array [
+        "STRONG",
+      ],
       "attributes": Array [],
       "content": "o",
-      "isFirstCharacter": false,
-      "isLastCharacter": false,
-      "tag": "STRONG",
     },
   ],
   Array [
     [Function],
     Object {
+      "ancestorTree": Array [
+        "STRONG",
+      ],
       "attributes": Array [],
       "content": "t",
-      "isFirstCharacter": false,
-      "isLastCharacter": false,
-      "tag": "STRONG",
     },
   ],
   Array [
     [Function],
     Object {
+      "ancestorTree": Array [
+        "STRONG",
+      ],
       "attributes": Array [],
       "content": "h",
-      "isFirstCharacter": false,
-      "isLastCharacter": false,
-      "tag": "STRONG",
     },
   ],
   Array [
     [Function],
     Object {
+      "ancestorTree": Array [
+        "STRONG",
+      ],
       "attributes": Array [],
       "content": "e",
-      "isFirstCharacter": false,
-      "isLastCharacter": false,
-      "tag": "STRONG",
     },
   ],
   Array [
     [Function],
     Object {
+      "ancestorTree": Array [
+        "STRONG",
+      ],
       "attributes": Array [],
       "content": "r",
-      "isFirstCharacter": false,
-      "isLastCharacter": false,
-      "tag": "STRONG",
     },
   ],
   Array [
     [Function],
     Object {
+      "ancestorTree": Array [
+        "STRONG",
+      ],
       "attributes": Array [],
       "content": " ",
-      "isFirstCharacter": false,
-      "isLastCharacter": false,
-      "tag": "STRONG",
     },
   ],
   Array [
     [Function],
     Object {
+      "ancestorTree": Array [
+        "STRONG",
+      ],
       "attributes": Array [],
       "content": "B",
-      "isFirstCharacter": false,
-      "isLastCharacter": false,
-      "tag": "STRONG",
     },
   ],
   Array [
     [Function],
     Object {
+      "ancestorTree": Array [
+        "STRONG",
+      ],
       "attributes": Array [],
       "content": "O",
-      "isFirstCharacter": false,
-      "isLastCharacter": false,
-      "tag": "STRONG",
     },
   ],
   Array [
     [Function],
     Object {
+      "ancestorTree": Array [
+        "STRONG",
+      ],
       "attributes": Array [],
       "content": "L",
-      "isFirstCharacter": false,
-      "isLastCharacter": false,
-      "tag": "STRONG",
     },
   ],
   Array [
     [Function],
     Object {
+      "ancestorTree": Array [
+        "STRONG",
+      ],
       "attributes": Array [],
       "content": "D",
-      "isFirstCharacter": false,
-      "isLastCharacter": true,
-      "tag": "STRONG",
     },
   ],
   Array [

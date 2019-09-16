@@ -8,12 +8,15 @@ import {
 import merge from "./helpers/merge";
 import isInput from "./helpers/isInput";
 import toArray from "./helpers/toArray";
-import noderize from "./helpers/noderize";
 import createNodeString from "./helpers/createNodeString";
+import nodeCollectionToArray from "./helpers/nodeCollectionToArray";
+import stringToQueue from "./helpers/stringToQueue";
 import clearPreviousMarkup from "./helpers/clearPreviousMarkup";
-import groupNodeStringContents from "./helpers/groupNodeStringContents";
-
+import wrapCharacter from "./helpers/wrapCharacter";
 import Queue from "./Queue";
+import removeNode from "./helpers/removeNode.js";
+import removeEmptyCharacters from "./helpers/removeEmptyCharacters";
+import isLastAtEveryLevel from "./helpers/isLastAtEveryLevel";
 
 let baseInlineStyles =
   "display:inline;position:relative;font:inherit;color:inherit;line-height:inherit;";
@@ -177,12 +180,14 @@ export default class Instance {
     //-- Reset queue.
     //-- Remove initial pause, so we can replace with `loop` pause.
     //-- Add delay pause FIRST, since we're adding to beginning of queue.
+
     this.queue
       .reset()
       .delete(0)
       .add([this.pause, delay.before], true);
 
-    this.getNoderized().forEach(item => {
+    // Queue the current number of printed items for deletion.
+    for (let i = 0; i < this.getCharCount(); i++) {
       this.queue.add(
         [
           this.delete,
@@ -193,7 +198,7 @@ export default class Instance {
         ],
         true
       );
-    });
+    }
   }
 
   /**
@@ -213,7 +218,11 @@ export default class Instance {
 
     appendStyleBlock(
       `
-        .${this.$eContainer.className}:before {
+        .ti-char {
+          ${baseInlineStyles}
+        }
+
+        .ti-container:before {
           content: '.';
           display: inline-block;
           width: 0;
@@ -225,8 +234,8 @@ export default class Instance {
 
   /**
    * Set to content according to `html` option.
+   *
    * @param {string | null} content
-   * @todo Test this!
    */
   setContents(content = "") {
     if (this.isInput) {
@@ -237,20 +246,17 @@ export default class Instance {
   }
 
   /**
-   * Get the raw content in the element, unnoderized.
+   * Get the number of characters currently printed.
+   *
+   * @return integer
    */
-  getRaw() {
+  getCharCount() {
     if (this.isInput) {
-      return this.$e.value;
+      return this.$e.value.length;
     }
 
-    return this.opts.html
-      ? this.$eContainer.innerHTML
-      : this.$eContainer.innerText;
-  }
-
-  getNoderized() {
-    return this.maybeNoderize(this.getRaw());
+    return nodeCollectionToArray(this.$eContainer.querySelectorAll(".ti-char"))
+      .length;
   }
 
   prepareDelay(delayType) {
@@ -313,13 +319,14 @@ export default class Instance {
    * always ensuring its returned as split pieces.
    *
    * @param {array} stuff
+   * @return {array}
    */
   maybeNoderize(stuff) {
     if (!this.opts.html) {
       return stuff.split("");
     }
 
-    return noderize(stuff);
+    return stringToQueue(stuff);
   }
 
   /**
@@ -402,30 +409,72 @@ export default class Instance {
   }
 
   /**
-   * Inserts string to element container.
+   * Inserts a set of content into the element. Intended for SINGLE characters.
+   *
+   * @param {string | object} content
    */
-  insert(content, toChildNode = false) {
+  insert(contentArg) {
+    // Assume it's a string, and maybe overwrite later.
+    let content = contentArg;
+
     if (this.isInput) {
       this.$e.value = `${this.$e.value}${content}`;
       return;
     }
 
-    let el = toChildNode ? this.$eContainer.lastChild : this.$eContainer;
+    let el = this.$eContainer;
+
+    // We're inserting a character within an element!
+    if (typeof contentArg === "object") {
+      let parentSelectors = [...contentArg.ancestorTree].reverse().join(" ");
+      let existingNodes = nodeCollectionToArray(
+        el.querySelectorAll(`${parentSelectors}:not(.ti-char)`)
+      );
+      let lastExistingNode = existingNodes[existingNodes.length - 1];
+
+      // Only type into an existing element if there is one
+      // and it's the last one in the entire container.
+      if (lastExistingNode && isLastAtEveryLevel(lastExistingNode)) {
+        el = lastExistingNode;
+        content = contentArg.content;
+
+        // We need to create an element!
+      } else {
+        // Overwrite the content with this newly created element.
+
+        content = createNodeString({
+          tag: contentArg.ancestorTree[0],
+          attributes: contentArg.attributes,
+          content: wrapCharacter(contentArg.content)
+        });
+
+        // We know this new element is supposed to be nested, so we need to print it inside the
+        // the LAST parent node that was created inside the container.
+        if (contentArg.ancestorTree.length > 1) {
+          // Get all the parent nodes in the container.
+          let parentNodes = nodeCollectionToArray(
+            el.querySelectorAll(`${contentArg.ancestorTree[1]}:not(.ti-char)`)
+          );
+
+          // We assume it exists.
+          el = parentNodes[parentNodes.length - 1];
+        }
+      }
+    }
+
+    content = wrapCharacter(content);
 
     el.insertAdjacentHTML("beforeend", content);
-
-    this.setContents(
-      this.getRaw()
-        .split("")
-        .join("")
-    );
   }
 
   handleHardCoded(existing) {
     if (!existing.length) return false;
 
     if (this.opts.startDelete) {
-      this.insert(existing);
+      stringToQueue(existing).forEach(item => {
+        this.insert(item);
+      });
+
       this.queue.add([this.delete, true]);
       this.addSplitPause(1);
       return;
@@ -474,31 +523,16 @@ export default class Instance {
    * @param {*} character
    */
   type(character) {
+    // This is a shell character object, needed for creating
+    // the shell of an HTML element. Just print & go.
+    if (typeof character === "object" && !character.content) {
+      this.insert(character);
+      return Promise.resolve();
+    }
+
     return new Promise((resolve, reject) => {
       this.wait(() => {
-        //-- We hit a standard string.
-        if (typeof character === "string") {
-          this.insert(character);
-          return resolve();
-        }
-
-        //-- We hit a node; create tag itself only if it's:
-        //-- 1) the first character
-        //-- 2) a self-closing tag (content === null)
-        if (character.isFirstCharacter || character.content === null) {
-          this.insert(
-            createNodeString({
-              tag: character.tag,
-              attributes: character.attributes,
-              content: character.content
-            })
-          );
-
-          return resolve();
-        }
-
-        this.insert(character.content, true);
-
+        this.insert(character);
         return resolve();
       }, this.typePace);
     });
@@ -520,23 +554,23 @@ export default class Instance {
   delete(keepGoingUntilAllIsGone = false) {
     return new Promise((resolve, reject) => {
       this.wait(() => {
-        let contents = this.getNoderized();
+        let allChars = removeEmptyCharacters(this.$eContainer, ".ti-char");
 
-        //-- Remove last character.
-        contents.splice(-1, 1);
+        if (allChars.length > 0) {
+          let lastChar = allChars[allChars.length - 1];
+          removeNode(lastChar);
 
-        //-- Convert each node object into string representation,
-        //-- grouping them before reprinting.
-        contents = groupNodeStringContents(contents);
-
-        this.setContents(contents.join(""));
+          // Every time we're done deleting, clean up the DOM to remove
+          // any empty character nodes that might have been created.
+          removeEmptyCharacters(this.$eContainer, ".ti-char");
+        }
 
         /**
          * If it's specified, keep deleting until all characters are gone. This is
          * the only time when a SINGLE queue action (`delete()`) deals with multiple
          * characters at once. I don't like it, but need to implement like this right now.
          */
-        if (keepGoingUntilAllIsGone && contents.length > 0) {
+        if (keepGoingUntilAllIsGone && allChars.length - 1 > 0) {
           return this.delete(true).then(() => {
             return resolve();
           });
