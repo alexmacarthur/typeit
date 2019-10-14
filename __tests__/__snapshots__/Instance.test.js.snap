@@ -72,7 +72,7 @@ Array [
 ]
 `;
 
-exports[`insert() Should insert a nested character object. 1`] = `"<i class=\\"ti-char\\"><em><i class=\\"ti-char\\"><span><i class=\\"ti-char\\">y</i></span></i></em></i>"`;
+exports[`insert() Should insert a nested character object. 1`] = `"<em><span>y</span></em>"`;
 
 exports[`loopify() Should queue correct number of deletions. 1`] = `
 Array [

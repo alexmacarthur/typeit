@@ -1,3 +1,11 @@
+/**
+ * Construct a node w/ given attributes and content.
+ * @todo: Rename!
+ *
+ * @param {string} tag
+ * @param {array} attributes
+ * @param {content}
+ */
 export default function({ tag, attributes = [], content = "" }) {
   let node = document.createElement(tag);
 
@@ -11,5 +19,5 @@ export default function({ tag, attributes = [], content = "" }) {
     node.innerHTML = content;
   }
 
-  return node.outerHTML;
+  return node;
 }

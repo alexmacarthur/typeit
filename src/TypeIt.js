@@ -99,7 +99,7 @@ export default class TypeIt {
   }
 
   break() {
-    this.queueUp("type", "<br>");
+    this.queueUp("type", document.createElement("BR"));
     return this;
   }
 

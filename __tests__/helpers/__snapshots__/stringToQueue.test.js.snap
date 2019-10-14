@@ -1741,7 +1741,7 @@ Array [
 ]
 `;
 
-exports[`transformNodeToQueue() Attaches attributes as node is transformed. 1`] = `
+exports[`transformNodeToQueueItems() Attaches attributes as node is transformed. 1`] = `
 Array [
   Object {
     "ancestorTree": Array [],
@@ -1914,7 +1914,7 @@ Array [
 ]
 `;
 
-exports[`transformNodeToQueue() Transforms node with nested nodes. 1`] = `
+exports[`transformNodeToQueueItems() Transforms node with nested nodes. 1`] = `
 Array [
   Object {
     "ancestorTree": Array [],
@@ -2007,7 +2007,7 @@ Array [
 ]
 `;
 
-exports[`transformNodeToQueue() Transforms node with no specified ancestors into queue items. 1`] = `
+exports[`transformNodeToQueueItems() Transforms node with no specified ancestors into queue items. 1`] = `
 Array [
   Object {
     "ancestorTree": Array [],
@@ -2072,7 +2072,7 @@ Array [
 ]
 `;
 
-exports[`transformNodeToQueue() Transforms node with specified ancestors. 1`] = `
+exports[`transformNodeToQueueItems() Transforms node with specified ancestors. 1`] = `
 Array [
   Object {
     "ancestorTree": Array [

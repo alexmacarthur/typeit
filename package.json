@@ -52,5 +52,13 @@
     "prettier": "^1.18.2",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "<rootDir>/__tests__/setup.js"
+    ],
+    "setupFiles": [
+      "./__tests__/setup.js"
+    ]
   }
 }

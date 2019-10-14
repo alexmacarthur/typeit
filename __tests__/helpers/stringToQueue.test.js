@@ -2,7 +2,8 @@ import stringToQueue, {
   convertNodesToItems,
   extractChildTextNodes,
   getNodeAttributes,
-  transformNodeToQueue
+  transformNodeToQueueItems,
+  isNonBreakElement
 } from "../../src/helpers/stringToQueue";
 
 beforeEach(() => {
@@ -115,13 +116,13 @@ describe("extractChildTextNodes()", () => {
   });
 });
 
-describe("transformNodeToQueue()", () => {
+describe("transformNodeToQueueItems()", () => {
   test("Transforms node with no specified ancestors into queue items.", () => {
     let parser = new DOMParser();
     let doc = parser.parseFromString("<span>Hello, pal.</span>", "text/html");
     let element = doc.body.querySelector("span");
 
-    let result = transformNodeToQueue(element);
+    let result = transformNodeToQueueItems(element);
 
     expect(result).toMatchSnapshot();
   });
@@ -131,7 +132,7 @@ describe("transformNodeToQueue()", () => {
     let doc = parser.parseFromString("<span>Hello, pal.</span>", "text/html");
     let element = doc.body.querySelector("span");
 
-    let result = transformNodeToQueue(element, ["div", "span"]);
+    let result = transformNodeToQueueItems(element, ["div", "span"]);
 
     expect(result).toMatchSnapshot();
   });
@@ -144,7 +145,7 @@ describe("transformNodeToQueue()", () => {
     );
     let element = doc.body.querySelector("span");
 
-    let result = transformNodeToQueue(element);
+    let result = transformNodeToQueueItems(element);
 
     expect(result).toMatchSnapshot();
   });
@@ -157,7 +158,7 @@ describe("transformNodeToQueue()", () => {
     );
     let element = doc.body.querySelector("span");
 
-    let result = transformNodeToQueue(element);
+    let result = transformNodeToQueueItems(element);
 
     expect(result).toMatchSnapshot();
   });
@@ -209,5 +210,22 @@ describe("convertNodesToItems()", () => {
     let rawQueue = extractChildTextNodes(document.body);
     let result = convertNodesToItems(rawQueue);
     expect(result).toMatchSnapshot();
+  });
+});
+
+describe("isNonBreakElement()", () => {
+  test("Returns true when non-break element is passed.", () => {
+    let result = isNonBreakElement(document.createElement("SPAN"));
+    expect(result).toBe(true);
+  });
+
+  test("Returns false when break element is passed.", () => {
+    let result = isNonBreakElement(document.createElement("BR"));
+    expect(result).toBe(false);
+  });
+
+  test("Returns false non-HTML element is provided.", () => {
+    let result = isNonBreakElement("sup");
+    expect(result).toBe(false);
   });
 });

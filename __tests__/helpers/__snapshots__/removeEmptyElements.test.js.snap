@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`removeEmptyElements() Empty HTML character should be removed from DOM. 1`] = `"<span id=\\"scope\\">abc</span>"`;
+
+exports[`removeEmptyElements() Nested empty HTML character should be removed from DOM. 1`] = `"<span id=\\"scope\\">abc</span>"`;

@@ -40,7 +40,7 @@ export const extractChildTextNodes = el => {
  * @param {object} el
  * @return {array}
  */
-export const transformNodeToQueue = (el, ancestorTree = []) => {
+export const transformNodeToQueueItems = (el, ancestorTree = []) => {
   // Needed so the queue has a dedicated item for
   // creating the initial shell of the element
   // when it comes time to type.
@@ -74,15 +74,29 @@ export const transformNodeToQueue = (el, ancestorTree = []) => {
 };
 
 /**
+ * Check whether a provided node is an HTML element that's NOT a break tag.
+ *
+ * @param {object} thing
+ */
+export const isNonBreakElement = thing => {
+  return thing instanceof HTMLElement && thing.tagName !== "BR";
+};
+
+/**
  * Given a raw 'queue' of text and nodes, expand each node into queue items.
  *
  * @param {array} queue
  */
-export const convertNodesToItems = queue => {
+export const convertNodesToItems = (queue, expandAsCharacterObjects = true) => {
   let processedQueue = queue.map(item => {
-    if (item instanceof HTMLElement) {
+    if (isNonBreakElement(item)) {
+      if (!expandAsCharacterObjects) {
+        return nodeCollectionToArray(item.childNodes);
+      }
+
       // We're only concerned if this node's parent is NOT the BODY or HTML tag.
       // This would mean it's a nested element.
+      // @todo: Move this work into transformNodeToQueueItems
       let node = item.parentNode;
       let ancestorTree = [item.tagName];
 
@@ -91,7 +105,7 @@ export const convertNodesToItems = queue => {
         node = node.parentNode;
       }
 
-      return transformNodeToQueue(item, ancestorTree);
+      return transformNodeToQueueItems(item, ancestorTree);
     }
 
     // It's just a text node; let it go.
@@ -101,8 +115,8 @@ export const convertNodesToItems = queue => {
   processedQueue = flatten(processedQueue);
 
   // We still have nodes in there! Keep going!
-  if (processedQueue.some(item => item instanceof HTMLElement)) {
-    return convertNodesToItems(processedQueue);
+  if (processedQueue.some(item => isNonBreakElement(item))) {
+    return convertNodesToItems(processedQueue, expandAsCharacterObjects);
   }
 
   return processedQueue;

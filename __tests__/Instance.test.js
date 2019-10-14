@@ -1,11 +1,10 @@
 import Instance from "../src/Instance.js";
-import { deepStrictEqual } from "assert";
 
 let instance;
 let args;
 
 beforeEach(() => {
-  document.body.innerHTML = `
+  setHTML`
     <div>
       <span id="element"></span>
     </div>
@@ -131,7 +130,8 @@ describe("loopify()", () => {
   test("Should queue correct number of deletions.", () => {
     instance.$eContainer.innerHTML = "Just a string.";
 
-    instance.$eContainer.innerHTML = `
+    instance.$eContainer.innerHTML = setHTML(
+      `
       <i class="ti-char">
         J
       </i>
@@ -174,7 +174,9 @@ describe("loopify()", () => {
       <i class="ti-char">
         .
       </i>
-    `;
+    `,
+      true
+    );
 
     instance.loopify({ before: 2000 });
 
@@ -185,7 +187,7 @@ describe("loopify()", () => {
 describe("insert()", () => {
   test("Should insert a simple character correctly.", () => {
     instance.insert("x");
-    expect(instance.$eContainer.innerHTML).toBe(`<i class="ti-char">x</i>`);
+    expect(instance.$eContainer.innerHTML).toBe(`x`);
   });
 
   test("Should insert a character object.", () => {
@@ -197,9 +199,7 @@ describe("insert()", () => {
     };
     instance.insert(characterObject);
 
-    expect(instance.$eContainer.innerHTML).toBe(
-      `<i class="ti-char"><span><i class="ti-char">y</i></span></i>`
-    );
+    expect(instance.$eContainer.innerHTML).toBe(`<span>y</span>`);
   });
 
   test("Should insert a nested character object.", () => {
@@ -209,17 +209,17 @@ describe("insert()", () => {
       content: "y",
       isFirstChar: false
     };
-    instance.$eContainer.innerHTML = `<i class="ti-char"><em></em></i>`;
+    instance.$eContainer.innerHTML = `<em></em>`;
     instance.insert(characterObject);
     expect(instance.$eContainer.innerHTML).toMatchSnapshot();
   });
 
   test("Should insert content into input.", () => {
-    document.body.innerHTML = `
+    setHTML(`
       <div>
         <input id="inputElement" type="text" />
       </div>
-    `;
+    `);
 
     Object.assign(args, { element: document.getElementById("inputElement") });
 
@@ -231,7 +231,7 @@ describe("insert()", () => {
   });
 
   test("Should insert raw HTML content into input.", () => {
-    document.body.innerHTML = `
+    setHTML`
       <div>
         <input id="inputElement" type="text" />
       </div>

@@ -1,23 +1,23 @@
-import createNodeString from "../../src/helpers/createNodeString";
+import createNode from "../../src/helpers/createNode";
 
 test("Creates a given tag by string.", () => {
-  let result = createNodeString({
+  let result = createNode({
     tag: "SPAN"
   });
 
-  expect(result).toEqual("<span></span>");
+  expect(result.outerHTML).toEqual("<span></span>");
 });
 
 test("Creates a self-closing tag correctly.", () => {
-  let result = createNodeString({
+  let result = createNode({
     tag: "BR"
   });
 
-  expect(result).toEqual("<br>");
+  expect(result.outerHTML).toEqual("<br>");
 });
 
 test("Creates a tag with attributes correctly.", () => {
-  let result = createNodeString({
+  let result = createNode({
     tag: "DIV",
     attributes: [
       {
@@ -31,14 +31,16 @@ test("Creates a tag with attributes correctly.", () => {
     ]
   });
 
-  expect(result).toEqual(`<div data-my-attribute="my-value" id="my-id"></div>`);
+  expect(result.outerHTML).toEqual(
+    `<div data-my-attribute="my-value" id="my-id"></div>`
+  );
 });
 
 test("Creates a tag with content correctly.", () => {
-  let result = createNodeString({
+  let result = createNode({
     tag: "DIV",
     content: "my content"
   });
 
-  expect(result).toEqual(`<div>my content</div>`);
+  expect(result.outerHTML).toEqual(`<div>my content</div>`);
 });

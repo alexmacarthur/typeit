@@ -8,14 +8,13 @@ import {
 import merge from "./helpers/merge";
 import isInput from "./helpers/isInput";
 import toArray from "./helpers/toArray";
-import createNodeString from "./helpers/createNodeString";
+import createNode from "./helpers/createNode";
 import nodeCollectionToArray from "./helpers/nodeCollectionToArray";
-import stringToQueue from "./helpers/stringToQueue";
+import stringToQueue, { convertNodesToItems } from "./helpers/stringToQueue";
 import clearPreviousMarkup from "./helpers/clearPreviousMarkup";
-import wrapCharacter from "./helpers/wrapCharacter";
 import Queue from "./Queue";
 import removeNode from "./helpers/removeNode.js";
-import removeEmptyCharacters from "./helpers/removeEmptyCharacters";
+import removeEmptyElements from "./helpers/removeEmptyElements";
 import isLastAtEveryLevel from "./helpers/isLastAtEveryLevel";
 
 let baseInlineStyles =
@@ -187,7 +186,7 @@ export default class Instance {
       .add([this.pause, delay.before], true);
 
     // Queue the current number of printed items for deletion.
-    for (let i = 0; i < this.getCharCount(); i++) {
+    for (let i = 0; i < this.getAllChars().length; i++) {
       this.queue.add(
         [
           this.delete,
@@ -218,10 +217,6 @@ export default class Instance {
 
     appendStyleBlock(
       `
-        .ti-char {
-          ${baseInlineStyles}
-        }
-
         .ti-container:before {
           content: '.';
           display: inline-block;
@@ -246,17 +241,13 @@ export default class Instance {
   }
 
   /**
-   * Get the number of characters currently printed.
+   * Get a flattened array of text nodes that have been typed.
    *
-   * @return integer
+   * @return {array}
    */
-  getCharCount() {
-    if (this.isInput) {
-      return this.$e.value.length;
-    }
-
-    return nodeCollectionToArray(this.$eContainer.querySelectorAll(".ti-char"))
-      .length;
+  getAllChars() {
+    let allNodes = nodeCollectionToArray(this.$eContainer.childNodes);
+    return convertNodesToItems(allNodes, false);
   }
 
   prepareDelay(delayType) {
@@ -288,7 +279,7 @@ export default class Instance {
       if (index + 1 === this.opts.strings.length) return;
 
       if (this.opts.breakLines) {
-        this.queue.add([this.type, "<br>"]);
+        this.queue.add([this.type, document.createElement("BR")]);
         this.addSplitPause(queueLength);
         return;
       }
@@ -425,10 +416,14 @@ export default class Instance {
     let el = this.$eContainer;
 
     // We're inserting a character within an element!
-    if (typeof contentArg === "object") {
+    // Make sure this isn't an HTML node that's being inserted.
+    if (
+      typeof contentArg === "object" &&
+      !(contentArg instanceof HTMLElement)
+    ) {
       let parentSelectors = [...contentArg.ancestorTree].reverse().join(" ");
       let existingNodes = nodeCollectionToArray(
-        el.querySelectorAll(`${parentSelectors}:not(.ti-char)`)
+        el.querySelectorAll(`${parentSelectors}`)
       );
       let lastExistingNode = existingNodes[existingNodes.length - 1];
 
@@ -441,11 +436,10 @@ export default class Instance {
         // We need to create an element!
       } else {
         // Overwrite the content with this newly created element.
-
-        content = createNodeString({
+        content = createNode({
           tag: contentArg.ancestorTree[0],
           attributes: contentArg.attributes,
-          content: wrapCharacter(contentArg.content)
+          content: contentArg.content
         });
 
         // We know this new element is supposed to be nested, so we need to print it inside the
@@ -453,7 +447,7 @@ export default class Instance {
         if (contentArg.ancestorTree.length > 1) {
           // Get all the parent nodes in the container.
           let parentNodes = nodeCollectionToArray(
-            el.querySelectorAll(`${contentArg.ancestorTree[1]}:not(.ti-char)`)
+            el.querySelectorAll(contentArg.ancestorTree[1])
           );
 
           // We assume it exists.
@@ -462,9 +456,11 @@ export default class Instance {
       }
     }
 
-    content = wrapCharacter(content);
+    // Might be either an HTMLElement or Node.
+    content =
+      typeof content === "object" ? content : document.createTextNode(content);
 
-    el.insertAdjacentHTML("beforeend", content);
+    el.appendChild(content);
   }
 
   handleHardCoded(existing) {
@@ -552,18 +548,17 @@ export default class Instance {
    * QUEUEABLE
    */
   delete(keepGoingUntilAllIsGone = false) {
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
       this.wait(() => {
-        let allChars = removeEmptyCharacters(this.$eContainer, ".ti-char");
+        let allChars = this.getAllChars();
 
-        if (allChars.length > 0) {
-          let lastChar = allChars[allChars.length - 1];
-          removeNode(lastChar);
-
-          // Every time we're done deleting, clean up the DOM to remove
-          // any empty character nodes that might have been created.
-          removeEmptyCharacters(this.$eContainer, ".ti-char");
+        if (allChars.length) {
+          removeNode(allChars[allChars.length - 1]);
         }
+
+        // Removes any empty HTML remnants.
+        // @todo: rename!
+        removeEmptyElements(this.$eContainer);
 
         /**
          * If it's specified, keep deleting until all characters are gone. This is

@@ -1,30 +1,11 @@
-import getClosest from "./getClosest";
-
 /**
- * Determine if a given node has a `.ti-char` sibling.
+ * Determine if a given node has any sibling.
  *
  * @param {object} node
  * @return {boolean}
  */
 export const hasCharacterAsNextSibling = node => {
-  let tiCharNode = getClosest(node, ".ti-char");
-  let sibling = tiCharNode.nextElementSibling;
-
-  // A doesn't have a sibling at all.
-  if (!sibling) {
-    return false;
-  }
-
-  // In theory, this should never happen.
-  if (!sibling.classList) {
-    return false;
-  }
-
-  if (sibling.classList.contains("ti-char")) {
-    return true;
-  }
-
-  return false;
+  return !!node.nextSibling;
 };
 
 /**

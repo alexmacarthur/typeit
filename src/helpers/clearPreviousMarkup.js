@@ -1,3 +1,6 @@
+/**
+ * @todo: Make more efficient by using Array.some().
+ */
 export default (element, isInput = false) => {
   if (isInput) {
     element.value = "";
