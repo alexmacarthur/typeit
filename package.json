@@ -40,9 +40,9 @@
     "url": "git+https://github.com/alexmacarthur/typeit.git"
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "concurrently": "^4.1.2",
@@ -50,8 +50,8 @@
     "jest-cli": "^24.9.0",
     "pre-commit": "^1.2.2",
     "prettier": "^1.18.2",
-    "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.7"
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9"
   },
   "jest": {
     "testPathIgnorePatterns": [
