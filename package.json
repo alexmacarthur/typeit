@@ -14,11 +14,12 @@
     "dist/"
   ],
   "scripts": {
-    "build": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=webpack.config.js && prettier src/* --write && prettier __tests__/* --write",
-    "watch": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=webpack.config.js && prettier src/* --write && prettier __tests__/* --write",
+    "build": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=webpack.config.js && npm run prettier",
+    "watch": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=webpack.config.js",
     "serve": "concurrently --kill-others \"npm run watch\" \"node serve.js\"",
     "analyze": "node_modules/webpack/bin/webpack.js --profile --json > stats.json",
-    "prettify-and-add": "prettier \"./**/*.js\" --write && git add -A",
+    "precommit": "pretty-quick --staged",
+    "prettier": "prettier --write \"**/*.{md,js}\"",
     "test": "jest",
     "postinstall": "node ./notice.js"
   },
@@ -32,9 +33,6 @@
     "type effect",
     "text effects"
   ],
-  "pre-commit": [
-    "prettify-and-add"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alexmacarthur/typeit.git"
@@ -47,9 +45,10 @@
     "babel-loader": "^8.0.6",
     "concurrently": "^4.1.2",
     "express": "^4.17.1",
+    "husky": "^3.0.9",
     "jest-cli": "^24.9.0",
-    "pre-commit": "^1.2.2",
     "prettier": "^1.18.2",
+    "pretty-quick": "^2.0.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9"
   },
