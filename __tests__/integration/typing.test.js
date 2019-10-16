@@ -105,8 +105,7 @@ test("Removes empty HTML when necessary.", () => {
 
   let emptyTagPattern = /<[^\/>][^>]*><\/[^>]+>/;
 
-  let result = document.getElementById("element").querySelector(".ti-container")
-    .innerHTML;
+  let result = document.getElementById("element").innerHTML;
 
   //-- Ensure our regex correctly finds empty tags.
   expect("Text with <strong></strong> a set of empty tags!").toMatch(

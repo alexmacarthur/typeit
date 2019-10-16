@@ -1,5 +1,5 @@
 /**
- * @todo: Make more efficient by using Array.some().
+ * Given an element, remove any markup left from a previous instance of TypeIt.
  */
 export default (element, isInput = false) => {
   if (isInput) {
@@ -7,11 +7,7 @@ export default (element, isInput = false) => {
     return;
   }
 
-  [].slice.call(element.childNodes).forEach(node => {
-    if (node.classList === undefined) return;
-
-    if (node.classList.contains("ti-wrapper")) {
-      element.innerHTML = "";
-    }
-  });
+  if (element.querySelector(".ti-cursor")) {
+    element.innerHTML = "";
+  }
 };

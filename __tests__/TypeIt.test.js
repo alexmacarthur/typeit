@@ -57,7 +57,7 @@ test("Clears out remnants of previous instances correctly.", () => {
   document.body.innerHTML = `
     <div>
       <span id="element">
-        <span style="display:inline;position:relative;font:inherit;color:inherit;" class="ti-wrapper">Previous string.</span>
+        Previous string.
       </span>
     </div>
   `;
@@ -66,9 +66,9 @@ test("Clears out remnants of previous instances correctly.", () => {
     strings: "My string."
   });
 
-  expect(
-    !instance.instances[0].opts.strings[0].includes("ti-container")
-  ).toEqual(true);
+  expect(!instance.instances[0].opts.strings[0].includes("ti-cursor")).toEqual(
+    true
+  );
 });
 
 test("Typing doesn't end with a break tag.", () => {
@@ -80,9 +80,7 @@ test("Typing doesn't end with a break tag.", () => {
     strings: ["One string.", "Two string", "Three string."]
   }).go();
 
-  expect(instance.instances[0].$eContainer.innerHTML.endsWith("<br>")).not.toBe(
-    true
-  );
+  expect(instance.instances[0].$e.innerHTML.endsWith("<br>")).not.toBe(true);
 });
 
 describe("reset()", () => {

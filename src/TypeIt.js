@@ -132,10 +132,10 @@ export default class TypeIt {
       if (removeCursor) {
         let cursorNode = instance.isInput
           ? null
-          : instance.$eWrapper.querySelector(".ti-cursor");
+          : instance.$e.querySelector(".ti-cursor");
 
         if (cursorNode) {
-          instance.$eWrapper.removeChild(cursorNode);
+          instance.$e.removeChild(cursorNode);
         }
       }
 

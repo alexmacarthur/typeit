@@ -38,6 +38,7 @@ export default class Instance {
     };
     this.timeouts = [];
     this.id = id;
+    this.$c = null;
     this.$e = element;
     this.isInput = isInput(element);
     this.opts = merge({}, defaults, options);
@@ -50,10 +51,8 @@ export default class Instance {
     this.prepareDelay("nextStringDelay");
     this.prepareDelay("loopDelay");
 
-    let existingMarkup = this.$e.innerHTML;
-
     this.prepDOM();
-    this.handleHardCoded(existingMarkup);
+    this.handleHardCoded();
 
     this.opts.strings = removeComments(this.opts.strings);
 
@@ -215,15 +214,7 @@ export default class Instance {
    */
   prepDOM() {
     if (this.isInput) return;
-
-    this.$e.innerHTML = `<span style="${baseInlineStyles}" class="ti-wrapper"><span style="${baseInlineStyles}" class="ti-container"></span></span>`;
     this.$e.setAttribute("data-typeit-id", this.id);
-    this.$eContainer = this.$e.querySelector(".ti-container");
-    this.$eWrapper = this.$e.querySelector(".ti-wrapper");
-
-    appendStyleBlock(
-      ".ti-container:before {content: '.'; display: inline-block; width: 0; visibility: hidden;}"
-    );
   }
 
   /**
@@ -235,17 +226,20 @@ export default class Instance {
     if (this.isInput) {
       this.$e.value = content;
     } else {
-      this.$eContainer[this.opts.html ? "innerHTML" : "innerText"] = content;
+      this.$e[this.opts.html ? "innerHTML" : "innerText"] = content;
     }
   }
 
   /**
    * Get a flattened array of text nodes that have been typed.
+   * This excludes any cursor character that might exist.
    *
    * @return {array}
    */
   getAllChars() {
-    let allNodes = nodeCollectionToArray(this.$eContainer.childNodes);
+    let allNodes = nodeCollectionToArray(this.$e.childNodes).filter(
+      node => !node.isEqualNode(this.$c)
+    );
     return convertNodesToItems(allNodes, false);
   }
 
@@ -369,28 +363,26 @@ export default class Instance {
   }
 
   cursor() {
-    if (this.isInput) return;
-
-    let visibilityStyle = "display: none;";
-
-    if (this.opts.cursor) {
-      appendStyleBlock(
-        `@keyframes blink-${
-          this.id
-        } { 0% {opacity: 0} 49% {opacity: 0} 50% {opacity: 1} }[data-typeit-id='${
-          this.id
-        }'] .ti-cursor { animation: blink-${this.id} ${this.opts.cursorSpeed /
-          1000}s infinite; }`,
-        this.id
-      );
-
-      visibilityStyle = "";
+    if (this.isInput || !this.opts.cursor) {
+      return;
     }
 
-    this.$eWrapper.insertAdjacentHTML(
-      "beforeend",
-      `<span style="${baseInlineStyles}${visibilityStyle}left: -.25ch;" class="ti-cursor">${this.opts.cursorChar}</span>`
+    appendStyleBlock(
+      `@keyframes blink-${
+        this.id
+      } { 0% {opacity: 0} 49% {opacity: 0} 50% {opacity: 1} }[data-typeit-id='${
+        this.id
+      }'] .ti-cursor { animation: blink-${this.id} ${this.opts.cursorSpeed /
+        1000}s infinite; }`,
+      this.id
     );
+
+    this.$e.insertAdjacentHTML(
+      "beforeend",
+      `<span style="${baseInlineStyles}" class="ti-cursor">${this.opts.cursorChar}</span>`
+    );
+
+    this.$c = this.$e.querySelector(".ti-cursor");
   }
 
   /**
@@ -407,7 +399,7 @@ export default class Instance {
       return;
     }
 
-    let el = this.$eContainer;
+    let el = this.$e;
 
     // We're inserting a character within an element!
     // Make sure this isn't an HTML node that's being inserted.
@@ -423,7 +415,7 @@ export default class Instance {
 
       // Only type into an existing element if there is one
       // and it's the last one in the entire container.
-      if (lastExistingNode && isLastAtEveryLevel(lastExistingNode)) {
+      if (lastExistingNode && isLastAtEveryLevel(lastExistingNode, this.$c)) {
         el = lastExistingNode;
         content = contentArg.content;
 
@@ -454,14 +446,27 @@ export default class Instance {
     content =
       typeof content === "object" ? content : document.createTextNode(content);
 
-    el.appendChild(content);
+    // If a cursor node exists, make sure we print BEFORE that.
+    if (this.$c && el.hasAttribute("data-typeit-id")) {
+      el.insertBefore(content, this.$c);
+    } else {
+      el.appendChild(content);
+    }
   }
 
-  handleHardCoded(existing) {
-    if (!existing.length) return false;
+  handleHardCoded() {
+    let existingMarkup = this.$e.innerHTML;
+
+    if (!existingMarkup) {
+      return;
+    }
+
+    // Once we've saved the existing markup to a variable,
+    // wipe the element clean to prepare for typing.
+    this.$e.innerHTML = "";
 
     if (this.opts.startDelete) {
-      stringToQueue(existing).forEach(item => {
+      stringToQueue(existingMarkup).forEach(item => {
         this.insert(item);
       });
 
@@ -470,7 +475,10 @@ export default class Instance {
       return;
     }
 
-    this.opts.strings = [...toArray(existing.trim()), ...this.opts.strings];
+    this.opts.strings = [
+      ...toArray(existingMarkup.trim()),
+      ...this.opts.strings
+    ];
   }
 
   wait(callback, delay) {
@@ -551,8 +559,7 @@ export default class Instance {
         }
 
         // Removes any empty HTML remnants.
-        // @todo: rename!
-        removeEmptyElements(this.$eContainer);
+        removeEmptyElements(this.$e);
 
         /**
          * If it's specified, keep deleting until all characters are gone. This is

@@ -128,9 +128,9 @@ describe("loopify()", () => {
   });
 
   test("Should queue correct number of deletions.", () => {
-    instance.$eContainer.innerHTML = "Just a string.";
+    instance.$e.innerHTML = "Just a string.";
 
-    instance.$eContainer.innerHTML = setHTML(
+    instance.$e.innerHTML = setHTML(
       `
       <i class="ti-char">
         J
@@ -187,7 +187,7 @@ describe("loopify()", () => {
 describe("insert()", () => {
   test("Should insert a simple character correctly.", () => {
     instance.insert("x");
-    expect(instance.$eContainer.innerHTML).toBe(`x`);
+    expect(instance.$e.innerHTML).toBe(`x`);
   });
 
   test("Should insert a character object.", () => {
@@ -199,7 +199,7 @@ describe("insert()", () => {
     };
     instance.insert(characterObject);
 
-    expect(instance.$eContainer.innerHTML).toBe(`<span>y</span>`);
+    expect(instance.$e.innerHTML).toBe(`<span>y</span>`);
   });
 
   test("Should insert a nested character object.", () => {
@@ -209,9 +209,9 @@ describe("insert()", () => {
       content: "y",
       isFirstChar: false
     };
-    instance.$eContainer.innerHTML = `<em></em>`;
+    instance.$e.innerHTML = `<em></em>`;
     instance.insert(characterObject);
-    expect(instance.$eContainer.innerHTML).toMatchSnapshot();
+    expect(instance.$e.innerHTML).toMatchSnapshot();
   });
 
   test("Should insert content into input.", () => {

@@ -5,7 +5,7 @@ import isLastAtEveryLevel, {
 describe("hasCharacterAsNextSibling()", () => {
   test("Returns false when there's no next sibling.", () => {
     setHTML`
-      <span class="ti-container"><i id="node">a</i></span>
+      <span data-typeit-id="whatever"><i id="node">a</i></span>
     `;
 
     let node = document.getElementById("node");
@@ -16,7 +16,7 @@ describe("hasCharacterAsNextSibling()", () => {
 
   test("Returns true when there's a sibling character.", () => {
     setHTML`
-      <span class="ti-container"><i id="node">a</i>b</span>
+      <span data-typeit-id="whatever"><i id="node">a</i>b</span>
     `;
 
     let node = document.getElementById("node");
@@ -28,7 +28,7 @@ describe("hasCharacterAsNextSibling()", () => {
 
 test("Returns true when element is last.", () => {
   setHTML`
-    <span class="ti-container">
+    <span data-typeit-id="whatever">
       <i id="node"></i>
     </span>`;
 
@@ -40,7 +40,7 @@ test("Returns true when element is last.", () => {
 
 test("Returns false when element is not last.", () => {
   setHTML`
-    <span class="ti-container">
+    <span data-typeit-id="whatever">
       <i id="node"></i>
       <i></i>
     </span>`;
@@ -53,7 +53,7 @@ test("Returns false when element is not last.", () => {
 
 test("Returns false when nested element is not always last.", () => {
   setHTML`
-    <span class="ti-container">
+    <span data-typeit-id="whatever">
       <i>
         <strong>
           <i id="node">a</i>
@@ -70,7 +70,7 @@ test("Returns false when nested element is not always last.", () => {
 
 test("Returns true when nested element is always last.", () => {
   setHTML`
-    <span class="ti-container">
+    <span data-typeit-id="whatever">
       <i></i>
       <i>
         <strong>
@@ -88,7 +88,7 @@ test("Returns true when nested element is always last.", () => {
 
 test("Returns true when deeply nested element is always last.", () => {
   setHTML(`
-    <span class="ti-container">
+    <span data-typeit-id="whatever">
       <i></i>
       <i>
         <strong>
@@ -115,7 +115,7 @@ test("Returns true when deeply nested element is always last.", () => {
 
 test("Returns false when deeply nested element is not always last.", () => {
   setHTML`
-    <span class="ti-container">
+    <span data-typeit-id="whatever">
       <i></i>
       <i>
         <strong>
@@ -138,4 +138,19 @@ test("Returns false when deeply nested element is not always last.", () => {
   let result = isLastAtEveryLevel(node);
 
   expect(result).toBe(false);
+});
+
+test("Returns true when cursor exists and is ignored.", () => {
+  setHTML`
+    <span data-typeit-id="whatever">
+      <span id="node">1</span>
+      <span class="ti-cursor">|</span>
+    </span>
+  `;
+
+  let node = document.getElementById("node");
+  let nodeToIgnore = document.querySelector(".ti-cursor");
+  let result = isLastAtEveryLevel(node, nodeToIgnore);
+
+  expect(result).toBe(true);
 });

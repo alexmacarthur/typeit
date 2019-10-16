@@ -4,17 +4,20 @@
  * @param {object} node
  * @return {boolean}
  */
-export const hasCharacterAsNextSibling = node => {
-  return !!node.nextSibling;
+export const hasCharacterAsNextSibling = (node, nodeToIgnore) => {
+  let sibling = node.nextSibling;
+
+  return sibling ? !sibling.isEqualNode(nodeToIgnore) : false;
 };
 
 /**
  * Determine if this node is the last one at every level in what's been printed.
  *
  * @param {object} node
+ * @param {object} node (the cursor node)
  * @return {boolean}
  */
-export default node => {
+export default (node, nodeToIgnore) => {
   if (!node) {
     return false;
   }
@@ -24,10 +27,10 @@ export default node => {
   let n = node;
 
   while (!hasReachedTop) {
-    hasSiblingAtPosition.push(hasCharacterAsNextSibling(n));
+    hasSiblingAtPosition.push(hasCharacterAsNextSibling(n, nodeToIgnore));
     n = n.parentNode;
 
-    if (!n || n.classList.contains("ti-container")) {
+    if (!n || n.hasAttribute("data-typeit-id")) {
       hasReachedTop = true;
     }
   }
