@@ -23,9 +23,9 @@ For more advanced, controlled typing effects, TypeIt comes with companion functi
 -   Loop your string(s) continuously.
 -   Define your strings via an options object or in the HTML (a useful fallback in case user doesn't have JavaScript enabled, as well as for SEO).
 -   Use a single TypeIt instance to target several different elements on a page.
--   Handle HTML tags (while preserving attributes) with ease.
+-   Handle HTML (even nested tags!) with ease, preserving all of its attributes (classes, ids, etc.).
 -   Use companion functions to chain individual commands together to fine tune your typing.
--   Ready to be included via JS module, or as a separate script loaded on your page.
+-   Ready to be included via JS module, or as a separate script loaded on your page (both "legacy" and modern bundles are provided).
 -   No dependencies!
 
 ## License Options
