@@ -21,7 +21,14 @@ let baseInlineStyles =
   "display:inline;position:relative;font:inherit;color:inherit;line-height:inherit;";
 
 export default class Instance {
-  constructor({ typeIt, element, id, options, queue = [] } = {}) {
+  constructor({
+    typeIt,
+    element,
+    id,
+    options,
+    queue = [],
+    isAReset = false
+  } = {}) {
     this.typeIt = typeIt;
     this.status = {
       started: false,
@@ -50,9 +57,10 @@ export default class Instance {
 
     this.opts.strings = removeComments(this.opts.strings);
 
-    //-- Only generate a queue if we have strings
-    //-- and we're NOT receiving a pre-defined queue.
-    if (!this.opts.strings.length || this.queue.waiting.length > 1) {
+    // Only generate a queue if we have strings
+    // and this isn't a reset of a previous instance,
+    // in which case we'd have a pre-defined queue.
+    if (!this.opts.strings.length || isAReset) {
       return;
     }
 
@@ -69,7 +77,8 @@ export default class Instance {
       element: this.$e,
       id: this.id,
       options: this.opts,
-      queue: this.queue.waiting
+      queue: this.queue.waiting,
+      isAReset: true
     });
   }
 
