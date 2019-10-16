@@ -2,12 +2,12 @@ import Instance from "./Instance";
 import allHaveStatus from "./helpers/allHaveStatus";
 import { generateHash } from "./utilities";
 import toArrayOfNodes from "./helpers/toArrayOfNodes";
-import stringToQueue from "./helpers/stringToQueue";
 
 export default class TypeIt {
   constructor(element, options) {
     this.instances = toArrayOfNodes(element).map(el => {
       return new Instance({
+        typeIt: this,
         element: el,
         id: generateHash(),
         options,
@@ -114,24 +114,29 @@ export default class TypeIt {
   }
 
   /**
-   * Destroy the instance, mark as such, and clean up.
+   * Destroy the instance, mark as such, and clean up. If specified,
+   * remove the cursor on destruction.
    *
-   * @param {} removeCursor
+   * @param {boolean} removeCursor
    */
   destroy(removeCursor = true) {
     this.each(instance => {
+      // Destroy each timeout, for good housekeeping.
       instance.timeouts.forEach(timeout => {
         clearTimeout(timeout);
       });
 
       instance.timeouts = [];
 
-      let cursorNode = instance.isInput
-        ? null
-        : instance.$eWrapper.querySelector(".ti-cursor");
+      // Clean up cursor node, if specified.
+      if (removeCursor) {
+        let cursorNode = instance.isInput
+          ? null
+          : instance.$eWrapper.querySelector(".ti-cursor");
 
-      if (removeCursor && instance.opts.cursor && cursorNode !== null) {
-        instance.$eWrapper.removeChild(cursorNode);
+        if (cursorNode) {
+          instance.$eWrapper.removeChild(cursorNode);
+        }
       }
 
       instance.status.destroyed = true;

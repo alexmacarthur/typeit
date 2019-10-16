@@ -21,7 +21,8 @@ let baseInlineStyles =
   "display:inline;position:relative;font:inherit;color:inherit;line-height:inherit;";
 
 export default class Instance {
-  constructor({ element, id, options, queue = [] } = {}) {
+  constructor({ typeIt, element, id, options, queue = [] } = {}) {
+    this.typeIt = typeIt;
     this.status = {
       started: false,
       complete: false,
@@ -100,7 +101,7 @@ export default class Instance {
     for (let i = 0; i < queue.length; i++) {
       let key = queue[i];
 
-      let callbackArgs = [key, this.queue, this];
+      let callbackArgs = [key, this.queue, this.typeIt];
 
       promiseChain = promiseChain.then(() => {
         return new Promise((resolve, reject) => {
@@ -162,7 +163,7 @@ export default class Instance {
         this.status.completed = true;
 
         if (this.opts.afterComplete) {
-          this.opts.afterComplete(this);
+          this.opts.afterComplete(this.typeIt);
         }
 
         return;
