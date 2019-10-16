@@ -206,24 +206,13 @@ export default class Instance {
   prepDOM() {
     if (this.isInput) return;
 
-    this.$e.innerHTML = `
-      <span style="${baseInlineStyles}" class="ti-wrapper">
-        <span style="${baseInlineStyles}" class="ti-container"></span>
-      </span>
-      `;
+    this.$e.innerHTML = `<span style="${baseInlineStyles}" class="ti-wrapper"><span style="${baseInlineStyles}" class="ti-container"></span></span>`;
     this.$e.setAttribute("data-typeit-id", this.id);
     this.$eContainer = this.$e.querySelector(".ti-container");
     this.$eWrapper = this.$e.querySelector(".ti-wrapper");
 
     appendStyleBlock(
-      `
-        .ti-container:before {
-          content: '.';
-          display: inline-block;
-          width: 0;
-          visibility: hidden;
-        }
-      `
+      ".ti-container:before {content: '.'; display: inline-block; width: 0; visibility: hidden;}"
     );
   }
 
@@ -376,17 +365,12 @@ export default class Instance {
 
     if (this.opts.cursor) {
       appendStyleBlock(
-        `
-        @keyframes blink-${this.id} {
-          0% {opacity: 0}
-          49% {opacity: 0}
-          50% {opacity: 1}
-        }
-
-        [data-typeit-id='${this.id}'] .ti-cursor {
-          animation: blink-${this.id} ${this.opts.cursorSpeed / 1000}s infinite;
-        }
-      `,
+        `@keyframes blink-${
+          this.id
+        } { 0% {opacity: 0} 49% {opacity: 0} 50% {opacity: 1} }[data-typeit-id='${
+          this.id
+        }'] .ti-cursor { animation: blink-${this.id} ${this.opts.cursorSpeed /
+          1000}s infinite; }`,
         this.id
       );
 
