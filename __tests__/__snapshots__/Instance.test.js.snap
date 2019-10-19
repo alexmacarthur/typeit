@@ -1,273 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`addSplitPause() Inserts split pause around first item. 1`] = `
-Array [
-  Array [
-    [Function],
-    375,
-  ],
-  "a",
-  Array [
-    [Function],
-    375,
-  ],
-  "b",
-  "c",
-  "d",
-  "e",
-]
-`;
-
-exports[`addSplitPause() Inserts split pause around last item. 1`] = `
-Array [
-  "a",
-  "b",
-  "c",
-  "d",
-  Array [
-    [Function],
-    375,
-  ],
-  "e",
-  Array [
-    [Function],
-    375,
-  ],
-]
-`;
-
-exports[`addSplitPause() Inserts split pause around one item. 1`] = `
-Array [
-  "a",
-  "b",
-  Array [
-    [Function],
-    375,
-  ],
-  "c",
-  Array [
-    [Function],
-    375,
-  ],
-  "d",
-  "e",
-]
-`;
-
-exports[`addSplitPause() Inserts split pause around one item. 2`] = `
-Array [
-  "a",
-  "b",
-  Array [
-    [Function],
-    375,
-  ],
-  "c",
-  "d",
-  Array [
-    [Function],
-    375,
-  ],
-  "e",
-]
-`;
-
-exports[`insert() Should insert a nested character object. 1`] = `"<em><span>y</span></em>"`;
-
-exports[`loopify() Should queue correct number of deletions. 1`] = `
-Array [
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "isPhantom": true,
-    },
-  ],
-  Array [
-    [Function],
-    2000,
-  ],
-]
-`;
-
-exports[`maybeNoderize() Should leave string be, but split it into array when setting is disabled. 1`] = `
-Array [
-  "A",
-  " ",
-  "<",
-  "e",
-  "m",
-  ">",
-  "f",
-  "a",
-  "n",
-  "c",
-  "y",
-  "<",
-  "/",
-  "e",
-  "m",
-  ">",
-  " ",
-  "s",
-  "t",
-  "r",
-  "i",
-  "n",
-  "g",
-  ".",
-]
-`;
-
-exports[`maybeNoderize() Should return noderized string when setting is enabled. 1`] = `
-Array [
-  "A",
-  " ",
-  Object {
-    "ancestorTree": Array [
-      "EM",
-    ],
-    "attributes": Array [],
-    "content": "",
-  },
-  Object {
-    "ancestorTree": Array [
-      "EM",
-    ],
-    "attributes": Array [],
-    "content": "f",
-  },
-  Object {
-    "ancestorTree": Array [
-      "EM",
-    ],
-    "attributes": Array [],
-    "content": "a",
-  },
-  Object {
-    "ancestorTree": Array [
-      "EM",
-    ],
-    "attributes": Array [],
-    "content": "n",
-  },
-  Object {
-    "ancestorTree": Array [
-      "EM",
-    ],
-    "attributes": Array [],
-    "content": "c",
-  },
-  Object {
-    "ancestorTree": Array [
-      "EM",
-    ],
-    "attributes": Array [],
-    "content": "y",
-  },
-  " ",
-  "s",
-  "t",
-  "r",
-  "i",
-  "n",
-  "g",
-  ".",
-]
-`;
-
-exports[`queueDeletions() Queues correct length when HTML is passed. 1`] = `
+exports[`addSplitPause() Adds different even split pause around strings. 1`] = `
 Array [
   Array [
     [Function],
@@ -275,41 +8,56 @@ Array [
   ],
   Array [
     [Function],
+    "A",
+    Object {
+      "isFirst": true,
+    },
   ],
   Array [
     [Function],
+    "B",
   ],
   Array [
     [Function],
+    "C",
+    Object {
+      "isLast": true,
+    },
   ],
   Array [
     [Function],
+    500,
   ],
   Array [
     [Function],
+    <br />,
   ],
   Array [
     [Function],
+    500,
   ],
   Array [
     [Function],
+    "E",
+    Object {
+      "isFirst": true,
+    },
   ],
   Array [
     [Function],
+    "F",
   ],
   Array [
     [Function],
-  ],
-  Array [
-    [Function],
-  ],
-  Array [
-    [Function],
+    "G",
+    Object {
+      "isLast": true,
+    },
   ],
 ]
 `;
 
-exports[`queueDeletions() Queues correct length when multiple HTML tags are passed. 1`] = `
+exports[`addSplitPause() Adds even split pause around strings. 1`] = `
 Array [
   Array [
     [Function],
@@ -317,74 +65,56 @@ Array [
   ],
   Array [
     [Function],
+    "A",
+    Object {
+      "isFirst": true,
+    },
   ],
   Array [
     [Function],
+    "B",
   ],
   Array [
     [Function],
+    "C",
+    Object {
+      "isLast": true,
+    },
   ],
   Array [
     [Function],
+    375,
   ],
   Array [
     [Function],
+    <br />,
   ],
   Array [
     [Function],
+    375,
   ],
   Array [
     [Function],
+    "E",
+    Object {
+      "isFirst": true,
+    },
   ],
   Array [
     [Function],
+    "F",
   ],
   Array [
     [Function],
-  ],
-  Array [
-    [Function],
-  ],
-  Array [
-    [Function],
-  ],
-  Array [
-    [Function],
-  ],
-  Array [
-    [Function],
-  ],
-  Array [
-    [Function],
-  ],
-  Array [
-    [Function],
-  ],
-  Array [
-    [Function],
-  ],
-  Array [
-    [Function],
-  ],
-  Array [
-    [Function],
-  ],
-  Array [
-    [Function],
-  ],
-  Array [
-    [Function],
-  ],
-  Array [
-    [Function],
-  ],
-  Array [
-    [Function],
+    "G",
+    Object {
+      "isLast": true,
+    },
   ],
 ]
 `;
 
-exports[`queueDeletions() Queues number when number is passed. 1`] = `
+exports[`addSplitPause() Adds split pause around strings when value is array. 1`] = `
 Array [
   Array [
     [Function],
@@ -392,26 +122,56 @@ Array [
   ],
   Array [
     [Function],
+    "A",
+    Object {
+      "isFirst": true,
+    },
   ],
   Array [
     [Function],
+    "B",
   ],
   Array [
     [Function],
+    "C",
+    Object {
+      "isLast": true,
+    },
   ],
   Array [
     [Function],
+    100,
   ],
   Array [
     [Function],
+    <br />,
   ],
   Array [
     [Function],
+    500,
+  ],
+  Array [
+    [Function],
+    "E",
+    Object {
+      "isFirst": true,
+    },
+  ],
+  Array [
+    [Function],
+    "F",
+  ],
+  Array [
+    [Function],
+    "G",
+    Object {
+      "isLast": true,
+    },
   ],
 ]
 `;
 
-exports[`queueDeletions() Queues string length when simple string is passed. 1`] = `
+exports[`addSplitPause() Inserts split pause around multiple strings. 1`] = `
 Array [
   Array [
     [Function],
@@ -419,18 +179,101 @@ Array [
   ],
   Array [
     [Function],
+    "A",
+    Object {
+      "isFirst": true,
+    },
+    Object {
+      "isLast": true,
+    },
   ],
   Array [
     [Function],
+    375,
   ],
   Array [
     [Function],
+    <br />,
   ],
   Array [
     [Function],
+    375,
   ],
   Array [
     [Function],
+    "B",
+    Object {
+      "isFirst": true,
+    },
+    Object {
+      "isLast": true,
+    },
+  ],
+  Array [
+    [Function],
+    375,
+  ],
+  Array [
+    [Function],
+    <br />,
+  ],
+  Array [
+    [Function],
+    375,
+  ],
+  Array [
+    [Function],
+    "C",
+    Object {
+      "isFirst": true,
+    },
+    Object {
+      "isLast": true,
+    },
+  ],
+  Array [
+    [Function],
+    375,
+  ],
+  Array [
+    [Function],
+    <br />,
+  ],
+  Array [
+    [Function],
+    375,
+  ],
+  Array [
+    [Function],
+    "D",
+    Object {
+      "isFirst": true,
+    },
+    Object {
+      "isLast": true,
+    },
+  ],
+  Array [
+    [Function],
+    375,
+  ],
+  Array [
+    [Function],
+    <br />,
+  ],
+  Array [
+    [Function],
+    375,
+  ],
+  Array [
+    [Function],
+    "E",
+    Object {
+      "isFirst": true,
+    },
+    Object {
+      "isLast": true,
+    },
   ],
 ]
 `;

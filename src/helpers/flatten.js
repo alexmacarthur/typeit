@@ -5,4 +5,7 @@
  * @param {array} arr
  * @return {array}
  */
-export default arr => [].concat(...arr);
+export default arr => {
+  let ref = [];
+  return ref.concat.apply(ref, arr);
+};

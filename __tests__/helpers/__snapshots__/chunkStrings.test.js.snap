@@ -673,7 +673,7 @@ Array [
 ]
 `;
 
-exports[`convertNodesToItems() Correctly processes raw queue with multiple element in it. 1`] = `
+exports[`convertNodesToChunks() Correctly processes raw queue with multiple element in it. 1`] = `
 Array [
   "T",
   "h",
@@ -965,7 +965,7 @@ Array [
 ]
 `;
 
-exports[`convertNodesToItems() Correctly processes raw queue with nested elements in it. 1`] = `
+exports[`convertNodesToChunks() Correctly processes raw queue with nested elements in it. 1`] = `
 Array [
   "T",
   "h",
@@ -1445,7 +1445,7 @@ Array [
 ]
 `;
 
-exports[`convertNodesToItems() Correctly processes raw queue with one element in it. 1`] = `
+exports[`convertNodesToChunks() Correctly processes raw queue with one element in it. 1`] = `
 Array [
   "T",
   "h",
@@ -1738,6 +1738,92 @@ Array [
     "name": "att2",
     "value": "attValue1",
   },
+]
+`;
+
+exports[`maybeChunkStringAsHtml() Should leave string be, but split it into array when setting is disabled. 1`] = `
+Array [
+  "A",
+  " ",
+  "<",
+  "e",
+  "m",
+  ">",
+  "f",
+  "a",
+  "n",
+  "c",
+  "y",
+  "<",
+  "/",
+  "e",
+  "m",
+  ">",
+  " ",
+  "s",
+  "t",
+  "r",
+  "i",
+  "n",
+  "g",
+  ".",
+]
+`;
+
+exports[`maybeChunkStringAsHtml() Should return noderized string when setting is enabled. 1`] = `
+Array [
+  "A",
+  " ",
+  Object {
+    "ancestorTree": Array [
+      "EM",
+    ],
+    "attributes": Array [],
+    "content": "",
+  },
+  Object {
+    "ancestorTree": Array [
+      "EM",
+    ],
+    "attributes": Array [],
+    "content": "f",
+  },
+  Object {
+    "ancestorTree": Array [
+      "EM",
+    ],
+    "attributes": Array [],
+    "content": "a",
+  },
+  Object {
+    "ancestorTree": Array [
+      "EM",
+    ],
+    "attributes": Array [],
+    "content": "n",
+  },
+  Object {
+    "ancestorTree": Array [
+      "EM",
+    ],
+    "attributes": Array [],
+    "content": "c",
+  },
+  Object {
+    "ancestorTree": Array [
+      "EM",
+    ],
+    "attributes": Array [],
+    "content": "y",
+  },
+  " ",
+  "s",
+  "t",
+  "r",
+  "i",
+  "n",
+  "g",
+  ".",
 ]
 `;
 

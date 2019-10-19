@@ -44,6 +44,21 @@ See some more examples and try out the sandbox at [https://typeitjs.com](https:/
 
 All of TypeIt's documentation can be found at [https://typeitjs.com/docs](https://typeitjs.com/docs).
 
+## Browser Support
+
+Bundles exist for browsers that support ES2015+ (which accounts for a [very strong majority](https://caniuse.com/#feat=es6-class) of users), as well as for those that do not. If you're using IE11 or older, you'll also need the following polyfills:
+
+-   `Array.prototype.fill`
+-   `IntersectionObserver`
+-   `Object.assign`
+-   `Promise`
+
+You can load all of these yourself, or just use the following pre-made bundle from [Polyfill.io](https://polyfill.io):
+
+```html
+<script src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.fill%2CIntersectionObserver%2CObject.assign%2CPromise"></script>
+```
+
 ## Contribute
 
 Please do! The code is available on Github. Check out the [CONTRIBUTING.md](https://github.com/alexmacarthur/typeit/blob/master/CONTRIBUTING.md) file to see how to get started.

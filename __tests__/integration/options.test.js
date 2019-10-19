@@ -5,7 +5,7 @@ test("Cursor should function by default.", () => {
       <span id="element"></span>
     </div>`;
 
-  const instance = new TypeIt("#element", {
+  new TypeIt("#element", {
     strings: ["This should have a default cursor."]
   }).go();
 
@@ -21,7 +21,7 @@ test("Changes cursor character correctly.", () => {
       <span id="element"></span>
     </div>`;
 
-  const instance = new TypeIt("#element", {
+  new TypeIt("#element", {
     strings: ["This should have a custom cursor."],
     cursorChar: "$"
   }).go();

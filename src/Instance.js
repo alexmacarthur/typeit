@@ -1,90 +1,218 @@
 import defaults from "./defaults.js";
-import {
-  isVisible,
-  randomInRange,
-  removeComments,
-  appendStyleBlock
-} from "./utilities";
-import merge from "./helpers/merge";
+import Queue from "./Queue";
+import { isVisible, removeComments, appendStyleBlock } from "./utilities";
 import isInput from "./helpers/isInput";
 import toArray from "./helpers/toArray";
-import createNode from "./helpers/createNode";
 import nodeCollectionToArray from "./helpers/nodeCollectionToArray";
-import stringToQueue, { convertNodesToItems } from "./helpers/stringToQueue";
+import insertIntoElement from "./helpers/insertIntoElement";
+import {
+  convertNodesToChunks,
+  chunkStringAsHtml,
+  maybeChunkStringAsHtml
+} from "./helpers/chunkStrings";
 import clearPreviousMarkup from "./helpers/clearPreviousMarkup";
-import Queue from "./Queue";
-import removeNode from "./helpers/removeNode.js";
+import queueMany from "./helpers/queueMany";
+import removeNode from "./helpers/removeNode";
 import removeEmptyElements from "./helpers/removeEmptyElements";
-import isLastAtEveryLevel from "./helpers/isLastAtEveryLevel";
+import calculateDelay from "./helpers/calculateDelay.js";
+import calculatePace from "./helpers/calculatePace.js";
+import getParsedBody from "./helpers/getParsedBody.js";
+import createElement from "./helpers/createElement";
 
-let baseInlineStyles =
-  "display:inline;position:relative;font:inherit;color:inherit;line-height:inherit;";
+export default function Instance({
+  typeIt,
+  element,
+  id,
+  options,
+  queue = [],
+  isAReset = false
+} = {}) {
+  /**
+   * Get a flattened array of text nodes that have been typed.
+   * This excludes any cursor character that might exist.
+   *
+   * @return {array}
+   */
+  const getAllChars = () => {
+    let allNodes = nodeCollectionToArray(this.$e.childNodes).filter(
+      node => !node.isEqualNode(cursor)
+    );
+    return convertNodesToChunks(allNodes, false);
+  };
 
-export default class Instance {
-  constructor({
-    typeIt,
-    element,
-    id,
-    options,
-    queue = [],
-    isAReset = false
-  } = {}) {
-    this.typeIt = typeIt;
-    this.status = {
-      started: false,
-      complete: false,
-      frozen: false,
-      destroyed: false
-    };
-    this.timeouts = [];
-    this.id = id;
-    this.$c = null;
-    this.$e = element;
-    this.isInput = isInput(element);
-    this.opts = merge({}, defaults, options);
-    this.opts.strings = toArray(this.opts.strings);
-    this.opts.html = this.isInput ? false : this.opts.html;
-    this.queue = new Queue(queue, [this.pause, this.opts.startDelay]);
+  /**
+   * Insert a split pause around a range of queue items.
+   *
+   * @param  {Number} startPosition The array position at which to start wrapping.
+   * @param  {Number} numberOfActionsToWrap The number of actions in the queue to wrap.
+   * @return {void}
+   */
+  const addSplitPause = (startPosition, numberOfActionsToWrap = 1) => {
+    let delay = this.opts.nextStringDelay;
+    this.queue.insert(startPosition, [this.pause, delay.before]);
+    this.queue.insert(startPosition + numberOfActionsToWrap + 1, [
+      this.pause,
+      delay.after
+    ]);
+  };
 
-    clearPreviousMarkup(element, this.isInput);
-
-    this.prepareDelay("nextStringDelay");
-    this.prepareDelay("loopDelay");
-
-    this.prepDOM();
-    this.handleHardCoded();
-
-    this.opts.strings = removeComments(this.opts.strings);
-
-    // Only generate a queue if we have strings
-    // and this isn't a reset of a previous instance,
-    // in which case we'd have a pre-defined queue.
-    if (!this.opts.strings.length || isAReset) {
+  /**
+   * Provided it's a non-form element and the options is provided,
+   * set up the cursor element for the instance.
+   *
+   * @return {void}
+   */
+  const setUpCursor = () => {
+    if (elementIsInput || !this.opts.cursor) {
       return;
     }
 
-    this.generateQueue();
-  }
+    appendStyleBlock(
+      `@keyframes blink-${id} { 0% {opacity: 0} 49% {opacity: 0} 50% {opacity: 1} }[data-typeit-id='${id}'] .ti-cursor { animation: blink-${id} ${this
+        .opts.cursorSpeed / 1000}s infinite; }`,
+      id
+    );
+
+    // If we have a cursor node from a previous instance (prior to a reset()),
+    // there's no need to recreate one now.
+    cursor = createElement("span");
+    cursor.innerHTML = getParsedBody(this.opts.cursorChar).innerHTML;
+    cursor.className = "ti-cursor";
+    cursor.setAttribute(
+      "style",
+      "display:inline;position:relative;font:inherit;color:inherit;line-height:inherit;"
+    );
+
+    this.$e.appendChild(cursor);
+  };
+
+  /**
+   * Fire a callback after a delay, adding the created timeout
+   * to the `timeouts` instance property.
+   *
+   * @param {object} callback
+   * @param {integer} delay
+   */
+  this.wait = function(callback, delay) {
+    this.timeouts.push(setTimeout(callback, delay));
+  };
+
+  /**
+   * Based on provided strings, generate a TypeIt queue
+   * to be fired for each character in the string.
+   *
+   * @param {array|null} initialStep
+   */
+  const generateQueue = () => {
+    this.opts.strings.forEach((string, index) => {
+      let itemizedString = maybeChunkStringAsHtml(string, this.opts.html);
+
+      this.queue.add(queueMany(itemizedString, this.type, true));
+
+      let queueLength = this.queue.waiting.length;
+
+      // This is the last string. Get outta here.
+      if (index + 1 === this.opts.strings.length) return;
+
+      if (this.opts.breakLines) {
+        this.queue.add([this.type, createElement("BR")]);
+        addSplitPause(queueLength);
+        return;
+      }
+
+      this.queue.add(queueMany(itemizedString, this.delete));
+      addSplitPause(queueLength, string.length);
+    });
+  };
+
+  /**
+   * 1. Reset queue.
+   * 2. Remove initial pause.
+   * 3. Add phantom deletions.
+   */
+  const loopify = delay => {
+    // Reset queue.
+    // Remove initial pause, so we can replace with `loop` pause.
+    // Add delay pause FIRST, since we're adding to beginning of queue.
+
+    this.queue
+      .reset()
+      .delete(0)
+      .add([this.pause, delay.before], true);
+
+    // Queue the current number of printed items for deletion.
+    for (let i = 0; i < getAllChars().length; i++) {
+      this.queue.add(
+        [
+          this.delete,
+          null,
+          {
+            isPhantom: true
+          }
+        ],
+        true
+      );
+    }
+  };
+
+  const maybePrependHardcodedStrings = strings => {
+    let existingMarkup = this.$e.innerHTML;
+
+    if (!existingMarkup) {
+      return strings;
+    }
+
+    // Once we've saved the existing markup to a variable,
+    // wipe the element clean to prepare for typing.
+    this.$e.innerHTML = "";
+
+    if (this.opts.startDelete) {
+      chunkStringAsHtml(existingMarkup).forEach(item => {
+        insertIntoElement(this.$e, item);
+      });
+
+      this.queue.add([this.delete, true]);
+      addSplitPause(1);
+      return strings;
+    }
+
+    return [existingMarkup.trim()].concat(strings);
+  };
+
+  this.pause = function(time = false) {
+    return new Promise((resolve, reject) => {
+      this.wait(
+        () => {
+          return resolve();
+        },
+        time ? time : this.opts.nextStringDelay.total
+      );
+    });
+  };
 
   /**
    * Reset the instance to new status.
    */
-  reset() {
+  this.reset = function() {
     this.queue.reset();
 
     return new Instance({
+      typeIt,
       element: this.$e,
-      id: this.id,
+      id: id,
       options: this.opts,
       queue: this.queue.waiting,
       isAReset: true
     });
-  }
+  };
 
-  init() {
+  /**
+   * Kick off the typing animation.
+   */
+  this.init = function() {
     if (this.status.started) return;
 
-    this.cursor();
+    setUpCursor();
 
     if (!this.opts.waitUntilVisible || isVisible(this.$e)) {
       this.status.started = true;
@@ -100,16 +228,15 @@ export default class Instance {
     };
 
     window.addEventListener("scroll", checkForStart);
-  }
+  };
 
-  fire() {
+  this.fire = function() {
     let queue = this.queue.waiting.slice();
     let promiseChain = Promise.resolve();
 
     for (let i = 0; i < queue.length; i++) {
       let key = queue[i];
-
-      let callbackArgs = [key, this.queue, this.typeIt];
+      let callbackArgs = [key, this.queue, typeIt];
 
       promiseChain = promiseChain.then(() => {
         return new Promise((resolve, reject) => {
@@ -117,35 +244,36 @@ export default class Instance {
             return reject();
           }
 
-          this.setPace();
+          this.pace = calculatePace(
+            this.opts.speed,
+            this.opts.deleteSpeed,
+            this.opts.lifeLike
+          );
 
-          if (key[2] && key[2].isFirst && this.opts.beforeString) {
+          if (key[2] && key[2].isFirst) {
             this.opts.beforeString(...callbackArgs);
           }
 
-          if (this.opts.beforeStep) {
-            this.opts.beforeStep(...callbackArgs);
-          }
+          this.opts.beforeStep(...callbackArgs);
 
-          //-- Fire this step!
+          // Fire this step! During this process, pluck items from the waiting
+          // queue and move them to executed.
           key[0].call(this, key[1], key[2]).then(() => {
             let justExecuted = this.queue.waiting.shift();
 
-            //-- If this is a phantom item, as soon as it's executed,
-            //-- remove it from the queue and pretend it never existed.
+            // If this is a phantom item, as soon as it's executed,
+            // remove it from the queue and pretend it never existed.
             if (key[2] && key[2].isPhantom) {
               return resolve();
             }
 
-            if (key[2] && key[2].isLast && this.opts.afterString) {
+            if (key[2] && key[2].isLast) {
               this.opts.afterString(...callbackArgs);
             }
 
-            if (this.opts.afterStep) {
-              this.opts.afterStep(...callbackArgs);
-            }
+            this.opts.afterStep(...callbackArgs);
 
-            //-- Remove this item from the global queue. Needed for pausing.
+            // Remove this item from the global queue. Needed for pausing.
             this.queue.executed.push(justExecuted);
 
             return resolve();
@@ -157,408 +285,77 @@ export default class Instance {
     promiseChain
       .then(() => {
         if (this.opts.loop) {
-          //-- Split the delay!
+          // Split the delay!
           let delay = this.opts.loopDelay
             ? this.opts.loopDelay
             : this.opts.nextStringDelay;
 
           this.wait(() => {
-            this.loopify(delay);
+            loopify(delay);
             this.fire();
           }, delay.after);
         }
 
         this.status.completed = true;
 
-        if (this.opts.afterComplete) {
-          this.opts.afterComplete(this.typeIt);
-        }
-
+        this.opts.afterComplete(typeIt);
         return;
       })
       .catch(() => {});
-  }
+  };
 
-  /**
-   * 1. Reset queue.
-   * 2. Remove initial pause.
-   * 3. Add phantom deletions.
-   */
-  loopify(delay) {
-    //-- Reset queue.
-    //-- Remove initial pause, so we can replace with `loop` pause.
-    //-- Add delay pause FIRST, since we're adding to beginning of queue.
-
-    this.queue
-      .reset()
-      .delete(0)
-      .add([this.pause, delay.before], true);
-
-    // Queue the current number of printed items for deletion.
-    for (let i = 0; i < this.getAllChars().length; i++) {
-      this.queue.add(
-        [
-          this.delete,
-          null,
-          {
-            isPhantom: true
-          }
-        ],
-        true
-      );
-    }
-  }
-
-  /**
-   * Performs DOM-related work to prepare for typing.
-   */
-  prepDOM() {
-    if (this.isInput) return;
-    this.$e.setAttribute("data-typeit-id", this.id);
-  }
-
-  /**
-   * Set to content according to `html` option.
-   *
-   * @param {string | null} content
-   */
-  setContents(content = "") {
-    if (this.isInput) {
-      this.$e.value = content;
-    } else {
-      this.$e[this.opts.html ? "innerHTML" : "innerText"] = content;
-    }
-  }
-
-  /**
-   * Get a flattened array of text nodes that have been typed.
-   * This excludes any cursor character that might exist.
-   *
-   * @return {array}
-   */
-  getAllChars() {
-    let allNodes = nodeCollectionToArray(this.$e.childNodes).filter(
-      node => !node.isEqualNode(this.$c)
-    );
-    return convertNodesToItems(allNodes, false);
-  }
-
-  prepareDelay(delayType) {
-    let delay = this.opts[delayType];
-
-    if (!delay) return;
-
-    let isArray = Array.isArray(delay);
-    let halfDelay = !isArray ? delay / 2 : null;
-
-    this.opts[delayType] = {
-      before: isArray ? delay[0] : halfDelay,
-      after: isArray ? delay[1] : halfDelay,
-      total: isArray ? delay[0] + delay[1] : delay
-    };
-  }
-
-  generateQueue(initialStep = null) {
-    if (initialStep) {
-      this.queue.add(initialStep);
-    }
-
-    this.opts.strings.forEach((string, index) => {
-      this.queueString(string);
-
-      let queueLength = this.queue.waiting.length;
-
-      //-- This is the last string. Get outta here.
-      if (index + 1 === this.opts.strings.length) return;
-
-      if (this.opts.breakLines) {
-        this.queue.add([this.type, document.createElement("BR")]);
-        this.addSplitPause(queueLength);
-        return;
-      }
-
-      this.queueDeletions(string);
-      this.addSplitPause(queueLength, string.length);
-    });
-  }
-
-  /**
-   * Delete each character from a string.
-   *
-   * @todo Why am I accepting a string or number?
-   */
-  queueDeletions(stringOrNumber = null) {
-    let numberOfCharsToDelete =
-      typeof stringOrNumber === "string"
-        ? this.maybeNoderize(stringOrNumber).length
-        : stringOrNumber;
-
-    for (let i = 0; i < numberOfCharsToDelete; i++) {
-      this.queue.add([this.delete]);
-    }
-  }
-
-  /**
-   * Based on HTML options, noderize the string,
-   * always ensuring its returned as split pieces.
-   *
-   * @param {array} stuff
-   * @return {array}
-   */
-  maybeNoderize(stuff) {
-    if (!this.opts.html) {
-      return stuff.split("");
-    }
-
-    return stringToQueue(stuff);
-  }
-
-  /**
-   * Add steps to the queue for each character in a given string.
-   */
-  queueString(string) {
-    //-- Get array of string with nodes where applicable.
-    string = this.maybeNoderize(string);
-
-    let strLength = string.length;
-
-    //-- Push each array item to the queue.
-    string.forEach((item, index) => {
-      let queueItem = [this.type, item];
-
-      //-- Tag as first character of string for callback usage.
-      if (index === 0) {
-        queueItem.push({
-          isFirst: true
-        });
-      }
-
-      if (index + 1 === strLength) {
-        queueItem.push({
-          isLast: true
-        });
-      }
-
-      this.queue.add(queueItem);
-    });
-  }
-
-  /**
-   * Insert a split pause around a range of queue items.
-   *
-   * @param  {Number} startPosition The array position at which to start wrapping.
-   * @param  {Number} numberOfActionsToWrap The number of actions in the queue to wrap.
-   * @return {void}
-   */
-  addSplitPause(startPosition, numberOfActionsToWrap = 1) {
-    this.queue.waiting.splice(startPosition, 0, [
-      this.pause,
-      this.opts.nextStringDelay.before
-    ]);
-
-    this.queue.waiting.splice(startPosition + numberOfActionsToWrap + 1, 0, [
-      this.pause,
-      this.opts.nextStringDelay.after
-    ]);
-  }
-
-  cursor() {
-    if (this.isInput || !this.opts.cursor) {
-      return;
-    }
-
-    appendStyleBlock(
-      `@keyframes blink-${
-        this.id
-      } { 0% {opacity: 0} 49% {opacity: 0} 50% {opacity: 1} }[data-typeit-id='${
-        this.id
-      }'] .ti-cursor { animation: blink-${this.id} ${this.opts.cursorSpeed /
-        1000}s infinite; }`,
-      this.id
-    );
-
-    this.$e.insertAdjacentHTML(
-      "beforeend",
-      `<span style="${baseInlineStyles}" class="ti-cursor">${this.opts.cursorChar}</span>`
-    );
-
-    this.$c = this.$e.querySelector(".ti-cursor");
-  }
-
-  /**
-   * Inserts a set of content into the element. Intended for SINGLE characters.
-   *
-   * @param {string | object} content
-   */
-  insert(contentArg) {
-    // Assume it's a string, and maybe overwrite later.
-    let content = contentArg;
-
-    if (this.isInput) {
-      this.$e.value = `${this.$e.value}${content}`;
-      return;
-    }
-
-    let el = this.$e;
-
-    // We're inserting a character within an element!
-    // Make sure this isn't an HTML node that's being inserted.
-    if (
-      typeof contentArg === "object" &&
-      !(contentArg instanceof HTMLElement)
-    ) {
-      let parentSelectors = [...contentArg.ancestorTree].reverse().join(" ");
-      let existingNodes = nodeCollectionToArray(
-        el.querySelectorAll(`${parentSelectors}`)
-      );
-      let lastExistingNode = existingNodes[existingNodes.length - 1];
-
-      // Only type into an existing element if there is one
-      // and it's the last one in the entire container.
-      if (lastExistingNode && isLastAtEveryLevel(lastExistingNode, this.$c)) {
-        el = lastExistingNode;
-        content = contentArg.content;
-
-        // We need to create an element!
-      } else {
-        // Overwrite the content with this newly created element.
-        content = createNode({
-          tag: contentArg.ancestorTree[0],
-          attributes: contentArg.attributes,
-          content: contentArg.content
-        });
-
-        // We know this new element is supposed to be nested, so we need to print it inside the
-        // the LAST parent node that was created inside the container.
-        if (contentArg.ancestorTree.length > 1) {
-          // Get all the parent nodes in the container.
-          let parentNodes = nodeCollectionToArray(
-            el.querySelectorAll(contentArg.ancestorTree[1])
-          );
-
-          // We assume it exists.
-          el = parentNodes[parentNodes.length - 1];
-        }
-      }
-    }
-
-    // Might be either an HTMLElement or Node.
-    content =
-      typeof content === "object" ? content : document.createTextNode(content);
-
-    // If a cursor node exists, make sure we print BEFORE that.
-    if (this.$c && el.hasAttribute("data-typeit-id")) {
-      el.insertBefore(content, this.$c);
-    } else {
-      el.appendChild(content);
-    }
-  }
-
-  handleHardCoded() {
-    let existingMarkup = this.$e.innerHTML;
-
-    if (!existingMarkup) {
-      return;
-    }
-
-    // Once we've saved the existing markup to a variable,
-    // wipe the element clean to prepare for typing.
-    this.$e.innerHTML = "";
-
-    if (this.opts.startDelete) {
-      stringToQueue(existingMarkup).forEach(item => {
-        this.insert(item);
-      });
-
-      this.queue.add([this.delete, true]);
-      this.addSplitPause(1);
-      return;
-    }
-
-    this.opts.strings = [
-      ...toArray(existingMarkup.trim()),
-      ...this.opts.strings
-    ];
-  }
-
-  wait(callback, delay) {
-    this.timeouts.push(setTimeout(callback, delay));
-  }
-
-  setPace() {
-    let typeSpeed = this.opts.speed;
-    let deleteSpeed =
-      this.opts.deleteSpeed !== null
-        ? this.opts.deleteSpeed
-        : this.opts.speed / 3;
-    let typeRange = typeSpeed / 2;
-    let deleteRange = deleteSpeed / 2;
-
-    this.typePace = this.opts.lifeLike
-      ? randomInRange(typeSpeed, typeRange)
-      : typeSpeed;
-    this.deletePace = this.opts.lifeLike
-      ? randomInRange(deleteSpeed, deleteRange)
-      : deleteSpeed;
-  }
-
-  /**
-   * QUEUEABLE
-   */
-  pause(time = false) {
-    return new Promise((resolve, reject) => {
-      this.wait(
-        () => {
-          return resolve();
-        },
-        time ? time : this.opts.nextStringDelay.total
-      );
-    });
-  }
-
-  /**
-   * QUEUEABLE - Type a SINGLE character.
-   * @param {*} character
-   */
-  type(character) {
+  this.type = function(character) {
     // This is a shell character object, needed for creating
-    // the shell of an HTML element. Just print & go.
+    // the shell of an HTML this.$e. Just print & go.
     if (typeof character === "object" && !character.content) {
-      this.insert(character);
+      insertIntoElement(this.$e, character);
       return Promise.resolve();
     }
 
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
       this.wait(() => {
-        this.insert(character);
+        insertIntoElement(this.$e, character);
         return resolve();
-      }, this.typePace);
+      }, this.pace[0]);
     });
-  }
+  };
 
   /**
-   * QUEUEABLE
+   * Totally wipe out the contents of the target this.$e,
+   * except for any cursor node that may exist.
+   *
+   * @return {object}
    */
-  empty() {
+  this.empty = function() {
     return new Promise(resolve => {
-      this.setContents("");
+      if (elementIsInput) {
+        this.$e.value = "";
+      } else {
+        nodeCollectionToArray(this.$e.childNodes).forEach(n => {
+          if (!cursor.isEqualNode(n)) {
+            removeNode(n);
+          }
+        });
+      }
       return resolve();
     });
-  }
+  };
 
   /**
-   * QUEUEABLE
+   * Remove the last child node from the target this.$e.
+   *
+   * @param {boolean}
+   * @param {object}
    */
-  delete(keepGoingUntilAllIsGone = false) {
+  this.delete = function(keepGoingUntilAllIsGone = false) {
     return new Promise(resolve => {
       this.wait(() => {
-        let allChars = this.getAllChars();
+        let allChars = getAllChars();
 
         if (allChars.length) {
           removeNode(allChars[allChars.length - 1]);
         }
 
-        // Removes any empty HTML remnants.
         removeEmptyElements(this.$e);
 
         /**
@@ -573,17 +370,57 @@ export default class Instance {
         }
 
         return resolve();
-      }, this.deletePace);
+      }, this.pace[1]);
     });
-  }
+  };
 
   /**
-   * QUEUEABLE
+   * Update this instance's options.
+   *
+   * @param {object}
+   * @param {object}
    */
-  setOptions(options) {
+  this.setOptions = function(options) {
     return new Promise(resolve => {
-      this.opts = merge({}, this.opts, options);
+      this.opts = Object.assign({}, this.opts, options);
       return resolve();
     });
+  };
+
+  let cursor = null;
+  let elementIsInput = isInput(element);
+
+  this.status = {
+    started: false,
+    complete: false,
+    frozen: false,
+    destroyed: false
+  };
+  this.$e = element;
+  this.timeouts = [];
+  this.opts = Object.assign({}, defaults, options);
+  this.opts.html = elementIsInput ? false : this.opts.html;
+  this.opts.nextStringDelay = calculateDelay(this.opts.nextStringDelay);
+  this.opts.loopDelay = calculateDelay(this.opts.loopDelay);
+  this.queue = new Queue(queue, [this.pause, this.opts.startDelay]);
+
+  this.$e.setAttribute("data-typeit-id", id);
+
+  // Used to set a "placeholder" space in the element, so that it holds vertical sizing before anything's typed.
+  appendStyleBlock(
+    `[data-typeit-id]:before {content: '.'; display: inline-block; width: 0; visibility: hidden;}`
+  );
+
+  clearPreviousMarkup(element, elementIsInput);
+
+  let strings = toArray(this.opts.strings);
+  strings = maybePrependHardcodedStrings(strings);
+  this.opts.strings = removeComments(strings);
+
+  // Only generate a queue if we have strings
+  // and this isn't a reset of a previous instance,
+  // in which case we'd have a pre-defined queue.
+  if (this.opts.strings.length && !isAReset) {
+    generateQueue();
   }
 }

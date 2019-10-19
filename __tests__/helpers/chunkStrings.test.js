@@ -1,29 +1,33 @@
-import stringToQueue, {
-  convertNodesToItems,
+import {
+  convertNodesToChunks,
   extractChildTextNodes,
   getNodeAttributes,
   transformNodeToQueueItems,
-  isNonBreakElement
-} from "../../src/helpers/stringToQueue";
+  isNonBreakElement,
+  chunkStringAsHtml,
+  maybeChunkStringAsHtml
+} from "../../src/helpers/chunkStrings";
 
 beforeEach(() => {
   document.body.innerHTML = "";
 });
 
 test("Parses normal string correctly.", () => {
-  let result = stringToQueue("Hello, this is my string.");
+  let result = chunkStringAsHtml("Hello, this is my string.");
 
   expect(result).toMatchSnapshot();
 });
 
 test("Parses single HTML tag.", () => {
-  let result = stringToQueue("Hello, this is some <strong>bold</strong> text.");
+  let result = chunkStringAsHtml(
+    "Hello, this is some <strong>bold</strong> text."
+  );
 
   expect(result).toMatchSnapshot();
 });
 
 test("Parses multiple HTML tags.", () => {
-  let result = stringToQueue(
+  let result = chunkStringAsHtml(
     "Hello, this is some <strong>bold</strong> text, and some <i>italicized</i> text."
   );
 
@@ -31,7 +35,7 @@ test("Parses multiple HTML tags.", () => {
 });
 
 test("Parses HTML tag at beginning of string.", () => {
-  let result = stringToQueue(
+  let result = chunkStringAsHtml(
     "<strong>Hello!</strong> This is some text with HTML at the beginning."
   );
 
@@ -39,7 +43,7 @@ test("Parses HTML tag at beginning of string.", () => {
 });
 
 test("Parses HTML tag at end of string.", () => {
-  let result = stringToQueue(
+  let result = chunkStringAsHtml(
     "This is some text with HTML at the <em>beginning.</em>"
   );
 
@@ -47,7 +51,7 @@ test("Parses HTML tag at end of string.", () => {
 });
 
 test("Parses HTML tag with attributes.", () => {
-  let result = stringToQueue(
+  let result = chunkStringAsHtml(
     'This string has an <strong class="strong-class" id="strong-id" data-whatever="data-att">element</strong> with attributes.'
   );
 
@@ -102,7 +106,7 @@ describe("extractChildTextNodes()", () => {
     expect(result).toMatchSnapshot();
   });
 
-  test("Returns correct array with only non-text nodes.", () => {
+  test.only("Returns correct array with only non-text nodes.", () => {
     let parser = new DOMParser();
     let doc = parser.parseFromString(
       "<span><i>Hello, </i><em>buddy!</em></span>",
@@ -183,13 +187,13 @@ describe("extractChildTextNodes()", () => {
   });
 });
 
-describe("convertNodesToItems()", () => {
+describe("convertNodesToChunks()", () => {
   test("Correctly processes raw queue with one element in it.", () => {
     document.body.innerHTML =
       "This is my body <strong>with some bold text.</strong>";
     let rawQueue = extractChildTextNodes(document.body);
 
-    let result = convertNodesToItems(rawQueue);
+    let result = convertNodesToChunks(rawQueue);
 
     expect(result).toMatchSnapshot();
   });
@@ -199,7 +203,7 @@ describe("convertNodesToItems()", () => {
       "This is my body <strong>with some bold text.</strong> and <i>italicized text.</i>";
     let rawQueue = extractChildTextNodes(document.body);
 
-    let result = convertNodesToItems(rawQueue);
+    let result = convertNodesToChunks(rawQueue);
 
     expect(result).toMatchSnapshot();
   });
@@ -208,7 +212,7 @@ describe("convertNodesToItems()", () => {
     document.body.innerHTML =
       'This is my body <strong data-test="test-attribute">with some bold <i class="test-class">and italicized</i> text.</strong>';
     let rawQueue = extractChildTextNodes(document.body);
-    let result = convertNodesToItems(rawQueue);
+    let result = convertNodesToChunks(rawQueue);
     expect(result).toMatchSnapshot();
   });
 });
@@ -227,5 +231,19 @@ describe("isNonBreakElement()", () => {
   test("Returns false non-HTML element is provided.", () => {
     let result = isNonBreakElement("sup");
     expect(result).toBe(false);
+  });
+});
+
+describe("maybeChunkStringAsHtml()", () => {
+  test("Should return noderized string when setting is enabled.", () => {
+    expect(
+      maybeChunkStringAsHtml("A <em>fancy</em> string.")
+    ).toMatchSnapshot();
+  });
+
+  test("Should leave string be, but split it into array when setting is disabled.", () => {
+    expect(
+      maybeChunkStringAsHtml("A <em>fancy</em> string.", false)
+    ).toMatchSnapshot();
   });
 });

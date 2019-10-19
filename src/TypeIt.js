@@ -1,26 +1,33 @@
 import Instance from "./Instance";
 import allHaveStatus from "./helpers/allHaveStatus";
+import queueMany from "./helpers/queueMany";
 import { generateHash } from "./utilities";
 import toArrayOfNodes from "./helpers/toArrayOfNodes";
+import { maybeChunkStringAsHtml } from "./helpers/chunkStrings";
+import createElement from "./helpers/createElement";
 
-export default class TypeIt {
-  constructor(element, options) {
-    this.instances = toArrayOfNodes(element).map(el => {
-      return new Instance({
-        typeIt: this,
-        element: el,
-        id: generateHash(),
-        options,
-        queue: []
-      });
+export default function TypeIt(element, options) {
+  this.instances = toArrayOfNodes(element).map(el => {
+    return new Instance({
+      typeIt: this,
+      element: el,
+      id: generateHash(),
+      options,
+      queue: [],
+      isAReset: false
     });
-  }
+  });
 
-  each(func) {
+  /**
+   * Perform a given function on every instance.
+   *
+   * @param {object} func
+   */
+  const each = func => {
     this.instances.forEach(instance => {
       func.call(this, instance);
     });
-  }
+  };
 
   /**
    * Push a specific action directly into the queue of each instance.
@@ -28,10 +35,9 @@ export default class TypeIt {
    *
    * @param {string} function
    * @param {*} argument
-   * @
    */
-  queueUp(action, argument = null, numberOfTimesToCopy = 1) {
-    this.each(instance => {
+  const queueUp = (action, argument = null, numberOfTimesToCopy = 1) => {
+    each(instance => {
       let isIndependentFunction = typeof action !== "string";
 
       /**
@@ -39,32 +45,45 @@ export default class TypeIt {
        * Otherwise, leave it on its own.
        */
       let toFire = isIndependentFunction ? action : instance[action];
-
       let toPassAsArguments = isIndependentFunction ? this : argument;
+      let queueItems = queueMany(numberOfTimesToCopy, [
+        toFire,
+        toPassAsArguments
+      ]);
 
-      for (let i = 0; i < numberOfTimesToCopy; i++) {
-        instance.queue.add([toFire, toPassAsArguments]);
-      }
+      instance.queue.add(queueItems);
     });
-  }
+  };
 
-  is(status) {
+  /**
+   * Determine if all sub-instances have a particular status.
+   *
+   * @param {string} status
+   */
+  this.is = function(status) {
     return allHaveStatus(this.instances, status, true);
-  }
+  };
 
-  freeze() {
-    this.each(instance => {
+  /**
+   * Set each sub-instance's status to `frozen`.
+   */
+  this.freeze = function() {
+    each(instance => {
       instance.status.frozen = true;
     });
-  }
+  };
 
-  unfreeze() {
-    this.each(instance => {
+  /**
+   * Give all sub-instance a non-frozen status
+   * and re-fire queue execution.
+   */
+  this.unfreeze = function() {
+    each(instance => {
       if (!instance.status.frozen) return;
       instance.status.frozen = false;
       instance.fire();
     });
-  }
+  };
 
   /**
    * If used after typing has started, will append strings to the end of the existing queue. If used when typing is paused, will restart it.
@@ -72,10 +91,14 @@ export default class TypeIt {
    * @param  {string} string The string to be typed.
    * @return {object} TypeIt instance
    */
-  type(string = "") {
-    this.each(instance => instance.queueString(string));
+  this.type = function(string = "") {
+    each(instance => {
+      let itemizedString = maybeChunkStringAsHtml(string, instance.opts.html);
+      instance.queue.add(queueMany(itemizedString, instance.type, true));
+    });
+
     return this;
-  }
+  };
 
   /**
    * If null is passed, will delete whatever's currently in the element.
@@ -83,35 +106,57 @@ export default class TypeIt {
    * @param  { number } numCharacters Number of characters to delete.
    * @return { TypeIt }
    */
-  delete(numberOfCharactersToDelete = null) {
-    this.queueUp(
+  this.delete = function(numberOfCharactersToDelete = null) {
+    queueUp(
       "delete",
-      numberOfCharactersToDelete === null, //-- Maybe delete all.
+      numberOfCharactersToDelete === null, // Maybe delete all.
       numberOfCharactersToDelete === null ? 1 : numberOfCharactersToDelete
     );
 
     return this;
-  }
+  };
 
-  pause(ms = null) {
-    this.queueUp("pause", ms);
+  /**
+   * Add a `pause` event to each sub-instance's queue.
+   *
+   * @param {integer} ms
+   * @return {object}
+   */
+  this.pause = function(ms = null) {
+    queueUp("pause", ms);
     return this;
-  }
+  };
 
-  break() {
-    this.queueUp("type", document.createElement("BR"));
+  /**
+   * Add a <br> element to each sub-instance's queue.
+   * @return {object}
+   */
+  this.break = function() {
+    queueUp("type", createElement("BR"));
     return this;
-  }
+  };
 
-  options(options) {
-    this.queueUp("setOptions", options);
+  /**
+   * Add a `setOptions` event to each sub-instance's queue.
+   *
+   * @param {object} options
+   * @return {object}
+   */
+  this.options = function(opts) {
+    queueUp("setOptions", opts);
     return this;
-  }
+  };
 
-  exec(func) {
-    this.queueUp(func);
+  /**
+   * Add a particular function to be queued in each sub-instance.
+   *
+   * @param {object} func
+   * @return {object}
+   */
+  this.exec = function(func) {
+    queueUp(func);
     return this;
-  }
+  };
 
   /**
    * Destroy the instance, mark as such, and clean up. If specified,
@@ -119,9 +164,8 @@ export default class TypeIt {
    *
    * @param {boolean} removeCursor
    */
-  destroy(removeCursor = true) {
-    this.each(instance => {
-      // Destroy each timeout, for good housekeeping.
+  this.destroy = function(removeCursor = true) {
+    this.instances = this.instances.map(instance => {
       instance.timeouts.forEach(timeout => {
         clearTimeout(timeout);
       });
@@ -140,18 +184,26 @@ export default class TypeIt {
       }
 
       instance.status.destroyed = true;
-    });
-  }
 
-  empty() {
-    this.queueUp("empty");
+      return instance;
+    });
+  };
+
+  /**
+   * Add an `empty` event to each sub-instance's queue.
+   * @return {object}
+   */
+  this.empty = function() {
+    queueUp("empty");
     return this;
-  }
+  };
 
   /**
    * Reset each instance like it's brand new.
+   *
+   * @return {object}
    */
-  reset() {
+  this.reset = function() {
     this.destroy();
 
     this.instances = this.instances.map(instance => {
@@ -159,16 +211,18 @@ export default class TypeIt {
     });
 
     return this;
-  }
+  };
 
   /**
-   * Initialize each instance.
+   * Initialize each sub-instance.
+   *
+   * @return {object}
    */
-  go() {
-    this.each(instance => {
+  this.go = function() {
+    each(instance => {
       instance.init();
     });
 
     return this;
-  }
+  };
 }

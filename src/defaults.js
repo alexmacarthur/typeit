@@ -11,12 +11,12 @@ export default {
   startDelete: false,
   nextStringDelay: 750,
   loop: false,
-  loopDelay: null,
+  loopDelay: 750,
   html: true,
   waitUntilVisible: false,
-  beforeString: false,
-  afterString: false,
-  beforeStep: false,
-  afterStep: false,
-  afterComplete: false
+  beforeString: () => {},
+  afterString: () => {},
+  beforeStep: () => {},
+  afterStep: () => {},
+  afterComplete: () => {}
 };

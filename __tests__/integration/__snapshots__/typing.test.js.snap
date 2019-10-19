@@ -2,7 +2,11 @@
 
 exports[`Generates a queue correctly. 1`] = `
 _default {
+  "add": [Function],
+  "delete": [Function],
   "executed": Array [],
+  "insert": [Function],
+  "reset": [Function],
   "waiting": Array [
     Array [
       [Function],

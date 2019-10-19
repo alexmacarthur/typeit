@@ -27,10 +27,26 @@ export const extractChildTextNodes = el => {
     // This is a text node, so just return the string value itself, but as an array with individual characters.
     if (child.nodeType === 3) {
       return child.nodeValue.split("");
-    } else {
-      return child;
     }
+
+    return child;
   });
+};
+
+/**
+ * Construct a character object to be placed in the queue.
+ *
+ * @param {object} el
+ * @param {array} ancestorTree
+ * @param {string} content
+ * @return {object}
+ */
+const getCharacterObject = (el, ancestorTree, content) => {
+  return {
+    ancestorTree,
+    attributes: getNodeAttributes(el),
+    content
+  };
 };
 
 /**
@@ -40,15 +56,11 @@ export const extractChildTextNodes = el => {
  * @param {object} el
  * @return {array}
  */
-export const transformNodeToQueueItems = (el, ancestorTree = []) => {
+export const transformNodeToQueueItems = (el, ancestorTree) => {
   // Needed so the queue has a dedicated item for
   // creating the initial shell of the element
   // when it comes time to type.
-  let emptyElementObject = {
-    ancestorTree,
-    attributes: getNodeAttributes(el),
-    content: ""
-  };
+  let emptyElementObject = getCharacterObject(el, ancestorTree, "");
 
   let result = extractChildTextNodes(el).map((item, index) => {
     // This is a node. Leave it be.
@@ -59,11 +71,7 @@ export const transformNodeToQueueItems = (el, ancestorTree = []) => {
     // Convert string to an array so we can object-ify it.
     // We can confidently do this because we know it's inside an element.
     return item.map((character, index) => {
-      return {
-        ancestorTree,
-        attributes: getNodeAttributes(el),
-        content: character
-      };
+      return getCharacterObject(el, ancestorTree, character);
     });
   });
 
@@ -87,7 +95,10 @@ export const isNonBreakElement = thing => {
  *
  * @param {array} queue
  */
-export const convertNodesToItems = (queue, expandAsCharacterObjects = true) => {
+export const convertNodesToChunks = (
+  queue,
+  expandAsCharacterObjects = true
+) => {
   let processedQueue = queue.map(item => {
     if (isNonBreakElement(item)) {
       if (!expandAsCharacterObjects) {
@@ -116,16 +127,35 @@ export const convertNodesToItems = (queue, expandAsCharacterObjects = true) => {
 
   // We still have nodes in there! Keep going!
   if (processedQueue.some(item => isNonBreakElement(item))) {
-    return convertNodesToItems(processedQueue, expandAsCharacterObjects);
+    return convertNodesToChunks(processedQueue, expandAsCharacterObjects);
   }
 
   return processedQueue;
 };
 
-export default function HTMLStringToQueue(string) {
+/**
+ * Convert string to array of chunks that will be later
+ * used to construct a TypeIt queue.
+ *
+ * @param {string} string
+ * @return {array}
+ */
+export function chunkStringAsHtml(string) {
   let htmlBody = getParsedBody(string);
   let queue = extractChildTextNodes(htmlBody);
 
   // Turn each node into queue element objects.
-  return convertNodesToItems(queue);
+  return convertNodesToChunks(queue);
+}
+
+/**
+ * Given a string, chunk it into array items to be later
+ * converted to queue items for typing.
+ *
+ * @param {string} str
+ * @param {boolean} asHtml
+ * @return {array}
+ */
+export function maybeChunkStringAsHtml(str, asHtml = true) {
+  return asHtml ? chunkStringAsHtml(str) : str.split("");
 }

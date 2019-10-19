@@ -9,12 +9,8 @@ import nodeCollectionToArray from "./nodeCollectionToArray";
  */
 export const characterIsEmpty = node => {
   // It's a text node. Leave it be.
-  if (node.nodeType === 3) {
-    return false;
-  }
-
-  // Break tags are an exception.
-  if (node.tagName === "BR") {
+  // Or, break tags are an exception.
+  if (node.nodeType === 3 || node.tagName === "BR") {
     return false;
   }
 

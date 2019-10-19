@@ -1,7 +1,9 @@
+import createElement from "./helpers/createElement";
+
 export function isVisible(element) {
   let coordinates = element.getBoundingClientRect();
 
-  //-- Element extends past bottom or right.
+  // Element extends past bottom or right.
   if (
     coordinates.right > window.innerWidth ||
     coordinates.bottom > window.innerHeight
@@ -9,7 +11,7 @@ export function isVisible(element) {
     return false;
   }
 
-  //-- Element extends past top or left.
+  // Element extends past top or left.
   if (coordinates.top < 0 || coordinates.left < 0) {
     return false;
   }
@@ -24,7 +26,7 @@ export function randomInRange(value, range) {
 }
 
 export function appendStyleBlock(styles, id = "") {
-  let styleBlock = document.createElement("style");
+  let styleBlock = createElement("style");
   styleBlock.id = id;
   styleBlock.appendChild(document.createTextNode(styles));
   document.head.appendChild(styleBlock);

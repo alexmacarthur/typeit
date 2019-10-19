@@ -6,7 +6,7 @@
  * @return {object}
  */
 export default content => {
-  let parser = new DOMParser();
-  let doc = parser.parseFromString(content, "text/html");
+  let doc = document.implementation.createHTMLDocument("");
+  doc.body.innerHTML = content;
   return doc.body;
 };
