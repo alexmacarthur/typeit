@@ -1,24 +1,5 @@
 import createElement from "./helpers/createElement";
 
-export function isVisible(element) {
-  let coordinates = element.getBoundingClientRect();
-
-  // Element extends past bottom or right.
-  if (
-    coordinates.right > window.innerWidth ||
-    coordinates.bottom > window.innerHeight
-  ) {
-    return false;
-  }
-
-  // Element extends past top or left.
-  if (coordinates.top < 0 || coordinates.left < 0) {
-    return false;
-  }
-
-  return true;
-}
-
 export function randomInRange(value, range) {
   return Math.abs(
     Math.random() * (value + range - (value - range)) + (value - range)

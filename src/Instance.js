@@ -1,6 +1,6 @@
 import defaults from "./defaults.js";
 import Queue from "./Queue";
-import { isVisible, removeComments, appendStyleBlock } from "./utilities";
+import { removeComments, appendStyleBlock } from "./utilities";
 import isInput from "./helpers/isInput";
 import toArray from "./helpers/toArray";
 import nodeCollectionToArray from "./helpers/nodeCollectionToArray";
@@ -214,20 +214,24 @@ export default function Instance({
 
     setUpCursor();
 
-    if (!this.opts.waitUntilVisible || isVisible(this.$e)) {
+    if (!this.opts.waitUntilVisible) {
       this.status.started = true;
-
       return this.fire();
     }
 
-    const checkForStart = () => {
-      if (isVisible(this.$e) && !this.status.started) {
-        this.fire();
-        window.removeEventListener("scroll", checkForStart);
-      }
-    };
+    let observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            this.fire();
+            observer.unobserve(this.$e);
+          }
+        });
+      },
+      { threshold: 1.0 }
+    );
 
-    window.addEventListener("scroll", checkForStart);
+    observer.observe(this.$e);
   };
 
   this.fire = function() {
