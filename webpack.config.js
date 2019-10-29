@@ -3,11 +3,11 @@ const pkg = require("./package.json");
 const merge = require("webpack-merge");
 
 const banner = `
-  ${pkg.name} - ${pkg.description}
-  Author: ${pkg.author}
-  Version: v${pkg.version}
-  URL: ${pkg.homepage}
-  License: ${pkg.license}
+TypeIt - ${pkg.description}
+Author: ${pkg.author}
+Version: v${pkg.version}
+License: ${pkg.license}
+URL: ${pkg.homepage}
 `;
 
 const browsers = {
