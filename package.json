@@ -1,6 +1,6 @@
 {
   "name": "typeit",
-  "version": "6.1.2",
+  "version": "6.1.3",
   "description": "The most versatile animated typing utility on the planet.",
   "author": "Alex MacArthur <alex@macarthur.me> (https://macarthur.me)",
   "license": "GPL-2.0",
@@ -9,15 +9,15 @@
   },
   "homepage": "https://typeitjs.com",
   "main": "dist/typeit.min.js",
-  "module": "dist/typeit.min.js",
+  "module": "dist/typeit.es.min.js",
   "files": [
     "dist/"
   ],
   "scripts": {
-    "build": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=webpack.config.js && npm run prettier",
-    "watch": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=webpack.config.js",
+    "rollup": "NODE_ENV=production rollup -c",
+    "watch": "NODE_ENV=development rollup -c -w",
+    "build": "npm run rollup && npm run prettier",
     "serve": "concurrently --kill-others \"npm run watch\" \"node serve.js\"",
-    "analyze": "node_modules/webpack/bin/webpack.js --profile --json > stats.json",
     "precommit": "pretty-quick --staged",
     "prettier": "prettier --write \"**/*.{md,js}\"",
     "test": "jest",
@@ -49,9 +49,9 @@
     "jest-cli": "^24.9.0",
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10",
-    "webpack-merge": "^4.2.2"
+    "rollup": "^1.27.12",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-terser": "^5.2.0"
   },
   "jest": {
     "testPathIgnorePatterns": [

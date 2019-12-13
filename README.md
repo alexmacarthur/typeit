@@ -32,7 +32,6 @@ For more advanced, controlled typing effects, TypeIt comes with companion functi
 
 Using TypeIt for an open source or personal project is completely free. To use it in a commercial project, purchase a single license, or an unlimited license that'll never expire, no matter how many times you use it.
 
--   Personal or Open Source - [FREE, go install it!](https://typeitjs.com/docs/#installation)
 -   Single Commercial License - [Purchase Here](https://typeitjs.com/checkout/limited)
 -   Extended Commercial License - [Purchase Here](https://typeitjs.com/checkout/unlimited)
 
@@ -46,7 +45,7 @@ All of TypeIt's documentation can be found at [https://typeitjs.com/docs](https:
 
 ## Browser Support
 
-Bundles exist for browsers that support ES2015+ (which accounts for a [very strong majority](https://caniuse.com/#feat=es6-class) of users), as well as for those that do not. If you're using IE11 or older, you'll also need the following polyfills:
+There are two bundles generated -- an ES module version for [browsers that support them](https://caniuse.com/#feat=es6-module), and a fully transpiled bundle. When in doubt, go for the latter. If you're using IE11 or older, you'll also need the following polyfills:
 
 -   `Array.prototype.fill`
 -   `IntersectionObserver`
