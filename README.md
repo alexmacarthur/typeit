@@ -33,8 +33,8 @@ For more advanced, controlled typing effects, TypeIt comes with companion functi
 Using TypeIt for an open source or personal project is completely free. To use it in a commercial project, purchase a single license, or an unlimited license that'll never expire, no matter how many times you use it.
 
 -   Personal or Open Source - [FREE, go install it!](https://typeitjs.com/docs/#installation)
--   Single Commercial License - [Purchase Here](https://typeitjs.com#license)
--   Extended Commercial License - [Purchase Here](https://typeitjs.com#license)
+-   Single Commercial License - [Purchase Here](https://typeitjs.com/checkout/limited)
+-   Extended Commercial License - [Purchase Here](https://typeitjs.com/checkout/unlimited)
 
 ## Demos
 
