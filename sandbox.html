@@ -1,11 +1,15 @@
 <html>
-	<head>
-    <meta charset="utf-8"/>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200italic,400,600,600italic,700">
+  <head>
+    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200italic,400,600,600italic,700"
+    />
 
     <style>
       * {
-        font-family: 'Source Sans Pro', sans-serif;
+        font-family: "Source Sans Pro", sans-serif;
       }
 
       body {
@@ -24,11 +28,9 @@
         background: #d3d3d396;
       }
     </style>
+  </head>
 
-	</head>
-
-	<body>
-
+  <body>
     <section>
       <h2>Single String</h2>
       <h3 id="example1"></h3>
@@ -56,7 +58,10 @@
 
     <section>
       <h2>Hard-Coded String</h2>
-      <h3 id="example6"><!-- This comment should be removed automatically. Don't worry about it being typed. -->This string is hard-coded!</h3>
+      <h3 id="example6">
+        <!-- This comment should be removed automatically. Don't worry about it being typed. -->This
+        string is hard-coded!
+      </h3>
     </section>
 
     <section>
@@ -82,83 +87,90 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.fill%2CIntersectionObserver%2CObject.assign%2CPromise"></script>
     <script src="dist/typeit.min.js"></script>
 
-		<script>
-      window.instance = new TypeIt('#example1', {
+    <script>
+      window.instance = new TypeIt("#example1", {
         speed: 50,
-        strings: 'Just a simple string.',
-        cursorChar: '<strong>CUSTOM CURSOR!</strong>'
+        strings: "Just a simple string.",
+        cursorChar: "<strong>CUSTOM CURSOR!</strong>"
       }).go();
 
-      new TypeIt('#example2', {
+      new TypeIt("#example2", {
         speed: 50,
-        strings: ['This is my first example.', 'It has several strings!'],
+        strings: ["This is my first example.", "It has several strings!"],
         cursor: false,
         startDelay: 3000
       }).go();
 
-      new TypeIt('#example3', {
+      new TypeIt("#example3", {
         speed: 50,
         strings: [
-          'This is my <strong>second</strong> example.',
-          'This should <strong>replace</strong> the second string!'
+          "This is my <strong>second</strong> example.",
+          "This should <strong>replace</strong> the second string!"
         ],
         breakLines: false
       }).go();
 
-      new TypeIt('#example4', {
+      new TypeIt("#example4", {
         speed: 50,
-        strings: ['My first string.', 'My second string.'],
+        strings: ["My first string.", "My second string."],
         loop: true
       }).go();
 
-      new TypeIt('#example5', {
+      new TypeIt("#example5", {
         speed: 100
       })
-        .type('Here\'s my first sting.')
+        .type("Here's my first sting.")
         .pause(500)
         .delete(4)
         .pause(500)
-        .type('ring.')
+        .type("ring.")
         .pause(500)
         .delete()
         .pause(500)
         .options({
           speed: 25
         })
-        .type('And here it is faster!')
+        .type("And here it is faster!")
         .go();
 
-      new TypeIt('#example6', {
+      new TypeIt("#example6", {
         waitUntilVisible: true
       }).go();
 
-      new TypeIt('#example7', {
+      new TypeIt("#example7", {
         speed: 50,
-        strings: ["<em>Apples & bananas.</em>", "Oats <strong>&amp;</strong> beans."],
+        strings: [
+          "<em>Apples & bananas.</em>",
+          "Oats <strong>&amp;</strong> beans."
+        ],
         waitUntilVisible: true,
         loop: true
       }).go();
 
-      new TypeIt('#example8', {
+      new TypeIt("#example8", {
         speed: 50,
-        strings: ["<strong id='strong1'>aaa<em id='em1'><i>bbb</i></em></strong>ccc<em id='em2'><strong id='strong2'>ddd</strong></em>"],
+        strings: [
+          "<strong id='strong1'>aaa<em id='em1'><i>bbb</i></em></strong>ccc<em id='em2'><strong id='strong2'>ddd</strong></em>"
+        ],
         waitUntilVisible: true,
         loop: true
       }).go();
 
-      new TypeIt('#example9', {
+      new TypeIt("#example9", {
         speed: 50,
-        strings: "<strong id='strong1'><strong id='strong2'>Here, two strong tags are nested.</strong></strong>",
+        strings:
+          "<strong id='strong1'><strong id='strong2'>Here, two strong tags are nested.</strong></strong>",
         waitUntilVisible: true,
         loop: true
       }).go();
 
-      new TypeIt('#example10', {
+      new TypeIt("#example10", {
         speed: 50,
-        strings: "<strong id='strong1'>This starts strong, and <em class='italic'>then gets italicized </em>before just being strong again.</strong>",
+        strings:
+          "<strong id='strong1'>This starts strong, and <em class='italic'>then gets italicized </em>before just being strong again.</strong>",
         waitUntilVisible: true,
         loop: true
       }).go();
-		</script>
-	</body>
+    </script>
+  </body>
 </html>
