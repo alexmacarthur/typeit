@@ -33,7 +33,15 @@ export default (element, contentArg) => {
     let existingNodes = nodeCollectionToArray(
       element.querySelectorAll(`${parentSelectors}`)
     );
-    let lastExistingNode = existingNodes[existingNodes.length - 1];
+
+    // We don't want to accidentally type into the cursor node.
+    // Make sure we exlude it here.
+    existingNodes = existingNodes.filter(n => {
+      return !cursorNode || !cursorNode.isEqualNode(n);
+    });
+
+    let lastExistingNode =
+      existingNodes.length > 0 ? existingNodes[existingNodes.length - 1] : null;
 
     // Only type into an existing element if there is one
     // and it's the last one in the entire container.

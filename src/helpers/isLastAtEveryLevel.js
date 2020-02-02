@@ -30,7 +30,9 @@ export default (node, nodeToIgnore) => {
     hasSiblingAtPosition.push(hasCharacterAsNextSibling(n, nodeToIgnore));
     n = n.parentNode;
 
-    if (!n || n.hasAttribute("data-typeit-id")) {
+    // If the node doesn't have a `hasAttribute` method,
+    // we've probably found the `document`.
+    if (!n || !n.hasAttribute || n.hasAttribute("data-typeit-id")) {
       hasReachedTop = true;
     }
   }

@@ -106,11 +106,11 @@ export default function TypeIt(element, options) {
    * @param  { number } numCharacters Number of characters to delete.
    * @return { TypeIt }
    */
-  this.delete = function(numberOfCharactersToDelete = null) {
+  this.delete = function(numCharacters = null) {
     queueUp(
       "delete",
-      numberOfCharactersToDelete === null, // Maybe delete all.
-      numberOfCharactersToDelete === null ? 1 : numberOfCharactersToDelete
+      numCharacters === null, // Maybe delete all.
+      numCharacters === null ? 1 : numCharacters
     );
 
     return this;

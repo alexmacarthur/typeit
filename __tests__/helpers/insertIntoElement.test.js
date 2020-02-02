@@ -90,3 +90,17 @@ test("Should not insert before cursor when target element is not top-level.", ()
 
   expect(document.body.innerHTML).toMatchSnapshot();
 });
+
+test("Should not insert into cursor node when a <span> is passed.", () => {
+  setHTML`<h1><span>y</span><span class="ti-cursor">|</span></h1>`;
+
+  someElement = document.querySelector("h1");
+
+  insertIntoElement(someElement, {
+    ancestorTree: ["SPAN"],
+    attributes: [],
+    content: "x"
+  });
+
+  expect(document.body.innerHTML).toMatchSnapshot();
+});
