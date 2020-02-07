@@ -43,6 +43,9 @@ See some more examples and try out the sandbox at [https://typeitjs.com](https:/
 
 All of TypeIt's documentation can be found at [https://typeitjs.com/docs](https://typeitjs.com/docs).
 
+## Looking for a React Component?
+Check out the official [React component for TypeIt](https://github.com/alexmacarthur/typeit-react) here.
+
 ## Browser Support
 
 There are two bundles generated -- an ES module version for [browsers that support them](https://caniuse.com/#feat=es6-module), and a fully transpiled bundle. When in doubt, go for the latter. If you're using IE11 or older, you'll also need the following polyfills:
