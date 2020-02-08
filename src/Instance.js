@@ -64,6 +64,30 @@ export default function Instance({
    */
   const setUpCursor = () => {
     if (elementIsInput || !this.opts.cursor) {
+      return null;
+    }
+
+    // If we have a cursor node from a previous instance (prior to a reset()),
+    // there's no need to recreate one now.
+    let cursor = createElement("span");
+    cursor.innerHTML = getParsedBody(this.opts.cursorChar).innerHTML;
+    cursor.className = "ti-cursor";
+    cursor.setAttribute(
+      "style",
+      "display:inline;position:relative;font:inherit;color:inherit;line-height:inherit;"
+    );
+
+    return cursor;
+  };
+
+  /**
+   * If a cursor node's been generated, attach it to the DOM so
+   * it appears for the user, along with the required CSS transition.
+   *
+   * @return void
+   */
+  const maybeAttachCursor = () => {
+    if (!cursor) {
       return;
     }
 
@@ -71,16 +95,6 @@ export default function Instance({
       `@keyframes blink-${id} { 0% {opacity: 0} 49% {opacity: 0} 50% {opacity: 1} }[data-typeit-id='${id}'] .ti-cursor { animation: blink-${id} ${this
         .opts.cursorSpeed / 1000}s infinite; }`,
       id
-    );
-
-    // If we have a cursor node from a previous instance (prior to a reset()),
-    // there's no need to recreate one now.
-    cursor = createElement("span");
-    cursor.innerHTML = getParsedBody(this.opts.cursorChar).innerHTML;
-    cursor.className = "ti-cursor";
-    cursor.setAttribute(
-      "style",
-      "display:inline;position:relative;font:inherit;color:inherit;line-height:inherit;"
     );
 
     this.$e.appendChild(cursor);
@@ -212,7 +226,7 @@ export default function Instance({
   this.init = function() {
     if (this.status.started) return;
 
-    setUpCursor();
+    maybeAttachCursor();
 
     if (!this.opts.waitUntilVisible) {
       this.status.started = true;
@@ -336,7 +350,7 @@ export default function Instance({
         this.$e.value = "";
       } else {
         nodeCollectionToArray(this.$e.childNodes).forEach(n => {
-          if (!cursor.isEqualNode(n)) {
+          if (!cursor || !cursor.isEqualNode(n)) {
             removeNode(n);
           }
         });
@@ -391,7 +405,6 @@ export default function Instance({
     });
   };
 
-  let cursor = null;
   let elementIsInput = isInput(element);
 
   this.status = {
@@ -407,7 +420,6 @@ export default function Instance({
   this.opts.nextStringDelay = calculateDelay(this.opts.nextStringDelay);
   this.opts.loopDelay = calculateDelay(this.opts.loopDelay);
   this.queue = new Queue(queue, [this.pause, this.opts.startDelay]);
-
   this.$e.setAttribute("data-typeit-id", id);
 
   // Used to set a "placeholder" space in the element, so that it holds vertical sizing before anything's typed.
@@ -420,6 +432,8 @@ export default function Instance({
   let strings = toArray(this.opts.strings);
   strings = maybePrependHardcodedStrings(strings);
   this.opts.strings = removeComments(strings);
+
+  let cursor = setUpCursor();
 
   // Only generate a queue if we have strings
   // and this isn't a reset of a previous instance,

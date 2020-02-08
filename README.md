@@ -44,6 +44,7 @@ See some more examples and try out the sandbox at [https://typeitjs.com](https:/
 All of TypeIt's documentation can be found at [https://typeitjs.com/docs](https://typeitjs.com/docs).
 
 ## Looking for a React Component?
+
 Check out the official [React component for TypeIt](https://github.com/alexmacarthur/typeit-react) here.
 
 ## Browser Support
