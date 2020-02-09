@@ -3,7 +3,6 @@ import Queue from "./Queue";
 import { removeComments, appendStyleBlock } from "./utilities";
 import isInput from "./helpers/isInput";
 import toArray from "./helpers/toArray";
-import nodeCollectionToArray from "./helpers/nodeCollectionToArray";
 import insertIntoElement from "./helpers/insertIntoElement";
 import {
   convertNodesToChunks,
@@ -34,7 +33,7 @@ export default function Instance({
    * @return {array}
    */
   const getAllChars = () => {
-    let allNodes = nodeCollectionToArray(this.$e.childNodes).filter(
+    let allNodes = Array.from(this.$e.childNodes).filter(
       node => !node.isEqualNode(cursor)
     );
     return convertNodesToChunks(allNodes, false);
@@ -349,7 +348,7 @@ export default function Instance({
       if (elementIsInput) {
         this.$e.value = "";
       } else {
-        nodeCollectionToArray(this.$e.childNodes).forEach(n => {
+        Array.from(this.$e.childNodes).forEach(n => {
           if (!cursor || !cursor.isEqualNode(n)) {
             removeNode(n);
           }

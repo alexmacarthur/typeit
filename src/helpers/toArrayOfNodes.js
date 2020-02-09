@@ -1,5 +1,3 @@
-import nodeCollectionToArray from "./nodeCollectionToArray";
-
 export default function(thing) {
   if (typeof thing === "string") {
     thing = document.querySelectorAll(thing);
@@ -7,5 +5,5 @@ export default function(thing) {
     thing = [thing];
   }
 
-  return nodeCollectionToArray(thing);
+  return Array.from(thing);
 }

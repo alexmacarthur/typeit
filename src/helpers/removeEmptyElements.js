@@ -1,5 +1,4 @@
 import removeNode from "./removeNode";
-import nodeCollectionToArray from "./nodeCollectionToArray";
 
 /**
  * Check if a given character node is empty, either containing nothing or an empty HTML element.
@@ -38,7 +37,7 @@ export const containsEmptyCharacter = nodes => {
  * @return {void}
  */
 export default node => {
-  let allHTMLNodes = nodeCollectionToArray(node.querySelectorAll("*"));
+  let allHTMLNodes = Array.from(node.querySelectorAll("*"));
   let hasEmptyNodes = containsEmptyCharacter(allHTMLNodes);
 
   while (allHTMLNodes.length && hasEmptyNodes) {
@@ -54,7 +53,7 @@ export default node => {
     // Re-query, since we just removed nodes.
     // Conditionally do this, to avoid unnecessary queries.
     if (shouldRequery) {
-      allHTMLNodes = nodeCollectionToArray(node.querySelectorAll("*"));
+      allHTMLNodes = Array.from(node.querySelectorAll("*"));
     }
 
     // Removing nodes might have created new empty nodes,

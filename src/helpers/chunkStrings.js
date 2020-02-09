@@ -1,6 +1,5 @@
 import flatten from "../helpers/flatten";
 import getParsedBody from "../helpers/getParsedBody";
-import nodeCollectionToArray from "./nodeCollectionToArray";
 
 /**
  * Retrieve the attributes attached to a given node.
@@ -9,7 +8,7 @@ import nodeCollectionToArray from "./nodeCollectionToArray";
  * @return {array}
  */
 export const getNodeAttributes = node => {
-  return nodeCollectionToArray(node.attributes).map(att => {
+  return Array.from(node.attributes).map(att => {
     return {
       name: att.name,
       value: att.nodeValue
@@ -23,10 +22,10 @@ export const getNodeAttributes = node => {
  * @param {object} el
  */
 export const extractChildTextNodes = el => {
-  return nodeCollectionToArray(el.childNodes).map(child => {
+  return Array.from(el.childNodes).map(child => {
     // This is a text node, so just return the string value itself, but as an array with individual characters.
     if (child.nodeType === 3) {
-      return child.nodeValue.split("");
+      return Array.from(child.nodeValue);
     }
 
     return child;
@@ -102,7 +101,7 @@ export const convertNodesToChunks = (
   let processedQueue = queue.map(item => {
     if (isNonBreakElement(item)) {
       if (!expandAsCharacterObjects) {
-        return nodeCollectionToArray(item.childNodes);
+        return Array.from(item.childNodes);
       }
 
       // We're only concerned if this node's parent is NOT the BODY or HTML tag.
@@ -157,5 +156,5 @@ export function chunkStringAsHtml(string) {
  * @return {array}
  */
 export function maybeChunkStringAsHtml(str, asHtml = true) {
-  return asHtml ? chunkStringAsHtml(str) : str.split("");
+  return asHtml ? chunkStringAsHtml(str) : Array.from(str);
 }

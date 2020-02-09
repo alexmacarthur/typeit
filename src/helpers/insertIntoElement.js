@@ -1,6 +1,5 @@
 import isLastAtEveryLevel from "./isLastAtEveryLevel";
 import createNode from "./createNode";
-import nodeCollectionToArray from "./nodeCollectionToArray";
 import isInput from "./isInput";
 
 /**
@@ -19,7 +18,7 @@ export default (element, contentArg) => {
   }
 
   // Find any existing cursor in the element to make sure we type BEFORE it.
-  let cursorNode = nodeCollectionToArray(element.childNodes).filter(n => {
+  let cursorNode = Array.from(element.childNodes).filter(n => {
     return n.classList && n.classList.contains("ti-cursor");
   });
 
@@ -30,7 +29,7 @@ export default (element, contentArg) => {
   if (typeof contentArg === "object" && !(contentArg instanceof HTMLElement)) {
     let ancestorTree = contentArg.ancestorTree.slice(0);
     let parentSelectors = ancestorTree.reverse().join(" ");
-    let existingNodes = nodeCollectionToArray(
+    let existingNodes = Array.from(
       element.querySelectorAll(`${parentSelectors}`)
     );
 
@@ -62,7 +61,7 @@ export default (element, contentArg) => {
       // the LAST parent node that was created inside the container.
       if (contentArg.ancestorTree.length > 1) {
         // Get all the parent nodes in the container.
-        let parentNodes = nodeCollectionToArray(
+        let parentNodes = Array.from(
           element.querySelectorAll(contentArg.ancestorTree[1])
         );
 

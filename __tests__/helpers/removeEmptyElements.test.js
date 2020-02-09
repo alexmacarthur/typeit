@@ -1,4 +1,3 @@
-import nodeCollectionToArray from "../../src/helpers/nodeCollectionToArray";
 import removeEmptyElements, {
   characterIsEmpty,
   containsEmptyCharacter
@@ -34,16 +33,14 @@ describe("characterIsEmpty()", () => {
 describe("containsEmptyCharacter()", () => {
   test("Returns true when at least one character is empty.", () => {
     setHTML`<span>hi.<span></span>again.</span>`;
-    let nodes = nodeCollectionToArray(
-      document.querySelector("span").childNodes
-    );
+    let nodes = Array.from(document.querySelector("span").childNodes);
     let result = containsEmptyCharacter(nodes);
     expect(result).toBe(true);
   });
 
   test("Returns false when none are empty.", () => {
     setHTML`sup.hi.`;
-    let nodes = nodeCollectionToArray(document.body.childNodes);
+    let nodes = Array.from(document.body.childNodes);
     let result = containsEmptyCharacter(nodes);
     expect(result).toBe(false);
   });
