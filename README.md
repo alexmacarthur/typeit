@@ -60,7 +60,7 @@ There are two bundles generated -- an ES module version for [browsers that suppo
 You can load all of these yourself, or just use the following pre-made bundle from [Polyfill.io](https://polyfill.io):
 
 ```html
-<script src="https://polyfill.io/v3/polyfill.js?features=Array.prototype.fill%2CIntersectionObserver%2CObject.assign%2CPromise%2CArray.from"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.fill%2CIntersectionObserver%2CObject.assign%2CPromise%2CArray.from"></script>
 ```
 
 ## Contribute
