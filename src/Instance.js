@@ -33,6 +33,10 @@ export default function Instance({
    * @return {array}
    */
   const getAllChars = () => {
+    if (elementIsInput) {
+      return Array.from(this.$e.value);
+    }
+
     let allNodes = Array.from(this.$e.childNodes).filter(
       node => !node.isEqualNode(cursor)
     );
@@ -370,7 +374,11 @@ export default function Instance({
         let allChars = getAllChars();
 
         if (allChars.length) {
-          removeNode(allChars[allChars.length - 1]);
+          if (elementIsInput) {
+            this.$e.value = this.$e.value.slice(0, -1);
+          } else {
+            removeNode(allChars[allChars.length - 1]);
+          }
         }
 
         removeEmptyElements(this.$e);
