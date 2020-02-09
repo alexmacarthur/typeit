@@ -111,7 +111,7 @@ export default function Instance({
    * @param {object} callback
    * @param {integer} delay
    */
-  this.wait = function(callback, delay) {
+  this.wait = async function(callback, delay) {
     this.timeouts.push(setTimeout(callback, delay));
   };
 
@@ -252,78 +252,67 @@ export default function Instance({
     observer.observe(this.$e);
   };
 
-  this.fire = function() {
+  this.fire = async function() {
     let queue = this.queue.waiting.slice();
-    let promiseChain = Promise.resolve();
 
-    for (let i = 0; i < queue.length; i++) {
-      let key = queue[i];
-      let callbackArgs = [key, this.queue, typeIt];
+    try {
+      for (let i = 0; i < queue.length; i++) {
+        let key = queue[i];
+        let callbackArgs = [key, this.queue, typeIt];
 
-      promiseChain = promiseChain.then(() => {
-        return new Promise((resolve, reject) => {
-          if (this.status.frozen) {
-            return reject();
-          }
-
-          this.pace = calculatePace(
-            this.opts.speed,
-            this.opts.deleteSpeed,
-            this.opts.lifeLike
-          );
-
-          if (key[2] && key[2].isFirst) {
-            this.opts.beforeString(...callbackArgs);
-          }
-
-          this.opts.beforeStep(...callbackArgs);
-
-          // Fire this step! During this process, pluck items from the waiting
-          // queue and move them to executed.
-          key[0].call(this, key[1], key[2]).then(() => {
-            let justExecuted = this.queue.waiting.shift();
-
-            // If this is a phantom item, as soon as it's executed,
-            // remove it from the queue and pretend it never existed.
-            if (key[2] && key[2].isPhantom) {
-              return resolve();
-            }
-
-            if (key[2] && key[2].isLast) {
-              this.opts.afterString(...callbackArgs);
-            }
-
-            this.opts.afterStep(...callbackArgs);
-
-            // Remove this item from the global queue. Needed for pausing.
-            this.queue.executed.push(justExecuted);
-
-            return resolve();
-          });
-        });
-      });
-    }
-
-    promiseChain
-      .then(() => {
-        if (this.opts.loop) {
-          // Split the delay!
-          let delay = this.opts.loopDelay
-            ? this.opts.loopDelay
-            : this.opts.nextStringDelay;
-
-          this.wait(() => {
-            loopify(delay);
-            this.fire();
-          }, delay.after);
+        if (this.status.frozen) {
+          throw new Error();
         }
 
-        this.status.completed = true;
+        this.pace = calculatePace(
+          this.opts.speed,
+          this.opts.deleteSpeed,
+          this.opts.lifeLike
+        );
 
-        this.opts.afterComplete(typeIt);
-        return;
-      })
-      .catch(() => {});
+        if (key[2] && key[2].isFirst) {
+          this.opts.beforeString(...callbackArgs);
+        }
+
+        this.opts.beforeStep(...callbackArgs);
+
+        // Fire this step! During this process, pluck items from the waiting
+        // queue and move them to executed.
+        await key[0].call(this, key[1], key[2]);
+
+        let justExecuted = this.queue.waiting.shift();
+        let isAPhantomItem = key[2] && key[2].isPhantom;
+
+        // If this is a phantom item, as soon as it's executed,
+        // remove it from the queue and pretend it never existed.
+        if (!isAPhantomItem) {
+          if (key[2] && key[2].isLast) {
+            this.opts.afterString(...callbackArgs);
+          }
+
+          this.opts.afterStep(...callbackArgs);
+
+          // Remove this item from the global queue. Needed for pausing.
+          this.queue.executed.push(justExecuted);
+        }
+      }
+
+      if (this.opts.loop) {
+        // Split the delay!
+        let delay = this.opts.loopDelay
+          ? this.opts.loopDelay
+          : this.opts.nextStringDelay;
+
+        this.wait(() => {
+          loopify(delay);
+          this.fire();
+        }, delay.after);
+      }
+
+      this.status.completed = true;
+
+      this.opts.afterComplete(typeIt);
+    } catch (e) {}
   };
 
   this.type = function(character) {
@@ -348,19 +337,19 @@ export default function Instance({
    *
    * @return {object}
    */
-  this.empty = function() {
-    return new Promise(resolve => {
-      if (elementIsInput) {
-        this.$e.value = "";
-      } else {
-        toArray(this.$e.childNodes).forEach(n => {
-          if (!cursor || !cursor.isEqualNode(n)) {
-            removeNode(n);
-          }
-        });
+  this.empty = async function() {
+    if (elementIsInput) {
+      this.$e.value = "";
+      return;
+    }
+
+    toArray(this.$e.childNodes).forEach(n => {
+      if (!cursor || !cursor.isEqualNode(n)) {
+        removeNode(n);
       }
-      return resolve();
     });
+
+    return;
   };
 
   /**
@@ -404,13 +393,10 @@ export default function Instance({
    * Update this instance's options.
    *
    * @param {object}
-   * @param {object}
    */
-  this.setOptions = function(options) {
-    return new Promise(resolve => {
-      this.opts = Object.assign({}, this.opts, options);
-      return resolve();
-    });
+  this.setOptions = async function(options) {
+    this.opts = Object.assign({}, this.opts, options);
+    return;
   };
 
   let elementIsInput = isInput(element);
