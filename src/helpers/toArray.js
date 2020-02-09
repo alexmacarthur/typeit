@@ -1,9 +1,10 @@
 /**
- * Splits a string into characters, or an array by break tags.
+ * Literally just wraps toArray() to save a few bytes
+ * when it's repeatedly used.
  *
- * @param {string} string
+ * @param {any}
  * @return {array}
  */
-export default string => {
-  return Array.isArray(string) ? string : [string];
+export default val => {
+  return Array.from(val);
 };

@@ -1,3 +1,4 @@
+import toArray from "../helpers/toArray";
 import flatten from "../helpers/flatten";
 import getParsedBody from "../helpers/getParsedBody";
 
@@ -8,7 +9,7 @@ import getParsedBody from "../helpers/getParsedBody";
  * @return {array}
  */
 export const getNodeAttributes = node => {
-  return Array.from(node.attributes).map(att => {
+  return toArray(node.attributes).map(att => {
     return {
       name: att.name,
       value: att.nodeValue
@@ -22,10 +23,10 @@ export const getNodeAttributes = node => {
  * @param {object} el
  */
 export const extractChildTextNodes = el => {
-  return Array.from(el.childNodes).map(child => {
+  return toArray(el.childNodes).map(child => {
     // This is a text node, so just return the string value itself, but as an array with individual characters.
     if (child.nodeType === 3) {
-      return Array.from(child.nodeValue);
+      return toArray(child.nodeValue);
     }
 
     return child;
@@ -101,7 +102,7 @@ export const convertNodesToChunks = (
   let processedQueue = queue.map(item => {
     if (isNonBreakElement(item)) {
       if (!expandAsCharacterObjects) {
-        return Array.from(item.childNodes);
+        return toArray(item.childNodes);
       }
 
       // We're only concerned if this node's parent is NOT the BODY or HTML tag.
@@ -156,5 +157,5 @@ export function chunkStringAsHtml(string) {
  * @return {array}
  */
 export function maybeChunkStringAsHtml(str, asHtml = true) {
-  return asHtml ? chunkStringAsHtml(str) : Array.from(str);
+  return asHtml ? chunkStringAsHtml(str) : toArray(str);
 }

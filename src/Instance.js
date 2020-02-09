@@ -2,6 +2,7 @@ import defaults from "./defaults.js";
 import Queue from "./Queue";
 import { removeComments, appendStyleBlock } from "./utilities";
 import isInput from "./helpers/isInput";
+import asArray from "./helpers/asArray";
 import toArray from "./helpers/toArray";
 import insertIntoElement from "./helpers/insertIntoElement";
 import {
@@ -34,10 +35,10 @@ export default function Instance({
    */
   const getAllChars = () => {
     if (elementIsInput) {
-      return Array.from(this.$e.value);
+      return toArray(this.$e.value);
     }
 
-    let allNodes = Array.from(this.$e.childNodes).filter(
+    let allNodes = toArray(this.$e.childNodes).filter(
       node => !node.isEqualNode(cursor)
     );
     return convertNodesToChunks(allNodes, false);
@@ -352,7 +353,7 @@ export default function Instance({
       if (elementIsInput) {
         this.$e.value = "";
       } else {
-        Array.from(this.$e.childNodes).forEach(n => {
+        toArray(this.$e.childNodes).forEach(n => {
           if (!cursor || !cursor.isEqualNode(n)) {
             removeNode(n);
           }
@@ -436,7 +437,7 @@ export default function Instance({
 
   clearPreviousMarkup(element, elementIsInput);
 
-  let strings = toArray(this.opts.strings);
+  let strings = asArray(this.opts.strings);
   strings = maybePrependHardcodedStrings(strings);
   this.opts.strings = removeComments(strings);
 

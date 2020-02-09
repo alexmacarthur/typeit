@@ -1,6 +1,7 @@
 import isLastAtEveryLevel from "./isLastAtEveryLevel";
 import createNode from "./createNode";
 import isInput from "./isInput";
+import toArray from "./toArray";
 
 /**
  * Inserts a set of content into the element. Intended for SINGLE characters.
@@ -18,7 +19,7 @@ export default (element, contentArg) => {
   }
 
   // Find any existing cursor in the element to make sure we type BEFORE it.
-  let cursorNode = Array.from(element.childNodes).filter(n => {
+  let cursorNode = toArray(element.childNodes).filter(n => {
     return n.classList && n.classList.contains("ti-cursor");
   });
 
@@ -29,9 +30,7 @@ export default (element, contentArg) => {
   if (typeof contentArg === "object" && !(contentArg instanceof HTMLElement)) {
     let ancestorTree = contentArg.ancestorTree.slice(0);
     let parentSelectors = ancestorTree.reverse().join(" ");
-    let existingNodes = Array.from(
-      element.querySelectorAll(`${parentSelectors}`)
-    );
+    let existingNodes = toArray(element.querySelectorAll(`${parentSelectors}`));
 
     // We don't want to accidentally type into the cursor node.
     // Make sure we exlude it here.
@@ -61,7 +60,7 @@ export default (element, contentArg) => {
       // the LAST parent node that was created inside the container.
       if (contentArg.ancestorTree.length > 1) {
         // Get all the parent nodes in the container.
-        let parentNodes = Array.from(
+        let parentNodes = toArray(
           element.querySelectorAll(contentArg.ancestorTree[1])
         );
 

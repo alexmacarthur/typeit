@@ -1,3 +1,5 @@
+import toArray from "./toArray";
+
 export default function(thing) {
   if (typeof thing === "string") {
     thing = document.querySelectorAll(thing);
@@ -5,5 +7,5 @@ export default function(thing) {
     thing = [thing];
   }
 
-  return Array.from(thing);
+  return toArray(thing);
 }
