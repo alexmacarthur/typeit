@@ -1,34 +1,56 @@
-import insertIntoElement from "../../src/helpers/insertIntoElement";
+import insertIntoElement, {
+  findPrintedNode,
+  isLastElement
+} from "../../src/helpers/insertIntoElement";
+import getParsedBody from "../../src/helpers/getParsedBody";
 
 let someElement;
 
 beforeEach(() => {
-  someElement = document.createElement("SPAN");
+  someElement = document.createElement("span");
+  someElement.setAttribute("data-typeit-id", "something");
 });
 
 test("Should insert a simple character correctly.", () => {
-  insertIntoElement(someElement, "x");
+  let charObj = {
+    node: getParsedBody("x").childNodes[0],
+    isTopLevelText: true,
+    content: "x"
+  };
+
+  insertIntoElement(someElement, charObj);
   expect(someElement.innerHTML).toBe(`x`);
 });
 
-test("Should insert a character object.", () => {
+// I don't yet know why, but the text nodes are not rendering
+// when I attempt to output the updated DOM.
+test("Should insert an HTML character object.", () => {
   let characterObject = {
-    ancestorTree: ["SPAN"],
-    attributes: [],
+    // Remember: must be a text node. But we want it to be a text node as a
+    // descendent to a SPAN element.
+    node: getParsedBody("<span>y</span>").querySelector("span").childNodes[0],
     content: "y",
-    isFirstChar: true
+    isTopLevelText: false
   };
-  insertIntoElement(someElement, characterObject);
 
-  expect(someElement.innerHTML).toBe(`<span>y</span>`);
+  setHTML`
+    <span data-typeit-id="9">
+      <i class="ti-cursor">|</i>
+    </span>
+  `;
+
+  someElement = document.querySelector("span");
+  let cursor = document.querySelector(".ti-cursor");
+
+  insertIntoElement(someElement, characterObject, cursor);
+  expect(someElement.childNodes).toMatchSnapshot();
 });
 
 test("Should insert a nested character object.", () => {
   let characterObject = {
-    ancestorTree: ["SPAN", "EM"],
-    attributes: [],
-    content: "y",
-    isFirstChar: false
+    node: getParsedBody("<em><span>y</span></em>").querySelector("span")
+      .childNodes[0],
+    content: "y"
   };
   someElement.innerHTML = `<em></em>`;
   insertIntoElement(someElement, characterObject);
@@ -36,6 +58,12 @@ test("Should insert a nested character object.", () => {
 });
 
 test("Should insert content into input.", () => {
+  let charObj = {
+    node: null,
+    isTopLevelText: true,
+    content: "some value"
+  };
+
   setHTML(`
     <div>
       <input id="inputElement" type="text" />
@@ -44,12 +72,18 @@ test("Should insert content into input.", () => {
 
   someElement = document.getElementById("inputElement");
 
-  insertIntoElement(someElement, "some value");
+  insertIntoElement(someElement, charObj);
 
   expect(someElement.value).toBe("some value");
 });
 
 test("Should insert raw HTML content into input.", () => {
+  let charObj = {
+    node: null,
+    isTopLevelText: true,
+    content: "<span>sup</span>"
+  };
+
   setHTML`
     <div>
       <input id="inputElement" type="text" />
@@ -58,12 +92,18 @@ test("Should insert raw HTML content into input.", () => {
 
   someElement = document.getElementById("inputElement");
 
-  insertIntoElement(someElement, "<span>sup</span>");
+  insertIntoElement(someElement, charObj);
 
   expect(someElement.value).toBe("<span>sup</span>");
 });
 
 test("Should insert before cursor when element is top-level.", () => {
+  let charObj = {
+    node: null,
+    isTopLevelText: true,
+    content: "Hello"
+  };
+
   setHTML`
     <span data-typeit-id="9">
       <i class="ti-cursor">|</i>
@@ -71,13 +111,20 @@ test("Should insert before cursor when element is top-level.", () => {
   `;
 
   someElement = document.querySelector("span");
+  let cursor = document.querySelector(".ti-cursor");
 
-  insertIntoElement(someElement, "Hello");
+  insertIntoElement(someElement, charObj, cursor);
 
   expect(document.body.innerHTML).toMatchSnapshot();
 });
 
 test("Should not insert before cursor when target element is not top-level.", () => {
+  let charObj = {
+    node: null,
+    isTopLevelText: true,
+    content: "Hello"
+  };
+
   setHTML`
     <span>
       <i class="ti-cursor">|</i>
@@ -85,9 +132,7 @@ test("Should not insert before cursor when target element is not top-level.", ()
   `;
 
   someElement = document.querySelector("span");
-
-  insertIntoElement(someElement, "Hello");
-
+  insertIntoElement(someElement, charObj);
   expect(document.body.innerHTML).toMatchSnapshot();
 });
 
@@ -95,12 +140,135 @@ test("Should not insert into cursor node when a <span> is passed.", () => {
   setHTML`<h1><span>y</span><span class="ti-cursor">|</span></h1>`;
 
   someElement = document.querySelector("h1");
+  let cursor = document.querySelector(".ti-cursor");
 
-  insertIntoElement(someElement, {
-    ancestorTree: ["SPAN"],
-    attributes: [],
-    content: "x"
-  });
+  insertIntoElement(
+    someElement,
+    {
+      node: getParsedBody("<span>x</span>").querySelector("span").childNodes[0],
+      isTopLevelText: true,
+      content: "x"
+    },
+    cursor
+  );
 
   expect(document.body.innerHTML).toMatchSnapshot();
+});
+
+test("Types HTML node when defined.", () => {
+  let contentEl = document.createElement("STRONG");
+  contentEl.innerText = "howdy";
+
+  let charObj = {
+    node: null,
+    isTopLevelText: false,
+    isHTMLElement: true,
+    content: contentEl
+  };
+
+  setHTML`
+      <span data-typeit-id="9">
+        <i class="ti-cursor">|</i>
+      </span>
+    `;
+
+  someElement = document.querySelector("span");
+  let cursor = document.querySelector(".ti-cursor");
+
+  insertIntoElement(someElement, charObj, cursor);
+
+  expect(document.body.innerHTML).toMatchSnapshot();
+});
+
+describe("findPrintedNode()", () => {
+  test("Finds correct node in element.", () => {
+    setHTML`
+      <span data-typeit-id="9">
+        <strong id="strongTag"></strong>
+        <i class="ti-cursor">|</i>
+      </span>
+    `;
+
+    let parentElement = document.querySelector("span");
+    let node = document.querySelector("#strongTag");
+
+    let result = findPrintedNode(node, parentElement);
+    expect(result.tagName).toBe("STRONG");
+  });
+
+  test("Finds last node in element, even when there are several.", () => {
+    setHTML`
+      <span data-typeit-id="9">
+        <strong>first</strong>
+        <strong>second</strong>
+        <strong>third</strong>
+        <i class="ti-cursor">|</i>
+      </span>
+    `;
+
+    let parentElement = document.querySelector("span");
+    let node = document.querySelector("strong");
+    let result = findPrintedNode(node.cloneNode(), parentElement);
+    expect(result.outerHTML).toBe("<strong>third</strong>");
+  });
+
+  test("Returns undefined when node isn't found.", () => {
+    setHTML`
+      <span data-typeit-id="9">
+        <strong id="strongTag"></strong>
+        <i class="ti-cursor">|</i>
+      </span>
+    `;
+
+    let parentElement = document.querySelector("span");
+    let node = document.createElement("EM");
+
+    let result = findPrintedNode(node, parentElement);
+
+    expect(result).toBe(undefined);
+  });
+});
+
+describe("isLastElement()", () => {
+  test("Returns true when node doesn't have siblings.", () => {
+    setHTML`this is some text. <span id="el">this is the last element</span>`;
+
+    let el = document.getElementById("el");
+    let result = isLastElement(el);
+    expect(result).toBe(true);
+  });
+
+  test("Returns false when node has sibling element.", () => {
+    setHTML`this is some text. <span id="el">this is the last element</span><span id="el2"></span>`;
+
+    let el = document.getElementById("el");
+    let result = isLastElement(el);
+    expect(result).toBe(false);
+  });
+
+  test("Returns false when node has text sibing.", () => {
+    setHTML`this is some text. <span id="el">this is the last element</span> more text!`;
+
+    let el = document.getElementById("el");
+    let result = isLastElement(el);
+    expect(result).toBe(false);
+  });
+
+  test("Returns true when node has no sibling, ignoring node.", () => {
+    setHTML`this is some text. <span id="el">this is the last element</span><span id="ignoredEl"></span>`;
+
+    let el = document.getElementById("el");
+    let ignoredEl = document.getElementById("ignoredEl");
+    let result = isLastElement(el, ignoredEl);
+    expect(result).toBe(true);
+  });
+
+  test("Returns false when node has sibling, ignoring node.", () => {
+    setHTML`this is some text. <span id="el">this is the last element</span>holla<span id="ignoredEl"></span>`;
+
+    let el = document.getElementById("el");
+    let ignoredEl = document.getElementById("ignoredEl");
+    let result = isLastElement(el, ignoredEl);
+    expect(result).toBe(false);
+  });
 });

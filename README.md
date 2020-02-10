@@ -52,6 +52,7 @@ Check out the official [React component for TypeIt](https://github.com/alexmacar
 There are two bundles generated -- an ES module version for [browsers that support them](https://caniuse.com/#feat=es6-module), and a fully transpiled bundle. When in doubt, go for the latter. If you're using IE11 or older, you'll also need the following polyfills:
 
 -   `Array.prototype.fill`
+-   `Array.prototype.find`
 -   `Array.from`
 -   `IntersectionObserver`
 -   `Object.assign`
@@ -60,7 +61,7 @@ There are two bundles generated -- an ES module version for [browsers that suppo
 You can load all of these yourself, or just use the following pre-made bundle from [Polyfill.io](https://polyfill.io):
 
 ```html
-<script src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.fill%2CIntersectionObserver%2CObject.assign%2CPromise%2CArray.from"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.fill%2CIntersectionObserver%2CObject.assign%2CPromise%2CArray.from%2CArray.prototype.find"></script>
 ```
 
 ## Contribute

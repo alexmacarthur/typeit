@@ -8,194 +8,429 @@ Array [
   ],
   Array [
     [Function],
-    "T",
+    Object {
+      "content": "T",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
     Object {
       "isFirst": true,
     },
   ],
   Array [
     [Function],
-    "h",
+    Object {
+      "content": "h",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "i",
+    Object {
+      "content": "i",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "s",
+    Object {
+      "content": "s",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "i",
+    Object {
+      "content": "i",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "s",
+    Object {
+      "content": "s",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "a",
+    Object {
+      "content": "a",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "<",
+    Object {
+      "content": "<",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "s",
+    Object {
+      "content": "s",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "t",
+    Object {
+      "content": "t",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "r",
+    Object {
+      "content": "r",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "o",
+    Object {
+      "content": "o",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "n",
+    Object {
+      "content": "n",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "g",
+    Object {
+      "content": "g",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    ">",
+    Object {
+      "content": ">",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "a",
+    Object {
+      "content": "a",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "n",
+    Object {
+      "content": "n",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "o",
+    Object {
+      "content": "o",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "t",
+    Object {
+      "content": "t",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "h",
+    Object {
+      "content": "h",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "e",
+    Object {
+      "content": "e",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "r",
+    Object {
+      "content": "r",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "B",
+    Object {
+      "content": "B",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "O",
+    Object {
+      "content": "O",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "L",
+    Object {
+      "content": "L",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "D",
+    Object {
+      "content": "D",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "<",
+    Object {
+      "content": "<",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "/",
+    Object {
+      "content": "/",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "s",
+    Object {
+      "content": "s",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "t",
+    Object {
+      "content": "t",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "r",
+    Object {
+      "content": "r",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "o",
+    Object {
+      "content": "o",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "n",
+    Object {
+      "content": "n",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "g",
+    Object {
+      "content": "g",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    ">",
+    Object {
+      "content": ">",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "s",
+    Object {
+      "content": "s",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "t",
+    Object {
+      "content": "t",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "r",
+    Object {
+      "content": "r",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "i",
+    Object {
+      "content": "i",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "n",
+    Object {
+      "content": "n",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    "g",
+    Object {
+      "content": "g",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
   ],
   Array [
     [Function],
-    ".",
+    Object {
+      "content": ".",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": null,
+    },
     Object {
       "isLast": true,
     },
@@ -211,128 +446,204 @@ Array [
   ],
   Array [
     [Function],
-    "T",
+    Object {
+      "content": "T",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is a ,
+    },
     Object {
       "isFirst": true,
     },
   ],
   Array [
     [Function],
-    "h",
-  ],
-  Array [
-    [Function],
-    "i",
-  ],
-  Array [
-    [Function],
-    "s",
-  ],
-  Array [
-    [Function],
-    " ",
-  ],
-  Array [
-    [Function],
-    "i",
-  ],
-  Array [
-    [Function],
-    "s",
-  ],
-  Array [
-    [Function],
-    " ",
-  ],
-  Array [
-    [Function],
-    "a",
-  ],
-  Array [
-    [Function],
-    " ",
-  ],
-  Array [
-    [Function],
     Object {
-      "ancestorTree": Array [
-        "STRONG",
-      ],
-      "attributes": Array [],
-      "content": "",
+      "content": "h",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is a ,
     },
   ],
   Array [
     [Function],
     Object {
-      "ancestorTree": Array [
-        "STRONG",
-      ],
-      "attributes": Array [],
+      "content": "i",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is a ,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "s",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is a ,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is a ,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "i",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is a ,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "s",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is a ,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is a ,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "a",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is a ,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is a ,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
       "content": "B",
+      "isHTMLElement": false,
+      "isTopLevelText": false,
+      "node": BOLD,
     },
   ],
   Array [
     [Function],
     Object {
-      "ancestorTree": Array [
-        "STRONG",
-      ],
-      "attributes": Array [],
       "content": "O",
+      "isHTMLElement": false,
+      "isTopLevelText": false,
+      "node": BOLD,
     },
   ],
   Array [
     [Function],
     Object {
-      "ancestorTree": Array [
-        "STRONG",
-      ],
-      "attributes": Array [],
       "content": "L",
+      "isHTMLElement": false,
+      "isTopLevelText": false,
+      "node": BOLD,
     },
   ],
   Array [
     [Function],
     Object {
-      "ancestorTree": Array [
-        "STRONG",
-      ],
-      "attributes": Array [],
       "content": "D",
+      "isHTMLElement": false,
+      "isTopLevelText": false,
+      "node": BOLD,
     },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node":  string.,
+    },
   ],
   Array [
     [Function],
-    "s",
+    Object {
+      "content": "s",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node":  string.,
+    },
   ],
   Array [
     [Function],
-    "t",
+    Object {
+      "content": "t",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node":  string.,
+    },
   ],
   Array [
     [Function],
-    "r",
+    Object {
+      "content": "r",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node":  string.,
+    },
   ],
   Array [
     [Function],
-    "i",
+    Object {
+      "content": "i",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node":  string.,
+    },
   ],
   Array [
     [Function],
-    "n",
+    Object {
+      "content": "n",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node":  string.,
+    },
   ],
   Array [
     [Function],
-    "g",
+    Object {
+      "content": "g",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node":  string.,
+    },
   ],
   Array [
     [Function],
-    ".",
+    Object {
+      "content": ".",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node":  string.,
+    },
     Object {
       "isLast": true,
     },
@@ -348,208 +659,276 @@ Array [
   ],
   Array [
     [Function],
-    "T",
+    Object {
+      "content": "T",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is a ,
+    },
     Object {
       "isFirst": true,
     },
   ],
   Array [
     [Function],
-    "h",
-  ],
-  Array [
-    [Function],
-    "i",
-  ],
-  Array [
-    [Function],
-    "s",
-  ],
-  Array [
-    [Function],
-    " ",
-  ],
-  Array [
-    [Function],
-    "i",
-  ],
-  Array [
-    [Function],
-    "s",
-  ],
-  Array [
-    [Function],
-    " ",
-  ],
-  Array [
-    [Function],
-    "a",
-  ],
-  Array [
-    [Function],
-    " ",
-  ],
-  Array [
-    [Function],
     Object {
-      "ancestorTree": Array [
-        "STRONG",
-      ],
-      "attributes": Array [],
-      "content": "",
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "ancestorTree": Array [
-        "STRONG",
-      ],
-      "attributes": Array [],
-      "content": "a",
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "ancestorTree": Array [
-        "STRONG",
-      ],
-      "attributes": Array [],
-      "content": "n",
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "ancestorTree": Array [
-        "STRONG",
-      ],
-      "attributes": Array [],
-      "content": "o",
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "ancestorTree": Array [
-        "STRONG",
-      ],
-      "attributes": Array [],
-      "content": "t",
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "ancestorTree": Array [
-        "STRONG",
-      ],
-      "attributes": Array [],
       "content": "h",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is a ,
     },
   ],
   Array [
     [Function],
     Object {
-      "ancestorTree": Array [
-        "STRONG",
-      ],
-      "attributes": Array [],
-      "content": "e",
+      "content": "i",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is a ,
     },
   ],
   Array [
     [Function],
     Object {
-      "ancestorTree": Array [
-        "STRONG",
-      ],
-      "attributes": Array [],
-      "content": "r",
+      "content": "s",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is a ,
     },
   ],
   Array [
     [Function],
     Object {
-      "ancestorTree": Array [
-        "STRONG",
-      ],
-      "attributes": Array [],
       "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is a ,
     },
   ],
   Array [
     [Function],
     Object {
-      "ancestorTree": Array [
-        "STRONG",
-      ],
-      "attributes": Array [],
+      "content": "i",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is a ,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "s",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is a ,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is a ,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "a",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is a ,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is a ,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "a",
+      "isHTMLElement": false,
+      "isTopLevelText": false,
+      "node": another BOLD,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "n",
+      "isHTMLElement": false,
+      "isTopLevelText": false,
+      "node": another BOLD,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "o",
+      "isHTMLElement": false,
+      "isTopLevelText": false,
+      "node": another BOLD,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "t",
+      "isHTMLElement": false,
+      "isTopLevelText": false,
+      "node": another BOLD,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "h",
+      "isHTMLElement": false,
+      "isTopLevelText": false,
+      "node": another BOLD,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "e",
+      "isHTMLElement": false,
+      "isTopLevelText": false,
+      "node": another BOLD,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "r",
+      "isHTMLElement": false,
+      "isTopLevelText": false,
+      "node": another BOLD,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": false,
+      "node": another BOLD,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
       "content": "B",
+      "isHTMLElement": false,
+      "isTopLevelText": false,
+      "node": another BOLD,
     },
   ],
   Array [
     [Function],
     Object {
-      "ancestorTree": Array [
-        "STRONG",
-      ],
-      "attributes": Array [],
       "content": "O",
+      "isHTMLElement": false,
+      "isTopLevelText": false,
+      "node": another BOLD,
     },
   ],
   Array [
     [Function],
     Object {
-      "ancestorTree": Array [
-        "STRONG",
-      ],
-      "attributes": Array [],
       "content": "L",
+      "isHTMLElement": false,
+      "isTopLevelText": false,
+      "node": another BOLD,
     },
   ],
   Array [
     [Function],
     Object {
-      "ancestorTree": Array [
-        "STRONG",
-      ],
-      "attributes": Array [],
       "content": "D",
+      "isHTMLElement": false,
+      "isTopLevelText": false,
+      "node": another BOLD,
     },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node":  string.,
+    },
   ],
   Array [
     [Function],
-    "s",
+    Object {
+      "content": "s",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node":  string.,
+    },
   ],
   Array [
     [Function],
-    "t",
+    Object {
+      "content": "t",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node":  string.,
+    },
   ],
   Array [
     [Function],
-    "r",
+    Object {
+      "content": "r",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node":  string.,
+    },
   ],
   Array [
     [Function],
-    "i",
+    Object {
+      "content": "i",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node":  string.,
+    },
   ],
   Array [
     [Function],
-    "n",
+    Object {
+      "content": "n",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node":  string.,
+    },
   ],
   Array [
     [Function],
-    "g",
+    Object {
+      "content": "g",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node":  string.,
+    },
   ],
   Array [
     [Function],
-    ".",
+    Object {
+      "content": ".",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node":  string.,
+    },
     Object {
       "isLast": true,
     },
@@ -565,114 +944,249 @@ Array [
   ],
   Array [
     [Function],
-    "T",
+    Object {
+      "content": "T",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
     Object {
       "isFirst": true,
     },
   ],
   Array [
     [Function],
-    "h",
+    Object {
+      "content": "h",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "i",
+    Object {
+      "content": "i",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "s",
+    Object {
+      "content": "s",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "s",
+    Object {
+      "content": "s",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "h",
+    Object {
+      "content": "h",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "o",
+    Object {
+      "content": "o",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "u",
+    Object {
+      "content": "u",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "l",
+    Object {
+      "content": "l",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "d",
+    Object {
+      "content": "d",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "b",
+    Object {
+      "content": "b",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "e",
+    Object {
+      "content": "e",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "t",
+    Object {
+      "content": "t",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "y",
+    Object {
+      "content": "y",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "p",
+    Object {
+      "content": "p",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "e",
+    Object {
+      "content": "e",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "d",
+    Object {
+      "content": "d",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "f",
+    Object {
+      "content": "f",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "i",
+    Object {
+      "content": "i",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "r",
+    Object {
+      "content": "r",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "s",
+    Object {
+      "content": "s",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "t",
+    Object {
+      "content": "t",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    ".",
+    Object {
+      "content": ".",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
     Object {
       "isLast": true,
     },
@@ -683,7 +1197,12 @@ Array [
   ],
   Array [
     [Function],
-    <br />,
+    Object {
+      "content": <br />,
+      "isHTMLElement": true,
+      "isTopLevelText": false,
+      "node": null,
+    },
   ],
   Array [
     [Function],
@@ -691,188 +1210,408 @@ Array [
   ],
   Array [
     [Function],
-    "T",
+    Object {
+      "content": "T",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
     Object {
       "isFirst": true,
     },
   ],
   Array [
     [Function],
-    "h",
+    Object {
+      "content": "h",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "i",
+    Object {
+      "content": "i",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "s",
+    Object {
+      "content": "s",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "i",
+    Object {
+      "content": "i",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "s",
+    Object {
+      "content": "s",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "a",
+    Object {
+      "content": "a",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "n",
+    Object {
+      "content": "n",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "o",
+    Object {
+      "content": "o",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "t",
+    Object {
+      "content": "t",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "h",
+    Object {
+      "content": "h",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "e",
+    Object {
+      "content": "e",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "r",
+    Object {
+      "content": "r",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "s",
+    Object {
+      "content": "s",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "t",
+    Object {
+      "content": "t",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "r",
+    Object {
+      "content": "r",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "i",
+    Object {
+      "content": "i",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "n",
+    Object {
+      "content": "n",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "g",
+    Object {
+      "content": "g",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    ".",
+    Object {
+      "content": ".",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
     Object {
       "isLast": true,
     },
   ],
   Array [
     [Function],
-    "A",
+    Object {
+      "content": "A",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": And finally, a third.,
+    },
     Object {
       "isFirst": true,
     },
   ],
   Array [
     [Function],
-    "n",
+    Object {
+      "content": "n",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": And finally, a third.,
+    },
   ],
   Array [
     [Function],
-    "d",
+    Object {
+      "content": "d",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": And finally, a third.,
+    },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": And finally, a third.,
+    },
   ],
   Array [
     [Function],
-    "f",
+    Object {
+      "content": "f",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": And finally, a third.,
+    },
   ],
   Array [
     [Function],
-    "i",
+    Object {
+      "content": "i",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": And finally, a third.,
+    },
   ],
   Array [
     [Function],
-    "n",
+    Object {
+      "content": "n",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": And finally, a third.,
+    },
   ],
   Array [
     [Function],
-    "a",
+    Object {
+      "content": "a",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": And finally, a third.,
+    },
   ],
   Array [
     [Function],
-    "l",
+    Object {
+      "content": "l",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": And finally, a third.,
+    },
   ],
   Array [
     [Function],
-    "l",
+    Object {
+      "content": "l",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": And finally, a third.,
+    },
   ],
   Array [
     [Function],
-    "y",
+    Object {
+      "content": "y",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": And finally, a third.,
+    },
   ],
   Array [
     [Function],
-    ",",
+    Object {
+      "content": ",",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": And finally, a third.,
+    },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": And finally, a third.,
+    },
   ],
   Array [
     [Function],
-    "a",
+    Object {
+      "content": "a",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": And finally, a third.,
+    },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": And finally, a third.,
+    },
   ],
   Array [
     [Function],
-    "t",
+    Object {
+      "content": "t",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": And finally, a third.,
+    },
   ],
   Array [
     [Function],
-    "h",
+    Object {
+      "content": "h",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": And finally, a third.,
+    },
   ],
   Array [
     [Function],
-    "i",
+    Object {
+      "content": "i",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": And finally, a third.,
+    },
   ],
   Array [
     [Function],
-    "r",
+    Object {
+      "content": "r",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": And finally, a third.,
+    },
   ],
   Array [
     [Function],
-    "d",
+    Object {
+      "content": "d",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": And finally, a third.,
+    },
   ],
   Array [
     [Function],
-    ".",
+    Object {
+      "content": ".",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": And finally, a third.,
+    },
     Object {
       "isLast": true,
     },
@@ -888,114 +1627,249 @@ Array [
   ],
   Array [
     [Function],
-    "T",
+    Object {
+      "content": "T",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
     Object {
       "isFirst": true,
     },
   ],
   Array [
     [Function],
-    "h",
+    Object {
+      "content": "h",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "i",
+    Object {
+      "content": "i",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "s",
+    Object {
+      "content": "s",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "s",
+    Object {
+      "content": "s",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "h",
+    Object {
+      "content": "h",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "o",
+    Object {
+      "content": "o",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "u",
+    Object {
+      "content": "u",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "l",
+    Object {
+      "content": "l",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "d",
+    Object {
+      "content": "d",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "b",
+    Object {
+      "content": "b",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "e",
+    Object {
+      "content": "e",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "t",
+    Object {
+      "content": "t",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "y",
+    Object {
+      "content": "y",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "p",
+    Object {
+      "content": "p",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "e",
+    Object {
+      "content": "e",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "d",
+    Object {
+      "content": "d",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "f",
+    Object {
+      "content": "f",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "i",
+    Object {
+      "content": "i",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "r",
+    Object {
+      "content": "r",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "s",
+    Object {
+      "content": "s",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "t",
+    Object {
+      "content": "t",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    ".",
+    Object {
+      "content": ".",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
     Object {
       "isLast": true,
     },
@@ -1011,114 +1885,249 @@ Array [
   ],
   Array [
     [Function],
-    "T",
+    Object {
+      "content": "T",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
     Object {
       "isFirst": true,
     },
   ],
   Array [
     [Function],
-    "h",
+    Object {
+      "content": "h",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "i",
+    Object {
+      "content": "i",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "s",
+    Object {
+      "content": "s",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "s",
+    Object {
+      "content": "s",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "h",
+    Object {
+      "content": "h",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "o",
+    Object {
+      "content": "o",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "u",
+    Object {
+      "content": "u",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "l",
+    Object {
+      "content": "l",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "d",
+    Object {
+      "content": "d",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "b",
+    Object {
+      "content": "b",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "e",
+    Object {
+      "content": "e",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "t",
+    Object {
+      "content": "t",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "y",
+    Object {
+      "content": "y",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "p",
+    Object {
+      "content": "p",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "e",
+    Object {
+      "content": "e",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "d",
+    Object {
+      "content": "d",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "f",
+    Object {
+      "content": "f",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "i",
+    Object {
+      "content": "i",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "r",
+    Object {
+      "content": "r",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "s",
+    Object {
+      "content": "s",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    "t",
+    Object {
+      "content": "t",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
   ],
   Array [
     [Function],
-    ".",
+    Object {
+      "content": ".",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This should be typed first.,
+    },
     Object {
       "isLast": true,
     },
@@ -1129,7 +2138,12 @@ Array [
   ],
   Array [
     [Function],
-    <br />,
+    Object {
+      "content": <br />,
+      "isHTMLElement": true,
+      "isTopLevelText": false,
+      "node": null,
+    },
   ],
   Array [
     [Function],
@@ -1137,98 +2151,213 @@ Array [
   ],
   Array [
     [Function],
-    "T",
+    Object {
+      "content": "T",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
     Object {
       "isFirst": true,
     },
   ],
   Array [
     [Function],
-    "h",
+    Object {
+      "content": "h",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "i",
+    Object {
+      "content": "i",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "s",
+    Object {
+      "content": "s",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "i",
+    Object {
+      "content": "i",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "s",
+    Object {
+      "content": "s",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "a",
+    Object {
+      "content": "a",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "n",
+    Object {
+      "content": "n",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "o",
+    Object {
+      "content": "o",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "t",
+    Object {
+      "content": "t",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "h",
+    Object {
+      "content": "h",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "e",
+    Object {
+      "content": "e",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "r",
+    Object {
+      "content": "r",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    " ",
+    Object {
+      "content": " ",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "s",
+    Object {
+      "content": "s",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "t",
+    Object {
+      "content": "t",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "r",
+    Object {
+      "content": "r",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "i",
+    Object {
+      "content": "i",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "n",
+    Object {
+      "content": "n",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    "g",
+    Object {
+      "content": "g",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
   ],
   Array [
     [Function],
-    ".",
+    Object {
+      "content": ".",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": This is another string.,
+    },
     Object {
       "isLast": true,
     },

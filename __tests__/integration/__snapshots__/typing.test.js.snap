@@ -14,62 +14,132 @@ _default {
     ],
     Array [
       [Function],
-      "T",
+      Object {
+        "content": "T",
+        "isHTMLElement": false,
+        "isTopLevelText": true,
+        "node": Taxation is...,
+      },
       Object {
         "isFirst": true,
       },
     ],
     Array [
       [Function],
-      "a",
+      Object {
+        "content": "a",
+        "isHTMLElement": false,
+        "isTopLevelText": true,
+        "node": Taxation is...,
+      },
     ],
     Array [
       [Function],
-      "x",
+      Object {
+        "content": "x",
+        "isHTMLElement": false,
+        "isTopLevelText": true,
+        "node": Taxation is...,
+      },
     ],
     Array [
       [Function],
-      "a",
+      Object {
+        "content": "a",
+        "isHTMLElement": false,
+        "isTopLevelText": true,
+        "node": Taxation is...,
+      },
     ],
     Array [
       [Function],
-      "t",
+      Object {
+        "content": "t",
+        "isHTMLElement": false,
+        "isTopLevelText": true,
+        "node": Taxation is...,
+      },
     ],
     Array [
       [Function],
-      "i",
+      Object {
+        "content": "i",
+        "isHTMLElement": false,
+        "isTopLevelText": true,
+        "node": Taxation is...,
+      },
     ],
     Array [
       [Function],
-      "o",
+      Object {
+        "content": "o",
+        "isHTMLElement": false,
+        "isTopLevelText": true,
+        "node": Taxation is...,
+      },
     ],
     Array [
       [Function],
-      "n",
+      Object {
+        "content": "n",
+        "isHTMLElement": false,
+        "isTopLevelText": true,
+        "node": Taxation is...,
+      },
     ],
     Array [
       [Function],
-      " ",
+      Object {
+        "content": " ",
+        "isHTMLElement": false,
+        "isTopLevelText": true,
+        "node": Taxation is...,
+      },
     ],
     Array [
       [Function],
-      "i",
+      Object {
+        "content": "i",
+        "isHTMLElement": false,
+        "isTopLevelText": true,
+        "node": Taxation is...,
+      },
     ],
     Array [
       [Function],
-      "s",
+      Object {
+        "content": "s",
+        "isHTMLElement": false,
+        "isTopLevelText": true,
+        "node": Taxation is...,
+      },
     ],
     Array [
       [Function],
-      ".",
+      Object {
+        "content": ".",
+        "isHTMLElement": false,
+        "isTopLevelText": true,
+        "node": Taxation is...,
+      },
     ],
     Array [
       [Function],
-      ".",
+      Object {
+        "content": ".",
+        "isHTMLElement": false,
+        "isTopLevelText": true,
+        "node": Taxation is...,
+      },
     ],
     Array [
       [Function],
-      ".",
+      Object {
+        "content": ".",
+        "isHTMLElement": false,
+        "isTopLevelText": true,
+        "node": Taxation is...,
+      },
       Object {
         "isLast": true,
       },
@@ -80,7 +150,12 @@ _default {
     ],
     Array [
       [Function],
-      <br />,
+      Object {
+        "content": <br />,
+        "isHTMLElement": true,
+        "isTopLevelText": false,
+        "node": null,
+      },
     ],
     Array [
       [Function],
@@ -88,30 +163,60 @@ _default {
     ],
     Array [
       [Function],
-      "t",
+      Object {
+        "content": "t",
+        "isHTMLElement": false,
+        "isTopLevelText": true,
+        "node": theft.,
+      },
       Object {
         "isFirst": true,
       },
     ],
     Array [
       [Function],
-      "h",
+      Object {
+        "content": "h",
+        "isHTMLElement": false,
+        "isTopLevelText": true,
+        "node": theft.,
+      },
     ],
     Array [
       [Function],
-      "e",
+      Object {
+        "content": "e",
+        "isHTMLElement": false,
+        "isTopLevelText": true,
+        "node": theft.,
+      },
     ],
     Array [
       [Function],
-      "f",
+      Object {
+        "content": "f",
+        "isHTMLElement": false,
+        "isTopLevelText": true,
+        "node": theft.,
+      },
     ],
     Array [
       [Function],
-      "t",
+      Object {
+        "content": "t",
+        "isHTMLElement": false,
+        "isTopLevelText": true,
+        "node": theft.,
+      },
     ],
     Array [
       [Function],
-      ".",
+      Object {
+        "content": ".",
+        "isHTMLElement": false,
+        "isTopLevelText": true,
+        "node": theft.,
+      },
       Object {
         "isLast": true,
       },

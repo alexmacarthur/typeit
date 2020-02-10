@@ -3,2258 +3,1779 @@
 exports[`Parses HTML tag at beginning of string. 1`] = `
 Array [
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
     "content": "H",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": Hello!,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
     "content": "e",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": Hello!,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
     "content": "l",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": Hello!,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
     "content": "l",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": Hello!,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
     "content": "o",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": Hello!,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
     "content": "!",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": Hello!,
   },
-  " ",
-  "T",
-  "h",
-  "i",
-  "s",
-  " ",
-  "i",
-  "s",
-  " ",
-  "s",
-  "o",
-  "m",
-  "e",
-  " ",
-  "t",
-  "e",
-  "x",
-  "t",
-  " ",
-  "w",
-  "i",
-  "t",
-  "h",
-  " ",
-  "H",
-  "T",
-  "M",
-  "L",
-  " ",
-  "a",
-  "t",
-  " ",
-  "t",
-  "h",
-  "e",
-  " ",
-  "b",
-  "e",
-  "g",
-  "i",
-  "n",
-  "n",
-  "i",
-  "n",
-  "g",
-  ".",
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "T",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "h",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "i",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "s",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "i",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "s",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "s",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "o",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "m",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "e",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "e",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "x",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "w",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "i",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "h",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "H",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "T",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "M",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "L",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "a",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "h",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "e",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "b",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "e",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "g",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "i",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "n",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "n",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "i",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "n",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": "g",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
+  Object {
+    "content": ".",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  This is some text with HTML at the beginning.,
+  },
 ]
 `;
 
 exports[`Parses HTML tag at end of string. 1`] = `
 Array [
-  "T",
-  "h",
-  "i",
-  "s",
-  " ",
-  "i",
-  "s",
-  " ",
-  "s",
-  "o",
-  "m",
-  "e",
-  " ",
-  "t",
-  "e",
-  "x",
-  "t",
-  " ",
-  "w",
-  "i",
-  "t",
-  "h",
-  " ",
-  "H",
-  "T",
-  "M",
-  "L",
-  " ",
-  "a",
-  "t",
-  " ",
-  "t",
-  "h",
-  "e",
-  " ",
   Object {
-    "ancestorTree": Array [
-      "EM",
-    ],
-    "attributes": Array [],
-    "content": "",
+    "content": "T",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
   },
   Object {
-    "ancestorTree": Array [
-      "EM",
-    ],
-    "attributes": Array [],
-    "content": "b",
+    "content": "h",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
   },
   Object {
-    "ancestorTree": Array [
-      "EM",
-    ],
-    "attributes": Array [],
+    "content": "i",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
+  },
+  Object {
+    "content": "s",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
+  },
+  Object {
+    "content": "i",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
+  },
+  Object {
+    "content": "s",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
+  },
+  Object {
+    "content": "s",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
+  },
+  Object {
+    "content": "o",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
+  },
+  Object {
+    "content": "m",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
+  },
+  Object {
     "content": "e",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
   },
   Object {
-    "ancestorTree": Array [
-      "EM",
-    ],
-    "attributes": Array [],
-    "content": "g",
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
   },
   Object {
-    "ancestorTree": Array [
-      "EM",
-    ],
-    "attributes": Array [],
+    "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
+  },
+  Object {
+    "content": "e",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
+  },
+  Object {
+    "content": "x",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
+  },
+  Object {
+    "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
+  },
+  Object {
+    "content": "w",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
+  },
+  Object {
     "content": "i",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
   },
   Object {
-    "ancestorTree": Array [
-      "EM",
-    ],
-    "attributes": Array [],
-    "content": "n",
+    "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
   },
   Object {
-    "ancestorTree": Array [
-      "EM",
-    ],
-    "attributes": Array [],
-    "content": "n",
+    "content": "h",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
   },
   Object {
-    "ancestorTree": Array [
-      "EM",
-    ],
-    "attributes": Array [],
-    "content": "i",
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
   },
   Object {
-    "ancestorTree": Array [
-      "EM",
-    ],
-    "attributes": Array [],
-    "content": "n",
+    "content": "H",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
   },
   Object {
-    "ancestorTree": Array [
-      "EM",
-    ],
-    "attributes": Array [],
+    "content": "T",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
+  },
+  Object {
+    "content": "M",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
+  },
+  Object {
+    "content": "L",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
+  },
+  Object {
+    "content": "a",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
+  },
+  Object {
+    "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
+  },
+  Object {
+    "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
+  },
+  Object {
+    "content": "h",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
+  },
+  Object {
+    "content": "e",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This is some text with HTML at the ,
+  },
+  Object {
+    "content": "b",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": beginning.,
+  },
+  Object {
+    "content": "e",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": beginning.,
+  },
+  Object {
     "content": "g",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": beginning.,
   },
   Object {
-    "ancestorTree": Array [
-      "EM",
-    ],
-    "attributes": Array [],
+    "content": "i",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": beginning.,
+  },
+  Object {
+    "content": "n",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": beginning.,
+  },
+  Object {
+    "content": "n",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": beginning.,
+  },
+  Object {
+    "content": "i",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": beginning.,
+  },
+  Object {
+    "content": "n",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": beginning.,
+  },
+  Object {
+    "content": "g",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": beginning.,
+  },
+  Object {
     "content": ".",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": beginning.,
   },
 ]
 `;
 
 exports[`Parses HTML tag with attributes. 1`] = `
 Array [
-  "T",
-  "h",
-  "i",
-  "s",
-  " ",
-  "s",
-  "t",
-  "r",
-  "i",
-  "n",
-  "g",
-  " ",
-  "h",
-  "a",
-  "s",
-  " ",
-  "a",
-  "n",
-  " ",
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "strong-class",
-      },
-      Object {
-        "name": "id",
-        "value": "strong-id",
-      },
-      Object {
-        "name": "data-whatever",
-        "value": "data-att",
-      },
-    ],
-    "content": "",
+    "content": "T",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This string has an ,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "strong-class",
-      },
-      Object {
-        "name": "id",
-        "value": "strong-id",
-      },
-      Object {
-        "name": "data-whatever",
-        "value": "data-att",
-      },
-    ],
-    "content": "e",
+    "content": "h",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This string has an ,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "strong-class",
-      },
-      Object {
-        "name": "id",
-        "value": "strong-id",
-      },
-      Object {
-        "name": "data-whatever",
-        "value": "data-att",
-      },
-    ],
-    "content": "l",
+    "content": "i",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This string has an ,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "strong-class",
-      },
-      Object {
-        "name": "id",
-        "value": "strong-id",
-      },
-      Object {
-        "name": "data-whatever",
-        "value": "data-att",
-      },
-    ],
-    "content": "e",
+    "content": "s",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This string has an ,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "strong-class",
-      },
-      Object {
-        "name": "id",
-        "value": "strong-id",
-      },
-      Object {
-        "name": "data-whatever",
-        "value": "data-att",
-      },
-    ],
-    "content": "m",
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This string has an ,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "strong-class",
-      },
-      Object {
-        "name": "id",
-        "value": "strong-id",
-      },
-      Object {
-        "name": "data-whatever",
-        "value": "data-att",
-      },
-    ],
-    "content": "e",
+    "content": "s",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This string has an ,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "strong-class",
-      },
-      Object {
-        "name": "id",
-        "value": "strong-id",
-      },
-      Object {
-        "name": "data-whatever",
-        "value": "data-att",
-      },
-    ],
-    "content": "n",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "strong-class",
-      },
-      Object {
-        "name": "id",
-        "value": "strong-id",
-      },
-      Object {
-        "name": "data-whatever",
-        "value": "data-att",
-      },
-    ],
     "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This string has an ,
   },
-  " ",
-  "w",
-  "i",
-  "t",
-  "h",
-  " ",
-  "a",
-  "t",
-  "t",
-  "r",
-  "i",
-  "b",
-  "u",
-  "t",
-  "e",
-  "s",
-  ".",
+  Object {
+    "content": "r",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This string has an ,
+  },
+  Object {
+    "content": "i",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This string has an ,
+  },
+  Object {
+    "content": "n",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This string has an ,
+  },
+  Object {
+    "content": "g",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This string has an ,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This string has an ,
+  },
+  Object {
+    "content": "h",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This string has an ,
+  },
+  Object {
+    "content": "a",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This string has an ,
+  },
+  Object {
+    "content": "s",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This string has an ,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This string has an ,
+  },
+  Object {
+    "content": "a",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This string has an ,
+  },
+  Object {
+    "content": "n",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This string has an ,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": This string has an ,
+  },
+  Object {
+    "content": "e",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": element,
+  },
+  Object {
+    "content": "l",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": element,
+  },
+  Object {
+    "content": "e",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": element,
+  },
+  Object {
+    "content": "m",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": element,
+  },
+  Object {
+    "content": "e",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": element,
+  },
+  Object {
+    "content": "n",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": element,
+  },
+  Object {
+    "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": element,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  with attributes.,
+  },
+  Object {
+    "content": "w",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  with attributes.,
+  },
+  Object {
+    "content": "i",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  with attributes.,
+  },
+  Object {
+    "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  with attributes.,
+  },
+  Object {
+    "content": "h",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  with attributes.,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  with attributes.,
+  },
+  Object {
+    "content": "a",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  with attributes.,
+  },
+  Object {
+    "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  with attributes.,
+  },
+  Object {
+    "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  with attributes.,
+  },
+  Object {
+    "content": "r",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  with attributes.,
+  },
+  Object {
+    "content": "i",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  with attributes.,
+  },
+  Object {
+    "content": "b",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  with attributes.,
+  },
+  Object {
+    "content": "u",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  with attributes.,
+  },
+  Object {
+    "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  with attributes.,
+  },
+  Object {
+    "content": "e",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  with attributes.,
+  },
+  Object {
+    "content": "s",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  with attributes.,
+  },
+  Object {
+    "content": ".",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  with attributes.,
+  },
 ]
 `;
 
 exports[`Parses multiple HTML tags. 1`] = `
 Array [
-  "H",
-  "e",
-  "l",
-  "l",
-  "o",
-  ",",
-  " ",
-  "t",
-  "h",
-  "i",
-  "s",
-  " ",
-  "i",
-  "s",
-  " ",
-  "s",
-  "o",
-  "m",
-  "e",
-  " ",
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "",
+    "content": "H",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "b",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "o",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "l",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "d",
-  },
-  " ",
-  "t",
-  "e",
-  "x",
-  "t",
-  ",",
-  " ",
-  "a",
-  "n",
-  "d",
-  " ",
-  "s",
-  "o",
-  "m",
-  "e",
-  " ",
-  Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
-    "content": "",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
-    "content": "i",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
-    "content": "t",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
-    "content": "a",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
-    "content": "l",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
-    "content": "i",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
-    "content": "c",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
-    "content": "i",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
-    "content": "z",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
     "content": "e",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
   },
   Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
-    "content": "d",
+    "content": "l",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
   },
-  " ",
-  "t",
-  "e",
-  "x",
-  "t",
-  ".",
+  Object {
+    "content": "l",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
+  },
+  Object {
+    "content": "o",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
+  },
+  Object {
+    "content": ",",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
+  },
+  Object {
+    "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
+  },
+  Object {
+    "content": "h",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
+  },
+  Object {
+    "content": "i",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
+  },
+  Object {
+    "content": "s",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
+  },
+  Object {
+    "content": "i",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
+  },
+  Object {
+    "content": "s",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
+  },
+  Object {
+    "content": "s",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
+  },
+  Object {
+    "content": "o",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
+  },
+  Object {
+    "content": "m",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
+  },
+  Object {
+    "content": "e",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
+  },
+  Object {
+    "content": "b",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": bold,
+  },
+  Object {
+    "content": "o",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": bold,
+  },
+  Object {
+    "content": "l",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": bold,
+  },
+  Object {
+    "content": "d",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": bold,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text, and some ,
+  },
+  Object {
+    "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text, and some ,
+  },
+  Object {
+    "content": "e",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text, and some ,
+  },
+  Object {
+    "content": "x",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text, and some ,
+  },
+  Object {
+    "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text, and some ,
+  },
+  Object {
+    "content": ",",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text, and some ,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text, and some ,
+  },
+  Object {
+    "content": "a",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text, and some ,
+  },
+  Object {
+    "content": "n",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text, and some ,
+  },
+  Object {
+    "content": "d",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text, and some ,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text, and some ,
+  },
+  Object {
+    "content": "s",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text, and some ,
+  },
+  Object {
+    "content": "o",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text, and some ,
+  },
+  Object {
+    "content": "m",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text, and some ,
+  },
+  Object {
+    "content": "e",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text, and some ,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text, and some ,
+  },
+  Object {
+    "content": "i",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": italicized,
+  },
+  Object {
+    "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": italicized,
+  },
+  Object {
+    "content": "a",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": italicized,
+  },
+  Object {
+    "content": "l",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": italicized,
+  },
+  Object {
+    "content": "i",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": italicized,
+  },
+  Object {
+    "content": "c",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": italicized,
+  },
+  Object {
+    "content": "i",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": italicized,
+  },
+  Object {
+    "content": "z",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": italicized,
+  },
+  Object {
+    "content": "e",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": italicized,
+  },
+  Object {
+    "content": "d",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": italicized,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text.,
+  },
+  Object {
+    "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text.,
+  },
+  Object {
+    "content": "e",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text.,
+  },
+  Object {
+    "content": "x",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text.,
+  },
+  Object {
+    "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text.,
+  },
+  Object {
+    "content": ".",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text.,
+  },
 ]
 `;
 
 exports[`Parses normal string correctly. 1`] = `
 Array [
-  "H",
-  "e",
-  "l",
-  "l",
-  "o",
-  ",",
-  " ",
-  "t",
-  "h",
-  "i",
-  "s",
-  " ",
-  "i",
-  "s",
-  " ",
-  "m",
-  "y",
-  " ",
-  "s",
-  "t",
-  "r",
-  "i",
-  "n",
-  "g",
-  ".",
+  Object {
+    "content": "H",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is my string.,
+  },
+  Object {
+    "content": "e",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is my string.,
+  },
+  Object {
+    "content": "l",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is my string.,
+  },
+  Object {
+    "content": "l",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is my string.,
+  },
+  Object {
+    "content": "o",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is my string.,
+  },
+  Object {
+    "content": ",",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is my string.,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is my string.,
+  },
+  Object {
+    "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is my string.,
+  },
+  Object {
+    "content": "h",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is my string.,
+  },
+  Object {
+    "content": "i",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is my string.,
+  },
+  Object {
+    "content": "s",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is my string.,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is my string.,
+  },
+  Object {
+    "content": "i",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is my string.,
+  },
+  Object {
+    "content": "s",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is my string.,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is my string.,
+  },
+  Object {
+    "content": "m",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is my string.,
+  },
+  Object {
+    "content": "y",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is my string.,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is my string.,
+  },
+  Object {
+    "content": "s",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is my string.,
+  },
+  Object {
+    "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is my string.,
+  },
+  Object {
+    "content": "r",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is my string.,
+  },
+  Object {
+    "content": "i",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is my string.,
+  },
+  Object {
+    "content": "n",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is my string.,
+  },
+  Object {
+    "content": "g",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is my string.,
+  },
+  Object {
+    "content": ".",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is my string.,
+  },
 ]
 `;
 
 exports[`Parses single HTML tag. 1`] = `
 Array [
-  "H",
-  "e",
-  "l",
-  "l",
-  "o",
-  ",",
-  " ",
-  "t",
-  "h",
-  "i",
-  "s",
-  " ",
-  "i",
-  "s",
-  " ",
-  "s",
-  "o",
-  "m",
-  "e",
-  " ",
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "",
+    "content": "H",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "b",
+    "content": "e",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "o",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
     "content": "l",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "d",
-  },
-  " ",
-  "t",
-  "e",
-  "x",
-  "t",
-  ".",
-]
-`;
-
-exports[`convertNodesToChunks() Correctly processes raw queue with multiple element in it. 1`] = `
-Array [
-  "T",
-  "h",
-  "i",
-  "s",
-  " ",
-  "i",
-  "s",
-  " ",
-  "m",
-  "y",
-  " ",
-  "b",
-  "o",
-  "d",
-  "y",
-  " ",
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "",
+    "content": "l",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "w",
+    "content": "o",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "i",
+    "content": ",",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
+  },
+  Object {
     "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
     "content": "h",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": " ",
+    "content": "i",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
     "content": "s",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
+  },
+  Object {
+    "content": "i",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
+  },
+  Object {
+    "content": "s",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
+  },
+  Object {
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
+  },
+  Object {
+    "content": "s",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
+  },
+  Object {
     "content": "o",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
     "content": "m",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
     "content": "e",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
     "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": Hello, this is some ,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
     "content": "b",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": bold,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
     "content": "o",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": bold,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
     "content": "l",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": bold,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
     "content": "d",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": bold,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
     "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text.,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
     "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text.,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
     "content": "e",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text.,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
     "content": "x",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text.,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
     "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text.,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
     "content": ".",
-  },
-  " ",
-  "a",
-  "n",
-  "d",
-  " ",
-  Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
-    "content": "",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
-    "content": "i",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
-    "content": "t",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
-    "content": "a",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
-    "content": "l",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
-    "content": "i",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
-    "content": "c",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
-    "content": "i",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
-    "content": "z",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
-    "content": "e",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
-    "content": "d",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
-    "content": " ",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
-    "content": "t",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
-    "content": "e",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
-    "content": "x",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
-    "content": "t",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-    ],
-    "attributes": Array [],
-    "content": ".",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  text.,
   },
 ]
 `;
 
-exports[`convertNodesToChunks() Correctly processes raw queue with nested elements in it. 1`] = `
+exports[`maybeChunkStringAsHtml() Should correctly transform non-HTML string as character objects. 1`] = `
 Array [
-  "T",
-  "h",
-  "i",
-  "s",
-  " ",
-  "i",
-  "s",
-  " ",
-  "m",
-  "y",
-  " ",
-  "b",
-  "o",
-  "d",
-  "y",
-  " ",
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "data-test",
-        "value": "test-attribute",
-      },
-    ],
-    "content": "",
+    "content": "A",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": null,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "data-test",
-        "value": "test-attribute",
-      },
-    ],
-    "content": "w",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "data-test",
-        "value": "test-attribute",
-      },
-    ],
-    "content": "i",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "data-test",
-        "value": "test-attribute",
-      },
-    ],
-    "content": "t",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "data-test",
-        "value": "test-attribute",
-      },
-    ],
-    "content": "h",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "data-test",
-        "value": "test-attribute",
-      },
-    ],
     "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": null,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "data-test",
-        "value": "test-attribute",
-      },
-    ],
-    "content": "s",
+    "content": "<",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": null,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "data-test",
-        "value": "test-attribute",
-      },
-    ],
-    "content": "o",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "data-test",
-        "value": "test-attribute",
-      },
-    ],
-    "content": "m",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "data-test",
-        "value": "test-attribute",
-      },
-    ],
     "content": "e",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": null,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "data-test",
-        "value": "test-attribute",
-      },
-    ],
-    "content": " ",
+    "content": "m",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": null,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "data-test",
-        "value": "test-attribute",
-      },
-    ],
-    "content": "b",
+    "content": ">",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": null,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "data-test",
-        "value": "test-attribute",
-      },
-    ],
-    "content": "o",
+    "content": "f",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": null,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "data-test",
-        "value": "test-attribute",
-      },
-    ],
-    "content": "l",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "data-test",
-        "value": "test-attribute",
-      },
-    ],
-    "content": "d",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "data-test",
-        "value": "test-attribute",
-      },
-    ],
-    "content": " ",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "test-class",
-      },
-    ],
-    "content": "",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "test-class",
-      },
-    ],
     "content": "a",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": null,
   },
   Object {
-    "ancestorTree": Array [
-      "I",
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "test-class",
-      },
-    ],
     "content": "n",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": null,
   },
   Object {
-    "ancestorTree": Array [
-      "I",
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "test-class",
-      },
-    ],
-    "content": "d",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "test-class",
-      },
-    ],
-    "content": " ",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "test-class",
-      },
-    ],
-    "content": "i",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "test-class",
-      },
-    ],
-    "content": "t",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "test-class",
-      },
-    ],
-    "content": "a",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "test-class",
-      },
-    ],
-    "content": "l",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "test-class",
-      },
-    ],
-    "content": "i",
-  },
-  Object {
-    "ancestorTree": Array [
-      "I",
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "test-class",
-      },
-    ],
     "content": "c",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": null,
   },
   Object {
-    "ancestorTree": Array [
-      "I",
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "test-class",
-      },
-    ],
-    "content": "i",
+    "content": "y",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": null,
   },
   Object {
-    "ancestorTree": Array [
-      "I",
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "test-class",
-      },
-    ],
-    "content": "z",
+    "content": "<",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": null,
   },
   Object {
-    "ancestorTree": Array [
-      "I",
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "test-class",
-      },
-    ],
+    "content": "/",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": null,
+  },
+  Object {
     "content": "e",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": null,
   },
   Object {
-    "ancestorTree": Array [
-      "I",
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "test-class",
-      },
-    ],
-    "content": "d",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "data-test",
-        "value": "test-attribute",
-      },
-    ],
-    "content": " ",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "data-test",
-        "value": "test-attribute",
-      },
-    ],
-    "content": "t",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "data-test",
-        "value": "test-attribute",
-      },
-    ],
-    "content": "e",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "data-test",
-        "value": "test-attribute",
-      },
-    ],
-    "content": "x",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "data-test",
-        "value": "test-attribute",
-      },
-    ],
-    "content": "t",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [
-      Object {
-        "name": "data-test",
-        "value": "test-attribute",
-      },
-    ],
-    "content": ".",
-  },
-]
-`;
-
-exports[`convertNodesToChunks() Correctly processes raw queue with one element in it. 1`] = `
-Array [
-  "T",
-  "h",
-  "i",
-  "s",
-  " ",
-  "i",
-  "s",
-  " ",
-  "m",
-  "y",
-  " ",
-  "b",
-  "o",
-  "d",
-  "y",
-  " ",
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "w",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "i",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "t",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "h",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": " ",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "s",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "o",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
     "content": "m",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": null,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "e",
+    "content": ">",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": null,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
     "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": null,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "b",
+    "content": "s",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": null,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "o",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "l",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "d",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": " ",
-  },
-  Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
     "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": null,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "e",
+    "content": "r",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": null,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "x",
+    "content": "i",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": null,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
-    "content": "t",
+    "content": "n",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": null,
   },
   Object {
-    "ancestorTree": Array [
-      "STRONG",
-    ],
-    "attributes": Array [],
+    "content": "g",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": null,
+  },
+  Object {
     "content": ".",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": null,
   },
-]
-`;
-
-exports[`extractChildTextNodes() Returns array with text nodes expanded. 1`] = `
-Array [
-  Array [
-    "T",
-    "h",
-    "i",
-    "s",
-    " ",
-    "i",
-    "s",
-    " ",
-    "m",
-    "y",
-    " ",
-  ],
-  <em>
-    string.
-  </em>,
-]
-`;
-
-exports[`extractChildTextNodes() Returns correct array with only non-text nodes. 1`] = `
-Array [
-  <i>
-    Hello, 
-  </i>,
-  <em>
-    buddy!
-  </em>,
-]
-`;
-
-exports[`extractChildTextNodes() Returns correct array with only text nodes. 1`] = `
-Array [
-  Array [
-    "N",
-    "o",
-    "t",
-    "h",
-    "i",
-    "n",
-    "g",
-    " ",
-    "b",
-    "u",
-    "t",
-    " ",
-    "s",
-    "t",
-    "r",
-    "i",
-    "n",
-    "g",
-    "s",
-    " ",
-    "i",
-    "n",
-    " ",
-    "h",
-    "e",
-    "r",
-    "e",
-    ".",
-  ],
-]
-`;
-
-exports[`extractChildTextNodes() Returns text as a split array 1`] = `
-Array [
-  Array [
-    "T",
-    "h",
-    "i",
-    "s",
-    " ",
-    "i",
-    "s",
-    " ",
-    "m",
-    "y",
-    " ",
-    "b",
-    "o",
-    "d",
-    "y",
-  ],
-]
-`;
-
-exports[`extractChildTextNodes() Splits text and leaves nodes as they are. 1`] = `
-Array [
-  Array [
-    "T",
-    "h",
-    "i",
-    "s",
-    " ",
-    "i",
-    "s",
-    " ",
-    "m",
-    "y",
-    " ",
-    "b",
-    "o",
-    "d",
-    "y",
-    " ",
-  ],
-  <strong>
-    with some bold text.
-  </strong>,
-]
-`;
-
-exports[`getNodeAttributes() Gets attributes from node. 1`] = `
-Array [
-  Object {
-    "name": "att1",
-    "value": "attValue1",
-  },
-  Object {
-    "name": "att2",
-    "value": "attValue1",
-  },
-]
-`;
-
-exports[`maybeChunkStringAsHtml() Should leave string be, but split it into array when setting is disabled. 1`] = `
-Array [
-  "A",
-  " ",
-  "<",
-  "e",
-  "m",
-  ">",
-  "f",
-  "a",
-  "n",
-  "c",
-  "y",
-  "<",
-  "/",
-  "e",
-  "m",
-  ">",
-  " ",
-  "s",
-  "t",
-  "r",
-  "i",
-  "n",
-  "g",
-  ".",
 ]
 `;
 
 exports[`maybeChunkStringAsHtml() Should return noderized string when setting is enabled. 1`] = `
 Array [
-  "A",
-  " ",
   Object {
-    "ancestorTree": Array [
-      "EM",
-    ],
-    "attributes": Array [],
-    "content": "",
+    "content": "A",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": A ,
   },
   Object {
-    "ancestorTree": Array [
-      "EM",
-    ],
-    "attributes": Array [],
+    "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node": A ,
+  },
+  Object {
     "content": "f",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": fancy,
   },
   Object {
-    "ancestorTree": Array [
-      "EM",
-    ],
-    "attributes": Array [],
     "content": "a",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": fancy,
   },
   Object {
-    "ancestorTree": Array [
-      "EM",
-    ],
-    "attributes": Array [],
     "content": "n",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": fancy,
   },
   Object {
-    "ancestorTree": Array [
-      "EM",
-    ],
-    "attributes": Array [],
     "content": "c",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": fancy,
   },
   Object {
-    "ancestorTree": Array [
-      "EM",
-    ],
-    "attributes": Array [],
     "content": "y",
-  },
-  " ",
-  "s",
-  "t",
-  "r",
-  "i",
-  "n",
-  "g",
-  ".",
-]
-`;
-
-exports[`transformNodeToQueueItems() Attaches attributes as node is transformed. 1`] = `
-Array [
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "my-class",
-      },
-      Object {
-        "name": "data-att",
-        "value": "my-att",
-      },
-    ],
-    "content": "",
+    "isHTMLElement": false,
+    "isTopLevelText": false,
+    "node": fancy,
   },
   Object {
-    "ancestorTree": Array [],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "my-class",
-      },
-      Object {
-        "name": "data-att",
-        "value": "my-att",
-      },
-    ],
-    "content": "H",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "my-class",
-      },
-      Object {
-        "name": "data-att",
-        "value": "my-att",
-      },
-    ],
-    "content": "e",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "my-class",
-      },
-      Object {
-        "name": "data-att",
-        "value": "my-att",
-      },
-    ],
-    "content": "l",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "my-class",
-      },
-      Object {
-        "name": "data-att",
-        "value": "my-att",
-      },
-    ],
-    "content": "l",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "my-class",
-      },
-      Object {
-        "name": "data-att",
-        "value": "my-att",
-      },
-    ],
-    "content": "o",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "my-class",
-      },
-      Object {
-        "name": "data-att",
-        "value": "my-att",
-      },
-    ],
-    "content": ",",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "my-class",
-      },
-      Object {
-        "name": "data-att",
-        "value": "my-att",
-      },
-    ],
     "content": " ",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  string.,
   },
   Object {
-    "ancestorTree": Array [],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "my-class",
-      },
-      Object {
-        "name": "data-att",
-        "value": "my-att",
-      },
-    ],
-    "content": "p",
+    "content": "s",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  string.,
   },
   Object {
-    "ancestorTree": Array [],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "my-class",
-      },
-      Object {
-        "name": "data-att",
-        "value": "my-att",
-      },
-    ],
-    "content": "a",
+    "content": "t",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  string.,
   },
   Object {
-    "ancestorTree": Array [],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "my-class",
-      },
-      Object {
-        "name": "data-att",
-        "value": "my-att",
-      },
-    ],
-    "content": "l",
+    "content": "r",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  string.,
   },
   Object {
-    "ancestorTree": Array [],
-    "attributes": Array [
-      Object {
-        "name": "class",
-        "value": "my-class",
-      },
-      Object {
-        "name": "data-att",
-        "value": "my-att",
-      },
-    ],
+    "content": "i",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  string.,
+  },
+  Object {
+    "content": "n",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  string.,
+  },
+  Object {
+    "content": "g",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  string.,
+  },
+  Object {
     "content": ".",
-  },
-]
-`;
-
-exports[`transformNodeToQueueItems() Transforms node with nested nodes. 1`] = `
-Array [
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": "",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": "H",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": "e",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": "l",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": "l",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": "o",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": ".",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": " ",
-  },
-  <em>
-    What is up?
-  </em>,
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": " ",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": "S",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": "e",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": "e",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": " ",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": "y",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": "o",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": "u",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": "!",
-  },
-]
-`;
-
-exports[`transformNodeToQueueItems() Transforms node with no specified ancestors into queue items. 1`] = `
-Array [
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": "",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": "H",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": "e",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": "l",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": "l",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": "o",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": ",",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": " ",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": "p",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": "a",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": "l",
-  },
-  Object {
-    "ancestorTree": Array [],
-    "attributes": Array [],
-    "content": ".",
-  },
-]
-`;
-
-exports[`transformNodeToQueueItems() Transforms node with specified ancestors. 1`] = `
-Array [
-  Object {
-    "ancestorTree": Array [
-      "div",
-      "span",
-    ],
-    "attributes": Array [],
-    "content": "",
-  },
-  Object {
-    "ancestorTree": Array [
-      "div",
-      "span",
-    ],
-    "attributes": Array [],
-    "content": "H",
-  },
-  Object {
-    "ancestorTree": Array [
-      "div",
-      "span",
-    ],
-    "attributes": Array [],
-    "content": "e",
-  },
-  Object {
-    "ancestorTree": Array [
-      "div",
-      "span",
-    ],
-    "attributes": Array [],
-    "content": "l",
-  },
-  Object {
-    "ancestorTree": Array [
-      "div",
-      "span",
-    ],
-    "attributes": Array [],
-    "content": "l",
-  },
-  Object {
-    "ancestorTree": Array [
-      "div",
-      "span",
-    ],
-    "attributes": Array [],
-    "content": "o",
-  },
-  Object {
-    "ancestorTree": Array [
-      "div",
-      "span",
-    ],
-    "attributes": Array [],
-    "content": ",",
-  },
-  Object {
-    "ancestorTree": Array [
-      "div",
-      "span",
-    ],
-    "attributes": Array [],
-    "content": " ",
-  },
-  Object {
-    "ancestorTree": Array [
-      "div",
-      "span",
-    ],
-    "attributes": Array [],
-    "content": "p",
-  },
-  Object {
-    "ancestorTree": Array [
-      "div",
-      "span",
-    ],
-    "attributes": Array [],
-    "content": "a",
-  },
-  Object {
-    "ancestorTree": Array [
-      "div",
-      "span",
-    ],
-    "attributes": Array [],
-    "content": "l",
-  },
-  Object {
-    "ancestorTree": Array [
-      "div",
-      "span",
-    ],
-    "attributes": Array [],
-    "content": ".",
+    "isHTMLElement": false,
+    "isTopLevelText": true,
+    "node":  string.,
   },
 ]
 `;

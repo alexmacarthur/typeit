@@ -8,18 +8,33 @@ Array [
   ],
   Array [
     [Function],
-    "A",
+    Object {
+      "content": "A",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": ABC,
+    },
     Object {
       "isFirst": true,
     },
   ],
   Array [
     [Function],
-    "B",
+    Object {
+      "content": "B",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": ABC,
+    },
   ],
   Array [
     [Function],
-    "C",
+    Object {
+      "content": "C",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": ABC,
+    },
     Object {
       "isLast": true,
     },
@@ -30,7 +45,12 @@ Array [
   ],
   Array [
     [Function],
-    <br />,
+    Object {
+      "content": <br />,
+      "isHTMLElement": true,
+      "isTopLevelText": false,
+      "node": null,
+    },
   ],
   Array [
     [Function],
@@ -38,18 +58,33 @@ Array [
   ],
   Array [
     [Function],
-    "E",
+    Object {
+      "content": "E",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": EFG,
+    },
     Object {
       "isFirst": true,
     },
   ],
   Array [
     [Function],
-    "F",
+    Object {
+      "content": "F",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": EFG,
+    },
   ],
   Array [
     [Function],
-    "G",
+    Object {
+      "content": "G",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": EFG,
+    },
     Object {
       "isLast": true,
     },
@@ -65,18 +100,33 @@ Array [
   ],
   Array [
     [Function],
-    "A",
+    Object {
+      "content": "A",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": ABC,
+    },
     Object {
       "isFirst": true,
     },
   ],
   Array [
     [Function],
-    "B",
+    Object {
+      "content": "B",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": ABC,
+    },
   ],
   Array [
     [Function],
-    "C",
+    Object {
+      "content": "C",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": ABC,
+    },
     Object {
       "isLast": true,
     },
@@ -87,7 +137,12 @@ Array [
   ],
   Array [
     [Function],
-    <br />,
+    Object {
+      "content": <br />,
+      "isHTMLElement": true,
+      "isTopLevelText": false,
+      "node": null,
+    },
   ],
   Array [
     [Function],
@@ -95,18 +150,33 @@ Array [
   ],
   Array [
     [Function],
-    "E",
+    Object {
+      "content": "E",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": EFG,
+    },
     Object {
       "isFirst": true,
     },
   ],
   Array [
     [Function],
-    "F",
+    Object {
+      "content": "F",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": EFG,
+    },
   ],
   Array [
     [Function],
-    "G",
+    Object {
+      "content": "G",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": EFG,
+    },
     Object {
       "isLast": true,
     },
@@ -122,18 +192,33 @@ Array [
   ],
   Array [
     [Function],
-    "A",
+    Object {
+      "content": "A",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": ABC,
+    },
     Object {
       "isFirst": true,
     },
   ],
   Array [
     [Function],
-    "B",
+    Object {
+      "content": "B",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": ABC,
+    },
   ],
   Array [
     [Function],
-    "C",
+    Object {
+      "content": "C",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": ABC,
+    },
     Object {
       "isLast": true,
     },
@@ -144,7 +229,12 @@ Array [
   ],
   Array [
     [Function],
-    <br />,
+    Object {
+      "content": <br />,
+      "isHTMLElement": true,
+      "isTopLevelText": false,
+      "node": null,
+    },
   ],
   Array [
     [Function],
@@ -152,18 +242,33 @@ Array [
   ],
   Array [
     [Function],
-    "E",
+    Object {
+      "content": "E",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": EFG,
+    },
     Object {
       "isFirst": true,
     },
   ],
   Array [
     [Function],
-    "F",
+    Object {
+      "content": "F",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": EFG,
+    },
   ],
   Array [
     [Function],
-    "G",
+    Object {
+      "content": "G",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": EFG,
+    },
     Object {
       "isLast": true,
     },
@@ -179,7 +284,12 @@ Array [
   ],
   Array [
     [Function],
-    "A",
+    Object {
+      "content": "A",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": A,
+    },
     Object {
       "isFirst": true,
     },
@@ -193,7 +303,12 @@ Array [
   ],
   Array [
     [Function],
-    <br />,
+    Object {
+      "content": <br />,
+      "isHTMLElement": true,
+      "isTopLevelText": false,
+      "node": null,
+    },
   ],
   Array [
     [Function],
@@ -201,7 +316,12 @@ Array [
   ],
   Array [
     [Function],
-    "B",
+    Object {
+      "content": "B",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": B,
+    },
     Object {
       "isFirst": true,
     },
@@ -215,7 +335,12 @@ Array [
   ],
   Array [
     [Function],
-    <br />,
+    Object {
+      "content": <br />,
+      "isHTMLElement": true,
+      "isTopLevelText": false,
+      "node": null,
+    },
   ],
   Array [
     [Function],
@@ -223,7 +348,12 @@ Array [
   ],
   Array [
     [Function],
-    "C",
+    Object {
+      "content": "C",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": C,
+    },
     Object {
       "isFirst": true,
     },
@@ -237,7 +367,12 @@ Array [
   ],
   Array [
     [Function],
-    <br />,
+    Object {
+      "content": <br />,
+      "isHTMLElement": true,
+      "isTopLevelText": false,
+      "node": null,
+    },
   ],
   Array [
     [Function],
@@ -245,7 +380,12 @@ Array [
   ],
   Array [
     [Function],
-    "D",
+    Object {
+      "content": "D",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": D,
+    },
     Object {
       "isFirst": true,
     },
@@ -259,7 +399,12 @@ Array [
   ],
   Array [
     [Function],
-    <br />,
+    Object {
+      "content": <br />,
+      "isHTMLElement": true,
+      "isTopLevelText": false,
+      "node": null,
+    },
   ],
   Array [
     [Function],
@@ -267,7 +412,12 @@ Array [
   ],
   Array [
     [Function],
-    "E",
+    Object {
+      "content": "E",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": E,
+    },
     Object {
       "isFirst": true,
     },
