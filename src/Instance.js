@@ -271,10 +271,10 @@ export default function Instance({
         );
 
         if (key[2] && key[2].isFirst) {
-          this.opts.beforeString(...callbackArgs);
+          await this.opts.beforeString(...callbackArgs);
         }
 
-        this.opts.beforeStep(...callbackArgs);
+        await this.opts.beforeStep(...callbackArgs);
 
         // Fire this step! During this process, pluck items from the waiting
         // queue and move them to executed.
@@ -287,15 +287,18 @@ export default function Instance({
         // remove it from the queue and pretend it never existed.
         if (!isAPhantomItem) {
           if (key[2] && key[2].isLast) {
-            this.opts.afterString(...callbackArgs);
+            await this.opts.afterString(...callbackArgs);
           }
 
-          this.opts.afterStep(...callbackArgs);
+          await this.opts.afterStep(...callbackArgs);
 
           // Remove this item from the global queue. Needed for pausing.
           this.queue.executed.push(justExecuted);
         }
       }
+
+      this.status.completed = true;
+      await this.opts.afterComplete(typeIt);
 
       if (this.opts.loop) {
         // Split the delay!
@@ -308,10 +311,6 @@ export default function Instance({
           this.fire();
         }, delay.after);
       }
-
-      this.status.completed = true;
-
-      this.opts.afterComplete(typeIt);
     } catch (e) {}
   };
 
