@@ -6,9 +6,9 @@ import asArray from "./helpers/asArray";
 import toArray from "./helpers/toArray";
 import insertIntoElement from "./helpers/insertIntoElement";
 import {
-  convertNodesToChunks,
   chunkStringAsHtml,
-  maybeChunkStringAsHtml
+  maybeChunkStringAsHtml,
+  createCharacterObject
 } from "./helpers/chunkStrings";
 import clearPreviousMarkup from "./helpers/clearPreviousMarkup";
 import queueMany from "./helpers/queueMany";
@@ -18,6 +18,7 @@ import calculateDelay from "./helpers/calculateDelay.js";
 import calculatePace from "./helpers/calculatePace.js";
 import getParsedBody from "./helpers/getParsedBody.js";
 import createElement from "./helpers/createElement";
+import getAllTextNodes from "./helpers/getAllTextNodes.js";
 
 export default function Instance({
   typeIt,
@@ -38,10 +39,7 @@ export default function Instance({
       return toArray(this.$e.value);
     }
 
-    let allNodes = toArray(this.$e.childNodes).filter(
-      node => !node.isEqualNode(cursor)
-    );
-    return convertNodesToChunks(allNodes, false);
+    return getAllTextNodes(this.$e, cursor);
   };
 
   /**
@@ -123,9 +121,9 @@ export default function Instance({
    */
   const generateQueue = () => {
     this.opts.strings.forEach((string, index) => {
-      let itemizedString = maybeChunkStringAsHtml(string, this.opts.html);
+      let chunkedString = maybeChunkStringAsHtml(string, this.opts.html);
 
-      this.queue.add(queueMany(itemizedString, this.type, true));
+      this.queue.add(queueMany(chunkedString, this.type, true));
 
       let queueLength = this.queue.waiting.length;
 
@@ -133,12 +131,13 @@ export default function Instance({
       if (index + 1 === this.opts.strings.length) return;
 
       if (this.opts.breakLines) {
-        this.queue.add([this.type, createElement("BR")]);
+        let breakObj = createCharacterObject(createElement("BR"));
+        this.queue.add([this.type, breakObj]);
         addSplitPause(queueLength);
         return;
       }
 
-      this.queue.add(queueMany(itemizedString, this.delete));
+      this.queue.add(queueMany(chunkedString, this.delete));
       addSplitPause(queueLength, string.length);
     });
   };
@@ -186,7 +185,7 @@ export default function Instance({
 
     if (this.opts.startDelete) {
       chunkStringAsHtml(existingMarkup).forEach(item => {
-        insertIntoElement(this.$e, item);
+        insertIntoElement(this.$e, item, cursor);
       });
 
       this.queue.add([this.delete, true]);
@@ -314,17 +313,10 @@ export default function Instance({
     } catch (e) {}
   };
 
-  this.type = function(character) {
-    // This is a shell character object, needed for creating
-    // the shell of an HTML this.$e. Just print & go.
-    if (typeof character === "object" && !character.content) {
-      insertIntoElement(this.$e, character);
-      return Promise.resolve();
-    }
-
+  this.type = function(characterObject) {
     return new Promise(resolve => {
       this.wait(() => {
-        insertIntoElement(this.$e, character);
+        insertIntoElement(this.$e, characterObject, cursor);
         return resolve();
       }, this.pace[0]);
     });

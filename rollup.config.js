@@ -5,13 +5,11 @@ import { terser } from "rollup-plugin-terser";
 const isProduction = process.env.NODE_ENV === "production";
 
 const preamble = `/**
-  *
   * TypeIt - ${pkg.description}
   * Author: ${pkg.author}
   * Version: v${pkg.version}
   * License: ${pkg.license}
   * URL: ${pkg.homepage}
-  *
   */`;
 
 const OUTPUT_DATA = [

@@ -1,83 +1,103 @@
-import isLastAtEveryLevel from "./isLastAtEveryLevel";
-import createNode from "./createNode";
 import isInput from "./isInput";
 import toArray from "./toArray";
+
+/**
+ * Given a node, find the corresponding PRINTED node already in an element.
+ *
+ * @param {node} element
+ * @param {object} element
+ * @return {undefined | object}
+ */
+export const findPrintedNode = (node, element) => {
+  let printedNodes = element.querySelectorAll("*");
+  return [element].concat(toArray(printedNodes).reverse()).find(i => {
+    let iClone = i.cloneNode();
+    return iClone.outerHTML === node.outerHTML;
+  });
+};
+
+/**
+ * Determine if a given node is the _last_ child in the element.
+ * This will allow us to know if we should continue typing into it,
+ * or if we should create another node to append at the end.
+ *
+ * @param {object} node The node to check.
+ * @param {object} nodeToIgnore Node to ignore.
+ */
+export const isLastElement = (node, nodeToIgnore) => {
+  if (!node) {
+    return false;
+  }
+
+  let sibling = node.nextSibling;
+
+  return !sibling || sibling.isEqualNode(nodeToIgnore);
+};
 
 /**
  * Inserts a set of content into the element. Intended for SINGLE characters.
  *
  * @param {object} element
+ * @param {object} contentArg A character object.
  * @param {string | object} content
  */
-export default (element, contentArg) => {
-  // Assume it's a string, and maybe overwrite later.
-  let content = contentArg;
+export default (element, contentArg, cursorNode = null) => {
+  let contentIsElement = contentArg.isHTMLElement;
+  let content = contentIsElement
+    ? contentArg.content
+    : document.createTextNode(contentArg.content);
 
   if (isInput(element)) {
-    element.value = `${element.value}${content}`;
+    element.value = `${element.value}${contentArg.content}`;
     return;
   }
 
-  // Find any existing cursor in the element to make sure we type BEFORE it.
-  let cursorNode = toArray(element.childNodes).filter(n => {
-    return n.classList && n.classList.contains("ti-cursor");
-  });
-
-  cursorNode = cursorNode.length ? cursorNode[0] : null;
-
   // We're inserting a character within an element!
-  // Make sure this isn't an HTML node that's being inserted.
-  if (typeof contentArg === "object" && !(contentArg instanceof HTMLElement)) {
-    let ancestorTree = contentArg.ancestorTree.slice(0);
-    let parentSelectors = ancestorTree.reverse().join(" ");
-    let existingNodes = toArray(element.querySelectorAll(`${parentSelectors}`));
+  if (!contentArg.isTopLevelText && !contentIsElement) {
+    let parentNode = contentArg.node.parentNode;
+    let existingNode = findPrintedNode(parentNode.cloneNode(), element);
 
-    // We don't want to accidentally type into the cursor node.
-    // Make sure we exlude it here.
-    existingNodes = existingNodes.filter(n => {
-      return !cursorNode || !cursorNode.isEqualNode(n);
-    });
+    // Only type into an existing element if there is one. This should only
+    // happen when we've already started typing in an element,
+    // and so we want to leave off where we started.
+    if (isLastElement(existingNode, cursorNode)) {
+      element = existingNode;
 
-    let lastExistingNode =
-      existingNodes.length > 0 ? existingNodes[existingNodes.length - 1] : null;
-
-    // Only type into an existing element if there is one
-    // and it's the last one in the entire container.
-    if (lastExistingNode && isLastAtEveryLevel(lastExistingNode, cursorNode)) {
-      element = lastExistingNode;
-      content = contentArg.content;
-
-      // We need to create an element!
+      // Otherwise, we need to create an element!
     } else {
-      // Overwrite the content with this newly created element.
-      content = createNode(
-        contentArg.ancestorTree[0],
-        contentArg.attributes,
-        contentArg.content
-      );
+      // Overwrite the content with a newly created element and set the content to type.
+      content = parentNode.cloneNode();
+      content.innerText = contentArg.content;
 
-      // We know this new element is supposed to be nested, so we need to print it inside the
-      // the LAST parent node that was created inside the container.
-      if (contentArg.ancestorTree.length > 1) {
-        // Get all the parent nodes in the container.
-        let parentNodes = toArray(
-          element.querySelectorAll(contentArg.ancestorTree[1])
-        );
+      // The _parent_ of the parent node isn't the body, which means we're printing this
+      // new element INSIDE a different element. Need to do a dance to either find
+      // the beginnings of that element, or else create one.
+      if (parentNode.parentNode.tagName !== "BODY") {
+        let parent = parentNode.parentNode;
+        let parentClone = parent.cloneNode();
+        let newElement = findPrintedNode(parentClone, element);
 
-        // We assume it exists.
-        element = parentNodes[parentNodes.length - 1];
+        while (!newElement && parent.tagName !== "BODY") {
+          // Wrap our element in the to-be-created parent node.
+          // Then, we need to find the next candidate to print into.
+          parentClone.innerHTML = content.outerHTML;
+          content = parentClone;
+          parentClone = parent.parentNode.cloneNode();
+          parent = parent.parentNode;
+
+          newElement = findPrintedNode(parentClone, element);
+        }
+
+        // We found an element before reaching the top. Assign it!
+        if (newElement) {
+          element = newElement;
+        }
       }
     }
   }
 
-  // Might be either an HTMLElement or Node.
-  content =
-    typeof content === "object" ? content : document.createTextNode(content);
-
   // If a cursor node exists, make sure we print BEFORE that, but only if the target
-  // element is the top-level one. Otherwise, stick it to the end of the element.
-  element.insertBefore(
-    content,
-    cursorNode && element.hasAttribute("data-typeit-id") ? cursorNode : null
-  );
+  // element actually contains it. Otherwise, stick it to the end of the element.
+  let referenceNode = element.contains(cursorNode) ? cursorNode : null;
+  element.insertBefore(content, referenceNode);
 };
