@@ -101,6 +101,23 @@ export default function TypeIt(element, options) {
   };
 
   /**
+   * Move type cursor by a given number.
+   *
+   * @param {integer} number
+   * @return {object}
+   */
+  this.move = function(number) {
+    let isNegative = number < 0;
+    each(instance => {
+      instance.queue.add(
+        queueMany(Math.abs(number), [instance.move, isNegative ? 1 : -1])
+      );
+    });
+
+    return this;
+  };
+
+  /**
    * If null is passed, will delete whatever's currently in the element.
    *
    * @param  { number } numCharacters Number of characters to delete.

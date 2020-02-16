@@ -1,5 +1,6 @@
 import removeNode from "./removeNode";
 import toArray from "./toArray";
+import isTypeableNode from "./isTypeableNode";
 
 /**
  * Check if a given character node is empty, either containing nothing or an empty HTML element.
@@ -10,7 +11,7 @@ import toArray from "./toArray";
 export const characterIsEmpty = node => {
   // It's a text node. Leave it be.
   // Or, break tags are an exception.
-  if (node.nodeType === 3 || node.tagName === "BR") {
+  if (isTypeableNode(node)) {
     return false;
   }
 

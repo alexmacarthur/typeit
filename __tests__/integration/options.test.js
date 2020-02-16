@@ -99,7 +99,7 @@ describe("startDelete option.", () => {
 });
 
 describe("html option", () => {
-  test("It should queue strings as HTML by default.", () => {
+  test.only("It should queue strings as HTML by default.", () => {
     document.body.innerHTML = `
       <div>
         <span id="element"></span>

@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should return break tag as separate node. 1`] = `
+Array [
+        This text will break. ,
+  <br />,
+   It broke.    ,
+]
+`;
+
+exports[`Should return break tags as when they bookend string. 1`] = `
+Array [
+  <br />,
+  Text in the middle,
+  <br />,
+]
+`;
+
+exports[`Should return correct text nodes when nested deeply. 1`] = `
+Array [
+        Text #1. ,
+  Text #2. ,
+  Text #3.,
+]
+`;
+
+exports[`Should return multiple text nodes. 1`] = `
+Array [
+        This is text. ,
+  And here is more.,
+]
+`;
+
+exports[`Should return the single text node. 1`] = `
+Array [
+        This is text.    ,
+]
+`;

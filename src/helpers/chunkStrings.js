@@ -1,7 +1,7 @@
 import toArray from "../helpers/toArray";
 import flatten from "../helpers/flatten";
 import getParsedBody from "./getParsedBody";
-import getAllTextNodes from "./getAllTextNodes";
+import getAllTypeableNodes from "./getAllTypeableNodes";
 
 /**
  * Given a node, generate an array of split text and nodes.
@@ -9,9 +9,13 @@ import getAllTextNodes from "./getAllTextNodes";
  * @param {object} el
  */
 export const constructQueueFromNodes = el => {
-  let nodeList = getAllTextNodes(el);
+  let nodeList = getAllTypeableNodes(el);
 
   let characterObjects = nodeList.map(item => {
+    if (!item.nodeValue) {
+      return createCharacterObject(item);
+    }
+
     return toArray(item.nodeValue).map(character => {
       return createCharacterObject(character, item);
     });

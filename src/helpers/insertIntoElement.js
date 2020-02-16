@@ -1,5 +1,6 @@
 import isInput from "./isInput";
 import toArray from "./toArray";
+import getAllTypeableNodes from "./getAllTypeableNodes";
 
 /**
  * Given a node, find the corresponding PRINTED node already in an element.
@@ -41,7 +42,7 @@ export const isLastElement = (node, nodeToIgnore) => {
  * @param {object} contentArg A character object.
  * @param {string | object} content
  */
-export default (element, contentArg, cursorNode = null) => {
+export default (element, contentArg, cursorNode = null, cursorPosition) => {
   let contentIsElement = contentArg.isHTMLElement;
   let content = contentIsElement
     ? contentArg.content
@@ -96,8 +97,11 @@ export default (element, contentArg, cursorNode = null) => {
     }
   }
 
+  let refNode = getAllTypeableNodes(element, cursorNode, true);
+  refNode = refNode[cursorPosition - 1];
+  refNode = element.contains(cursorNode) ? cursorNode : refNode;
+
   // If a cursor node exists, make sure we print BEFORE that, but only if the target
   // element actually contains it. Otherwise, stick it to the end of the element.
-  let referenceNode = element.contains(cursorNode) ? cursorNode : null;
-  element.insertBefore(content, referenceNode);
+  element.insertBefore(content, refNode ? refNode : null);
 };

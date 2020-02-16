@@ -1,24 +1,25 @@
 import defaults from "./defaults.js";
 import Queue from "./Queue";
 import { removeComments, appendStyleBlock } from "./utilities";
-import isInput from "./helpers/isInput";
-import asArray from "./helpers/asArray";
-import toArray from "./helpers/toArray";
-import insertIntoElement from "./helpers/insertIntoElement";
 import {
   chunkStringAsHtml,
   maybeChunkStringAsHtml,
   createCharacterObject
 } from "./helpers/chunkStrings";
+import asArray from "./helpers/asArray";
+import calculateDelay from "./helpers/calculateDelay.js";
+import calculatePace from "./helpers/calculatePace.js";
 import clearPreviousMarkup from "./helpers/clearPreviousMarkup";
+import createElement from "./helpers/createElement";
+import getAllTypeableNodes from "./helpers/getAllTypeableNodes.js";
+import getParsedBody from "./helpers/getParsedBody.js";
+import insertIntoElement from "./helpers/insertIntoElement";
+import isInput from "./helpers/isInput";
 import queueMany from "./helpers/queueMany";
 import removeNode from "./helpers/removeNode";
 import removeEmptyElements from "./helpers/removeEmptyElements";
-import calculateDelay from "./helpers/calculateDelay.js";
-import calculatePace from "./helpers/calculatePace.js";
-import getParsedBody from "./helpers/getParsedBody.js";
-import createElement from "./helpers/createElement";
-import getAllTextNodes from "./helpers/getAllTextNodes.js";
+import repositionCursor from "./helpers/repositionCursor";
+import toArray from "./helpers/toArray";
 
 export default function Instance({
   typeIt,
@@ -39,7 +40,7 @@ export default function Instance({
       return toArray(this.$e.value);
     }
 
-    return getAllTextNodes(this.$e, cursor);
+    return getAllTypeableNodes(this.$e, cursor, true);
   };
 
   /**
@@ -76,7 +77,7 @@ export default function Instance({
     cursor.className = "ti-cursor";
     cursor.setAttribute(
       "style",
-      "display:inline;position:relative;font:inherit;color:inherit;line-height:inherit;"
+      "display:inline;position:absolute;font:inherit;color:inherit;line-height:inherit;margin-left:-.1em;"
     );
 
     return cursor;
@@ -147,10 +148,15 @@ export default function Instance({
    * 2. Remove initial pause.
    * 3. Add phantom deletions.
    */
-  const loopify = delay => {
+  const loopify = async delay => {
     // Reset queue.
     // Remove initial pause, so we can replace with `loop` pause.
     // Add delay pause FIRST, since we're adding to beginning of queue.
+
+    // Reset the cursor position!
+    if (_cursorPosition) {
+      await this.move(_cursorPosition * -1);
+    }
 
     this.queue
       .reset()
@@ -185,7 +191,7 @@ export default function Instance({
 
     if (this.opts.startDelete) {
       chunkStringAsHtml(existingMarkup).forEach(item => {
-        insertIntoElement(this.$e, item, cursor);
+        insertIntoElement(this.$e, item, cursor, _cursorPosition);
       });
 
       this.queue.add([this.delete, true]);
@@ -305,8 +311,8 @@ export default function Instance({
           ? this.opts.loopDelay
           : this.opts.nextStringDelay;
 
-        this.wait(() => {
-          loopify(delay);
+        this.wait(async () => {
+          await loopify(delay);
           this.fire();
         }, delay.after);
       }
@@ -316,7 +322,7 @@ export default function Instance({
   this.type = function(characterObject) {
     return new Promise(resolve => {
       this.wait(() => {
-        insertIntoElement(this.$e, characterObject, cursor);
+        insertIntoElement(this.$e, characterObject, cursor, _cursorPosition);
         return resolve();
       }, this.pace[0]);
     });
@@ -357,8 +363,8 @@ export default function Instance({
         if (allChars.length) {
           if (elementIsInput) {
             this.$e.value = this.$e.value.slice(0, -1);
-          } else {
-            removeNode(allChars[allChars.length - 1]);
+          } else if (allChars[_cursorPosition]) {
+            removeNode(allChars[_cursorPosition]);
           }
         }
 
@@ -390,6 +396,21 @@ export default function Instance({
     return;
   };
 
+  /**
+   * Move type cursor by a given number.
+   *
+   * @param {integer} stepsToMove
+   */
+  this.move = function(stepsToMove) {
+    return new Promise(resolve => {
+      this.wait(() => {
+        _cursorPosition += stepsToMove;
+        repositionCursor(this.$e, getAllChars(), cursor, _cursorPosition);
+        return resolve();
+      }, this.pace[0]);
+    });
+  };
+
   let elementIsInput = isInput(element);
 
   this.status = {
@@ -400,6 +421,9 @@ export default function Instance({
   };
   this.$e = element;
   this.timeouts = [];
+
+  // Relative to the end of the container.
+  let _cursorPosition = 0;
   this.opts = Object.assign({}, defaults, options);
   this.opts.html = elementIsInput ? false : this.opts.html;
   this.opts.nextStringDelay = calculateDelay(this.opts.nextStringDelay);
