@@ -1,19 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Initial queue only contains startDelay pause. 1`] = `
-_default {
-  "add": [Function],
-  "delete": [Function],
-  "executed": Array [],
-  "insert": [Function],
-  "reset": [Function],
-  "waiting": Array [
-    Array [
-      [Function],
-      250,
-    ],
+Array [
+  Array [
+    [Function],
+    250,
+    Object {},
   ],
-}
+]
 `;
 
 exports[`Returns an object with expected properties. 1`] = `
@@ -24,8 +18,9 @@ Array [
   "empty",
   "exec",
   "freeze",
+  "getOptions",
+  "getQueue",
   "go",
-  "instances",
   "is",
   "move",
   "options",
@@ -34,4 +29,410 @@ Array [
   "type",
   "unfreeze",
 ]
+`;
+
+exports[`empty() addSplitPause() Adds different even split pause around strings. 1`] = `
+Array [
+  Array [
+    [Function],
+    250,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "A",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": ABC,
+    },
+    Object {
+      "isFirst": true,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "B",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": ABC,
+    },
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "C",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": ABC,
+    },
+    Object {
+      "isLast": true,
+    },
+  ],
+  Array [
+    [Function],
+    500,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": <br />,
+      "isHTMLElement": true,
+      "isTopLevelText": false,
+      "node": null,
+    },
+    Object {},
+  ],
+  Array [
+    [Function],
+    500,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "E",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": EFG,
+    },
+    Object {
+      "isFirst": true,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "F",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": EFG,
+    },
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "G",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": EFG,
+    },
+    Object {
+      "isLast": true,
+    },
+  ],
+]
+`;
+
+exports[`empty() addSplitPause() Adds even split pause around strings. 1`] = `
+Array [
+  Array [
+    [Function],
+    250,
+    Object {},
+  ],
+]
+`;
+
+exports[`empty() addSplitPause() Adds split pause around strings when value is array. 1`] = `
+Array [
+  Array [
+    [Function],
+    250,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "A",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": ABC,
+    },
+    Object {
+      "isFirst": true,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "B",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": ABC,
+    },
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "C",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": ABC,
+    },
+    Object {
+      "isLast": true,
+    },
+  ],
+  Array [
+    [Function],
+    100,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": <br />,
+      "isHTMLElement": true,
+      "isTopLevelText": false,
+      "node": null,
+    },
+    Object {},
+  ],
+  Array [
+    [Function],
+    500,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "E",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": EFG,
+    },
+    Object {
+      "isFirst": true,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "F",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": EFG,
+    },
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "G",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": EFG,
+    },
+    Object {
+      "isLast": true,
+    },
+  ],
+]
+`;
+
+exports[`empty() addSplitPause() Inserts split pause around multiple strings. 1`] = `
+Array [
+  Array [
+    [Function],
+    250,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "A",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": A,
+    },
+    Object {
+      "isFirst": true,
+    },
+    Object {
+      "isLast": true,
+    },
+  ],
+  Array [
+    [Function],
+    375,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": <br />,
+      "isHTMLElement": true,
+      "isTopLevelText": false,
+      "node": null,
+    },
+    Object {},
+  ],
+  Array [
+    [Function],
+    375,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "B",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": B,
+    },
+    Object {
+      "isFirst": true,
+    },
+    Object {
+      "isLast": true,
+    },
+  ],
+  Array [
+    [Function],
+    375,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": <br />,
+      "isHTMLElement": true,
+      "isTopLevelText": false,
+      "node": null,
+    },
+    Object {},
+  ],
+  Array [
+    [Function],
+    375,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "C",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": C,
+    },
+    Object {
+      "isFirst": true,
+    },
+    Object {
+      "isLast": true,
+    },
+  ],
+  Array [
+    [Function],
+    375,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": <br />,
+      "isHTMLElement": true,
+      "isTopLevelText": false,
+      "node": null,
+    },
+    Object {},
+  ],
+  Array [
+    [Function],
+    375,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "D",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": D,
+    },
+    Object {
+      "isFirst": true,
+    },
+    Object {
+      "isLast": true,
+    },
+  ],
+  Array [
+    [Function],
+    375,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": <br />,
+      "isHTMLElement": true,
+      "isTopLevelText": false,
+      "node": null,
+    },
+    Object {},
+  ],
+  Array [
+    [Function],
+    375,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "E",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": E,
+    },
+    Object {
+      "isFirst": true,
+    },
+    Object {
+      "isLast": true,
+    },
+  ],
+]
+`;
+
+exports[`reset() Successfully resets when called. 1`] = `
+Object {
+  "afterComplete": [Function],
+  "afterStep": [Function],
+  "afterString": [Function],
+  "beforeStep": [Function],
+  "beforeString": [Function],
+  "breakLines": true,
+  "cursor": true,
+  "cursorChar": "|",
+  "cursorSpeed": 1000,
+  "deleteSpeed": null,
+  "html": true,
+  "lifeLike": true,
+  "loop": false,
+  "loopDelay": Object {
+    "after": 375,
+    "before": 375,
+    "total": 750,
+  },
+  "nextStringDelay": Object {
+    "after": 375,
+    "before": 375,
+    "total": 750,
+  },
+  "speed": 100,
+  "startDelay": 250,
+  "startDelete": false,
+  "strings": Array [
+    "This is my string!",
+  ],
+  "waitUntilVisible": false,
+}
 `;

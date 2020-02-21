@@ -6,33 +6,93 @@ beforeEach(() => {
   queue = new Queue();
 });
 
-test("It should add steps properly.", () => {
-  expect(queue.waiting).toEqual([]);
-  expect(queue.executed).toEqual([]);
+describe("add()", () => {
+  test("It should add steps properly.", () => {
+    expect(queue.getItems()).toEqual([]);
 
-  queue.add("step 1");
-  queue.add("step 2");
+    queue.add(["step1"]);
+    queue.add(["step2"]);
 
-  expect(queue.waiting).toEqual(["step 1", "step 2"]);
-  expect(queue.executed).toEqual([]);
+    expect(queue.getItems()).toMatchSnapshot();
+  });
+
+  test("It should add a step passed as a function.", () => {
+    const myFunc = () => 'func!';
+    queue.add(myFunc);
+    queue.add(myFunc);
+    queue.add(myFunc);
+    expect(queue.getItems()).toMatchSnapshot();
+  });
+
+  test("It should add multiple steps passed at once.", () => {
+    const myFunc = () => 'func!';
+    queue.add([
+      [myFunc, 1],
+      [myFunc, 2],
+      [myFunc, 3]
+    ]);
+    expect(queue.getItems()).toMatchSnapshot();
+  });
 });
 
-test("It should reset properly.", () => {
-  queue.waiting = [4, 5, 6];
-  queue.executed = [1, 2, 3];
+test("It should reset properly by marking each item as having not yet been executed.", () => {
+  queue.add([
+    [
+      "value1",
+      null,
+      { hasBeenExecuted: true }
+    ],
+    [
+      "value2",
+      null,
+      { hasBeenExecuted: true }
+    ],
+    [
+      "value3",
+      null,
+      { hasBeenExecuted: false }
+    ],
+    [
+      "value4",
+      null,
+      { hasBeenExecuted: true }
+    ],
+    [
+      "value5",
+      null,
+      { hasBeenExecuted: true }
+    ]
+  ]);
 
   queue.reset();
 
-  expect(queue.waiting).toEqual([1, 2, 3, 4, 5, 6]);
-  expect(queue.executed).toEqual([]);
+  expect(queue.getItems()).toMatchSnapshot();
 });
 
 test("It should set initial steps properly.", () => {
   let q1 = new Queue();
 
-  expect(q1.waiting).toEqual([]);
+  expect(q1.getItems()).toEqual([]);
 
-  let q2 = new Queue([1, 2, 3]);
+  let items = [
+    [
+      "value1",
+      null,
+      {}
+    ],
+    [
+      "value2",
+      null,
+      {}
+    ],
+    [
+      "value3",
+      null,
+      {}
+    ]
+  ];
 
-  expect(q2.waiting).toEqual([1, 2, 3]);
+  let q2 = new Queue(items);
+
+  expect(q2.getItems()).toMatchSnapshot();
 });

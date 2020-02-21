@@ -42,7 +42,8 @@ export const isLastElement = (node, nodeToIgnore) => {
  * @param {object} contentArg A character object.
  * @param {string | object} content
  */
-export default (element, contentArg, cursorNode = null, cursorPosition) => {
+export default (element, contentArg, cursorNode, cursorPosition) => {
+  cursorNode = cursorNode || null;
   let contentIsElement = contentArg.isHTMLElement;
   let content = contentIsElement
     ? contentArg.content
@@ -99,7 +100,10 @@ export default (element, contentArg, cursorNode = null, cursorPosition) => {
 
   let refNode = getAllTypeableNodes(element, cursorNode, true);
   refNode = refNode[cursorPosition - 1];
-  refNode = element.contains(cursorNode) ? cursorNode : refNode;
+
+  // refNode = element.contains(cursorNode) ? cursorNode : refNode;
+  // WHY?
+  refNode = element.querySelector('.ti-cursor') || refNode;
 
   // If a cursor node exists, make sure we print BEFORE that, but only if the target
   // element actually contains it. Otherwise, stick it to the end of the element.

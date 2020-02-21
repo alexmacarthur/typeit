@@ -1,6 +1,7 @@
 import TypeIt from "../src/TypeIt.js";
 
 let instance;
+let args;
 
 beforeEach(() => {
   document.body.innerHTML = `
@@ -9,11 +10,21 @@ beforeEach(() => {
     </div>
   `;
 
-  instance = new TypeIt("#element");
+  args = [
+    "#element",
+    {
+      speed: 1,
+      strings: ["ABC", "EFG"]
+    }
+  ];
+
+  instance = new TypeIt(...args);
 });
 
 test("Initial queue only contains startDelay pause.", () => {
-  expect(instance.instances[0].queue).toMatchSnapshot();
+  args[1].strings = [];
+  instance = new TypeIt(...args);
+  expect(instance.getQueue().getItems()).toMatchSnapshot();
 });
 
 test("Returns an object with expected properties.", () => {
@@ -31,7 +42,7 @@ test("Defines hard-coded string correctly.", () => {
     strings: ["My string."]
   });
 
-  expect(instance.instances[0].opts.strings).toEqual([
+  expect(instance.getOptions().strings).toEqual([
     "Hard-coded string.",
     "My string."
   ]);
@@ -66,9 +77,7 @@ test("Clears out remnants of previous instances correctly.", () => {
     strings: "My string."
   });
 
-  expect(!instance.instances[0].opts.strings[0].includes("ti-cursor")).toEqual(
-    true
-  );
+  expect(!instance.getOptions().strings[0].includes("ti-cursor")).toEqual(true);
 });
 
 test("Typing doesn't end with a break tag.", () => {
@@ -76,11 +85,98 @@ test("Typing doesn't end with a break tag.", () => {
     <span id="element"></span>
   </div>`;
 
-  const instance = new TypeIt("#element", {
+  const element = document.querySelector("#element");
+  new TypeIt("#element", {
     strings: ["One string.", "Two string", "Three string."]
   }).go();
 
-  expect(instance.instances[0].$e.innerHTML.endsWith("<br>")).not.toBe(true);
+  expect(element.innerHTML.endsWith("<br>")).not.toBe(true);
+});
+
+describe("go()", () => {
+  test("Attaches cursor correctly.", () => {
+    expect(document.querySelector(".ti-cursor")).toBeNull();
+    instance.go();
+    expect(document.querySelector(".ti-cursor")).not.toBeNull();
+  });
+
+  test("Does not attach cursor when none should exist.", () => {
+    args[1].cursor = false;
+    instance = new TypeIt(...args);
+    expect(document.querySelector(".ti-cursor")).toBeNull();
+    instance.go();
+    expect(document.querySelector(".ti-cursor")).toBeNull();
+  });
+});
+
+describe("empty()", () => {
+  test("Should empty out element when called with no cursor.", async () => {
+    args[1].cursor = false;
+    instance = new TypeIt(...args);
+    element.innerHTML = "existing text";
+
+    await new Promise(resolve => {
+      args[1].afterComplete = function() {
+        return resolve();
+      };
+
+      const instance = new TypeIt(...args);
+
+      instance.empty().go();
+    });
+
+    expect(element.childNodes).toHaveLength(0);
+  });
+
+  describe("addSplitPause()", () => {
+    test("Adds even split pause around strings.", () => {
+      args[1].strings = [];
+      instance = new TypeIt(...args);
+      expect(instance.getQueue().getItems()).toMatchSnapshot();
+    });
+
+    test("Adds different even split pause around strings.", () => {
+      args[1].strings = ["ABC", "EFG"];
+      args[1].nextStringDelay = 1000;
+
+      instance = new TypeIt(...args);
+
+      expect(instance.getQueue().getItems()).toMatchSnapshot();
+    });
+
+    test("Adds split pause around strings when value is array.", () => {
+      args[1].strings = ["ABC", "EFG"];
+      args[1].nextStringDelay = [100, 500];
+
+      instance = new TypeIt(...args);
+
+      expect(instance.getQueue().getItems()).toMatchSnapshot();
+    });
+
+    test("Inserts split pause around multiple strings.", () => {
+      args[1].strings = ["A", "B", "C", "D", "E"];
+
+      instance = new TypeIt(...args);
+
+      expect(instance.getQueue().getItems()).toMatchSnapshot();
+    });
+  });
+
+  test("Should leave cursor alone when it empties element.", async () => {
+    element.innerHTML = "existing text";
+
+    await new Promise(resolve => {
+      args[1].afterComplete = function() {
+        return resolve();
+      };
+
+      const instance = new TypeIt(...args);
+
+      instance.empty().go();
+    });
+
+    expect(element.childNodes).toHaveLength(1);
+  });
 });
 
 describe("reset()", () => {
@@ -89,7 +185,7 @@ describe("reset()", () => {
         <span id="element"></span>
       </div>`;
 
-    const instance = new TypeIt("#element", {
+    let instance = new TypeIt("#element", {
       strings: "This is my string!"
     }).go();
 
@@ -97,12 +193,10 @@ describe("reset()", () => {
 
     expect(instance.is("destroyed")).toBe(true);
 
-    instance.reset();
+    instance = instance.reset();
 
     //-- Ensure the arguments that define these properties were passed.
-    expect(instance.instances[0].$e).not.toBe(undefined);
-    expect(instance.instances[0].opts).not.toBe(undefined);
-    expect(instance.instances).toHaveLength(1);
+    expect(instance.getOptions()).toMatchSnapshot();
     expect(instance.is("completed")).toBe(false);
     expect(instance.is("destroyed")).toBe(false);
   });
@@ -122,7 +216,6 @@ describe("destroy()", () => {
 
     instance.destroy();
 
-    expect(instance.instances[0].timeouts).toEqual([]);
     expect(document.body.querySelector(".ti-cursor")).toEqual(null);
   });
 });

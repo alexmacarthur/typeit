@@ -1,4 +1,4 @@
-import { randomInRange } from "../utilities";
+import randomInRange from "../helpers/randomInRange";
 
 export default function(typeSpeed, deleteSpeed, lifeLike) {
   deleteSpeed = deleteSpeed !== null ? deleteSpeed : typeSpeed / 3;

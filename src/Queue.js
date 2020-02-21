@@ -1,12 +1,17 @@
-export default function(predefinedItems = [], initialItem = null) {
+import guaranteeThreeKeys from './helpers/guaranteeThreeKeys';
+import queueMany from './helpers/queueMany';
+
+export default function Queue (initialItem) {
+  initialItem = initialItem || null;
+
   /**
    * Insert items into the `waiting` queue.
    *
    * @param {integer} start
    * @param {array} newItems
    */
-  this.insert = (start, newItems) => {
-    this.waiting.splice(start, 0, newItems);
+  this.insert = function (start, newItems) {
+    _queue.splice(start, 0, newItems);
   };
 
   /**
@@ -16,14 +21,22 @@ export default function(predefinedItems = [], initialItem = null) {
    * @param {boolean} toBeginning
    * @return {object}
    */
-  this.add = (stepOrSteps, toBeginning = false) => {
-    // Way to check if this multiple steps being added at once.
-    if (Array.isArray(stepOrSteps[0])) {
-      this.waiting = this.waiting.concat(stepOrSteps);
-      return this;
+  this.add = function (stepOrSteps, numberOfTimes, toBeginning) {
+
+    // If a single thing is passed, assume it's an action with no argument.
+    stepOrSteps = Array.isArray(stepOrSteps) ? stepOrSteps : [stepOrSteps, null];
+    toBeginning = toBeginning || false;
+    numberOfTimes = numberOfTimes || 1;
+    let isMultipleSteps = Array.isArray(stepOrSteps[0]);
+
+    if (!isMultipleSteps) {
+      stepOrSteps = queueMany(numberOfTimes, stepOrSteps);
     }
 
-    this.waiting[toBeginning ? "unshift" : "push"](stepOrSteps);
+    _queue = toBeginning
+      ? stepOrSteps.concat(_queue)
+      : _queue.concat(stepOrSteps);
+
     return this;
   };
 
@@ -33,8 +46,8 @@ export default function(predefinedItems = [], initialItem = null) {
    * @param {integer} index
    * @return {object}
    */
-  this.delete = index => {
-    this.waiting.splice(index, 1);
+  this.delete = function(index) {
+    _queue.splice(index, 1);
     return this;
   };
 
@@ -43,18 +56,29 @@ export default function(predefinedItems = [], initialItem = null) {
    *
    * @return {object}
    */
-  this.reset = () => {
-    this.waiting = this.executed.concat(this.waiting);
-    this.executed = [];
+  this.reset = function () {
+    _queue = guaranteeThreeKeys(_queue).map(item => {
+      item[2].hasBeenExecuted = false;
+      return item;
+    });
+
     return this;
   };
 
-  this.executed = [];
-  this.waiting = predefinedItems;
+  /**
+   * Retrieve all items that are still eligible to be executed.
+   *
+   * @return {array}
+   */
+  this.getItems = function () {
+    return guaranteeThreeKeys(_queue).filter(i => !i.hasBeenExecuted);
+  }
+
+  let _queue = [];
 
   // Don't include initial item if we're recycling
   // items from a previous run.
-  if (!predefinedItems.length && initialItem) {
+  if (initialItem) {
     this.add(initialItem);
   }
 }

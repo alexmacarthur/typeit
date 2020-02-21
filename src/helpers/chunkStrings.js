@@ -33,7 +33,8 @@ export const constructQueueFromNodes = el => {
  * @param {string} content
  * @return {object}
  */
-export const createCharacterObject = (content, node = null) => {
+export const createCharacterObject = (content, node) => {
+  node = node || null;
   let contentIsAnElement = content instanceof HTMLElement;
 
   return {
@@ -69,7 +70,9 @@ export function chunkStringAsHtml(string) {
  * @param {boolean} asHtml
  * @return {array}
  */
-export function maybeChunkStringAsHtml(str, asHtml = true) {
+export function maybeChunkStringAsHtml(str, asHtml) {
+  asHtml = asHtml !== undefined ? asHtml : true;
+
   if (asHtml) {
     return chunkStringAsHtml(str);
   }

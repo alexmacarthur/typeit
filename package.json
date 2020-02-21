@@ -16,9 +16,8 @@
   "scripts": {
     "rollup": "NODE_ENV=production rollup -c",
     "watch": "NODE_ENV=development rollup -c -w",
-    "build": "npm run rollup && npm run prettier",
+    "build": "npm run rollup",
     "serve": "concurrently --kill-others \"npm run watch\" \"node serve.js\"",
-    "precommit": "pretty-quick --staged",
     "prettier": "prettier --write \"**/*.{md,js}\"",
     "test": "jest",
     "postinstall": "node ./notice.js"
@@ -61,5 +60,10 @@
     "setupFiles": [
       "./__tests__/setup.js"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   }
 }

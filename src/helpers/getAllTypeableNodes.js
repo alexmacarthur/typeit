@@ -7,9 +7,12 @@ import flatten from "./flatten";
  */
 const getAllTypeableNodes = (
   element,
-  parentToExclude = null,
-  shouldReverse = false
+  parentToExclude,
+  shouldReverse
 ) => {
+  parentToExclude = parentToExclude || null;
+  shouldReverse = shouldReverse !== undefined ? shouldReverse : false;
+
   let nodes = toArray(element.childNodes).map(child => {
     if (isTypeableNode(child)) {
       return child;

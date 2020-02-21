@@ -56,9 +56,9 @@ describe("startDelete option.", () => {
 
     const instance = new TypeIt("#element", {});
 
-    expect(instance.instances[0].queue.waiting).toMatchSnapshot();
+    expect(instance.getQueue().getItems()).toMatchSnapshot();
 
-    expect(instance.instances[0].opts.strings).toEqual([
+    expect(instance.getOptions().strings).toEqual([
       "This should be typed first."
     ]);
   });
@@ -72,9 +72,9 @@ describe("startDelete option.", () => {
       strings: "This is another string."
     });
 
-    expect(instance.instances[0].queue.waiting).toMatchSnapshot();
+    expect(instance.getQueue().getItems()).toMatchSnapshot();
 
-    expect(instance.instances[0].opts.strings).toEqual([
+    expect(instance.getOptions().strings).toEqual([
       "This should be typed first.",
       "This is another string."
     ]);
@@ -89,9 +89,9 @@ describe("startDelete option.", () => {
       strings: "This is another string."
     }).type("And finally, a third.");
 
-    expect(instance.instances[0].queue.waiting).toMatchSnapshot();
+    expect(instance.getQueue().getItems()).toMatchSnapshot();
 
-    expect(instance.instances[0].opts.strings).toEqual([
+    expect(instance.getOptions().strings).toEqual([
       "This should be typed first.",
       "This is another string."
     ]);
@@ -99,7 +99,7 @@ describe("startDelete option.", () => {
 });
 
 describe("html option", () => {
-  test.only("It should queue strings as HTML by default.", () => {
+  test("It should queue strings as HTML by default.", () => {
     document.body.innerHTML = `
       <div>
         <span id="element"></span>
@@ -110,7 +110,7 @@ describe("html option", () => {
       strings: "This is a <strong>BOLD</strong> string."
     });
 
-    expect(instance.instances[0].queue.waiting).toMatchSnapshot();
+    expect(instance.getQueue().getItems()).toMatchSnapshot();
   });
 
   test("It should queue strings as HTML when explicitly set.", () => {
@@ -125,7 +125,7 @@ describe("html option", () => {
       html: true
     });
 
-    expect(instance.instances[0].queue.waiting).toMatchSnapshot();
+    expect(instance.getQueue().getItems()).toMatchSnapshot();
   });
 
   test("It should leave strings be when option is disabled.", () => {
@@ -140,6 +140,6 @@ describe("html option", () => {
       html: false
     });
 
-    expect(instance.instances[0].queue.waiting).toMatchSnapshot();
+    expect(instance.getQueue().getItems()).toMatchSnapshot();
   });
 });

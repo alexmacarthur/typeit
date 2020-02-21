@@ -4,11 +4,11 @@ import insertIntoElement, {
 } from "../../src/helpers/insertIntoElement";
 import getParsedBody from "../../src/helpers/getParsedBody";
 
-let someElement;
+let targetElement;
 
 beforeEach(() => {
-  someElement = document.createElement("span");
-  someElement.setAttribute("data-typeit-id", "something");
+  targetElement = document.createElement("span");
+  targetElement.setAttribute("data-typeit-id", "something");
 });
 
 test("Should insert a simple character correctly.", () => {
@@ -18,8 +18,8 @@ test("Should insert a simple character correctly.", () => {
     content: "x"
   };
 
-  insertIntoElement(someElement, charObj);
-  expect(someElement.innerHTML).toBe(`x`);
+  insertIntoElement(targetElement, charObj);
+  expect(targetElement.innerHTML).toBe(`x`);
 });
 
 // I don't yet know why, but the text nodes are not rendering
@@ -39,11 +39,11 @@ test("Should insert an HTML character object.", () => {
     </span>
   `;
 
-  someElement = document.querySelector("span");
+  targetElement = document.querySelector("span");
   let cursor = document.querySelector(".ti-cursor");
 
-  insertIntoElement(someElement, characterObject, cursor);
-  expect(someElement.childNodes).toMatchSnapshot();
+  insertIntoElement(targetElement, characterObject, cursor);
+  expect(targetElement.childNodes).toMatchSnapshot();
 });
 
 test("Should insert a nested character object.", () => {
@@ -52,9 +52,9 @@ test("Should insert a nested character object.", () => {
       .childNodes[0],
     content: "y"
   };
-  someElement.innerHTML = `<em></em>`;
-  insertIntoElement(someElement, characterObject);
-  expect(someElement.innerHTML).toMatchSnapshot();
+  targetElement.innerHTML = `<em></em>`;
+  insertIntoElement(targetElement, characterObject);
+  expect(targetElement.innerHTML).toMatchSnapshot();
 });
 
 test("Should insert content into input.", () => {
@@ -70,11 +70,11 @@ test("Should insert content into input.", () => {
     </div>
   `);
 
-  someElement = document.getElementById("inputElement");
+  targetElement = document.getElementById("inputElement");
 
-  insertIntoElement(someElement, charObj);
+  insertIntoElement(targetElement, charObj);
 
-  expect(someElement.value).toBe("some value");
+  expect(targetElement.value).toBe("some value");
 });
 
 test("Should insert raw HTML content into input.", () => {
@@ -90,11 +90,11 @@ test("Should insert raw HTML content into input.", () => {
     </div>
   `;
 
-  someElement = document.getElementById("inputElement");
+  targetElement = document.getElementById("inputElement");
 
-  insertIntoElement(someElement, charObj);
+  insertIntoElement(targetElement, charObj);
 
-  expect(someElement.value).toBe("<span>sup</span>");
+  expect(targetElement.value).toBe("<span>sup</span>");
 });
 
 test("Should insert before cursor when element is top-level.", () => {
@@ -110,40 +110,22 @@ test("Should insert before cursor when element is top-level.", () => {
     </span>
   `;
 
-  someElement = document.querySelector("span");
+  targetElement = document.querySelector("span");
   let cursor = document.querySelector(".ti-cursor");
 
-  insertIntoElement(someElement, charObj, cursor);
+  insertIntoElement(targetElement, charObj, cursor);
 
-  expect(document.body.innerHTML).toMatchSnapshot();
-});
-
-test("Should not insert before cursor when target element is not top-level.", () => {
-  let charObj = {
-    node: null,
-    isTopLevelText: true,
-    content: "Hello"
-  };
-
-  setHTML`
-    <span>
-      <i class="ti-cursor">|</i>
-    </span>
-  `;
-
-  someElement = document.querySelector("span");
-  insertIntoElement(someElement, charObj);
   expect(document.body.innerHTML).toMatchSnapshot();
 });
 
 test("Should not insert into cursor node when a <span> is passed.", () => {
   setHTML`<h1><span>y</span><span class="ti-cursor">|</span></h1>`;
 
-  someElement = document.querySelector("h1");
+  targetElement = document.querySelector("h1");
   let cursor = document.querySelector(".ti-cursor");
 
   insertIntoElement(
-    someElement,
+    targetElement,
     {
       node: getParsedBody("<span>x</span>").querySelector("span").childNodes[0],
       isTopLevelText: true,
@@ -172,10 +154,10 @@ test("Types HTML node when defined.", () => {
       </span>
     `;
 
-  someElement = document.querySelector("span");
+  targetElement = document.querySelector("span");
   let cursor = document.querySelector(".ti-cursor");
 
-  insertIntoElement(someElement, charObj, cursor);
+  insertIntoElement(targetElement, charObj, cursor);
 
   expect(document.body.innerHTML).toMatchSnapshot();
 });
