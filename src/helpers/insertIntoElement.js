@@ -12,8 +12,7 @@ import getAllTypeableNodes from "./getAllTypeableNodes";
 export const findPrintedNode = (node, element) => {
   let printedNodes = element.querySelectorAll("*");
   return [element].concat(toArray(printedNodes).reverse()).find(i => {
-    let iClone = i.cloneNode();
-    return iClone.outerHTML === node.outerHTML;
+    return i.cloneNode().outerHTML === node.outerHTML;
   });
 };
 
@@ -31,7 +30,6 @@ export const isLastElement = (node, nodeToIgnore) => {
   }
 
   let sibling = node.nextSibling;
-
   return !sibling || sibling.isEqualNode(nodeToIgnore);
 };
 
@@ -100,12 +98,9 @@ export default (element, contentArg, cursorNode, cursorPosition) => {
 
   let refNode = getAllTypeableNodes(element, cursorNode, true);
   refNode = refNode[cursorPosition - 1];
-
-  // refNode = element.contains(cursorNode) ? cursorNode : refNode;
-  // WHY?
   refNode = element.querySelector('.ti-cursor') || refNode;
 
   // If a cursor node exists, make sure we print BEFORE that, but only if the target
   // element actually contains it. Otherwise, stick it to the end of the element.
-  element.insertBefore(content, refNode ? refNode : null);
+  element.insertBefore(content, refNode || null);
 };

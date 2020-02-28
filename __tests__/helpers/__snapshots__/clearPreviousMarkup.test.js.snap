@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Should leave other markup alone. 1`] = `"<h3 id=\\"example1\\" data-typeitid=\\"arbitrary-id\\">This should be left alone.</h3>"`;
-
-exports[`Should remove .ti-* markup. 1`] = `"<h3 id=\\"example1\\" data-typeitid=\\"arbitrary-id\\"></h3>"`;

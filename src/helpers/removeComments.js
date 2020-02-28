@@ -1,5 +1,3 @@
-export default (arrayOfStrings) => {
-  return arrayOfStrings.map(string => {
-    return string.replace(/<\!--.*?-->/g, "");
-  });
+export default (element) => {
+  return element.innerHTML.replace(/<\!--.*?-->/g, "").trim();
 }

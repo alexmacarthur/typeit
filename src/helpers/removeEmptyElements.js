@@ -9,14 +9,7 @@ import isTypeableNode from "./isTypeableNode";
  * @return {boolean}
  */
 export const characterIsEmpty = node => {
-  // It's a text node. Leave it be.
-  // Or, break tags are an exception.
-  if (isTypeableNode(node)) {
-    return false;
-  }
-
-  // If there's no first child, this is empty!
-  return !node.firstChild;
+  return !node.firstChild && !isTypeableNode(node);
 };
 
 /**
@@ -43,18 +36,18 @@ export default node => {
   let hasEmptyNodes = containsEmptyCharacter(allHTMLNodes);
 
   while (allHTMLNodes.length && hasEmptyNodes) {
-    let shouldRequery = false;
+    let shouldReQuery = false;
 
     allHTMLNodes.forEach(char => {
       if (characterIsEmpty(char)) {
         removeNode(char);
-        shouldRequery = true;
+        shouldReQuery = true;
       }
     });
 
     // Re-query, since we just removed nodes.
     // Conditionally do this, to avoid unnecessary queries.
-    if (shouldRequery) {
+    if (shouldReQuery) {
       allHTMLNodes = toArray(node.querySelectorAll("*"));
     }
 

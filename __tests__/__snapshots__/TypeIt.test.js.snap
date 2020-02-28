@@ -31,6 +31,180 @@ Array [
 ]
 `;
 
+exports[`delete() Should bookend action with same options when no options passed. 1`] = `
+Array [
+  Array [
+    [Function],
+    250,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "afterComplete": [Function],
+      "afterStep": [Function],
+      "afterString": [Function],
+      "beforeStep": [Function],
+      "beforeString": [Function],
+      "breakLines": true,
+      "cursor": true,
+      "cursorChar": "|",
+      "cursorSpeed": 1000,
+      "deleteSpeed": null,
+      "html": true,
+      "lifeLike": true,
+      "loop": false,
+      "loopDelay": Object {
+        "after": 375,
+        "before": 375,
+        "total": 750,
+      },
+      "nextStringDelay": Object {
+        "after": 375,
+        "before": 375,
+        "total": 750,
+      },
+      "speed": 100,
+      "startDelay": 250,
+      "startDelete": false,
+      "strings": Array [],
+      "waitUntilVisible": false,
+    },
+    Object {
+      "force": true,
+    },
+  ],
+  Array [
+    [Function],
+    false,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "afterComplete": [Function],
+      "afterStep": [Function],
+      "afterString": [Function],
+      "beforeStep": [Function],
+      "beforeString": [Function],
+      "breakLines": true,
+      "cursor": true,
+      "cursorChar": "|",
+      "cursorSpeed": 1000,
+      "deleteSpeed": null,
+      "html": true,
+      "lifeLike": true,
+      "loop": false,
+      "loopDelay": Object {
+        "after": 375,
+        "before": 375,
+        "total": 750,
+      },
+      "nextStringDelay": Object {
+        "after": 375,
+        "before": 375,
+        "total": 750,
+      },
+      "speed": 100,
+      "startDelay": 250,
+      "startDelete": false,
+      "strings": Array [],
+      "waitUntilVisible": false,
+    },
+    Object {
+      "force": true,
+    },
+  ],
+]
+`;
+
+exports[`delete() Should temporarily update options when specified. 1`] = `
+Array [
+  Array [
+    [Function],
+    250,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "afterComplete": [Function],
+      "afterStep": [Function],
+      "afterString": [Function],
+      "beforeStep": [Function],
+      "beforeString": [Function],
+      "breakLines": true,
+      "cursor": true,
+      "cursorChar": "|",
+      "cursorSpeed": 1000,
+      "deleteSpeed": 201,
+      "html": true,
+      "lifeLike": true,
+      "loop": false,
+      "loopDelay": Object {
+        "after": 375,
+        "before": 375,
+        "total": 750,
+      },
+      "nextStringDelay": Object {
+        "after": 375,
+        "before": 375,
+        "total": 750,
+      },
+      "speed": 100,
+      "startDelay": 250,
+      "startDelete": false,
+      "strings": Array [],
+      "waitUntilVisible": false,
+    },
+    Object {
+      "force": true,
+    },
+  ],
+  Array [
+    [Function],
+    true,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "afterComplete": [Function],
+      "afterStep": [Function],
+      "afterString": [Function],
+      "beforeStep": [Function],
+      "beforeString": [Function],
+      "breakLines": true,
+      "cursor": true,
+      "cursorChar": "|",
+      "cursorSpeed": 1000,
+      "deleteSpeed": null,
+      "html": true,
+      "lifeLike": true,
+      "loop": false,
+      "loopDelay": Object {
+        "after": 375,
+        "before": 375,
+        "total": 750,
+      },
+      "nextStringDelay": Object {
+        "after": 375,
+        "before": 375,
+        "total": 750,
+      },
+      "speed": 100,
+      "startDelay": 250,
+      "startDelete": false,
+      "strings": Array [],
+      "waitUntilVisible": false,
+    },
+    Object {
+      "force": true,
+    },
+  ],
+]
+`;
+
 exports[`empty() addSplitPause() Adds different even split pause around strings. 1`] = `
 Array [
   Array [
@@ -402,6 +576,180 @@ Array [
 ]
 `;
 
+exports[`move() Should bookend action with same options when no options passed. 1`] = `
+Array [
+  Array [
+    [Function],
+    250,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "afterComplete": [Function],
+      "afterStep": [Function],
+      "afterString": [Function],
+      "beforeStep": [Function],
+      "beforeString": [Function],
+      "breakLines": true,
+      "cursor": true,
+      "cursorChar": "|",
+      "cursorSpeed": 1000,
+      "deleteSpeed": null,
+      "html": true,
+      "lifeLike": true,
+      "loop": false,
+      "loopDelay": Object {
+        "after": 375,
+        "before": 375,
+        "total": 750,
+      },
+      "nextStringDelay": Object {
+        "after": 375,
+        "before": 375,
+        "total": 750,
+      },
+      "speed": 100,
+      "startDelay": 250,
+      "startDelete": false,
+      "strings": Array [],
+      "waitUntilVisible": false,
+    },
+    Object {
+      "force": true,
+    },
+  ],
+  Array [
+    [Function],
+    1,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "afterComplete": [Function],
+      "afterStep": [Function],
+      "afterString": [Function],
+      "beforeStep": [Function],
+      "beforeString": [Function],
+      "breakLines": true,
+      "cursor": true,
+      "cursorChar": "|",
+      "cursorSpeed": 1000,
+      "deleteSpeed": null,
+      "html": true,
+      "lifeLike": true,
+      "loop": false,
+      "loopDelay": Object {
+        "after": 375,
+        "before": 375,
+        "total": 750,
+      },
+      "nextStringDelay": Object {
+        "after": 375,
+        "before": 375,
+        "total": 750,
+      },
+      "speed": 100,
+      "startDelay": 250,
+      "startDelete": false,
+      "strings": Array [],
+      "waitUntilVisible": false,
+    },
+    Object {
+      "force": true,
+    },
+  ],
+]
+`;
+
+exports[`move() Should temporarily update options when specified. 1`] = `
+Array [
+  Array [
+    [Function],
+    250,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "afterComplete": [Function],
+      "afterStep": [Function],
+      "afterString": [Function],
+      "beforeStep": [Function],
+      "beforeString": [Function],
+      "breakLines": true,
+      "cursor": true,
+      "cursorChar": "|",
+      "cursorSpeed": 1000,
+      "deleteSpeed": null,
+      "html": true,
+      "lifeLike": true,
+      "loop": false,
+      "loopDelay": Object {
+        "after": 375,
+        "before": 375,
+        "total": 750,
+      },
+      "nextStringDelay": Object {
+        "after": 375,
+        "before": 375,
+        "total": 750,
+      },
+      "speed": 601,
+      "startDelay": 250,
+      "startDelete": false,
+      "strings": Array [],
+      "waitUntilVisible": false,
+    },
+    Object {
+      "force": true,
+    },
+  ],
+  Array [
+    [Function],
+    "END",
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "afterComplete": [Function],
+      "afterStep": [Function],
+      "afterString": [Function],
+      "beforeStep": [Function],
+      "beforeString": [Function],
+      "breakLines": true,
+      "cursor": true,
+      "cursorChar": "|",
+      "cursorSpeed": 1000,
+      "deleteSpeed": null,
+      "html": true,
+      "lifeLike": true,
+      "loop": false,
+      "loopDelay": Object {
+        "after": 375,
+        "before": 375,
+        "total": 750,
+      },
+      "nextStringDelay": Object {
+        "after": 375,
+        "before": 375,
+        "total": 750,
+      },
+      "speed": 100,
+      "startDelay": 250,
+      "startDelete": false,
+      "strings": Array [],
+      "waitUntilVisible": false,
+    },
+    Object {
+      "force": true,
+    },
+  ],
+]
+`;
+
 exports[`reset() Successfully resets when called. 1`] = `
 Object {
   "afterComplete": [Function],
@@ -435,4 +783,198 @@ Object {
   ],
   "waitUntilVisible": false,
 }
+`;
+
+exports[`type() Should bookend action with same options when no options passed. 1`] = `
+Array [
+  Array [
+    [Function],
+    250,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "afterComplete": [Function],
+      "afterStep": [Function],
+      "afterString": [Function],
+      "beforeStep": [Function],
+      "beforeString": [Function],
+      "breakLines": true,
+      "cursor": true,
+      "cursorChar": "|",
+      "cursorSpeed": 1000,
+      "deleteSpeed": null,
+      "html": true,
+      "lifeLike": true,
+      "loop": false,
+      "loopDelay": Object {
+        "after": 375,
+        "before": 375,
+        "total": 750,
+      },
+      "nextStringDelay": Object {
+        "after": 375,
+        "before": 375,
+        "total": 750,
+      },
+      "speed": 100,
+      "startDelay": 250,
+      "startDelete": false,
+      "strings": Array [],
+      "waitUntilVisible": false,
+    },
+    Object {
+      "force": true,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "!",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": !,
+    },
+    Object {
+      "isFirst": true,
+    },
+    Object {
+      "isLast": true,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "afterComplete": [Function],
+      "afterStep": [Function],
+      "afterString": [Function],
+      "beforeStep": [Function],
+      "beforeString": [Function],
+      "breakLines": true,
+      "cursor": true,
+      "cursorChar": "|",
+      "cursorSpeed": 1000,
+      "deleteSpeed": null,
+      "html": true,
+      "lifeLike": true,
+      "loop": false,
+      "loopDelay": Object {
+        "after": 375,
+        "before": 375,
+        "total": 750,
+      },
+      "nextStringDelay": Object {
+        "after": 375,
+        "before": 375,
+        "total": 750,
+      },
+      "speed": 100,
+      "startDelay": 250,
+      "startDelete": false,
+      "strings": Array [],
+      "waitUntilVisible": false,
+    },
+    Object {
+      "force": true,
+    },
+  ],
+]
+`;
+
+exports[`type() Should temporarily update options when specified. 1`] = `
+Array [
+  Array [
+    [Function],
+    250,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "afterComplete": [Function],
+      "afterStep": [Function],
+      "afterString": [Function],
+      "beforeStep": [Function],
+      "beforeString": [Function],
+      "breakLines": true,
+      "cursor": true,
+      "cursorChar": "|",
+      "cursorSpeed": 1000,
+      "deleteSpeed": null,
+      "html": true,
+      "lifeLike": true,
+      "loop": false,
+      "loopDelay": Object {
+        "after": 375,
+        "before": 375,
+        "total": 750,
+      },
+      "nextStringDelay": Object {
+        "after": 375,
+        "before": 375,
+        "total": 750,
+      },
+      "speed": 501,
+      "startDelay": 250,
+      "startDelete": false,
+      "strings": Array [],
+      "waitUntilVisible": false,
+    },
+    Object {
+      "force": true,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "!",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": !,
+    },
+    Object {
+      "isFirst": true,
+    },
+    Object {
+      "isLast": true,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "afterComplete": [Function],
+      "afterStep": [Function],
+      "afterString": [Function],
+      "beforeStep": [Function],
+      "beforeString": [Function],
+      "breakLines": true,
+      "cursor": true,
+      "cursorChar": "|",
+      "cursorSpeed": 1000,
+      "deleteSpeed": null,
+      "html": true,
+      "lifeLike": true,
+      "loop": false,
+      "loopDelay": Object {
+        "after": 375,
+        "before": 375,
+        "total": 750,
+      },
+      "nextStringDelay": Object {
+        "after": 375,
+        "before": 375,
+        "total": 750,
+      },
+      "speed": 100,
+      "startDelay": 250,
+      "startDelete": false,
+      "strings": Array [],
+      "waitUntilVisible": false,
+    },
+    Object {
+      "force": true,
+    },
+  ],
+]
 `;

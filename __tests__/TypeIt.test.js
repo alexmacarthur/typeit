@@ -109,6 +109,42 @@ describe("go()", () => {
   });
 });
 
+describe("type()", () => {
+  test("Should bookend action with same options when no options passed.", () => {
+    instance = new TypeIt("#element").type("!");
+    expect(instance.getQueue().getItems()).toMatchSnapshot();
+  });
+
+  test("Should temporarily update options when specified.", () => {
+    instance = new TypeIt("#element").type("!", { speed: 501 });
+    expect(instance.getQueue().getItems()).toMatchSnapshot();
+  });
+});
+
+describe("move()", () => {
+  test("Should bookend action with same options when no options passed.", () => {
+    instance = new TypeIt("#element").move(1);
+    expect(instance.getQueue().getItems()).toMatchSnapshot();
+  });
+
+  test("Should temporarily update options when specified.", () => {
+    instance = new TypeIt("#element").move("END", { speed: 601 });
+    expect(instance.getQueue().getItems()).toMatchSnapshot();
+  });
+});
+
+describe("delete()", () => {
+  test("Should bookend action with same options when no options passed.", () => {
+    instance = new TypeIt("#element").delete(1);
+    expect(instance.getQueue().getItems()).toMatchSnapshot();
+  });
+
+  test("Should temporarily update options when specified.", () => {
+    instance = new TypeIt("#element").delete(null, { deleteSpeed: 201 });
+    expect(instance.getQueue().getItems()).toMatchSnapshot();
+  });
+});
+
 describe("empty()", () => {
   test("Should empty out element when called with no cursor.", async () => {
     args[1].cursor = false;
