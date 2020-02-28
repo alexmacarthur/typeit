@@ -11,5 +11,5 @@ export default (element, allChars, cursor, cursorPosition) => {
 
   let nodeToInsertBefore = allChars[characterIndex - 1];
 
-  element.insertBefore(cursor, nodeToInsertBefore ? nodeToInsertBefore : null);
+  element.insertBefore(cursor, nodeToInsertBefore || null);
 };

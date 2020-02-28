@@ -1,7 +1,7 @@
 import TypeIt from "../../src/TypeIt";
 
 test("Generates a queue correctly.", () => {
-  document.body.innerHTML = `<div>'
+  setHTML`<div>'
       <span id="element"></span>
     </div>`;
 
@@ -13,7 +13,7 @@ test("Generates a queue correctly.", () => {
 });
 
 test("Generates a queue correctly when chaining upon instantiation.", () => {
-  document.body.innerHTML = `<div>'
+  setHTML`<div>'
       <span id="element"></span>
     </div>`;
 
@@ -23,11 +23,11 @@ test("Generates a queue correctly when chaining upon instantiation.", () => {
     .type("Second string.")
     .go();
 
-  expect(instance.getQueue().getItems()).toHaveLength(29);
+  expect(instance.getQueue().getItems()).toHaveLength(35);
 });
 
 test("Generates correct `nextStringDelay`.", () => {
-  document.body.innerHTML = `<div>'
+  setHTML`<div>'
       <span id="element"></span>
     </div>`;
 
@@ -56,7 +56,7 @@ test("Generates correct `nextStringDelay`.", () => {
 });
 
 test("Generates correct `loopDelay`.", () => {
-  document.body.innerHTML = `<div>'
+  setHTML`<div>'
       <span id="element"></span>
     </div>`;
 
@@ -85,7 +85,7 @@ test("Generates correct `loopDelay`.", () => {
 });
 
 test("Removes empty HTML when necessary.", () => {
-  document.body.innerHTML = `<div>'
+  setHTML`<div>'
       <span id="element"></span>
     </div>`;
 

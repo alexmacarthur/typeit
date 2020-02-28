@@ -46,7 +46,15 @@ export default OUTPUT_DATA.map(({ file, format }) => {
           }
         ]
       ],
-      plugins: ["babel-plugin-transform-async-to-promises"]
+      plugins: [
+        "babel-plugin-transform-async-to-promises",
+        [
+          "@babel/plugin-transform-spread",
+          {
+            loose: true
+          }
+        ]
+      ]
     })
   ];
 

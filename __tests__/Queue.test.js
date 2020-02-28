@@ -17,7 +17,7 @@ describe("add()", () => {
   });
 
   test("It should add a step passed as a function.", () => {
-    const myFunc = () => 'func!';
+    const myFunc = () => "func!";
     queue.add(myFunc);
     queue.add(myFunc);
     queue.add(myFunc);
@@ -25,7 +25,7 @@ describe("add()", () => {
   });
 
   test("It should add multiple steps passed at once.", () => {
-    const myFunc = () => 'func!';
+    const myFunc = () => "func!";
     queue.add([
       [myFunc, 1],
       [myFunc, 2],
@@ -37,31 +37,11 @@ describe("add()", () => {
 
 test("It should reset properly by marking each item as having not yet been executed.", () => {
   queue.add([
-    [
-      "value1",
-      null,
-      { hasBeenExecuted: true }
-    ],
-    [
-      "value2",
-      null,
-      { hasBeenExecuted: true }
-    ],
-    [
-      "value3",
-      null,
-      { hasBeenExecuted: false }
-    ],
-    [
-      "value4",
-      null,
-      { hasBeenExecuted: true }
-    ],
-    [
-      "value5",
-      null,
-      { hasBeenExecuted: true }
-    ]
+    ["value1", null, { executed: true }],
+    ["value2", null, { executed: true }],
+    ["value3", null, { executed: false }],
+    ["value4", null, { executed: true }],
+    ["value5", null, { executed: true }]
   ]);
 
   queue.reset();
@@ -75,21 +55,9 @@ test("It should set initial steps properly.", () => {
   expect(q1.getItems()).toEqual([]);
 
   let items = [
-    [
-      "value1",
-      null,
-      {}
-    ],
-    [
-      "value2",
-      null,
-      {}
-    ],
-    [
-      "value3",
-      null,
-      {}
-    ]
+    ["value1", null, {}],
+    ["value2", null, {}],
+    ["value3", null, {}]
   ];
 
   let q2 = new Queue(items);

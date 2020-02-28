@@ -6,35 +6,35 @@ Array [
     "value1",
     null,
     Object {
-      "hasBeenExecuted": false,
+      "executed": false,
     },
   ],
   Array [
     "value2",
     null,
     Object {
-      "hasBeenExecuted": false,
+      "executed": false,
     },
   ],
   Array [
     "value3",
     null,
     Object {
-      "hasBeenExecuted": false,
+      "executed": false,
     },
   ],
   Array [
     "value4",
     null,
     Object {
-      "hasBeenExecuted": false,
+      "executed": false,
     },
   ],
   Array [
     "value5",
     null,
     Object {
-      "hasBeenExecuted": false,
+      "executed": false,
     },
   ],
 ]

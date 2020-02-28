@@ -9,7 +9,6 @@ import appendStyleBlock from "./helpers/appendStyleBlock";
 import asArray from "./helpers/asArray";
 import calculateDelay from "./helpers/calculateDelay.js";
 import calculatePace from "./helpers/calculatePace.js";
-import clearPreviousMarkup from "./helpers/clearPreviousMarkup";
 import createElement from "./helpers/createElement";
 import destroyTimeouts from "./helpers/destroyTimeouts";
 import fireWhenVisible from "./helpers/fireWhenVisible";
@@ -27,13 +26,23 @@ import toArray from "./helpers/toArray";
 import generateHash from "./helpers/generateHash.js";
 import processCursorMovementArg from "./helpers/processCursorMovementArg.js";
 
-export default function TypeIt(element, options, id) {
+export default function TypeIt(element, options) {
   options = options || {};
-  id = id || generateHash();
 
-  const _addToQueueAndReturn = (stepOrSteps, numberOfTimes) => {
+  const _queueAndReturn = (stepOrSteps, numberOfTimes) => {
     _queue.add(stepOrSteps, numberOfTimes);
     return this;
+  };
+
+  const _generateTemporaryOptionQueueItems = newOptions => {
+    newOptions = newOptions || {};
+    let originalOptions = Object.assign({}, _opts);
+    let updatedOptions = Object.assign({}, originalOptions, newOptions);
+
+    return [
+      [_options, updatedOptions, { force: true }],
+      [_options, originalOptions, { force: true }]
+    ];
   };
 
   /**
@@ -103,9 +112,9 @@ export default function TypeIt(element, options, id) {
     }
 
     appendStyleBlock(
-      `@keyframes blink-${id} { 0% {opacity: 0} 49% {opacity: 0} 50% {opacity: 1} }[data-typeit-id='${id}'] .ti-cursor { animation: blink-${id} ${_opts.cursorSpeed /
+      `@keyframes blink-${_id} { 0% {opacity: 0} 49% {opacity: 0} 50% {opacity: 1} }[data-typeit-id='${_id}'] .ti-cursor { animation: blink-${_id} ${_opts.cursorSpeed /
         1000}s infinite; }`,
-      id
+      _id
     );
 
     _element.appendChild(_cursor);
@@ -174,13 +183,13 @@ export default function TypeIt(element, options, id) {
       .add([_pause, delay.before], true);
 
     // Queue the current number of printed items for deletion.
-    for (let i = 0; i < _getAllChars().length; i++) {
+    _getAllChars().forEach(i => {
       _queue.add([_delete, null, { isPhantom: true }], 1, true);
-    }
+    });
   };
 
   const _maybePrependHardcodedStrings = strings => {
-    let existingMarkup = _element.innerHTML;
+    let existingMarkup = removeComments(_element);
 
     if (!existingMarkup) {
       return strings;
@@ -211,7 +220,7 @@ export default function TypeIt(element, options, id) {
     try {
       for (let i = 0; i < queueItems.length; i++) {
         if (_statuses.frozen || _statuses.destroyed) {
-          throw new Error("fail");
+          throw "";
         }
 
         let queueAction = queueItems[i];
@@ -219,7 +228,7 @@ export default function TypeIt(element, options, id) {
 
         _pace = calculatePace(_opts.speed, _opts.deleteSpeed, _opts.lifeLike);
 
-        if (queueAction[2] && queueAction[2].isFirst) {
+        if (queueAction[2]?.isFirst) {
           await _opts.beforeString(...callbackArgs);
         }
 
@@ -232,16 +241,13 @@ export default function TypeIt(element, options, id) {
         // If this is a phantom item, as soon as it's executed,
         // remove it from the queue and pretend it never existed.
         if (!queueAction[2] || !queueAction[2].isPhantom) {
-          if (queueAction[2] && queueAction[2].isLast) {
+          if (queueAction[2]?.isLast) {
             await _opts.afterString(...callbackArgs);
           }
 
           await _opts.afterStep(...callbackArgs);
 
-          // Remove this item from the global queue. This is
-          // necessary for when execution is frozen and needs
-          // to pick up again at a later point.
-          queueAction[2] = { hasBeenExecuted: true };
+          queueAction[2].executed = true;
         }
       }
 
@@ -257,6 +263,8 @@ export default function TypeIt(element, options, id) {
         }, delay.after);
       }
     } catch (e) {}
+
+    return this;
   };
 
   const _pause = time => {
@@ -279,7 +287,7 @@ export default function TypeIt(element, options, id) {
     _cursorPosition += arg.numberOfSteps;
 
     return new Promise(resolve => {
-      _wait(() => {
+      _wait(async () => {
         repositionCursor(_element, _getAllChars(), _cursor, _cursorPosition);
 
         /**
@@ -287,36 +295,12 @@ export default function TypeIt(element, options, id) {
          * going until there are no more spaces to move.
          */
         if (arg.isString && arg.canKeepMoving) {
-          return _move(arg.numberOfSteps > 0 ? "START" : "END").then(() => {
-            return resolve();
-          });
+          await _move(arg.numberOfSteps > 0 ? "START" : "END");
         }
 
         return resolve();
       }, _pace[0]);
     });
-  };
-
-  this.move = function(movementArg) {
-    let arg = processCursorMovementArg(
-      movementArg,
-      _cursorPosition,
-      _getAllChars()
-    );
-
-    _queue.add(
-      [
-        _move,
-
-        // Direction is set by the +/- of the argument.
-        arg.isString ? movementArg : Math.sign(movementArg)
-      ],
-
-      // number of times to queue this same action.
-      Math.abs(movementArg)
-    );
-
-    return this;
   };
 
   const _type = characterObject => {
@@ -382,11 +366,16 @@ export default function TypeIt(element, options, id) {
     return _queue.add([_type, createElement("BR")]);
   };
 
-  this.delete = function(numCharacters) {
+  this.delete = function(numCharacters, opts) {
+    let bookEndQueueItems = _generateTemporaryOptionQueueItems(opts);
+
+    _queue.add(bookEndQueueItems[0]);
     _queue.add(
       [_delete, !numCharacters], // Maybe delete all.
       numCharacters || 1
     );
+    _queue.add(bookEndQueueItems[1]);
+
     return this;
   };
 
@@ -399,15 +388,46 @@ export default function TypeIt(element, options, id) {
   };
 
   this.empty = function() {
-    return _addToQueueAndReturn(_empty);
+    return _queueAndReturn(_empty);
   };
 
-  this.exec = function(func) {
-    return _addToQueueAndReturn(func);
+  this.exec = function(func, opts) {
+    let bookEndQueueItems = _generateTemporaryOptionQueueItems(opts);
+    return _queueAndReturn([
+      bookEndQueueItems[0],
+      [func, null],
+      bookEndQueueItems[1]
+    ]);
   };
 
   this.is = function(key) {
     return _statuses[key];
+  };
+
+  this.move = function(movementArg, opts) {
+    let arg = processCursorMovementArg(
+      movementArg,
+      _cursorPosition,
+      _getAllChars()
+    );
+
+    let bookEndQueueItems = _generateTemporaryOptionQueueItems(opts);
+
+    _queue.add(bookEndQueueItems[0]);
+    _queue.add(
+      [
+        _move,
+
+        // Direction is set by the +/- of the argument.
+        arg.isString ? movementArg : Math.sign(movementArg)
+      ],
+
+      // number of times to queue this same action.
+      Math.abs(movementArg)
+    );
+    _queue.add(bookEndQueueItems[1]);
+
+    return this;
   };
 
   this.freeze = function() {
@@ -420,16 +440,22 @@ export default function TypeIt(element, options, id) {
   };
 
   this.options = function(opts) {
-    return _addToQueueAndReturn([_options, opts]);
+    return _queueAndReturn([_options, opts]);
   };
 
   this.pause = function(ms) {
-    return _addToQueueAndReturn([_pause, ms || null]);
+    return _queueAndReturn([_pause, ms || null]);
   };
 
-  this.type = function(string) {
+  this.type = function(string, opts) {
+    let bookEndQueueItems = _generateTemporaryOptionQueueItems(opts);
     let chunkedString = maybeChunkStringAsHtml(string, _opts.html);
-    return _addToQueueAndReturn(queueMany(chunkedString, _type, true));
+
+    return _queueAndReturn([
+      bookEndQueueItems[0],
+      ...queueMany(chunkedString, _type, true),
+      bookEndQueueItems[1]
+    ]);
   };
 
   this.getQueue = function() {
@@ -488,19 +514,16 @@ export default function TypeIt(element, options, id) {
     loopDelay: calculateDelay(_opts.loopDelay)
   });
 
+  let _id = generateHash();
   let _queue = new Queue([_pause, _opts.startDelay]);
-  _element.setAttribute("data-typeit-id", id);
+  _element.setAttribute("data-typeit-id", _id);
 
   // Used to set a "placeholder" space in the element, so that it holds vertical sizing before anything's typed.
   appendStyleBlock(
     `[data-typeit-id]:before {content: '.'; display: inline-block; width: 0; visibility: hidden;}`
   );
 
-  clearPreviousMarkup(_element, _elementIsInput);
-
-  let strings = asArray(_opts.strings);
-  strings = _maybePrependHardcodedStrings(strings);
-  _opts.strings = removeComments(strings);
+  _opts.strings = _maybePrependHardcodedStrings(asArray(_opts.strings));
 
   let _cursor = _setUpCursor();
 

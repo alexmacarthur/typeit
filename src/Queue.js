@@ -1,16 +1,15 @@
-import guaranteeThreeKeys from './helpers/guaranteeThreeKeys';
-import queueMany from './helpers/queueMany';
+import guaranteeThreeKeys from "./helpers/guaranteeThreeKeys";
+import queueMany from "./helpers/queueMany";
 
-export default function Queue (initialItem) {
-  initialItem = initialItem || null;
-
+export default function Queue(initialItem) {
   /**
    * Insert items into the `waiting` queue.
+   * @todo Can we part with this?
    *
    * @param {integer} start
    * @param {array} newItems
    */
-  this.insert = function (start, newItems) {
+  this.insert = function(start, newItems) {
     _queue.splice(start, 0, newItems);
   };
 
@@ -21,10 +20,11 @@ export default function Queue (initialItem) {
    * @param {boolean} toBeginning
    * @return {object}
    */
-  this.add = function (stepOrSteps, numberOfTimes, toBeginning) {
-
+  this.add = function(stepOrSteps, numberOfTimes, toBeginning) {
     // If a single thing is passed, assume it's an action with no argument.
-    stepOrSteps = Array.isArray(stepOrSteps) ? stepOrSteps : [stepOrSteps, null];
+    stepOrSteps = Array.isArray(stepOrSteps)
+      ? stepOrSteps
+      : [stepOrSteps, null];
     toBeginning = toBeginning || false;
     numberOfTimes = numberOfTimes || 1;
     let isMultipleSteps = Array.isArray(stepOrSteps[0]);
@@ -56,9 +56,9 @@ export default function Queue (initialItem) {
    *
    * @return {object}
    */
-  this.reset = function () {
+  this.reset = function() {
     _queue = guaranteeThreeKeys(_queue).map(item => {
-      item[2].hasBeenExecuted = false;
+      item[2].executed = false;
       return item;
     });
 
@@ -70,9 +70,9 @@ export default function Queue (initialItem) {
    *
    * @return {array}
    */
-  this.getItems = function () {
-    return guaranteeThreeKeys(_queue).filter(i => !i.hasBeenExecuted);
-  }
+  this.getItems = function() {
+    return guaranteeThreeKeys(_queue).filter(i => !i.executed);
+  };
 
   let _queue = [];
 

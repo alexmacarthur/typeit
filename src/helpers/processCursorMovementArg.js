@@ -6,14 +6,10 @@ export default (movementArg, currentCursorPosition, allChars) => {
 
   if (isString) {
     isMovingToEnd = movementArg.toUpperCase() === "END";
-
-    if (isMovingToEnd) {
-      numberOfSteps = -1;
-      canKeepMoving = currentCursorPosition + numberOfSteps > 0;
-    } else {
-      numberOfSteps = 1;
-      canKeepMoving = currentCursorPosition + numberOfSteps < allChars.length;
-    }
+    numberOfSteps = isMovingToEnd ? -1 : 1;
+    canKeepMoving = isMovingToEnd
+      ? currentCursorPosition + numberOfSteps > 0
+      : currentCursorPosition + numberOfSteps < allChars.length;
   }
 
   return {
