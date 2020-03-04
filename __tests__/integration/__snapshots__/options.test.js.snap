@@ -16,6 +16,7 @@ Array [
       "node": null,
     },
     Object {
+      "freezeCursor": true,
       "isFirst": true,
     },
   ],
@@ -27,7 +28,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -37,7 +40,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -47,7 +52,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -57,7 +64,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -67,7 +76,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -77,7 +88,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -87,7 +100,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -97,7 +112,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -107,7 +124,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -117,7 +136,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -127,7 +148,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -137,7 +160,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -147,7 +172,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -157,7 +184,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -167,7 +196,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -177,7 +208,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -187,7 +220,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -197,7 +232,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -207,7 +244,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -217,7 +256,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -227,7 +268,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -237,7 +280,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -247,7 +292,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -257,7 +304,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -267,7 +316,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -277,7 +328,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -287,7 +340,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -297,7 +352,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -307,7 +364,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -317,7 +376,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -327,7 +388,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -337,7 +400,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -347,7 +412,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -357,7 +424,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -367,7 +436,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -377,7 +448,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -387,7 +460,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -397,7 +472,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -407,7 +484,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -417,7 +496,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -427,7 +508,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -437,7 +520,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -447,7 +532,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -457,7 +544,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -467,7 +556,9 @@ Array [
       "isTopLevelText": true,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -478,6 +569,7 @@ Array [
       "node": null,
     },
     Object {
+      "freezeCursor": true,
       "isLast": true,
     },
   ],
@@ -500,6 +592,7 @@ Array [
       "node": This is a ,
     },
     Object {
+      "freezeCursor": true,
       "isFirst": true,
     },
   ],
@@ -511,7 +604,9 @@ Array [
       "isTopLevelText": true,
       "node": This is a ,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -521,7 +616,9 @@ Array [
       "isTopLevelText": true,
       "node": This is a ,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -531,7 +628,9 @@ Array [
       "isTopLevelText": true,
       "node": This is a ,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -541,7 +640,9 @@ Array [
       "isTopLevelText": true,
       "node": This is a ,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -551,7 +652,9 @@ Array [
       "isTopLevelText": true,
       "node": This is a ,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -561,7 +664,9 @@ Array [
       "isTopLevelText": true,
       "node": This is a ,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -571,7 +676,9 @@ Array [
       "isTopLevelText": true,
       "node": This is a ,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -581,7 +688,9 @@ Array [
       "isTopLevelText": true,
       "node": This is a ,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -591,7 +700,9 @@ Array [
       "isTopLevelText": true,
       "node": This is a ,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -601,7 +712,9 @@ Array [
       "isTopLevelText": false,
       "node": BOLD,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -611,7 +724,9 @@ Array [
       "isTopLevelText": false,
       "node": BOLD,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -621,7 +736,9 @@ Array [
       "isTopLevelText": false,
       "node": BOLD,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -631,7 +748,9 @@ Array [
       "isTopLevelText": false,
       "node": BOLD,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -641,7 +760,9 @@ Array [
       "isTopLevelText": true,
       "node":  string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -651,7 +772,9 @@ Array [
       "isTopLevelText": true,
       "node":  string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -661,7 +784,9 @@ Array [
       "isTopLevelText": true,
       "node":  string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -671,7 +796,9 @@ Array [
       "isTopLevelText": true,
       "node":  string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -681,7 +808,9 @@ Array [
       "isTopLevelText": true,
       "node":  string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -691,7 +820,9 @@ Array [
       "isTopLevelText": true,
       "node":  string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -701,7 +832,9 @@ Array [
       "isTopLevelText": true,
       "node":  string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -712,6 +845,7 @@ Array [
       "node":  string.,
     },
     Object {
+      "freezeCursor": true,
       "isLast": true,
     },
   ],
@@ -734,6 +868,7 @@ Array [
       "node": This is a ,
     },
     Object {
+      "freezeCursor": true,
       "isFirst": true,
     },
   ],
@@ -745,7 +880,9 @@ Array [
       "isTopLevelText": true,
       "node": This is a ,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -755,7 +892,9 @@ Array [
       "isTopLevelText": true,
       "node": This is a ,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -765,7 +904,9 @@ Array [
       "isTopLevelText": true,
       "node": This is a ,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -775,7 +916,9 @@ Array [
       "isTopLevelText": true,
       "node": This is a ,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -785,7 +928,9 @@ Array [
       "isTopLevelText": true,
       "node": This is a ,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -795,7 +940,9 @@ Array [
       "isTopLevelText": true,
       "node": This is a ,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -805,7 +952,9 @@ Array [
       "isTopLevelText": true,
       "node": This is a ,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -815,7 +964,9 @@ Array [
       "isTopLevelText": true,
       "node": This is a ,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -825,7 +976,9 @@ Array [
       "isTopLevelText": true,
       "node": This is a ,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -835,7 +988,9 @@ Array [
       "isTopLevelText": false,
       "node": another BOLD,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -845,7 +1000,9 @@ Array [
       "isTopLevelText": false,
       "node": another BOLD,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -855,7 +1012,9 @@ Array [
       "isTopLevelText": false,
       "node": another BOLD,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -865,7 +1024,9 @@ Array [
       "isTopLevelText": false,
       "node": another BOLD,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -875,7 +1036,9 @@ Array [
       "isTopLevelText": false,
       "node": another BOLD,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -885,7 +1048,9 @@ Array [
       "isTopLevelText": false,
       "node": another BOLD,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -895,7 +1060,9 @@ Array [
       "isTopLevelText": false,
       "node": another BOLD,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -905,7 +1072,9 @@ Array [
       "isTopLevelText": false,
       "node": another BOLD,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -915,7 +1084,9 @@ Array [
       "isTopLevelText": false,
       "node": another BOLD,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -925,7 +1096,9 @@ Array [
       "isTopLevelText": false,
       "node": another BOLD,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -935,7 +1108,9 @@ Array [
       "isTopLevelText": false,
       "node": another BOLD,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -945,7 +1120,9 @@ Array [
       "isTopLevelText": false,
       "node": another BOLD,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -955,7 +1132,9 @@ Array [
       "isTopLevelText": true,
       "node":  string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -965,7 +1144,9 @@ Array [
       "isTopLevelText": true,
       "node":  string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -975,7 +1156,9 @@ Array [
       "isTopLevelText": true,
       "node":  string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -985,7 +1168,9 @@ Array [
       "isTopLevelText": true,
       "node":  string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -995,7 +1180,9 @@ Array [
       "isTopLevelText": true,
       "node":  string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1005,7 +1192,9 @@ Array [
       "isTopLevelText": true,
       "node":  string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1015,7 +1204,9 @@ Array [
       "isTopLevelText": true,
       "node":  string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1026,6 +1217,7 @@ Array [
       "node":  string.,
     },
     Object {
+      "freezeCursor": true,
       "isLast": true,
     },
   ],
@@ -1048,6 +1240,7 @@ Array [
       "node": This should be typed first.,
     },
     Object {
+      "freezeCursor": true,
       "isFirst": true,
     },
   ],
@@ -1059,7 +1252,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1069,7 +1264,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1079,7 +1276,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1089,7 +1288,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1099,7 +1300,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1109,7 +1312,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1119,7 +1324,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1129,7 +1336,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1139,7 +1348,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1149,7 +1360,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1159,7 +1372,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1169,7 +1384,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1179,7 +1396,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1189,7 +1408,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1199,7 +1420,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1209,7 +1432,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1219,7 +1444,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1229,7 +1456,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1239,7 +1468,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1249,7 +1480,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1259,7 +1492,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1269,7 +1504,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1279,7 +1516,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1289,7 +1528,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1299,7 +1540,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1310,6 +1553,7 @@ Array [
       "node": This should be typed first.,
     },
     Object {
+      "freezeCursor": true,
       "isLast": true,
     },
   ],
@@ -1326,7 +1570,9 @@ Array [
       "isTopLevelText": false,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1342,6 +1588,7 @@ Array [
       "node": This is another string.,
     },
     Object {
+      "freezeCursor": true,
       "isFirst": true,
     },
   ],
@@ -1353,7 +1600,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1363,7 +1612,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1373,7 +1624,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1383,7 +1636,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1393,7 +1648,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1403,7 +1660,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1413,7 +1672,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1423,7 +1684,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1433,7 +1696,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1443,7 +1708,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1453,7 +1720,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1463,7 +1732,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1473,7 +1744,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1483,7 +1756,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1493,7 +1768,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1503,7 +1780,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1513,7 +1792,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1523,7 +1804,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1533,7 +1816,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1543,7 +1828,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1553,7 +1840,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1564,6 +1853,7 @@ Array [
       "node": This is another string.,
     },
     Object {
+      "freezeCursor": true,
       "isLast": true,
     },
   ],
@@ -1615,6 +1905,7 @@ Array [
       "node": And finally, a third.,
     },
     Object {
+      "freezeCursor": true,
       "isFirst": true,
     },
   ],
@@ -1626,7 +1917,9 @@ Array [
       "isTopLevelText": true,
       "node": And finally, a third.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1636,7 +1929,9 @@ Array [
       "isTopLevelText": true,
       "node": And finally, a third.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1646,7 +1941,9 @@ Array [
       "isTopLevelText": true,
       "node": And finally, a third.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1656,7 +1953,9 @@ Array [
       "isTopLevelText": true,
       "node": And finally, a third.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1666,7 +1965,9 @@ Array [
       "isTopLevelText": true,
       "node": And finally, a third.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1676,7 +1977,9 @@ Array [
       "isTopLevelText": true,
       "node": And finally, a third.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1686,7 +1989,9 @@ Array [
       "isTopLevelText": true,
       "node": And finally, a third.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1696,7 +2001,9 @@ Array [
       "isTopLevelText": true,
       "node": And finally, a third.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1706,7 +2013,9 @@ Array [
       "isTopLevelText": true,
       "node": And finally, a third.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1716,7 +2025,9 @@ Array [
       "isTopLevelText": true,
       "node": And finally, a third.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1726,7 +2037,9 @@ Array [
       "isTopLevelText": true,
       "node": And finally, a third.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1736,7 +2049,9 @@ Array [
       "isTopLevelText": true,
       "node": And finally, a third.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1746,7 +2061,9 @@ Array [
       "isTopLevelText": true,
       "node": And finally, a third.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1756,7 +2073,9 @@ Array [
       "isTopLevelText": true,
       "node": And finally, a third.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1766,7 +2085,9 @@ Array [
       "isTopLevelText": true,
       "node": And finally, a third.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1776,7 +2097,9 @@ Array [
       "isTopLevelText": true,
       "node": And finally, a third.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1786,7 +2109,9 @@ Array [
       "isTopLevelText": true,
       "node": And finally, a third.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1796,7 +2121,9 @@ Array [
       "isTopLevelText": true,
       "node": And finally, a third.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1806,7 +2133,9 @@ Array [
       "isTopLevelText": true,
       "node": And finally, a third.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1817,6 +2146,7 @@ Array [
       "node": And finally, a third.,
     },
     Object {
+      "freezeCursor": true,
       "isLast": true,
     },
   ],
@@ -1878,6 +2208,7 @@ Array [
       "node": This should be typed first.,
     },
     Object {
+      "freezeCursor": true,
       "isFirst": true,
     },
   ],
@@ -1889,7 +2220,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1899,7 +2232,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1909,7 +2244,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1919,7 +2256,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1929,7 +2268,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1939,7 +2280,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1949,7 +2292,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1959,7 +2304,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1969,7 +2316,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1979,7 +2328,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1989,7 +2340,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -1999,7 +2352,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2009,7 +2364,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2019,7 +2376,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2029,7 +2388,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2039,7 +2400,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2049,7 +2412,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2059,7 +2424,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2069,7 +2436,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2079,7 +2448,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2089,7 +2460,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2099,7 +2472,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2109,7 +2484,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2119,7 +2496,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2129,7 +2508,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2140,6 +2521,7 @@ Array [
       "node": This should be typed first.,
     },
     Object {
+      "freezeCursor": true,
       "isLast": true,
     },
   ],
@@ -2162,6 +2544,7 @@ Array [
       "node": This should be typed first.,
     },
     Object {
+      "freezeCursor": true,
       "isFirst": true,
     },
   ],
@@ -2173,7 +2556,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2183,7 +2568,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2193,7 +2580,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2203,7 +2592,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2213,7 +2604,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2223,7 +2616,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2233,7 +2628,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2243,7 +2640,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2253,7 +2652,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2263,7 +2664,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2273,7 +2676,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2283,7 +2688,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2293,7 +2700,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2303,7 +2712,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2313,7 +2724,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2323,7 +2736,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2333,7 +2748,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2343,7 +2760,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2353,7 +2772,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2363,7 +2784,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2373,7 +2796,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2383,7 +2808,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2393,7 +2820,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2403,7 +2832,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2413,7 +2844,9 @@ Array [
       "isTopLevelText": true,
       "node": This should be typed first.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2424,6 +2857,7 @@ Array [
       "node": This should be typed first.,
     },
     Object {
+      "freezeCursor": true,
       "isLast": true,
     },
   ],
@@ -2440,7 +2874,9 @@ Array [
       "isTopLevelText": false,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2456,6 +2892,7 @@ Array [
       "node": This is another string.,
     },
     Object {
+      "freezeCursor": true,
       "isFirst": true,
     },
   ],
@@ -2467,7 +2904,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2477,7 +2916,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2487,7 +2928,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2497,7 +2940,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2507,7 +2952,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2517,7 +2964,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2527,7 +2976,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2537,7 +2988,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2547,7 +3000,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2557,7 +3012,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2567,7 +3024,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2577,7 +3036,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2587,7 +3048,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2597,7 +3060,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2607,7 +3072,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2617,7 +3084,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2627,7 +3096,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2637,7 +3108,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2647,7 +3120,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2657,7 +3132,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2667,7 +3144,9 @@ Array [
       "isTopLevelText": true,
       "node": This is another string.,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -2678,6 +3157,7 @@ Array [
       "node": This is another string.,
     },
     Object {
+      "freezeCursor": true,
       "isLast": true,
     },
   ],

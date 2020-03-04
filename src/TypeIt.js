@@ -112,13 +112,25 @@ export default function TypeIt(element, options) {
       return;
     }
 
+    let selector = `[data-typeit-id='${_id}'] .ti-cursor`;
+
     appendStyleBlock(
-      `@keyframes blink-${_id} { 0% {opacity: 0} 49% {opacity: 0} 50% {opacity: 1} }[data-typeit-id='${_id}'] .ti-cursor { animation: blink-${_id} ${_opts.cursorSpeed /
-        1000}s infinite; }`,
+      `@keyframes blink-${_id} { 0% {opacity: 0} 49% {opacity: 0} 50% {opacity: 1} } ${selector} { animation: blink-${_id} ${_opts.cursorSpeed /
+        1000}s infinite; } ${selector}.with-delay { animation-delay: 500ms; } ${selector}.disabled { animation: none; }`,
       _id
     );
 
     _element.appendChild(_cursor);
+  };
+
+  // @todo use this for blog!
+  const _disableCursorBlink = shouldDisable => {
+    if (!_cursor) {
+      return;
+    }
+
+    _cursor.classList.toggle("disabled", shouldDisable);
+    _cursor.classList.toggle("with-delay", !shouldDisable);
   };
 
   /**
@@ -139,26 +151,28 @@ export default function TypeIt(element, options) {
    * @param {array|null} initialStep
    */
   const _generateQueue = () => {
-    _opts.strings.forEach((string, index) => {
+    let strings = _opts.strings;
+
+    strings.forEach((string, index) => {
       let chunkedString = maybeChunkStringAsHtml(string, _opts.html);
 
-      _queue.add(queueMany(chunkedString, _type, true));
+      _queue.add(queueMany(chunkedString, _type, _freezeCursorMeta, true));
 
       let queueLength = _queue.getItems().length;
 
       // This is the last string. Get outta here.
-      if (index + 1 === _opts.strings.length) {
+      if (index + 1 === strings.length) {
         return;
       }
 
       if (_opts.breakLines) {
         let breakObj = createCharacterObject(createElement("BR"));
-        _queue.add([_type, breakObj]);
+        _queue.add([_type, breakObj, _freezeCursorMeta]);
         _addSplitPause(queueLength);
         return;
       }
 
-      _queue.add(queueMany(chunkedString, _delete));
+      _queue.add(queueMany(chunkedString, _delete, _freezeCursorMeta));
       _addSplitPause(queueLength, string.length);
     });
   };
@@ -225,11 +239,14 @@ export default function TypeIt(element, options) {
         }
 
         let queueAction = queueItems[i];
+        let queueActionMeta = queueAction[2];
         let callbackArgs = [queueAction, _queue, this];
+
+        queueActionMeta.freezeCursor && _disableCursorBlink(true);
 
         _pace = calculatePace(_opts.speed, _opts.deleteSpeed, _opts.lifeLike);
 
-        if (queueAction[2]?.isFirst) {
+        if (queueActionMeta?.isFirst) {
           await _opts.beforeString(...callbackArgs);
         }
 
@@ -237,19 +254,22 @@ export default function TypeIt(element, options) {
 
         // Fire this step! During this process, pluck items from the waiting
         // queue and move them to executed.
-        await queueAction[0].call(this, queueAction[1], queueAction[2]);
+        await queueAction[0].call(this, queueAction[1], queueActionMeta);
 
         // If this is a phantom item, as soon as it's executed,
         // remove it from the queue and pretend it never existed.
-        if (!queueAction[2] || !queueAction[2].isPhantom) {
+        if (!queueActionMeta || !queueActionMeta.isPhantom) {
           if (queueAction[2]?.isLast) {
             await _opts.afterString(...callbackArgs);
           }
 
           await _opts.afterStep(...callbackArgs);
 
+          // Do I need this?
           queueAction[2].executed = true;
         }
+
+        _disableCursorBlink(false);
       }
 
       _statuses.completed = true;
@@ -332,7 +352,7 @@ export default function TypeIt(element, options) {
   };
 
   const _delete = keepGoingUntilAllIsGone => {
-    keepGoingUntilAllIsGone = keepGoingUntilAllIsGone || false;
+    keepGoingUntilAllIsGone = keepGoingUntilAllIsGone === true;
 
     return new Promise(resolve => {
       _wait(async () => {
@@ -372,7 +392,7 @@ export default function TypeIt(element, options) {
 
     _queue.add(bookEndQueueItems[0]);
     _queue.add(
-      [_delete, !numCharacters], // Maybe delete all.
+      [_delete, !numCharacters, _freezeCursorMeta], // Maybe delete all.
       numCharacters || 1
     );
     _queue.add(bookEndQueueItems[1]);
@@ -420,7 +440,9 @@ export default function TypeIt(element, options) {
         _move,
 
         // Direction is set by the +/- of the argument.
-        arg.isString ? movementArg : Math.sign(movementArg)
+        arg.isString ? movementArg : Math.sign(movementArg),
+
+        _freezeCursorMeta
       ],
 
       // number of times to queue this same action.
@@ -451,12 +473,13 @@ export default function TypeIt(element, options) {
   this.type = function(string, opts) {
     let bookEndQueueItems = _generateTemporaryOptionQueueItems(opts);
     let chunkedString = maybeChunkStringAsHtml(string, _opts.html);
-
-    return _queueAndReturn([
+    let itemsToQueue = [
       bookEndQueueItems[0],
-      ...queueMany(chunkedString, _type, true),
+      ...queueMany(chunkedString, _type, _freezeCursorMeta, true),
       bookEndQueueItems[1]
-    ]);
+    ];
+
+    return _queueAndReturn(itemsToQueue);
   };
 
   this.getQueue = function() {
@@ -501,6 +524,7 @@ export default function TypeIt(element, options) {
   let _pace = [];
   let _timeouts = [];
   let _cursorPosition = 0;
+  let _freezeCursorMeta = { freezeCursor: true };
   let _statuses = {
     started: false,
     completed: false,

@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sets property on meta object of each item even when meta doesn't yet exist. 1`] = `
+Array [
+  Array [
+    "action1",
+    null,
+    Object {
+      "freezeCursor": true,
+    },
+  ],
+  Array [
+    "action2",
+    null,
+    Object {
+      "freezeCursor": true,
+    },
+  ],
+  Array [
+    "action3",
+    null,
+    Object {
+      "freezeCursor": true,
+    },
+  ],
+]
+`;
+
+exports[`Sets property on meta object of each item even when meta doesn't yet exist. 2`] = `
+Array [
+  Array [
+    "action1",
+    null,
+    Object {
+      "freezeCursor": true,
+    },
+  ],
+  Array [
+    "action2",
+    null,
+    Object {
+      "freezeCursor": true,
+    },
+  ],
+  Array [
+    "action3",
+    null,
+    Object {
+      "freezeCursor": true,
+    },
+  ],
+]
+`;
+
+exports[`Sets property on meta object of each item. 1`] = `
+Array [
+  Array [
+    "action1",
+    null,
+    Object {
+      "freezeCursor": true,
+    },
+  ],
+  Array [
+    "action2",
+    null,
+    Object {
+      "freezeCursor": true,
+    },
+  ],
+  Array [
+    "action3",
+    null,
+    Object {
+      "freezeCursor": true,
+    },
+  ],
+]
+`;

@@ -1,3 +1,5 @@
+import setMetaProperty from "./setMetaProperty";
+
 /**
  * Create several queue items containing a specific action. If an array is passed,
  * each item in that array will be used as the argument for the action. If a number
@@ -7,8 +9,10 @@
  * @param {object}
  * @return {array}
  */
-export default (arrayOrNumber, actionToQueue, shouldBookEnd) => {
+export default (arrayOrNumber, actionToQueue, metaObject, shouldBookEnd) => {
   shouldBookEnd = shouldBookEnd || false;
+  metaObject = metaObject || {};
+
   let isNumber = !Array.isArray(arrayOrNumber);
   let totalNumberOfItems = arrayOrNumber.length;
   arrayOrNumber = isNumber ? new Array(arrayOrNumber).fill(0) : arrayOrNumber;
@@ -18,20 +22,16 @@ export default (arrayOrNumber, actionToQueue, shouldBookEnd) => {
       return actionToQueue;
     }
 
-    let queueItem = [actionToQueue, item];
+    let queueItem = [actionToQueue, item, metaObject];
 
     if (shouldBookEnd) {
       // Tag as first character of arrayOrNumber for callback usage.
       if (index === 0) {
-        queueItem.push({
-          isFirst: true
-        });
+        queueItem = setMetaProperty(queueItem, { isFirst: true });
       }
 
       if (index + 1 === totalNumberOfItems) {
-        queueItem.push({
-          isLast: true
-        });
+        queueItem = setMetaProperty(queueItem, { isLast: true });
       }
     }
 

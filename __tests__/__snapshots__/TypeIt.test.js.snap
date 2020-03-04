@@ -77,7 +77,9 @@ Array [
   Array [
     [Function],
     false,
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -164,7 +166,9 @@ Array [
   Array [
     [Function],
     true,
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -221,6 +225,7 @@ Array [
       "node": ABC,
     },
     Object {
+      "freezeCursor": true,
       "isFirst": true,
     },
   ],
@@ -232,7 +237,9 @@ Array [
       "isTopLevelText": true,
       "node": ABC,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -243,6 +250,7 @@ Array [
       "node": ABC,
     },
     Object {
+      "freezeCursor": true,
       "isLast": true,
     },
   ],
@@ -259,7 +267,9 @@ Array [
       "isTopLevelText": false,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -275,6 +285,7 @@ Array [
       "node": EFG,
     },
     Object {
+      "freezeCursor": true,
       "isFirst": true,
     },
   ],
@@ -286,7 +297,9 @@ Array [
       "isTopLevelText": true,
       "node": EFG,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -297,6 +310,7 @@ Array [
       "node": EFG,
     },
     Object {
+      "freezeCursor": true,
       "isLast": true,
     },
   ],
@@ -329,6 +343,7 @@ Array [
       "node": ABC,
     },
     Object {
+      "freezeCursor": true,
       "isFirst": true,
     },
   ],
@@ -340,7 +355,9 @@ Array [
       "isTopLevelText": true,
       "node": ABC,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -351,6 +368,7 @@ Array [
       "node": ABC,
     },
     Object {
+      "freezeCursor": true,
       "isLast": true,
     },
   ],
@@ -367,7 +385,9 @@ Array [
       "isTopLevelText": false,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -383,6 +403,7 @@ Array [
       "node": EFG,
     },
     Object {
+      "freezeCursor": true,
       "isFirst": true,
     },
   ],
@@ -394,7 +415,9 @@ Array [
       "isTopLevelText": true,
       "node": EFG,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -405,6 +428,7 @@ Array [
       "node": EFG,
     },
     Object {
+      "freezeCursor": true,
       "isLast": true,
     },
   ],
@@ -427,9 +451,8 @@ Array [
       "node": A,
     },
     Object {
+      "freezeCursor": true,
       "isFirst": true,
-    },
-    Object {
       "isLast": true,
     },
   ],
@@ -446,7 +469,9 @@ Array [
       "isTopLevelText": false,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -462,9 +487,8 @@ Array [
       "node": B,
     },
     Object {
+      "freezeCursor": true,
       "isFirst": true,
-    },
-    Object {
       "isLast": true,
     },
   ],
@@ -481,7 +505,9 @@ Array [
       "isTopLevelText": false,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -497,9 +523,8 @@ Array [
       "node": C,
     },
     Object {
+      "freezeCursor": true,
       "isFirst": true,
-    },
-    Object {
       "isLast": true,
     },
   ],
@@ -516,7 +541,9 @@ Array [
       "isTopLevelText": false,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -532,9 +559,8 @@ Array [
       "node": D,
     },
     Object {
+      "freezeCursor": true,
       "isFirst": true,
-    },
-    Object {
       "isLast": true,
     },
   ],
@@ -551,7 +577,9 @@ Array [
       "isTopLevelText": false,
       "node": null,
     },
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -567,9 +595,8 @@ Array [
       "node": E,
     },
     Object {
+      "freezeCursor": true,
       "isFirst": true,
-    },
-    Object {
       "isLast": true,
     },
   ],
@@ -622,7 +649,9 @@ Array [
   Array [
     [Function],
     1,
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -709,7 +738,9 @@ Array [
   Array [
     [Function],
     "END",
-    Object {},
+    Object {
+      "freezeCursor": true,
+    },
   ],
   Array [
     [Function],
@@ -837,9 +868,8 @@ Array [
       "node": !,
     },
     Object {
+      "freezeCursor": true,
       "isFirst": true,
-    },
-    Object {
       "isLast": true,
     },
   ],
@@ -934,9 +964,8 @@ Array [
       "node": !,
     },
     Object {
+      "freezeCursor": true,
       "isFirst": true,
-    },
-    Object {
       "isLast": true,
     },
   ],

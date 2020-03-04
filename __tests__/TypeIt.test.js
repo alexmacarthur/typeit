@@ -191,9 +191,7 @@ describe("empty()", () => {
 
     test("Inserts split pause around multiple strings.", () => {
       args[1].strings = ["A", "B", "C", "D", "E"];
-
       instance = new TypeIt(...args);
-
       expect(instance.getQueue().getItems()).toMatchSnapshot();
     });
   });
