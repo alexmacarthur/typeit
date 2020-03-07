@@ -1,6 +1,7 @@
 import isInput from "./isInput";
 import toArray from "./toArray";
 import getAllTypeableNodes from "./getAllTypeableNodes";
+import isBodyElement from "./isBodyElement";
 
 /**
  * Given a node, find the corresponding PRINTED node already in an element.
@@ -57,9 +58,7 @@ export default (element, contentArg, cursorNode, cursorPosition) => {
     let parentNode = contentArg.node.parentNode;
     let existingNode = findPrintedNode(parentNode.cloneNode(), element);
 
-    // Only type into an existing element if there is one. This should only
-    // happen when we've already started typing in an element,
-    // and so we want to leave off where we started.
+    // This node is already there, so keep typing into it.
     if (isLastElement(existingNode, cursorNode)) {
       element = existingNode;
 
@@ -69,15 +68,13 @@ export default (element, contentArg, cursorNode, cursorPosition) => {
       content = parentNode.cloneNode();
       content.innerText = contentArg.content;
 
-      // The _parent_ of the parent node isn't the body, which means we're printing this
-      // new element INSIDE a different element. Need to do a dance to either find
-      // the beginnings of that element, or else create one.
-      if (parentNode.parentNode.tagName !== "BODY") {
+      // This new element may be nested in ANOTHER element
+      if (!isBodyElement(parentNode.parentNode)) {
         let parent = parentNode.parentNode;
         let parentClone = parent.cloneNode();
         let newElement = findPrintedNode(parentClone, element);
 
-        while (!newElement && parent.tagName !== "BODY") {
+        while (!newElement && !isBodyElement(parent)) {
           // Wrap our element in the to-be-created parent node.
           // Then, we need to find the next candidate to print into.
           parentClone.innerHTML = content.outerHTML;
@@ -89,18 +86,20 @@ export default (element, contentArg, cursorNode, cursorPosition) => {
         }
 
         // We found an element before reaching the top. Assign it!
-        if (newElement) {
-          element = newElement;
-        }
+        element = newElement || element;
       }
     }
   }
 
-  let refNode = getAllTypeableNodes(element, cursorNode, true);
-  refNode = refNode[cursorPosition - 1];
-  refNode = element.querySelector('.ti-cursor') || refNode;
+  let lastNode = getAllTypeableNodes(element, cursorNode, true)[
+    cursorPosition - 1
+  ];
+  let elementToTypeInto = lastNode ? lastNode.parentNode : element;
 
   // If a cursor node exists, make sure we print BEFORE that, but only if the target
   // element actually contains it. Otherwise, stick it to the end of the element.
-  element.insertBefore(content, refNode || null);
+  elementToTypeInto.insertBefore(
+    content,
+    elementToTypeInto.contains(cursorNode) ? cursorNode : null
+  );
 };

@@ -2,6 +2,7 @@ import toArray from "../helpers/toArray";
 import flatten from "../helpers/flatten";
 import getParsedBody from "./getParsedBody";
 import getAllTypeableNodes from "./getAllTypeableNodes";
+import isBodyElement from "./isBodyElement";
 
 /**
  * Given a node, generate an array of split text and nodes.
@@ -44,7 +45,7 @@ export const createCharacterObject = (content, node) => {
     // When a node is being passed as content, this should be null.
     node,
     isTopLevelText:
-      (!node || node.parentNode.tagName === "BODY") && !contentIsAnElement,
+      (!node || isBodyElement(node.parentNode)) && !contentIsAnElement,
     isHTMLElement: contentIsAnElement,
     content
   };

@@ -26,6 +26,7 @@ import selectorToElement from "./helpers/selectorToElement";
 import toArray from "./helpers/toArray";
 import generateHash from "./helpers/generateHash.js";
 import processCursorMovementArg from "./helpers/processCursorMovementArg.js";
+import getStyleString from "./helpers/getStyleString.js";
 
 export default function TypeIt(element, options) {
   options = options || {};
@@ -93,10 +94,9 @@ export default function TypeIt(element, options) {
     let cursor = createElement("span");
     cursor.innerHTML = getParsedBody(_opts.cursorChar).innerHTML;
     cursor.className = "ti-cursor";
-    cursor.setAttribute(
-      "style",
-      "display:inline;position:absolute;font:inherit;color:inherit;line-height:inherit;margin-left:-.095em;"
-    );
+    cursor.style.cssText = `position:absolute;display:inline;margin-left:-.025em;${getStyleString(
+      _element
+    )}`;
 
     return cursor;
   };
