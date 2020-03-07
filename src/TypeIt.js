@@ -95,7 +95,7 @@ export default function TypeIt(element, options) {
     cursor.className = "ti-cursor";
     cursor.setAttribute(
       "style",
-      "display:inline;position:absolute;font:inherit;color:inherit;line-height:inherit;margin-left:-.1em;"
+      "display:inline;position:absolute;font:inherit;color:inherit;line-height:inherit;margin-left:-.095em;"
     );
 
     return cursor;
@@ -123,7 +123,6 @@ export default function TypeIt(element, options) {
     _element.appendChild(_cursor);
   };
 
-  // @todo use this for blog!
   const _disableCursorBlink = shouldDisable => {
     if (!_cursor) {
       return;

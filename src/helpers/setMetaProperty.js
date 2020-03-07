@@ -1,4 +1,5 @@
 import merge from "./merge";
+import isArray from "./isArray";
 
 const setPropToMeta = (item, toMerge) => {
   item[2] = merge(item[2], toMerge) || toMerge;
@@ -6,7 +7,7 @@ const setPropToMeta = (item, toMerge) => {
 };
 
 export default (queueItems, toMerge) => {
-  if (!Array.isArray(queueItems[0])) {
+  if (!isArray(queueItems[0])) {
     return setPropToMeta(queueItems, toMerge);
   }
 

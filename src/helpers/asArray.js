@@ -1,3 +1,5 @@
+import isArray from "./isArray";
+
 /**
  * Converts value as within array, unless the value itself already is one.
  *
@@ -5,5 +7,5 @@
  * @return {array}
  */
 export default string => {
-  return Array.isArray(string) ? string : [string];
+  return isArray(string) ? string : [string];
 };

@@ -1,5 +1,6 @@
 import guaranteeThreeKeys from "./helpers/guaranteeThreeKeys";
 import queueMany from "./helpers/queueMany";
+import isArray from "./helpers/isArray";
 
 export default function Queue(initialItem) {
   /**
@@ -22,12 +23,10 @@ export default function Queue(initialItem) {
    */
   this.add = function(stepOrSteps, numberOfTimes, toBeginning) {
     // If a single thing is passed, assume it's an action with no argument.
-    stepOrSteps = Array.isArray(stepOrSteps)
-      ? stepOrSteps
-      : [stepOrSteps, null];
+    stepOrSteps = isArray(stepOrSteps) ? stepOrSteps : [stepOrSteps, null];
     toBeginning = toBeginning || false;
     numberOfTimes = numberOfTimes || 1;
-    let isMultipleSteps = Array.isArray(stepOrSteps[0]);
+    let isMultipleSteps = isArray(stepOrSteps[0]);
 
     if (!isMultipleSteps) {
       stepOrSteps = queueMany(numberOfTimes, stepOrSteps);

@@ -1,4 +1,5 @@
 import setMetaProperty from "./setMetaProperty";
+import isArray from "./isArray";
 
 /**
  * Create several queue items containing a specific action. If an array is passed,
@@ -13,7 +14,7 @@ export default (arrayOrNumber, actionToQueue, metaObject, shouldBookEnd) => {
   shouldBookEnd = shouldBookEnd || false;
   metaObject = metaObject || {};
 
-  let isNumber = !Array.isArray(arrayOrNumber);
+  let isNumber = !isArray(arrayOrNumber);
   let totalNumberOfItems = arrayOrNumber.length;
   arrayOrNumber = isNumber ? new Array(arrayOrNumber).fill(0) : arrayOrNumber;
 
