@@ -145,6 +145,13 @@ describe("delete()", () => {
   });
 });
 
+describe("break()", () => {
+  test("Should should queue break character object.", () => {
+    instance = new TypeIt("#element").break(1);
+    expect(instance.getQueue().getItems()).toMatchSnapshot();
+  });
+});
+
 describe("empty()", () => {
   test("Should empty out element when called with no cursor.", async () => {
     args[1].cursor = false;

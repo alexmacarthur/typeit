@@ -89,6 +89,11 @@
       <h3 id="example11"></h3>
     </section>
 
+    <section>
+      <h2>Break Text</h2>
+      <h3 id="example12"></h3>
+    </section>
+
     <script src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.fill%2CIntersectionObserver%2CObject.assign%2CPromise%2CArray.from%2CArray.prototype.find"></script>
     <script src="dist/typeit.min.js"></script>
 
@@ -198,6 +203,16 @@
         .pause(100)
         .type("TEN")
         .move(1)
+        .go();
+
+      new TypeIt("#example12", {
+        speed: 50,
+        waitUntilVisible: true,
+        loop: true
+      })
+        .type("This should...")
+        .break()
+        .type("break!")
         .go();
     </script>
   </body>

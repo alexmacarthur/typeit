@@ -383,7 +383,7 @@ export default function TypeIt(element, options) {
   };
 
   this.break = function() {
-    return _queue.add([_type, createElement("BR")]);
+    return _queueAndReturn([_type, createCharacterObject(createElement("BR"))]);
   };
 
   this.delete = function(numCharacters, opts) {

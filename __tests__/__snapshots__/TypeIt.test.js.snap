@@ -31,6 +31,26 @@ Array [
 ]
 `;
 
+exports[`break() Should should queue break character object. 1`] = `
+Array [
+  Array [
+    [Function],
+    250,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": <br />,
+      "isHTMLElement": true,
+      "isTopLevelText": false,
+      "node": null,
+    },
+    Object {},
+  ],
+]
+`;
+
 exports[`delete() Should bookend action with same options when no options passed. 1`] = `
 Array [
   Array [
