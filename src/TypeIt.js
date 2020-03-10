@@ -239,7 +239,7 @@ export default function TypeIt(element, options) {
 
         let queueAction = queueItems[i];
         let queueActionMeta = queueAction[2];
-        let callbackArgs = [queueAction, _queue, this];
+        let callbackArgs = [queueAction, this];
 
         queueActionMeta.freezeCursor && _disableCursorBlink(true);
 
@@ -487,6 +487,10 @@ export default function TypeIt(element, options) {
 
   this.getOptions = function() {
     return _opts;
+  };
+
+  this.getElement = function() {
+    return _element;
   };
 
   this.reset = function() {
