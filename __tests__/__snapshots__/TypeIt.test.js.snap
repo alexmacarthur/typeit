@@ -18,6 +18,7 @@ Array [
   "empty",
   "exec",
   "freeze",
+  "getElement",
   "getOptions",
   "getQueue",
   "go",
