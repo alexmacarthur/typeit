@@ -27,6 +27,8 @@ import toArray from "./helpers/toArray";
 import generateHash from "./helpers/generateHash.js";
 import processCursorMovementArg from "./helpers/processCursorMovementArg.js";
 import getStyleString from "./helpers/getStyleString.js";
+import getComputedStyle from "./helpers/getComputedStyle.js";
+import getTextWidth from "./helpers/getTextWidth.js";
 
 export default function TypeIt(element, options) {
   options = options || {};
@@ -94,9 +96,7 @@ export default function TypeIt(element, options) {
     let cursor = createElement("span");
     cursor.innerHTML = getParsedBody(_opts.cursorChar).innerHTML;
     cursor.className = "ti-cursor";
-    cursor.style.cssText = `position:absolute;display:inline;margin-left:-.025em;${getStyleString(
-      _element
-    )}`;
+    cursor.style.cssText = `display:inline;${getStyleString(_element)}`;
 
     return cursor;
   };
@@ -121,6 +121,11 @@ export default function TypeIt(element, options) {
     );
 
     _element.appendChild(_cursor);
+
+    let calculatedMargin =
+      _cursor.getBoundingClientRect().width - getTextWidth(_cursor);
+
+    _cursor.style.margin = `0 -${calculatedMargin}px`;
   };
 
   const _disableCursorBlink = shouldDisable => {
