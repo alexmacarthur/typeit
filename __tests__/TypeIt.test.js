@@ -3,6 +3,10 @@ import TypeIt from "../src/TypeIt.js";
 let instance;
 let args;
 
+const getLast = arr => {
+  return arr[arr.length - 1];
+};
+
 beforeEach(() => {
   document.body.innerHTML = `
     <div>
@@ -119,6 +123,18 @@ describe("type()", () => {
     instance = new TypeIt("#element").type("!", { speed: 501 });
     expect(instance.getQueue().getItems()).toMatchSnapshot();
   });
+
+  test("Should queue pause after string when defined.", () => {
+    instance = new TypeIt("#element").type("!", { delay: 300 });
+    let last = getLast(instance.getQueue().getItems());
+    expect(last).toMatchSnapshot();
+  });
+
+  test("Should queue pause correctly when options are passed.", () => {
+    instance = new TypeIt("#element").type("!", { speed: 50, delay: 200 });
+    let last = getLast(instance.getQueue().getItems());
+    expect(last).toMatchSnapshot();
+  });
 });
 
 describe("move()", () => {
@@ -130,6 +146,18 @@ describe("move()", () => {
   test("Should temporarily update options when specified.", () => {
     instance = new TypeIt("#element").move("END", { speed: 601 });
     expect(instance.getQueue().getItems()).toMatchSnapshot();
+  });
+
+  test("Should queue pause after string when defined.", () => {
+    instance = new TypeIt("#element").move("!", { delay: 300 });
+    let last = getLast(instance.getQueue().getItems());
+    expect(last).toMatchSnapshot();
+  });
+
+  test("Should queue pause correctly when options are passed.", () => {
+    instance = new TypeIt("#element").move("!", { speed: 50, delay: 200 });
+    let last = getLast(instance.getQueue().getItems());
+    expect(last).toMatchSnapshot();
   });
 });
 
@@ -143,11 +171,29 @@ describe("delete()", () => {
     instance = new TypeIt("#element").delete(null, { deleteSpeed: 201 });
     expect(instance.getQueue().getItems()).toMatchSnapshot();
   });
+
+  test("Should queue pause after string when defined.", () => {
+    instance = new TypeIt("#element").delete(3, { delay: 300 });
+    let last = getLast(instance.getQueue().getItems());
+    expect(last).toMatchSnapshot();
+  });
+
+  test("Should queue pause correctly when options are passed.", () => {
+    instance = new TypeIt("#element").delete(3, { speed: 50, delay: 200 });
+    let last = getLast(instance.getQueue().getItems());
+    expect(last).toMatchSnapshot();
+  });
+
+  test("Should queue pause correctly when single digit is passed.", () => {
+    instance = new TypeIt("#element").delete(3, { speed: 50, delay: 50 }, 200);
+    let last = getLast(instance.getQueue().getItems());
+    expect(last).toMatchSnapshot();
+  });
 });
 
 describe("break()", () => {
   test("Should should queue break character object.", () => {
-    instance = new TypeIt("#element").break(1);
+    instance = new TypeIt("#element").break();
     expect(instance.getQueue().getItems()).toMatchSnapshot();
   });
 });

@@ -94,6 +94,11 @@
       <h3 id="example12"></h3>
     </section>
 
+    <section>
+      <h2>Pause After Action</h2>
+      <h3 id="example13"></h3>
+    </section>
+
     <script src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.fill%2CIntersectionObserver%2CObject.assign%2CPromise%2CArray.from%2CArray.prototype.find"></script>
     <script src="dist/typeit.min.js"></script>
 
@@ -213,6 +218,28 @@
         .type("This should...")
         .break()
         .type("break!")
+        .go();
+
+      new TypeIt("#example13", {
+        speed: 50,
+        waitUntilVisible: true,
+        loop: true,
+        afterComplete: () => {
+          console.log("DONE!");
+        }
+      })
+        .type("Pause after!", { delay: 2000 })
+        .break({ delay: 2000 })
+        .type("Pause again!", { delay: 2000 })
+        .options({ speed: 500, delay: 2000 })
+        .type("And again!", { delay: 2000 })
+        .exec(
+          () => {
+            console.log("fire!");
+          },
+          { delay: 2000 }
+        )
+        .move(-5, { delay: 2000 })
         .go();
     </script>
   </body>

@@ -15,6 +15,7 @@ import fireWhenVisible from "./helpers/fireWhenVisible";
 import getAllTypeableNodes from "./helpers/getAllTypeableNodes.js";
 import getParsedBody from "./helpers/getParsedBody.js";
 import insertIntoElement from "./helpers/insertIntoElement";
+import isArray from "./helpers/isArray";
 import isInput from "./helpers/isInput";
 import merge from "./helpers/merge";
 import queueMany from "./helpers/queueMany";
@@ -31,19 +32,25 @@ import getStyleString from "./helpers/getStyleString.js";
 export default function TypeIt(element, options) {
   options = options || {};
 
-  const _queueAndReturn = (stepOrSteps, numberOfTimes) => {
+  const _maybeAppendPause = opts => {
+    opts = opts || {};
+    let delay = opts.delay;
+    delay && _queue.add([_pause, delay]);
+  };
+
+  const _queueAndReturn = (stepOrSteps, numberOfTimes, opts) => {
+    stepOrSteps = isArray(stepOrSteps[0]) ? stepOrSteps : [stepOrSteps];
     _queue.add(stepOrSteps, numberOfTimes);
+    _maybeAppendPause(opts);
     return this;
   };
 
   const _generateTemporaryOptionQueueItems = newOptions => {
-    newOptions = newOptions || {};
-    let originalOptions = merge({}, _opts);
-    let updatedOptions = merge(originalOptions, newOptions);
+    newOptions = typeof newOptions === "object" ? newOptions : {};
 
     return [
-      [_options, updatedOptions, { force: true }],
-      [_options, originalOptions, { force: true }]
+      [_options, newOptions, { force: true }],
+      [_options, _opts, { force: true }]
     ];
   };
 
@@ -193,7 +200,7 @@ export default function TypeIt(element, options) {
 
     // Reset the cursor position!
     if (_cursorPosition) {
-      await move(_cursorPosition * -1);
+      await _move(_cursorPosition);
     }
 
     _queue
@@ -269,7 +276,6 @@ export default function TypeIt(element, options) {
 
           await _opts.afterStep(...callbackArgs);
 
-          // Do I need this?
           queueAction[2].executed = true;
         }
 
@@ -280,7 +286,7 @@ export default function TypeIt(element, options) {
       await _opts.afterComplete(this);
 
       if (_opts.loop) {
-        let delay = _opts.loopDelay || _opts.nextStringDelay;
+        let delay = _opts.loopDelay;
 
         _wait(async () => {
           await _loopify(delay);
@@ -296,7 +302,7 @@ export default function TypeIt(element, options) {
     return new Promise(resolve => {
       _wait(() => {
         return resolve();
-      }, time || _opts.nextStringDelay.total);
+      }, time || 0);
     });
   };
 
@@ -387,12 +393,16 @@ export default function TypeIt(element, options) {
     });
   };
 
-  this.break = function() {
-    return _queueAndReturn([_type, createCharacterObject(createElement("BR"))]);
+  this.break = function(actionOpts) {
+    return _queueAndReturn(
+      [_type, createCharacterObject(createElement("BR"))],
+      1,
+      actionOpts
+    );
   };
 
-  this.delete = function(numCharacters, opts) {
-    let bookEndQueueItems = _generateTemporaryOptionQueueItems(opts);
+  this.delete = function(numCharacters, actionOpts) {
+    let bookEndQueueItems = _generateTemporaryOptionQueueItems(actionOpts);
 
     _queue.add(bookEndQueueItems[0]);
     _queue.add(
@@ -401,42 +411,32 @@ export default function TypeIt(element, options) {
     );
     _queue.add(bookEndQueueItems[1]);
 
+    _maybeAppendPause(actionOpts);
+
     return this;
   };
 
-  this.destroy = function(shouldRemoveCursor) {
-    shouldRemoveCursor =
-      shouldRemoveCursor === undefined ? true : shouldRemoveCursor;
-    _timeouts = destroyTimeouts(_timeouts);
-    shouldRemoveCursor && removeNode(_cursor);
-    _statuses.destroyed = true;
-  };
-
   this.empty = function() {
-    return _queueAndReturn(_empty);
+    return _queueAndReturn(_empty, 1, arguments);
   };
 
-  this.exec = function(func, opts) {
-    let bookEndQueueItems = _generateTemporaryOptionQueueItems(opts);
-    return _queueAndReturn([
-      bookEndQueueItems[0],
-      [func, null],
-      bookEndQueueItems[1]
-    ]);
+  this.exec = function(func, actionOpts) {
+    let bookEndQueueItems = _generateTemporaryOptionQueueItems(actionOpts);
+    return _queueAndReturn(
+      [bookEndQueueItems[0], [func, null], bookEndQueueItems[1]],
+      1,
+      actionOpts
+    );
   };
 
-  this.is = function(key) {
-    return _statuses[key];
-  };
-
-  this.move = function(movementArg, opts) {
+  this.move = function(movementArg, actionOpts) {
     let arg = processCursorMovementArg(
       movementArg,
       _cursorPosition,
       _getAllChars()
     );
 
-    let bookEndQueueItems = _generateTemporaryOptionQueueItems(opts);
+    let bookEndQueueItems = _generateTemporaryOptionQueueItems(actionOpts);
 
     _queue.add(bookEndQueueItems[0]);
     _queue.add(
@@ -454,7 +454,42 @@ export default function TypeIt(element, options) {
     );
     _queue.add(bookEndQueueItems[1]);
 
+    _maybeAppendPause(actionOpts);
+
     return this;
+  };
+
+  this.options = function(opts) {
+    return _queueAndReturn([_options, opts], 1, opts);
+  };
+
+  this.pause = function(ms, actionOpts) {
+    return _queueAndReturn([_pause, ms], 1, actionOpts);
+  };
+
+  this.type = function(string, actionOpts) {
+    let bookEndQueueItems = _generateTemporaryOptionQueueItems(actionOpts);
+    let chunkedString = maybeChunkStringAsHtml(string, _opts.html);
+
+    let itemsToQueue = [
+      bookEndQueueItems[0],
+      ...queueMany(chunkedString, _type, _freezeCursorMeta, true),
+      bookEndQueueItems[1]
+    ];
+
+    return _queueAndReturn(itemsToQueue, 1, actionOpts);
+  };
+
+  this.is = function(key) {
+    return _statuses[key];
+  };
+
+  this.destroy = function(shouldRemoveCursor) {
+    shouldRemoveCursor =
+      shouldRemoveCursor === undefined ? true : shouldRemoveCursor;
+    _timeouts = destroyTimeouts(_timeouts);
+    shouldRemoveCursor && removeNode(_cursor);
+    _statuses.destroyed = true;
   };
 
   this.freeze = function() {
@@ -464,38 +499,6 @@ export default function TypeIt(element, options) {
   this.unfreeze = function() {
     _statuses["frozen"] = false;
     !_statuses["frozen"] && _fire();
-  };
-
-  this.options = function(opts) {
-    return _queueAndReturn([_options, opts]);
-  };
-
-  this.pause = function(ms) {
-    return _queueAndReturn([_pause, ms || null]);
-  };
-
-  this.type = function(string, opts) {
-    let bookEndQueueItems = _generateTemporaryOptionQueueItems(opts);
-    let chunkedString = maybeChunkStringAsHtml(string, _opts.html);
-    let itemsToQueue = [
-      bookEndQueueItems[0],
-      ...queueMany(chunkedString, _type, _freezeCursorMeta, true),
-      bookEndQueueItems[1]
-    ];
-
-    return _queueAndReturn(itemsToQueue);
-  };
-
-  this.getQueue = function() {
-    return _queue;
-  };
-
-  this.getOptions = function() {
-    return _opts;
-  };
-
-  this.getElement = function() {
-    return _element;
   };
 
   this.reset = function() {
@@ -527,6 +530,18 @@ export default function TypeIt(element, options) {
     return this;
   };
 
+  this.getQueue = function() {
+    return _queue;
+  };
+
+  this.getOptions = function() {
+    return _opts;
+  };
+
+  this.getElement = function() {
+    return _element;
+  };
+
   let _element = selectorToElement(element);
   let _elementIsInput = isInput(_element);
   let _pace = [];
@@ -553,7 +568,7 @@ export default function TypeIt(element, options) {
 
   // Used to set a "placeholder" space in the element, so that it holds vertical sizing before anything's typed.
   appendStyleBlock(
-    `[data-typeit-id]:before {content: '.'; display: inline-block; width: 0; visibility: hidden;}`
+    `[data-typeit-id]:before {content: '.'; display: inline-block; width: 0; visibility: hidden;}[data-typeit-id]`
   );
 
   _opts.strings = _maybePrependHardcodedStrings(asArray(_opts.strings));
