@@ -9,3 +9,9 @@ global.setHTML = (html, shouldReturn = false) => {
 
   document.body.innerHTML = domString;
 };
+
+document.fonts = {
+  ready: async () => {
+    return true;
+  }
+};

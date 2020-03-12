@@ -27,8 +27,6 @@ import toArray from "./helpers/toArray";
 import generateHash from "./helpers/generateHash.js";
 import processCursorMovementArg from "./helpers/processCursorMovementArg.js";
 import getStyleString from "./helpers/getStyleString.js";
-import getComputedStyle from "./helpers/getComputedStyle.js";
-import getTextWidth from "./helpers/getTextWidth.js";
 
 export default function TypeIt(element, options) {
   options = options || {};
@@ -107,7 +105,7 @@ export default function TypeIt(element, options) {
    *
    * @return void
    */
-  const _maybeAttachCursor = () => {
+  const _maybeAttachCursor = async () => {
     if (!_cursor) {
       return;
     }
@@ -122,10 +120,12 @@ export default function TypeIt(element, options) {
 
     _element.appendChild(_cursor);
 
-    let calculatedMargin =
-      _cursor.getBoundingClientRect().width - getTextWidth(_cursor);
+    await document.fonts.ready;
 
-    _cursor.style.margin = `0 -${calculatedMargin}px`;
+    let calculatedMargin = _cursor.getBoundingClientRect().width / 2;
+
+    _cursor.style.margin = `0 -${calculatedMargin + 1}px 0 -${calculatedMargin -
+      1}px`;
   };
 
   const _disableCursorBlink = shouldDisable => {
