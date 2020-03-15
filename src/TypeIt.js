@@ -376,7 +376,6 @@ export default function TypeIt(element, options) {
           }
         }
 
-        // do i need this?
         removeEmptyElements(_element);
 
         /**
@@ -405,16 +404,20 @@ export default function TypeIt(element, options) {
   this.delete = function(numCharacters, actionOpts) {
     let bookEndQueueItems = _generateTemporaryOptionQueueItems(actionOpts);
 
-    _queue.add(bookEndQueueItems[0]);
-    _queue.add(
-      [_delete, !numCharacters, _freezeCursorMeta], // Maybe delete all.
-      numCharacters || 1
+    return _queueAndReturn(
+      [
+        bookEndQueueItems[0],
+        // Duplicate this queue item a certain number of times.
+        ...[...Array(numCharacters || 1)].map(() => [
+          _delete,
+          !numCharacters,
+          _freezeCursorMeta
+        ]),
+        bookEndQueueItems[1]
+      ],
+      1,
+      actionOpts
     );
-    _queue.add(bookEndQueueItems[1]);
-
-    _maybeAppendPause(actionOpts);
-
-    return this;
   };
 
   this.empty = function() {
@@ -438,26 +441,22 @@ export default function TypeIt(element, options) {
     );
 
     let bookEndQueueItems = _generateTemporaryOptionQueueItems(actionOpts);
+    let moveArg = arg.isString ? movementArg : Math.sign(movementArg);
 
-    _queue.add(bookEndQueueItems[0]);
-    _queue.add(
+    return _queueAndReturn(
       [
-        _move,
-
-        // Direction is set by the +/- of the argument.
-        arg.isString ? movementArg : Math.sign(movementArg),
-
-        _freezeCursorMeta
+        bookEndQueueItems[0],
+        // Duplicate this queue item a certain number of times.
+        ...[...Array(Math.abs(movementArg) || 1)].map(() => [
+          _move,
+          moveArg,
+          _freezeCursorMeta
+        ]),
+        bookEndQueueItems[1]
       ],
-
-      // number of times to queue this same action.
-      Math.abs(movementArg)
+      1,
+      actionOpts
     );
-    _queue.add(bookEndQueueItems[1]);
-
-    _maybeAppendPause(actionOpts);
-
-    return this;
   };
 
   this.options = function(opts) {

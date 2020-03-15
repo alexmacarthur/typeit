@@ -149,13 +149,13 @@ describe("move()", () => {
   });
 
   test("Should queue pause after string when defined.", () => {
-    instance = new TypeIt("#element").move("!", { delay: 300 });
+    instance = new TypeIt("#element").move(1, { delay: 300 });
     let last = getLast(instance.getQueue().getItems());
     expect(last).toMatchSnapshot();
   });
 
   test("Should queue pause correctly when options are passed.", () => {
-    instance = new TypeIt("#element").move("!", { speed: 50, delay: 200 });
+    instance = new TypeIt("#element").move(1, { speed: 50, delay: 200 });
     let last = getLast(instance.getQueue().getItems());
     expect(last).toMatchSnapshot();
   });
