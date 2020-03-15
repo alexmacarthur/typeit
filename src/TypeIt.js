@@ -376,6 +376,7 @@ export default function TypeIt(element, options) {
           }
         }
 
+        // do i need this?
         removeEmptyElements(_element);
 
         /**
