@@ -99,7 +99,7 @@
       <h3 id="example13"></h3>
     </section>
 
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.fill%2CIntersectionObserver%2CObject.assign%2CPromise%2CArray.from%2CArray.prototype.find"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.fill%2CIntersectionObserver%2CObject.assign%2CPromise%2CArray.from%2CArray.prototype.find%2CMath.sign"></script>
     <script src="dist/typeit.min.js"></script>
 
     <script>
@@ -224,7 +224,7 @@
         speed: 50,
         waitUntilVisible: true,
         loop: true,
-        afterComplete: () => {
+        afterComplete: function() {
           console.log("DONE!");
         }
       })
@@ -234,7 +234,7 @@
         .options({ speed: 500, delay: 2000 })
         .type("And again!", { delay: 2000 })
         .exec(
-          () => {
+          function() {
             console.log("fire!");
           },
           { delay: 2000 }

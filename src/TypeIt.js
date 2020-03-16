@@ -408,11 +408,9 @@ export default function TypeIt(element, options) {
       [
         bookEndQueueItems[0],
         // Duplicate this queue item a certain number of times.
-        ...[...Array(numCharacters || 1)].map(() => [
-          _delete,
-          !numCharacters,
-          _freezeCursorMeta
-        ]),
+        ...[...Array(numCharacters || 1)]
+          .fill()
+          .map(() => [_delete, !numCharacters, _freezeCursorMeta]),
         bookEndQueueItems[1]
       ],
       1,
@@ -447,11 +445,9 @@ export default function TypeIt(element, options) {
       [
         bookEndQueueItems[0],
         // Duplicate this queue item a certain number of times.
-        ...[...Array(Math.abs(movementArg) || 1)].map(() => [
-          _move,
-          moveArg,
-          _freezeCursorMeta
-        ]),
+        ...[...Array(Math.abs(movementArg) || 1)]
+          .fill()
+          .map(() => [_move, moveArg, _freezeCursorMeta]),
         bookEndQueueItems[1]
       ],
       1,
