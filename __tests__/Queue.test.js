@@ -3,12 +3,12 @@ import Queue from "../src/Queue.js";
 let queue;
 
 beforeEach(() => {
-  queue = new Queue();
+  queue = new Queue(["first-action", null, {}]);
 });
 
 describe("add()", () => {
   test("It should add steps properly.", () => {
-    expect(queue.getItems()).toEqual([]);
+    expect(queue.getItems()).toEqual([["first-action", null, {}]]);
 
     queue.add(["step1"]);
     queue.add(["step2"]);
@@ -50,17 +50,13 @@ test("It should reset properly by marking each item as having not yet been execu
 });
 
 test("It should set initial steps properly.", () => {
-  let q1 = new Queue();
-
-  expect(q1.getItems()).toEqual([]);
-
   let items = [
     ["value1", null, {}],
     ["value2", null, {}],
     ["value3", null, {}]
   ];
 
-  let q2 = new Queue(items);
+  let q1 = new Queue(items);
 
-  expect(q2.getItems()).toMatchSnapshot();
+  expect(q1.getItems()).toMatchSnapshot();
 });

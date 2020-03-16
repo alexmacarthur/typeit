@@ -75,9 +75,5 @@ export default function Queue(initialItem) {
 
   let _queue = [];
 
-  // Don't include initial item if we're recycling
-  // items from a previous run.
-  if (initialItem) {
-    this.add(initialItem);
-  }
+  this.add(initialItem);
 }

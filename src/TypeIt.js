@@ -322,7 +322,7 @@ export default function TypeIt(element, options) {
         repositionCursor(_element, _getAllChars(), _cursor, _cursorPosition);
 
         /**
-         * If our argument is a sting, we're moving absolutely and need to keep
+         * If our argument is a string, we're moving absolutely and need to keep
          * going until there are no more spaces to move.
          */
         if (arg.isString && arg.canKeepMoving) {
@@ -408,7 +408,7 @@ export default function TypeIt(element, options) {
       [
         bookEndQueueItems[0],
         // Duplicate this queue item a certain number of times.
-        ...[...Array(numCharacters || 1)]
+        ...[...Array(Math.abs(numCharacters) || 1)]
           .fill()
           .map(() => [_delete, !numCharacters, _freezeCursorMeta]),
         bookEndQueueItems[1]
@@ -494,7 +494,7 @@ export default function TypeIt(element, options) {
 
   this.unfreeze = function() {
     _statuses["frozen"] = false;
-    !_statuses["frozen"] && _fire();
+    _fire();
   };
 
   this.reset = function() {
@@ -502,9 +502,13 @@ export default function TypeIt(element, options) {
 
     _queue.reset();
 
+    _cursorPosition = 0;
+
     for (let property in _statuses) {
       _statuses[property] = false;
     }
+
+    _element.innerHTML = "";
 
     return this;
   };

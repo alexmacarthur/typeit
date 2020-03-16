@@ -3,6 +3,13 @@
 exports[`It should reset properly by marking each item as having not yet been executed. 1`] = `
 Array [
   Array [
+    "first-action",
+    null,
+    Object {
+      "executed": false,
+    },
+  ],
+  Array [
     "value1",
     null,
     Object {
@@ -63,6 +70,11 @@ Array [
 exports[`add() It should add a step passed as a function. 1`] = `
 Array [
   Array [
+    "first-action",
+    null,
+    Object {},
+  ],
+  Array [
     [Function],
     null,
     Object {},
@@ -83,6 +95,11 @@ Array [
 exports[`add() It should add multiple steps passed at once. 1`] = `
 Array [
   Array [
+    "first-action",
+    null,
+    Object {},
+  ],
+  Array [
     [Function],
     1,
     Object {},
@@ -102,6 +119,11 @@ Array [
 
 exports[`add() It should add steps properly. 1`] = `
 Array [
+  Array [
+    "first-action",
+    null,
+    Object {},
+  ],
   Array [
     "step1",
     null,
