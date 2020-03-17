@@ -5,7 +5,9 @@ Array [
   Array [
     [Function],
     250,
-    Object {},
+    Object {
+      "id": 0,
+    },
   ],
   Array [
     [Function],
@@ -17,6 +19,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 1,
       "isFirst": true,
     },
   ],
@@ -30,6 +33,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 2,
     },
   ],
   Array [
@@ -42,6 +46,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 3,
     },
   ],
   Array [
@@ -54,6 +59,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 4,
     },
   ],
   Array [
@@ -66,6 +72,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 5,
     },
   ],
   Array [
@@ -78,6 +85,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 6,
     },
   ],
   Array [
@@ -90,6 +98,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 7,
     },
   ],
   Array [
@@ -102,6 +111,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 8,
     },
   ],
   Array [
@@ -114,6 +124,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 9,
     },
   ],
   Array [
@@ -126,6 +137,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 10,
     },
   ],
   Array [
@@ -138,6 +150,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 11,
     },
   ],
   Array [
@@ -150,6 +163,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 12,
     },
   ],
   Array [
@@ -162,6 +176,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 13,
     },
   ],
   Array [
@@ -174,6 +189,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 14,
       "isLast": true,
     },
   ],
@@ -192,6 +208,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 15,
     },
   ],
   Array [
@@ -209,6 +226,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 16,
       "isFirst": true,
     },
   ],
@@ -222,6 +240,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 17,
     },
   ],
   Array [
@@ -234,6 +253,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 18,
     },
   ],
   Array [
@@ -246,6 +266,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 19,
     },
   ],
   Array [
@@ -258,6 +279,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 20,
     },
   ],
   Array [
@@ -270,6 +292,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 21,
       "isLast": true,
     },
   ],

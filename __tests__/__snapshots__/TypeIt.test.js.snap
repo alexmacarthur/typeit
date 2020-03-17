@@ -5,7 +5,9 @@ Array [
   Array [
     [Function],
     250,
-    Object {},
+    Object {
+      "id": 0,
+    },
   ],
 ]
 `;
@@ -37,7 +39,9 @@ Array [
   Array [
     [Function],
     250,
-    Object {},
+    Object {
+      "id": 0,
+    },
   ],
   Array [
     [Function],
@@ -47,7 +51,9 @@ Array [
       "isTopLevelText": false,
       "node": null,
     },
-    Object {},
+    Object {
+      "id": 1,
+    },
   ],
 ]
 `;
@@ -57,13 +63,16 @@ Array [
   Array [
     [Function],
     250,
-    Object {},
+    Object {
+      "id": 0,
+    },
   ],
   Array [
     [Function],
     Object {},
     Object {
       "force": true,
+      "id": 1,
     },
   ],
   Array [
@@ -71,6 +80,7 @@ Array [
     false,
     Object {
       "freezeCursor": true,
+      "id": 2,
     },
   ],
   Array [
@@ -107,6 +117,7 @@ Array [
     },
     Object {
       "force": true,
+      "id": 3,
     },
   ],
 ]
@@ -116,7 +127,9 @@ exports[`delete() Should queue pause after string when defined. 1`] = `
 Array [
   [Function],
   300,
-  Object {},
+  Object {
+    "id": 6,
+  },
 ]
 `;
 
@@ -124,7 +137,9 @@ exports[`delete() Should queue pause correctly when options are passed. 1`] = `
 Array [
   [Function],
   200,
-  Object {},
+  Object {
+    "id": 6,
+  },
 ]
 `;
 
@@ -132,7 +147,9 @@ exports[`delete() Should queue pause correctly when single digit is passed. 1`] 
 Array [
   [Function],
   50,
-  Object {},
+  Object {
+    "id": 6,
+  },
 ]
 `;
 
@@ -141,7 +158,9 @@ Array [
   Array [
     [Function],
     250,
-    Object {},
+    Object {
+      "id": 0,
+    },
   ],
   Array [
     [Function],
@@ -150,6 +169,7 @@ Array [
     },
     Object {
       "force": true,
+      "id": 1,
     },
   ],
   Array [
@@ -157,6 +177,7 @@ Array [
     true,
     Object {
       "freezeCursor": true,
+      "id": 2,
     },
   ],
   Array [
@@ -193,6 +214,7 @@ Array [
     },
     Object {
       "force": true,
+      "id": 3,
     },
   ],
 ]
@@ -203,7 +225,9 @@ Array [
   Array [
     [Function],
     250,
-    Object {},
+    Object {
+      "id": 0,
+    },
   ],
   Array [
     [Function],
@@ -215,6 +239,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 1,
       "isFirst": true,
     },
   ],
@@ -228,6 +253,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 2,
     },
   ],
   Array [
@@ -240,6 +266,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 3,
       "isLast": true,
     },
   ],
@@ -258,6 +285,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 4,
     },
   ],
   Array [
@@ -275,6 +303,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 5,
       "isFirst": true,
     },
   ],
@@ -288,6 +317,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 6,
     },
   ],
   Array [
@@ -300,6 +330,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 7,
       "isLast": true,
     },
   ],
@@ -311,7 +342,9 @@ Array [
   Array [
     [Function],
     250,
-    Object {},
+    Object {
+      "id": 0,
+    },
   ],
 ]
 `;
@@ -321,7 +354,9 @@ Array [
   Array [
     [Function],
     250,
-    Object {},
+    Object {
+      "id": 0,
+    },
   ],
   Array [
     [Function],
@@ -333,6 +368,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 1,
       "isFirst": true,
     },
   ],
@@ -346,6 +382,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 2,
     },
   ],
   Array [
@@ -358,6 +395,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 3,
       "isLast": true,
     },
   ],
@@ -376,6 +414,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 4,
     },
   ],
   Array [
@@ -393,6 +432,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 5,
       "isFirst": true,
     },
   ],
@@ -406,6 +446,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 6,
     },
   ],
   Array [
@@ -418,6 +459,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 7,
       "isLast": true,
     },
   ],
@@ -429,7 +471,9 @@ Array [
   Array [
     [Function],
     250,
-    Object {},
+    Object {
+      "id": 0,
+    },
   ],
   Array [
     [Function],
@@ -441,6 +485,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 1,
       "isFirst": true,
       "isLast": true,
     },
@@ -460,6 +505,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 2,
     },
   ],
   Array [
@@ -477,6 +523,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 3,
       "isFirst": true,
       "isLast": true,
     },
@@ -496,6 +543,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 4,
     },
   ],
   Array [
@@ -513,6 +561,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 5,
       "isFirst": true,
       "isLast": true,
     },
@@ -532,6 +581,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 6,
     },
   ],
   Array [
@@ -549,6 +599,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 7,
       "isFirst": true,
       "isLast": true,
     },
@@ -568,6 +619,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 8,
     },
   ],
   Array [
@@ -585,6 +637,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 9,
       "isFirst": true,
       "isLast": true,
     },
@@ -597,13 +650,16 @@ Array [
   Array [
     [Function],
     250,
-    Object {},
+    Object {
+      "id": 0,
+    },
   ],
   Array [
     [Function],
     Object {},
     Object {
       "force": true,
+      "id": 1,
     },
   ],
   Array [
@@ -611,6 +667,7 @@ Array [
     1,
     Object {
       "freezeCursor": true,
+      "id": 2,
     },
   ],
   Array [
@@ -647,6 +704,7 @@ Array [
     },
     Object {
       "force": true,
+      "id": 3,
     },
   ],
 ]
@@ -656,7 +714,9 @@ exports[`move() Should queue pause after string when defined. 1`] = `
 Array [
   [Function],
   300,
-  Object {},
+  Object {
+    "id": 4,
+  },
 ]
 `;
 
@@ -664,7 +724,9 @@ exports[`move() Should queue pause correctly when options are passed. 1`] = `
 Array [
   [Function],
   200,
-  Object {},
+  Object {
+    "id": 4,
+  },
 ]
 `;
 
@@ -673,7 +735,9 @@ Array [
   Array [
     [Function],
     250,
-    Object {},
+    Object {
+      "id": 0,
+    },
   ],
   Array [
     [Function],
@@ -682,6 +746,7 @@ Array [
     },
     Object {
       "force": true,
+      "id": 1,
     },
   ],
   Array [
@@ -689,6 +754,7 @@ Array [
     "END",
     Object {
       "freezeCursor": true,
+      "id": 2,
     },
   ],
   Array [
@@ -725,6 +791,7 @@ Array [
     },
     Object {
       "force": true,
+      "id": 3,
     },
   ],
 ]
@@ -770,13 +837,16 @@ Array [
   Array [
     [Function],
     250,
-    Object {},
+    Object {
+      "id": 0,
+    },
   ],
   Array [
     [Function],
     Object {},
     Object {
       "force": true,
+      "id": 1,
     },
   ],
   Array [
@@ -789,6 +859,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 2,
       "isFirst": true,
       "isLast": true,
     },
@@ -827,6 +898,7 @@ Array [
     },
     Object {
       "force": true,
+      "id": 3,
     },
   ],
 ]
@@ -836,7 +908,9 @@ exports[`type() Should queue pause after string when defined. 1`] = `
 Array [
   [Function],
   300,
-  Object {},
+  Object {
+    "id": 4,
+  },
 ]
 `;
 
@@ -844,7 +918,9 @@ exports[`type() Should queue pause correctly when options are passed. 1`] = `
 Array [
   [Function],
   200,
-  Object {},
+  Object {
+    "id": 4,
+  },
 ]
 `;
 
@@ -853,7 +929,9 @@ Array [
   Array [
     [Function],
     250,
-    Object {},
+    Object {
+      "id": 0,
+    },
   ],
   Array [
     [Function],
@@ -862,6 +940,7 @@ Array [
     },
     Object {
       "force": true,
+      "id": 1,
     },
   ],
   Array [
@@ -874,6 +953,7 @@ Array [
     },
     Object {
       "freezeCursor": true,
+      "id": 2,
       "isFirst": true,
       "isLast": true,
     },
@@ -912,6 +992,7 @@ Array [
     },
     Object {
       "force": true,
+      "id": 3,
     },
   ],
 ]

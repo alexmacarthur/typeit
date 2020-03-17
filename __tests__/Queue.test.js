@@ -8,8 +8,6 @@ beforeEach(() => {
 
 describe("add()", () => {
   test("It should add steps properly.", () => {
-    expect(queue.getItems()).toEqual([["first-action", null, {}]]);
-
     queue.add(["step1"]);
     queue.add(["step2"]);
 
@@ -59,4 +57,28 @@ test("It should set initial steps properly.", () => {
   let q1 = new Queue(items);
 
   expect(q1.getItems()).toMatchSnapshot();
+});
+
+test("It should only return non-executed items.", () => {
+  let items = [
+    ["value1", null, { executed: true }],
+    ["value2", null, { executed: false }],
+    ["value3", null, {}]
+  ];
+
+  let q1 = new Queue(items);
+
+  expect(q1.getItems()).toMatchSnapshot();
+});
+
+test("It should return no items if all are executed.", () => {
+  let items = [
+    ["value1", null, { executed: true }],
+    ["value2", null, { executed: true }],
+    ["value3", null, { executed: true }]
+  ];
+
+  let q1 = new Queue(items);
+
+  expect(q1.getItems()).toEqual([]);
 });

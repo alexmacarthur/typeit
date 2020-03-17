@@ -1,8 +1,17 @@
 import guaranteeThreeKeys from "./helpers/guaranteeThreeKeys";
 import queueMany from "./helpers/queueMany";
 import isArray from "./helpers/isArray";
+import merge from "./helpers/merge";
 
 export default function Queue(initialItem) {
+  const _setIdOnItems = items => {
+    return guaranteeThreeKeys(items).map(step => {
+      step[2] = merge(step[2], { id: _id });
+      _id++;
+      return step;
+    });
+  };
+
   /**
    * Insert items into the `waiting` queue.
    * @todo Can we part with this?
@@ -32,6 +41,9 @@ export default function Queue(initialItem) {
       stepOrSteps = queueMany(numberOfTimes, stepOrSteps);
     }
 
+    // Set a unique ID onto each queue item added.
+    stepOrSteps = _setIdOnItems(stepOrSteps);
+
     _queue = toBeginning
       ? stepOrSteps.concat(_queue)
       : _queue.concat(stepOrSteps);
@@ -56,7 +68,7 @@ export default function Queue(initialItem) {
    * @return {object}
    */
   this.reset = function() {
-    _queue = guaranteeThreeKeys(_queue).map(item => {
+    _queue = _queue.map(item => {
       item[2].executed = false;
       return item;
     });
@@ -70,10 +82,25 @@ export default function Queue(initialItem) {
    * @return {array}
    */
   this.getItems = function() {
-    return guaranteeThreeKeys(_queue).filter(i => !i.executed);
+    _queue = guaranteeThreeKeys(_queue);
+
+    return _queue.filter(i => {
+      return !i[2].executed;
+    });
+  };
+
+  /**
+   * Given an ID for a particular queue item, update the meta on that item.
+   *
+   * @returns {void}
+   */
+  this.setMeta = function(id, meta) {
+    let index = _queue.findIndex(i => i[2].id === id);
+    _queue[index][2] = merge(_queue[index][2], meta);
   };
 
   let _queue = [];
+  let _id = 0;
 
   this.add(initialItem);
 }

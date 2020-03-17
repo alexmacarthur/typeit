@@ -131,8 +131,8 @@ export default function TypeIt(element, options) {
 
     let calculatedMargin = _cursor.getBoundingClientRect().width / 2;
 
-    _cursor.style.margin = `0 -${calculatedMargin + 1}px 0 -${calculatedMargin -
-      1}px`;
+    _cursor.style.margin = `0 -${calculatedMargin + 2}px 0 -${calculatedMargin -
+      2}px`;
   };
 
   const _disableCursorBlink = shouldDisable => {
@@ -276,7 +276,7 @@ export default function TypeIt(element, options) {
 
           await _opts.afterStep(...callbackArgs);
 
-          queueAction[2].executed = true;
+          _queue.setMeta(queueActionMeta.id, { executed: true });
         }
 
         _disableCursorBlink(false);
