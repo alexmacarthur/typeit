@@ -242,6 +242,7 @@ export default function TypeIt(element, options) {
     _statuses.started = true;
 
     let queueItems = _queue.getItems();
+    let callbackArgs;
 
     try {
       for (let i = 0; i < queueItems.length; i++) {
@@ -251,7 +252,7 @@ export default function TypeIt(element, options) {
 
         let queueAction = queueItems[i];
         let queueActionMeta = queueAction[2];
-        let callbackArgs = [queueAction, this];
+        callbackArgs = [queueAction, this];
 
         queueActionMeta.freezeCursor && _disableCursorBlink(true);
 
@@ -283,7 +284,8 @@ export default function TypeIt(element, options) {
       }
 
       _statuses.completed = true;
-      await _opts.afterComplete(this);
+
+      await _opts.afterComplete(...callbackArgs);
 
       if (_opts.loop) {
         let delay = _opts.loopDelay;
