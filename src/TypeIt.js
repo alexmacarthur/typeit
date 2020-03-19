@@ -127,7 +127,7 @@ export default function TypeIt(element, options) {
 
     _element.appendChild(_cursor);
 
-    await document.fonts.ready;
+    document.fonts.status === "loaded" || (await document.fonts.ready);
 
     let calculatedMargin = _cursor.getBoundingClientRect().width / 2;
 
