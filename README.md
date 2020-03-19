@@ -8,7 +8,7 @@ The Most Versatile JavaScript Animated Typing Utility on the Planet
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Falexmacarthur%2Ftypeit&via=amacarthur&text=Check%20out%20TypeIt%2C%20the%20most%20versatile%20JavaScript%20animated%20typing%20utility%20on%20the%20planet.&hashtags=js%2Cwebdev%2Coss)
 
 <p align="center">
-    <img src="demo.gif" alt="" style="border: 5px solid #24292e;">
+    <img src="readme-demo.gif" alt="" style="border: 5px solid #24292e;">
 </p>
 
 ## Overview
@@ -46,24 +46,6 @@ All of TypeIt's documentation can be found at [https://typeitjs.com/docs](https:
 ## Looking for a React Component?
 
 Check out the official [React component for TypeIt](https://github.com/alexmacarthur/typeit-react) here.
-
-## Browser Support
-
-There are two bundles generated -- an ES module version for [browsers that support them](https://caniuse.com/#feat=es6-module), and a fully transpiled bundle. When in doubt, go for the latter. If you're using IE11 or older, you'll also need the following polyfills:
-
--   `Array.prototype.fill`
--   `Array.prototype.find`
--   `Array.from`
--   `IntersectionObserver`
--   `Math.sign`
--   `Object.assign`
--   `Promise`
-
-You can load all of these yourself, or just use the following pre-made bundle from [Polyfill.io](https://polyfill.io):
-
-```html
-<script src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.fill%2CIntersectionObserver%2CObject.assign%2CPromise%2CArray.from%2CArray.prototype.find%2CMath.sign"></script>
-```
 
 ## Contribute
 
