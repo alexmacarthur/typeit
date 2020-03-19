@@ -8,7 +8,7 @@ const getLast = arr => {
 };
 
 beforeEach(() => {
-  document.body.innerHTML = `
+  setHTML`
     <div>
       <span id="element"></span>
     </div>
@@ -36,7 +36,7 @@ test("Returns an object with expected properties.", () => {
 });
 
 test("Defines hard-coded string correctly.", () => {
-  document.body.innerHTML = `
+  setHTML`
     <div>
       <span id="element">Hard-coded string.</span>
     </div>
@@ -53,7 +53,7 @@ test("Defines hard-coded string correctly.", () => {
 });
 
 test("Will not begin until explicitly called.", () => {
-  document.body.innerHTML = `<div>'
+  setHTML`<div>'
       <span id="element"></span>
     </div>`;
 
@@ -69,7 +69,7 @@ test("Will not begin until explicitly called.", () => {
 });
 
 test("Clears out remnants of previous instances correctly.", () => {
-  document.body.innerHTML = `
+  setHTML`
     <div>
       <span id="element">
         Previous string.
@@ -85,7 +85,7 @@ test("Clears out remnants of previous instances correctly.", () => {
 });
 
 test("Typing doesn't end with a break tag.", () => {
-  document.body.innerHTML = `<div>'
+  setHTML`<div>'
     <span id="element"></span>
   </div>`;
 
@@ -268,7 +268,7 @@ describe("empty()", () => {
 
 describe("reset()", () => {
   test("Successfully resets when called.", () => {
-    document.body.innerHTML = `<div>'
+    setHTML`<div>'
         <span id="element"></span>
       </div>`;
 
@@ -287,11 +287,59 @@ describe("reset()", () => {
     expect(instance.is("completed")).toBe(false);
     expect(instance.is("destroyed")).toBe(false);
   });
+
+  test("Wipes out element contents.", async () => {
+    setHTML`<div>'
+      <span id="element"></span>
+    </div>`;
+
+    let instance;
+    let element = document.querySelector("#element");
+
+    await new Promise(resolve => {
+      instance = new TypeIt("#element", {
+        speed: 0,
+        strings: "Hi.",
+        afterComplete: () => {
+          resolve();
+        }
+      }).go();
+    });
+
+    expect(element.innerHTML).toEqual(
+      'Hi.<span class="ti-cursor with-delay" style="display: inline;">|</span>'
+    );
+    instance = instance.reset();
+    expect(element.innerHTML).toEqual("");
+  });
+
+  test("Wipes out contents when it's an input.", async () => {
+    setHTML`<div>'
+      <input id="element">
+    </div>`;
+
+    let instance;
+    let element = document.querySelector("#element");
+
+    await new Promise(resolve => {
+      instance = new TypeIt("#element", {
+        speed: 0,
+        strings: "Hi.",
+        afterComplete: () => {
+          resolve();
+        }
+      }).go();
+    });
+
+    expect(element.value).toEqual("Hi.");
+    instance = instance.reset();
+    expect(element.value).toEqual("");
+  });
 });
 
 describe("destroy()", () => {
   test("Destroys instances successfully.", () => {
-    document.body.innerHTML = `<div>'
+    setHTML`<div>'
       <span id="element"></span>
     </div>`;
 

@@ -508,7 +508,7 @@ export default function TypeIt(element, options) {
       _statuses[property] = false;
     }
 
-    _element.innerHTML = "";
+    _elementIsInput ? (_element.value = "") : (_element.innerHTML = "");
 
     return this;
   };
