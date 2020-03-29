@@ -97,6 +97,14 @@ test("Typing doesn't end with a break tag.", () => {
   expect(element.innerHTML.endsWith("<br>")).not.toBe(true);
 });
 
+test("Should skip over empty strings.", () => {
+  const instance = new TypeIt("#element", {
+    strings: ["", "A", "", "B"]
+  });
+
+  expect(instance.getQueue().getItems()).toMatchSnapshot();
+});
+
 describe("go()", () => {
   test("Attaches cursor correctly.", () => {
     expect(document.querySelector(".ti-cursor")).toBeNull();

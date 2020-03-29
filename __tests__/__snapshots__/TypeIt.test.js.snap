@@ -34,6 +34,71 @@ Array [
 ]
 `;
 
+exports[`Should skip over empty strings. 1`] = `
+Array [
+  Array [
+    [Function],
+    250,
+    Object {
+      "id": 0,
+    },
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "A",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": A,
+    },
+    Object {
+      "freezeCursor": true,
+      "id": 1,
+      "isFirst": true,
+      "isLast": true,
+    },
+  ],
+  Array [
+    [Function],
+    375,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": <br />,
+      "isHTMLElement": true,
+      "isTopLevelText": false,
+      "node": null,
+    },
+    Object {
+      "freezeCursor": true,
+      "id": 2,
+    },
+  ],
+  Array [
+    [Function],
+    375,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "content": "B",
+      "isHTMLElement": false,
+      "isTopLevelText": true,
+      "node": B,
+    },
+    Object {
+      "freezeCursor": true,
+      "id": 3,
+      "isFirst": true,
+      "isLast": true,
+    },
+  ],
+]
+`;
+
 exports[`break() Should should queue break character object. 1`] = `
 Array [
   Array [
