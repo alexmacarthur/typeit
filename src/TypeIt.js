@@ -162,7 +162,7 @@ export default function TypeIt(element, options) {
    * @param {array|null} initialStep
    */
   const _generateQueue = () => {
-    let strings = _opts.strings;
+    let strings = _opts.strings.filter(string => !!string);
 
     strings.forEach((string, index) => {
       let chunkedString = maybeChunkStringAsHtml(string, _opts.html);
