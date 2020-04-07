@@ -206,7 +206,7 @@ export default function TypeIt(element, options) {
     _queue
       .reset()
       .delete(0)
-      .add([_pause, delay.before], true);
+      .add([_pause, delay.before], 1, true);
 
     // Queue the current number of printed items for deletion.
     _getAllChars().forEach(i => {
