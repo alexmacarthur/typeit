@@ -2,7 +2,8 @@ import removeNode from "./removeNode";
 import toArray from "./toArray";
 
 /**
- * Given a DOM scope and selector, remove any HTML element remnants, including
+ * Given a DOM scope and selector, remove any HTML element remnants,
+ * EXCEPT for <br> tags, which may be typed but do not have any text content.
  *
  * @param {object} scope
  * @param {string} selector
@@ -10,7 +11,7 @@ import toArray from "./toArray";
  */
 export default node => {
   toArray(node.querySelectorAll("*")).forEach(i => {
-    if (!i.innerHTML) {
+    if (!i.innerHTML && i.tagName !== "BR") {
       let nodeToRemove = i;
 
       while (
