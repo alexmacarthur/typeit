@@ -64,3 +64,21 @@ test("Should return correct text nodes when nested deeply.", () => {
 
   expect(result).toMatchSnapshot();
 });
+
+test("Should not return nodes that live inside ignored node.", () => {
+  setHTML`
+    <div id="element"><span id="cursor">|<i>X</i></span></div>
+  `;
+
+  let el = document.getElementById("element");
+  let elToIgnore = document.getElementById("cursor");
+
+  // Add separate text nodes.
+  el.insertBefore(document.createTextNode("a"), elToIgnore);
+  el.insertBefore(document.createTextNode("b"), elToIgnore);
+  el.insertBefore(document.createTextNode("c"), elToIgnore);
+
+  let result = getAllTypeableNodes(el, elToIgnore);
+
+  expect(result).toMatchSnapshot();
+});

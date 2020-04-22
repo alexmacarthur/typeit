@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Should not return nodes that live inside ignored node. 1`] = `
+Array [
+  a,
+  b,
+  c,
+]
+`;
+
 exports[`Should return break tag as separate node. 1`] = `
 Array [
         This text will break. ,
