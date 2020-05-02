@@ -14,3 +14,4 @@ jobs:
     - uses: preactjs/compressed-size-action@v1
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
+    - uses: stefanoeb/jest-action@1.0.2
