@@ -190,28 +190,14 @@ export default function TypeIt(element, options) {
 
   /**
    * 1. Reset queue.
-   * 2. Remove initial pause.
-   * 3. Add phantom deletions.
+   * 2. Reset initial pause.
    */
-  const _loopify = async delay => {
-    // Reset queue.
-    // Remove initial pause, so we can replace with `loop` pause.
-    // Add delay pause FIRST, since we're adding to beginning of queue.
+  const _prepLoop = async delay => {
+    _cursorPosition && (await _move(_cursorPosition));
+    _queue.reset();
+    _queue.set(0, [_pause, delay.before]);
 
-    // Reset the cursor position!
-    if (_cursorPosition) {
-      await _move(_cursorPosition);
-    }
-
-    _queue
-      .reset()
-      .delete(0)
-      .add([_pause, delay.before], 1, true);
-
-    // Queue the current number of printed items for deletion.
-    _getAllChars().forEach(i => {
-      _queue.add([_delete, null, { isPhantom: true }], 1, true);
-    });
+    await _delete(true);
   };
 
   const _maybePrependHardcodedStrings = strings => {
@@ -264,21 +250,16 @@ export default function TypeIt(element, options) {
 
         await _opts.beforeStep(...callbackArgs);
 
-        // Fire this step! During this process, pluck items from the waiting
-        // queue and move them to executed.
+        // Fire this step!
         await queueAction[0].call(this, queueAction[1], queueActionMeta);
 
-        // If this is a phantom item, as soon as it's executed,
-        // remove it from the queue and pretend it never existed.
-        if (!queueActionMeta || !queueActionMeta.isPhantom) {
-          if (queueAction[2]?.isLast) {
-            await _opts.afterString(...callbackArgs);
-          }
-
-          await _opts.afterStep(...callbackArgs);
-
-          _queue.setMeta(queueActionMeta.id, { executed: true });
+        if (queueAction[2]?.isLast) {
+          await _opts.afterString(...callbackArgs);
         }
+
+        await _opts.afterStep(...callbackArgs);
+
+        _queue.setMeta(queueActionMeta.id, { executed: true });
 
         _disableCursorBlink(false);
       }
@@ -287,14 +268,16 @@ export default function TypeIt(element, options) {
 
       await _opts.afterComplete(...callbackArgs);
 
-      if (_opts.loop) {
-        let delay = _opts.loopDelay;
-
-        _wait(async () => {
-          await _loopify(delay);
-          _fire();
-        }, delay.after);
+      if (!_opts.loop) {
+        throw "";
       }
+
+      let delay = _opts.loopDelay;
+
+      _wait(async () => {
+        await _prepLoop(delay);
+        _fire();
+      }, delay.after);
     } catch (e) {}
 
     return this;

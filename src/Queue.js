@@ -52,14 +52,13 @@ export default function Queue(initialItem) {
   };
 
   /**
-   * Given an index, remove the last item on the `waiting` queue.
+   * Given an index, set an item in the queue.
    *
    * @param {integer} index
-   * @return {object}
+   * @return {array}
    */
-  this.delete = function(index) {
-    _queue.splice(index, 1);
-    return this;
+  this.set = function(index, item) {
+    _queue[index] = item;
   };
 
   /**
@@ -72,8 +71,6 @@ export default function Queue(initialItem) {
       item[2].executed = false;
       return item;
     });
-
-    return this;
   };
 
   /**
