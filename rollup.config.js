@@ -15,12 +15,12 @@ const preamble = `/**
 const OUTPUT_DATA = [
   {
     file: pkg.main,
-    format: "umd"
+    format: "umd",
   },
   {
     file: pkg.module,
-    format: "es"
-  }
+    format: "es",
+  },
 ];
 
 export default OUTPUT_DATA.map(({ file, format }) => {
@@ -40,31 +40,30 @@ export default OUTPUT_DATA.map(({ file, format }) => {
                       "> 2%",
                       "Last 2 versions",
                       "safari >=9",
-                      "not ie < 11"
-                    ]
-                  }
-          }
-        ]
+                      "not ie < 11",
+                    ],
+                  },
+          },
+        ],
       ],
       plugins: [
         "babel-plugin-transform-async-to-promises",
         [
           "@babel/plugin-transform-spread",
           {
-            loose: true
-          }
-        ]
-      ]
-    })
+            loose: true,
+          },
+        ],
+      ],
+    }),
   ];
 
   if (isProduction) {
     plugins.push(
       terser({
-        include: [/^.+\.min\.js$/],
         output: {
-          preamble
-        }
+          preamble,
+        },
       })
     );
   }
@@ -74,8 +73,8 @@ export default OUTPUT_DATA.map(({ file, format }) => {
     output: {
       file,
       format,
-      name: "TypeIt"
+      name: "TypeIt",
     },
-    plugins
+    plugins,
   };
 });
