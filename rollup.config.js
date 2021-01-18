@@ -3,10 +3,10 @@ import babel from "rollup-plugin-babel";
 import { terser } from "rollup-plugin-terser";
 
 const isProduction = process.env.NODE_ENV === "production";
+const name = "TypeIt";
 
 const preamble = `/**
-  * TypeIt - ${pkg.description}
-  * Author: ${pkg.author}
+  * TypeIt by Alex MacArthur
   * Version: v${pkg.version}
   * License: ${pkg.license}
   * URL: ${pkg.homepage}
@@ -70,11 +70,7 @@ export default OUTPUT_DATA.map(({ file, format }) => {
 
   return {
     input: "./src/TypeIt.js",
-    output: {
-      file,
-      format,
-      name: "TypeIt",
-    },
+    output: { file, format, name },
     plugins,
   };
 });
