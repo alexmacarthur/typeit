@@ -15,9 +15,8 @@
     "src/"
   ],
   "scripts": {
-    "rollup": "NODE_ENV=production rollup -c",
+    "build": "NODE_ENV=production rollup -c",
     "watch": "NODE_ENV=development rollup -c -w",
-    "build": "npm run rollup",
     "serve": "concurrently --kill-others \"npm run watch\" \"node serve.js\"",
     "prettier": "prettier --write \"**/*.{md,js}\"",
     "test": "jest",
