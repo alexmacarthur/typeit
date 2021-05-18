@@ -1,6 +1,6 @@
 import insertIntoElement, {
   findPrintedNode,
-  isLastElement
+  isLastElement,
 } from "../../src/helpers/insertIntoElement";
 import getParsedBody from "../../src/helpers/getParsedBody";
 
@@ -15,7 +15,7 @@ test("Should insert a simple character correctly.", () => {
   let charObj = {
     node: getParsedBody("x").childNodes[0],
     isTopLevelText: true,
-    content: "x"
+    content: "x",
   };
 
   insertIntoElement(targetElement, charObj);
@@ -30,7 +30,7 @@ test("Should insert an HTML character object.", () => {
     // descendent to a SPAN element.
     node: getParsedBody("<span>y</span>").querySelector("span").childNodes[0],
     content: "y",
-    isTopLevelText: false
+    isTopLevelText: false,
   };
 
   setHTML`
@@ -50,7 +50,7 @@ test("Should insert a nested character object.", () => {
   let characterObject = {
     node: getParsedBody("<em><span>y</span></em>").querySelector("span")
       .childNodes[0],
-    content: "y"
+    content: "y",
   };
   targetElement.innerHTML = `<em></em>`;
   insertIntoElement(targetElement, characterObject);
@@ -61,7 +61,7 @@ test("Should insert content into input.", () => {
   let charObj = {
     node: null,
     isTopLevelText: true,
-    content: "some value"
+    content: "some value",
   };
 
   setHTML(`
@@ -81,7 +81,7 @@ test("Should insert raw HTML content into input.", () => {
   let charObj = {
     node: null,
     isTopLevelText: true,
-    content: "<span>sup</span>"
+    content: "<span>sup</span>",
   };
 
   setHTML`
@@ -101,7 +101,7 @@ test("Should insert before cursor when element is top-level.", () => {
   let charObj = {
     node: null,
     isTopLevelText: true,
-    content: "Hello"
+    content: "Hello",
   };
 
   setHTML`
@@ -129,7 +129,7 @@ test("Should not insert into cursor node when a <span> is passed.", () => {
     {
       node: getParsedBody("<span>x</span>").querySelector("span").childNodes[0],
       isTopLevelText: true,
-      content: "x"
+      content: "x",
     },
     cursor
   );
@@ -145,7 +145,7 @@ test("Types HTML node when defined.", () => {
     node: null,
     isTopLevelText: false,
     isHTMLElement: true,
-    content: contentEl
+    content: contentEl,
   };
 
   setHTML`

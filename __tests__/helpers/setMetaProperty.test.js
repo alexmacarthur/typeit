@@ -4,7 +4,7 @@ test("Sets property on meta object of each item.", () => {
   let items = [
     ["action1", null, {}],
     ["action2", null, {}],
-    ["action3", null, {}]
+    ["action3", null, {}],
   ];
 
   let result = setMetaProperty(items, { freezeCursor: true });
@@ -15,7 +15,7 @@ test("Sets property on meta object of each item even when meta doesn't yet exist
   let items = [
     ["action1", null],
     ["action2", null, {}],
-    ["action3", null]
+    ["action3", null],
   ];
 
   let result = setMetaProperty(items, { freezeCursor: true });
@@ -26,7 +26,7 @@ test("Sets property on meta object of each item even when meta doesn't yet exist
   let items = [
     ["action1", null],
     ["action2", null, {}],
-    ["action3", null]
+    ["action3", null],
   ];
 
   let result = setMetaProperty(items, { freezeCursor: true });

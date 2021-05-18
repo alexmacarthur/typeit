@@ -6,7 +6,7 @@ test("Cursor should function by default.", () => {
     </div>`;
 
   new TypeIt("#element", {
-    strings: ["This should have a default cursor."]
+    strings: ["This should have a default cursor."],
   }).go();
 
   let cursorCharacter = document
@@ -23,7 +23,7 @@ test("Changes cursor character correctly.", () => {
 
   new TypeIt("#element", {
     strings: ["This should have a custom cursor."],
-    cursorChar: "$"
+    cursorChar: "$",
   }).go();
 
   let cursorCharacter = document
@@ -40,7 +40,7 @@ test("Turning off cursor should work.", () => {
 
   new TypeIt("#element", {
     strings: ["This should have no cursor."],
-    cursor: false
+    cursor: false,
   });
 
   let visibilityStyle = document.getElementById("element").style.visibility;
@@ -59,7 +59,7 @@ describe("startDelete option.", () => {
     expect(instance.getQueue().getItems()).toMatchSnapshot();
 
     expect(instance.getOptions().strings).toEqual([
-      "This should be typed first."
+      "This should be typed first.",
     ]);
   });
 
@@ -69,14 +69,14 @@ describe("startDelete option.", () => {
     </div>`;
 
     const instance = new TypeIt("#element", {
-      strings: "This is another string."
+      strings: "This is another string.",
     });
 
     expect(instance.getQueue().getItems()).toMatchSnapshot();
 
     expect(instance.getOptions().strings).toEqual([
       "This should be typed first.",
-      "This is another string."
+      "This is another string.",
     ]);
   });
 
@@ -86,14 +86,14 @@ describe("startDelete option.", () => {
     </div>`;
 
     const instance = new TypeIt("#element", {
-      strings: "This is another string."
+      strings: "This is another string.",
     }).type("And finally, a third.");
 
     expect(instance.getQueue().getItems()).toMatchSnapshot();
 
     expect(instance.getOptions().strings).toEqual([
       "This should be typed first.",
-      "This is another string."
+      "This is another string.",
     ]);
   });
 });
@@ -107,7 +107,7 @@ describe("html option", () => {
     `;
 
     const instance = new TypeIt("#element", {
-      strings: "This is a <strong>BOLD</strong> string."
+      strings: "This is a <strong>BOLD</strong> string.",
     });
 
     expect(instance.getQueue().getItems()).toMatchSnapshot();
@@ -122,7 +122,7 @@ describe("html option", () => {
 
     const instance = new TypeIt("#element", {
       strings: "This is a <strong>another BOLD</strong> string.",
-      html: true
+      html: true,
     });
 
     expect(instance.getQueue().getItems()).toMatchSnapshot();
@@ -137,7 +137,7 @@ describe("html option", () => {
 
     const instance = new TypeIt("#element", {
       strings: "This is a <strong>another BOLD</strong> string.",
-      html: false
+      html: false,
     });
 
     expect(instance.getQueue().getItems()).toMatchSnapshot();

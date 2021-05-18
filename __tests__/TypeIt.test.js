@@ -1,9 +1,9 @@
-import TypeIt from "../src/TypeIt.js";
+import TypeIt from "../src/TypeIt";
 
 let instance;
 let args;
 
-const getLast = arr => {
+const getLast = (arr) => {
   return arr[arr.length - 1];
 };
 
@@ -18,8 +18,8 @@ beforeEach(() => {
     "#element",
     {
       speed: 1,
-      strings: ["ABC", "EFG"]
-    }
+      strings: ["ABC", "EFG"],
+    },
   ];
 
   instance = new TypeIt(...args);
@@ -43,12 +43,12 @@ test("Defines hard-coded string correctly.", () => {
   `;
 
   let instance = new TypeIt("#element", {
-    strings: ["My string."]
+    strings: ["My string."],
   });
 
   expect(instance.getOptions().strings).toEqual([
     "Hard-coded string.",
-    "My string."
+    "My string.",
   ]);
 });
 
@@ -58,7 +58,7 @@ test("Will not begin until explicitly called.", () => {
     </div>`;
 
   const instance = new TypeIt("#element", {
-    strings: "hello!"
+    strings: "hello!",
   });
 
   expect(instance.is("started")).toBe(false);
@@ -78,7 +78,7 @@ test("Clears out remnants of previous instances correctly.", () => {
   `;
 
   let instance = new TypeIt("#element", {
-    strings: "My string."
+    strings: "My string.",
   });
 
   expect(!instance.getOptions().strings[0].includes("ti-cursor")).toEqual(true);
@@ -91,7 +91,7 @@ test("Typing doesn't end with a break tag.", () => {
 
   const element = document.querySelector("#element");
   new TypeIt("#element", {
-    strings: ["One string.", "Two string", "Three string."]
+    strings: ["One string.", "Two string", "Three string."],
   }).go();
 
   expect(element.innerHTML.endsWith("<br>")).not.toBe(true);
@@ -99,7 +99,7 @@ test("Typing doesn't end with a break tag.", () => {
 
 test("Should skip over empty strings.", () => {
   const instance = new TypeIt("#element", {
-    strings: ["", "A", "", "B"]
+    strings: ["", "A", "", "B"],
   });
 
   expect(instance.getQueue().getItems()).toMatchSnapshot();
@@ -212,8 +212,8 @@ describe("empty()", () => {
     instance = new TypeIt(...args);
     element.innerHTML = "existing text";
 
-    await new Promise(resolve => {
-      args[1].afterComplete = function() {
+    await new Promise((resolve) => {
+      args[1].afterComplete = function () {
         return resolve();
       };
 
@@ -260,8 +260,8 @@ describe("empty()", () => {
   test("Should leave cursor alone when it empties element.", async () => {
     element.innerHTML = "existing text";
 
-    await new Promise(resolve => {
-      args[1].afterComplete = function() {
+    await new Promise((resolve) => {
+      args[1].afterComplete = function () {
         return resolve();
       };
 
@@ -281,7 +281,7 @@ describe("reset()", () => {
       </div>`;
 
     let instance = new TypeIt("#element", {
-      strings: "This is my string!"
+      strings: "This is my string!",
     }).go();
 
     instance.destroy();
@@ -292,6 +292,7 @@ describe("reset()", () => {
 
     //-- Ensure the arguments that define these properties were passed.
     expect(instance.getOptions()).toMatchSnapshot();
+
     expect(instance.is("completed")).toBe(false);
     expect(instance.is("destroyed")).toBe(false);
   });
@@ -304,13 +305,13 @@ describe("reset()", () => {
     let instance;
     let element = document.querySelector("#element");
 
-    await new Promise(resolve => {
+    await new Promise((resolve) => {
       instance = new TypeIt("#element", {
         speed: 0,
         strings: "Hi.",
         afterComplete: () => {
           resolve();
-        }
+        },
       }).go();
     });
 
@@ -329,13 +330,13 @@ describe("reset()", () => {
     let instance;
     let element = document.querySelector("#element");
 
-    await new Promise(resolve => {
+    await new Promise((resolve) => {
       instance = new TypeIt("#element", {
         speed: 0,
         strings: "Hi.",
         afterComplete: () => {
           resolve();
-        }
+        },
       }).go();
     });
 
@@ -352,7 +353,7 @@ describe("destroy()", () => {
     </div>`;
 
     const instance = new TypeIt("#element", {
-      strings: "This is my string!"
+      strings: "This is my string!",
     }).go();
 
     expect(instance.is("destroyed")).toBe(false);

@@ -99,39 +99,6 @@ Array [
 ]
 `;
 
-exports[`add() It should add a step passed as a function. 1`] = `
-Array [
-  Array [
-    "first-action",
-    null,
-    Object {
-      "id": 0,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "id": 1,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "id": 2,
-    },
-  ],
-  Array [
-    [Function],
-    null,
-    Object {
-      "id": 3,
-    },
-  ],
-]
-`;
-
 exports[`add() It should add multiple steps passed at once. 1`] = `
 Array [
   Array [

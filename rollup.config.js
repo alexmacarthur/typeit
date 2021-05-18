@@ -1,16 +1,15 @@
 const pkg = require("./package.json");
 import babel from "rollup-plugin-babel";
 import { terser } from "rollup-plugin-terser";
+import typescript from "@rollup/plugin-typescript";
 
 const isProduction = process.env.NODE_ENV === "production";
 const name = "TypeIt";
 
-const preamble = `/**
-  * TypeIt by Alex MacArthur
-  * Version: v${pkg.version}
-  * License: ${pkg.license}
-  * URL: ${pkg.homepage}
-  */`;
+const preamble = `//
+// TypeIt by Alex MacArthur
+// ${pkg.homepage}
+//`;
 
 const OUTPUT_DATA = [
   {
@@ -25,6 +24,7 @@ const OUTPUT_DATA = [
 
 export default OUTPUT_DATA.map(({ file, format }) => {
   let plugins = [
+    typescript(),
     babel({
       exclude: "node_modules/*",
       presets: [
@@ -36,12 +36,7 @@ export default OUTPUT_DATA.map(({ file, format }) => {
               format === "es"
                 ? { esmodules: true }
                 : {
-                    browsers: [
-                      "> 2%",
-                      "Last 2 versions",
-                      "safari >=9",
-                      "not ie < 11",
-                    ],
+                    browsers: ["defaults"],
                   },
           },
         ],
@@ -69,7 +64,7 @@ export default OUTPUT_DATA.map(({ file, format }) => {
   }
 
   return {
-    input: "./src/TypeIt.js",
+    input: "./src/TypeIt.ts",
     output: { file, format, name },
     plugins,
   };

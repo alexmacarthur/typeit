@@ -11,7 +11,7 @@ test("It should generate items with each array item set as argument.", () => {
   expect(result).toEqual([
     ["action", "x", {}],
     ["action", "y", {}],
-    ["action", "z", {}]
+    ["action", "z", {}],
   ]);
 });
 
@@ -21,6 +21,6 @@ test("It should bookend items correctly.", () => {
   expect(result).toEqual([
     ["action", "a", { isFirst: true }],
     ["action", "b", {}],
-    ["action", "c", { isLast: true }]
+    ["action", "c", { isLast: true }],
   ]);
 });

@@ -10,7 +10,7 @@ beforeEach(() => {
 
   // These need to be individual text nodes so that
   // `getAllTypeableNodes` can correctly collect individual nodes.
-  [1, 2, 3, 4, 5, '<i id="cursor">|</i>'].forEach(thing => {
+  [1, 2, 3, 4, 5, '<i id="cursor">|</i>'].forEach((thing) => {
     element.insertAdjacentHTML("beforeend", thing);
   });
 

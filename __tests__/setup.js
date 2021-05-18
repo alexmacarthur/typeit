@@ -13,5 +13,5 @@ global.setHTML = (html, shouldReturn = false) => {
 document.fonts = {
   ready: async () => {
     return true;
-  }
+  },
 };

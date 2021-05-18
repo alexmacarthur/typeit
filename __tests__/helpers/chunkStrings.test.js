@@ -1,6 +1,6 @@
 import {
   chunkStringAsHtml,
-  maybeChunkStringAsHtml
+  maybeChunkStringAsHtml,
 } from "../../src/helpers/chunkStrings";
 
 beforeEach(() => {

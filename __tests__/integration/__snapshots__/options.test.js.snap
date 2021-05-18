@@ -2314,16 +2314,14 @@ Array [
       "html": true,
       "lifeLike": true,
       "loop": false,
-      "loopDelay": Object {
-        "after": 375,
-        "before": 375,
-        "total": 750,
-      },
-      "nextStringDelay": Object {
-        "after": 375,
-        "before": 375,
-        "total": 750,
-      },
+      "loopDelay": Array [
+        375,
+        375,
+      ],
+      "nextStringDelay": Array [
+        375,
+        375,
+      ],
       "speed": 100,
       "startDelay": 250,
       "startDelete": false,
