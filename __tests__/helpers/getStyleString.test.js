@@ -20,7 +20,7 @@ test("Should apply whitelisted styles from main element to target element.", () 
   let result = getStyleString(mainEl);
 
   expect(result).toEqual(
-    "color: pink; font: normal 3px normal normal normal normal;"
+    "color: pink; font: normal 3px normal normal normal normal; line-height: normal;"
   );
 });
 

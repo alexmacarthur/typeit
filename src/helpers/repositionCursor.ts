@@ -1,24 +1,22 @@
 import { Element } from "../types";
 
 export default (
-  element: Element,
+  element: Node,
   allChars: any[],
-  cursor: Element,
+  cursor: Node,
   cursorPosition: number
 ): void => {
   if (!cursor) {
     return;
   }
 
-  let characterIndex = cursorPosition;
-
-  // Make sure we stop when we're at the beginning of the string.
-  characterIndex =
-    characterIndex > allChars.length ? allChars.length : characterIndex;
+  let characterIndex = cursorPosition > allChars.length
+    ? allChars.length
+    : cursorPosition;
 
   let nodeToInsertBefore = allChars[characterIndex - 1];
 
-  element = nodeToInsertBefore ? nodeToInsertBefore.parentNode : element;
+  element = nodeToInsertBefore?.parentNode || element;
 
   element.insertBefore(cursor, nodeToInsertBefore || null);
 };

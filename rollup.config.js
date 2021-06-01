@@ -6,10 +6,7 @@ import typescript from "@rollup/plugin-typescript";
 const isProduction = process.env.NODE_ENV === "production";
 const name = "TypeIt";
 
-const preamble = `//
-// TypeIt by Alex MacArthur
-// ${pkg.homepage}
-//`;
+const preamble = `// TypeIt by Alex MacArthur - ${pkg.homepage}`;
 
 const OUTPUT_DATA = [
   {

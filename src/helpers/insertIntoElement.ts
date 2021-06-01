@@ -7,9 +7,7 @@ import { Character, Element } from "../types";
 /**
  * Given a node, find the corresponding PRINTED node already in an element.
  *
- * @param {node} element
- * @param {object} element
- * @return {undefined | object}
+ * Q: Why did I intially use outerHTML? Would isEqualNode() not suffice?
  */
 export const findPrintedNode = (node: Element, element: Element) => {
   let printedNodes = element.querySelectorAll("*");
@@ -28,87 +26,91 @@ export const isLastElement = (
   node: Node,
   nodeToIgnore: Node | null
 ): boolean => {
-  if (!node) {
-    return false;
-  }
-
   let sibling = node.nextSibling;
   return !sibling || sibling.isEqualNode(nodeToIgnore);
 };
 
 /**
  * Inserts a set of content into the element. Intended for SINGLE characters.
- *
- * @param {object} element
- * @param {object} contentArg A character object.
- * @param {string | object} content
  */
-export default (
-  element: Element,
-  contentArg: Character,
-  cursorNode: HTMLElement | null = null,
+const insertIntoElement = (
+  targetElement: Element, // Element we're typing into.
+  character: Character, // Character/content we'll be typing.
+  cursorNode: Element | null = null,
   cursorPosition: number
 ) => {
-  let contentIsElement = contentArg.isHTMLElement;
+  let contentIsElement = character.content instanceof HTMLElement;
+  let characterNode = character.node;
+  let parentNode = characterNode?.parentNode;
   let content = contentIsElement
-    ? contentArg.content
-    : document.createTextNode(contentArg.content as string);
+    ? character.content
+    : document.createTextNode(character.content as string);
 
-  if (isInput(element)) {
-    element.value = `${element.value}${contentArg.content}`;
+  if (isInput(targetElement)) {
+    targetElement.value = `${targetElement.value}${character.content}`;
     return;
   }
 
-  // We're inserting a character within an element!
-  if (!contentArg.isTopLevelText && !contentIsElement) {
-    let parentNode = (contentArg.node as Node).parentNode as Element;
+  /**
+  * This isn't top-level text here. We're inserting a character into an element!
+  * We may to create one. Otherwise, we can continue to print into what's already there.
+  */
+  if (!contentIsElement && parentNode && !isBodyElement(parentNode)) {
     let existingNode = findPrintedNode(
-      parentNode.cloneNode() as Element,
-      element
+      parentNode as Element,
+      targetElement
     ) as Element;
 
-    // This node is already there, so keep typing into it.
-    if (isLastElement(existingNode, cursorNode)) {
-      element = existingNode;
+    // The element is already there, so keep typing into it.
+    if (existingNode && isLastElement(existingNode, cursorNode)) {
+      return existingNode;
+    }
 
-      // Otherwise, we need to create an element!
-    } else {
-      // Overwrite the content with a newly created element and set the content to type.
-      content = parentNode.cloneNode() as Element;
-      content["innerText"] = contentArg.content;
+    /**
+     * We're creating a new element into which we'll insert our content.
+     */
 
-      // This new element may be nested in ANOTHER element
-      if (!isBodyElement(parentNode.parentNode)) {
-        let parent: Element | null = parentNode.parentNode as Element;
-        let parentClone = parent.cloneNode() as Element;
-        let newElement = findPrintedNode(parentClone, element);
+    content = parentNode.cloneNode() as Element;
+    content['innerText'] = character.content;
 
-        while (!newElement && !isBodyElement(parent)) {
-          // Wrap our element in the to-be-created parent node.
-          // Then, we need to find the next candidate to print into.
-          parentClone.innerHTML = content["outerHTML"];
-          content = parentClone;
-          parentClone = parent!.parentNode!.cloneNode() as Element;
-          parent = parent!.parentNode as Element;
+    // We're printing into ANOTHER element.
+    let genericAncestor = parentNode.parentNode;
+    let genericAncestorClone = genericAncestor.cloneNode();
 
-          newElement = findPrintedNode(parentClone, element);
-        }
+    if (!isBodyElement(genericAncestor)) {
+      let printedAncestor = findPrintedNode(genericAncestorClone as Element, targetElement);
 
-        // We found an element before reaching the top. Assign it!
-        element = newElement || element;
+      while (!printedAncestor && !isBodyElement(genericAncestor)) {
+        /**
+        * Important! Setting the new element's `innerText` to the `outerHTML` will mean
+        * the previous content element will be set INSIDE of the element a level up.
+        */
+        let newContentNode = genericAncestorClone;
+        newContentNode['innerHTML'] = content["outerHTML"];
+        content = newContentNode;
+
+        /**
+        * Now, move up a level and check if the next ancestor has already been printed.
+        * If so, we can escape out of here and use our new content element.
+        */
+        genericAncestor = genericAncestor.parentNode as Element;
+        genericAncestorClone = genericAncestor.cloneNode();
+        printedAncestor = findPrintedNode(genericAncestorClone as Element, targetElement);
       }
+
+      targetElement = printedAncestor || targetElement;
     }
   }
 
-  let lastNode = getAllTypeableNodes(element, cursorNode, true)[
-    cursorPosition - 1
-  ];
-  let elementToTypeInto = lastNode ? lastNode.parentNode : element;
+  let lastNode = getAllTypeableNodes(targetElement, cursorNode, true)[cursorPosition - 1];
+  let elementToTypeInto = lastNode ? lastNode.parentNode : targetElement;
 
   // If a cursor node exists, make sure we print BEFORE that, but only if the target
   // element actually contains it. Otherwise, stick it to the end of the element.
-  elementToTypeInto!.insertBefore(
+  elementToTypeInto.insertBefore(
     content as Element,
     (elementToTypeInto as Element).contains(cursorNode) ? cursorNode : null
   );
 };
+
+export default insertIntoElement;

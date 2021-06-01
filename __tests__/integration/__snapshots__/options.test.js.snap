@@ -5,21 +5,16 @@ Array [
   Array [
     [Function],
     250,
-    Object {
-      "id": 0,
-    },
+    Object {},
   ],
   Array [
     [Function],
     Object {
       "content": "T",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 1,
       "isFirst": true,
     },
   ],
@@ -27,598 +22,460 @@ Array [
     [Function],
     Object {
       "content": "h",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 2,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "i",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 3,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "s",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 4,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 5,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "i",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 6,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "s",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 7,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 8,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "a",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 9,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 10,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "<",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 11,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "s",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 12,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "t",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 13,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "r",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 14,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "o",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 15,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "n",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 16,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "g",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 17,
     },
   ],
   Array [
     [Function],
     Object {
       "content": ">",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 18,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "a",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 19,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "n",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 20,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "o",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 21,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "t",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 22,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "h",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 23,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "e",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 24,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "r",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 25,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 26,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "B",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 27,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "O",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 28,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "L",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 29,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "D",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 30,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "<",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 31,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "/",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 32,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "s",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 33,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "t",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 34,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "r",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 35,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "o",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 36,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "n",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 37,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "g",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 38,
     },
   ],
   Array [
     [Function],
     Object {
       "content": ">",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 39,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 40,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "s",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 41,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "t",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 42,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "r",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 43,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "i",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 44,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "n",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 45,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "g",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 46,
     },
   ],
   Array [
     [Function],
     Object {
       "content": ".",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 47,
       "isLast": true,
     },
   ],
@@ -630,21 +487,16 @@ Array [
   Array [
     [Function],
     250,
-    Object {
-      "id": 0,
-    },
+    Object {},
   ],
   Array [
     [Function],
     Object {
       "content": "T",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is a ,
     },
     Object {
       "freezeCursor": true,
-      "id": 1,
       "isFirst": true,
     },
   ],
@@ -652,273 +504,210 @@ Array [
     [Function],
     Object {
       "content": "h",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is a ,
     },
     Object {
       "freezeCursor": true,
-      "id": 2,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "i",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is a ,
     },
     Object {
       "freezeCursor": true,
-      "id": 3,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "s",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is a ,
     },
     Object {
       "freezeCursor": true,
-      "id": 4,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is a ,
     },
     Object {
       "freezeCursor": true,
-      "id": 5,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "i",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is a ,
     },
     Object {
       "freezeCursor": true,
-      "id": 6,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "s",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is a ,
     },
     Object {
       "freezeCursor": true,
-      "id": 7,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is a ,
     },
     Object {
       "freezeCursor": true,
-      "id": 8,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "a",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is a ,
     },
     Object {
       "freezeCursor": true,
-      "id": 9,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is a ,
     },
     Object {
       "freezeCursor": true,
-      "id": 10,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "B",
-      "isHTMLElement": false,
-      "isTopLevelText": false,
       "node": BOLD,
     },
     Object {
       "freezeCursor": true,
-      "id": 11,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "O",
-      "isHTMLElement": false,
-      "isTopLevelText": false,
       "node": BOLD,
     },
     Object {
       "freezeCursor": true,
-      "id": 12,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "L",
-      "isHTMLElement": false,
-      "isTopLevelText": false,
       "node": BOLD,
     },
     Object {
       "freezeCursor": true,
-      "id": 13,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "D",
-      "isHTMLElement": false,
-      "isTopLevelText": false,
       "node": BOLD,
     },
     Object {
       "freezeCursor": true,
-      "id": 14,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node":  string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 15,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "s",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node":  string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 16,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "t",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node":  string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 17,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "r",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node":  string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 18,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "i",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node":  string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 19,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "n",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node":  string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 20,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "g",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node":  string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 21,
     },
   ],
   Array [
     [Function],
     Object {
       "content": ".",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node":  string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 22,
       "isLast": true,
     },
   ],
@@ -930,21 +719,16 @@ Array [
   Array [
     [Function],
     250,
-    Object {
-      "id": 0,
-    },
+    Object {},
   ],
   Array [
     [Function],
     Object {
       "content": "T",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is a ,
     },
     Object {
       "freezeCursor": true,
-      "id": 1,
       "isFirst": true,
     },
   ],
@@ -952,377 +736,290 @@ Array [
     [Function],
     Object {
       "content": "h",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is a ,
     },
     Object {
       "freezeCursor": true,
-      "id": 2,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "i",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is a ,
     },
     Object {
       "freezeCursor": true,
-      "id": 3,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "s",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is a ,
     },
     Object {
       "freezeCursor": true,
-      "id": 4,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is a ,
     },
     Object {
       "freezeCursor": true,
-      "id": 5,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "i",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is a ,
     },
     Object {
       "freezeCursor": true,
-      "id": 6,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "s",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is a ,
     },
     Object {
       "freezeCursor": true,
-      "id": 7,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is a ,
     },
     Object {
       "freezeCursor": true,
-      "id": 8,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "a",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is a ,
     },
     Object {
       "freezeCursor": true,
-      "id": 9,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is a ,
     },
     Object {
       "freezeCursor": true,
-      "id": 10,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "a",
-      "isHTMLElement": false,
-      "isTopLevelText": false,
       "node": another BOLD,
     },
     Object {
       "freezeCursor": true,
-      "id": 11,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "n",
-      "isHTMLElement": false,
-      "isTopLevelText": false,
       "node": another BOLD,
     },
     Object {
       "freezeCursor": true,
-      "id": 12,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "o",
-      "isHTMLElement": false,
-      "isTopLevelText": false,
       "node": another BOLD,
     },
     Object {
       "freezeCursor": true,
-      "id": 13,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "t",
-      "isHTMLElement": false,
-      "isTopLevelText": false,
       "node": another BOLD,
     },
     Object {
       "freezeCursor": true,
-      "id": 14,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "h",
-      "isHTMLElement": false,
-      "isTopLevelText": false,
       "node": another BOLD,
     },
     Object {
       "freezeCursor": true,
-      "id": 15,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "e",
-      "isHTMLElement": false,
-      "isTopLevelText": false,
       "node": another BOLD,
     },
     Object {
       "freezeCursor": true,
-      "id": 16,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "r",
-      "isHTMLElement": false,
-      "isTopLevelText": false,
       "node": another BOLD,
     },
     Object {
       "freezeCursor": true,
-      "id": 17,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": false,
       "node": another BOLD,
     },
     Object {
       "freezeCursor": true,
-      "id": 18,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "B",
-      "isHTMLElement": false,
-      "isTopLevelText": false,
       "node": another BOLD,
     },
     Object {
       "freezeCursor": true,
-      "id": 19,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "O",
-      "isHTMLElement": false,
-      "isTopLevelText": false,
       "node": another BOLD,
     },
     Object {
       "freezeCursor": true,
-      "id": 20,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "L",
-      "isHTMLElement": false,
-      "isTopLevelText": false,
       "node": another BOLD,
     },
     Object {
       "freezeCursor": true,
-      "id": 21,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "D",
-      "isHTMLElement": false,
-      "isTopLevelText": false,
       "node": another BOLD,
     },
     Object {
       "freezeCursor": true,
-      "id": 22,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node":  string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 23,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "s",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node":  string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 24,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "t",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node":  string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 25,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "r",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node":  string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 26,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "i",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node":  string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 27,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "n",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node":  string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 28,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "g",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node":  string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 29,
     },
   ],
   Array [
     [Function],
     Object {
       "content": ".",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node":  string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 30,
       "isLast": true,
     },
   ],
@@ -1334,21 +1031,16 @@ Array [
   Array [
     [Function],
     250,
-    Object {
-      "id": 0,
-    },
+    Object {},
   ],
   Array [
     [Function],
     Object {
       "content": "T",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 1,
       "isFirst": true,
     },
   ],
@@ -1356,338 +1048,260 @@ Array [
     [Function],
     Object {
       "content": "h",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 2,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "i",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 3,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "s",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 4,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 5,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "s",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 6,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "h",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 7,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "o",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 8,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "u",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 9,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "l",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 10,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "d",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 11,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 12,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "b",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 13,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "e",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 14,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 15,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "t",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 16,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "y",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 17,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "p",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 18,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "e",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 19,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "d",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 20,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 21,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "f",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 22,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "i",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 23,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "r",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 24,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "s",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 25,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "t",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 26,
     },
   ],
   Array [
     [Function],
     Object {
       "content": ".",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 27,
       "isLast": true,
     },
   ],
@@ -1700,13 +1314,10 @@ Array [
     [Function],
     Object {
       "content": <br />,
-      "isHTMLElement": true,
-      "isTopLevelText": false,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 28,
     },
   ],
   Array [
@@ -1718,13 +1329,10 @@ Array [
     [Function],
     Object {
       "content": "T",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 29,
       "isFirst": true,
     },
   ],
@@ -1732,286 +1340,220 @@ Array [
     [Function],
     Object {
       "content": "h",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 30,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "i",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 31,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "s",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 32,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 33,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "i",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 34,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "s",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 35,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 36,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "a",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 37,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "n",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 38,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "o",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 39,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "t",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 40,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "h",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 41,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "e",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 42,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "r",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 43,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 44,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "s",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 45,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "t",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 46,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "r",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 47,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "i",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 48,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "n",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 49,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "g",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 50,
     },
   ],
   Array [
     [Function],
     Object {
       "content": ".",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 51,
       "isLast": true,
     },
   ],
@@ -2020,20 +1562,16 @@ Array [
     Object {},
     Object {
       "force": true,
-      "id": 52,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "A",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": And finally, a third.,
     },
     Object {
       "freezeCursor": true,
-      "id": 53,
       "isFirst": true,
     },
   ],
@@ -2041,260 +1579,200 @@ Array [
     [Function],
     Object {
       "content": "n",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": And finally, a third.,
     },
     Object {
       "freezeCursor": true,
-      "id": 54,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "d",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": And finally, a third.,
     },
     Object {
       "freezeCursor": true,
-      "id": 55,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": And finally, a third.,
     },
     Object {
       "freezeCursor": true,
-      "id": 56,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "f",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": And finally, a third.,
     },
     Object {
       "freezeCursor": true,
-      "id": 57,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "i",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": And finally, a third.,
     },
     Object {
       "freezeCursor": true,
-      "id": 58,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "n",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": And finally, a third.,
     },
     Object {
       "freezeCursor": true,
-      "id": 59,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "a",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": And finally, a third.,
     },
     Object {
       "freezeCursor": true,
-      "id": 60,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "l",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": And finally, a third.,
     },
     Object {
       "freezeCursor": true,
-      "id": 61,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "l",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": And finally, a third.,
     },
     Object {
       "freezeCursor": true,
-      "id": 62,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "y",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": And finally, a third.,
     },
     Object {
       "freezeCursor": true,
-      "id": 63,
     },
   ],
   Array [
     [Function],
     Object {
       "content": ",",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": And finally, a third.,
     },
     Object {
       "freezeCursor": true,
-      "id": 64,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": And finally, a third.,
     },
     Object {
       "freezeCursor": true,
-      "id": 65,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "a",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": And finally, a third.,
     },
     Object {
       "freezeCursor": true,
-      "id": 66,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": And finally, a third.,
     },
     Object {
       "freezeCursor": true,
-      "id": 67,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "t",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": And finally, a third.,
     },
     Object {
       "freezeCursor": true,
-      "id": 68,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "h",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": And finally, a third.,
     },
     Object {
       "freezeCursor": true,
-      "id": 69,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "i",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": And finally, a third.,
     },
     Object {
       "freezeCursor": true,
-      "id": 70,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "r",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": And finally, a third.,
     },
     Object {
       "freezeCursor": true,
-      "id": 71,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "d",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": And finally, a third.,
     },
     Object {
       "freezeCursor": true,
-      "id": 72,
     },
   ],
   Array [
     [Function],
     Object {
       "content": ".",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": And finally, a third.,
     },
     Object {
       "freezeCursor": true,
-      "id": 73,
       "isLast": true,
     },
   ],
@@ -2333,7 +1811,6 @@ Array [
     },
     Object {
       "force": true,
-      "id": 74,
     },
   ],
 ]
@@ -2344,21 +1821,16 @@ Array [
   Array [
     [Function],
     250,
-    Object {
-      "id": 0,
-    },
+    Object {},
   ],
   Array [
     [Function],
     Object {
       "content": "T",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 1,
       "isFirst": true,
     },
   ],
@@ -2366,338 +1838,260 @@ Array [
     [Function],
     Object {
       "content": "h",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 2,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "i",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 3,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "s",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 4,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 5,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "s",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 6,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "h",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 7,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "o",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 8,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "u",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 9,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "l",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 10,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "d",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 11,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 12,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "b",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 13,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "e",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 14,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 15,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "t",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 16,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "y",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 17,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "p",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 18,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "e",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 19,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "d",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 20,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 21,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "f",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 22,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "i",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 23,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "r",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 24,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "s",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 25,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "t",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 26,
     },
   ],
   Array [
     [Function],
     Object {
       "content": ".",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 27,
       "isLast": true,
     },
   ],
@@ -2709,21 +2103,16 @@ Array [
   Array [
     [Function],
     250,
-    Object {
-      "id": 0,
-    },
+    Object {},
   ],
   Array [
     [Function],
     Object {
       "content": "T",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 1,
       "isFirst": true,
     },
   ],
@@ -2731,338 +2120,260 @@ Array [
     [Function],
     Object {
       "content": "h",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 2,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "i",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 3,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "s",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 4,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 5,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "s",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 6,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "h",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 7,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "o",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 8,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "u",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 9,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "l",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 10,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "d",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 11,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 12,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "b",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 13,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "e",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 14,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 15,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "t",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 16,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "y",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 17,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "p",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 18,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "e",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 19,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "d",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 20,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 21,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "f",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 22,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "i",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 23,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "r",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 24,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "s",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 25,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "t",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 26,
     },
   ],
   Array [
     [Function],
     Object {
       "content": ".",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This should be typed first.,
     },
     Object {
       "freezeCursor": true,
-      "id": 27,
       "isLast": true,
     },
   ],
@@ -3075,13 +2386,10 @@ Array [
     [Function],
     Object {
       "content": <br />,
-      "isHTMLElement": true,
-      "isTopLevelText": false,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 28,
     },
   ],
   Array [
@@ -3093,13 +2401,10 @@ Array [
     [Function],
     Object {
       "content": "T",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 29,
       "isFirst": true,
     },
   ],
@@ -3107,286 +2412,220 @@ Array [
     [Function],
     Object {
       "content": "h",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 30,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "i",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 31,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "s",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 32,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 33,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "i",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 34,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "s",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 35,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 36,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "a",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 37,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "n",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 38,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "o",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 39,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "t",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 40,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "h",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 41,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "e",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 42,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "r",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 43,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 44,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "s",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 45,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "t",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 46,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "r",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 47,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "i",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 48,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "n",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 49,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "g",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 50,
     },
   ],
   Array [
     [Function],
     Object {
       "content": ".",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": This is another string.,
     },
     Object {
       "freezeCursor": true,
-      "id": 51,
       "isLast": true,
     },
   ],

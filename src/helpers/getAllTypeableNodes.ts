@@ -2,18 +2,18 @@ import isTypeableNode from "./isTypeableNode";
 import toArray from "./toArray";
 
 /**
- * Retrieve all text/BR nodes that exist inside an element.
+ * Retrieve all text/BR nodes that exist inside within an element. These
+ * will be the nodes we're capable of typing onto the screen.
  */
 const getAllTypeableNodes = (
-  element: HTMLElement,
+  element: Element,
   parentToExclude: HTMLElement | null = null,
   shouldReverse: boolean = false
 ): Node[] => {
   let nodes = toArray(element.childNodes)
-    .map((child) => {
+    .flatMap((child) => {
       return isTypeableNode(child) ? child : getAllTypeableNodes(child);
-    })
-    .flat();
+    });
 
   if (parentToExclude) {
     nodes = nodes.filter((n) => !parentToExclude.contains(n));

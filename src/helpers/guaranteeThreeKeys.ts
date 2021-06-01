@@ -1,5 +1,7 @@
 import { QueueItem } from "../types";
 
+const defaults = [null, null, {}];
+
 /**
  * Guarantees that a queue has three
  * items with default values.
@@ -8,10 +10,11 @@ import { QueueItem } from "../types";
  * @return {array}
  */
 export default (q: QueueItem[]): QueueItem[] => {
-  return q.map((queueItem) => {
-    queueItem[1] === undefined && queueItem.push(null);
-    queueItem[2] === undefined && queueItem.push({});
+  return q.map((queueItem: QueueItem) => {
+    return defaults.map((defaultValue, index) => {
+      if (queueItem[index]) return queueItem[index];
 
-    return queueItem;
-  });
+      return defaultValue;
+    });
+  }) as QueueItem;
 };

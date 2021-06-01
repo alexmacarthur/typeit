@@ -5,9 +5,7 @@ Array [
   Array [
     [Function],
     250,
-    Object {
-      "id": 0,
-    },
+    Object {},
   ],
 ]
 `;
@@ -39,21 +37,16 @@ Array [
   Array [
     [Function],
     250,
-    Object {
-      "id": 0,
-    },
+    Object {},
   ],
   Array [
     [Function],
     Object {
       "content": "A",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": A,
     },
     Object {
       "freezeCursor": true,
-      "id": 1,
       "isFirst": true,
       "isLast": true,
     },
@@ -67,13 +60,10 @@ Array [
     [Function],
     Object {
       "content": <br />,
-      "isHTMLElement": true,
-      "isTopLevelText": false,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 2,
     },
   ],
   Array [
@@ -85,13 +75,10 @@ Array [
     [Function],
     Object {
       "content": "B",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": B,
     },
     Object {
       "freezeCursor": true,
-      "id": 3,
       "isFirst": true,
       "isLast": true,
     },
@@ -104,21 +91,15 @@ Array [
   Array [
     [Function],
     250,
-    Object {
-      "id": 0,
-    },
+    Object {},
   ],
   Array [
     [Function],
     Object {
       "content": <br />,
-      "isHTMLElement": true,
-      "isTopLevelText": false,
       "node": null,
     },
-    Object {
-      "id": 1,
-    },
+    Object {},
   ],
 ]
 `;
@@ -128,24 +109,20 @@ Array [
   Array [
     [Function],
     250,
-    Object {
-      "id": 0,
-    },
+    Object {},
   ],
   Array [
     [Function],
     Object {},
     Object {
       "force": true,
-      "id": 1,
     },
   ],
   Array [
     [Function],
-    false,
+    null,
     Object {
       "freezeCursor": true,
-      "id": 2,
     },
   ],
   Array [
@@ -180,7 +157,6 @@ Array [
     },
     Object {
       "force": true,
-      "id": 3,
     },
   ],
 ]
@@ -190,9 +166,7 @@ exports[`delete() Should queue pause after string when defined. 1`] = `
 Array [
   [Function],
   300,
-  Object {
-    "id": 6,
-  },
+  Object {},
 ]
 `;
 
@@ -200,9 +174,7 @@ exports[`delete() Should queue pause correctly when options are passed. 1`] = `
 Array [
   [Function],
   200,
-  Object {
-    "id": 6,
-  },
+  Object {},
 ]
 `;
 
@@ -210,9 +182,7 @@ exports[`delete() Should queue pause correctly when single digit is passed. 1`] 
 Array [
   [Function],
   50,
-  Object {
-    "id": 6,
-  },
+  Object {},
 ]
 `;
 
@@ -221,9 +191,7 @@ Array [
   Array [
     [Function],
     250,
-    Object {
-      "id": 0,
-    },
+    Object {},
   ],
   Array [
     [Function],
@@ -232,7 +200,6 @@ Array [
     },
     Object {
       "force": true,
-      "id": 1,
     },
   ],
   Array [
@@ -240,7 +207,6 @@ Array [
     true,
     Object {
       "freezeCursor": true,
-      "id": 2,
     },
   ],
   Array [
@@ -275,7 +241,6 @@ Array [
     },
     Object {
       "force": true,
-      "id": 3,
     },
   ],
 ]
@@ -286,21 +251,16 @@ Array [
   Array [
     [Function],
     250,
-    Object {
-      "id": 0,
-    },
+    Object {},
   ],
   Array [
     [Function],
     Object {
       "content": "A",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": ABC,
     },
     Object {
       "freezeCursor": true,
-      "id": 1,
       "isFirst": true,
     },
   ],
@@ -308,26 +268,20 @@ Array [
     [Function],
     Object {
       "content": "B",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": ABC,
     },
     Object {
       "freezeCursor": true,
-      "id": 2,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "C",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": ABC,
     },
     Object {
       "freezeCursor": true,
-      "id": 3,
       "isLast": true,
     },
   ],
@@ -340,13 +294,10 @@ Array [
     [Function],
     Object {
       "content": <br />,
-      "isHTMLElement": true,
-      "isTopLevelText": false,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 4,
     },
   ],
   Array [
@@ -358,13 +309,10 @@ Array [
     [Function],
     Object {
       "content": "E",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": EFG,
     },
     Object {
       "freezeCursor": true,
-      "id": 5,
       "isFirst": true,
     },
   ],
@@ -372,26 +320,20 @@ Array [
     [Function],
     Object {
       "content": "F",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": EFG,
     },
     Object {
       "freezeCursor": true,
-      "id": 6,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "G",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": EFG,
     },
     Object {
       "freezeCursor": true,
-      "id": 7,
       "isLast": true,
     },
   ],
@@ -403,9 +345,7 @@ Array [
   Array [
     [Function],
     250,
-    Object {
-      "id": 0,
-    },
+    Object {},
   ],
 ]
 `;
@@ -415,21 +355,16 @@ Array [
   Array [
     [Function],
     250,
-    Object {
-      "id": 0,
-    },
+    Object {},
   ],
   Array [
     [Function],
     Object {
       "content": "A",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": ABC,
     },
     Object {
       "freezeCursor": true,
-      "id": 1,
       "isFirst": true,
     },
   ],
@@ -437,26 +372,20 @@ Array [
     [Function],
     Object {
       "content": "B",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": ABC,
     },
     Object {
       "freezeCursor": true,
-      "id": 2,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "C",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": ABC,
     },
     Object {
       "freezeCursor": true,
-      "id": 3,
       "isLast": true,
     },
   ],
@@ -469,13 +398,10 @@ Array [
     [Function],
     Object {
       "content": <br />,
-      "isHTMLElement": true,
-      "isTopLevelText": false,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 4,
     },
   ],
   Array [
@@ -487,13 +413,10 @@ Array [
     [Function],
     Object {
       "content": "E",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": EFG,
     },
     Object {
       "freezeCursor": true,
-      "id": 5,
       "isFirst": true,
     },
   ],
@@ -501,26 +424,20 @@ Array [
     [Function],
     Object {
       "content": "F",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": EFG,
     },
     Object {
       "freezeCursor": true,
-      "id": 6,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "G",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": EFG,
     },
     Object {
       "freezeCursor": true,
-      "id": 7,
       "isLast": true,
     },
   ],
@@ -532,21 +449,16 @@ Array [
   Array [
     [Function],
     250,
-    Object {
-      "id": 0,
-    },
+    Object {},
   ],
   Array [
     [Function],
     Object {
       "content": "A",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": A,
     },
     Object {
       "freezeCursor": true,
-      "id": 1,
       "isFirst": true,
       "isLast": true,
     },
@@ -560,13 +472,10 @@ Array [
     [Function],
     Object {
       "content": <br />,
-      "isHTMLElement": true,
-      "isTopLevelText": false,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 2,
     },
   ],
   Array [
@@ -578,13 +487,10 @@ Array [
     [Function],
     Object {
       "content": "B",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": B,
     },
     Object {
       "freezeCursor": true,
-      "id": 3,
       "isFirst": true,
       "isLast": true,
     },
@@ -598,13 +504,10 @@ Array [
     [Function],
     Object {
       "content": <br />,
-      "isHTMLElement": true,
-      "isTopLevelText": false,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 4,
     },
   ],
   Array [
@@ -616,13 +519,10 @@ Array [
     [Function],
     Object {
       "content": "C",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": C,
     },
     Object {
       "freezeCursor": true,
-      "id": 5,
       "isFirst": true,
       "isLast": true,
     },
@@ -636,13 +536,10 @@ Array [
     [Function],
     Object {
       "content": <br />,
-      "isHTMLElement": true,
-      "isTopLevelText": false,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 6,
     },
   ],
   Array [
@@ -654,13 +551,10 @@ Array [
     [Function],
     Object {
       "content": "D",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": D,
     },
     Object {
       "freezeCursor": true,
-      "id": 7,
       "isFirst": true,
       "isLast": true,
     },
@@ -674,13 +568,10 @@ Array [
     [Function],
     Object {
       "content": <br />,
-      "isHTMLElement": true,
-      "isTopLevelText": false,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 8,
     },
   ],
   Array [
@@ -692,13 +583,10 @@ Array [
     [Function],
     Object {
       "content": "E",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": E,
     },
     Object {
       "freezeCursor": true,
-      "id": 9,
       "isFirst": true,
       "isLast": true,
     },
@@ -711,16 +599,13 @@ Array [
   Array [
     [Function],
     250,
-    Object {
-      "id": 0,
-    },
+    Object {},
   ],
   Array [
     [Function],
     Object {},
     Object {
       "force": true,
-      "id": 1,
     },
   ],
   Array [
@@ -728,7 +613,6 @@ Array [
     1,
     Object {
       "freezeCursor": true,
-      "id": 2,
     },
   ],
   Array [
@@ -763,7 +647,6 @@ Array [
     },
     Object {
       "force": true,
-      "id": 3,
     },
   ],
 ]
@@ -773,9 +656,7 @@ exports[`move() Should queue pause after string when defined. 1`] = `
 Array [
   [Function],
   300,
-  Object {
-    "id": 4,
-  },
+  Object {},
 ]
 `;
 
@@ -783,9 +664,7 @@ exports[`move() Should queue pause correctly when options are passed. 1`] = `
 Array [
   [Function],
   200,
-  Object {
-    "id": 4,
-  },
+  Object {},
 ]
 `;
 
@@ -794,9 +673,7 @@ Array [
   Array [
     [Function],
     250,
-    Object {
-      "id": 0,
-    },
+    Object {},
   ],
   Array [
     [Function],
@@ -805,7 +682,6 @@ Array [
     },
     Object {
       "force": true,
-      "id": 1,
     },
   ],
   Array [
@@ -813,7 +689,6 @@ Array [
     "END",
     Object {
       "freezeCursor": true,
-      "id": 2,
     },
   ],
   Array [
@@ -848,7 +723,6 @@ Array [
     },
     Object {
       "force": true,
-      "id": 3,
     },
   ],
 ]
@@ -892,29 +766,23 @@ Array [
   Array [
     [Function],
     250,
-    Object {
-      "id": 0,
-    },
+    Object {},
   ],
   Array [
     [Function],
     Object {},
     Object {
       "force": true,
-      "id": 1,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "!",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": !,
     },
     Object {
       "freezeCursor": true,
-      "id": 2,
       "isFirst": true,
       "isLast": true,
     },
@@ -951,7 +819,6 @@ Array [
     },
     Object {
       "force": true,
-      "id": 3,
     },
   ],
 ]
@@ -961,9 +828,7 @@ exports[`type() Should queue pause after string when defined. 1`] = `
 Array [
   [Function],
   300,
-  Object {
-    "id": 4,
-  },
+  Object {},
 ]
 `;
 
@@ -971,9 +836,7 @@ exports[`type() Should queue pause correctly when options are passed. 1`] = `
 Array [
   [Function],
   200,
-  Object {
-    "id": 4,
-  },
+  Object {},
 ]
 `;
 
@@ -982,9 +845,7 @@ Array [
   Array [
     [Function],
     250,
-    Object {
-      "id": 0,
-    },
+    Object {},
   ],
   Array [
     [Function],
@@ -993,20 +854,16 @@ Array [
     },
     Object {
       "force": true,
-      "id": 1,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "!",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": !,
     },
     Object {
       "freezeCursor": true,
-      "id": 2,
       "isFirst": true,
       "isLast": true,
     },
@@ -1043,7 +900,6 @@ Array [
     },
     Object {
       "force": true,
-      "id": 3,
     },
   ],
 ]
