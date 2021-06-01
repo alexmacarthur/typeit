@@ -4,7 +4,8 @@ _Please include demo links, if possible!_
 
 ## Type of Change
 
-[] It's a bug fix. [] It's a new feature (without breaking changes). [] It's a breaking change.
+[] It's a bug fix.
+[] It's a new feature (without breaking changes). [] It's a breaking change.
 
 ## Checklist
 
