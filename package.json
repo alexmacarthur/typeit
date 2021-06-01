@@ -14,15 +14,16 @@
   "types": "dist/types.d.ts",
   "files": [
     "dist/",
-    "src/"
+    "src/",
+    "scripts/"
   ],
   "scripts": {
-    "build": "microbundle -i src/TypeIt.ts -o dist/index.js --name TypeIt --no-sourcemap",
+    "build": "microbundle -i src/TypeIt.ts -o dist/index.js --name TypeIt --no-sourcemap && scripts/banner",
     "watch": "microbundle -i src/TypeIt.ts -o dist/index.js --name TypeIt --no-sourcemap watch",
     "start": "concurrently --kill-others \"npm run watch\" \"serve\"",
     "prettier": "prettier --write \"**/*.{md,js,ts}\"",
     "test": "jest",
-    "postinstall": "node ./notice.js"
+    "postinstall": "node ./scripts/notice.js"
   },
   "keywords": [
     "javascript",
