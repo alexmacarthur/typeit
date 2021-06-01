@@ -1,0 +1,34 @@
+name: Publish
+
+on:
+  push:
+    branches: [master]
+
+env:
+  NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          registry-url: https://registry.npmjs.org/
+      - name: Set Auth Token
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+      - name: Build Package
+        run: |
+          npm install
+          npm run build
+      - name: Maybe Publish
+        run: |
+          if npm publish --access public; then
+            PACKAGE_VERSION=$(node -p "require('./package.json').version")
+            git config user.name "Alex MacArthur"
+            git config user.email "alex@macarthur.me"
+            git tag -a v$PACKAGE_VERSION -m "Create release v$PACKAGE_VERSION."
+            git push --tags
+            echo v$PACKAGE_VERSION
+          fi
