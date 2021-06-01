@@ -7,15 +7,12 @@ Array [
     null,
     Object {
       "executed": false,
-      "id": 1,
     },
   ],
   Array [
     "value3",
     null,
-    Object {
-      "id": 2,
-    },
+    Object {},
   ],
 ]
 `;
@@ -27,7 +24,6 @@ Array [
     null,
     Object {
       "executed": false,
-      "id": 0,
     },
   ],
   Array [
@@ -35,7 +31,6 @@ Array [
     null,
     Object {
       "executed": false,
-      "id": 1,
     },
   ],
   Array [
@@ -43,7 +38,6 @@ Array [
     null,
     Object {
       "executed": false,
-      "id": 2,
     },
   ],
   Array [
@@ -51,7 +45,6 @@ Array [
     null,
     Object {
       "executed": false,
-      "id": 3,
     },
   ],
   Array [
@@ -59,7 +52,6 @@ Array [
     null,
     Object {
       "executed": false,
-      "id": 4,
     },
   ],
   Array [
@@ -67,7 +59,6 @@ Array [
     null,
     Object {
       "executed": false,
-      "id": 5,
     },
   ],
 ]
@@ -78,23 +69,17 @@ Array [
   Array [
     "value1",
     null,
-    Object {
-      "id": 0,
-    },
+    Object {},
   ],
   Array [
     "value2",
     null,
-    Object {
-      "id": 1,
-    },
+    Object {},
   ],
   Array [
     "value3",
     null,
-    Object {
-      "id": 2,
-    },
+    Object {},
   ],
 ]
 `;
@@ -104,30 +89,22 @@ Array [
   Array [
     "first-action",
     null,
-    Object {
-      "id": 0,
-    },
+    Object {},
   ],
   Array [
     [Function],
     1,
-    Object {
-      "id": 1,
-    },
+    Object {},
   ],
   Array [
     [Function],
     2,
-    Object {
-      "id": 2,
-    },
+    Object {},
   ],
   Array [
     [Function],
     3,
-    Object {
-      "id": 3,
-    },
+    Object {},
   ],
 ]
 `;
@@ -137,23 +114,17 @@ Array [
   Array [
     "first-action",
     null,
-    Object {
-      "id": 0,
-    },
+    Object {},
   ],
   Array [
     "step1",
     null,
-    Object {
-      "id": 1,
-    },
+    Object {},
   ],
   Array [
     "step2",
     null,
-    Object {
-      "id": 2,
-    },
+    Object {},
   ],
 ]
 `;

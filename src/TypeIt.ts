@@ -54,6 +54,20 @@ export default function TypeIt(
   };
 
   /**
+   * Add items to the queue with a split pause
+   * wrapped around them.
+   */
+  const _addSplitPause = (items: QueueItem[]) => {
+    let delay = _opts.nextStringDelay;
+
+    _queue.add([
+      [_pause, delay[0]],
+      ...items,
+      [_pause, delay[1]],
+    ])
+  }
+
+  /**
    * Get a flattened array of text nodes that have been typed.
    * This excludes any cursor character that might exist.
    *
@@ -63,23 +77,6 @@ export default function TypeIt(
     return _elementIsInput
       ? toArray(_element.value)
       : getAllTypeableNodes(_element, _cursor, true);
-  };
-
-  /**
-   * Insert a split pause around a range of queue items.
-   *
-   * @param  {Number} startPosition The array position at which to start wrapping.
-   * @param  {Number} numberOfActionsToWrap The number of actions in the queue to wrap.
-   * @return {void}
-   */
-  const _addSplitPause = (startPosition, numberOfActionsToWrap = 1) => {
-    let delay = _opts.nextStringDelay;
-
-    _queue.insert(startPosition, [_pause, delay[0]]);
-    _queue.insert(startPosition + numberOfActionsToWrap + 1, [
-      _pause,
-      delay[1],
-    ]);
   };
 
   /**
@@ -164,22 +161,17 @@ export default function TypeIt(
 
       _queue.add(queueMany(chunkedString, _type, _freezeCursorMeta, true));
 
-      let queueLength = _queue.getItems().length;
-
       // This is the last string. Get outta here.
       if (index + 1 === strings.length) {
         return;
       }
 
       if (_opts.breakLines) {
-        let breakObj = createCharacterObject(createElement("BR"));
-        _queue.add([[_type, breakObj, _freezeCursorMeta]]);
-        _addSplitPause(queueLength);
+        _addSplitPause([[_type, createCharacterObject(createElement("BR")), _freezeCursorMeta]]);
         return;
       }
 
-      _queue.add(queueMany(chunkedString, _delete, _freezeCursorMeta));
-      _addSplitPause(queueLength, string.length);
+      _addSplitPause(queueMany(chunkedString, _delete, _freezeCursorMeta));
     });
   };
 
@@ -190,7 +182,7 @@ export default function TypeIt(
   const _prepLoop = async (delay) => {
     _cursorPosition && (await _move(_cursorPosition));
     _queue.reset();
-    _queue.set(0, [_pause, delay]);
+    _queue.set(0, [_pause, delay, {}]);
 
     await _delete(true);
   };
@@ -211,8 +203,8 @@ export default function TypeIt(
         insertIntoElement(_element, item, _cursor, _cursorPosition);
       });
 
-      _queue.add([_delete, true]);
-      _addSplitPause(1);
+      _addSplitPause([[_delete, true]]);
+
       return strings;
     }
 
@@ -254,7 +246,7 @@ export default function TypeIt(
 
         await _opts.afterStep(...callbackArgs);
 
-        _queue.setMeta(queueActionMeta.id, { executed: true });
+        _queue.setMeta(i, { executed: true });
 
         _disableCursorBlink(false);
       }
@@ -293,9 +285,9 @@ export default function TypeIt(
    */
   const _move = (movementArg): Promise<void> => {
     let allChars = _getAllChars();
-    let arg = processCursorMovementArg(movementArg, _cursorPosition, allChars);
+    let { numberOfSteps, isString, canKeepMoving } = processCursorMovementArg(movementArg, _cursorPosition, allChars);
 
-    _cursorPosition += arg.numberOfSteps;
+    _cursorPosition += numberOfSteps;
 
     return new Promise((resolve) => {
       _wait(async () => {
@@ -305,8 +297,8 @@ export default function TypeIt(
          * If our argument is a string, we're moving absolutely and need to keep
          * going until there are no more spaces to move.
          */
-        if (arg.isString && arg.canKeepMoving) {
-          await _move(arg.numberOfSteps > 0 ? "START" : "END");
+        if (isString && canKeepMoving) {
+          await _move(numberOfSteps > 0 ? "START" : "END");
         }
 
         return resolve();
@@ -540,7 +532,7 @@ export default function TypeIt(
   });
 
   let _id = generateHash();
-  let _queue = new Queue([[_pause, _opts.startDelay]]);
+  let _queue = Queue([[_pause, _opts.startDelay]]);
   _element.dataset.typeitId = _id;
 
   // Used to set a "placeholder" space in the element, so that it holds vertical sizing before anything's typed.
@@ -548,9 +540,9 @@ export default function TypeIt(
     `[data-typeit-id]:before {content: '.'; display: inline-block; width: 0; visibility: hidden;}`
   );
 
-  _opts.strings = _maybePrependHardcodedStrings(asArray(_opts.strings));
-
   let _cursor = _setUpCursor();
+
+  _opts.strings = _maybePrependHardcodedStrings(asArray(_opts.strings));
 
   // Only generate a queue if we have strings
   // and this isn't a reset of a previous instance,

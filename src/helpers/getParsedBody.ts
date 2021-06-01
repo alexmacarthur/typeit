@@ -1,13 +1,10 @@
 /**
  * Parse a string as HTML and return the body
  * of the parsed document.
- *
- * @param {string} content
- * @return {object}
  */
 export default (content): HTMLElement => {
-  let doc = document.implementation.createHTMLDocument("");
-  doc.body.innerHTML = content;
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(content, 'text/html');
 
   return doc.body;
 };

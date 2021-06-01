@@ -1,7 +1,5 @@
 export type Character = {
   node: Node | null;
-  isTopLevelText: boolean;
-  isHTMLElement: boolean;
   content: string | Node;
 };
 

@@ -14,7 +14,6 @@ beforeEach(() => {
 test("Should insert a simple character correctly.", () => {
   let charObj = {
     node: getParsedBody("x").childNodes[0],
-    isTopLevelText: true,
     content: "x",
   };
 
@@ -30,7 +29,6 @@ test("Should insert an HTML character object.", () => {
     // descendent to a SPAN element.
     node: getParsedBody("<span>y</span>").querySelector("span").childNodes[0],
     content: "y",
-    isTopLevelText: false,
   };
 
   setHTML`
@@ -60,7 +58,6 @@ test("Should insert a nested character object.", () => {
 test("Should insert content into input.", () => {
   let charObj = {
     node: null,
-    isTopLevelText: true,
     content: "some value",
   };
 
@@ -80,7 +77,6 @@ test("Should insert content into input.", () => {
 test("Should insert raw HTML content into input.", () => {
   let charObj = {
     node: null,
-    isTopLevelText: true,
     content: "<span>sup</span>",
   };
 
@@ -100,7 +96,6 @@ test("Should insert raw HTML content into input.", () => {
 test("Should insert before cursor when element is top-level.", () => {
   let charObj = {
     node: null,
-    isTopLevelText: true,
     content: "Hello",
   };
 
@@ -127,8 +122,7 @@ test("Should not insert into cursor node when a <span> is passed.", () => {
   insertIntoElement(
     targetElement,
     {
-      node: getParsedBody("<span>x</span>").querySelector("span").childNodes[0],
-      isTopLevelText: true,
+      node: getParsedBody("<span>y</span>x").childNodes[0],
       content: "x",
     },
     cursor
@@ -143,8 +137,6 @@ test("Types HTML node when defined.", () => {
 
   let charObj = {
     node: null,
-    isTopLevelText: false,
-    isHTMLElement: true,
     content: contentEl,
   };
 
@@ -191,6 +183,7 @@ describe("findPrintedNode()", () => {
     let parentElement = document.querySelector("span");
     let node = document.querySelector("strong");
     let result = findPrintedNode(node.cloneNode(), parentElement);
+
     expect(result.outerHTML).toBe("<strong>third</strong>");
   });
 

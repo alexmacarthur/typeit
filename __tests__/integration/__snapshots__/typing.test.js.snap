@@ -5,21 +5,16 @@ Array [
   Array [
     [Function],
     250,
-    Object {
-      "id": 0,
-    },
+    Object {},
   ],
   Array [
     [Function],
     Object {
       "content": "T",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": Taxation is...,
     },
     Object {
       "freezeCursor": true,
-      "id": 1,
       "isFirst": true,
     },
   ],
@@ -27,169 +22,130 @@ Array [
     [Function],
     Object {
       "content": "a",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": Taxation is...,
     },
     Object {
       "freezeCursor": true,
-      "id": 2,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "x",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": Taxation is...,
     },
     Object {
       "freezeCursor": true,
-      "id": 3,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "a",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": Taxation is...,
     },
     Object {
       "freezeCursor": true,
-      "id": 4,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "t",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": Taxation is...,
     },
     Object {
       "freezeCursor": true,
-      "id": 5,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "i",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": Taxation is...,
     },
     Object {
       "freezeCursor": true,
-      "id": 6,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "o",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": Taxation is...,
     },
     Object {
       "freezeCursor": true,
-      "id": 7,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "n",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": Taxation is...,
     },
     Object {
       "freezeCursor": true,
-      "id": 8,
     },
   ],
   Array [
     [Function],
     Object {
       "content": " ",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": Taxation is...,
     },
     Object {
       "freezeCursor": true,
-      "id": 9,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "i",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": Taxation is...,
     },
     Object {
       "freezeCursor": true,
-      "id": 10,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "s",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": Taxation is...,
     },
     Object {
       "freezeCursor": true,
-      "id": 11,
     },
   ],
   Array [
     [Function],
     Object {
       "content": ".",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": Taxation is...,
     },
     Object {
       "freezeCursor": true,
-      "id": 12,
     },
   ],
   Array [
     [Function],
     Object {
       "content": ".",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": Taxation is...,
     },
     Object {
       "freezeCursor": true,
-      "id": 13,
     },
   ],
   Array [
     [Function],
     Object {
       "content": ".",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": Taxation is...,
     },
     Object {
       "freezeCursor": true,
-      "id": 14,
       "isLast": true,
     },
   ],
@@ -202,13 +158,10 @@ Array [
     [Function],
     Object {
       "content": <br />,
-      "isHTMLElement": true,
-      "isTopLevelText": false,
       "node": null,
     },
     Object {
       "freezeCursor": true,
-      "id": 15,
     },
   ],
   Array [
@@ -220,13 +173,10 @@ Array [
     [Function],
     Object {
       "content": "t",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": theft.,
     },
     Object {
       "freezeCursor": true,
-      "id": 16,
       "isFirst": true,
     },
   ],
@@ -234,65 +184,50 @@ Array [
     [Function],
     Object {
       "content": "h",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": theft.,
     },
     Object {
       "freezeCursor": true,
-      "id": 17,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "e",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": theft.,
     },
     Object {
       "freezeCursor": true,
-      "id": 18,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "f",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": theft.,
     },
     Object {
       "freezeCursor": true,
-      "id": 19,
     },
   ],
   Array [
     [Function],
     Object {
       "content": "t",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": theft.,
     },
     Object {
       "freezeCursor": true,
-      "id": 20,
     },
   ],
   Array [
     [Function],
     Object {
       "content": ".",
-      "isHTMLElement": false,
-      "isTopLevelText": true,
       "node": theft.,
     },
     Object {
       "freezeCursor": true,
-      "id": 21,
       "isLast": true,
     },
   ],
