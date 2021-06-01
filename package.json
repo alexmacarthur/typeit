@@ -19,7 +19,7 @@
   ],
   "scripts": {
     "build": "microbundle -i src/TypeIt.ts -o dist/index.js --name TypeIt --no-sourcemap && scripts/banner",
-    "watch": "microbundle -i src/TypeIt.ts -o dist/index.js --name TypeIt --no-sourcemap watch",
+    "watch": "microbundle -i src/TypeIt.ts -o dist/index.js --name TypeIt --format umd --no-sourcemap watch",
     "start": "concurrently --kill-others \"npm run watch\" \"serve\"",
     "prettier": "prettier --write \"**/*.{md,js,ts}\"",
     "test": "jest",
@@ -61,5 +61,6 @@
     "hooks": {
       "pre-commit": "pretty-quick --staged"
     }
-  }
+  },
+  "browserslist": "supports es6-module and supports es6-module-dynamic-import, not opera > 0, not samsung > 0, not and_qq > 0"
 }
