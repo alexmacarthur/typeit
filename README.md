@@ -2,7 +2,7 @@
 
 The Most Versatile JavaScript Animated Typing Utility on the Planet
 
-[![Build Status](https://travis-ci.org/alexmacarthur/typeit.svg?branch=master)](https://travis-ci.org/alexmacarthur/typeit)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/typeit)](https://bundlephobia.com/result?p=typeit)
 [![npm downloads](https://img.shields.io/npm/dm/typeit.svg?style=flat-square)](http://npm-stat.com/charts.html?package=typeit)
 [![](https://data.jsdelivr.com/v1/package/npm/typeit/badge)](https://www.jsdelivr.com/package/npm/typeit)
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Falexmacarthur%2Ftypeit&via=amacarthur&text=Check%20out%20TypeIt%2C%20the%20most%20versatile%20JavaScript%20animated%20typing%20utility%20on%20the%20planet.&hashtags=js%2Cwebdev%2Coss)
@@ -49,7 +49,7 @@ Check out the official [React component for TypeIt](https://github.com/alexmacar
 
 ## Contribute
 
-Please do! The code is available on Github. Check out the [CONTRIBUTING.md](https://github.com/alexmacarthur/typeit/blob/master/CONTRIBUTING.md) file to see how to get started.
+Please do! Check out the [CONTRIBUTING.md](https://github.com/alexmacarthur/typeit/blob/master/CONTRIBUTING.md) file to see how to get started.
 
 ## Know of a Neat Site Using TypeIt?
 
