@@ -6,16 +6,14 @@ import { Character, Element } from "../types";
 
 /**
  * Given a node, find the corresponding PRINTED node already in an element.
- *
- * Q: Why did I intially use outerHTML? Would isEqualNode() not suffice?
  */
-export const findPrintedNode = (node: Element, element: Element) => {
-  let printedNodes = element.querySelectorAll("*");
+export const findPrintedNode = (node: Element, elementToSearch: Element) => {
+  let printedNodes: Element[] = toArray(elementToSearch.querySelectorAll("*"));
 
-  return [element].concat(toArray(printedNodes).reverse()).find((i) => {
-    return (i.cloneNode() as HTMLElement).outerHTML === node.outerHTML;
+  return [elementToSearch].concat(printedNodes.reverse()).find(i => {
+    return i.cloneNode().isEqualNode(node.cloneNode());
   });
-};
+}
 
 /**
  * Determine if a given node is the _last_ child in the element.
@@ -55,7 +53,7 @@ const insertIntoElement = (
   * This isn't top-level text here. We're inserting a character into an element!
   * We may to create one. Otherwise, we can continue to print into what's already there.
   */
-  if (!contentIsElement && parentNode && !isBodyElement(parentNode)) {
+  if (!contentIsElement && (parentNode && !isBodyElement(parentNode))) {
     let existingNode = findPrintedNode(
       parentNode as Element,
       targetElement
@@ -63,42 +61,42 @@ const insertIntoElement = (
 
     // The element is already there, so keep typing into it.
     if (existingNode && isLastElement(existingNode, cursorNode)) {
-      return existingNode;
-    }
+      targetElement = existingNode;
 
-    /**
-     * We're creating a new element into which we'll insert our content.
-     */
+    } else {
+      /**
+       * We're creating a new element into which we'll insert our content.
+       */
+      content = parentNode.cloneNode() as Element;
+      content['innerText'] = character.content;
 
-    content = parentNode.cloneNode() as Element;
-    content['innerText'] = character.content;
+      // We're printing into ANOTHER element.
+      let genericAncestor = parentNode.parentNode;
+      let genericAncestorClone = genericAncestor.cloneNode();
 
-    // We're printing into ANOTHER element.
-    let genericAncestor = parentNode.parentNode;
-    let genericAncestorClone = genericAncestor.cloneNode();
+      if (!isBodyElement(genericAncestor)) {
+        let printedAncestor = findPrintedNode(genericAncestorClone as Element, targetElement);
 
-    if (!isBodyElement(genericAncestor)) {
-      let printedAncestor = findPrintedNode(genericAncestorClone as Element, targetElement);
+        while (!printedAncestor && !isBodyElement(genericAncestor)) {
+          /**
+          * Important! Setting the new element's `innerText` to the `outerHTML` will mean
+          * the previous content element will be set INSIDE of the element a level up.
+          */
+          let newContentNode = genericAncestorClone;
+          newContentNode['innerHTML'] = content["outerHTML"];
+          content = newContentNode;
 
-      while (!printedAncestor && !isBodyElement(genericAncestor)) {
-        /**
-        * Important! Setting the new element's `innerText` to the `outerHTML` will mean
-        * the previous content element will be set INSIDE of the element a level up.
-        */
-        let newContentNode = genericAncestorClone;
-        newContentNode['innerHTML'] = content["outerHTML"];
-        content = newContentNode;
+          /**
+          * Now, move up a level and check if the next ancestor has already been printed.
+          * If so, we can escape out of here and use our new content element.
+          */
+          genericAncestor = genericAncestor.parentNode as Element;
+          genericAncestorClone = genericAncestor.cloneNode();
+          printedAncestor = findPrintedNode(genericAncestorClone as Element, targetElement);
+        }
 
-        /**
-        * Now, move up a level and check if the next ancestor has already been printed.
-        * If so, we can escape out of here and use our new content element.
-        */
-        genericAncestor = genericAncestor.parentNode as Element;
-        genericAncestorClone = genericAncestor.cloneNode();
-        printedAncestor = findPrintedNode(genericAncestorClone as Element, targetElement);
+        targetElement = printedAncestor || targetElement;
       }
-
-      targetElement = printedAncestor || targetElement;
     }
   }
 

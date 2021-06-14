@@ -125,11 +125,14 @@ export default function TypeIt(
     (document as any).fonts.status === "loaded" ||
       (await (document as any).fonts.ready);
 
-    let calculatedMargin = _cursor.getBoundingClientRect().width / 2;
+    // Guarantee that the text has been fully painted after font has loaded.
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const calculatedMargin = _cursor.getBoundingClientRect().width / 2;
 
-    _cursor.style.margin = `0 -${calculatedMargin + 2}px 0 -${
-      calculatedMargin - 2
-    }px`;
+        _cursor.style.margin = `0 -${calculatedMargin + 2}px 0 -${calculatedMargin - 2}px`;
+      });
+    })
   };
 
   const _disableCursorBlink = (shouldDisable: boolean) => {
@@ -146,7 +149,15 @@ export default function TypeIt(
    * to the `timeouts` instance property.
    */
   const _wait = async (callback: Function, delay: number) => {
-    _timeouts.push(setTimeout(callback, delay));
+    return new Promise<void>((resolve) => {
+      const cb = async () => {
+        await callback();
+
+        resolve();
+      };
+
+      _timeouts.push(setTimeout(cb, delay) as unknown as number);
+    });
   };
 
   /**
@@ -271,11 +282,7 @@ export default function TypeIt(
   };
 
   const _pause = (time = 0): Promise<void> => {
-    return new Promise((resolve) => {
-      _wait(() => {
-        return resolve();
-      }, time);
-    });
+    return _wait(() => {}, time);
   };
 
   /**
@@ -289,30 +296,23 @@ export default function TypeIt(
 
     _cursorPosition += numberOfSteps;
 
-    return new Promise((resolve) => {
-      _wait(async () => {
-        repositionCursor(_element, _getAllChars(), _cursor, _cursorPosition);
+    return _wait(async () => {
+      repositionCursor(_element, _getAllChars(), _cursor, _cursorPosition);
 
-        /**
-         * If our argument is a string, we're moving absolutely and need to keep
-         * going until there are no more spaces to move.
-         */
-        if (isString && canKeepMoving) {
-          await _move(numberOfSteps > 0 ? "START" : "END");
-        }
-
-        return resolve();
-      }, _pace[0]);
-    });
+      /**
+       * If our argument is a string, we're moving absolutely and need to keep
+       * going until there are no more spaces to move.
+       */
+      if (isString && canKeepMoving) {
+        await _move(numberOfSteps > 0 ? "START" : "END");
+      }
+    }, _pace[0]);
   };
 
   const _type = (characterObject): Promise<void> => {
-    return new Promise((resolve) => {
-      _wait(() => {
-        insertIntoElement(_element, characterObject, _cursor, _cursorPosition);
-        return resolve();
-      }, _pace[0]);
-    });
+    return _wait(() => {
+      insertIntoElement(_element, characterObject, _cursor, _cursorPosition);
+    }, _pace[0]);
   };
 
   const _options = async (opts) => {
@@ -333,36 +333,31 @@ export default function TypeIt(
     return;
   };
 
-  const _delete = (keepGoingUntilAllIsGone): Promise<void> => {
-    keepGoingUntilAllIsGone = keepGoingUntilAllIsGone === true;
+  const _delete = (keepGoingUntilAllIsGone = false): Promise<void> => {
+    return _wait(async () => {
+      let allChars = _getAllChars();
+      let charLength = allChars.length;
 
-    return new Promise((resolve) => {
-      _wait(async () => {
-        let allChars = _getAllChars();
+      if (!charLength) {
+        return;
+      }
 
-        if (allChars.length) {
-          if (_elementIsInput) {
-            _element.value = (_element.value as string).slice(0, -1);
-          } else {
-            removeNode(allChars[_cursorPosition]);
-          }
-        }
-
+      if (_elementIsInput) {
+        _element.value = (_element.value as string).slice(0, -1);
+      } else {
+        removeNode(allChars[_cursorPosition]);
         removeEmptyElements(_element);
+      }
 
-        /**
-         * If it's specified, keep deleting until all characters are gone. This is
-         * the only time when a SINGLE queue action (`delete()`) deals with multiple
-         * characters at once. I don't like it, but need to implement like this right now.
-         */
-        if (keepGoingUntilAllIsGone && allChars.length - 1 > 0) {
-          await _delete(true);
-          return resolve();
-        }
-
-        return resolve();
-      }, _pace[1]);
-    });
+      /**
+        * If it's specified, keep deleting until all characters are gone. This is
+        * the only time when a SINGLE queue action (`delete()`) deals with multiple
+        * characters at once. I don't like it, but need to implement like this right now.
+        */
+      if (keepGoingUntilAllIsGone && charLength - 1 > 0) {
+        await _delete(true);
+      }
+    }, _pace[1]);
   };
 
   this.break = function (actionOpts) {
