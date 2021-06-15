@@ -109,15 +109,24 @@ describe("go()", () => {
   test("Attaches cursor correctly.", () => {
     expect(document.querySelector(".ti-cursor")).toBeNull();
     instance.go();
-    expect(document.querySelector(".ti-cursor")).not.toBeNull();
+
+    let cursorNode = document.querySelector(".ti-cursor");
+    expect(cursorNode.style.visibility).toEqual("");
+    expect(cursorNode).not.toBeNull();
   });
 
-  test("Does not attach cursor when none should exist.", () => {
+  test("Attaches hidden cursor when option is disabled.", () => {
     args[1].cursor = false;
     instance = new TypeIt(...args);
-    expect(document.querySelector(".ti-cursor")).toBeNull();
+
+    let cursorNode = document.querySelector(".ti-cursor");
+    expect(cursorNode).toBeNull();
     instance.go();
-    expect(document.querySelector(".ti-cursor")).toBeNull();
+
+    cursorNode = document.querySelector(".ti-cursor");
+    expect(cursorNode).not.toBeNull();
+    expect(cursorNode.style.visibility).toEqual("hidden");
+    expect(cursorNode.classList.contains('with-delay')).toBe(false);
   });
 });
 
@@ -207,22 +216,17 @@ describe("break()", () => {
 });
 
 describe("empty()", () => {
-  test("Should empty out element when called with no cursor.", async () => {
+  test("Should empty out element when called with no cursor.", (done) => {
     args[1].cursor = false;
-    instance = new TypeIt(...args);
     element.innerHTML = "existing text";
 
-    await new Promise((resolve) => {
-      args[1].afterComplete = function () {
-        return resolve();
-      };
+    args[1].afterComplete = function () {
+      expect(element.childNodes).toHaveLength(1);
+      done();
+    };
 
-      const instance = new TypeIt(...args);
-
-      instance.empty().go();
-    });
-
-    expect(element.childNodes).toHaveLength(0);
+    const instance = new TypeIt(...args);
+    instance.empty().go();
   });
 
   describe("addSplitPause()", () => {
@@ -322,7 +326,7 @@ describe("reset()", () => {
     expect(element.innerHTML).toEqual("");
   });
 
-  test("Wipes out contents when it's an input.", async () => {
+  test("Wipes out contents when it's an input.", (done) => {
     setHTML`<div>'
       <input id="element">
     </div>`;
@@ -330,19 +334,17 @@ describe("reset()", () => {
     let instance;
     let element = document.querySelector("#element");
 
-    await new Promise((resolve) => {
-      instance = new TypeIt("#element", {
-        speed: 0,
-        strings: "Hi.",
-        afterComplete: () => {
-          resolve();
-        },
-      }).go();
-    });
+    instance = new TypeIt("#element", {
+      speed: 0,
+      strings: "Hi.",
+      afterComplete: () => {
+        expect(element.value).toEqual("Hi.");
+        instance = instance.reset();
+        expect(element.value).toEqual("");
 
-    expect(element.value).toEqual("Hi.");
-    instance = instance.reset();
-    expect(element.value).toEqual("");
+        done();
+      },
+    }).go();
   });
 });
 

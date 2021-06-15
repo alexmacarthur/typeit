@@ -1,18 +1,12 @@
-import { Element } from "../types";
-
 export default (
   element: Node,
   allChars: any[],
   cursor: Node,
   cursorPosition: number
 ): void => {
-  if (!cursor) {
-    return;
-  }
-
-  let characterIndex = cursorPosition > allChars.length
-    ? allChars.length
-    : cursorPosition;
+  // Guarantee that the new cursor position is never greater than
+  // the number of characters we're dealing with.
+  let characterIndex = Math.min(cursorPosition, allChars.length);
 
   let nodeToInsertBefore = allChars[characterIndex - 1];
 

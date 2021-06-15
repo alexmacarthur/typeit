@@ -5,9 +5,9 @@ import removeNode from "./removeNode";
  * Given a DOM scope and selector, remove any HTML element remnants,
  * EXCEPT for <br> tags, which may be typed but do not have any text content.
  */
-export default (node: Element) => {
+export default (node: Element, nodeToIgnore: Element) => {
   node.querySelectorAll("*").forEach((i) => {
-    if (!i.innerHTML && i.tagName !== "BR") {
+    if (!i.innerHTML && i.tagName !== "BR" && !i.isSameNode(nodeToIgnore)) {
       let nodeToRemove = i;
 
       // Traverse up the DOM. If the empty node is the only node
