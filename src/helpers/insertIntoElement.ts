@@ -34,7 +34,7 @@ export const isLastElement = (
 const insertIntoElement = (
   targetElement: Element, // Element we're typing into.
   character: Character, // Character/content we'll be typing.
-  cursorNode: Element | null = null,
+  cursorNode: Element,
   cursorPosition: number
 ) => {
   let contentIsElement = character.content instanceof HTMLElement;
@@ -103,8 +103,6 @@ const insertIntoElement = (
   let lastNode = getAllTypeableNodes(targetElement, cursorNode, true)[cursorPosition - 1];
   let elementToTypeInto = lastNode ? lastNode.parentNode : targetElement;
 
-  // If a cursor node exists, make sure we print BEFORE that, but only if the target
-  // element actually contains it. Otherwise, stick it to the end of the element.
   elementToTypeInto.insertBefore(
     content as Element,
     (elementToTypeInto as Element).contains(cursorNode) ? cursorNode : null

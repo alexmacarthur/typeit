@@ -86,28 +86,35 @@ export default function TypeIt(
    * @return {void}
    */
   const _setUpCursor = (): undefined | Element => {
-    if (_elementIsInput || !_opts.cursor) {
+    if (_elementIsInput) {
       return;
     }
 
     // If we have a cursor node from a previous instance (prior to a reset()),
     // there's no need to recreate one now.
     let cursor = createElement("span");
-    cursor.innerHTML = getParsedBody(_opts.cursorChar).innerHTML;
     cursor.className = "ti-cursor";
+
+    // Don't bother touching up the cursor if we don't want it to visibly render anyway.
+    if (!_shouldRenderCursor) {
+      cursor.style.visibility = 'hidden';
+
+      return cursor as Element;
+    }
+
+    cursor.innerHTML = getParsedBody(_opts.cursorChar).innerHTML;
     cursor.style.cssText = `display:inline;${getStyleString(_element)}`;
 
     return cursor as Element;
   };
 
   /**
-   * If a cursor node's been generated, attach it to the DOM so
-   * it appears for the user, along with the required CSS transition.
-   *
-   * @return void
+   * Attach it to the DOM so, along with the required CSS transition.
    */
-  const _maybeAttachCursor = async () => {
-    if (!_cursor) {
+  const _attachCursor = async () => {
+    !_elementIsInput && _element.appendChild(_cursor);
+
+    if(!_shouldRenderCursor) {
       return;
     }
 
@@ -119,8 +126,6 @@ export default function TypeIt(
       }s infinite; } ${selector}.with-delay { animation-delay: 500ms; } ${selector}.disabled { animation: none; }`,
       _id
     );
-
-    _element.appendChild(_cursor);
 
     (document as any).fonts.status === "loaded" ||
       (await (document as any).fonts.ready);
@@ -135,13 +140,11 @@ export default function TypeIt(
     })
   };
 
-  const _disableCursorBlink = (shouldDisable: boolean) => {
-    if (!_cursor) {
-      return;
+  const _disableCursorBlink = (shouldDisable: boolean): void => {
+    if (_shouldRenderCursor) {
+      _cursor.classList.toggle("disabled", shouldDisable);
+      _cursor.classList.toggle("with-delay", !shouldDisable);
     }
-
-    _cursor.classList.toggle("disabled", shouldDisable);
-    _cursor.classList.toggle("with-delay", !shouldDisable);
   };
 
   /**
@@ -346,7 +349,7 @@ export default function TypeIt(
         _element.value = (_element.value as string).slice(0, -1);
       } else {
         removeNode(allChars[_cursorPosition]);
-        removeEmptyElements(_element);
+        removeEmptyElements(_element, _cursor);
       }
 
       /**
@@ -482,7 +485,7 @@ export default function TypeIt(
       return this;
     }
 
-    _maybeAttachCursor();
+    _attachCursor();
 
     if (!_opts.waitUntilVisible) {
       _fire();
@@ -535,6 +538,7 @@ export default function TypeIt(
     `[data-typeit-id]:before {content: '.'; display: inline-block; width: 0; visibility: hidden;}`
   );
 
+  let _shouldRenderCursor = _opts.cursor && !_elementIsInput;
   let _cursor = _setUpCursor();
 
   _opts.strings = _maybePrependHardcodedStrings(asArray(_opts.strings));
