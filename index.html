@@ -90,6 +90,11 @@
     </section>
 
     <section>
+      <h2>Moving Cursor in HTML</h2>
+      <h3 id="example-moving-cursor-with-html"></h3>
+    </section>
+
+    <section>
       <h2>Break Text</h2>
       <h3 id="example12"></h3>
     </section>
@@ -207,6 +212,14 @@
         .pause(100)
         .type("TEN")
         .move(1)
+        .go();
+
+      new TypeIt("#example-moving-cursor-with-html", {
+        speed: 50,
+        strings: ["Hello, <strong style='color: pink;'>Bob!</strong>. <em>Bye!</em>"],
+        waitUntilVisible: true
+      })
+        .move(-8)
         .go();
 
       new TypeIt("#example12", {

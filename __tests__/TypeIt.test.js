@@ -320,7 +320,7 @@ describe("reset()", () => {
     });
 
     expect(element.innerHTML).toEqual(
-      'Hi.<span class="ti-cursor with-delay" style="display: inline;">|</span>'
+      'Hi.<span class="ti-cursor with-delay">|</span>'
     );
     instance = instance.reset();
     expect(element.innerHTML).toEqual("");
