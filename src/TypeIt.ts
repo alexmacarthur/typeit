@@ -22,10 +22,10 @@ import removeNode from "./helpers/removeNode";
 import removeEmptyElements from "./helpers/removeEmptyElements";
 import repositionCursor from "./helpers/repositionCursor";
 import selectorToElement from "./helpers/selectorToElement";
+import { setCursorStyles } from "./helpers/setCursorStyles";
 import toArray from "./helpers/toArray";
 import generateHash from "./helpers/generateHash";
 import processCursorMovementArg from "./helpers/processCursorMovementArg";
-import getStyleString from "./helpers/getStyleString";
 import { Element, Options, QueueItem } from "./types";
 
 export default function TypeIt(
@@ -103,7 +103,6 @@ export default function TypeIt(
     }
 
     cursor.innerHTML = getParsedBody(_opts.cursorChar).innerHTML;
-    cursor.style.cssText = `display:inline;${getStyleString(_element)}`;
 
     return cursor as Element;
   };
@@ -118,14 +117,7 @@ export default function TypeIt(
       return;
     }
 
-    let selector = `[data-typeit-id='${_id}'] .ti-cursor`;
-
-    appendStyleBlock(
-      `@keyframes blink-${_id} { 0% {opacity: 0} 49% {opacity: 0} 50% {opacity: 1} } ${selector} { animation: blink-${_id} ${
-        _opts.cursorSpeed / 1000
-      }s infinite; } ${selector}.with-delay { animation-delay: 500ms; } ${selector}.disabled { animation: none; }`,
-      _id
-    );
+    setCursorStyles(_id, _opts, _element);
 
     (document as any).fonts.status === "loaded" ||
       (await (document as any).fonts.ready);
