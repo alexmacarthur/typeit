@@ -169,7 +169,7 @@ describe("move()", () => {
   });
 
   test("Should temporarily update options when specified.", () => {
-    instance = new TypeIt("#element").move("END", { speed: 601 });
+    instance = new TypeIt("#element").move(null, { speed: 601, to: "END" });
     expect(instance.getQueue().getItems()).toMatchSnapshot();
   });
 
