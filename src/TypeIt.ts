@@ -7,27 +7,28 @@ import {
 } from "./helpers/chunkStrings";
 import appendStyleBlock from "./helpers/appendStyleBlock";
 import asArray from "./helpers/asArray";
+import calculateCursorSteps from "./helpers/calculateCursorSteps";
 import calculateDelay from "./helpers/calculateDelay";
 import calculatePace from "./helpers/calculatePace";
 import createElement from "./helpers/createElement";
 import destroyTimeouts from "./helpers/destroyTimeouts";
+import generateHash from "./helpers/generateHash";
 import fireWhenVisible from "./helpers/fireWhenVisible";
 import getAllTypeableNodes from "./helpers/getAllTypeableNodes";
 import getParsedBody from "./helpers/getParsedBody";
+import handleFunctionalArg from "./helpers/handleFunctionalArg";
 import insertIntoElement from "./helpers/insertIntoElement";
 import isInput from "./helpers/isInput";
+import isNumber from "./helpers/isNumber";
 import merge from "./helpers/merge";
 import queueMany from "./helpers/queueMany";
 import removeNode from "./helpers/removeNode";
 import removeEmptyElements from "./helpers/removeEmptyElements";
 import repositionCursor from "./helpers/repositionCursor";
 import selectorToElement from "./helpers/selectorToElement";
-import { setCursorStyles } from "./helpers/setCursorStyles";
 import toArray from "./helpers/toArray";
-import generateHash from "./helpers/generateHash";
-import processCursorMovementArg from "./helpers/processCursorMovementArg";
+import { setCursorStyles } from "./helpers/setCursorStyles";
 import { Element, Options, QueueItem } from "./types";
-import handleFunctionalArg from "./helpers/handleFunctionalArg";
 
 export default function TypeIt(
   element: Element | string,
@@ -114,7 +115,7 @@ export default function TypeIt(
   const _attachCursor = async () => {
     !_elementIsInput && _element.appendChild(_cursor);
 
-    if(!_shouldRenderCursor) {
+    if (!_shouldRenderCursor) {
       return;
     }
 
@@ -187,7 +188,7 @@ export default function TypeIt(
    * 2. Reset initial pause.
    */
   const _prepLoop = async (delay) => {
-    _cursorPosition && (await _move(_cursorPosition));
+    _cursorPosition && (await _move({ value: _cursorPosition }));
     _queue.reset();
     _queue.set(0, [_pause, delay, {}]);
 
@@ -273,31 +274,27 @@ export default function TypeIt(
   };
 
   const _pause = (time = 0): Promise<void> => {
-    return _wait(() => {}, time);
+    return _wait(() => { }, time);
   };
 
   /**
    * Move type cursor by a given number.
-   *
-   * @param {integer} movementArg
    */
-  const _move = (movementArg): Promise<void> => {
-    let allChars = _getAllChars();
-    let { numberOfSteps, isString, canKeepMoving } = processCursorMovementArg(movementArg, _cursorPosition, allChars);
+  const _move = async ({ value, to = 'START' }: { value: string | number, to?: string}): Promise<void> => {
+    let numberOfSteps = calculateCursorSteps({
+      el: _element,
+      move: value,
+      cursorPos: _cursorPosition,
+      to
+    });
 
-    _cursorPosition += numberOfSteps;
+    for (let i = 0; i < Math.abs(numberOfSteps); i++) {
+      await _wait(() => {
+        _cursorPosition += (numberOfSteps < 0 ? -1 : 1);
 
-    return _wait(async () => {
-      repositionCursor(_element, _getAllChars(), _cursor, _cursorPosition);
-
-      /**
-       * If our argument is a string, we're moving absolutely and need to keep
-       * going until there are no more spaces to move.
-       */
-      if (isString && canKeepMoving) {
-        await _move(numberOfSteps > 0 ? "START" : "END");
-      }
-    }, _pace[0]);
+        repositionCursor(_element, _getAllChars(), _cursor, _cursorPosition);
+      }, _pace[0]);
+    }
   };
 
   const _type = (characterObject: any): Promise<void> => {
@@ -391,16 +388,14 @@ export default function TypeIt(
     );
   };
 
-  this.move = function (movementArg: string | number | (() => string | number), actionOpts) {
+  this.move = function (movementArg: string | number | (() => string | number), actionOpts = {}) {
     movementArg = handleFunctionalArg<string | number>(movementArg);
-    let arg = processCursorMovementArg(
-      movementArg,
-      _cursorPosition,
-      _getAllChars()
-    );
-
     let bookEndQueueItems = _generateTemporaryOptionQueueItems(actionOpts);
-    let moveArg = arg.isString ? movementArg : Math.sign(movementArg as number);
+
+    let moveArgs = {
+      value: isNumber(movementArg) ? Math.sign(movementArg as number) : movementArg,
+      to: actionOpts['to']
+    }
 
     return _queueAndReturn(
       [
@@ -408,7 +403,7 @@ export default function TypeIt(
         // Duplicate this queue item a certain number of times.
         ...([...Array(Math.abs(movementArg as number) || 1)]
           .fill(null)
-          .map(() => [_move, moveArg, _freezeCursorMeta]) as QueueItem[]),
+          .map(() => [_move, moveArgs, _freezeCursorMeta]) as QueueItem[]),
         bookEndQueueItems[1],
       ],
       actionOpts

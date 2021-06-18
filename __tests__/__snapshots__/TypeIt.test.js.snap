@@ -610,7 +610,10 @@ Array [
   ],
   Array [
     [Function],
-    1,
+    Object {
+      "to": undefined,
+      "value": 1,
+    },
     Object {
       "freezeCursor": true,
     },
@@ -679,6 +682,7 @@ Array [
     [Function],
     Object {
       "speed": 601,
+      "to": "END",
     },
     Object {
       "force": true,
@@ -686,7 +690,10 @@ Array [
   ],
   Array [
     [Function],
-    "END",
+    Object {
+      "to": "END",
+      "value": null,
+    },
     Object {
       "freezeCursor": true,
     },
