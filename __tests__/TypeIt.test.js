@@ -152,6 +152,14 @@ describe("type()", () => {
     let last = getLast(instance.getQueue().getItems());
     expect(last).toMatchSnapshot();
   });
+
+  test("Should queue string when passed as function.", () => {
+    instance = new TypeIt("#element").type("a");
+    let functionalInstance = new TypeIt("#element").type(() => "a");
+
+    expect(JSON.stringify(instance.getQueue().getItems()))
+      .toEqual(JSON.stringify(functionalInstance.getQueue().getItems()));
+  });
 });
 
 describe("move()", () => {
@@ -175,6 +183,14 @@ describe("move()", () => {
     instance = new TypeIt("#element").move(1, { speed: 50, delay: 200 });
     let last = getLast(instance.getQueue().getItems());
     expect(last).toMatchSnapshot();
+  });
+
+  test("Should queue when passed as function.", () => {
+    instance = new TypeIt("#element").move(9);
+    let functionalInstance = new TypeIt("#element").move(() => 9);
+
+    expect(JSON.stringify(instance.getQueue().getItems()))
+      .toEqual(JSON.stringify(functionalInstance.getQueue().getItems()));
   });
 });
 
@@ -205,6 +221,14 @@ describe("delete()", () => {
     instance = new TypeIt("#element").delete(3, { speed: 50, delay: 50 }, 200);
     let last = getLast(instance.getQueue().getItems());
     expect(last).toMatchSnapshot();
+  });
+
+  test("Should queue when passed as function.", () => {
+    instance = new TypeIt("#element").delete(2);
+    let functionalInstance = new TypeIt("#element").delete(() => 2);
+
+    expect(JSON.stringify(instance.getQueue().getItems()))
+      .toEqual(JSON.stringify(functionalInstance.getQueue().getItems()));
   });
 });
 

@@ -27,6 +27,7 @@ import toArray from "./helpers/toArray";
 import generateHash from "./helpers/generateHash";
 import processCursorMovementArg from "./helpers/processCursorMovementArg";
 import { Element, Options, QueueItem } from "./types";
+import handleFunctionalArg from "./helpers/handleFunctionalArg";
 
 export default function TypeIt(
   element: Element | string,
@@ -304,7 +305,7 @@ export default function TypeIt(
     }, _pace[0]);
   };
 
-  const _type = (characterObject): Promise<void> => {
+  const _type = (characterObject: any): Promise<void> => {
     return _wait(() => {
       insertIntoElement(_element, characterObject, _cursor, _cursorPosition);
     }, _pace[0]);
@@ -362,7 +363,8 @@ export default function TypeIt(
     );
   };
 
-  this.delete = function (numCharacters, actionOpts) {
+  this.delete = function (numCharacters: number | (() => number), actionOpts) {
+    numCharacters = handleFunctionalArg<number>(numCharacters);
     let bookEndQueueItems = _generateTemporaryOptionQueueItems(actionOpts);
 
     return _queueAndReturn(
@@ -386,7 +388,7 @@ export default function TypeIt(
     return _queueAndReturn([[_empty]], actionOpts);
   };
 
-  this.exec = function (func, actionOpts) {
+  this.exec = function (func: () => any, actionOpts) {
     let bookEndQueueItems = _generateTemporaryOptionQueueItems(actionOpts);
     return _queueAndReturn(
       [bookEndQueueItems[0], [func, null], bookEndQueueItems[1]],
@@ -394,7 +396,8 @@ export default function TypeIt(
     );
   };
 
-  this.move = function (movementArg, actionOpts) {
+  this.move = function (movementArg: string | number | (() => string | number), actionOpts) {
+    movementArg = handleFunctionalArg<string | number>(movementArg);
     let arg = processCursorMovementArg(
       movementArg,
       _cursorPosition,
@@ -402,13 +405,13 @@ export default function TypeIt(
     );
 
     let bookEndQueueItems = _generateTemporaryOptionQueueItems(actionOpts);
-    let moveArg = arg.isString ? movementArg : Math.sign(movementArg);
+    let moveArg = arg.isString ? movementArg : Math.sign(movementArg as number);
 
     return _queueAndReturn(
       [
         bookEndQueueItems[0],
         // Duplicate this queue item a certain number of times.
-        ...([...Array(Math.abs(movementArg) || 1)]
+        ...([...Array(Math.abs(movementArg as number) || 1)]
           .fill(null)
           .map(() => [_move, moveArg, _freezeCursorMeta]) as QueueItem[]),
         bookEndQueueItems[1],
@@ -417,15 +420,18 @@ export default function TypeIt(
     );
   };
 
-  this.options = function (opts) {
+  this.options = function (opts: Options | (() => Options)) {
+    opts = handleFunctionalArg<Options>(opts);
     return _queueAndReturn([[_options, opts]], opts);
   };
 
-  this.pause = function (ms, actionOpts) {
-    return _queueAndReturn([[_pause, ms]], actionOpts);
+  this.pause = function (milliseconds: number | (() => number), actionOpts) {
+    return _queueAndReturn([[_pause, handleFunctionalArg<number>(milliseconds)]], actionOpts);
   };
 
-  this.type = function (string, actionOpts) {
+  this.type = function (string: string | (() => string), actionOpts) {
+    string = handleFunctionalArg<string>(string);
+
     let bookEndQueueItems = _generateTemporaryOptionQueueItems(actionOpts);
     let chunkedString = maybeChunkStringAsHtml(string, _opts.html);
     let itemsToQueue = [
@@ -443,7 +449,7 @@ export default function TypeIt(
 
   this.destroy = function (shouldRemoveCursor = true) {
     _timeouts = destroyTimeouts(_timeouts);
-    shouldRemoveCursor && removeNode(_cursor);
+    handleFunctionalArg<boolean>(shouldRemoveCursor) && removeNode(_cursor);
     _statuses.destroyed = true;
   };
 
