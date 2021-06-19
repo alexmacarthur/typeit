@@ -222,57 +222,52 @@ export default function TypeIt(
     _statuses.started = true;
 
     let queueItems = _queue.getItems();
-    let callbackArgs;
 
-    try {
-      for (let i = 0; i < queueItems.length; i++) {
-        if (_statuses.frozen || _statuses.destroyed) {
-          throw "";
-        }
-
-        let queueAction = queueItems[i];
-        let queueActionMeta = queueAction[2];
-        callbackArgs = [queueAction, this];
-
-        queueActionMeta.freezeCursor && _disableCursorBlink(true);
-
-        _pace = calculatePace(_opts.speed, _opts.deleteSpeed, _opts.lifeLike);
-
-        if (queueActionMeta?.isFirst) {
-          await _opts.beforeString(...callbackArgs);
-        }
-
-        await _opts.beforeStep(...callbackArgs);
-
-        // Fire this step!
-        await queueAction[0].call(this, queueAction[1], queueActionMeta);
-
-        if (queueAction[2]?.isLast) {
-          await _opts.afterString(...callbackArgs);
-        }
-
-        await _opts.afterStep(...callbackArgs);
-
-        _queue.setMeta(i, { executed: true });
-
-        _disableCursorBlink(false);
+    for (let i = 0; i < queueItems.length; i++) {
+      if (_statuses.frozen || _statuses.destroyed) {
+        break;
       }
 
-      _statuses.completed = true;
+      let queueAction = queueItems[i];
+      let queueActionMeta = queueAction[2];
+      let callbackArgs = [queueAction, this];
 
-      await _opts.afterComplete(...callbackArgs);
+      queueActionMeta.freezeCursor && _disableCursorBlink(true);
 
-      if (!_opts.loop) {
-        throw "";
+      _pace = calculatePace(_opts.speed, _opts.deleteSpeed, _opts.lifeLike);
+
+      if (queueActionMeta?.isFirst) {
+        await _opts.beforeString(...callbackArgs);
       }
 
-      let delay = _opts.loopDelay;
+      await _opts.beforeStep(...callbackArgs);
+
+      // Fire this step!
+      await queueAction[0].call(this, queueAction[1], queueActionMeta);
+
+      if (queueAction[2]?.isLast) {
+        await _opts.afterString(...callbackArgs);
+      }
+
+      await _opts.afterStep(...callbackArgs);
+
+      _queue.setMeta(i, { executed: true });
+
+      _disableCursorBlink(false);
+    }
+
+    _statuses.completed = true;
+
+    await _opts.afterComplete(this);
+
+    if (_opts.loop) {
+      let [beforeDelay, afterDelay] = _opts.loopDelay as unknown as any[];
 
       _wait(async () => {
-        await _prepLoop(delay[0]);
+        await _prepLoop(beforeDelay);
         _fire();
-      }, delay[1]);
-    } catch (e) {}
+      }, afterDelay);
+    }
 
     return this;
   };
