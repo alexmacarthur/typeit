@@ -174,12 +174,11 @@ export default function TypeIt(
         return;
       }
 
-      if (_opts.breakLines) {
-        _addSplitPause([[_type, createCharacterObject(createElement("BR")), _freezeCursorMeta]]);
-        return;
-      }
+      const splitPauseArgs: QueueItem[] = _opts.breakLines
+        ? [[_type, createCharacterObject(createElement("BR")), _freezeCursorMeta]]
+        : queueMany(chunkedString, _delete, _freezeCursorMeta);
 
-      _addSplitPause(queueMany(chunkedString, _delete, _freezeCursorMeta));
+      _addSplitPause(splitPauseArgs);
     });
   };
 
@@ -195,7 +194,7 @@ export default function TypeIt(
     await _delete(true);
   };
 
-  const _maybePrependHardcodedStrings = (strings) => {
+  const _maybePrependHardcodedStrings = (strings): string[] => {
     let existingMarkup = _element.innerHTML;
 
     if (!existingMarkup) {
@@ -216,7 +215,9 @@ export default function TypeIt(
       return strings;
     }
 
-    return [existingMarkup.trim()].concat(strings);
+    let hardCodedStrings = existingMarkup.trim().split(/<br(?:\s*?)(?:\/)?>/);
+
+    return hardCodedStrings.concat(strings);
   };
 
   const _fire = async (): Promise<void> => {
