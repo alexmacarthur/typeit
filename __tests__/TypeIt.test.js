@@ -35,21 +35,39 @@ test("Returns an object with expected properties.", () => {
   expect(Object.keys(instance).sort()).toMatchSnapshot();
 });
 
-test("Defines hard-coded string correctly.", () => {
-  setHTML`
+describe("hard-coded strings", () => {
+  test("prepends hard-coded strings.", () => {
+    setHTML`
     <div>
       <span id="element">Hard-coded string.</span>
     </div>
   `;
 
-  let instance = new TypeIt("#element", {
-    strings: ["My string."],
+    let instance = new TypeIt("#element", {
+      strings: ["My string."],
+    });
+
+    expect(instance.getOptions().strings).toEqual([
+      "Hard-coded string.",
+      "My string.",
+    ]);
   });
 
-  expect(instance.getOptions().strings).toEqual([
-    "Hard-coded string.",
-    "My string.",
-  ]);
+  test("prepends hard-coded strings.", () => {
+    setHTML`
+    <div>
+      <span id="element">ABC<br>DEF<br />GHI</span>
+    </div>
+  `;
+
+    let instance = new TypeIt("#element");
+
+    expect(instance.getOptions().strings).toEqual([
+      "ABC",
+      "DEF",
+      "GHI"
+    ]);
+  });
 });
 
 test("Will not begin until explicitly called.", () => {
