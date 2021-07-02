@@ -1,18 +1,17 @@
+import { Options } from "../types";
 import randomInRange from "./randomInRange";
 
-export default function (
-  typeSpeed: number,
-  deleteSpeed: number,
-  lifeLike: boolean
-): number[] {
-  deleteSpeed = deleteSpeed !== null ? deleteSpeed : typeSpeed / 3;
-  let typeRange = typeSpeed / 2;
-  let deleteRange = deleteSpeed / 2;
+let range = (val: number): number => val / 2;
+
+export default function (options: Options): number[] {
+  let { speed, deleteSpeed, lifeLike } = options;
+
+  deleteSpeed = deleteSpeed !== null ? deleteSpeed : speed / 3;
 
   return lifeLike
     ? [
-        randomInRange(typeSpeed, typeRange),
-        randomInRange(deleteSpeed, deleteRange),
+        randomInRange(speed, range(speed)),
+        randomInRange(deleteSpeed, range(deleteSpeed)),
       ]
-    : [typeSpeed, deleteSpeed];
+    : [speed, deleteSpeed];
 }

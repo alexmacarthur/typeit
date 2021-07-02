@@ -13,7 +13,7 @@ beforeEach(() => {
 
 test("Should insert a simple character correctly.", () => {
   let charObj = {
-    node: getParsedBody("x").childNodes[0],
+    node: getParsedBody("x").firstChild,
     content: "x",
   };
 
@@ -21,13 +21,11 @@ test("Should insert a simple character correctly.", () => {
   expect(targetElement.innerHTML).toBe(`x`);
 });
 
-// I don't yet know why, but the text nodes are not rendering
-// when I attempt to output the updated DOM.
 test("Should insert an HTML character object.", () => {
   let characterObject = {
     // Remember: must be a text node. But we want it to be a text node as a
     // descendent to a SPAN element.
-    node: getParsedBody("<span>y</span>").querySelector("span").childNodes[0],
+    node: getParsedBody("<span>y</span>").querySelector("span").firstChild,
     content: "y",
   };
 
@@ -41,18 +39,21 @@ test("Should insert an HTML character object.", () => {
   let cursor = document.querySelector(".ti-cursor");
 
   insertIntoElement(targetElement, characterObject, cursor);
-  expect(targetElement.childNodes).toMatchSnapshot();
+
+  expect(targetElement.innerHTML).toEqual(
+    '<span>y</span><i class="ti-cursor">|</i>'
+  );
 });
 
 test("Should insert a nested character object.", () => {
   let characterObject = {
     node: getParsedBody("<em><span>y</span></em>").querySelector("span")
-      .childNodes[0],
+      .firstChild,
     content: "y",
   };
   targetElement.innerHTML = `<em></em>`;
   insertIntoElement(targetElement, characterObject);
-  expect(targetElement.innerHTML).toMatchSnapshot();
+  expect(targetElement.innerHTML).toEqual("<em><span>y</span></em>");
 });
 
 test("Should insert content into input.", () => {
@@ -122,7 +123,7 @@ test("Should not insert into cursor node when a <span> is passed.", () => {
   insertIntoElement(
     targetElement,
     {
-      node: getParsedBody("<span>y</span>x").childNodes[0],
+      node: getParsedBody("<span>y</span>x").firstChild,
       content: "x",
     },
     cursor

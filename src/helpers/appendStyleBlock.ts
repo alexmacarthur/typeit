@@ -1,8 +1,9 @@
 import createElement from "./createElement";
+import createTextNode from "./createTextNode";
 
 export default (styles: string, id = ""): void => {
   let styleBlock: HTMLElement = createElement("style");
   styleBlock.id = id;
-  styleBlock.appendChild(document.createTextNode(styles));
+  styleBlock.appendChild(createTextNode(styles));
   document.head.appendChild(styleBlock);
 };

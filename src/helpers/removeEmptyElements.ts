@@ -1,12 +1,13 @@
 import { Element } from "../types";
 import removeNode from "./removeNode";
+import select from "./select";
 
 /**
  * Given a DOM scope and selector, remove any HTML element remnants,
  * EXCEPT for <br> tags, which may be typed but do not have any text content.
  */
 export default (node: Element, nodeToIgnore: Element) => {
-  node.querySelectorAll("*").forEach((i) => {
+  (select("*", node, true) as NodeList).forEach((i: any) => {
     if (!i.innerHTML && i.tagName !== "BR" && !i.isSameNode(nodeToIgnore)) {
       let nodeToRemove = i;
 

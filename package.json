@@ -42,11 +42,13 @@
     "@babel/preset-typescript": "^7.13.0",
     "concurrently": "^6.0.2",
     "husky": "^6.0.0",
-    "jest-cli": "^26.6.3",
+    "jest": "^27.0.6",
+    "jest-cli": "^27.0.6",
     "microbundle": "^0.13.1",
     "prettier": "^2.2.1",
     "pretty-quick": "^3.1.0",
-    "serve": "^11.3.2"
+    "serve": "^12.0.0",
+    "typescript": "^4.3.5"
   },
   "jest": {
     "testPathIgnorePatterns": [
@@ -54,7 +56,8 @@
     ],
     "setupFiles": [
       "./__tests__/setup.js"
-    ]
+    ],
+    "testEnvironment": "jsdom"
   },
   "husky": {
     "hooks": {

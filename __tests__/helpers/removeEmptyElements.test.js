@@ -37,7 +37,10 @@ test("Break tags should not be removed.", () => {
 
 test("Ignored node should not be removed.", () => {
   setHTML`<span id="scope">First line.<span class="ti-cursor"></span>Third line.</span>`;
-  removeEmptyElements(document.getElementById("scope"), document.querySelector('.ti-cursor'));
+  removeEmptyElements(
+    document.getElementById("scope"),
+    document.querySelector(".ti-cursor")
+  );
 
   expect(document.body.innerHTML).toBe(
     '<span id="scope">First line.<span class="ti-cursor"></span>Third line.</span>'

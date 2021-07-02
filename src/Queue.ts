@@ -4,11 +4,10 @@ import merge from "./helpers/merge";
 import { QueueItem } from "./types";
 
 const Queue = function (initialItems: QueueItem[]) {
-
   /**
    * Add a single or several steps onto the `waiting` queue.
    */
-  const add = function (steps: QueueItem[]) {
+  const add = function (steps: QueueItem[]): typeof Queue {
     _queue = _queue.concat(guaranteeThreeKeys(steps));
 
     return this;
@@ -24,7 +23,7 @@ const Queue = function (initialItems: QueueItem[]) {
   /**
    * Move all `executed` queue items to `waiting`.
    */
-  const reset = function () {
+  const reset = function (): void {
     _queue = _queue.map((item) => {
       (item[2] as any).executed = false;
 
@@ -42,7 +41,7 @@ const Queue = function (initialItems: QueueItem[]) {
   /**
    * Given an ID for a particular queue item, update the meta on that item.
    */
-  const setMeta = function (index: number, meta) {
+  const setMeta = function (index: number, meta): void {
     _queue[index][2] = merge(_queue[index][2], meta);
   };
 
@@ -55,8 +54,8 @@ const Queue = function (initialItems: QueueItem[]) {
     set,
     reset,
     getItems,
-    setMeta
-  }
+    setMeta,
+  };
 };
 
 export default Queue;

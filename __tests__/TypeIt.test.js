@@ -17,7 +17,7 @@ beforeEach(() => {
   args = [
     "#element",
     {
-      speed: 1,
+      speed: 0,
       strings: ["ABC", "EFG"],
     },
   ];
@@ -62,28 +62,26 @@ describe("hard-coded strings", () => {
 
     let instance = new TypeIt("#element");
 
-    expect(instance.getOptions().strings).toEqual([
-      "ABC",
-      "DEF",
-      "GHI"
-    ]);
+    expect(instance.getOptions().strings).toEqual(["ABC", "DEF", "GHI"]);
   });
 });
 
-test("Will not begin until explicitly called.", () => {
-  setHTML`<div>'
+test("Will not begin until explicitly called.", (done) => {
+  setHTML`<div>
       <span id="element"></span>
     </div>`;
 
   const instance = new TypeIt("#element", {
     strings: "hello!",
+    afterComplete: () => {
+      expect(instance.is("started")).toBe(true);
+      done();
+    },
   });
 
   expect(instance.is("started")).toBe(false);
 
   instance.go();
-
-  expect(instance.is("started")).toBe(true);
 });
 
 test("Clears out remnants of previous instances correctly.", () => {
@@ -96,23 +94,27 @@ test("Clears out remnants of previous instances correctly.", () => {
   `;
 
   let instance = new TypeIt("#element", {
+    ...args[1],
     strings: "My string.",
   });
 
   expect(!instance.getOptions().strings[0].includes("ti-cursor")).toEqual(true);
 });
 
-test("Typing doesn't end with a break tag.", () => {
-  setHTML`<div>'
+test("Typing doesn't end with a break tag.", (done) => {
+  setHTML`<div>
     <span id="element"></span>
   </div>`;
 
   const element = document.querySelector("#element");
   new TypeIt("#element", {
-    strings: ["One string.", "Two string", "Three string."],
+    ...args[1],
+    strings: ["One string.", "Two string.", "Three string."],
+    afterComplete: () => {
+      expect(element.innerHTML.endsWith("<br>")).not.toBe(true);
+      done();
+    },
   }).go();
-
-  expect(element.innerHTML.endsWith("<br>")).not.toBe(true);
 });
 
 test("Should skip over empty strings.", () => {
@@ -124,27 +126,35 @@ test("Should skip over empty strings.", () => {
 });
 
 describe("go()", () => {
-  test("Attaches cursor correctly.", () => {
+  test("Attaches cursor correctly.", (done) => {
+    args[1].afterComplete = () => {
+      let cursorNode = document.querySelector(".ti-cursor");
+      expect(cursorNode.style.visibility).toEqual("");
+      expect(cursorNode).not.toBeNull();
+      done();
+    };
+
+    instance = new TypeIt(...args);
+
     expect(document.querySelector(".ti-cursor")).toBeNull();
     instance.go();
-
-    let cursorNode = document.querySelector(".ti-cursor");
-    expect(cursorNode.style.visibility).toEqual("");
-    expect(cursorNode).not.toBeNull();
   });
 
-  test("Attaches hidden cursor when option is disabled.", () => {
+  test("Attaches hidden cursor when option is disabled.", (done) => {
     args[1].cursor = false;
+    args[1].afterComplete = () => {
+      let cursorNode = document.querySelector(".ti-cursor");
+      expect(cursorNode).not.toBeNull();
+      expect(cursorNode.style.visibility).toEqual("hidden");
+      expect(cursorNode.classList.contains("with-delay")).toBe(false);
+
+      done();
+    };
     instance = new TypeIt(...args);
 
     let cursorNode = document.querySelector(".ti-cursor");
     expect(cursorNode).toBeNull();
     instance.go();
-
-    cursorNode = document.querySelector(".ti-cursor");
-    expect(cursorNode).not.toBeNull();
-    expect(cursorNode.style.visibility).toEqual("hidden");
-    expect(cursorNode.classList.contains('with-delay')).toBe(false);
   });
 });
 
@@ -175,8 +185,9 @@ describe("type()", () => {
     instance = new TypeIt("#element").type("a");
     let functionalInstance = new TypeIt("#element").type(() => "a");
 
-    expect(JSON.stringify(instance.getQueue().getItems()))
-      .toEqual(JSON.stringify(functionalInstance.getQueue().getItems()));
+    expect(JSON.stringify(instance.getQueue().getItems())).toEqual(
+      JSON.stringify(functionalInstance.getQueue().getItems())
+    );
   });
 });
 
@@ -207,8 +218,9 @@ describe("move()", () => {
     instance = new TypeIt("#element").move(9);
     let functionalInstance = new TypeIt("#element").move(() => 9);
 
-    expect(JSON.stringify(instance.getQueue().getItems()))
-      .toEqual(JSON.stringify(functionalInstance.getQueue().getItems()));
+    expect(JSON.stringify(instance.getQueue().getItems())).toEqual(
+      JSON.stringify(functionalInstance.getQueue().getItems())
+    );
   });
 });
 
@@ -245,8 +257,9 @@ describe("delete()", () => {
     instance = new TypeIt("#element").delete(2);
     let functionalInstance = new TypeIt("#element").delete(() => 2);
 
-    expect(JSON.stringify(instance.getQueue().getItems()))
-      .toEqual(JSON.stringify(functionalInstance.getQueue().getItems()));
+    expect(JSON.stringify(instance.getQueue().getItems())).toEqual(
+      JSON.stringify(functionalInstance.getQueue().getItems())
+    );
   });
 });
 
@@ -303,26 +316,22 @@ describe("empty()", () => {
     });
   });
 
-  test("Should leave cursor alone when it empties element.", async () => {
+  test("Should leave cursor alone when it empties element.", (done) => {
     element.innerHTML = "existing text";
 
-    await new Promise((resolve) => {
-      args[1].afterComplete = function () {
-        return resolve();
-      };
+    args[1].afterComplete = function () {
+      expect(element.childNodes).toHaveLength(1);
+      done();
+    };
 
-      const instance = new TypeIt(...args);
-
-      instance.empty().go();
-    });
-
-    expect(element.childNodes).toHaveLength(1);
+    const instance = new TypeIt(...args);
+    instance.empty().go();
   });
 });
 
 describe("reset()", () => {
   test("Successfully resets when called.", () => {
-    setHTML`<div>'
+    setHTML`<div>
         <span id="element"></span>
       </div>`;
 
@@ -343,34 +352,9 @@ describe("reset()", () => {
     expect(instance.is("destroyed")).toBe(false);
   });
 
-  test("Wipes out element contents.", async () => {
-    setHTML`<div>'
+  test("Wipes out element contents.", (done) => {
+    setHTML`<div>
       <span id="element"></span>
-    </div>`;
-
-    let instance;
-    let element = document.querySelector("#element");
-
-    await new Promise((resolve) => {
-      instance = new TypeIt("#element", {
-        speed: 0,
-        strings: "Hi.",
-        afterComplete: () => {
-          resolve();
-        },
-      }).go();
-    });
-
-    expect(element.innerHTML).toEqual(
-      'Hi.<span class="ti-cursor with-delay">|</span>'
-    );
-    instance = instance.reset();
-    expect(element.innerHTML).toEqual("");
-  });
-
-  test("Wipes out contents when it's an input.", (done) => {
-    setHTML`<div>'
-      <input id="element">
     </div>`;
 
     let instance;
@@ -380,10 +364,29 @@ describe("reset()", () => {
       speed: 0,
       strings: "Hi.",
       afterComplete: () => {
-        expect(element.value).toEqual("Hi.");
+        expect(element.innerHTML).toEqual(
+          'Hi.<span class="ti-cursor with-delay">|</span>'
+        );
         instance = instance.reset();
-        expect(element.value).toEqual("");
+        expect(element.innerHTML).toEqual("");
+        done();
+      },
+    }).go();
+  });
 
+  test("Wipes out contents when it's an input.", (done) => {
+    setHTML`<div>
+      <input id="anInput">
+    </div>`;
+
+    let el = document.querySelector("#anInput");
+    let inputInstance = new TypeIt("#anInput", {
+      speed: 0,
+      strings: "Hi.",
+      afterComplete: () => {
+        expect(el.value).toEqual("Hi.");
+        inputInstance.reset();
+        expect(el.value).toEqual("");
         done();
       },
     }).go();
@@ -392,7 +395,7 @@ describe("reset()", () => {
 
 describe("destroy()", () => {
   test("Destroys instances successfully.", () => {
-    setHTML`<div>'
+    setHTML`<div>
       <span id="element"></span>
     </div>`;
 

@@ -1,7 +1,7 @@
 import TypeIt from "../../src/TypeIt";
 
 test("Cursor should function by default.", () => {
-  document.body.innerHTML = `<div>'
+  setHTML`<div>'
       <span id="element"></span>
     </div>`;
 
@@ -17,7 +17,7 @@ test("Cursor should function by default.", () => {
 });
 
 test("Changes cursor character correctly.", () => {
-  document.body.innerHTML = `<div>'
+  setHTML`<div>'
       <span id="element"></span>
     </div>`;
 
@@ -34,7 +34,7 @@ test("Changes cursor character correctly.", () => {
 });
 
 test("Turning off cursor should work.", () => {
-  document.body.innerHTML = `<div>'
+  setHTML`<div>'
       <span id="element"></span>
     </div>`;
 
@@ -50,7 +50,7 @@ test("Turning off cursor should work.", () => {
 
 describe("startDelete option.", () => {
   test("Makes hard-coded string the first string to be typed.", () => {
-    document.body.innerHTML = `<div>'
+    setHTML`<div>'
       <span id="element">This should be typed first.</span>
     </div>`;
 
@@ -64,7 +64,7 @@ describe("startDelete option.", () => {
   });
 
   test("Sets both hard-coded and option-defined strings in correct order.", () => {
-    document.body.innerHTML = `<div>'
+    setHTML`<div>'
       <span id="element">This should be typed first.</span>
     </div>`;
 
@@ -81,7 +81,7 @@ describe("startDelete option.", () => {
   });
 
   test("Correctly adds strings also defined by type() companion method.", () => {
-    document.body.innerHTML = `<div>'
+    setHTML`<div>'
       <span id="element">This should be typed first.</span>
     </div>`;
 
@@ -98,9 +98,63 @@ describe("startDelete option.", () => {
   });
 });
 
+test("Generates correct `nextStringDelay`.", () => {
+  setHTML`<div>'
+      <span id="element"></span>
+    </div>`;
+
+  const instance1 = new TypeIt("#element", {
+    nextStringDelay: 500,
+    strings: ["Free markets...", "win."],
+  });
+
+  let nextStringDelay = instance1.getOptions().nextStringDelay;
+
+  expect(typeof nextStringDelay).toBe("object");
+  expect(nextStringDelay[0]).toBe(250);
+  expect(nextStringDelay[1]).toBe(250);
+
+  const instance2 = new TypeIt("#element", {
+    nextStringDelay: [150, 400],
+    strings: ["Free markets...", "win."],
+  });
+
+  nextStringDelay = instance2.getOptions().nextStringDelay;
+
+  expect(nextStringDelay[0]).toBe(150);
+  expect(nextStringDelay[1]).toBe(400);
+});
+
+test("Generates correct `loopDelay`.", () => {
+  setHTML`<div>'
+      <span id="element"></span>
+    </div>`;
+
+  const instance1 = new TypeIt("#element", {
+    nextStringDelay: 500,
+    strings: ["Free markets...", "win."],
+  });
+
+  let loopDelay = instance1.getOptions().loopDelay;
+
+  expect(loopDelay[0]).toBe(375);
+  expect(loopDelay[1]).toBe(375);
+
+  const instance2 = new TypeIt("#element", {
+    loopDelay: [3000, 5000],
+    strings: ["Free markets...", "win."],
+  });
+
+  loopDelay = instance2.getOptions().loopDelay;
+
+  expect(typeof loopDelay).toBe("object");
+  expect(loopDelay[0]).toBe(3000);
+  expect(loopDelay[1]).toBe(5000);
+});
+
 describe("html option", () => {
   test("It should queue strings as HTML by default.", () => {
-    document.body.innerHTML = `
+    setHTML`
       <div>
         <span id="element"></span>
       </div>
@@ -114,7 +168,7 @@ describe("html option", () => {
   });
 
   test("It should queue strings as HTML when explicitly set.", () => {
-    document.body.innerHTML = `
+    setHTML`
       <div>
         <span id="element"></span>
       </div>
@@ -129,7 +183,7 @@ describe("html option", () => {
   });
 
   test("It should leave strings be when option is disabled.", () => {
-    document.body.innerHTML = `
+    setHTML`
       <div>
         <span id="element"></span>
       </div>

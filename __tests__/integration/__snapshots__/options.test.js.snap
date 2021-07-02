@@ -10,473 +10,199 @@ Array [
   Array [
     [Function],
     Object {
-      "content": "T",
-      "node": null,
+      "chars": Array [
+        Object {
+          "content": "T",
+          "node": null,
+        },
+        Object {
+          "content": "h",
+          "node": null,
+        },
+        Object {
+          "content": "i",
+          "node": null,
+        },
+        Object {
+          "content": "s",
+          "node": null,
+        },
+        Object {
+          "content": " ",
+          "node": null,
+        },
+        Object {
+          "content": "i",
+          "node": null,
+        },
+        Object {
+          "content": "s",
+          "node": null,
+        },
+        Object {
+          "content": " ",
+          "node": null,
+        },
+        Object {
+          "content": "a",
+          "node": null,
+        },
+        Object {
+          "content": " ",
+          "node": null,
+        },
+        Object {
+          "content": "<",
+          "node": null,
+        },
+        Object {
+          "content": "s",
+          "node": null,
+        },
+        Object {
+          "content": "t",
+          "node": null,
+        },
+        Object {
+          "content": "r",
+          "node": null,
+        },
+        Object {
+          "content": "o",
+          "node": null,
+        },
+        Object {
+          "content": "n",
+          "node": null,
+        },
+        Object {
+          "content": "g",
+          "node": null,
+        },
+        Object {
+          "content": ">",
+          "node": null,
+        },
+        Object {
+          "content": "a",
+          "node": null,
+        },
+        Object {
+          "content": "n",
+          "node": null,
+        },
+        Object {
+          "content": "o",
+          "node": null,
+        },
+        Object {
+          "content": "t",
+          "node": null,
+        },
+        Object {
+          "content": "h",
+          "node": null,
+        },
+        Object {
+          "content": "e",
+          "node": null,
+        },
+        Object {
+          "content": "r",
+          "node": null,
+        },
+        Object {
+          "content": " ",
+          "node": null,
+        },
+        Object {
+          "content": "B",
+          "node": null,
+        },
+        Object {
+          "content": "O",
+          "node": null,
+        },
+        Object {
+          "content": "L",
+          "node": null,
+        },
+        Object {
+          "content": "D",
+          "node": null,
+        },
+        Object {
+          "content": "<",
+          "node": null,
+        },
+        Object {
+          "content": "/",
+          "node": null,
+        },
+        Object {
+          "content": "s",
+          "node": null,
+        },
+        Object {
+          "content": "t",
+          "node": null,
+        },
+        Object {
+          "content": "r",
+          "node": null,
+        },
+        Object {
+          "content": "o",
+          "node": null,
+        },
+        Object {
+          "content": "n",
+          "node": null,
+        },
+        Object {
+          "content": "g",
+          "node": null,
+        },
+        Object {
+          "content": ">",
+          "node": null,
+        },
+        Object {
+          "content": " ",
+          "node": null,
+        },
+        Object {
+          "content": "s",
+          "node": null,
+        },
+        Object {
+          "content": "t",
+          "node": null,
+        },
+        Object {
+          "content": "r",
+          "node": null,
+        },
+        Object {
+          "content": "i",
+          "node": null,
+        },
+        Object {
+          "content": "n",
+          "node": null,
+        },
+        Object {
+          "content": "g",
+          "node": null,
+        },
+        Object {
+          "content": ".",
+          "node": null,
+        },
+      ],
     },
     Object {
       "freezeCursor": true,
-      "isFirst": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "h",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "i",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "s",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "i",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "s",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "a",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "<",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "s",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "t",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "r",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "o",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "n",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "g",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": ">",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "a",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "n",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "o",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "t",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "h",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "e",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "r",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "B",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "O",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "L",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "D",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "<",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "/",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "s",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "t",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "r",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "o",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "n",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "g",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": ">",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "s",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "t",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "r",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "i",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "n",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "g",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": ".",
-      "node": null,
-    },
-    Object {
-      "freezeCursor": true,
-      "isLast": true,
     },
   ],
 ]
@@ -492,223 +218,99 @@ Array [
   Array [
     [Function],
     Object {
-      "content": "T",
-      "node": This is a ,
+      "chars": Array [
+        Object {
+          "content": "T",
+          "node": This is a ,
+        },
+        Object {
+          "content": "h",
+          "node": This is a ,
+        },
+        Object {
+          "content": "i",
+          "node": This is a ,
+        },
+        Object {
+          "content": "s",
+          "node": This is a ,
+        },
+        Object {
+          "content": " ",
+          "node": This is a ,
+        },
+        Object {
+          "content": "i",
+          "node": This is a ,
+        },
+        Object {
+          "content": "s",
+          "node": This is a ,
+        },
+        Object {
+          "content": " ",
+          "node": This is a ,
+        },
+        Object {
+          "content": "a",
+          "node": This is a ,
+        },
+        Object {
+          "content": " ",
+          "node": This is a ,
+        },
+        Object {
+          "content": "B",
+          "node": BOLD,
+        },
+        Object {
+          "content": "O",
+          "node": BOLD,
+        },
+        Object {
+          "content": "L",
+          "node": BOLD,
+        },
+        Object {
+          "content": "D",
+          "node": BOLD,
+        },
+        Object {
+          "content": " ",
+          "node":  string.,
+        },
+        Object {
+          "content": "s",
+          "node":  string.,
+        },
+        Object {
+          "content": "t",
+          "node":  string.,
+        },
+        Object {
+          "content": "r",
+          "node":  string.,
+        },
+        Object {
+          "content": "i",
+          "node":  string.,
+        },
+        Object {
+          "content": "n",
+          "node":  string.,
+        },
+        Object {
+          "content": "g",
+          "node":  string.,
+        },
+        Object {
+          "content": ".",
+          "node":  string.,
+        },
+      ],
     },
     Object {
       "freezeCursor": true,
-      "isFirst": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "h",
-      "node": This is a ,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "i",
-      "node": This is a ,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "s",
-      "node": This is a ,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": This is a ,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "i",
-      "node": This is a ,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "s",
-      "node": This is a ,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": This is a ,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "a",
-      "node": This is a ,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": This is a ,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "B",
-      "node": BOLD,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "O",
-      "node": BOLD,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "L",
-      "node": BOLD,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "D",
-      "node": BOLD,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node":  string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "s",
-      "node":  string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "t",
-      "node":  string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "r",
-      "node":  string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "i",
-      "node":  string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "n",
-      "node":  string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "g",
-      "node":  string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": ".",
-      "node":  string.,
-    },
-    Object {
-      "freezeCursor": true,
-      "isLast": true,
     },
   ],
 ]
@@ -724,303 +326,131 @@ Array [
   Array [
     [Function],
     Object {
-      "content": "T",
-      "node": This is a ,
+      "chars": Array [
+        Object {
+          "content": "T",
+          "node": This is a ,
+        },
+        Object {
+          "content": "h",
+          "node": This is a ,
+        },
+        Object {
+          "content": "i",
+          "node": This is a ,
+        },
+        Object {
+          "content": "s",
+          "node": This is a ,
+        },
+        Object {
+          "content": " ",
+          "node": This is a ,
+        },
+        Object {
+          "content": "i",
+          "node": This is a ,
+        },
+        Object {
+          "content": "s",
+          "node": This is a ,
+        },
+        Object {
+          "content": " ",
+          "node": This is a ,
+        },
+        Object {
+          "content": "a",
+          "node": This is a ,
+        },
+        Object {
+          "content": " ",
+          "node": This is a ,
+        },
+        Object {
+          "content": "a",
+          "node": another BOLD,
+        },
+        Object {
+          "content": "n",
+          "node": another BOLD,
+        },
+        Object {
+          "content": "o",
+          "node": another BOLD,
+        },
+        Object {
+          "content": "t",
+          "node": another BOLD,
+        },
+        Object {
+          "content": "h",
+          "node": another BOLD,
+        },
+        Object {
+          "content": "e",
+          "node": another BOLD,
+        },
+        Object {
+          "content": "r",
+          "node": another BOLD,
+        },
+        Object {
+          "content": " ",
+          "node": another BOLD,
+        },
+        Object {
+          "content": "B",
+          "node": another BOLD,
+        },
+        Object {
+          "content": "O",
+          "node": another BOLD,
+        },
+        Object {
+          "content": "L",
+          "node": another BOLD,
+        },
+        Object {
+          "content": "D",
+          "node": another BOLD,
+        },
+        Object {
+          "content": " ",
+          "node":  string.,
+        },
+        Object {
+          "content": "s",
+          "node":  string.,
+        },
+        Object {
+          "content": "t",
+          "node":  string.,
+        },
+        Object {
+          "content": "r",
+          "node":  string.,
+        },
+        Object {
+          "content": "i",
+          "node":  string.,
+        },
+        Object {
+          "content": "n",
+          "node":  string.,
+        },
+        Object {
+          "content": "g",
+          "node":  string.,
+        },
+        Object {
+          "content": ".",
+          "node":  string.,
+        },
+      ],
     },
     Object {
       "freezeCursor": true,
-      "isFirst": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "h",
-      "node": This is a ,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "i",
-      "node": This is a ,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "s",
-      "node": This is a ,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": This is a ,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "i",
-      "node": This is a ,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "s",
-      "node": This is a ,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": This is a ,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "a",
-      "node": This is a ,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": This is a ,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "a",
-      "node": another BOLD,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "n",
-      "node": another BOLD,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "o",
-      "node": another BOLD,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "t",
-      "node": another BOLD,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "h",
-      "node": another BOLD,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "e",
-      "node": another BOLD,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "r",
-      "node": another BOLD,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": another BOLD,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "B",
-      "node": another BOLD,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "O",
-      "node": another BOLD,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "L",
-      "node": another BOLD,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "D",
-      "node": another BOLD,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node":  string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "s",
-      "node":  string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "t",
-      "node":  string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "r",
-      "node":  string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "i",
-      "node":  string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "n",
-      "node":  string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "g",
-      "node":  string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": ".",
-      "node":  string.,
-    },
-    Object {
-      "freezeCursor": true,
-      "isLast": true,
     },
   ],
 ]
@@ -1036,285 +466,116 @@ Array [
   Array [
     [Function],
     Object {
-      "content": "T",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-      "isFirst": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "h",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "i",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "s",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "s",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "h",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "o",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "u",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "l",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "d",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "b",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "e",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "t",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "y",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "p",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "e",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "d",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "f",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "i",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "r",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "s",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "t",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": ".",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-      "isLast": true,
-    },
-  ],
-  Array [
-    [Function],
-    375,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": <br />,
-      "node": null,
+      "chars": Array [
+        Object {
+          "content": "T",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "h",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "i",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "s",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": " ",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "s",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "h",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "o",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "u",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "l",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "d",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": " ",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "b",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "e",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": " ",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "t",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "y",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "p",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "e",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "d",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": " ",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "f",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "i",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "r",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "s",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "t",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": ".",
+          "node": This should be typed first.,
+        },
+      ],
     },
     Object {
       "freezeCursor": true,
@@ -1328,19 +589,12 @@ Array [
   Array [
     [Function],
     Object {
-      "content": "T",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-      "isFirst": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "h",
-      "node": This is another string.,
+      "chars": Array [
+        Object {
+          "content": <br />,
+          "node": null,
+        },
+      ],
     },
     Object {
       "freezeCursor": true,
@@ -1348,432 +602,209 @@ Array [
   ],
   Array [
     [Function],
-    Object {
-      "content": "i",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
+    375,
+    Object {},
   ],
   Array [
     [Function],
     Object {
-      "content": "s",
-      "node": This is another string.,
+      "chars": Array [
+        Object {
+          "content": "T",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "h",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "i",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "s",
+          "node": This is another string.,
+        },
+        Object {
+          "content": " ",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "i",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "s",
+          "node": This is another string.,
+        },
+        Object {
+          "content": " ",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "a",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "n",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "o",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "t",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "h",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "e",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "r",
+          "node": This is another string.,
+        },
+        Object {
+          "content": " ",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "s",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "t",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "r",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "i",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "n",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "g",
+          "node": This is another string.,
+        },
+        Object {
+          "content": ".",
+          "node": This is another string.,
+        },
+      ],
     },
     Object {
       "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "i",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "s",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "a",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "n",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "o",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "t",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "h",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "e",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "r",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "s",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "t",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "r",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "i",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "n",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "g",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": ".",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-      "isLast": true,
     },
   ],
   Array [
     [Function],
     Object {},
-    Object {
-      "force": true,
-    },
+    Object {},
   ],
   Array [
     [Function],
     Object {
-      "content": "A",
-      "node": And finally, a third.,
+      "chars": Array [
+        Object {
+          "content": "A",
+          "node": And finally, a third.,
+        },
+        Object {
+          "content": "n",
+          "node": And finally, a third.,
+        },
+        Object {
+          "content": "d",
+          "node": And finally, a third.,
+        },
+        Object {
+          "content": " ",
+          "node": And finally, a third.,
+        },
+        Object {
+          "content": "f",
+          "node": And finally, a third.,
+        },
+        Object {
+          "content": "i",
+          "node": And finally, a third.,
+        },
+        Object {
+          "content": "n",
+          "node": And finally, a third.,
+        },
+        Object {
+          "content": "a",
+          "node": And finally, a third.,
+        },
+        Object {
+          "content": "l",
+          "node": And finally, a third.,
+        },
+        Object {
+          "content": "l",
+          "node": And finally, a third.,
+        },
+        Object {
+          "content": "y",
+          "node": And finally, a third.,
+        },
+        Object {
+          "content": ",",
+          "node": And finally, a third.,
+        },
+        Object {
+          "content": " ",
+          "node": And finally, a third.,
+        },
+        Object {
+          "content": "a",
+          "node": And finally, a third.,
+        },
+        Object {
+          "content": " ",
+          "node": And finally, a third.,
+        },
+        Object {
+          "content": "t",
+          "node": And finally, a third.,
+        },
+        Object {
+          "content": "h",
+          "node": And finally, a third.,
+        },
+        Object {
+          "content": "i",
+          "node": And finally, a third.,
+        },
+        Object {
+          "content": "r",
+          "node": And finally, a third.,
+        },
+        Object {
+          "content": "d",
+          "node": And finally, a third.,
+        },
+        Object {
+          "content": ".",
+          "node": And finally, a third.,
+        },
+      ],
+      "instant": undefined,
     },
     Object {
       "freezeCursor": true,
-      "isFirst": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "n",
-      "node": And finally, a third.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "d",
-      "node": And finally, a third.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": And finally, a third.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "f",
-      "node": And finally, a third.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "i",
-      "node": And finally, a third.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "n",
-      "node": And finally, a third.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "a",
-      "node": And finally, a third.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "l",
-      "node": And finally, a third.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "l",
-      "node": And finally, a third.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "y",
-      "node": And finally, a third.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": ",",
-      "node": And finally, a third.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": And finally, a third.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "a",
-      "node": And finally, a third.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": And finally, a third.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "t",
-      "node": And finally, a third.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "h",
-      "node": And finally, a third.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "i",
-      "node": And finally, a third.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "r",
-      "node": And finally, a third.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "d",
-      "node": And finally, a third.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": ".",
-      "node": And finally, a third.,
-    },
-    Object {
-      "freezeCursor": true,
-      "isLast": true,
     },
   ],
   Array [
@@ -1809,9 +840,7 @@ Array [
       ],
       "waitUntilVisible": false,
     },
-    Object {
-      "force": true,
-    },
+    Object {},
   ],
 ]
 `;
@@ -1826,273 +855,119 @@ Array [
   Array [
     [Function],
     Object {
-      "content": "T",
-      "node": This should be typed first.,
+      "chars": Array [
+        Object {
+          "content": "T",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "h",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "i",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "s",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": " ",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "s",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "h",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "o",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "u",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "l",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "d",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": " ",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "b",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "e",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": " ",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "t",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "y",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "p",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "e",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "d",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": " ",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "f",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "i",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "r",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "s",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "t",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": ".",
+          "node": This should be typed first.,
+        },
+      ],
     },
     Object {
       "freezeCursor": true,
-      "isFirst": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "h",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "i",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "s",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "s",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "h",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "o",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "u",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "l",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "d",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "b",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "e",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "t",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "y",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "p",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "e",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "d",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "f",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "i",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "r",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "s",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "t",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": ".",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-      "isLast": true,
     },
   ],
 ]
@@ -2108,285 +983,116 @@ Array [
   Array [
     [Function],
     Object {
-      "content": "T",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-      "isFirst": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "h",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "i",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "s",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "s",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "h",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "o",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "u",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "l",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "d",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "b",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "e",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "t",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "y",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "p",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "e",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "d",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "f",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "i",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "r",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "s",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "t",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": ".",
-      "node": This should be typed first.,
-    },
-    Object {
-      "freezeCursor": true,
-      "isLast": true,
-    },
-  ],
-  Array [
-    [Function],
-    375,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": <br />,
-      "node": null,
+      "chars": Array [
+        Object {
+          "content": "T",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "h",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "i",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "s",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": " ",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "s",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "h",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "o",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "u",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "l",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "d",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": " ",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "b",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "e",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": " ",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "t",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "y",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "p",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "e",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "d",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": " ",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "f",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "i",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "r",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "s",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": "t",
+          "node": This should be typed first.,
+        },
+        Object {
+          "content": ".",
+          "node": This should be typed first.,
+        },
+      ],
     },
     Object {
       "freezeCursor": true,
@@ -2400,19 +1106,12 @@ Array [
   Array [
     [Function],
     Object {
-      "content": "T",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-      "isFirst": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "h",
-      "node": This is another string.,
+      "chars": Array [
+        Object {
+          "content": <br />,
+          "node": null,
+        },
+      ],
     },
     Object {
       "freezeCursor": true,
@@ -2420,213 +1119,109 @@ Array [
   ],
   Array [
     [Function],
-    Object {
-      "content": "i",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
+    375,
+    Object {},
   ],
   Array [
     [Function],
     Object {
-      "content": "s",
-      "node": This is another string.,
+      "chars": Array [
+        Object {
+          "content": "T",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "h",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "i",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "s",
+          "node": This is another string.,
+        },
+        Object {
+          "content": " ",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "i",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "s",
+          "node": This is another string.,
+        },
+        Object {
+          "content": " ",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "a",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "n",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "o",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "t",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "h",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "e",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "r",
+          "node": This is another string.,
+        },
+        Object {
+          "content": " ",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "s",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "t",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "r",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "i",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "n",
+          "node": This is another string.,
+        },
+        Object {
+          "content": "g",
+          "node": This is another string.,
+        },
+        Object {
+          "content": ".",
+          "node": This is another string.,
+        },
+      ],
     },
     Object {
       "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "i",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "s",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "a",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "n",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "o",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "t",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "h",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "e",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "r",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "s",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "t",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "r",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "i",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "n",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "g",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": ".",
-      "node": This is another string.,
-    },
-    Object {
-      "freezeCursor": true,
-      "isLast": true,
     },
   ],
 ]

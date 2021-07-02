@@ -10,10 +10,9 @@ const getAllTypeableNodes = (
   parentToExclude: HTMLElement | null = null,
   shouldReverse: boolean = false
 ): Node[] => {
-  let nodes = toArray(element.childNodes)
-    .flatMap((child) => {
-      return isTypeableNode(child) ? child : getAllTypeableNodes(child);
-    });
+  let nodes = toArray(element.childNodes).flatMap((child) => {
+    return isTypeableNode(child) ? child : getAllTypeableNodes(child);
+  });
 
   if (parentToExclude) {
     nodes = nodes.filter((n) => !parentToExclude.contains(n));

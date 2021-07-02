@@ -1,4 +1,7 @@
-import { cursorFontStyles, setCursorStyles } from "../../src/helpers/setCursorStyles";
+import {
+  cursorFontStyles,
+  setCursorStyles,
+} from "../../src/helpers/setCursorStyles";
 
 it("sets styles", () => {
   setHTML`<span id="element"></span>
@@ -14,10 +17,10 @@ it("sets styles", () => {
     </style>
   `;
 
-  const element = document.getElementById('element');
-  const id = '9';
+  const element = document.getElementById("element");
+  const id = "9";
   const options = {
-    cursorSpeed: 300
+    cursorSpeed: 300,
   };
 
   setCursorStyles(id, options, element);
@@ -25,10 +28,14 @@ it("sets styles", () => {
   expect(document.head.querySelector('style[id="9"]')).not.toBeNull();
 
   // Blinking animation is being set.
-  expect(document.head.innerHTML).toMatch(/@keyframes blink-(.+) { 0% {opacity: 0} 49% {opacity: 0} 50% {opacity: 1} }/);
+  expect(document.head.innerHTML).toMatch(
+    /@keyframes blink-(.+) { 0% {opacity: 0} 49% {opacity: 0} 50% {opacity: 1} }/
+  );
 
   // Custom properties are being set.
-  cursorFontStyles.forEach(styleName => {
-    expect(document.head.innerHTML).toMatch(new RegExp(`var\\(--ti-${styleName}, (.+)\\);`));
+  cursorFontStyles.forEach((styleName) => {
+    expect(document.head.innerHTML).toMatch(
+      new RegExp(`var\\(--ti-${styleName}, (.+)\\);`)
+    );
   });
 });

@@ -42,25 +42,12 @@ Array [
   Array [
     [Function],
     Object {
-      "content": "A",
-      "node": A,
-    },
-    Object {
-      "freezeCursor": true,
-      "isFirst": true,
-      "isLast": true,
-    },
-  ],
-  Array [
-    [Function],
-    375,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": <br />,
-      "node": null,
+      "chars": Array [
+        Object {
+          "content": "A",
+          "node": A,
+        },
+      ],
     },
     Object {
       "freezeCursor": true,
@@ -74,13 +61,34 @@ Array [
   Array [
     [Function],
     Object {
-      "content": "B",
-      "node": B,
+      "chars": Array [
+        Object {
+          "content": <br />,
+          "node": null,
+        },
+      ],
     },
     Object {
       "freezeCursor": true,
-      "isFirst": true,
-      "isLast": true,
+    },
+  ],
+  Array [
+    [Function],
+    375,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "chars": Array [
+        Object {
+          "content": "B",
+          "node": B,
+        },
+      ],
+    },
+    Object {
+      "freezeCursor": true,
     },
   ],
 ]
@@ -96,8 +104,13 @@ Array [
   Array [
     [Function],
     Object {
-      "content": <br />,
-      "node": null,
+      "chars": Array [
+        Object {
+          "content": <br />,
+          "node": null,
+        },
+      ],
+      "silent": true,
     },
     Object {},
   ],
@@ -114,13 +127,15 @@ Array [
   Array [
     [Function],
     Object {},
-    Object {
-      "force": true,
-    },
+    Object {},
   ],
   Array [
     [Function],
-    null,
+    Object {
+      "instant": undefined,
+      "num": 1,
+      "to": undefined,
+    },
     Object {
       "freezeCursor": true,
     },
@@ -155,9 +170,7 @@ Array [
       "strings": Array [],
       "waitUntilVisible": false,
     },
-    Object {
-      "force": true,
-    },
+    Object {},
   ],
 ]
 `;
@@ -198,13 +211,15 @@ Array [
     Object {
       "deleteSpeed": 201,
     },
-    Object {
-      "force": true,
-    },
+    Object {},
   ],
   Array [
     [Function],
-    true,
+    Object {
+      "instant": undefined,
+      "num": null,
+      "to": undefined,
+    },
     Object {
       "freezeCursor": true,
     },
@@ -239,9 +254,7 @@ Array [
       "strings": Array [],
       "waitUntilVisible": false,
     },
-    Object {
-      "force": true,
-    },
+    Object {},
   ],
 ]
 `;
@@ -256,45 +269,20 @@ Array [
   Array [
     [Function],
     Object {
-      "content": "A",
-      "node": ABC,
-    },
-    Object {
-      "freezeCursor": true,
-      "isFirst": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "B",
-      "node": ABC,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "C",
-      "node": ABC,
-    },
-    Object {
-      "freezeCursor": true,
-      "isLast": true,
-    },
-  ],
-  Array [
-    [Function],
-    500,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": <br />,
-      "node": null,
+      "chars": Array [
+        Object {
+          "content": "A",
+          "node": ABC,
+        },
+        Object {
+          "content": "B",
+          "node": ABC,
+        },
+        Object {
+          "content": "C",
+          "node": ABC,
+        },
+      ],
     },
     Object {
       "freezeCursor": true,
@@ -308,19 +296,12 @@ Array [
   Array [
     [Function],
     Object {
-      "content": "E",
-      "node": EFG,
-    },
-    Object {
-      "freezeCursor": true,
-      "isFirst": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "F",
-      "node": EFG,
+      "chars": Array [
+        Object {
+          "content": <br />,
+          "node": null,
+        },
+      ],
     },
     Object {
       "freezeCursor": true,
@@ -328,13 +309,29 @@ Array [
   ],
   Array [
     [Function],
+    500,
+    Object {},
+  ],
+  Array [
+    [Function],
     Object {
-      "content": "G",
-      "node": EFG,
+      "chars": Array [
+        Object {
+          "content": "E",
+          "node": EFG,
+        },
+        Object {
+          "content": "F",
+          "node": EFG,
+        },
+        Object {
+          "content": "G",
+          "node": EFG,
+        },
+      ],
     },
     Object {
       "freezeCursor": true,
-      "isLast": true,
     },
   ],
 ]
@@ -360,33 +357,23 @@ Array [
   Array [
     [Function],
     Object {
-      "content": "A",
-      "node": ABC,
+      "chars": Array [
+        Object {
+          "content": "A",
+          "node": ABC,
+        },
+        Object {
+          "content": "B",
+          "node": ABC,
+        },
+        Object {
+          "content": "C",
+          "node": ABC,
+        },
+      ],
     },
     Object {
       "freezeCursor": true,
-      "isFirst": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "B",
-      "node": ABC,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "C",
-      "node": ABC,
-    },
-    Object {
-      "freezeCursor": true,
-      "isLast": true,
     },
   ],
   Array [
@@ -397,8 +384,12 @@ Array [
   Array [
     [Function],
     Object {
-      "content": <br />,
-      "node": null,
+      "chars": Array [
+        Object {
+          "content": <br />,
+          "node": null,
+        },
+      ],
     },
     Object {
       "freezeCursor": true,
@@ -412,33 +403,23 @@ Array [
   Array [
     [Function],
     Object {
-      "content": "E",
-      "node": EFG,
+      "chars": Array [
+        Object {
+          "content": "E",
+          "node": EFG,
+        },
+        Object {
+          "content": "F",
+          "node": EFG,
+        },
+        Object {
+          "content": "G",
+          "node": EFG,
+        },
+      ],
     },
     Object {
       "freezeCursor": true,
-      "isFirst": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "F",
-      "node": EFG,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "G",
-      "node": EFG,
-    },
-    Object {
-      "freezeCursor": true,
-      "isLast": true,
     },
   ],
 ]
@@ -454,25 +435,12 @@ Array [
   Array [
     [Function],
     Object {
-      "content": "A",
-      "node": A,
-    },
-    Object {
-      "freezeCursor": true,
-      "isFirst": true,
-      "isLast": true,
-    },
-  ],
-  Array [
-    [Function],
-    375,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": <br />,
-      "node": null,
+      "chars": Array [
+        Object {
+          "content": "A",
+          "node": A,
+        },
+      ],
     },
     Object {
       "freezeCursor": true,
@@ -486,25 +454,12 @@ Array [
   Array [
     [Function],
     Object {
-      "content": "B",
-      "node": B,
-    },
-    Object {
-      "freezeCursor": true,
-      "isFirst": true,
-      "isLast": true,
-    },
-  ],
-  Array [
-    [Function],
-    375,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": <br />,
-      "node": null,
+      "chars": Array [
+        Object {
+          "content": <br />,
+          "node": null,
+        },
+      ],
     },
     Object {
       "freezeCursor": true,
@@ -518,25 +473,12 @@ Array [
   Array [
     [Function],
     Object {
-      "content": "C",
-      "node": C,
-    },
-    Object {
-      "freezeCursor": true,
-      "isFirst": true,
-      "isLast": true,
-    },
-  ],
-  Array [
-    [Function],
-    375,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": <br />,
-      "node": null,
+      "chars": Array [
+        Object {
+          "content": "B",
+          "node": B,
+        },
+      ],
     },
     Object {
       "freezeCursor": true,
@@ -550,25 +492,12 @@ Array [
   Array [
     [Function],
     Object {
-      "content": "D",
-      "node": D,
-    },
-    Object {
-      "freezeCursor": true,
-      "isFirst": true,
-      "isLast": true,
-    },
-  ],
-  Array [
-    [Function],
-    375,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": <br />,
-      "node": null,
+      "chars": Array [
+        Object {
+          "content": <br />,
+          "node": null,
+        },
+      ],
     },
     Object {
       "freezeCursor": true,
@@ -582,13 +511,91 @@ Array [
   Array [
     [Function],
     Object {
-      "content": "E",
-      "node": E,
+      "chars": Array [
+        Object {
+          "content": "C",
+          "node": C,
+        },
+      ],
     },
     Object {
       "freezeCursor": true,
-      "isFirst": true,
-      "isLast": true,
+    },
+  ],
+  Array [
+    [Function],
+    375,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "chars": Array [
+        Object {
+          "content": <br />,
+          "node": null,
+        },
+      ],
+    },
+    Object {
+      "freezeCursor": true,
+    },
+  ],
+  Array [
+    [Function],
+    375,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "chars": Array [
+        Object {
+          "content": "D",
+          "node": D,
+        },
+      ],
+    },
+    Object {
+      "freezeCursor": true,
+    },
+  ],
+  Array [
+    [Function],
+    375,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "chars": Array [
+        Object {
+          "content": <br />,
+          "node": null,
+        },
+      ],
+    },
+    Object {
+      "freezeCursor": true,
+    },
+  ],
+  Array [
+    [Function],
+    375,
+    Object {},
+  ],
+  Array [
+    [Function],
+    Object {
+      "chars": Array [
+        Object {
+          "content": "E",
+          "node": E,
+        },
+      ],
+    },
+    Object {
+      "freezeCursor": true,
     },
   ],
 ]
@@ -604,13 +611,12 @@ Array [
   Array [
     [Function],
     Object {},
-    Object {
-      "force": true,
-    },
+    Object {},
   ],
   Array [
     [Function],
     Object {
+      "instant": undefined,
       "to": undefined,
       "value": 1,
     },
@@ -648,9 +654,7 @@ Array [
       "strings": Array [],
       "waitUntilVisible": false,
     },
-    Object {
-      "force": true,
-    },
+    Object {},
   ],
 ]
 `;
@@ -684,15 +688,14 @@ Array [
       "speed": 601,
       "to": "END",
     },
-    Object {
-      "force": true,
-    },
+    Object {},
   ],
   Array [
     [Function],
     Object {
+      "instant": undefined,
       "to": "END",
-      "value": null,
+      "value": "",
     },
     Object {
       "freezeCursor": true,
@@ -728,9 +731,7 @@ Array [
       "strings": Array [],
       "waitUntilVisible": false,
     },
-    Object {
-      "force": true,
-    },
+    Object {},
   ],
 ]
 `;
@@ -778,20 +779,21 @@ Array [
   Array [
     [Function],
     Object {},
-    Object {
-      "force": true,
-    },
+    Object {},
   ],
   Array [
     [Function],
     Object {
-      "content": "!",
-      "node": !,
+      "chars": Array [
+        Object {
+          "content": "!",
+          "node": !,
+        },
+      ],
+      "instant": undefined,
     },
     Object {
       "freezeCursor": true,
-      "isFirst": true,
-      "isLast": true,
     },
   ],
   Array [
@@ -824,9 +826,7 @@ Array [
       "strings": Array [],
       "waitUntilVisible": false,
     },
-    Object {
-      "force": true,
-    },
+    Object {},
   ],
 ]
 `;
@@ -859,20 +859,21 @@ Array [
     Object {
       "speed": 501,
     },
-    Object {
-      "force": true,
-    },
+    Object {},
   ],
   Array [
     [Function],
     Object {
-      "content": "!",
-      "node": !,
+      "chars": Array [
+        Object {
+          "content": "!",
+          "node": !,
+        },
+      ],
+      "instant": undefined,
     },
     Object {
       "freezeCursor": true,
-      "isFirst": true,
-      "isLast": true,
     },
   ],
   Array [
@@ -905,9 +906,7 @@ Array [
       "strings": Array [],
       "waitUntilVisible": false,
     },
-    Object {
-      "force": true,
-    },
+    Object {},
   ],
 ]
 `;

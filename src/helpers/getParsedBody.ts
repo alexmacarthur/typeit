@@ -4,7 +4,7 @@
  */
 export default (content): HTMLElement => {
   const parser = new DOMParser();
-  const doc = parser.parseFromString(content, 'text/html');
+  const doc = parser.parseFromString(content, "text/html");
 
   return doc.body;
 };

@@ -2,10 +2,7 @@ import isArray from "./isArray";
 
 /**
  * Converts value as within array, unless the value itself already is one.
- *
- * @param {string} string
- * @return {array}
  */
-export default (str): any[] => {
-  return isArray(str) ? str : [str];
+export default <T>(value): T[] => {
+  return isArray(value) ? value : [value];
 };

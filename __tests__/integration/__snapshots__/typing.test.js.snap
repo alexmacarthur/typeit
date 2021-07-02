@@ -10,155 +10,64 @@ Array [
   Array [
     [Function],
     Object {
-      "content": "T",
-      "node": Taxation is...,
-    },
-    Object {
-      "freezeCursor": true,
-      "isFirst": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "a",
-      "node": Taxation is...,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "x",
-      "node": Taxation is...,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "a",
-      "node": Taxation is...,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "t",
-      "node": Taxation is...,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "i",
-      "node": Taxation is...,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "o",
-      "node": Taxation is...,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "n",
-      "node": Taxation is...,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": " ",
-      "node": Taxation is...,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "i",
-      "node": Taxation is...,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "s",
-      "node": Taxation is...,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": ".",
-      "node": Taxation is...,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": ".",
-      "node": Taxation is...,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": ".",
-      "node": Taxation is...,
-    },
-    Object {
-      "freezeCursor": true,
-      "isLast": true,
-    },
-  ],
-  Array [
-    [Function],
-    375,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": <br />,
-      "node": null,
+      "chars": Array [
+        Object {
+          "content": "T",
+          "node": Taxation is...,
+        },
+        Object {
+          "content": "a",
+          "node": Taxation is...,
+        },
+        Object {
+          "content": "x",
+          "node": Taxation is...,
+        },
+        Object {
+          "content": "a",
+          "node": Taxation is...,
+        },
+        Object {
+          "content": "t",
+          "node": Taxation is...,
+        },
+        Object {
+          "content": "i",
+          "node": Taxation is...,
+        },
+        Object {
+          "content": "o",
+          "node": Taxation is...,
+        },
+        Object {
+          "content": "n",
+          "node": Taxation is...,
+        },
+        Object {
+          "content": " ",
+          "node": Taxation is...,
+        },
+        Object {
+          "content": "i",
+          "node": Taxation is...,
+        },
+        Object {
+          "content": "s",
+          "node": Taxation is...,
+        },
+        Object {
+          "content": ".",
+          "node": Taxation is...,
+        },
+        Object {
+          "content": ".",
+          "node": Taxation is...,
+        },
+        Object {
+          "content": ".",
+          "node": Taxation is...,
+        },
+      ],
     },
     Object {
       "freezeCursor": true,
@@ -172,19 +81,12 @@ Array [
   Array [
     [Function],
     Object {
-      "content": "t",
-      "node": theft.,
-    },
-    Object {
-      "freezeCursor": true,
-      "isFirst": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "h",
-      "node": theft.,
+      "chars": Array [
+        Object {
+          "content": <br />,
+          "node": null,
+        },
+      ],
     },
     Object {
       "freezeCursor": true,
@@ -192,43 +94,41 @@ Array [
   ],
   Array [
     [Function],
-    Object {
-      "content": "e",
-      "node": theft.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
+    375,
+    Object {},
   ],
   Array [
     [Function],
     Object {
-      "content": "f",
-      "node": theft.,
+      "chars": Array [
+        Object {
+          "content": "t",
+          "node": theft.,
+        },
+        Object {
+          "content": "h",
+          "node": theft.,
+        },
+        Object {
+          "content": "e",
+          "node": theft.,
+        },
+        Object {
+          "content": "f",
+          "node": theft.,
+        },
+        Object {
+          "content": "t",
+          "node": theft.,
+        },
+        Object {
+          "content": ".",
+          "node": theft.,
+        },
+      ],
     },
     Object {
       "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": "t",
-      "node": theft.,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "content": ".",
-      "node": theft.,
-    },
-    Object {
-      "freezeCursor": true,
-      "isLast": true,
     },
   ],
 ]

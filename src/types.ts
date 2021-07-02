@@ -8,7 +8,7 @@ export type Options = {
   cursor?: boolean;
   cursorChar?: string;
   cursorSpeed?: number;
-  deleteSpeed?: null;
+  deleteSpeed?: null | number;
   html?: boolean;
   lifeLike?: boolean;
   loop?: boolean;
@@ -26,8 +26,15 @@ export type Options = {
   afterComplete?: Function;
 };
 
+export type ActionOpts = Options & {
+  to?: "START" | "END";
+  instant?: boolean;
+};
+
 export type QueueItem = [Function?, any?, { [key: string]: any }?];
 
 export type Element = HTMLElement & {
   value: string | number;
 };
+
+export type Sides = "START" | "END";

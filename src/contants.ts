@@ -1,6 +1,16 @@
 import { Options } from "./types";
 
-const defaults: Options = {
+export const DATA_ATTRIBUTE = "data-typeit-id";
+export const CURSOR_CLASS = "ti-cursor";
+export const START = "START";
+export const END = "END";
+export const DEFAULT_STATUSES = {
+  started: false,
+  completed: false,
+  frozen: false,
+  destroyed: false,
+};
+export const DEFAULT_OPTIONS: Options = {
   breakLines: true,
   cursor: true,
   cursorChar: "|",
@@ -22,5 +32,3 @@ const defaults: Options = {
   afterStep: () => {},
   afterComplete: () => {},
 };
-
-export default defaults;
