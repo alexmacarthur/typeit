@@ -30,7 +30,7 @@ For more advanced, controlled typing effects, TypeIt comes with companion functi
 
 ## License Options
 
-Using TypeIt for an open source or personal project is completely free. To use it in a commercial project, purchase a single license, or an unlimited license that'll never expire, no matter how many times you use it.
+Using TypeIt for an open source or personal project is completely free is licensed under [GPLv3](https://www.gnu.org/licenses/quick-guide-gplv3.html). To use it in a commercial project, however, a paid license is required. Learn more about them here:
 
 -   Single Commercial License - [Purchase Here](https://typeitjs.com/checkout/limited)
 -   Extended Commercial License - [Purchase Here](https://typeitjs.com/checkout/unlimited)
@@ -58,7 +58,3 @@ I'd love to see and share it! [Send me a message](https://macarthur.me/contact) 
 ## Need Help?
 
 If you're working with a custom implementation of TypeIt and would like some help, I'm available for hire. [Get in touch!](https://macarthur.me/contact)
-
-## License
-
-[GPL-2.0](https://github.com/alexmacarthur/typeit/blob/master/LICENSE) © Alex MacArthur
