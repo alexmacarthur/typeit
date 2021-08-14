@@ -22,7 +22,8 @@
     "start": "concurrently --kill-others \"npm run watch\" \"serve\"",
     "prettier": "prettier --write \"**/*.{md,js,ts}\"",
     "test": "jest",
-    "postinstall": "node ./scripts/notice.js"
+    "postinstall": "node ./scripts/notice.js",
+    "prepare": "husky install"
   },
   "keywords": [
     "javascript",
@@ -39,14 +40,14 @@
     "url": "git+https://github.com/alexmacarthur/typeit.git"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "^7.13.0",
-    "concurrently": "^6.0.2",
-    "husky": "^6.0.0",
+    "@babel/preset-typescript": "^7.15.0",
+    "concurrently": "^6.2.1",
+    "husky": "^7.0.1",
     "jest": "^27.0.6",
     "jest-cli": "^27.0.6",
-    "microbundle": "^0.13.1",
-    "prettier": "^2.2.1",
-    "pretty-quick": "^3.1.0",
+    "lint-staged": "^11.1.2",
+    "microbundle": "^0.13.3",
+    "prettier": "^2.3.2",
     "serve": "^12.0.0",
     "typescript": "^4.3.5"
   },
@@ -54,15 +55,13 @@
     "testPathIgnorePatterns": [
       "<rootDir>/__tests__/setup.js"
     ],
-    "setupFiles": [
+    "setupFilesAfterEnv": [
       "./__tests__/setup.js"
     ],
     "testEnvironment": "jsdom"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
-  },
-  "browserslist": "supports es6-module and supports es6-module-dynamic-import, not opera > 0, not samsung > 0, not and_qq > 0"
+  "browserslist": "supports es6-module and supports es6-module-dynamic-import, not opera > 0, not samsung > 0, not and_qq > 0",
+  "lint-staged": {
+    "*.{js,md}": "prettier --write"
+  }
 }

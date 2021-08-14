@@ -30,3 +30,7 @@ global.expandTextNodes = (element) => {
     global.expandTextNodes(child);
   });
 };
+
+beforeEach(() => {
+  jest.spyOn(window, "requestAnimationFrame").mockImplementation((cb) => cb());
+});

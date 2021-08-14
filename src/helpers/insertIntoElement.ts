@@ -112,10 +112,12 @@ const insertIntoElement = (
   ];
   let elementToTypeInto = lastNode ? lastNode.parentNode : targetElement;
 
-  elementToTypeInto.insertBefore(
-    content as Element,
-    (elementToTypeInto as Element).contains(cursorNode) ? cursorNode : null
-  );
+  requestAnimationFrame(() => {
+    elementToTypeInto.insertBefore(
+      content as Element,
+      (elementToTypeInto as Element).contains(cursorNode) ? cursorNode : null
+    );
+  });
 };
 
 export default insertIntoElement;
