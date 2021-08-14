@@ -9,7 +9,7 @@ const wait = async (callback: Function, delay: number, timeouts) => {
       resolve();
     };
 
-    timeouts.push((setTimeout(cb, delay) as unknown) as number);
+    timeouts.push(setTimeout(cb, delay) as unknown as number);
   });
 };
 
