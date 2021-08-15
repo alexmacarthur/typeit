@@ -8,10 +8,10 @@ export const cursorFontStyles = {
   "font-size": "",
   "font-style": "",
   "line-height": "",
-  "color": "",
+  color: "",
   "margin-left": "-.125em",
-  "margin-right": ".125em"
- } as const;
+  "margin-right": ".125em",
+} as const;
 
 export const setCursorStyles = (
   id: string,
@@ -24,14 +24,17 @@ export const setCursorStyles = (
 
   let customProperties = Object.entries(cursorFontStyles).reduce(
     (accumulator, [item, value]) => {
-      return `${accumulator} ${item}: var(--ti-${item}, ${value || computedStyles[item]});`;
+      return `${accumulator} ${item}: var(--ti-${item}, ${
+        value || computedStyles[item]
+      });`;
     },
     ""
   );
 
   // Set animation styles & custom properties.
   appendStyleBlock(
-    `@keyframes blink-${id} { 0% {opacity: 0} 49% {opacity: 0} 50% {opacity: 1} } ${cursorSelector} { display: inline; letter-spacing: -1em; ${customProperties} animation: blink-${id} ${options.cursorSpeed / 1000
+    `@keyframes blink-${id} { 0% {opacity: 0} 49% {opacity: 0} 50% {opacity: 1} } ${cursorSelector} { display: inline; letter-spacing: -1em; ${customProperties} animation: blink-${id} ${
+      options.cursorSpeed / 1000
     }s infinite; } ${cursorSelector}.with-delay { animation-delay: 500ms; } ${cursorSelector}.disabled { animation: none; }`,
     id
   );

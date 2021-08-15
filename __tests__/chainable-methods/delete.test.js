@@ -5,7 +5,7 @@ beforeEach(() => {
   jest.clearAllMocks();
 });
 
-describe("typing fires correctly", () => {
+describe("deleting fires correctly", () => {
   test("Deletes until beginning of selected element.", (done) => {
     setHTML`<span id="el"></span>`;
     const el = document.getElementById("el");
@@ -100,6 +100,46 @@ describe("timeouts fire correctly", () => {
       },
     })
       .delete(2)
+      .go();
+  });
+});
+
+describe("cursor has been moved", () => {
+  beforeEach(() => {
+    setHTML`<div>
+      <span id="element"></span>
+    </div>`;
+  });
+
+  test("Executes correctly when number of characters is passed", (done) => {
+    new TypeIt("#element", {
+      strings: "abc <strong>def</strong> ghi <em>jkl</em> mno",
+      speed: 0,
+      afterComplete: () => {
+        expect(document.body.querySelector("#element").innerHTML).toEqual(
+          'abc <strong>def</strong> g<em><span class="ti-cursor with-delay">|</span>jkl</em> mno'
+        );
+        done();
+      },
+    })
+      .move("em")
+      .delete(3)
+      .go();
+  });
+
+  test("Executes correctly when selector is passed", (done) => {
+    new TypeIt("#element", {
+      strings: "abc <strong>def</strong> ghi <em>jkl</em> mno",
+      speed: 0,
+      afterComplete: () => {
+        expect(document.body.querySelector("#element").innerHTML).toEqual(
+          'abc <span class="ti-cursor with-delay">|</span> mno'
+        );
+        done();
+      },
+    })
+      .move("em", { to: "end" })
+      .delete("strong", { instant: true })
       .go();
   });
 });

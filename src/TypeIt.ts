@@ -48,6 +48,15 @@ export default function TypeIt(
   options: Options = {}
 ): void {
   const _wait = async (callback: Function, delay: number) => {
+    if (_statuses.frozen) {
+      await new Promise<void>((resolve) => {
+        this.unfreeze = () => {
+          _statuses.frozen = false;
+          resolve();
+        };
+      });
+    }
+
     return await wait(callback, delay, _timeouts);
   };
 
@@ -223,10 +232,6 @@ export default function TypeIt(
 
     try {
       for (let i = 0; i < queueItems.length; i++) {
-        if (_statuses.frozen || _statuses.destroyed) {
-          throw "";
-        }
-
         let queueAction = queueItems[i];
         let queueActionMeta = queueAction[2];
 
@@ -365,16 +370,15 @@ export default function TypeIt(
     instant?: boolean;
     to?: Sides;
   }): Promise<void> => {
-    const _calculateDeleteSteps = (arg: any) => {
-      if (isNumber(arg)) {
-        return arg;
-      }
-
-      return calculateStepsToSelector(arg as string, _element, to);
-    };
-
     await _wait(async () => {
-      let rounds = _calculateDeleteSteps(num);
+      let rounds = isNumber(num)
+        ? num
+        : calculateCursorSteps({
+            el: _element,
+            move: num,
+            cursorPos: _cursorPosition,
+            to,
+          });
 
       const deleteIt = () => {
         let allChars = _getAllChars();
@@ -517,13 +521,10 @@ export default function TypeIt(
   };
 
   this.freeze = function () {
-    _statuses["frozen"] = true;
+    _statuses.frozen = true;
   };
 
-  this.unfreeze = function () {
-    _statuses["frozen"] = false;
-    _fire();
-  };
+  this.unfreeze = function () {};
 
   this.reset = function () {
     !this.is("destroyed") && this.destroy();
