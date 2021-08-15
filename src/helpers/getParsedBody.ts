@@ -3,8 +3,8 @@
  * of the parsed document.
  */
 export default (content): HTMLElement => {
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(content, "text/html");
+  let doc = document.implementation.createHTMLDocument();
+  doc.body.innerHTML = content;
 
   return doc.body;
 };
