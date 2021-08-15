@@ -137,20 +137,6 @@ export default function TypeIt(
     }
 
     setCursorStyles(_id, _opts, _element);
-
-    (document as any).fonts.status === "loaded" ||
-      (await (document as any).fonts.ready);
-
-    // Guarantee that the text has been fully painted after font has loaded.
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        const calculatedMargin = _cursor.getBoundingClientRect().width / 2;
-
-        _cursor.style.margin = `0 -${calculatedMargin + 2}px 0 -${
-          calculatedMargin - 2
-        }px`;
-      });
-    });
   };
 
   const _disableCursorBlink = (shouldDisable: boolean): void => {
