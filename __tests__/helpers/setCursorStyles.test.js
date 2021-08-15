@@ -33,7 +33,7 @@ it("sets styles", () => {
   );
 
   // Custom properties are being set.
-  cursorFontStyles.forEach((styleName) => {
+  Object.entries(cursorFontStyles).forEach(([styleName]) => {
     expect(document.head.innerHTML).toMatch(
       new RegExp(`var\\(--ti-${styleName}, (.+)\\);`)
     );
