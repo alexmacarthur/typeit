@@ -9,7 +9,6 @@ import asArray from "./helpers/asArray";
 import calculateCursorSteps from "./helpers/calculateCursorSteps";
 import calculateDelay from "./helpers/calculateDelay";
 import calculatePace from "./helpers/calculatePace";
-import calculateStepsToSelector from "./helpers/calculateStepsToSelector";
 import createElement from "./helpers/createElement";
 import destroyTimeouts from "./helpers/destroyTimeouts";
 import generateHash from "./helpers/generateHash";
@@ -47,7 +46,7 @@ export default function TypeIt(
   element: Element | string,
   options: Options = {}
 ): void {
-  const _wait = async (callback: Function, delay: number) => {
+  const _wait = async (callback: Function, delay: number, silent: boolean = false) => {
     if (_statuses.frozen) {
       await new Promise<void>((resolve) => {
         this.unfreeze = () => {
@@ -57,7 +56,11 @@ export default function TypeIt(
       });
     }
 
-    return await wait(callback, delay, _timeouts);
+    silent || await _opts.beforeStep(this);
+
+    await wait(callback, delay, _timeouts);
+
+    silent || await _opts.afterStep(this);
   };
 
   const _elementIsInput = () => {
@@ -174,12 +177,12 @@ export default function TypeIt(
 
       const splitPauseArgs: QueueItem[] = _opts.breakLines
         ? [
-            [
-              _type,
-              { chars: [createCharacterObject(createElement("BR"))] },
-              _freezeCursorMeta,
-            ],
-          ]
+          [
+            _type,
+            { chars: [createCharacterObject(createElement("BR"))], silent: true },
+            _freezeCursorMeta,
+          ],
+        ]
         : [[_delete, { num: chars.length }, _freezeCursorMeta]];
 
       _addSplitPause(splitPauseArgs);
@@ -228,22 +231,15 @@ export default function TypeIt(
     _statuses.started = true;
 
     let queueItems = _queue.getItems();
-    let callbackArgs;
 
     try {
       for (let i = 0; i < queueItems.length; i++) {
         let queueAction = queueItems[i];
         let queueActionMeta = queueAction[2];
 
-        callbackArgs = [queueAction, this];
-
         queueActionMeta.freezeCursor && _disableCursorBlink(true);
 
-        await _opts.beforeStep(...callbackArgs);
-
         await queueAction[0].call(this, queueAction[1], queueActionMeta);
-
-        await _opts.afterStep(...callbackArgs);
 
         _queue.setMeta(i, { executed: true });
 
@@ -252,7 +248,7 @@ export default function TypeIt(
 
       _statuses.completed = true;
 
-      await _opts.afterComplete(...callbackArgs);
+      await _opts.afterComplete(this);
 
       if (!_opts.loop) {
         throw "";
@@ -264,13 +260,13 @@ export default function TypeIt(
         await _prepLoop(delay[0]);
         _fire();
       }, delay[1]);
-    } catch (e) {}
+    } catch (e) { }
 
     return this;
   };
 
   const _pause = (time = 0): Promise<void> => {
-    return _wait(() => {}, time);
+    return _wait(() => { }, time);
   };
 
   /**
@@ -332,12 +328,12 @@ export default function TypeIt(
         instant
           ? insert(chars[i])
           : await _wait(() => {
-              insert(chars[i]);
-            }, _getPace(0));
+            insert(chars[i]);
+          }, _getPace(0));
       }
 
       silent || (await _opts.afterString(chars, this));
-    }, _getActionPace(instant));
+    }, _getActionPace(instant), true);
   };
 
   const _options = async (opts) => {
@@ -374,11 +370,11 @@ export default function TypeIt(
       let rounds = isNumber(num)
         ? num
         : calculateCursorSteps({
-            el: _element,
-            move: num,
-            cursorPos: _cursorPosition,
-            to,
-          });
+          el: _element,
+          move: num,
+          cursorPos: _cursorPosition,
+          to,
+        });
 
       const deleteIt = () => {
         let allChars = _getAllChars();
@@ -436,11 +432,11 @@ export default function TypeIt(
     );
   };
 
-  this.empty = function (actionOpts: ActionOpts = {}) {
+  this.empty = function (actionOpts = {}) {
     return _queueAndReturn([[_empty]], actionOpts);
   };
 
-  this.exec = function (func: () => any, actionOpts?: ActionOpts) {
+  this.exec = function (func: () => any, actionOpts) {
     let bookEndQueueItems = _generateTemporaryOptionQueueItems(actionOpts);
     return _queueAndReturn(
       [bookEndQueueItems[0], [func, null], bookEndQueueItems[1]],
@@ -524,7 +520,7 @@ export default function TypeIt(
     _statuses.frozen = true;
   };
 
-  this.unfreeze = function () {};
+  this.unfreeze = function () { };
 
   this.reset = function () {
     !this.is("destroyed") && this.destroy();

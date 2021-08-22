@@ -87,6 +87,7 @@ Array [
           "node": null,
         },
       ],
+      "silent": true,
     },
     Object {
       "freezeCursor": true,
