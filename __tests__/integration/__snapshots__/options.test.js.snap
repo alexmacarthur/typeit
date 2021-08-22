@@ -595,6 +595,7 @@ Array [
           "node": null,
         },
       ],
+      "silent": true,
     },
     Object {
       "freezeCursor": true,
@@ -1112,6 +1113,7 @@ Array [
           "node": null,
         },
       ],
+      "silent": true,
     },
     Object {
       "freezeCursor": true,
