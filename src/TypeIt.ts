@@ -326,7 +326,7 @@ export default function TypeIt(
       const insert = (character) =>
         insertIntoElement(_element, character, _cursor, _cursorPosition);
 
-      silent || (await _opts.beforeString(chars));
+      silent || (await _opts.beforeString(chars, this));
 
       for (let i = 0; i < chars.length; i++) {
         instant
@@ -336,7 +336,7 @@ export default function TypeIt(
             }, _getPace(0));
       }
 
-      silent || (await _opts.afterString(chars));
+      silent || (await _opts.afterString(chars, this));
     }, _getActionPace(instant));
   };
 
@@ -436,11 +436,11 @@ export default function TypeIt(
     );
   };
 
-  this.empty = function (actionOpts = {}) {
+  this.empty = function (actionOpts: ActionOpts = {}) {
     return _queueAndReturn([[_empty]], actionOpts);
   };
 
-  this.exec = function (func: () => any, actionOpts) {
+  this.exec = function (func: () => any, actionOpts?: ActionOpts) {
     let bookEndQueueItems = _generateTemporaryOptionQueueItems(actionOpts);
     return _queueAndReturn(
       [bookEndQueueItems[0], [func, null], bookEndQueueItems[1]],

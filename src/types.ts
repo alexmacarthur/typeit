@@ -29,6 +29,7 @@ export type Options = {
 export type ActionOpts = Options & {
   to?: "START" | "END";
   instant?: boolean;
+  delay?: number;
 };
 
 export type QueueItem = [Function?, any?, { [key: string]: any }?];
