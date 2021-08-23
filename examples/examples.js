@@ -155,3 +155,31 @@ new TypeIt("#instant-actions", {
   })
   .move("strong", { instant: true })
   .go();
+
+const freezeInstance = new TypeIt("#freeze-unfreeze", {
+  speed: 50,
+  strings: "You should be able to freeze & unfreeze this whenever you want.",
+  loop: true,
+}).go();
+
+document.querySelector("#freezeButton").addEventListener("click", () => {
+  if (freezeInstance.is("frozen")) {
+    freezeInstance.unfreeze();
+  } else {
+    freezeInstance.freeze();
+  }
+});
+
+new TypeIt("#rainbow-text", {
+  speed: 50,
+  strings: ["Look, it's rainbow text!"],
+  loop: true,
+  afterStep: function (instance) {
+    let letters = "0123456789ABCDEF";
+    let color = "#";
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    instance.getElement().style.color = color;
+  },
+}).go();

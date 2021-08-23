@@ -46,7 +46,11 @@ export default function TypeIt(
   element: Element | string,
   options: Options = {}
 ): void {
-  const _wait = async (callback: Function, delay: number, silent: boolean = false) => {
+  const _wait = async (
+    callback: Function,
+    delay: number,
+    silent: boolean = false
+  ) => {
     if (_statuses.frozen) {
       await new Promise<void>((resolve) => {
         this.unfreeze = () => {
@@ -56,11 +60,11 @@ export default function TypeIt(
       });
     }
 
-    silent || await _opts.beforeStep(this);
+    silent || (await _opts.beforeStep(this));
 
     await wait(callback, delay, _timeouts);
 
-    silent || await _opts.afterStep(this);
+    silent || (await _opts.afterStep(this));
   };
 
   const _elementIsInput = () => {
@@ -177,12 +181,15 @@ export default function TypeIt(
 
       const splitPauseArgs: QueueItem[] = _opts.breakLines
         ? [
-          [
-            _type,
-            { chars: [createCharacterObject(createElement("BR"))], silent: true },
-            _freezeCursorMeta,
-          ],
-        ]
+            [
+              _type,
+              {
+                chars: [createCharacterObject(createElement("BR"))],
+                silent: true,
+              },
+              _freezeCursorMeta,
+            ],
+          ]
         : [[_delete, { num: chars.length }, _freezeCursorMeta]];
 
       _addSplitPause(splitPauseArgs);
@@ -260,13 +267,13 @@ export default function TypeIt(
         await _prepLoop(delay[0]);
         _fire();
       }, delay[1]);
-    } catch (e) { }
+    } catch (e) {}
 
     return this;
   };
 
   const _pause = (time = 0): Promise<void> => {
-    return _wait(() => { }, time);
+    return _wait(() => {}, time);
   };
 
   /**
@@ -318,22 +325,26 @@ export default function TypeIt(
     instant: boolean;
     silent: boolean;
   }): Promise<void> => {
-    return _wait(async () => {
-      const insert = (character) =>
-        insertIntoElement(_element, character, _cursor, _cursorPosition);
+    return _wait(
+      async () => {
+        const insert = (character) =>
+          insertIntoElement(_element, character, _cursor, _cursorPosition);
 
-      silent || (await _opts.beforeString(chars, this));
+        silent || (await _opts.beforeString(chars, this));
 
-      for (let i = 0; i < chars.length; i++) {
-        instant
-          ? insert(chars[i])
-          : await _wait(() => {
-            insert(chars[i]);
-          }, _getPace(0));
-      }
+        for (let i = 0; i < chars.length; i++) {
+          instant
+            ? insert(chars[i])
+            : await _wait(() => {
+                insert(chars[i]);
+              }, _getPace(0));
+        }
 
-      silent || (await _opts.afterString(chars, this));
-    }, _getActionPace(instant), true);
+        silent || (await _opts.afterString(chars, this));
+      },
+      _getActionPace(instant),
+      true
+    );
   };
 
   const _options = async (opts) => {
@@ -370,11 +381,11 @@ export default function TypeIt(
       let rounds = isNumber(num)
         ? num
         : calculateCursorSteps({
-          el: _element,
-          move: num,
-          cursorPos: _cursorPosition,
-          to,
-        });
+            el: _element,
+            move: num,
+            cursorPos: _cursorPosition,
+            to,
+          });
 
       const deleteIt = () => {
         let allChars = _getAllChars();
@@ -520,7 +531,7 @@ export default function TypeIt(
     _statuses.frozen = true;
   };
 
-  this.unfreeze = function () { };
+  this.unfreeze = function () {};
 
   this.reset = function () {
     !this.is("destroyed") && this.destroy();
