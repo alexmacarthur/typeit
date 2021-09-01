@@ -1,5 +1,6 @@
 import TypeIt from "../../src/TypeIt";
 import * as wait from "../../src/helpers/wait";
+import * as repositionCursor from "../../src/helpers/repositionCursor";
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -65,6 +66,52 @@ describe("timeouts fire correctly", () => {
       },
     })
       .move("strong")
+      .go();
+  });
+});
+
+describe("moves only within range", () => {
+  let repositionCursorSpy;
+
+  beforeEach(() => {
+    setHTML`<div>
+      <span id="element"></span>
+    </div>`;
+
+    repositionCursorSpy = jest.spyOn(repositionCursor, "default");
+  });
+
+  it("bottom end of range", (done) => {
+    new TypeIt("#element", {
+      speed: 0,
+      afterComplete: () => {
+        expect(repositionCursorSpy.mock.calls).toEqual([
+          [expect.anything(), expect.anything(), expect.anything(), 0],
+          [expect.anything(), expect.anything(), expect.anything(), 0],
+        ]);
+        done();
+      },
+    })
+      .type("Hi!")
+      .move(2) // Number of steps is out of range of printed characters.
+      .go();
+  });
+
+  it("top end of range", (done) => {
+    new TypeIt("#element", {
+      speed: 0,
+      afterComplete: () => {
+        expect(repositionCursorSpy.mock.calls).toEqual([
+          [expect.anything(), expect.anything(), expect.anything(), 1],
+          [expect.anything(), expect.anything(), expect.anything(), 2],
+          [expect.anything(), expect.anything(), expect.anything(), 3],
+          [expect.anything(), expect.anything(), expect.anything(), 3],
+        ]);
+        done();
+      },
+    })
+      .type("Hi!")
+      .move(-4) // Number of steps is out of range of printed characters.
       .go();
   });
 });

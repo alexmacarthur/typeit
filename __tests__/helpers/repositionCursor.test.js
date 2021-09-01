@@ -38,12 +38,6 @@ test("Moves cursor three back and two forward.", () => {
   expect(document.body.innerHTML).toMatchSnapshot();
 });
 
-test("Stops moving when at beginning of string.", () => {
-  repositionCursor(element, allCharacters, cursor, 100);
-
-  expect(document.body.innerHTML).toMatchSnapshot();
-});
-
 test("Stops moving when at end of string.", () => {
   repositionCursor(element, allCharacters, cursor, -100);
 
