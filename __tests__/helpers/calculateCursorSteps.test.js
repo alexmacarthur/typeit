@@ -192,3 +192,28 @@ describe("string has nested HTML", () => {
     expect(result).toEqual(19);
   });
 });
+
+describe("arg is outside bounds", () => {
+  it("returns zero when overshooting back", async () => {
+    const el = document.querySelector("#el");
+
+    await new Promise((resolve) => {
+      new TypeIt(el, {
+        strings: "Hi, <strong class='t'>Bob!</strong>",
+        speed: 0,
+        afterComplete: () => {
+          return resolve();
+        },
+      }).go();
+    });
+
+    const result = calculateCursorSteps({
+      el,
+      move: null,
+      cursorPos: 8,
+      to: "end",
+    });
+
+    expect(result).toEqual(-8);
+  });
+});

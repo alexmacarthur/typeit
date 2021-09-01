@@ -6,6 +6,4 @@ exports[`Moves cursor three back and two forward. 1`] = `"<span id=\\"el\\">1234
 
 exports[`Moves cursor three steps back. 1`] = `"<span id=\\"el\\">12<i id=\\"cursor\\">|</i>345</span>"`;
 
-exports[`Stops moving when at beginning of string. 1`] = `"<span id=\\"el\\"><i id=\\"cursor\\">|</i>12345</span>"`;
-
 exports[`Stops moving when at end of string. 1`] = `"<span id=\\"el\\">12345<i id=\\"cursor\\">|</i></span>"`;

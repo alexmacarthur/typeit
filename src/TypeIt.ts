@@ -19,6 +19,7 @@ import handleFunctionalArg from "./helpers/handleFunctionalArg";
 import isNumber from "./helpers/isNumber";
 import insertIntoElement from "./helpers/insertIntoElement";
 import isInput from "./helpers/isInput";
+import updateCursorPosition from "./helpers/updateCursorPosition";
 import merge from "./helpers/merge";
 import removeNode from "./helpers/removeNode";
 import removeEmptyElements from "./helpers/removeEmptyElements";
@@ -296,7 +297,12 @@ export default function TypeIt(
     });
 
     let moveCursor = () => {
-      _cursorPosition += numberOfSteps < 0 ? -1 : 1;
+      _cursorPosition = updateCursorPosition(
+        numberOfSteps < 0 ? -1 : 1,
+        _cursorPosition,
+        _getAllChars()
+      );
+
       repositionCursor(_element, _getAllChars(), _cursor, _cursorPosition);
     };
 
