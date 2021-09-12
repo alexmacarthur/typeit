@@ -1,0 +1,17 @@
+#!/bin/bash
+
+PURPLE='\033[0;1;35m'
+
+printf "${PURPLE}
+Thanks for using...
+  _____                 ___ _   
+ |_   _|   _ _ __   ___|_ _| |_ 
+   | || | | | '_ \ / _ \| || __|
+   | || |_| | |_) |  __/| || |_ 
+   |_| \__, | .__/ \___|___|\__|
+       |___/|_|                 
+
+If you're using this library commercially, please purchase a license:
+
+https://typeitjs.com
+"

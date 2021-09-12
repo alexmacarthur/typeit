@@ -1,6 +1,6 @@
 {
   "name": "typeit",
-  "version": "8.0.2",
+  "version": "8.0.3",
   "description": "The most versatile animated typing utility on the planet.",
   "author": "Alex MacArthur <alex@macarthur.me> (https://macarthur.me)",
   "license": "GPL-3.0",
@@ -22,7 +22,7 @@
     "start": "concurrently --kill-others \"npm run watch\" \"serve\"",
     "prettier": "prettier --write \"**/*.{md,js,ts}\"",
     "test": "jest",
-    "postinstall": "node ./scripts/notice.js",
+    "postinstall": "./scripts/notice",
     "prepare": "husky install"
   },
   "keywords": [
@@ -42,14 +42,14 @@
   "devDependencies": {
     "@babel/preset-typescript": "^7.15.0",
     "concurrently": "^6.2.1",
-    "husky": "^7.0.1",
-    "jest": "^27.0.6",
-    "jest-cli": "^27.0.6",
+    "husky": "^7.0.2",
+    "jest": "^27.1.1",
+    "jest-cli": "^27.1.1",
     "lint-staged": "^11.1.2",
     "microbundle": "^0.13.3",
-    "prettier": "^2.3.2",
-    "serve": "^12.0.0",
-    "typescript": "^4.3.5"
+    "prettier": "^2.4.0",
+    "serve": "^12.0.1",
+    "typescript": "^4.4.3"
   },
   "jest": {
     "testPathIgnorePatterns": [
