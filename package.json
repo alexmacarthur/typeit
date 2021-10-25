@@ -1,63 +1,23 @@
 {
-  "name": "typeit",
-  "version": "8.0.4",
-  "description": "The most versatile animated typing utility on the planet.",
-  "author": "Alex MacArthur <alex@macarthur.me> (https://macarthur.me)",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/alexmacarthur/typeit/issues"
-  },
-  "homepage": "https://typeitjs.com",
-  "main": "dist/index.umd.js",
-  "module": "dist/index.es.js",
-  "types": "dist/types.d.ts",
-  "files": [
-    "dist/",
-    "scripts/"
-  ],
+  "name": "typeit-monorepo",
+  "version": "0.0.0",
+  "description": "The monorepo for managing TypeIt libraries.",
+  "main": "",
+  "author": "Alex MacArthur",
   "scripts": {
-    "build": "vite build && tsc && scripts/banner",
-    "start": "vite serve examples",
-    "prettier": "prettier --write \"**/*.{md,js,ts}\"",
-    "test": "jest",
-    "postinstall": "./scripts/notice"
-  },
-  "keywords": [
-    "javascript",
-    "animated",
-    "typing",
-    "typing effect",
-    "typewriter",
-    "typewriter effect",
-    "type effect",
-    "text effects"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/alexmacarthur/typeit.git"
-  },
-  "devDependencies": {
-    "@babel/preset-env": "^7.15.8",
-    "@babel/preset-typescript": "^7.15.0",
-    "husky": "^7.0.4",
-    "jest": "^27.3.1",
-    "jest-cli": "^27.3.1",
-    "lint-staged": "^11.2.4",
-    "prettier": "^2.4.1",
-    "serve": "^12.0.1",
-    "typescript": "^4.4.4",
-    "vite": "^2.6.10"
-  },
-  "jest": {
-    "testPathIgnorePatterns": [
-      "<rootDir>/__tests__/setup.js"
-    ],
-    "setupFilesAfterEnv": [
-      "./__tests__/setup.js"
-    ],
-    "testEnvironment": "jsdom"
+    "build": "lerna run test && lerna run build",
+    "publish": "lerna publish",
+    "bootstrap": "lerna bootstrap --force-local",
+    "test": "lerna run test",
+    "prettier": "prettier --write \"./packages/**/*.{md,js,tsx?}\""
   },
   "lint-staged": {
     "*.{js,md}": "prettier --write"
+  },
+  "devDependencies": {
+    "husky": "^7.0.4",
+    "lerna": "^4.0.0",
+    "lint-staged": "^11.2.4",
+    "prettier": "^2.4.1"
   }
 }
