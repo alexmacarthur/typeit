@@ -5,7 +5,7 @@ on:
     branches: [master]
 
 env:
-  NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+  NPM_TOKEN: ${{secrets.NPM_ACCESS_TOKEN}}
 
 jobs:
   build:
@@ -17,7 +17,7 @@ jobs:
           node-version: 14
           registry-url: https://registry.npmjs.org/
       - name: Set Auth Token
-        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_ACCESS_TOKEN}" > .npmrc
       - name: Build Package
         run: |
           npm install
