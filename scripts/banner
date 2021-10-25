@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DIST_PATH="$(pwd)/dist"
-DIST_FILES=("index.modern.js" "index.js" "index.umd.js" "index.esm.js")
+DIST_FILES=("index.umd.js" "index.es.js")
 
 for f in "${DIST_FILES[@]}"
 do
