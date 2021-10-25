@@ -1,2 +1,1 @@
-dist/*
-sandbox.html
+packages/*/dist

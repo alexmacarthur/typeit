@@ -1,0 +1,56 @@
+{
+  "name": "typeit",
+  "version": "8.0.4",
+  "description": "The most versatile animated typing utility on the planet.",
+  "author": "Alex MacArthur <alex@macarthur.me> (https://macarthur.me)",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/alexmacarthur/typeit/issues"
+  },
+  "homepage": "https://typeitjs.com",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.es.js",
+  "types": "dist/types.d.ts",
+  "files": [
+    "dist/",
+    "src/",
+    "scripts/"
+  ],
+  "scripts": {
+    "build": "vite build && tsc && scripts/banner",
+    "start": "vite serve examples",
+    "test": "jest",
+    "postinstall": "./scripts/notice"
+  },
+  "keywords": [
+    "javascript",
+    "animated",
+    "typing",
+    "typing effect",
+    "typewriter",
+    "typewriter effect",
+    "type effect",
+    "text effects"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexmacarthur/typeit.git"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-typescript": "^7.15.0",
+    "jest": "^27.3.1",
+    "jest-cli": "^27.3.1",
+    "typescript": "^4.4.4",
+    "vite": "^2.6.10"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "<rootDir>/__tests__/setup.js"
+    ],
+    "setupFilesAfterEnv": [
+      "./__tests__/setup.js"
+    ],
+    "testEnvironment": "jsdom"
+  }
+}
