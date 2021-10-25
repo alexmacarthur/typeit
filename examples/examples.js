@@ -1,3 +1,5 @@
+import TypeIt from "../src/TypeIt";
+
 window.instance = new TypeIt("#example1", {
   speed: 50,
   strings: "Just a simple string.",
