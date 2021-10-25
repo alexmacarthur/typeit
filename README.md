@@ -43,8 +43,8 @@ All of TypeIt's documentation can be found at [https://typeitjs.com/docs](https:
 
 ## Included Packages
 
-[typeit](./packages/typeit) - The original, vanilla JavaScript library.
-[typeit-react](./packages/typeit-react) - A simple React package wrapping the vanilla library.
+- [typeit](./packages/typeit) - The original, vanilla JavaScript library.
+- [typeit-react](./packages/typeit-react) - A simple React package wrapping the vanilla library.
 
 ## Contribute
 
