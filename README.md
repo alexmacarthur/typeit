@@ -19,14 +19,12 @@ For more advanced, controlled typing effects, TypeIt comes with companion functi
 
 ## Key Features
 
+-   Offers a beautiful, fluent API for chaining commands in order to fine-tune an effect.
 -   Choose to start typing only when your target element becomes visible on the screen.
 -   Loop your string(s) continuously.
--   Set strings to type via an options object or in the HTML (a useful fallback in case user doesn't have JavaScript enabled, as well as for SEO).
--   Use a single TypeIt instance to target several different elements on a page.
+-   Define strings programmatically or directly in the HTML (a useful fallback in case user doesn't have JavaScript enabled, as well as for SEO).
 -   Handle HTML (even nested tags!) with ease, preserving all of its attributes (classes, ids, etc.).
--   Use companion functions to chain individual commands together to fine tune your typing.
--   Ready to be included via JS module, or as a separate script loaded on your page (both "legacy" and modern bundles are provided).
--   No dependencies!
+-   Offered as an ES module for modern bundlers, or a UMD library for loading via a traditional `<script>` tags.
 
 ## License Options
 
@@ -43,9 +41,10 @@ See some more examples and try out the sandbox at [https://typeitjs.com](https:/
 
 All of TypeIt's documentation can be found at [https://typeitjs.com/docs](https://typeitjs.com/docs).
 
-## Looking for a React Component?
+## Included Packages
 
-Check out the official [React component for TypeIt](https://github.com/alexmacarthur/typeit-react) here.
+[typeit](./packages/typeit) - The original, vanilla JavaScript library.
+[typeit-react](./packages/typeit-react) - A simple React package wrapping the vanilla library.
 
 ## Contribute
 

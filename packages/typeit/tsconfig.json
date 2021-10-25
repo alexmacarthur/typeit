@@ -1,18 +1,8 @@
 {
+"extends": "../../tsconfig-base.json",
   "compilerOptions": {
-    "target": "ESNEXT",
-    "module": "ESNext",
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "outFile": "dist/types",
     "rootDir": "./src",
-    "strict": true,
-    "noImplicitAny": false,
-    "strictNullChecks": false,             
-    "noImplicitThis": false,               
-    "esModuleInterop": true, 
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "outFile": "dist/types",
   },
   "include": [
     "src/**/*"
