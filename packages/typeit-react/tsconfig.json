@@ -1,0 +1,13 @@
+{
+    "extends": "../../tsconfig-base.json",
+    "compilerOptions": {
+        "rootDir": "./src",
+        "outFile": "dist/index",
+        "jsx": "react",
+        "module": "es6",
+        "typeRoots": [
+            "./node_modules/@types", 
+            "src/types"
+        ]
+    }
+}
