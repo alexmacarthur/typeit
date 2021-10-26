@@ -6,8 +6,8 @@ The official React component for [TypeIt](https://typeitjs.com), the most versat
 
 Using TypeIt for an open source or personal project is completely free is licensed under [GPLv3](https://www.gnu.org/licenses/quick-guide-gplv3.html). To use it in a commercial project, however, a paid license is required.
 
-- Single Commercial License - [Purchase Here](https://typeitjs.com/checkout/limited)
-- Extended Commercial License - [Purchase Here](https://typeitjs.com/checkout/unlimited)
+-   Single Commercial License - [Purchase Here](https://typeitjs.com/checkout/limited)
+-   Extended Commercial License - [Purchase Here](https://typeitjs.com/checkout/unlimited)
 
 ## Installation
 
@@ -23,11 +23,11 @@ In its simplest implementation, import the component and wrap some text to be ty
 import TypeIt from "typeit-react";
 
 export default () => {
-  return (
-    <div className="App">
-      <TypeIt>This will be typed in a `span` element!</TypeIt>
-    </div>
-  );
+    return (
+        <div className="App">
+            <TypeIt>This will be typed in a `span` element!</TypeIt>
+        </div>
+    );
 };
 ```
 
@@ -40,17 +40,17 @@ import TypeIt from "typeit-react";
 
 // This could be any component that generates HTML.
 const SuperStrong = ({ children }) => {
-  return <strong style={{ fontSize: "80px" }}>{children}</strong>;
+    return <strong style={{ fontSize: "80px" }}>{children}</strong>;
 };
 
 export default () => {
-  return (
-    <div className="App">
-      <TypeIt>
-        Weak text. <SuperStrong>Super strong text.</SuperStrong>
-      </TypeIt>
-    </div>
-  );
+    return (
+        <div className="App">
+            <TypeIt>
+                Weak text. <SuperStrong>Super strong text.</SuperStrong>
+            </TypeIt>
+        </div>
+    );
 };
 ```
 
@@ -62,17 +62,17 @@ To tweak the animation to your liking, pass an object as the `options` prop. All
 import TypeIt from "typeit-react";
 
 export default () => {
-  return (
-    <div className="App">
-      <TypeIt
-        options={{
-          strings: ["This will be typed!"],
-          speed: 10,
-          waitUntilVisible: true,
-        }}
-      />
-    </div>
-  );
+    return (
+        <div className="App">
+            <TypeIt
+                options={{
+                    strings: ["This will be typed!"],
+                    speed: 10,
+                    waitUntilVisible: true,
+                }}
+            />
+        </div>
+    );
 };
 ```
 
@@ -84,11 +84,11 @@ Out of the box, a `span` element is used to contain the typing animation. To cho
 import TypeIt from "typeit-react";
 
 export default () => {
-  return (
-    <div className="App">
-      <TypeIt element={"h3"}>This will be typed in an H3 tag.</TypeIt>
-    </div>
-  );
+    return (
+        <div className="App">
+            <TypeIt element={"h3"}>This will be typed in an H3 tag.</TypeIt>
+        </div>
+    );
 };
 ```
 
@@ -100,12 +100,17 @@ TypeIt comes with a set of [special methods](https://typeitjs.com/docs#instance-
 import TypeIt from "typeit-react";
 
 <TypeIt
-  getBeforeInit={(instance) => {
-    instance.type("Hi, I'm Alxe").pause(750).delete(2).pause(500).type("ex!");
+    getBeforeInit={(instance) => {
+        instance
+            .type("Hi, I'm Alxe")
+            .pause(750)
+            .delete(2)
+            .pause(500)
+            .type("ex!");
 
-    // Remember to return it!
-    return instance;
-  }}
+        // Remember to return it!
+        return instance;
+    }}
 />;
 ```
 
@@ -115,35 +120,35 @@ Similarly, the `getAfterInit` prop allows you to access the instance _after_ it'
 
 ```javascript
 export default () => {
-  const [buttonText, setButtonText] = useState("Freeze");
-  const [instance, setInstance] = useState(null);
+    const [buttonText, setButtonText] = useState("Freeze");
+    const [instance, setInstance] = useState(null);
 
-  const toggleFreeze = () => {
-    if (instance.is("frozen")) {
-      instance.unfreeze();
-      setButtonText("Freeze");
-      return;
-    }
+    const toggleFreeze = () => {
+        if (instance.is("frozen")) {
+            instance.unfreeze();
+            setButtonText("Freeze");
+            return;
+        }
 
-    instance.freeze();
-    setButtonText("Unfreeze");
-  };
+        instance.freeze();
+        setButtonText("Unfreeze");
+    };
 
-  return (
-    <div className="App">
-      <button onClick={toggleFreeze}>{buttonText}</button>
+    return (
+        <div className="App">
+            <button onClick={toggleFreeze}>{buttonText}</button>
 
-      <TypeIt
-        options={{ loop: true }}
-        getAfterInit={(instance) => {
-          setInstance(instance);
-          return instance;
-        }}
-      >
-        This will just keep on going.
-      </TypeIt>
-    </div>
-  );
+            <TypeIt
+                options={{ loop: true }}
+                getAfterInit={(instance) => {
+                    setInstance(instance);
+                    return instance;
+                }}
+            >
+                This will just keep on going.
+            </TypeIt>
+        </div>
+    );
 };
 ```
 

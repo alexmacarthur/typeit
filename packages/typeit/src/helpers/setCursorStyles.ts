@@ -21,10 +21,9 @@ export const setCursorStyles = (
   let rootSelector = `[${DATA_ATTRIBUTE}='${id}']`;
   let cursorSelector = `${rootSelector} .${CURSOR_CLASS}`;
   let computedStyles = getComputedStyle(element);
-
-  let customProperties = Object.entries(cursorFontStyles).reduce(
+  let customProperties: string = Object.entries(cursorFontStyles).reduce(
     (accumulator, [item, value]) => {
-      return `${accumulator} ${item}: var(--ti-${item}, ${
+      return `${accumulator} ${item}: var(--ti-cursor-${item}, ${
         value || computedStyles[item]
       });`;
     },
