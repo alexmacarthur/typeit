@@ -1,4 +1,4 @@
-import TypeIt from "../src/TypeIt";
+import TypeIt from "../src";
 
 let instance;
 let args;

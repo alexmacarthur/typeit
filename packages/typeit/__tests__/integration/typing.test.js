@@ -1,4 +1,4 @@
-import TypeIt from "../../src/TypeIt";
+import TypeIt from "../../src";
 import { expect } from "@jest/globals";
 
 test("Generates a queue correctly.", () => {

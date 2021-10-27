@@ -1,5 +1,5 @@
 import calculateCursorSteps from "../../src/helpers/calculateCursorSteps";
-import TypeIt from "../../src/TypeIt";
+import TypeIt from "../../src";
 
 const createTypeItInstance = (strings) => {
   return new Promise((resolve) => {

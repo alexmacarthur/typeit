@@ -1,4 +1,4 @@
-import TypeIt from "../src/TypeIt";
+import TypeIt from "../src";
 
 window.instance = new TypeIt("#example1", {
   speed: 50,

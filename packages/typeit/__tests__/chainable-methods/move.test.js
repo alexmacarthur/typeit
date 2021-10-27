@@ -1,4 +1,4 @@
-import TypeIt from "../../src/TypeIt";
+import TypeIt from "../../src";
 import * as wait from "../../src/helpers/wait";
 import * as repositionCursor from "../../src/helpers/repositionCursor";
 

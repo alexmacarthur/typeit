@@ -10,7 +10,7 @@
   "homepage": "https://typeitjs.com",
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
-  "types": "dist/types.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
     "dist/",
     "src/",
