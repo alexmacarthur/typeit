@@ -20,7 +20,7 @@
     "build": "vite build && tsc && scripts/banner",
     "start": "vite serve examples",
     "test": "jest",
-    "postinstall": "./scripts/notice"
+    "postinstall": "node ./scripts/notice.js"
   },
   "keywords": [
     "javascript",
