@@ -1,11 +1,7 @@
 import * as React from 'react';
-import { default as TypeItCore } from 'typeit';
+import { default as TypeItCore, TypeItOptions } from 'typeit';
 const { useRef, useEffect, useState, useMemo } = React;
 import isVoidElement from "./helpers/isVoidElement";
-
-export interface TypeItOptions {
-  strings?: Array<string> | string
-}
 
 export interface TypeItProps {
   as?: keyof JSX.IntrinsicElements,

@@ -43,6 +43,9 @@ import {
   DATA_ATTRIBUTE,
 } from "./contants";
 
+// Necessary for publicly exposing types.
+export declare type TypeItOptions = Options;
+
 export default function TypeIt(
   element: Element | string,
   options: Options = {}
