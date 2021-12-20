@@ -71,13 +71,11 @@ export default function TypeIt(
     silent || (await _opts.afterStep(this));
   };
 
-  const _elementIsInput = () => {
-    return isInput(_element);
-  };
+  const _elementIsInput = () => isInput(_element);
 
-  const _getPace = (index: number): number => {
-    return calculatePace(_opts)[index];
-  };
+  const _getPace = (index: number): number => calculatePace(_opts)[index];
+
+  const _getAllChars = (): Element[] => getAllChars(_element);
 
   const _getActionPace = (instant: boolean, paceIndex: number = 0): number => {
     return instant ? _getPace(paceIndex) : 0;
@@ -93,10 +91,6 @@ export default function TypeIt(
     _maybeAppendPause(opts);
 
     return this;
-  };
-
-  const _getAllChars = (): Element[] => {
-    return getAllChars(_element);
   };
 
   const _generateTemporaryOptionQueueItems = (
@@ -152,11 +146,7 @@ export default function TypeIt(
   const _attachCursor = async () => {
     !_elementIsInput() && _element.appendChild(_cursor);
 
-    if (!_shouldRenderCursor) {
-      return;
-    }
-
-    setCursorStyles(_id, _opts, _element);
+    _shouldRenderCursor && setCursorStyles(_id, _opts, _element);
   };
 
   const _disableCursorBlink = (shouldDisable: boolean): void => {
@@ -575,17 +565,13 @@ export default function TypeIt(
     return this;
   };
 
-  this.getQueue = function () {
-    return _queue;
-  };
+  this.getQueue = () => _queue;
 
-  this.getOptions = function () {
-    return _opts;
-  };
+  this.getOptions = () => _opts;
 
-  this.getElement = function () {
-    return _element;
-  };
+  this.updateOptions = (options: Options) => _options(options);
+
+  this.getElement = () => _element;
 
   let _element = selectorToElement(element);
   let _timeouts: number[] = [];

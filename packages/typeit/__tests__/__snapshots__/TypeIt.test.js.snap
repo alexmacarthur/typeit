@@ -29,6 +29,7 @@ Array [
   "reset",
   "type",
   "unfreeze",
+  "updateOptions",
 ]
 `;
 
