@@ -1,6 +1,6 @@
 {
   "name": "typeit-react",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "React component for the most versatile JavaScript animated typing utility on the planet.",
   "homepage": "https://typeitjs.com",
   "main": "dist/index.umd.js",
