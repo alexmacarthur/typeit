@@ -5,7 +5,7 @@
   "main": "",
   "author": "Alex MacArthur",
   "scripts": {
-    "build": "lerna run test && lerna run build",
+    "build": "lerna run build",
     "publish": "lerna publish",
     "bootstrap": "lerna bootstrap --force-local",
     "test": "lerna run test",
