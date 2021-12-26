@@ -16,21 +16,6 @@ document.fonts = {
   },
 };
 
-global.expandTextNodes = (element) => {
-  [...element.childNodes].forEach((child) => {
-    if (child.nodeValue) {
-      child.nodeValue.split("").forEach((c) => {
-        child.parentNode.insertBefore(document.createTextNode(c), child);
-      });
-
-      child.remove();
-      return;
-    }
-
-    global.expandTextNodes(child);
-  });
-};
-
 beforeEach(() => {
   jest.spyOn(window, "requestAnimationFrame").mockImplementation((cb) => cb());
 });

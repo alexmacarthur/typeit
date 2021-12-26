@@ -1,9 +1,6 @@
 import Queue from "./Queue";
-import {
-  chunkStringAsHtml,
-  maybeChunkStringAsHtml,
-  createCharacterObject,
-} from "./helpers/chunkStrings";
+import { maybeChunkStringAsHtml } from "./helpers/chunkStrings";
+import expandTextNodes from "./helpers/expandTextNodes";
 import appendStyleBlock from "./helpers/appendStyleBlock";
 import asArray from "./helpers/asArray";
 import calculateCursorSteps from "./helpers/calculateCursorSteps";
@@ -22,13 +19,12 @@ import isInput from "./helpers/isInput";
 import updateCursorPosition from "./helpers/updateCursorPosition";
 import merge from "./helpers/merge";
 import removeNode from "./helpers/removeNode";
-import removeEmptyElements from "./helpers/removeEmptyElements";
 import repositionCursor from "./helpers/repositionCursor";
 import selectorToElement from "./helpers/selectorToElement";
+import isNonVoidElement from "./helpers/isNonVoidElement";
 import wait from "./helpers/wait";
 import { setCursorStyles } from "./helpers/setCursorStyles";
 import {
-  Character,
   Element,
   Options,
   QueueItem,
@@ -180,7 +176,7 @@ export default function TypeIt(
       const splitPauseArgs: QueueItem[] = [
         _opts.breakLines 
         ? () => _type({
-          chars: [createCharacterObject(createElement("BR"))],
+          chars: [createElement("BR")],
           silent: true,
         })
         : () => _delete({ num: chars.length })
@@ -214,9 +210,8 @@ export default function TypeIt(
     _element.innerHTML = "";
 
     if (_opts.startDelete) {
-      chunkStringAsHtml(existingMarkup).forEach((item) => {
-        insertIntoElement(_element, item, _cursor, _cursorPosition);
-      });
+      _element.innerHTML = existingMarkup;
+      expandTextNodes(_element);
 
       _addSplitPause([
         () => _delete({ num: null})
@@ -295,7 +290,7 @@ export default function TypeIt(
         _getAllChars()
       );
 
-      repositionCursor(_element, _getAllChars(), _cursor, _cursorPosition);
+      repositionCursor(_element, _getAllChars(), _cursorPosition);
     };
 
     /**
@@ -319,7 +314,7 @@ export default function TypeIt(
     silent = false,
     instant = false,
   }: {
-    chars: Character[];
+    chars: Partial<Element>[];
     instant?: boolean;
     silent?: boolean;
   }): Promise<void> => {
@@ -328,16 +323,14 @@ export default function TypeIt(
     return _wait(
       async () => {
         const insert = (character) =>
-          insertIntoElement(_element, character, _cursor, _cursorPosition);
+          insertIntoElement(_element, character);
 
         silent || (await _opts.beforeString(chars, this));
 
-        for (let i = 0; i < chars.length; i++) {
-          instant
-            ? insert(chars[i])
-            : await _wait(() => {
-                insert(chars[i]);
-              }, _getPace(0));
+        for (let char of chars) {
+          instant || isNonVoidElement(char)
+            ? insert(char)
+            : await _wait(() => insert(char), _getPace(0));
         }
 
         silent || (await _opts.afterString(chars, this));
@@ -377,10 +370,10 @@ export default function TypeIt(
     instant?: boolean;
     to?: Sides;
   }): Promise<void> => {
-    _disableCursorBlink(true)
+    _disableCursorBlink(true);
 
     await _wait(async () => {
-      let rounds = isNumber(num)
+      let rounds = isNumber(num) || _elementIsInput()
         ? num
         : calculateCursorSteps({
             el: _element,
@@ -398,7 +391,6 @@ export default function TypeIt(
           _element.value = (_element.value as string).slice(0, -1);
         } else {
           removeNode(allChars[_cursorPosition]);
-          removeEmptyElements(_element, _cursor);
         }
       };
 
@@ -418,10 +410,8 @@ export default function TypeIt(
   };
 
   this.break = function (actionOpts) {
-    const breakCharacter = createCharacterObject(createElement("BR"));
-
     return _queueAndReturn(
-      () => _type({ chars: [breakCharacter], silent: true }),
+      () => _type({ chars: [createElement("BR")], silent: true }),
       actionOpts
     );
   };
@@ -505,6 +495,7 @@ export default function TypeIt(
 
     let bookEndQueueItems = _generateTemporaryOptionQueueItems(actionOpts);
     let chars = maybeChunkStringAsHtml(string, _opts.html);
+
     let { instant } = actionOpts;
 
     /**

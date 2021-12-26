@@ -1,4 +1,5 @@
 import calculateStepsToSelector from "../../src/helpers/calculateStepsToSelector";
+import expandTextNodes from "../../src/helpers/expandTextNodes";
 
 describe("moving toward the beginning", () => {
   it("calculates correctly with basic HTML", () => {

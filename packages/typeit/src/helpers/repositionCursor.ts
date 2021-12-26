@@ -1,12 +1,14 @@
+import { CURSOR_CLASS } from "../contants";
+import select from "./select";
+
 export default (
   element: Node,
   allChars: any[],
-  cursor: Node,
   newCursorPosition: number
-): void => {
+): void => {  
   let nodeToInsertBefore = allChars[newCursorPosition - 1];
-
+  let cursor = select(`.${CURSOR_CLASS}`, element);
   element = nodeToInsertBefore?.parentNode || element;
-
-  element.insertBefore(cursor, nodeToInsertBefore || null);
+  
+  element.insertBefore(cursor as any, nodeToInsertBefore || null);
 };

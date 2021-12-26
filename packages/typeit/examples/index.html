@@ -1,132 +1,143 @@
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200italic,400,600,600italic,700"
-    />
 
-    <style>
-      body {
-        padding: 0 50px;
-        font-family: "Source Sans Pro", sans-serif;
-      }
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200italic,400,600,600italic,700" />
 
-      h3 {
-        font-weight: normal;
-      }
+  <style>
+    body {
+      padding: 0 50px;
+      font-family: "Source Sans Pro", sans-serif;
+    }
 
-      section {
-        padding: 20px;
-        border-radius: 5px;
-        border: 1px solid gray;
-      }
+    h3 {
+      font-weight: normal;
+    }
 
-      .container {
-        display: grid;
-        gap: 1rem;
-        grid-template-columns: 1fr 1fr;
-      }
+    input {
+      display: block;
+      width: 100%;
+    }
 
-      .serif-font {
-        font-family: Times, serif;
-      }
-    </style>
-  </head>
+    section {
+      padding: 20px;
+      border-radius: 5px;
+      border: 1px solid gray;
+    }
 
-  <body>
-    <div class="container">
-      <section>
-        <h2>Single String</h2>
-        <h3 id="example1"></h3>
-      </section>
+    .container {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr 1fr;
+    }
 
-      <section>
-        <h2>Freeze & Unfreeze</h2>
-        <h3 id="freeze-unfreeze"></h3>
-        <button id="freezeButton">Toggle</button>
-      </section>
+    .serif-font {
+      font-family: Times, serif;
+    }
+  </style>
+</head>
 
-      <section>
-        <h2>Callback Testing w/ Rainbows</h2>
-        <h3 id="rainbow-text"></h3>
-      </section>
+<body>
+  <div class="container">
+    <section>
+      <h2>Single String</h2>
+      <h3 id="example1">start <strong>here, <em>right?</em></strong></h3>
+    </section>
 
-      <section>
-        <h2>Multiple Strings</h2>
-        <h3 id="example2"></h3>
-      </section>
+    <section>
+      <h2>Freeze & Unfreeze</h2>
+      <h3 id="freeze-unfreeze"></h3>
+      <button id="freezeButton">Toggle</button>
+    </section>
 
-      <section>
-        <h2>HTML, Delete &amp; Replace Each Other</h2>
-        <h3 id="example3"></h3>
-      </section>
+    <section>
+      <h2>Callback Testing w/ Rainbows</h2>
+      <h3 id="rainbow-text"></h3>
+    </section>
 
-      <section>
-        <h2>Looping Strings</h2>
-        <h3 id="example4"></h3>
-      </section>
+    <section>
+      <h2>Multiple Strings</h2>
+      <h3 id="example2"></h3>
+    </section>
 
-      <section>
-        <h2>Companion Functions</h2>
-        <h3 id="example5"></h3>
-      </section>
+    <section>
+      <h2>HTML, Delete &amp; Replace Each Other</h2>
+      <h3 id="example3"></h3>
+    </section>
 
-      <section>
-        <h2>Hard-Coded String</h2>
-        <h3 id="example6">
-          <!-- This comment should be removed automatically. Don't worry about it being typed. -->This
-          string is hard-coded!
-        </h3>
-      </section>
+    <section>
+      <h2>Looping Strings</h2>
+      <h3 id="example4"></h3>
+    </section>
 
-      <section>
-        <h2>HTML Entities</h2>
-        <h3 id="example7"></h3>
-      </section>
+    <section>
+      <h2>Companion Functions</h2>
+      <h3 id="example5"></h3>
+    </section>
 
-      <section>
-        <h2>More HTML</h2>
-        <h3 id="example8"></h3>
-      </section>
+    <section>
+      <h2>Hard-Coded String</h2>
+      <h3 id="example6">
+        <!-- This comment should be removed automatically. Don't worry about it being typed. -->This
+        string is hard-coded!
+      </h3>
+    </section>
 
-      <section class="serif-font">
-        <h2>Even More HTML</h2>
-        <h3 id="example9"></h3>
-      </section>
+    <section>
+      <h2>HTML Entities</h2>
+      <h3 id="example7"></h3>
+    </section>
 
-      <section class="serif-font">
-        <h2>Plus More HTML</h2>
-        <h3 id="example10"></h3>
-      </section>
+    <section>
+      <h2>More HTML</h2>
+      <h3 id="example8"></h3>
+    </section>
 
-      <section class="serif-font">
-        <h2>Moving Cursor</h2>
-        <h3 id="example11"></h3>
-      </section>
+    <section class="serif-font">
+      <h2>Even More HTML</h2>
+      <h3 id="example9"></h3>
+    </section>
 
-      <section class="serif-font">
-        <h2>Moving Cursor in HTML</h2>
-        <h3 id="example-moving-cursor-with-html"></h3>
-      </section>
+    <section class="serif-font">
+      <h2>Plus More HTML</h2>
+      <h3 id="example10"></h3>
+    </section>
 
-      <section>
-        <h2>Break Text</h2>
-        <h3 id="example12"></h3>
-      </section>
+    <section class="serif-font">
+      <h2>Moving Cursor</h2>
+      <h3 id="example11"></h3>
+    </section>
 
-      <section>
-        <h2>Pause After Action</h2>
-        <h3 id="example13"></h3>
-      </section>
+    <section class="serif-font">
+      <h2>Moving Cursor in HTML</h2>
+      <h3 id="example-moving-cursor-with-html"></h3>
+    </section>
 
-      <section>
-        <h2>Instant Actions</h2>
-        <h3 id="instant-actions"></h3>
-      </section>
-    </div>
+    <section>
+      <h2>Break Text</h2>
+      <h3 id="example12"></h3>
+    </section>
 
-    <script type="module" src="./examples.js"></script>
-  </body>
+    <section>
+      <h2>Pause After Action</h2>
+      <h3 id="example13"></h3>
+    </section>
+
+    <section>
+      <h2>Instant Actions</h2>
+      <h3 id="instant-actions"></h3>
+    </section>
+
+    <section>
+      <h2>Form Input</h2>
+      <form>
+        <input type="text" id="form-input" />
+      </form>
+    </section>
+  </div>
+
+  <script type="module" src="./examples.js"></script>
+</body>
+
 </html>
