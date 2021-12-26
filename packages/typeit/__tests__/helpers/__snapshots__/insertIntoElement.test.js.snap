@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Should insert before cursor when element is top-level. 1`] = `"    <span data-typeit-id=\\"9\\">Hello<i class=\\"ti-cursor\\">|</i></span>  "`;
-
-exports[`Should not insert into cursor node when a <span> is passed. 1`] = `"<h1><span>y</span>x<span class=\\"ti-cursor\\">|</span></h1>"`;
-
-exports[`Types HTML node when defined. 1`] = `"      <span data-typeit-id=\\"9\\"><strong></strong><i class=\\"ti-cursor\\">|</i></span>    "`;

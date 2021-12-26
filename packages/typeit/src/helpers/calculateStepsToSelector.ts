@@ -1,6 +1,8 @@
 import select from "./select";
-import getAllTypeableNodes from "./getAllTypeableNodes";
-import { CURSOR_CLASS, END, START } from "../contants";
+import { END, START } from "../contants";
+import { walkElementNodes } from "./chunkStrings";
+import { Element } from "../types";
+import getAllChars from "./getAllChars";
 
 /**
  * Calculates the number of steps between the END of an element and a selector.
@@ -16,11 +18,10 @@ const calculateStepsToSelector = (
    * A selector is passed. Find it in the DOM and calculate the
    * number of steps required to move the cursor to it.
    */
-  let cursor = select(`.${CURSOR_CLASS}`, element) as any;
   let selectedElement = selector
     ? (select(selector as string, element) as Element)
     : element;
-  let selectedElementNodes = getAllTypeableNodes(selectedElement, cursor, true);
+  let selectedElementNodes = walkElementNodes(selectedElement, true);
   let selectedElementFirstChild = selectedElementNodes[0];
   let selectedElementLastChild =
     selectedElementNodes[selectedElementNodes.length - 1];
@@ -32,7 +33,7 @@ const calculateStepsToSelector = (
    */
   let childIndex = isMovingToEndOfRootElement
     ? 0
-    : getAllTypeableNodes(element, cursor, true).findIndex((character: any) => {
+    : getAllChars(element).findIndex((character: any) => {
         return character.isSameNode(
           isMovingToLast ? selectedElementFirstChild : selectedElementLastChild
         );

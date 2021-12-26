@@ -36,8 +36,9 @@ export type QueueItem = Function & {
   done?: boolean
 }
 
-export type Element = HTMLElement & {
+export type Element = HTMLElement & CharacterData & Node & ChildNode & {
   value: string | number;
+  originalParent?: HTMLElement;
 };
 
 export type Sides = "START" | "END";

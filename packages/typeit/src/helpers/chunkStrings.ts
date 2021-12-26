@@ -1,46 +1,46 @@
 import toArray from "./toArray";
 import getParsedBody from "./getParsedBody";
-import getAllTypeableNodes from "./getAllTypeableNodes";
+import createTextNode from "./createTextNode";
+import { CURSOR_CLASS } from "../contants";
 
-import { Character } from "../types";
+import { Element } from "../types";
 
-/**
- * Given a node, generate an array of split text and nodes.
- */
-export const constructQueueFromNodes = (el: Element): Character[] => {
-  let nodeArray = getAllTypeableNodes(el);
+export function walkElementNodes(
+  element: Element | Node, 
+  shouldReverse: boolean = false
+  ): Element[] {
 
-  return nodeArray.flatMap((item) => {
-    if (item.nodeValue) {
-      return toArray(item.nodeValue).map((character) => {
-        return createCharacterObject(character, item);
-      });
-    }
+  const walker = document.createTreeWalker(
+    element,
+    NodeFilter.SHOW_ALL,
+    { 
+      acceptNode: (node: Element) => { 
+        // Always exclude the cursor + its children.
+        return node?.classList?.contains(CURSOR_CLASS) 
+          ? NodeFilter.FILTER_REJECT
+          : NodeFilter.FILTER_ACCEPT;
+      } 
+    },
+  );
 
-    return createCharacterObject(item);
-  });
-};
+  let nextNode;
+  let nodes = [];
+  
+  while (nextNode = walker.nextNode()) {
+    // Necessary for preserving reference to parent nodes as we empty elements during typing.
+    nextNode.originalParent = nextNode.parentNode;
+    nodes.push(nextNode);
+  }
 
-/**
- * Construct a character object to be placed in the queue.
- * When a `null` node is passed, it's being used as a quick
- * way to add a single text node to the element.
- */
-export const createCharacterObject = (
-  content: string | Node,
-  node: null | Node = null
-): Character => {
-  return { node, content };
-};
+  return shouldReverse ? nodes.reverse() : nodes;
+}
 
 /**
  * Convert string to array of chunks that will be later
  * used to construct a TypeIt queue.
  */
-export function chunkStringAsHtml(string: string): Character[] {
-  let htmlBody = getParsedBody(string);
-
-  return constructQueueFromNodes(htmlBody);
+export function chunkStringAsHtml(string: string): Element[] {
+  return walkElementNodes(getParsedBody(string));
 }
 
 /**
@@ -54,11 +54,8 @@ export function chunkStringAsHtml(string: string): Character[] {
 export function maybeChunkStringAsHtml(
   str: string,
   asHtml = true
-): Character[] {
-  if (asHtml) {
-    return chunkStringAsHtml(str);
-  }
-
-  // For plain strings, we still need to transform them into character objects.
-  return toArray(str).map((char) => createCharacterObject(char));
+): Partial<Element>[] {
+  return asHtml
+    ? chunkStringAsHtml(str)
+    : toArray(str).map(createTextNode);
 }

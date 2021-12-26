@@ -8,6 +8,7 @@ beforeEach(() => {
 
 describe("timeouts fire correctly", () => {
   let waitSpy;
+  let element;
 
   beforeEach(() => {
     setHTML`<div>
@@ -15,6 +16,7 @@ describe("timeouts fire correctly", () => {
     </div>`;
 
     waitSpy = jest.spyOn(wait, "default");
+    element = document.getElementById("element");
   });
 
   it("Waits correct number of times when it's not instant.", (done) => {
@@ -86,8 +88,8 @@ describe("moves only within range", () => {
       speed: 0,
       afterComplete: () => {
         expect(repositionCursorSpy.mock.calls).toEqual([
-          [expect.anything(), expect.anything(), expect.anything(), 0],
-          [expect.anything(), expect.anything(), expect.anything(), 0],
+          [expect.objectContaining(element), expect.any(Array), 0],
+          [expect.objectContaining(element), expect.any(Array), 0],
         ]);
         done();
       },
@@ -102,10 +104,10 @@ describe("moves only within range", () => {
       speed: 0,
       afterComplete: () => {
         expect(repositionCursorSpy.mock.calls).toEqual([
-          [expect.anything(), expect.anything(), expect.anything(), 1],
-          [expect.anything(), expect.anything(), expect.anything(), 2],
-          [expect.anything(), expect.anything(), expect.anything(), 3],
-          [expect.anything(), expect.anything(), expect.anything(), 3],
+          [expect.objectContaining(element), expect.any(Array), 1],
+          [expect.objectContaining(element), expect.any(Array), 2],
+          [expect.objectContaining(element), expect.any(Array), 3],
+          [expect.objectContaining(element), expect.any(Array), 3],
         ]);
         done();
       },

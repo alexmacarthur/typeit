@@ -1,4 +1,5 @@
 import getAllChars from "../../src/helpers/getAllChars";
+import expandTextNodes from "../../src/helpers/expandTextNodes";
 
 describe("element is an input", () => {
   setHTML`

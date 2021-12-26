@@ -2,1200 +2,382 @@
 
 exports[`Parses HTML tag at beginning of string. 1`] = `
 Array [
-  Object {
-    "content": "H",
-    "node": Hello!,
-  },
-  Object {
-    "content": "e",
-    "node": Hello!,
-  },
-  Object {
-    "content": "l",
-    "node": Hello!,
-  },
-  Object {
-    "content": "l",
-    "node": Hello!,
-  },
-  Object {
-    "content": "o",
-    "node": Hello!,
-  },
-  Object {
-    "content": "!",
-    "node": Hello!,
-  },
-  Object {
-    "content": " ",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "T",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "h",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "i",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "s",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": " ",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "i",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "s",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": " ",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "s",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "o",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "m",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "e",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": " ",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "t",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "e",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "x",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "t",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": " ",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "w",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "i",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "t",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "h",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": " ",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "H",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "T",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "M",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "L",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": " ",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "a",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "t",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": " ",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "t",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "h",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "e",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": " ",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "b",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "e",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "g",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "i",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "n",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "n",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "i",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "n",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": "g",
-    "node":  This is some text with HTML at the beginning.,
-  },
-  Object {
-    "content": ".",
-    "node":  This is some text with HTML at the beginning.,
-  },
+  <strong>
+    H
+    e
+    l
+    l
+    o
+    !
+  </strong>,
+  H,
+  e,
+  l,
+  l,
+  o,
+  !,
+   ,
+  T,
+  h,
+  i,
+  s,
+   ,
+  i,
+  s,
+   ,
+  s,
+  o,
+  m,
+  e,
+   ,
+  t,
+  e,
+  x,
+  t,
+   ,
+  w,
+  i,
+  t,
+  h,
+   ,
+  H,
+  T,
+  M,
+  L,
+   ,
+  a,
+  t,
+   ,
+  t,
+  h,
+  e,
+   ,
+  b,
+  e,
+  g,
+  i,
+  n,
+  n,
+  i,
+  n,
+  g,
+  .,
 ]
 `;
 
 exports[`Parses HTML tag at end of string. 1`] = `
 Array [
-  Object {
-    "content": "T",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": "h",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": "i",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": "s",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": " ",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": "i",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": "s",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": " ",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": "s",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": "o",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": "m",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": "e",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": " ",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": "t",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": "e",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": "x",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": "t",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": " ",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": "w",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": "i",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": "t",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": "h",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": " ",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": "H",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": "T",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": "M",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": "L",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": " ",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": "a",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": "t",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": " ",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": "t",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": "h",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": "e",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": " ",
-    "node": This is some text with HTML at the ,
-  },
-  Object {
-    "content": "b",
-    "node": beginning.,
-  },
-  Object {
-    "content": "e",
-    "node": beginning.,
-  },
-  Object {
-    "content": "g",
-    "node": beginning.,
-  },
-  Object {
-    "content": "i",
-    "node": beginning.,
-  },
-  Object {
-    "content": "n",
-    "node": beginning.,
-  },
-  Object {
-    "content": "n",
-    "node": beginning.,
-  },
-  Object {
-    "content": "i",
-    "node": beginning.,
-  },
-  Object {
-    "content": "n",
-    "node": beginning.,
-  },
-  Object {
-    "content": "g",
-    "node": beginning.,
-  },
-  Object {
-    "content": ".",
-    "node": beginning.,
-  },
+  T,
+  h,
+  i,
+  s,
+   ,
+  i,
+  s,
+   ,
+  s,
+  o,
+  m,
+  e,
+   ,
+  t,
+  e,
+  x,
+  t,
+   ,
+  w,
+  i,
+  t,
+  h,
+   ,
+  H,
+  T,
+  M,
+  L,
+   ,
+  a,
+  t,
+   ,
+  t,
+  h,
+  e,
+   ,
+  <em>
+    e
+    n
+    d
+    .
+  </em>,
+  e,
+  n,
+  d,
+  .,
 ]
 `;
 
 exports[`Parses HTML tag with attributes. 1`] = `
 Array [
-  Object {
-    "content": "T",
-    "node": This string has an ,
-  },
-  Object {
-    "content": "h",
-    "node": This string has an ,
-  },
-  Object {
-    "content": "i",
-    "node": This string has an ,
-  },
-  Object {
-    "content": "s",
-    "node": This string has an ,
-  },
-  Object {
-    "content": " ",
-    "node": This string has an ,
-  },
-  Object {
-    "content": "s",
-    "node": This string has an ,
-  },
-  Object {
-    "content": "t",
-    "node": This string has an ,
-  },
-  Object {
-    "content": "r",
-    "node": This string has an ,
-  },
-  Object {
-    "content": "i",
-    "node": This string has an ,
-  },
-  Object {
-    "content": "n",
-    "node": This string has an ,
-  },
-  Object {
-    "content": "g",
-    "node": This string has an ,
-  },
-  Object {
-    "content": " ",
-    "node": This string has an ,
-  },
-  Object {
-    "content": "h",
-    "node": This string has an ,
-  },
-  Object {
-    "content": "a",
-    "node": This string has an ,
-  },
-  Object {
-    "content": "s",
-    "node": This string has an ,
-  },
-  Object {
-    "content": " ",
-    "node": This string has an ,
-  },
-  Object {
-    "content": "a",
-    "node": This string has an ,
-  },
-  Object {
-    "content": "n",
-    "node": This string has an ,
-  },
-  Object {
-    "content": " ",
-    "node": This string has an ,
-  },
-  Object {
-    "content": "e",
-    "node": element,
-  },
-  Object {
-    "content": "l",
-    "node": element,
-  },
-  Object {
-    "content": "e",
-    "node": element,
-  },
-  Object {
-    "content": "m",
-    "node": element,
-  },
-  Object {
-    "content": "e",
-    "node": element,
-  },
-  Object {
-    "content": "n",
-    "node": element,
-  },
-  Object {
-    "content": "t",
-    "node": element,
-  },
-  Object {
-    "content": " ",
-    "node":  with attributes.,
-  },
-  Object {
-    "content": "w",
-    "node":  with attributes.,
-  },
-  Object {
-    "content": "i",
-    "node":  with attributes.,
-  },
-  Object {
-    "content": "t",
-    "node":  with attributes.,
-  },
-  Object {
-    "content": "h",
-    "node":  with attributes.,
-  },
-  Object {
-    "content": " ",
-    "node":  with attributes.,
-  },
-  Object {
-    "content": "a",
-    "node":  with attributes.,
-  },
-  Object {
-    "content": "t",
-    "node":  with attributes.,
-  },
-  Object {
-    "content": "t",
-    "node":  with attributes.,
-  },
-  Object {
-    "content": "r",
-    "node":  with attributes.,
-  },
-  Object {
-    "content": "i",
-    "node":  with attributes.,
-  },
-  Object {
-    "content": "b",
-    "node":  with attributes.,
-  },
-  Object {
-    "content": "u",
-    "node":  with attributes.,
-  },
-  Object {
-    "content": "t",
-    "node":  with attributes.,
-  },
-  Object {
-    "content": "e",
-    "node":  with attributes.,
-  },
-  Object {
-    "content": "s",
-    "node":  with attributes.,
-  },
-  Object {
-    "content": ".",
-    "node":  with attributes.,
-  },
+  T,
+  h,
+  i,
+  s,
+   ,
+  s,
+  t,
+  r,
+  i,
+  n,
+  g,
+   ,
+  h,
+  a,
+  s,
+   ,
+  a,
+  n,
+   ,
+  <strong
+    class="strong-class"
+    data-whatever="data-att"
+    id="strong-id"
+  >
+    e
+    l
+    e
+    m
+    e
+    n
+    t
+  </strong>,
+  e,
+  l,
+  e,
+  m,
+  e,
+  n,
+  t,
+   ,
+  w,
+  i,
+  t,
+  h,
+   ,
+  a,
+  t,
+  t,
+  r,
+  i,
+  b,
+  u,
+  t,
+  e,
+  s,
+  .,
 ]
 `;
 
 exports[`Parses multiple HTML tags. 1`] = `
 Array [
-  Object {
-    "content": "H",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "e",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "l",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "l",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "o",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": ",",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": " ",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "t",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "h",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "i",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "s",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": " ",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "i",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "s",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": " ",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "s",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "o",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "m",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "e",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": " ",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "b",
-    "node": bold,
-  },
-  Object {
-    "content": "o",
-    "node": bold,
-  },
-  Object {
-    "content": "l",
-    "node": bold,
-  },
-  Object {
-    "content": "d",
-    "node": bold,
-  },
-  Object {
-    "content": " ",
-    "node":  text, and some ,
-  },
-  Object {
-    "content": "t",
-    "node":  text, and some ,
-  },
-  Object {
-    "content": "e",
-    "node":  text, and some ,
-  },
-  Object {
-    "content": "x",
-    "node":  text, and some ,
-  },
-  Object {
-    "content": "t",
-    "node":  text, and some ,
-  },
-  Object {
-    "content": ",",
-    "node":  text, and some ,
-  },
-  Object {
-    "content": " ",
-    "node":  text, and some ,
-  },
-  Object {
-    "content": "a",
-    "node":  text, and some ,
-  },
-  Object {
-    "content": "n",
-    "node":  text, and some ,
-  },
-  Object {
-    "content": "d",
-    "node":  text, and some ,
-  },
-  Object {
-    "content": " ",
-    "node":  text, and some ,
-  },
-  Object {
-    "content": "s",
-    "node":  text, and some ,
-  },
-  Object {
-    "content": "o",
-    "node":  text, and some ,
-  },
-  Object {
-    "content": "m",
-    "node":  text, and some ,
-  },
-  Object {
-    "content": "e",
-    "node":  text, and some ,
-  },
-  Object {
-    "content": " ",
-    "node":  text, and some ,
-  },
-  Object {
-    "content": "i",
-    "node": italicized,
-  },
-  Object {
-    "content": "t",
-    "node": italicized,
-  },
-  Object {
-    "content": "a",
-    "node": italicized,
-  },
-  Object {
-    "content": "l",
-    "node": italicized,
-  },
-  Object {
-    "content": "i",
-    "node": italicized,
-  },
-  Object {
-    "content": "c",
-    "node": italicized,
-  },
-  Object {
-    "content": "i",
-    "node": italicized,
-  },
-  Object {
-    "content": "z",
-    "node": italicized,
-  },
-  Object {
-    "content": "e",
-    "node": italicized,
-  },
-  Object {
-    "content": "d",
-    "node": italicized,
-  },
-  Object {
-    "content": " ",
-    "node":  text.,
-  },
-  Object {
-    "content": "t",
-    "node":  text.,
-  },
-  Object {
-    "content": "e",
-    "node":  text.,
-  },
-  Object {
-    "content": "x",
-    "node":  text.,
-  },
-  Object {
-    "content": "t",
-    "node":  text.,
-  },
-  Object {
-    "content": ".",
-    "node":  text.,
-  },
+  H,
+  e,
+  l,
+  l,
+  o,
+  ,,
+   ,
+  t,
+  h,
+  i,
+  s,
+   ,
+  i,
+  s,
+   ,
+  s,
+  o,
+  m,
+  e,
+   ,
+  <strong>
+    b
+    o
+    l
+    d
+  </strong>,
+  b,
+  o,
+  l,
+  d,
+   ,
+  t,
+  e,
+  x,
+  t,
+  ,,
+   ,
+  a,
+  n,
+  d,
+   ,
+  s,
+  o,
+  m,
+  e,
+   ,
+  <i>
+    i
+    t
+    a
+    l
+    i
+    c
+    i
+    z
+    e
+    d
+  </i>,
+  i,
+  t,
+  a,
+  l,
+  i,
+  c,
+  i,
+  z,
+  e,
+  d,
+   ,
+  t,
+  e,
+  x,
+  t,
+  .,
 ]
 `;
 
 exports[`Parses normal string correctly. 1`] = `
 Array [
-  Object {
-    "content": "H",
-    "node": Hello, this is my string.,
-  },
-  Object {
-    "content": "e",
-    "node": Hello, this is my string.,
-  },
-  Object {
-    "content": "l",
-    "node": Hello, this is my string.,
-  },
-  Object {
-    "content": "l",
-    "node": Hello, this is my string.,
-  },
-  Object {
-    "content": "o",
-    "node": Hello, this is my string.,
-  },
-  Object {
-    "content": ",",
-    "node": Hello, this is my string.,
-  },
-  Object {
-    "content": " ",
-    "node": Hello, this is my string.,
-  },
-  Object {
-    "content": "t",
-    "node": Hello, this is my string.,
-  },
-  Object {
-    "content": "h",
-    "node": Hello, this is my string.,
-  },
-  Object {
-    "content": "i",
-    "node": Hello, this is my string.,
-  },
-  Object {
-    "content": "s",
-    "node": Hello, this is my string.,
-  },
-  Object {
-    "content": " ",
-    "node": Hello, this is my string.,
-  },
-  Object {
-    "content": "i",
-    "node": Hello, this is my string.,
-  },
-  Object {
-    "content": "s",
-    "node": Hello, this is my string.,
-  },
-  Object {
-    "content": " ",
-    "node": Hello, this is my string.,
-  },
-  Object {
-    "content": "m",
-    "node": Hello, this is my string.,
-  },
-  Object {
-    "content": "y",
-    "node": Hello, this is my string.,
-  },
-  Object {
-    "content": " ",
-    "node": Hello, this is my string.,
-  },
-  Object {
-    "content": "s",
-    "node": Hello, this is my string.,
-  },
-  Object {
-    "content": "t",
-    "node": Hello, this is my string.,
-  },
-  Object {
-    "content": "r",
-    "node": Hello, this is my string.,
-  },
-  Object {
-    "content": "i",
-    "node": Hello, this is my string.,
-  },
-  Object {
-    "content": "n",
-    "node": Hello, this is my string.,
-  },
-  Object {
-    "content": "g",
-    "node": Hello, this is my string.,
-  },
-  Object {
-    "content": ".",
-    "node": Hello, this is my string.,
-  },
+  H,
+  e,
+  l,
+  l,
+  o,
+  ,,
+   ,
+  t,
+  h,
+  i,
+  s,
+   ,
+  i,
+  s,
+   ,
+  m,
+  y,
+   ,
+  s,
+  t,
+  r,
+  i,
+  n,
+  g,
+  .,
 ]
 `;
 
 exports[`Parses single HTML tag. 1`] = `
 Array [
-  Object {
-    "content": "H",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "e",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "l",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "l",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "o",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": ",",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": " ",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "t",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "h",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "i",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "s",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": " ",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "i",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "s",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": " ",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "s",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "o",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "m",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "e",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": " ",
-    "node": Hello, this is some ,
-  },
-  Object {
-    "content": "b",
-    "node": bold,
-  },
-  Object {
-    "content": "o",
-    "node": bold,
-  },
-  Object {
-    "content": "l",
-    "node": bold,
-  },
-  Object {
-    "content": "d",
-    "node": bold,
-  },
-  Object {
-    "content": " ",
-    "node":  text.,
-  },
-  Object {
-    "content": "t",
-    "node":  text.,
-  },
-  Object {
-    "content": "e",
-    "node":  text.,
-  },
-  Object {
-    "content": "x",
-    "node":  text.,
-  },
-  Object {
-    "content": "t",
-    "node":  text.,
-  },
-  Object {
-    "content": ".",
-    "node":  text.,
-  },
+  H,
+  e,
+  l,
+  l,
+  o,
+  ,,
+   ,
+  t,
+  h,
+  i,
+  s,
+   ,
+  i,
+  s,
+   ,
+  s,
+  o,
+  m,
+  e,
+   ,
+  <strong>
+    b
+    o
+    l
+    d
+  </strong>,
+  b,
+  o,
+  l,
+  d,
+   ,
+  t,
+  e,
+  x,
+  t,
+  .,
 ]
 `;
 
 exports[`maybeChunkStringAsHtml() Should correctly transform non-HTML string as character objects. 1`] = `
 Array [
-  Object {
-    "content": "A",
-    "node": null,
-  },
-  Object {
-    "content": " ",
-    "node": null,
-  },
-  Object {
-    "content": "<",
-    "node": null,
-  },
-  Object {
-    "content": "e",
-    "node": null,
-  },
-  Object {
-    "content": "m",
-    "node": null,
-  },
-  Object {
-    "content": ">",
-    "node": null,
-  },
-  Object {
-    "content": "f",
-    "node": null,
-  },
-  Object {
-    "content": "a",
-    "node": null,
-  },
-  Object {
-    "content": "n",
-    "node": null,
-  },
-  Object {
-    "content": "c",
-    "node": null,
-  },
-  Object {
-    "content": "y",
-    "node": null,
-  },
-  Object {
-    "content": "<",
-    "node": null,
-  },
-  Object {
-    "content": "/",
-    "node": null,
-  },
-  Object {
-    "content": "e",
-    "node": null,
-  },
-  Object {
-    "content": "m",
-    "node": null,
-  },
-  Object {
-    "content": ">",
-    "node": null,
-  },
-  Object {
-    "content": " ",
-    "node": null,
-  },
-  Object {
-    "content": "s",
-    "node": null,
-  },
-  Object {
-    "content": "t",
-    "node": null,
-  },
-  Object {
-    "content": "r",
-    "node": null,
-  },
-  Object {
-    "content": "i",
-    "node": null,
-  },
-  Object {
-    "content": "n",
-    "node": null,
-  },
-  Object {
-    "content": "g",
-    "node": null,
-  },
-  Object {
-    "content": ".",
-    "node": null,
-  },
+  A,
+   ,
+  &lt;,
+  e,
+  m,
+  &gt;,
+  f,
+  a,
+  n,
+  c,
+  y,
+  &lt;,
+  /,
+  e,
+  m,
+  &gt;,
+   ,
+  s,
+  t,
+  r,
+  i,
+  n,
+  g,
+  .,
 ]
 `;
 
 exports[`maybeChunkStringAsHtml() Should return noderized string when setting is enabled. 1`] = `
 Array [
-  Object {
-    "content": "A",
-    "node": A ,
-  },
-  Object {
-    "content": " ",
-    "node": A ,
-  },
-  Object {
-    "content": "f",
-    "node": fancy,
-  },
-  Object {
-    "content": "a",
-    "node": fancy,
-  },
-  Object {
-    "content": "n",
-    "node": fancy,
-  },
-  Object {
-    "content": "c",
-    "node": fancy,
-  },
-  Object {
-    "content": "y",
-    "node": fancy,
-  },
-  Object {
-    "content": " ",
-    "node":  string.,
-  },
-  Object {
-    "content": "s",
-    "node":  string.,
-  },
-  Object {
-    "content": "t",
-    "node":  string.,
-  },
-  Object {
-    "content": "r",
-    "node":  string.,
-  },
-  Object {
-    "content": "i",
-    "node":  string.,
-  },
-  Object {
-    "content": "n",
-    "node":  string.,
-  },
-  Object {
-    "content": "g",
-    "node":  string.,
-  },
-  Object {
-    "content": ".",
-    "node":  string.,
-  },
+  A,
+   ,
+  <em>
+    f
+    a
+    n
+    c
+    y
+  </em>,
+  f,
+  a,
+  n,
+  c,
+  y,
+   ,
+  s,
+  t,
+  r,
+  i,
+  n,
+  g,
+  .,
 ]
 `;

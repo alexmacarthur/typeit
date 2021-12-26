@@ -175,7 +175,7 @@ describe("string has nested HTML", () => {
     expect(result).toEqual(-8);
   });
 
-  it("calculates correctly when deeply nested elements exist", async () => {
+  it.only("calculates correctly when deeply nested elements exist", async () => {
     const el = document.querySelector("#el");
 
     await createTypeItInstance(

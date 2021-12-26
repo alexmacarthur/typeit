@@ -185,3 +185,13 @@ new TypeIt("#rainbow-text", {
     instance.getElement().style.color = color;
   },
 }).go();
+
+new TypeIt("#form-input", {
+  speed: 50,
+  waitUntilVisible: true,
+  loop: true,
+})
+  .type("Hi, dude.")
+  .delete(5)
+  .type("friend.")
+  .go();
