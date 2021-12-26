@@ -32,7 +32,9 @@ export type ActionOpts = Options & {
   delay?: number;
 };
 
-export type QueueItem = [Function?, any?, { [key: string]: any }?];
+export type QueueItem = Function & {
+  done?: boolean
+}
 
 export type Element = HTMLElement & {
   value: string | number;

@@ -1,14 +1,12 @@
-import guaranteeThreeKeys from "./helpers/guaranteeThreeKeys";
-import merge from "./helpers/merge";
-
+import asArray from "./helpers/asArray";
 import { QueueItem } from "./types";
 
 const Queue = function (initialItems: QueueItem[]) {
   /**
    * Add a single or several steps onto the `waiting` queue.
    */
-  const add = function (steps: QueueItem[]): typeof Queue {
-    _queue = _queue.concat(guaranteeThreeKeys(steps));
+  const add = function (steps: QueueItem[] | QueueItem): typeof Queue {
+    _queue = _queue.concat(asArray<QueueItem>(steps));
 
     return this;
   };
@@ -25,7 +23,7 @@ const Queue = function (initialItems: QueueItem[]) {
    */
   const reset = function (): void {
     _queue = _queue.map((item) => {
-      (item[2] as any).executed = false;
+      delete item.done;
 
       return item;
     });
@@ -34,16 +32,11 @@ const Queue = function (initialItems: QueueItem[]) {
   /**
    * Retrieve all items that are still eligible to be executed.
    */
-  const getItems = function (): QueueItem[] {
-    return _queue.filter((i) => !(i[2] as any).executed);
-  };
+  const getItems = (): QueueItem[] => _queue.filter(i => !i.done);
 
-  /**
-   * Given an ID for a particular queue item, update the meta on that item.
-   */
-  const setMeta = function (index: number, meta): void {
-    _queue[index][2] = merge(_queue[index][2], meta);
-  };
+  const markDone = (index: number) => {
+    _queue[index].done = true;
+  }
 
   let _queue: QueueItem[] = [];
 
@@ -54,7 +47,7 @@ const Queue = function (initialItems: QueueItem[]) {
     set,
     reset,
     getItems,
-    setMeta,
+    markDone,
   };
 };
 

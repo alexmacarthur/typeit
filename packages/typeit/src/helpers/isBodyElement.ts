@@ -1,3 +1,1 @@
-export default (node): boolean => {
-  return node.tagName === "BODY";
-};
+export default (node): boolean => node.tagName === "BODY";

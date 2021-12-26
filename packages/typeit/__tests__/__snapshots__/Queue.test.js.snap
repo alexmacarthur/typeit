@@ -1,86 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`It should only return non-executed items. 1`] = `
+exports[`It should only return non-done items. 1`] = `
 Array [
-  Array [
-    "value2",
-    null,
-    Object {
-      "executed": false,
-    },
-  ],
-  Array [
-    "value3",
-    null,
-    Object {},
-  ],
+  Object {
+    "done": false,
+  },
+  Object {},
 ]
 `;
 
-exports[`It should reset properly by marking each item as having not yet been executed. 1`] = `
+exports[`It should reset properly by marking each item as having not yet been done. 1`] = `
 Array [
   Array [
     "first-action",
     null,
-    Object {
-      "executed": false,
-    },
+    Object {},
   ],
-  Array [
-    "value1",
-    null,
-    Object {
-      "executed": false,
-    },
-  ],
-  Array [
-    "value2",
-    null,
-    Object {
-      "executed": false,
-    },
-  ],
-  Array [
-    "value3",
-    null,
-    Object {
-      "executed": false,
-    },
-  ],
-  Array [
-    "value4",
-    null,
-    Object {
-      "executed": false,
-    },
-  ],
-  Array [
-    "value5",
-    null,
-    Object {
-      "executed": false,
-    },
-  ],
+  Object {},
+  Object {},
+  Object {},
+  Object {},
+  Object {},
 ]
 `;
 
 exports[`It should set initial steps properly. 1`] = `
 Array [
-  Array [
-    "value1",
-    null,
-    Object {},
-  ],
-  Array [
-    "value2",
-    null,
-    Object {},
-  ],
-  Array [
-    "value3",
-    null,
-    Object {},
-  ],
+  Object {},
+  Object {},
+  Object {},
 ]
 `;
 
@@ -94,17 +42,14 @@ Array [
   Array [
     [Function],
     1,
-    Object {},
   ],
   Array [
     [Function],
     2,
-    Object {},
   ],
   Array [
     [Function],
     3,
-    Object {},
   ],
 ]
 `;
@@ -118,13 +63,9 @@ Array [
   ],
   Array [
     "step1",
-    null,
-    Object {},
   ],
   Array [
     "step2",
-    null,
-    Object {},
   ],
 ]
 `;
