@@ -83,10 +83,10 @@ export default function TypeIt(
 
   const _maybeAppendPause = (opts = {}) => {
     let delay = opts["delay"];
-    delay && _queue.add([[_pause, delay]]);
+    delay && _queue.add(() => _pause(delay));
   };
 
-  const _queueAndReturn = (steps: QueueItem[], opts: Options) => {
+  const _queueAndReturn = (steps: QueueItem[] | QueueItem, opts: Options) => {
     _queue.add(steps);
     _maybeAppendPause(opts);
 
@@ -97,8 +97,8 @@ export default function TypeIt(
     newOptions: Options = {}
   ): QueueItem[] => {
     return [
-      [_options, newOptions],
-      [_options, _opts],
+      () => _options(newOptions),
+      () => _options(_opts)
     ];
   };
 
@@ -109,7 +109,11 @@ export default function TypeIt(
   const _addSplitPause = (items: QueueItem[]) => {
     let delay = _opts.nextStringDelay;
 
-    _queue.add([[_pause, delay[0]], ...items, [_pause, delay[1]]]);
+    _queue.add([
+      () => _pause(delay[0]),
+      ...items, 
+      () => _pause(delay[1])
+    ]);
   };
 
   /**
@@ -166,25 +170,21 @@ export default function TypeIt(
     strings.forEach((string, index) => {
       let chars = maybeChunkStringAsHtml(string, _opts.html);
 
-      _queue.add([[_type, { chars }, _freezeCursorMeta]]);
+      _queue.add(() => _type({chars}));
 
       // This is the last string. Get outta here.
       if (index + 1 === strings.length) {
         return;
       }
 
-      const splitPauseArgs: QueueItem[] = _opts.breakLines
-        ? [
-            [
-              _type,
-              {
-                chars: [createCharacterObject(createElement("BR"))],
-                silent: true,
-              },
-              _freezeCursorMeta,
-            ],
-          ]
-        : [[_delete, { num: chars.length }, _freezeCursorMeta]];
+      const splitPauseArgs: QueueItem[] = [
+        _opts.breakLines 
+        ? () => _type({
+          chars: [createCharacterObject(createElement("BR"))],
+          silent: true,
+        })
+        : () => _delete({ num: chars.length })
+      ];
 
       _addSplitPause(splitPauseArgs);
     });
@@ -197,7 +197,7 @@ export default function TypeIt(
   const _prepLoop = async (delay) => {
     _cursorPosition && (await _move({ value: _cursorPosition }));
     _queue.reset();
-    _queue.set(0, [_pause, delay, {}]);
+    _queue.set(0, () => _pause(delay));
 
     await _delete({ num: null });
   };
@@ -218,7 +218,9 @@ export default function TypeIt(
         insertIntoElement(_element, item, _cursor, _cursorPosition);
       });
 
-      _addSplitPause([[_delete, { num: null }]]);
+      _addSplitPause([
+        () => _delete({ num: null})
+      ]);
 
       return strings;
     }
@@ -235,14 +237,9 @@ export default function TypeIt(
 
     try {
       for (let i = 0; i < queueItems.length; i++) {
-        let queueAction = queueItems[i];
-        let queueActionMeta = queueAction[2];
+        await queueItems[i]();
 
-        queueActionMeta.freezeCursor && _disableCursorBlink(true);
-
-        await queueAction[0].call(this, queueAction[1], queueActionMeta);
-
-        _queue.setMeta(i, { executed: true });
+        _queue.markDone(i);
 
         _disableCursorBlink(false);
       }
@@ -282,6 +279,8 @@ export default function TypeIt(
     to?: Sides;
     instant?: boolean;
   }): Promise<void> => {
+    _disableCursorBlink(true)
+
     let numberOfSteps = calculateCursorSteps({
       el: _element,
       move: value,
@@ -317,13 +316,15 @@ export default function TypeIt(
    */
   const _type = ({
     chars,
-    instant,
-    silent,
+    silent = false,
+    instant = false,
   }: {
     chars: Character[];
-    instant: boolean;
-    silent: boolean;
+    instant?: boolean;
+    silent?: boolean;
   }): Promise<void> => {
+    _disableCursorBlink(true);
+
     return _wait(
       async () => {
         const insert = (character) =>
@@ -376,6 +377,8 @@ export default function TypeIt(
     instant?: boolean;
     to?: Sides;
   }): Promise<void> => {
+    _disableCursorBlink(true)
+
     await _wait(async () => {
       let rounds = isNumber(num)
         ? num
@@ -418,7 +421,7 @@ export default function TypeIt(
     const breakCharacter = createCharacterObject(createElement("BR"));
 
     return _queueAndReturn(
-      [[_type, { chars: [breakCharacter], silent: true }]],
+      () => _type({ chars: [breakCharacter], silent: true }),
       actionOpts
     );
   };
@@ -435,7 +438,7 @@ export default function TypeIt(
     return _queueAndReturn(
       [
         bookEndQueueItems[0],
-        [_delete, { num, instant, to }, _freezeCursorMeta],
+        () => _delete({ num, instant, to }),
         bookEndQueueItems[1],
       ],
       actionOpts
@@ -443,13 +446,13 @@ export default function TypeIt(
   };
 
   this.empty = function (actionOpts = {}) {
-    return _queueAndReturn([[_empty]], actionOpts);
+    return _queueAndReturn(_empty, actionOpts);
   };
 
   this.exec = function (func: () => any, actionOpts) {
     let bookEndQueueItems = _generateTemporaryOptionQueueItems(actionOpts);
     return _queueAndReturn(
-      [bookEndQueueItems[0], [func, null], bookEndQueueItems[1]],
+      [bookEndQueueItems[0], func, bookEndQueueItems[1]],
       actionOpts
     );
   };
@@ -471,7 +474,7 @@ export default function TypeIt(
     return _queueAndReturn(
       [
         bookEndQueueItems[0],
-        [_move, moveArgs, _freezeCursorMeta],
+        () => _move(moveArgs),
         bookEndQueueItems[1],
       ],
       actionOpts
@@ -480,7 +483,8 @@ export default function TypeIt(
 
   this.options = function (opts: Options | (() => Options)) {
     opts = handleFunctionalArg<Options>(opts);
-    return _queueAndReturn([[_options, opts]], opts);
+
+    return _queueAndReturn(() => _options(opts), opts);
   };
 
   this.pause = function (
@@ -488,7 +492,7 @@ export default function TypeIt(
     actionOpts: ActionOpts = {}
   ) {
     return _queueAndReturn(
-      [[_pause, handleFunctionalArg<number>(milliseconds)]],
+      () => _pause(handleFunctionalArg<number>(milliseconds)),
       actionOpts
     );
   };
@@ -509,14 +513,14 @@ export default function TypeIt(
      */
     let itemsToQueue = [
       bookEndQueueItems[0],
-      [_type, { chars, instant }, _freezeCursorMeta] as QueueItem,
+      () => _type({ chars, instant }),
       bookEndQueueItems[1],
     ];
 
     return _queueAndReturn(itemsToQueue, actionOpts);
   };
 
-  this.is = function (key) {
+  this.is = function (key): boolean {
     return _statuses[key];
   };
 
@@ -576,7 +580,6 @@ export default function TypeIt(
   let _element = selectorToElement(element);
   let _timeouts: number[] = [];
   let _cursorPosition = 0;
-  let _freezeCursorMeta = { freezeCursor: true };
   let _statuses = merge({}, DEFAULT_STATUSES);
 
   let _opts: Options = merge(DEFAULT_OPTIONS, options);
@@ -587,7 +590,7 @@ export default function TypeIt(
   });
 
   let _id = generateHash();
-  let _queue = Queue([[_pause, _opts.startDelay]]);
+  let _queue = Queue([() => _pause(_opts.startDelay) ]);
   _element.dataset.typeitId = _id;
 
   // Used to set a "placeholder" space in the element, so that it holds vertical sizing before anything's typed.

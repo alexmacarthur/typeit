@@ -25,13 +25,13 @@ describe("add()", () => {
   });
 });
 
-test("It should reset properly by marking each item as having not yet been executed.", () => {
+test("It should reset properly by marking each item as having not yet been done.", () => {
   queue.add([
-    ["value1", null, { executed: true }],
-    ["value2", null, { executed: true }],
-    ["value3", null, { executed: false }],
-    ["value4", null, { executed: true }],
-    ["value5", null, { executed: true }],
+    { done: true },
+    { done: true },
+    { done: false },
+    { done: true },
+    { done: true },
   ]);
 
   queue.reset();
@@ -40,35 +40,23 @@ test("It should reset properly by marking each item as having not yet been execu
 });
 
 test("It should set initial steps properly.", () => {
-  let items = [
-    ["value1", null, {}],
-    ["value2", null, {}],
-    ["value3", null, {}],
-  ];
+  let items = [{}, {}, {}];
 
   let q1 = new Queue(items);
 
   expect(q1.getItems()).toMatchSnapshot();
 });
 
-test("It should only return non-executed items.", () => {
-  let items = [
-    ["value1", null, { executed: true }],
-    ["value2", null, { executed: false }],
-    ["value3", null, {}],
-  ];
+test("It should only return non-done items.", () => {
+  let items = [{ done: true }, { done: false }, {}];
 
   let q1 = new Queue(items);
 
   expect(q1.getItems()).toMatchSnapshot();
 });
 
-test("It should return no items if all are executed.", () => {
-  let items = [
-    ["value1", null, { executed: true }],
-    ["value2", null, { executed: true }],
-    ["value3", null, { executed: true }],
-  ];
+test("It should return no items if all are done.", () => {
+  let items = [{ done: true }, { done: true }, { done: true }];
 
   let q1 = new Queue(items);
 

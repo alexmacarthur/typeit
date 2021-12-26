@@ -2,11 +2,7 @@
 
 exports[`Initial queue only contains startDelay pause. 1`] = `
 Array [
-  Array [
-    [Function],
-    250,
-    Object {},
-  ],
+  [Function],
 ]
 `;
 
@@ -35,712 +31,116 @@ Array [
 
 exports[`Should skip over empty strings. 1`] = `
 Array [
-  Array [
-    [Function],
-    250,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "chars": Array [
-        Object {
-          "content": "A",
-          "node": A,
-        },
-      ],
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    375,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "chars": Array [
-        Object {
-          "content": <br />,
-          "node": null,
-        },
-      ],
-      "silent": true,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    375,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "chars": Array [
-        Object {
-          "content": "B",
-          "node": B,
-        },
-      ],
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
 ]
 `;
 
 exports[`break() Should should queue break character object. 1`] = `
 Array [
-  Array [
-    [Function],
-    250,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "chars": Array [
-        Object {
-          "content": <br />,
-          "node": null,
-        },
-      ],
-      "silent": true,
-    },
-    Object {},
-  ],
+  [Function],
+  [Function],
 ]
 `;
 
 exports[`delete() Should bookend action with same options when no options passed. 1`] = `
 Array [
-  Array [
-    [Function],
-    250,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {},
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "instant": undefined,
-      "num": 1,
-      "to": undefined,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "afterComplete": [Function],
-      "afterStep": [Function],
-      "afterString": [Function],
-      "beforeStep": [Function],
-      "beforeString": [Function],
-      "breakLines": true,
-      "cursor": true,
-      "cursorChar": "|",
-      "cursorSpeed": 1000,
-      "deleteSpeed": null,
-      "html": true,
-      "lifeLike": true,
-      "loop": false,
-      "loopDelay": Array [
-        375,
-        375,
-      ],
-      "nextStringDelay": Array [
-        375,
-        375,
-      ],
-      "speed": 100,
-      "startDelay": 250,
-      "startDelete": false,
-      "strings": Array [],
-      "waitUntilVisible": false,
-    },
-    Object {},
-  ],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
 ]
 `;
 
-exports[`delete() Should queue pause after string when defined. 1`] = `
-Array [
-  [Function],
-  300,
-  Object {},
-]
-`;
+exports[`delete() Should queue pause after string when defined. 1`] = `[Function]`;
 
-exports[`delete() Should queue pause correctly when options are passed. 1`] = `
-Array [
-  [Function],
-  200,
-  Object {},
-]
-`;
+exports[`delete() Should queue pause correctly when options are passed. 1`] = `[Function]`;
 
-exports[`delete() Should queue pause correctly when single digit is passed. 1`] = `
-Array [
-  [Function],
-  50,
-  Object {},
-]
-`;
+exports[`delete() Should queue pause correctly when single digit is passed. 1`] = `[Function]`;
 
 exports[`delete() Should temporarily update options when specified. 1`] = `
 Array [
-  Array [
-    [Function],
-    250,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "deleteSpeed": 201,
-    },
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "instant": undefined,
-      "num": null,
-      "to": undefined,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "afterComplete": [Function],
-      "afterStep": [Function],
-      "afterString": [Function],
-      "beforeStep": [Function],
-      "beforeString": [Function],
-      "breakLines": true,
-      "cursor": true,
-      "cursorChar": "|",
-      "cursorSpeed": 1000,
-      "deleteSpeed": null,
-      "html": true,
-      "lifeLike": true,
-      "loop": false,
-      "loopDelay": Array [
-        375,
-        375,
-      ],
-      "nextStringDelay": Array [
-        375,
-        375,
-      ],
-      "speed": 100,
-      "startDelay": 250,
-      "startDelete": false,
-      "strings": Array [],
-      "waitUntilVisible": false,
-    },
-    Object {},
-  ],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
 ]
 `;
 
 exports[`empty() addSplitPause() Adds different even split pause around strings. 1`] = `
 Array [
-  Array [
-    [Function],
-    250,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "chars": Array [
-        Object {
-          "content": "A",
-          "node": ABC,
-        },
-        Object {
-          "content": "B",
-          "node": ABC,
-        },
-        Object {
-          "content": "C",
-          "node": ABC,
-        },
-      ],
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    500,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "chars": Array [
-        Object {
-          "content": <br />,
-          "node": null,
-        },
-      ],
-      "silent": true,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    500,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "chars": Array [
-        Object {
-          "content": "E",
-          "node": EFG,
-        },
-        Object {
-          "content": "F",
-          "node": EFG,
-        },
-        Object {
-          "content": "G",
-          "node": EFG,
-        },
-      ],
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
 ]
 `;
 
 exports[`empty() addSplitPause() Adds even split pause around strings. 1`] = `
 Array [
-  Array [
-    [Function],
-    250,
-    Object {},
-  ],
+  [Function],
 ]
 `;
 
 exports[`empty() addSplitPause() Adds split pause around strings when value is array. 1`] = `
 Array [
-  Array [
-    [Function],
-    250,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "chars": Array [
-        Object {
-          "content": "A",
-          "node": ABC,
-        },
-        Object {
-          "content": "B",
-          "node": ABC,
-        },
-        Object {
-          "content": "C",
-          "node": ABC,
-        },
-      ],
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    100,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "chars": Array [
-        Object {
-          "content": <br />,
-          "node": null,
-        },
-      ],
-      "silent": true,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    500,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "chars": Array [
-        Object {
-          "content": "E",
-          "node": EFG,
-        },
-        Object {
-          "content": "F",
-          "node": EFG,
-        },
-        Object {
-          "content": "G",
-          "node": EFG,
-        },
-      ],
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
 ]
 `;
 
 exports[`empty() addSplitPause() Inserts split pause around multiple strings. 1`] = `
 Array [
-  Array [
-    [Function],
-    250,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "chars": Array [
-        Object {
-          "content": "A",
-          "node": A,
-        },
-      ],
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    375,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "chars": Array [
-        Object {
-          "content": <br />,
-          "node": null,
-        },
-      ],
-      "silent": true,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    375,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "chars": Array [
-        Object {
-          "content": "B",
-          "node": B,
-        },
-      ],
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    375,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "chars": Array [
-        Object {
-          "content": <br />,
-          "node": null,
-        },
-      ],
-      "silent": true,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    375,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "chars": Array [
-        Object {
-          "content": "C",
-          "node": C,
-        },
-      ],
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    375,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "chars": Array [
-        Object {
-          "content": <br />,
-          "node": null,
-        },
-      ],
-      "silent": true,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    375,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "chars": Array [
-        Object {
-          "content": "D",
-          "node": D,
-        },
-      ],
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    375,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "chars": Array [
-        Object {
-          "content": <br />,
-          "node": null,
-        },
-      ],
-      "silent": true,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    375,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "chars": Array [
-        Object {
-          "content": "E",
-          "node": E,
-        },
-      ],
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
 ]
 `;
 
 exports[`move() Should bookend action with same options when no options passed. 1`] = `
 Array [
-  Array [
-    [Function],
-    250,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {},
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "instant": undefined,
-      "to": undefined,
-      "value": 1,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "afterComplete": [Function],
-      "afterStep": [Function],
-      "afterString": [Function],
-      "beforeStep": [Function],
-      "beforeString": [Function],
-      "breakLines": true,
-      "cursor": true,
-      "cursorChar": "|",
-      "cursorSpeed": 1000,
-      "deleteSpeed": null,
-      "html": true,
-      "lifeLike": true,
-      "loop": false,
-      "loopDelay": Array [
-        375,
-        375,
-      ],
-      "nextStringDelay": Array [
-        375,
-        375,
-      ],
-      "speed": 100,
-      "startDelay": 250,
-      "startDelete": false,
-      "strings": Array [],
-      "waitUntilVisible": false,
-    },
-    Object {},
-  ],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
 ]
 `;
 
-exports[`move() Should queue pause after string when defined. 1`] = `
-Array [
-  [Function],
-  300,
-  Object {},
-]
-`;
+exports[`move() Should queue pause after string when defined. 1`] = `[Function]`;
 
-exports[`move() Should queue pause correctly when options are passed. 1`] = `
-Array [
-  [Function],
-  200,
-  Object {},
-]
-`;
+exports[`move() Should queue pause correctly when options are passed. 1`] = `[Function]`;
 
 exports[`move() Should temporarily update options when specified. 1`] = `
 Array [
-  Array [
-    [Function],
-    250,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "speed": 601,
-      "to": "END",
-    },
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "instant": undefined,
-      "to": "END",
-      "value": "",
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "afterComplete": [Function],
-      "afterStep": [Function],
-      "afterString": [Function],
-      "beforeStep": [Function],
-      "beforeString": [Function],
-      "breakLines": true,
-      "cursor": true,
-      "cursorChar": "|",
-      "cursorSpeed": 1000,
-      "deleteSpeed": null,
-      "html": true,
-      "lifeLike": true,
-      "loop": false,
-      "loopDelay": Array [
-        375,
-        375,
-      ],
-      "nextStringDelay": Array [
-        375,
-        375,
-      ],
-      "speed": 100,
-      "startDelay": 250,
-      "startDelete": false,
-      "strings": Array [],
-      "waitUntilVisible": false,
-    },
-    Object {},
-  ],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
 ]
 `;
 
@@ -779,142 +179,22 @@ Object {
 
 exports[`type() Should bookend action with same options when no options passed. 1`] = `
 Array [
-  Array [
-    [Function],
-    250,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {},
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "chars": Array [
-        Object {
-          "content": "!",
-          "node": !,
-        },
-      ],
-      "instant": undefined,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "afterComplete": [Function],
-      "afterStep": [Function],
-      "afterString": [Function],
-      "beforeStep": [Function],
-      "beforeString": [Function],
-      "breakLines": true,
-      "cursor": true,
-      "cursorChar": "|",
-      "cursorSpeed": 1000,
-      "deleteSpeed": null,
-      "html": true,
-      "lifeLike": true,
-      "loop": false,
-      "loopDelay": Array [
-        375,
-        375,
-      ],
-      "nextStringDelay": Array [
-        375,
-        375,
-      ],
-      "speed": 100,
-      "startDelay": 250,
-      "startDelete": false,
-      "strings": Array [],
-      "waitUntilVisible": false,
-    },
-    Object {},
-  ],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
 ]
 `;
 
-exports[`type() Should queue pause after string when defined. 1`] = `
-Array [
-  [Function],
-  300,
-  Object {},
-]
-`;
+exports[`type() Should queue pause after string when defined. 1`] = `[Function]`;
 
-exports[`type() Should queue pause correctly when options are passed. 1`] = `
-Array [
-  [Function],
-  200,
-  Object {},
-]
-`;
+exports[`type() Should queue pause correctly when options are passed. 1`] = `[Function]`;
 
 exports[`type() Should temporarily update options when specified. 1`] = `
 Array [
-  Array [
-    [Function],
-    250,
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "speed": 501,
-    },
-    Object {},
-  ],
-  Array [
-    [Function],
-    Object {
-      "chars": Array [
-        Object {
-          "content": "!",
-          "node": !,
-        },
-      ],
-      "instant": undefined,
-    },
-    Object {
-      "freezeCursor": true,
-    },
-  ],
-  Array [
-    [Function],
-    Object {
-      "afterComplete": [Function],
-      "afterStep": [Function],
-      "afterString": [Function],
-      "beforeStep": [Function],
-      "beforeString": [Function],
-      "breakLines": true,
-      "cursor": true,
-      "cursorChar": "|",
-      "cursorSpeed": 1000,
-      "deleteSpeed": null,
-      "html": true,
-      "lifeLike": true,
-      "loop": false,
-      "loopDelay": Array [
-        375,
-        375,
-      ],
-      "nextStringDelay": Array [
-        375,
-        375,
-      ],
-      "speed": 100,
-      "startDelay": 250,
-      "startDelete": false,
-      "strings": Array [],
-      "waitUntilVisible": false,
-    },
-    Object {},
-  ],
+  [Function],
+  [Function],
+  [Function],
+  [Function],
 ]
 `;

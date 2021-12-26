@@ -1,3 +1,1 @@
-export default (thing: any): boolean => {
-  return Array.isArray(thing);
-};
+export default (thing: any): boolean => Array.isArray(thing);
