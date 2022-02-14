@@ -46,7 +46,7 @@ export default function TypeIt(
   element: Element | string,
   options: Options = {}
 ): void {
-  const _wait = async (
+  let _wait = async (
     callback: Function,
     delay: number,
     silent: boolean = false
@@ -67,29 +67,29 @@ export default function TypeIt(
     silent || (await _opts.afterStep(this));
   };
 
-  const _elementIsInput = () => isInput(_element);
+  let _elementIsInput = () => isInput(_element);
 
-  const _getPace = (index: number): number => calculatePace(_opts)[index];
+  let _getPace = (index: number): number => calculatePace(_opts)[index];
 
-  const _getAllChars = (): Element[] => getAllChars(_element);
+  let _getAllChars = (): Element[] => getAllChars(_element);
 
-  const _getActionPace = (instant: boolean, paceIndex: number = 0): number => {
+  let _getActionPace = (instant: boolean, paceIndex: number = 0): number => {
     return instant ? _getPace(paceIndex) : 0;
   };
 
-  const _maybeAppendPause = (opts = {}) => {
+  let _maybeAppendPause = (opts = {}) => {
     let delay = opts["delay"];
     delay && _queue.add(() => _pause(delay));
   };
 
-  const _queueAndReturn = (steps: QueueItem[] | QueueItem, opts: Options) => {
+  let _queueAndReturn = (steps: QueueItem[] | QueueItem, opts: Options) => {
     _queue.add(steps);
     _maybeAppendPause(opts);
 
     return this;
   };
 
-  const _generateTemporaryOptionQueueItems = (
+  let _generateTemporaryOptionQueueItems = (
     newOptions: Options = {}
   ): QueueItem[] => {
     return [
@@ -102,7 +102,7 @@ export default function TypeIt(
    * Add items to the queue with a split pause
    * wrapped around them.
    */
-  const _addSplitPause = (items: QueueItem[]) => {
+  let _addSplitPause = (items: QueueItem[]) => {
     let delay = _opts.nextStringDelay;
 
     _queue.add([
@@ -118,7 +118,7 @@ export default function TypeIt(
    *
    * @return {void}
    */
-  const _setUpCursor = (): undefined | Element => {
+  let _setUpCursor = (): undefined | Element => {
     if (_elementIsInput()) {
       return;
     }
@@ -143,13 +143,13 @@ export default function TypeIt(
   /**
    * Attach it to the DOM so, along with the required CSS transition.
    */
-  const _attachCursor = async () => {
+  let _attachCursor = async () => {
     !_elementIsInput() && _element.appendChild(_cursor);
 
     _shouldRenderCursor && setCursorStyles(_id, _opts, _element);
   };
 
-  const _disableCursorBlink = (shouldDisable: boolean): void => {
+  let _disableCursorBlink = (shouldDisable: boolean): void => {
     if (_shouldRenderCursor) {
       _cursor.classList.toggle("disabled", shouldDisable);
       _cursor.classList.toggle("with-delay", !shouldDisable);
@@ -160,7 +160,7 @@ export default function TypeIt(
    * Based on provided strings, generate a TypeIt queue
    * to be fired for each character in the string.
    */
-  const _generateQueue = () => {
+  let _generateQueue = () => {
     let strings = _opts.strings.filter((string) => !!string);
 
     strings.forEach((string, index) => {
@@ -173,7 +173,7 @@ export default function TypeIt(
         return;
       }
 
-      const splitPauseArgs: QueueItem[] = [
+      let splitPauseArgs: QueueItem[] = [
         _opts.breakLines 
         ? () => _type({
           chars: [createElement("BR")],
@@ -190,7 +190,7 @@ export default function TypeIt(
    * 1. Reset queue.
    * 2. Reset initial pause.
    */
-  const _prepLoop = async (delay) => {
+  let _prepLoop = async (delay) => {
     _cursorPosition && (await _move({ value: _cursorPosition }));
     _queue.reset();
     _queue.set(0, () => _pause(delay));
@@ -198,7 +198,7 @@ export default function TypeIt(
     await _delete({ num: null });
   };
 
-  const _maybePrependHardcodedStrings = (strings): string[] => {
+  let _maybePrependHardcodedStrings = (strings): string[] => {
     let existingMarkup = _element.innerHTML;
 
     if (!existingMarkup) {
@@ -225,7 +225,7 @@ export default function TypeIt(
     return hardCodedStrings.concat(strings);
   };
 
-  const _fire = async (): Promise<void> => {
+  let _fire = async (): Promise<void> => {
     _statuses.started = true;
 
     let queueItems = _queue.getItems();
@@ -258,14 +258,12 @@ export default function TypeIt(
     return this;
   };
 
-  const _pause = (time = 0): Promise<void> => {
-    return _wait(() => {}, time);
-  };
+  let _pause = (time = 0): Promise<void> => _wait(() => {}, time);
 
   /**
    * Move type cursor by a given number.
    */
-  const _move = async ({
+  let _move = async ({
     value,
     to = START,
     instant = false,
@@ -309,7 +307,7 @@ export default function TypeIt(
   /**
    * Insert a single or many characters into the target element.
    */
-  const _type = ({
+  let _type = ({
     chars,
     silent = false,
     instant = false,
@@ -322,7 +320,7 @@ export default function TypeIt(
 
     return _wait(
       async () => {
-        const insert = (character) =>
+        let insert = (character) =>
           insertIntoElement(_element, character);
 
         silent || (await _opts.beforeString(chars, this));
@@ -340,12 +338,12 @@ export default function TypeIt(
     );
   };
 
-  const _options = async (opts) => {
+  let _options = async (opts) => {
     _opts = merge(_opts, opts);
     return;
   };
 
-  const _empty = async () => {
+  let _empty = async () => {
     if (_elementIsInput()) {
       _element.value = "";
       return;
@@ -361,7 +359,7 @@ export default function TypeIt(
   /**
    * Delete the number of specified characters, or all of the printed characters.
    */
-  const _delete = async ({
+  let _delete = async ({
     num = null,
     instant = false,
     to = START, // only matters when 'num' is a selector
@@ -391,7 +389,7 @@ export default function TypeIt(
           });
       })();
 
-      const deleteIt = () => {
+      let deleteIt = () => {
         let allChars = _getAllChars();
 
         if (!allChars.length) return;

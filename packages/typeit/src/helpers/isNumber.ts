@@ -1,4 +1,4 @@
-const isNumber = (value: any): boolean => {
+let isNumber = (value: any): boolean => {
   return Number.isInteger(value);
 };
 

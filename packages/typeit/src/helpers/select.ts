@@ -1,4 +1,4 @@
-const select = (
+let select = (
   selector: string,
   element: Node = document,
   all: boolean = false

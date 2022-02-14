@@ -7,7 +7,7 @@ import getAllChars from "./getAllChars";
 /**
  * Calculates the number of steps between the END of an element and a selector.
  */
-const calculateStepsToSelector = (
+let calculateStepsToSelector = (
   selector: string,
   element: Element,
   to: string = START

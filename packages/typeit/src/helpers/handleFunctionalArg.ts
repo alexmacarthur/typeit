@@ -1,4 +1,4 @@
-const handleFunctionalArg = <T>(arg: any | (() => T)): T => {
+let handleFunctionalArg = <T>(arg: any | (() => T)): T => {
   return typeof arg === "function" ? arg() : arg;
 };
 
