@@ -364,23 +364,32 @@ export default function TypeIt(
   const _delete = async ({
     num = null,
     instant = false,
-    to = START,
+    to = START, // only matters when 'num' is a selector
   }: {
-    num: number | null;
+    num: number | string | null;
     instant?: boolean;
     to?: Sides;
   }): Promise<void> => {
     _disableCursorBlink(true);
 
     await _wait(async () => {
-      let rounds = isNumber(num) || _elementIsInput()
-        ? num
-        : calculateCursorSteps({
+      let rounds = (() => {
+        if(num === null) {
+          return _getAllChars().length
+        }
+
+        if(isNumber(num)) {
+          return num;
+        }
+
+        // `num` is a selector
+        return calculateCursorSteps({
             el: _element,
             move: num,
             cursorPos: _cursorPosition,
             to,
           });
+      })();
 
       const deleteIt = () => {
         let allChars = _getAllChars();
@@ -417,7 +426,7 @@ export default function TypeIt(
   };
 
   this.delete = function (
-    numCharacters: number | (() => number | null) = null,
+    numCharacters: number | string | (() => number | null) = null,
     actionOpts: ActionOpts = {}
   ) {
     numCharacters = handleFunctionalArg<number>(numCharacters);
