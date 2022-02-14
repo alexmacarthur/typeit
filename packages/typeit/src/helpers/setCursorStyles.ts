@@ -2,7 +2,7 @@ import { CURSOR_CLASS, DATA_ATTRIBUTE } from "../contants";
 import { Element, Options } from "../types";
 import appendStyleBlock from "./appendStyleBlock";
 
-export const cursorFontStyles = {
+export let cursorFontStyles = {
   "font-family": "",
   "font-weight": "",
   "font-size": "",
@@ -13,7 +13,7 @@ export const cursorFontStyles = {
   "margin-right": ".125em",
 } as const;
 
-export const setCursorStyles = (
+export let setCursorStyles = (
   id: string,
   options: Options,
   element: Element

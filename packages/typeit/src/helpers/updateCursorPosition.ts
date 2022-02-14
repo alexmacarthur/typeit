@@ -1,4 +1,4 @@
-const updateCursorPosition = (
+let updateCursorPosition = (
   steps: number,
   cursorPosition: number,
   printedCharacters: Element[]

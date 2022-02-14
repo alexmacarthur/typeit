@@ -10,7 +10,7 @@ export function walkElementNodes(
   shouldReverse: boolean = false
   ): Element[] {
 
-  const walker = document.createTreeWalker(
+  let walker = document.createTreeWalker(
     element,
     NodeFilter.SHOW_ALL,
     { 

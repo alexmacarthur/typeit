@@ -1,9 +1,9 @@
 /**
  * Fire a callback after a delay, and add the timeout ID to a referenced array.
  */
-const wait = async (callback: Function, delay: number, timeouts) => {
+let wait = async (callback: Function, delay: number, timeouts) => {
   return new Promise<void>((resolve) => {
-    const cb = async () => {
+    let cb = async () => {
       await callback();
 
       resolve();

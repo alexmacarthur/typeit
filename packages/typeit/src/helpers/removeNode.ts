@@ -6,8 +6,8 @@ import { Element } from "../types";
 export default (node: Element | null) => {
   if(!node) return;
 
-  const nodeParent = node.parentNode as HTMLElement;
-  const nodeToRemove = nodeParent.childNodes.length > 1
+  let nodeParent = node.parentNode as HTMLElement;
+  let nodeToRemove = nodeParent.childNodes.length > 1
     // This parent still needs to exist.
     ? node
 

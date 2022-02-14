@@ -3,12 +3,12 @@ import select from "./select";
 import { CURSOR_CLASS } from "../contants";
 import { Element } from "../types";
 
-const isBodyElement = (node): boolean => node?.tagName === "BODY";
+let isBodyElement = (node): boolean => node?.tagName === "BODY";
 
 /**
  * Inserts a set of content into the element. Intended for SINGLE characters.
  */
-const insertIntoElement = (
+let insertIntoElement = (
   originalTarget: Element,
   character: Element
 ) => {
