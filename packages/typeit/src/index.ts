@@ -527,10 +527,16 @@ export default function TypeIt(
 
   this.unfreeze = function () {};
 
-  this.reset = function () {
+  this.reset = function (rebuild: ((TypeIt) => typeof TypeIt) | undefined) {
     !this.is("destroyed") && this.destroy();
 
-    _queue.reset();
+    // If provided, the queue can be totally regenerated.
+    if(rebuild) {
+      _queue.wipe();
+      rebuild(this);
+    } else {  
+      _queue.reset();
+    }
 
     _cursorPosition = 0;
 
