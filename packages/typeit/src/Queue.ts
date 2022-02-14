@@ -29,10 +29,16 @@ const Queue = function (initialItems: QueueItem[]) {
     });
   };
 
+  const wipe = function (): void {
+    _queue = [];
+    add(initialItems); 
+  }
+
   /**
-   * Retrieve all items that are still eligible to be executed.
+   * Retrieve all items that are still eligible to be executed. By default, only the 
+   * completed items will be retrieved. 
    */
-  const getItems = (): QueueItem[] => _queue.filter(i => !i.done);
+  const getItems = (all: boolean = false): QueueItem[] => _queue.filter(i => all || !i.done);
 
   const markDone = (index: number) => {
     _queue[index].done = true;
@@ -46,6 +52,7 @@ const Queue = function (initialItems: QueueItem[]) {
     add,
     set,
     reset,
+    wipe,
     getItems,
     markDone,
   };

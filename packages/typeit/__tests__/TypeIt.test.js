@@ -391,6 +391,33 @@ describe("reset()", () => {
       },
     }).go();
   });
+
+  describe("rebuilder function is provided", () => {
+    test("Rebuilds queue and executes it if specified.", (done) => {
+      setHTML`<div>
+        <span id="element"></span>
+      </div>`;
+
+      let hasCompletedOnce = false;
+      let el = document.querySelector("#element");
+      let instance = new TypeIt("#element", {
+        speed: 0,
+        afterComplete: () => {
+          // After the second "run," the HTML should contain whatever the
+          // second rebuilt queue instructed to run.
+          if (hasCompletedOnce) {
+            expect(el.innerHTML).toMatch(/^second<span/);
+            return done();
+          }
+
+          instance.reset((i) => i.type("second")).go();
+          hasCompletedOnce = true;
+        },
+      })
+        .type("first")
+        .go();
+    });
+  });
 });
 
 describe("destroy()", () => {
