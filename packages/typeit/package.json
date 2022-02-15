@@ -17,11 +17,12 @@
     "scripts/"
   ],
   "scripts": {
-    "build": "vite build && tsc && scripts/banner",
+    "build": "tsc && vite build && scripts/banner",
     "tsc": "tsc",
     "start": "vite serve examples",
     "test": "jest",
-    "postinstall": "node ./scripts/notice.js"
+    "postinstall": "node ./scripts/notice.js",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "javascript",

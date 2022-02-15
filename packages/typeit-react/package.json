@@ -7,10 +7,11 @@
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "vite build && tsc",
+    "build": "tsc && vite build",
     "start": "vite serve examples",
     "prettier": "prettier --write \"**/*.{md,js}\"",
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "prepublishOnly": "npm run build"
   },
   "files": [
     "dist/",
