@@ -22,7 +22,7 @@
     "start": "vite serve examples",
     "test": "jest",
     "postinstall": "node ./scripts/notice.js",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm install && npm run build"
   },
   "keywords": [
     "javascript",
