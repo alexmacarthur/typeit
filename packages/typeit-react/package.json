@@ -1,13 +1,13 @@
 {
   "name": "typeit-react",
-  "version": "2.3.2",
+  "version": "2.3.3",
   "description": "React component for the most versatile JavaScript animated typing utility on the planet.",
   "homepage": "https://typeitjs.com",
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc && vite build",
+    "build": "vite build && tsc",
     "start": "vite serve examples",
     "prettier": "prettier --write \"**/*.{md,js}\"",
     "test": "echo \"Error: no test specified\" && exit 0",
@@ -40,12 +40,12 @@
     "@types/react": "^17.0.39",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "typeit": "^8.3.1",
-    "vite": "^2.8.1"
+    "typeit": "^8.3.3",
+    "vite": "^2.8.6"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.16.7",
-    "lint-staged": "^12.3.4",
-    "typescript": "^4.5.5"
+    "lint-staged": "^12.3.5",
+    "typescript": "^4.6.2"
   }
 }
