@@ -1,6 +1,6 @@
 {
   "name": "typeit",
-  "version": "8.3.2",
+  "version": "8.3.3",
   "description": "The most versatile animated typing utility on the planet.",
   "author": "Alex MacArthur <alex@macarthur.me> (https://macarthur.me)",
   "license": "GPL-3.0",
@@ -17,7 +17,7 @@
     "scripts/"
   ],
   "scripts": {
-    "build": "tsc && vite build && scripts/banner",
+    "build": "vite build && scripts/banner && tsc",
     "tsc": "tsc",
     "start": "vite serve examples",
     "test": "jest",
@@ -43,8 +43,8 @@
     "@babel/preset-typescript": "^7.16.7",
     "jest": "^27.5.1",
     "jest-cli": "^27.5.1",
-    "typescript": "^4.5.5",
-    "vite": "^2.8.1"
+    "typescript": "^4.6.2",
+    "vite": "^2.8.6"
   },
   "jest": {
     "testPathIgnorePatterns": [
