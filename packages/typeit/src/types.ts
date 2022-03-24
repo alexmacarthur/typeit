@@ -1,3 +1,8 @@
+export type TypeItInstance = (
+  element: Element | string,
+  options: Options
+) => void;
+
 export type Character = {
   node: Node | null;
   content: string | Node;
@@ -33,12 +38,15 @@ export type ActionOpts = Options & {
 };
 
 export type QueueItem = Function & {
-  done?: boolean
-}
-
-export type Element = HTMLElement & CharacterData & Node & ChildNode & {
-  value: string | number;
-  originalParent?: HTMLElement;
+  done?: boolean;
 };
+
+export type Element = HTMLElement &
+  CharacterData &
+  Node &
+  ChildNode & {
+    value: string | number;
+    originalParent?: HTMLElement;
+  };
 
 export type Sides = "START" | "END";
