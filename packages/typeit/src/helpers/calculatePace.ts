@@ -3,6 +3,9 @@ import randomInRange from "./randomInRange";
 
 let range = (val: number): number => val / 2;
 
+/**
+ * [typePace, deletePace]
+ */
 export default function (options: Options): number[] {
   let { speed, deleteSpeed, lifeLike } = options;
 

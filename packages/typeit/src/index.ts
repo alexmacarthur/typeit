@@ -3,7 +3,6 @@ import { maybeChunkStringAsHtml } from "./helpers/chunkStrings";
 import expandTextNodes from "./helpers/expandTextNodes";
 import appendStyleBlock from "./helpers/appendStyleBlock";
 import asArray from "./helpers/asArray";
-import calculateCursorSteps from "./helpers/calculateCursorSteps";
 import calculateDelay from "./helpers/calculateDelay";
 import calculatePace from "./helpers/calculatePace";
 import createElement from "./helpers/createElement";
@@ -24,14 +23,21 @@ import selectorToElement from "./helpers/selectorToElement";
 import isNonVoidElement from "./helpers/isNonVoidElement";
 import wait from "./helpers/wait";
 import { setCursorStyles } from "./helpers/setCursorStyles";
-import { Element, Options, QueueItem, ActionOpts, Sides, TypeItInstance } from "./types";
+import {
+  Element,
+  Options,
+  QueueItem,
+  ActionOpts,
+  TypeItInstance,
+} from "./types";
 import {
   CURSOR_CLASS,
   DEFAULT_STATUSES,
   DEFAULT_OPTIONS,
-  START,
   DATA_ATTRIBUTE,
 } from "./contants";
+import duplicate from "./helpers/duplicate";
+import countStepsToSelector from "./helpers/countStepsToSelector";
 
 // Necessary for publicly exposing types.
 export declare type TypeItOptions = Options;
@@ -60,20 +66,16 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
 
   let _elementIsInput = () => isInput(_element);
 
-  let _getPace = (index: number): number => calculatePace(_opts)[index];
+  let _getPace = (index: number = 0): number => calculatePace(_opts)[index];
 
   let _getAllChars = (): Element[] => getAllChars(_element);
 
-  let _getActionPace = (instant: boolean, paceIndex: number = 0): number => {
-    return instant ? _getPace(paceIndex) : 0;
+  let _maybeAppendPause = (opts: ActionOpts = {}) => {
+    let delay = opts.delay;
+    delay && _queue.add({ delay });
   };
 
-  let _maybeAppendPause = (opts = {}) => {
-    let delay = opts["delay"];
-    delay && _queue.add(() => _pause(delay));
-  };
-
-  let _queueAndReturn = (steps: QueueItem[] | QueueItem, opts: Options) => {
+  let _queueAndReturn = (steps: QueueItem[] | QueueItem, opts: ActionOpts) => {
     _queue.add(steps);
     _maybeAppendPause(opts);
 
@@ -83,26 +85,27 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
   let _generateTemporaryOptionQueueItems = (
     newOptions: Options = {}
   ): QueueItem[] => {
-    return [() => _options(newOptions), () => _options(_opts)];
+    return [
+      { func: () => _options(newOptions) },
+      { func: () => _options(_opts) },
+    ];
   };
 
   /**
    * Add items to the queue with a split pause
    * wrapped around them.
    */
-  let _addSplitPause = (items: QueueItem[]) => {
+  let _addSplitPause = (item: QueueItem) => {
     let delay = _opts.nextStringDelay;
 
-    _queue.add([() => _pause(delay[0]), ...items, () => _pause(delay[1])]);
+    _queue.add([{ delay: delay[0] }, item, { delay: delay[1] }]);
   };
 
   /**
    * Provided it's a non-form element and the options is provided,
    * set up the cursor element for the
-   *
-   * @return {void}
    */
-  let _setUpCursor = (): undefined | Element => {
+  let _setUpCursor = (): void | Element => {
     if (_elementIsInput()) {
       return;
     }
@@ -128,13 +131,13 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
    * Attach it to the DOM so, along with the required CSS transition.
    */
   let _attachCursor = async () => {
-    !_elementIsInput() && _element.appendChild(_cursor);
+    !_elementIsInput() && _cursor && _element.appendChild(_cursor);
 
     _shouldRenderCursor && setCursorStyles(_id, _opts, _element);
   };
 
   let _disableCursorBlink = (shouldDisable: boolean): void => {
-    if (_shouldRenderCursor) {
+    if (_shouldRenderCursor && _cursor) {
       _cursor.classList.toggle("disabled", shouldDisable);
       _cursor.classList.toggle("with-delay", !shouldDisable);
     }
@@ -148,26 +151,17 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     let strings = _opts.strings.filter((string) => !!string);
 
     strings.forEach((string, index) => {
-      let chars = maybeChunkStringAsHtml(string, _opts.html);
-
-      _queue.add(() => _type({ chars }));
+      this.type(string);
 
       // This is the last string. Get outta here.
       if (index + 1 === strings.length) {
         return;
       }
 
-      let splitPauseArgs: QueueItem[] = [
-        _opts.breakLines
-          ? () =>
-              _type({
-                chars: [createElement("BR")],
-                silent: true,
-              })
-          : () => _delete({ num: chars.length }),
-      ];
-
-      _addSplitPause(splitPauseArgs);
+      _addSplitPause({
+        func: _opts.breakLines ? () => _type(createElement("BR")) : _delete,
+        typeable: !!_opts.breakLines
+      });
     });
   };
 
@@ -175,12 +169,15 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
    * 1. Reset queue.
    * 2. Reset initial pause.
    */
-  let _prepLoop = async (delay) => {
+  let _prepLoop = async (delay: number) => {
     _cursorPosition && (await _move({ value: _cursorPosition }));
-    _queue.reset();
-    _queue.set(0, () => _pause(delay));
 
-    await _delete({ num: null });
+    for (let _i of _queue.getTypeable()) {
+      await _wait(_delete, _getPace(1));
+    }
+
+    _queue.reset();
+    _queue.set(0, { delay });
   };
 
   let _maybePrependHardcodedStrings = (strings): string[] => {
@@ -197,8 +194,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     if (_opts.startDelete) {
       _element.innerHTML = existingMarkup;
       expandTextNodes(_element);
-
-      _addSplitPause([() => _delete({ num: null })]);
+      _addSplitPause({ func: _delete });
 
       return strings;
     }
@@ -213,12 +209,35 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
 
     let queueItems = _queue.getItems();
 
+    // @todo remove this eventually..
+    // console.log(
+    //   "Total time:",
+    //   queueItems.reduce((total, step) => {
+    //     total = total + step.delay;
+
+    //     return total;
+    //   }, 0)
+    // );
+
     try {
       for (let i = 0; i < queueItems.length; i++) {
-        await queueItems[i]();
+        let queueItem = queueItems[i];
+
+        queueItem.delay = queueItem.delay || 0;
+        queueItem.typeable && _disableCursorBlink(true);
+
+        // Only break up the event loop if needed.
+        let execute = async () => queueItem.func?.call(this);
+
+        if (queueItem.delay) {
+          await _wait(async () => {
+            await execute();
+          }, queueItem.delay);
+        } else {
+          await execute();
+        }
 
         _queue.markDone(i);
-
         _disableCursorBlink(false);
       }
 
@@ -241,89 +260,25 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     return this;
   };
 
-  let _pause = (time = 0): Promise<void> => _wait(() => {}, time);
-
   /**
    * Move type cursor by a given number.
    */
-  let _move = async ({
-    value,
-    to = START,
-    instant = false,
-  }: {
-    value: string | number;
-    to?: Sides;
-    instant?: boolean;
-  }): Promise<void> => {
-    _disableCursorBlink(true);
+  let _move = async (step): Promise<void> => {
+    _cursorPosition = updateCursorPosition(
+      step,
+      _cursorPosition,
+      _getAllChars()
+    );
 
-    let numberOfSteps = calculateCursorSteps({
-      el: _element,
-      move: value,
-      cursorPos: _cursorPosition,
-      to,
-    });
-
-    let moveCursor = () => {
-      _cursorPosition = updateCursorPosition(
-        numberOfSteps < 0 ? -1 : 1,
-        _cursorPosition,
-        _getAllChars()
-      );
-
-      repositionCursor(_element, _getAllChars(), _cursorPosition);
-    };
-
-    /**
-     * Depending on `instant`, either perform all cursor movements
-     * in one shot, or separately over several timeouts.
-     */
-    await _wait(async () => {
-      for (let i = 0; i < Math.abs(numberOfSteps); i++) {
-        instant ? moveCursor() : await _wait(moveCursor, _getPace(0));
-      }
-
-      // If it's 'instant,' the individual moves won't be delayed, so do so here.
-    }, _getActionPace(instant));
+    repositionCursor(_element, _getAllChars(), _cursorPosition);
   };
 
   /**
    * Insert a single or many characters into the target element.
    */
-  let _type = ({
-    chars,
-    silent = false,
-    instant = false,
-  }: {
-    chars: Partial<Element>[];
-    instant?: boolean;
-    silent?: boolean;
-  }): Promise<void> => {
-    _disableCursorBlink(true);
+  let _type = (char): void => insertIntoElement(_element, char);
 
-    return _wait(
-      async () => {
-        let insert = (character) => insertIntoElement(_element, character);
-
-        silent || (await _opts.beforeString(chars, this));
-
-        for (let char of chars) {
-          instant || isNonVoidElement(char)
-            ? insert(char)
-            : await _wait(() => insert(char), _getPace(0));
-        }
-
-        silent || (await _opts.afterString(chars, this));
-      },
-      _getActionPace(instant),
-      true
-    );
-  };
-
-  let _options = async (opts) => {
-    _opts = merge(_opts, opts);
-    return;
-  };
+  let _options = async (opts) => (_opts = merge(_opts, opts));
 
   let _empty = async () => {
     if (_elementIsInput()) {
@@ -331,76 +286,29 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
       return;
     }
 
-    _getAllChars().forEach((n) => {
-      removeNode(n);
-    });
+    _getAllChars().forEach(removeNode);
 
     return;
   };
 
-  /**
-   * Delete the number of specified characters, or all of the printed characters.
-   */
-  let _delete = async ({
-    num = null,
-    instant = false,
-    to = START, // only matters when 'num' is a selector
-  }: {
-    num: number | string | null;
-    instant?: boolean;
-    to?: Sides;
-  }): Promise<void> => {
-    _disableCursorBlink(true);
+  let _delete = (): void => {
+    let allChars = _getAllChars();
 
-    await _wait(async () => {
-      let rounds = (() => {
-        if (num === null) {
-          return _getAllChars().length;
-        }
+    if (!allChars.length) return;
 
-        if (isNumber(num)) {
-          return num;
-        }
-
-        // `num` is a selector
-        return calculateCursorSteps({
-          el: _element,
-          move: num,
-          cursorPos: _cursorPosition,
-          to,
-        });
-      })();
-
-      let deleteIt = () => {
-        let allChars = _getAllChars();
-
-        if (!allChars.length) return;
-
-        if (_elementIsInput()) {
-          _element.value = (_element.value as string).slice(0, -1);
-        } else {
-          removeNode(allChars[_cursorPosition]);
-        }
-      };
-
-      for (let i = 0; i < rounds; i++) {
-        instant ? deleteIt() : await _wait(deleteIt, _getPace(1));
-      }
-    }, _getActionPace(instant, 1));
-
-    /**
-     * If it's specified, keep deleting until all characters are gone. This is
-     * the only time when a SINGLE queue action (`delete()`) deals with multiple
-     * characters at once. I don't like it, but need to implement like this right now.
-     */
-    if (num === null && _getAllChars().length - 1 > 0) {
-      await _delete({ num: null });
+    if (_elementIsInput()) {
+      _element.value = (_element.value as string).slice(0, -1);
+    } else {
+      removeNode(allChars[_cursorPosition]);
     }
   };
 
-  this.break = function (actionOpts) {
+  this.break = function (actionOpts: ActionOpts) {
     return _queueAndReturn(
-      () => _type({ chars: [createElement("BR")], silent: true }),
+      {
+        func: () => _type(createElement("BR")),
+        typeable: true,
+      },
       actionOpts
     );
   };
@@ -413,25 +321,56 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     let bookEndQueueItems = _generateTemporaryOptionQueueItems(actionOpts);
     let num = numCharacters;
     let { instant, to } = actionOpts;
+    let typeableQueueItems = _queue.getTypeable();
+
+    let rounds = (() => {
+      if (num === null) {
+        return typeableQueueItems.length;
+      }
+
+      if (isNumber(num)) {
+        return num;
+      }
+
+      // The -1 offset is necessary because the empty element is what
+      // will be found, and we want to delete an actual character...
+      // not something that's empty.
+      return countStepsToSelector({
+        queueItems: typeableQueueItems,
+        selector: num,
+        cursorPosition: _predictedCursorPosition,
+        to,
+      })
+    })();
 
     return _queueAndReturn(
       [
         bookEndQueueItems[0],
-        () => _delete({ num, instant, to }),
+        ...duplicate(
+          {
+            func: _delete,
+            delay: instant ? 0 : _getPace(1),
+          },
+          rounds
+        ),
         bookEndQueueItems[1],
       ],
       actionOpts
     );
   };
 
-  this.empty = function (actionOpts = {}) {
-    return _queueAndReturn(_empty, actionOpts);
+  this.empty = function (actionOpts: ActionOpts = {}) {
+    return _queueAndReturn({ func: _empty }, actionOpts);
   };
 
-  this.exec = function (func: (instance: TypeItInstance) => any, actionOpts) {
+  this.exec = function (
+    func: (instance: TypeItInstance) => any,
+    actionOpts: ActionOpts = {}
+  ) {
     let bookEndQueueItems = _generateTemporaryOptionQueueItems(actionOpts);
+
     return _queueAndReturn(
-      [bookEndQueueItems[0], () => func(this), bookEndQueueItems[1]],
+      [bookEndQueueItems[0], { func: () => func(this) }, bookEndQueueItems[1]],
       actionOpts
     );
   };
@@ -441,25 +380,44 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     actionOpts: ActionOpts = {}
   ) {
     movementArg = handleFunctionalArg<string | number>(movementArg);
+
     let bookEndQueueItems = _generateTemporaryOptionQueueItems(actionOpts);
     let { instant, to } = actionOpts;
-
-    let moveArgs = {
-      value: movementArg === null ? "" : movementArg,
+    let numberOfSteps = countStepsToSelector({
+      queueItems: _queue.getTypeable(),
+      selector: movementArg === null ? "" : movementArg,
       to,
-      instant,
-    };
+      cursorPosition: _cursorPosition,
+    });
+    let directionalStep = numberOfSteps < 0 ? -1 : 1;
+
+    _predictedCursorPosition = _cursorPosition + numberOfSteps;
 
     return _queueAndReturn(
-      [bookEndQueueItems[0], () => _move(moveArgs), bookEndQueueItems[1]],
+      [
+        bookEndQueueItems[0],
+        ...duplicate(
+          {
+            func: () => _move(directionalStep),
+            delay: instant ? 0 : _getPace(),
+          },
+          Math.abs(numberOfSteps)
+        ),
+        bookEndQueueItems[1],
+      ],
       actionOpts
     );
   };
 
-  this.options = function (opts: Options | (() => Options)) {
+  this.options = function (
+    opts: Options | (() => Options),
+    actionOpts: ActionOpts = {}
+  ) {
     opts = handleFunctionalArg<Options>(opts);
 
-    return _queueAndReturn(() => _options(opts), opts);
+    _options(opts);
+
+    return _queueAndReturn({}, actionOpts);
   };
 
   this.pause = function (
@@ -467,7 +425,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     actionOpts: ActionOpts = {}
   ) {
     return _queueAndReturn(
-      () => _pause(handleFunctionalArg<number>(milliseconds)),
+      { delay: handleFunctionalArg<number>(milliseconds) },
       actionOpts
     );
   };
@@ -478,18 +436,24 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
   ) {
     string = handleFunctionalArg<string>(string);
 
+    let { instant } = actionOpts;
     let bookEndQueueItems = _generateTemporaryOptionQueueItems(actionOpts);
     let chars = maybeChunkStringAsHtml(string, _opts.html);
 
-    let { instant } = actionOpts;
+    let charsAsQueueItems = chars.map((char): QueueItem => {
+      return {
+        func: () => _type(char),
+        char,
+        delay: instant || isNonVoidElement(char) ? 0 : _getPace(),
+        typeable: char.nodeType === Node.TEXT_NODE,
+      };
+    });
 
-    /**
-     * When a string is intended to be typed instantly, pass one queue item with
-     * the argument being all of the characters of that string.
-     */
     let itemsToQueue = [
       bookEndQueueItems[0],
-      () => _type({ chars, instant }),
+      { func: async () => await _opts.beforeString(string, this) },
+      ...charsAsQueueItems,
+      { func: async () => await _opts.afterString(string, this) },
       bookEndQueueItems[1],
     ];
 
@@ -502,7 +466,9 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
 
   this.destroy = function (shouldRemoveCursor = true) {
     _timeouts = destroyTimeouts(_timeouts);
-    handleFunctionalArg<boolean>(shouldRemoveCursor) && removeNode(_cursor);
+    handleFunctionalArg<boolean>(shouldRemoveCursor) &&
+      _cursor &&
+      removeNode(_cursor);
     _statuses.destroyed = true;
   };
 
@@ -552,16 +518,14 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
   };
 
   this.getQueue = () => _queue;
-
   this.getOptions = () => _opts;
-
   this.updateOptions = (options: Options) => _options(options);
-
   this.getElement = () => _element;
 
   let _element = selectorToElement(element);
   let _timeouts: number[] = [];
   let _cursorPosition = 0;
+  let _predictedCursorPosition = 0;
   let _statuses = merge({}, DEFAULT_STATUSES);
 
   let _opts: Options = merge(DEFAULT_OPTIONS, options);
@@ -572,7 +536,13 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
   });
 
   let _id = generateHash();
-  let _queue = Queue([() => _pause(_opts.startDelay)]);
+  let _queue = Queue([
+    {
+      func: () => {},
+      delay: _opts.startDelay,
+    },
+  ]);
+
   _element.dataset.typeitId = _id;
 
   // Used to set a "placeholder" space in the element, so that it holds vertical sizing before anything's typed.

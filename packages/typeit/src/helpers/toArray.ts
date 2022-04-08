@@ -5,6 +5,4 @@
  * @param {any}
  * @return {array}
  */
-export default (val): any[] => {
-  return Array.from(val);
-};
+export default (val): any[] => Array.from(val);

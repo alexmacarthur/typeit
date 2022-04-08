@@ -1,5 +1,5 @@
 export default (timeouts: number[]): [] => {
-  timeouts.forEach((timeout) => clearTimeout(timeout));
+  timeouts.forEach(clearTimeout);
 
   return [];
 };

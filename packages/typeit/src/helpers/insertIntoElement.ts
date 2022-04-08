@@ -17,6 +17,8 @@ let insertIntoElement = (
     return;
   }
 
+  // Necessary for creating *empty* elements that will 
+  // later be filled with actual characters.
   character.innerHTML = "";
 
   let target = isBodyElement(character.originalParent) 

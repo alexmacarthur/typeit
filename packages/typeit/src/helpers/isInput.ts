@@ -1,3 +1,1 @@
-export default (el: HTMLElement): boolean => {
-  return "value" in el;
-};
+export default (el: HTMLElement): boolean => "value" in el;

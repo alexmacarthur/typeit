@@ -1,5 +1,1 @@
-let isNumber = (value: any): boolean => {
-  return Number.isInteger(value);
-};
-
-export default isNumber;
+export default (value: any): boolean => Number.isInteger(value);

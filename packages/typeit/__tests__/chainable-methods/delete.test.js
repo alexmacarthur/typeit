@@ -57,12 +57,9 @@ describe("timeouts fire correctly", () => {
   test("Executes correctly when deletion is not instant.", (done) => {
     new TypeIt("#element", {
       strings: "abc",
-      speed: 0,
+      speed: 1,
       afterComplete: () => {
-        // 1 - initial pause
-        // 4 - typing
-        // 4 - deleting
-        expect(waitSpy).toHaveBeenCalledTimes(9);
+        expect(waitSpy).toHaveBeenCalledTimes(7);
         done();
       },
     })
@@ -73,13 +70,9 @@ describe("timeouts fire correctly", () => {
   test("Executes correctly when deletion is instant.", (done) => {
     new TypeIt("#element", {
       strings: "abc",
-      speed: 0,
+      speed: 1,
       afterComplete: () => {
-        // Includes initial pause, typing, and one cursor movement.
-        // 1 - initial pause
-        // 4 - typing
-        // 1 - deleting
-        expect(waitSpy).toHaveBeenCalledTimes(6);
+        expect(waitSpy).toHaveBeenCalledTimes(4);
         done();
       },
     })
@@ -90,12 +83,9 @@ describe("timeouts fire correctly", () => {
   test("Executes correctly when number of characters is passed.", (done) => {
     new TypeIt("#element", {
       strings: "abc",
-      speed: 0,
+      speed: 1,
       afterComplete: () => {
-        // 1 - initial pause
-        // 4 - _type action
-        // 3 - _delete action
-        expect(waitSpy).toHaveBeenCalledTimes(8);
+        expect(waitSpy).toHaveBeenCalledTimes(6);
         done();
       },
     })

@@ -1,5 +1,4 @@
 import TypeIt from "../../src";
-import { expect } from "@jest/globals";
 
 test("Generates a queue correctly.", () => {
   setHTML`<div>'
@@ -10,7 +9,11 @@ test("Generates a queue correctly.", () => {
     strings: ["Taxation is...", "theft."],
   });
 
-  expect(instance.getQueue().getItems()).toMatchSnapshot();
+  verifyQueue({
+    queue: instance.getQueue(),
+    totalItems: 32,
+    totalTypeableItems: 21,
+  });
 });
 
 test("Generates a queue correctly when chaining upon instantiation.", () => {
@@ -23,7 +26,11 @@ test("Generates a queue correctly when chaining upon instantiation.", () => {
     .delete()
     .type("Second string.");
 
-  expect(instance.getQueue().getItems()).toHaveLength(10);
+  verifyQueue({
+    queue: instance.getQueue(),
+    totalItems: 51,
+    totalTypeableItems: 27,
+  });
 });
 
 test("Removes empty HTML when necessary.", (done) => {

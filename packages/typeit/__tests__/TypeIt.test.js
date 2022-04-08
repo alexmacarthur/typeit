@@ -122,7 +122,7 @@ test("Should skip over empty strings.", () => {
     strings: ["", "A", "", "B"],
   });
 
-  expect(instance.getQueue().getItems()).toMatchSnapshot();
+  expect(instance.getQueue().getItems()).toHaveLength(14);
 });
 
 describe("go()", () => {
@@ -161,12 +161,22 @@ describe("go()", () => {
 describe("type()", () => {
   test("Should bookend action with same options when no options passed.", () => {
     instance = new TypeIt("#element").type("!");
-    expect(instance.getQueue().getItems()).toMatchSnapshot();
+
+    let items = instance.getQueue().getItems();
+
+    expect(items[2].func.constructor.name).toEqual("AsyncFunction");
+    expect(items[4].func.constructor.name).toEqual("AsyncFunction");
+    expect(items).toHaveLength(6);
   });
 
   test("Should temporarily update options when specified.", () => {
     instance = new TypeIt("#element").type("!", { speed: 501 });
-    expect(instance.getQueue().getItems()).toMatchSnapshot();
+
+    let items = instance.getQueue().getItems();
+
+    expect(items[2].func.constructor.name).toEqual("AsyncFunction");
+    expect(items[4].func.constructor.name).toEqual("AsyncFunction");
+    expect(items).toHaveLength(6);
   });
 
   test("Should queue pause after string when defined.", () => {
@@ -185,8 +195,8 @@ describe("type()", () => {
     instance = new TypeIt("#element").type("a");
     let functionalInstance = new TypeIt("#element").type(() => "a");
 
-    expect(JSON.stringify(instance.getQueue().getItems())).toEqual(
-      JSON.stringify(functionalInstance.getQueue().getItems())
+    expect(instance.getQueue().getItems()).toHaveLength(
+      functionalInstance.getQueue().getItems().length
     );
   });
 });
@@ -194,17 +204,26 @@ describe("type()", () => {
 describe("move()", () => {
   test("Should bookend action with same options when no options passed.", () => {
     instance = new TypeIt("#element").move(1);
-    expect(instance.getQueue().getItems()).toMatchSnapshot();
+
+    instance
+      .getQueue()
+      .getItems()
+      .forEach((item) => {
+        expect(item.func.constructor.name).toEqual("Function");
+        expect(item.delay).toBeGreaterThanOrEqual(0);
+      });
   });
 
   test("Should temporarily update options when specified.", () => {
     instance = new TypeIt("#element").move(null, { speed: 601, to: "END" });
+
     expect(instance.getQueue().getItems()).toMatchSnapshot();
   });
 
   test("Should queue pause after string when defined.", () => {
     instance = new TypeIt("#element").move(1, { delay: 300 });
     let last = getLast(instance.getQueue().getItems());
+
     expect(last).toMatchSnapshot();
   });
 
@@ -218,8 +237,8 @@ describe("move()", () => {
     instance = new TypeIt("#element").move(9);
     let functionalInstance = new TypeIt("#element").move(() => 9);
 
-    expect(JSON.stringify(instance.getQueue().getItems())).toEqual(
-      JSON.stringify(functionalInstance.getQueue().getItems())
+    expect(instance.getQueue().getItems()).toHaveLength(
+      functionalInstance.getQueue().getItems().length
     );
   });
 });
@@ -227,7 +246,10 @@ describe("move()", () => {
 describe("delete()", () => {
   test("Should bookend action with same options when no options passed.", () => {
     instance = new TypeIt("#element").delete(1);
-    expect(instance.getQueue().getItems()).toMatchSnapshot();
+    const items = instance.getQueue().getItems();
+
+    expect(items).toHaveLength(4);
+    expect(items[2].func.name).toEqual("_delete");
   });
 
   test("Should temporarily update options when specified.", () => {
@@ -257,9 +279,10 @@ describe("delete()", () => {
     instance = new TypeIt("#element").delete(2);
     let functionalInstance = new TypeIt("#element").delete(() => 2);
 
-    expect(JSON.stringify(instance.getQueue().getItems())).toEqual(
-      JSON.stringify(functionalInstance.getQueue().getItems())
-    );
+    let instanceQueue = instance.getQueue().getItems();
+    let functionalInstanceQueue = functionalInstance.getQueue().getItems();
+
+    expect(instanceQueue.length).toEqual(functionalInstanceQueue.length);
   });
 });
 
