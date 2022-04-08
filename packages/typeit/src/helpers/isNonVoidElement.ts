@@ -1,3 +1,1 @@
-let isNonVoidElement = (el) => /<(.+)>(.*?)<\/(.+)>/.test(el.outerHTML);
-
-export default isNonVoidElement;
+export default (el) => /<(.+)>(.*?)<\/(.+)>/.test(el.outerHTML);

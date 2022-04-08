@@ -1,3 +1,1 @@
-export default (originalObj, newObj) => {
-  return Object.assign({}, originalObj, newObj);
-};
+export default (originalObj, newObj) => Object.assign({}, originalObj, newObj);

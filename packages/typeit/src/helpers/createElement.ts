@@ -1,5 +1,3 @@
 import { Element } from "../types";
 
-export default (el): Element => {
-  return document.createElement(el);
-};
+export default (el): Element => document.createElement(el);

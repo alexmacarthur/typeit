@@ -22,12 +22,9 @@ describe("timeouts fire correctly", () => {
   it("Waits correct number of times when it's not instant.", (done) => {
     new TypeIt("#element", {
       strings: "abc",
-      speed: 0,
+      speed: 1,
       afterComplete: () => {
-        // 1 - initial pause
-        // 4 - typing
-        // 3 - moving
-        expect(waitSpy).toHaveBeenCalledTimes(8);
+        expect(waitSpy).toHaveBeenCalledTimes(6);
         done();
       },
     })
@@ -38,12 +35,9 @@ describe("timeouts fire correctly", () => {
   it("Combines moves in same function when instant.", (done) => {
     new TypeIt("#element", {
       strings: "abc",
-      speed: 0,
+      speed: 1,
       afterComplete: () => {
-        // 1 - initial pause
-        // 4 - typing
-        // 1 - moving
-        expect(waitSpy).toHaveBeenCalledTimes(6);
+        expect(waitSpy).toHaveBeenCalledTimes(4);
         done();
       },
     })
@@ -58,12 +52,9 @@ describe("timeouts fire correctly", () => {
 
     new TypeIt("#element", {
       strings: "A <strong>B</strong> C",
-      speed: 0,
+      speed: 1,
       afterComplete: () => {
-        // 1 initial pause
-        // 6 string typing
-        // 4 each "move"
-        expect(waitSpy).toHaveBeenCalledTimes(11);
+        expect(waitSpy).toHaveBeenCalledTimes(9);
         done();
       },
     })

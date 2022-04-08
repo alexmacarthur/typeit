@@ -4,7 +4,7 @@ export type TypeItInstance = (
 ) => void;
 
 export type Character = {
-  node: Node | null;
+  node: Element | null;
   content: string | Node;
 };
 
@@ -32,13 +32,17 @@ export type Options = {
 };
 
 export type ActionOpts = Options & {
-  to?: "START" | "END";
+  to?: Sides;
   instant?: boolean;
   delay?: number;
 };
 
-export type QueueItem = Function & {
+export type QueueItem = {
   done?: boolean;
+  func?: () => any;
+  delay?: number;
+  char?: any;
+  typeable?: boolean;
 };
 
 export type Element = HTMLElement &

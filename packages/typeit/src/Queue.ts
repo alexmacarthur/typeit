@@ -6,10 +6,24 @@ let Queue = function (initialItems: QueueItem[]) {
    * Add a single or several steps onto the `waiting` queue.
    */
   let add = function (steps: QueueItem[] | QueueItem): typeof Queue {
-    _queue = _queue.concat(asArray<QueueItem>(steps));
+    let stepsWithDelay = setDelay(asArray<QueueItem>(steps));
+    _queue = _queue.concat(stepsWithDelay);
 
     return this;
   };
+
+  /**
+   * Ensure each step has a delay set.
+   */
+  let setDelay = (steps: QueueItem[]) => {
+    return steps.map(s => {
+      s.delay = s.delay || 0;
+
+      return s;
+    });
+  }
+
+  let getTypeable = () => _queue.filter((i) => i.typeable);
 
   /**
    * Given an index, set an item in the queue.
@@ -55,6 +69,7 @@ let Queue = function (initialItems: QueueItem[]) {
     wipe,
     getItems,
     markDone,
+    getTypeable,
   };
 };
 

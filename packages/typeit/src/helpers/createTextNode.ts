@@ -1,3 +1,1 @@
-export default (content: string): Text => {
-  return document.createTextNode(content);
-};
+export default (content: string): Text => document.createTextNode(content);

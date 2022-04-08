@@ -16,7 +16,7 @@ export function walkElementNodes(
     { 
       acceptNode: (node: Element) => { 
         // Always exclude the cursor + its children.
-        return node?.classList?.contains(CURSOR_CLASS) 
+        return node.classList?.contains(CURSOR_CLASS)
           ? NodeFilter.FILTER_REJECT
           : NodeFilter.FILTER_ACCEPT;
       } 

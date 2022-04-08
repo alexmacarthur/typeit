@@ -56,7 +56,7 @@ describe("startDelete option.", () => {
 
     const instance = new TypeIt("#element", {});
 
-    expect(instance.getQueue().getItems()).toMatchSnapshot();
+    expect(instance.getQueue().getItems()).toHaveLength(32);
 
     expect(instance.getOptions().strings).toEqual([
       "This should be typed first.",
@@ -72,7 +72,7 @@ describe("startDelete option.", () => {
       strings: "This is another string.",
     });
 
-    expect(instance.getQueue().getItems()).toMatchSnapshot();
+    expect(instance.getQueue().getItems()).toHaveLength(62);
 
     expect(instance.getOptions().strings).toEqual([
       "This should be typed first.",
@@ -89,7 +89,7 @@ describe("startDelete option.", () => {
       strings: "This is another string.",
     }).type("And finally, a third.");
 
-    expect(instance.getQueue().getItems()).toMatchSnapshot();
+    expect(instance.getQueue().getItems()).toHaveLength(87);
 
     expect(instance.getOptions().strings).toEqual([
       "This should be typed first.",
@@ -164,7 +164,7 @@ describe("html option", () => {
       strings: "This is a <strong>BOLD</strong> string.",
     });
 
-    expect(instance.getQueue().getItems()).toMatchSnapshot();
+    expect(instance.getQueue().getItems()).toHaveLength(28);
   });
 
   test("It should queue strings as HTML when explicitly set.", () => {
@@ -179,7 +179,7 @@ describe("html option", () => {
       html: true,
     });
 
-    expect(instance.getQueue().getItems()).toMatchSnapshot();
+    expect(instance.getQueue().getItems()).toHaveLength(36);
   });
 
   test("It should leave strings be when option is disabled.", () => {
@@ -194,6 +194,6 @@ describe("html option", () => {
       html: false,
     });
 
-    expect(instance.getQueue().getItems()).toMatchSnapshot();
+    expect(instance.getQueue().getItems()).toHaveLength(52);
   });
 });

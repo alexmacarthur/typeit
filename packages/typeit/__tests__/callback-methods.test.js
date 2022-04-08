@@ -14,7 +14,7 @@ describe("beforeStep", () => {
     const beforeStepMock = jest.fn();
 
     new TypeIt(el, {
-      speed: 0,
+      speed: 1,
       strings: "abc",
       beforeStep: beforeStepMock,
       afterComplete: () => {
@@ -26,12 +26,12 @@ describe("beforeStep", () => {
 });
 
 describe("afterStep", () => {
-  test("it should be called before each step", (done) => {
+  test("it should be called after each step", (done) => {
     const el = document.getElementById("el");
     const afterStepMock = jest.fn();
 
     new TypeIt(el, {
-      speed: 0,
+      speed: 1,
       strings: "abcdef",
       afterStep: afterStepMock,
       afterComplete: () => {
@@ -48,7 +48,7 @@ describe("beforeString", () => {
     const beforeStringMock = jest.fn();
 
     new TypeIt(el, {
-      speed: 0,
+      speed: 1,
       strings: ["string 1", "string 2"],
       beforeString: beforeStringMock,
       afterComplete: () => {
@@ -63,7 +63,7 @@ describe("beforeString", () => {
     const beforeStringMock = jest.fn();
 
     new TypeIt(el, {
-      speed: 0,
+      speed: 1,
       beforeString: beforeStringMock,
       afterComplete: () => {
         expect(beforeStringMock).toHaveBeenCalledTimes(2);
@@ -82,7 +82,7 @@ describe("afterString", () => {
     const afterStringMock = jest.fn();
 
     new TypeIt(el, {
-      speed: 0,
+      speed: 1,
       strings: ["string 1", "string 2", "string 3"],
       afterString: afterStringMock,
       afterComplete: () => {
@@ -97,7 +97,7 @@ describe("afterString", () => {
     const afterStringMock = jest.fn();
 
     new TypeIt(el, {
-      speed: 0,
+      speed: 1,
       afterString: afterStringMock,
       afterComplete: () => {
         expect(afterStringMock).toHaveBeenCalledTimes(4);
@@ -117,7 +117,7 @@ describe("afterComplete", () => {
     const el = document.getElementById("el");
 
     new TypeIt(el, {
-      speed: 0,
+      speed: 1,
       strings: "you did it. good job.",
       afterComplete: () => {
         done();

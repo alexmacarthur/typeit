@@ -10,12 +10,18 @@ global.setHTML = (html, shouldReturn = false) => {
   document.body.innerHTML = domString;
 };
 
-document.fonts = {
-  ready: async () => {
-    return true;
-  },
+global.verifyQueue = ({ queue, totalItems, totalTypeableItems }) => {
+  const queueItems = queue.getItems();
+  const typeableItems = queueItems.filter((i) => i.typeable);
+
+  expect(queueItems).toHaveLength(totalItems);
+  expect(typeableItems).toHaveLength(totalTypeableItems);
+
+  queueItems.forEach((i) => {
+    expect(i.delay).toBeGreaterThanOrEqual(0);
+  });
 };
 
-beforeEach(() => {
-  jest.spyOn(window, "requestAnimationFrame").mockImplementation((cb) => cb());
-});
+jest.fn().constructor.prototype.times = function () {
+  return this.mock.calls.length;
+};

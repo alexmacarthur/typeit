@@ -1,3 +1,1 @@
-export default (): string => {
-  return Math.random().toString().substring(2, 9);
-};
+export default (): string => Math.random().toString().substring(2, 9);
