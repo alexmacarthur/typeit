@@ -1,6 +1,6 @@
 import isInput from "./isInput";
 import select from "./select";
-import { CURSOR_CLASS } from "../contants";
+import { CURSOR_CLASS } from "../constants";
 import { Element } from "../types";
 
 let isBodyElement = (node): boolean => node?.tagName === "BODY";

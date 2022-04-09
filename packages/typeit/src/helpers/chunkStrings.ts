@@ -1,7 +1,7 @@
 import toArray from "./toArray";
 import getParsedBody from "./getParsedBody";
 import createTextNode from "./createTextNode";
-import { CURSOR_CLASS } from "../contants";
+import { CURSOR_CLASS } from "../constants";
 
 import { Element } from "../types";
 

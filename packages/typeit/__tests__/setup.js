@@ -16,10 +16,6 @@ global.verifyQueue = ({ queue, totalItems, totalTypeableItems }) => {
 
   expect(queueItems).toHaveLength(totalItems);
   expect(typeableItems).toHaveLength(totalTypeableItems);
-
-  queueItems.forEach((i) => {
-    expect(i.delay).toBeGreaterThanOrEqual(0);
-  });
 };
 
 jest.fn().constructor.prototype.times = function () {

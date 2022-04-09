@@ -1,4 +1,4 @@
-import { CURSOR_CLASS } from "../contants";
+import { CURSOR_CLASS } from "../constants";
 import select from "./select";
 
 export default (

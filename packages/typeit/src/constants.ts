@@ -32,3 +32,4 @@ export const DEFAULT_OPTIONS: Options = {
   afterStep: () => {},
   afterComplete: () => {},
 };
+export const PLACEHOLDER_CSS = `[${DATA_ATTRIBUTE}]:before {content: '.'; display: inline-block; width: 0; visibility: hidden;}`;
