@@ -16,6 +16,7 @@ Array [
   "destroy",
   "empty",
   "exec",
+  "flush",
   "freeze",
   "getElement",
   "getOptions",
@@ -39,7 +40,6 @@ Array [
     "func": [Function],
   },
   Object {
-    "delay": 0,
     "func": [Function],
     "typeable": true,
   },
@@ -71,11 +71,9 @@ Array [
     "func": [Function],
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
 ]
@@ -88,11 +86,9 @@ Array [
     "func": [Function],
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
@@ -114,18 +110,15 @@ Array [
     "typeable": true,
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
     "delay": 500,
   },
   Object {
-    "delay": 0,
     "func": [Function],
     "typeable": true,
   },
@@ -133,11 +126,9 @@ Array [
     "delay": 500,
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
@@ -159,11 +150,9 @@ Array [
     "typeable": true,
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
 ]
@@ -185,11 +174,9 @@ Array [
     "func": [Function],
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
@@ -211,18 +198,15 @@ Array [
     "typeable": true,
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
     "delay": 100,
   },
   Object {
-    "delay": 0,
     "func": [Function],
     "typeable": true,
   },
@@ -230,11 +214,9 @@ Array [
     "delay": 500,
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
@@ -256,11 +238,9 @@ Array [
     "typeable": true,
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
 ]
@@ -273,11 +253,9 @@ Array [
     "func": [Function],
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
@@ -287,18 +265,15 @@ Array [
     "typeable": true,
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
     "delay": 375,
   },
   Object {
-    "delay": 0,
     "func": [Function],
     "typeable": true,
   },
@@ -306,11 +281,9 @@ Array [
     "delay": 375,
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
@@ -320,18 +293,15 @@ Array [
     "typeable": true,
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
     "delay": 375,
   },
   Object {
-    "delay": 0,
     "func": [Function],
     "typeable": true,
   },
@@ -339,11 +309,9 @@ Array [
     "delay": 375,
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
@@ -353,18 +321,15 @@ Array [
     "typeable": true,
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
     "delay": 375,
   },
   Object {
-    "delay": 0,
     "func": [Function],
     "typeable": true,
   },
@@ -372,11 +337,9 @@ Array [
     "delay": 375,
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
@@ -386,18 +349,15 @@ Array [
     "typeable": true,
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
     "delay": 375,
   },
   Object {
-    "delay": 0,
     "func": [Function],
     "typeable": true,
   },
@@ -405,11 +365,9 @@ Array [
     "delay": 375,
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
@@ -419,11 +377,9 @@ Array [
     "typeable": true,
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
 ]
@@ -448,11 +404,9 @@ Array [
     "func": [Function],
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
   Object {
-    "delay": 0,
     "func": [Function],
   },
 ]

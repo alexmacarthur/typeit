@@ -1,4 +1,4 @@
-import { END } from "../contants";
+import { END } from "../constants";
 import { QueueItem, Sides } from "../types";
 import isNumber from "./isNumber";
 

@@ -1,4 +1,4 @@
-import { CURSOR_CLASS, DATA_ATTRIBUTE } from "../contants";
+import { CURSOR_CLASS, DATA_ATTRIBUTE } from "../constants";
 import { Element, Options } from "../types";
 import appendStyleBlock from "./appendStyleBlock";
 

@@ -210,7 +210,6 @@ describe("move()", () => {
       .getItems()
       .forEach((item) => {
         expect(item.func.constructor.name).toEqual("Function");
-        expect(item.delay).toBeGreaterThanOrEqual(0);
       });
   });
 

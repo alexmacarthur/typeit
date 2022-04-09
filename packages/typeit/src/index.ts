@@ -34,10 +34,11 @@ import {
   CURSOR_CLASS,
   DEFAULT_STATUSES,
   DEFAULT_OPTIONS,
-  DATA_ATTRIBUTE,
-} from "./contants";
+  PLACEHOLDER_CSS,
+} from "./constants";
 import duplicate from "./helpers/duplicate";
 import countStepsToSelector from "./helpers/countStepsToSelector";
+import fireItem from "./helpers/fireItem";
 
 // Necessary for publicly exposing types.
 export declare type TypeItOptions = Options;
@@ -45,7 +46,7 @@ export declare type TypeItOptions = Options;
 const TypeIt: TypeItInstance = function (element, options = {}) {
   let _wait = async (
     callback: Function,
-    delay: number,
+    delay: number | undefined,
     silent: boolean = false
   ) => {
     if (_statuses.frozen) {
@@ -160,7 +161,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
 
       _addSplitPause({
         func: _opts.breakLines ? () => _type(createElement("BR")) : _delete,
-        typeable: !!_opts.breakLines
+        typeable: !!_opts.breakLines,
       });
     });
   };
@@ -177,6 +178,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     }
 
     _queue.reset();
+
     _queue.set(0, { delay });
   };
 
@@ -204,10 +206,14 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     return hardCodedStrings.concat(strings);
   };
 
-  let _fire = async (): Promise<void> => {
+  /**
+   * Execute items in the queue.
+   * 
+   * @param remember If false, each queue item will be destroyed once executed.
+   * @returns 
+   */
+  let _fire = async (remember = true): Promise<TypeItInstance> => {
     _statuses.started = true;
-
-    let queueItems = _queue.getItems();
 
     // @todo remove this eventually..
     // console.log(
@@ -220,25 +226,22 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     // );
 
     try {
-      for (let i = 0; i < queueItems.length; i++) {
-        let queueItem = queueItems[i];
+      for(let [queueKey, queueItem] of _queue.getQueue()) {
 
-        queueItem.delay = queueItem.delay || 0;
-        queueItem.typeable && _disableCursorBlink(true);
+        // Only execute items that aren't done yet. 
+        if(queueItem.done) continue;
 
-        // Only break up the event loop if needed.
-        let execute = async () => queueItem.func?.call(this);
+        if(queueItem.typeable) _disableCursorBlink(true);
 
-        if (queueItem.delay) {
-          await _wait(async () => {
-            await execute();
-          }, queueItem.delay);
-        } else {
-          await execute();
-        }
+        await fireItem(queueItem, _wait);
 
-        _queue.markDone(i);
         _disableCursorBlink(false);
+
+        _queue.done(queueKey, !remember);
+      }
+
+      if(!remember) {
+        return this;
       }
 
       _statuses.completed = true;
@@ -340,7 +343,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
         selector: num,
         cursorPosition: _predictedCursorPosition,
         to,
-      })
+      });
     })();
 
     return _queueAndReturn(
@@ -500,6 +503,9 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     return this;
   };
 
+  /**
+   * Can only be called once.
+   */
   this.go = function () {
     if (_statuses.started) {
       return this;
@@ -513,6 +519,23 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     }
 
     fireWhenVisible(_element, _fire.bind(this));
+
+    return this;
+  };
+
+  /**
+   * Like `.go()`, but more... "off the grid."
+   * 
+   * - won't trigger `afterComplete` callback
+   * - items won't be replayed after `.reset()`
+   * 
+   * When called, all non-done items will be "flushed" -- 
+   * that is, executed, but not remembered. 
+   */
+  this.flush = function (cb: () => any = () => {}) {
+    _attachCursor();
+
+    _fire(false).then(cb);
 
     return this;
   };
@@ -546,9 +569,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
   _element.dataset.typeitId = _id;
 
   // Used to set a "placeholder" space in the element, so that it holds vertical sizing before anything's typed.
-  appendStyleBlock(
-    `[${DATA_ATTRIBUTE}]:before {content: '.'; display: inline-block; width: 0; visibility: hidden;}`
-  );
+  appendStyleBlock(PLACEHOLDER_CSS);
 
   let _shouldRenderCursor = _opts.cursor && !_elementIsInput();
   let _cursor = _setUpCursor();

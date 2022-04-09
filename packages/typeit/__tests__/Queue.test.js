@@ -51,7 +51,7 @@ test("It should set initial steps properly.", () => {
 
   let q1 = new Queue(items);
 
-  expect(q1.getItems()).toEqual([{ delay: 0 }, { delay: 0 }, { delay: 0 }]);
+  expect(q1.getItems()).toEqual([{}, {}, {}]);
 });
 
 test("It should only return non-done items.", () => {
