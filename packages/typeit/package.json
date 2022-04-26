@@ -1,6 +1,6 @@
 {
   "name": "typeit",
-  "version": "8.5.0",
+  "version": "8.5.1",
   "description": "The most versatile animated typing utility on the planet.",
   "author": "Alex MacArthur <alex@macarthur.me> (https://macarthur.me)",
   "license": "GPL-3.0",
@@ -48,6 +48,7 @@
     "vite": "^2.9.5"
   },
   "jest": {
+    "clearMocks": true,
     "testPathIgnorePatterns": [
       "<rootDir>/__tests__/setup.js"
     ],

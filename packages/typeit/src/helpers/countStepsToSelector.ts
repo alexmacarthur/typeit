@@ -20,7 +20,7 @@ const countStepsToSelector = ({
   }
 
   let isMovingToEnd = new RegExp(END, "i").test(to);
-  let selectorIndex = [...queueItems]
+  let selectorIndex = selector ? [...queueItems]
     .reverse()
     .findIndex(({ char }) => {
       let parentElement = char.parentElement;
@@ -33,7 +33,7 @@ const countStepsToSelector = ({
 
       // We found the very beginning of the selected element.
       return parentMatches && parentElement.firstChild.isSameNode(char);
-    });
+    }) : -1;
 
   // Couldn't find it the selector, so determine if we
   // need to move either to the beginning or the end.

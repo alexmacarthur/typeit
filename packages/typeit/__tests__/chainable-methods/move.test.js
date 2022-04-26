@@ -2,10 +2,6 @@ import TypeIt from "../../src";
 import * as wait from "../../src/helpers/wait";
 import * as repositionCursor from "../../src/helpers/repositionCursor";
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
 describe("timeouts fire correctly", () => {
   let waitSpy;
   let element;
@@ -65,6 +61,7 @@ describe("timeouts fire correctly", () => {
 
 describe("moves only within range", () => {
   let repositionCursorSpy;
+  let element;
 
   beforeEach(() => {
     setHTML`<div>
@@ -72,6 +69,7 @@ describe("moves only within range", () => {
     </div>`;
 
     repositionCursorSpy = jest.spyOn(repositionCursor, "default");
+    element = document.getElementById("element");
   });
 
   it("bottom end of range", (done) => {
@@ -105,6 +103,54 @@ describe("moves only within range", () => {
     })
       .type("Hi!")
       .move(-4) // Number of steps is out of range of printed characters.
+      .go();
+  });
+});
+
+describe("invalid selectors", () => {
+  let repositionCursorSpy;
+  let element;
+
+  beforeEach(() => {
+    setHTML`<div>
+      <span id="element"></span>
+    </div>`;
+
+    repositionCursorSpy = jest.spyOn(repositionCursor, "default");
+    element = document.getElementById("element");
+  });
+
+  it("selector is null - goes to beginning", (done) => {
+    new TypeIt("#element", {
+      speed: 0,
+      afterComplete: () => {
+        expect(repositionCursorSpy.mock.calls).toEqual([
+          [expect.objectContaining(element), expect.any(Array), 1],
+          [expect.objectContaining(element), expect.any(Array), 2],
+          [expect.objectContaining(element), expect.any(Array), 3],
+        ]);
+        done();
+      },
+    })
+      .type("Hi!")
+      .move(null)
+      .go();
+  });
+
+  it("selector is not found - goes to beginning", (done) => {
+    new TypeIt("#element", {
+      speed: 0,
+      afterComplete: () => {
+        expect(repositionCursorSpy.mock.calls).toEqual([
+          [expect.objectContaining(element), expect.any(Array), 1],
+          [expect.objectContaining(element), expect.any(Array), 2],
+          [expect.objectContaining(element), expect.any(Array), 3],
+        ]);
+        done();
+      },
+    })
+      .type("Hi!")
+      .move(".lalala")
       .go();
   });
 });
