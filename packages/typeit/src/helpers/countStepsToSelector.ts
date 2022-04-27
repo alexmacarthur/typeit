@@ -14,26 +14,26 @@ const countStepsToSelector = ({
   selector,
   cursorPosition,
   to,
-}: countStepsToSelectorArgs) => {
+}: countStepsToSelectorArgs): number => {
   if (isNumber(selector)) {
     return (selector as number) * -1;
   }
 
   let isMovingToEnd = new RegExp(END, "i").test(to);
-  let selectorIndex = selector ? [...queueItems]
-    .reverse()
-    .findIndex(({ char }) => {
-      let parentElement = char.parentElement;
-      let parentMatches = parentElement.matches(selector);
+  let selectorIndex = selector
+    ? [...queueItems].reverse().findIndex(({ char }) => {
+        let parentElement = char.parentElement;
+        let parentMatches = parentElement.matches(selector);
 
-      // We found the butt end of the selected element.
-      if (isMovingToEnd && parentMatches) {
-        return true;
-      }
+        // We found the butt end of the selected element.
+        if (isMovingToEnd && parentMatches) {
+          return true;
+        }
 
-      // We found the very beginning of the selected element.
-      return parentMatches && parentElement.firstChild.isSameNode(char);
-    }) : -1;
+        // We found the very beginning of the selected element.
+        return parentMatches && parentElement.firstChild.isSameNode(char);
+      })
+    : -1;
 
   // Couldn't find it the selector, so determine if we
   // need to move either to the beginning or the end.
