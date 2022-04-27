@@ -1,6 +1,7 @@
 import TypeIt from "../../src";
 import * as wait from "../../src/helpers/wait";
 import * as repositionCursor from "../../src/helpers/repositionCursor";
+import * as countStepsToSelector from "../../src/helpers/countStepsToSelector";
 
 describe("timeouts fire correctly", () => {
   let waitSpy;
@@ -152,5 +153,32 @@ describe("invalid selectors", () => {
       .type("Hi!")
       .move(".lalala")
       .go();
+  });
+});
+
+describe("correct cursor position is passed", () => {
+  beforeEach(() => {
+    setHTML`<div>
+      <span id="element"></span>
+    </div>`;
+
+    element = document.getElementById("element");
+  });
+
+  it("passes predicted cursor position after initial move", () => {
+    let stepCounterSpy = jest.spyOn(countStepsToSelector, "default");
+
+    const instance = new TypeIt("#element", {
+      speed: 0,
+    })
+      .type("Hi!")
+      .move(-3);
+
+    instance.move(2);
+
+    expect(stepCounterSpy).toHaveBeenCalledTimes(2);
+
+    expect(stepCounterSpy.mock.calls[0][0].cursorPosition).toEqual(0);
+    expect(stepCounterSpy.mock.calls[1][0].cursorPosition).toEqual(3);
   });
 });

@@ -83,6 +83,9 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     return this;
   };
 
+  let _getDerivedCursorPosition = () =>
+    _predictedCursorPosition ?? _cursorPosition;
+
   let _generateTemporaryOptionQueueItems = (
     newOptions: Options = {}
   ): QueueItem[] => {
@@ -171,7 +174,8 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
    * 2. Reset initial pause.
    */
   let _prepLoop = async (delay: number) => {
-    _cursorPosition && (await _move({ value: _cursorPosition }));
+    let derivedCursorPosition = _getDerivedCursorPosition();
+    derivedCursorPosition && (await _move({ value: derivedCursorPosition }));
 
     for (let _i of _queue.getTypeable()) {
       await _wait(_delete, _getPace(1));
@@ -208,9 +212,9 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
 
   /**
    * Execute items in the queue.
-   * 
+   *
    * @param remember If false, each queue item will be destroyed once executed.
-   * @returns 
+   * @returns
    */
   let _fire = async (remember = true): Promise<TypeItInstance> => {
     _statuses.started = true;
@@ -226,12 +230,11 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     // );
 
     try {
-      for(let [queueKey, queueItem] of _queue.getQueue()) {
+      for (let [queueKey, queueItem] of _queue.getQueue()) {
+        // Only execute items that aren't done yet.
+        if (queueItem.done) continue;
 
-        // Only execute items that aren't done yet. 
-        if(queueItem.done) continue;
-
-        if(queueItem.typeable) _disableCursorBlink(true);
+        if (queueItem.typeable) _disableCursorBlink(true);
 
         await fireItem(queueItem, _wait);
 
@@ -240,7 +243,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
         _queue.done(queueKey, !remember);
       }
 
-      if(!remember) {
+      if (!remember) {
         return this;
       }
 
@@ -341,7 +344,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
       return countStepsToSelector({
         queueItems: typeableQueueItems,
         selector: num,
-        cursorPosition: _predictedCursorPosition,
+        cursorPosition: _getDerivedCursorPosition(),
         to,
       });
     })();
@@ -386,15 +389,16 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
 
     let bookEndQueueItems = _generateTemporaryOptionQueueItems(actionOpts);
     let { instant, to } = actionOpts;
+
     let numberOfSteps = countStepsToSelector({
       queueItems: _queue.getTypeable(),
       selector: movementArg === null ? "" : movementArg,
       to,
-      cursorPosition: _cursorPosition,
+      cursorPosition: _getDerivedCursorPosition(),
     });
     let directionalStep = numberOfSteps < 0 ? -1 : 1;
 
-    _predictedCursorPosition = _cursorPosition + numberOfSteps;
+    _predictedCursorPosition = _getDerivedCursorPosition() + numberOfSteps;
 
     return _queueAndReturn(
       [
@@ -525,12 +529,12 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
 
   /**
    * Like `.go()`, but more... "off the grid."
-   * 
+   *
    * - won't trigger `afterComplete` callback
    * - items won't be replayed after `.reset()`
-   * 
-   * When called, all non-done items will be "flushed" -- 
-   * that is, executed, but not remembered. 
+   *
+   * When called, all non-done items will be "flushed" --
+   * that is, executed, but not remembered.
    */
   this.flush = function (cb: () => any = () => {}) {
     _attachCursor();
@@ -548,7 +552,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
   let _element = selectorToElement(element);
   let _timeouts: number[] = [];
   let _cursorPosition = 0;
-  let _predictedCursorPosition = 0;
+  let _predictedCursorPosition = null;
   let _statuses = merge({}, DEFAULT_STATUSES);
 
   let _opts: Options = merge(DEFAULT_OPTIONS, options);
