@@ -212,7 +212,10 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
       return strings;
     }
 
-    let hardCodedStrings = existingMarkup.trim().split(/<br(?:\s*?)(?:\/)?>/);
+    let hardCodedStrings = existingMarkup
+      .replaceAll(/<!--(.+?)-->/g, "")
+      .trim()
+      .split(/<br(?:\s*?)(?:\/)?>/);
 
     return hardCodedStrings.concat(strings);
   };

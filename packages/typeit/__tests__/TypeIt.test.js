@@ -64,6 +64,20 @@ describe("hard-coded strings", () => {
 
     expect(instance.getOptions().strings).toEqual(["ABC", "DEF", "GHI"]);
   });
+
+  test("removes HTML comments", () => {
+    setHTML`
+    <div>
+      <span id="element">
+        <!-- a comment! -->other stuff<!-- another one -->
+      </span>
+    </div>
+  `;
+
+    let instance = new TypeIt("#element");
+
+    expect(instance.getOptions().strings).toEqual(["other stuff"]);
+  });
 });
 
 test("Will not begin until explicitly called.", (done) => {
