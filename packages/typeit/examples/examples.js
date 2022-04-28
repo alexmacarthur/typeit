@@ -1,11 +1,5 @@
 import TypeIt from "../src";
 
-window.instance = new TypeIt("#example1", {
-  speed: 50,
-  strings: "Just a simple string.",
-  cursorChar: "<strong>X</strong>",
-}).go();
-
 new TypeIt("#example2", {
   speed: 50,
   strings: ["This is my first example.", "It has several strings!"],
@@ -225,3 +219,9 @@ window.heroInstance = new TypeIt("#hero", {
     speed: 100,
   })
   .go();
+
+new TypeIt("#non-broken-strings", {
+  strings: ["one", "two", "three"],
+  breakLines: false,
+  loop: true,
+}).go();
