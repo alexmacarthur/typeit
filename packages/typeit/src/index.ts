@@ -213,7 +213,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     }
 
     let hardCodedStrings = existingMarkup
-      .replaceAll(/<!--(.+?)-->/g, "")
+      .replace(/<!--(.+?)-->/g, "")
       .trim()
       .split(/<br(?:\s*?)(?:\/)?>/);
 
@@ -244,7 +244,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
         // Only execute items that aren't done yet.
         if (queueItem.done) continue;
 
-        if (queueItem.typeable) _disableCursorBlink(true);
+        if (queueItem.typeable && !_statuses.frozen) _disableCursorBlink(true);
 
         await fireItem(queueItem, _wait);
 
@@ -493,7 +493,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     _statuses.frozen = true;
   };
 
-  this.unfreeze = function () {};
+  this.unfreeze = () => {};
 
   this.reset = function (rebuild: ((TypeIt) => typeof TypeIt) | undefined) {
     !this.is("destroyed") && this.destroy();
