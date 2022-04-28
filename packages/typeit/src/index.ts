@@ -99,10 +99,10 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
    * Add items to the queue with a split pause
    * wrapped around them.
    */
-  let _addSplitPause = (item: QueueItem) => {
+  let _addSplitPause = (items: QueueItem[]) => {
     let delay = _opts.nextStringDelay;
 
-    _queue.add([{ delay: delay[0] }, item, { delay: delay[1] }]);
+    _queue.add([{ delay: delay[0] }, ...items, { delay: delay[1] }]);
   };
 
   /**
@@ -162,10 +162,17 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
         return;
       }
 
-      _addSplitPause({
-        func: _opts.breakLines ? () => _type(createElement("BR")) : _delete,
-        typeable: !!_opts.breakLines,
-      });
+      let splitItems: QueueItem[] = _opts.breakLines
+        ? [{ func: () => _type(createElement("BR")), typeable: true }]
+        : duplicate(
+            {
+              func: _delete,
+              delay: _getPace(1),
+            },
+            _queue.getTypeable().length
+          );
+
+      _addSplitPause(splitItems);
     });
   };
 
@@ -200,7 +207,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     if (_opts.startDelete) {
       _element.innerHTML = existingMarkup;
       expandTextNodes(_element);
-      _addSplitPause({ func: _delete });
+      _addSplitPause([{ func: _delete }]);
 
       return strings;
     }
