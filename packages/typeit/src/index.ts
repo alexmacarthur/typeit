@@ -184,12 +184,13 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     let derivedCursorPosition = _getDerivedCursorPosition();
     derivedCursorPosition && (await _move({ value: derivedCursorPosition }));
 
-    for (let _i of _queue.getTypeable()) {
+    // Grab all characters currently mounted to the DOM, 
+    // in order to wipe the slate clean before restarting.
+    for (let _i of _getAllChars()) {
       await _wait(_delete, _getPace(1));
     }
 
     _queue.reset();
-
     _queue.set(0, { delay });
   };
 
@@ -246,7 +247,13 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
 
         if (queueItem.typeable && !_statuses.frozen) _disableCursorBlink(true);
 
-        await fireItem(queueItem, _wait);
+        // Because calling .delete() with no parameters will attempt to 
+        // delete all "typeable" characters, we may overfetch, since some characters
+        // in the queue may already be deleted. This ensures that we do not attempt to 
+        // delete a character that isn't actually mounted to the DOM.
+        if (!queueItem.deletable || (queueItem.deletable && _getAllChars().length)) {
+          await fireItem(queueItem, _wait);
+        }
 
         _disableCursorBlink(false);
 
@@ -366,6 +373,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
           {
             func: _delete,
             delay: instant ? 0 : _getPace(1),
+            deletable: true
           },
           rounds
         ),

@@ -20,7 +20,7 @@ let Queue = function (initialItems: QueueItem[]) {
    * Given an index, set an item in the queue.
    */
   let set = function (index: number, item: QueueItem): void {
-    let keys = _q.keys();
+    let keys = [..._q.keys()];
 
     _q.set(keys[index], item);
   };
