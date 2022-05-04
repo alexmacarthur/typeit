@@ -43,6 +43,7 @@ export type QueueItem = {
   delay?: number;
   char?: any;
   typeable?: boolean;
+  deletable?: boolean;
 };
 
 export type Element = HTMLElement &
