@@ -11,7 +11,7 @@
     "start": "vite serve examples",
     "prettier": "prettier --write \"**/*.{md,js}\"",
     "test": "echo \"Error: no test specified\" && exit 0",
-    "prepublishOnly": "npm run build"
+    "prepare": "npm run build"
   },
   "files": [
     "dist/",

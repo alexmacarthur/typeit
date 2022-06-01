@@ -3,6 +3,7 @@ import path from "path";
 
 export default defineConfig({
   build: {
+    minify: "terser",
     lib: {
       entry: path.resolve(__dirname, "src/index.tsx"),
       name: "TypeIt",
