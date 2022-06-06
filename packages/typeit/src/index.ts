@@ -322,7 +322,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     if (_elementIsInput()) {
       _element.value = (_element.value as string).slice(0, -1);
     } else {
-      removeNode(allChars[_cursorPosition]);
+      _getAllChars().forEach(removeNode);
     }
   };
 
