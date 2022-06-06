@@ -17,7 +17,7 @@
     "scripts/"
   ],
   "scripts": {
-    "build": "vite build && ./scripts/banner && tsc",
+    "build": "vite build && scripts/banner && tsc",
     "tsc": "tsc",
     "start": "vite serve examples",
     "test": "jest",
