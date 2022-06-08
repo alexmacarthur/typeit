@@ -207,8 +207,19 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
 
     if (_opts.startDelete) {
       _element.innerHTML = existingMarkup;
+
       expandTextNodes(_element);
-      _addSplitPause([{ func: _delete }]);
+
+      _addSplitPause(
+        duplicate(
+          {
+            func: _delete,
+            delay: _getPace(1),
+            deletable: true,
+          },
+          _getAllChars().length
+        )
+      );
 
       return strings;
     }
@@ -355,9 +366,6 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
         return num;
       }
 
-      // The -1 offset is necessary because the empty element is what
-      // will be found, and we want to delete an actual character...
-      // not something that's empty.
       return countStepsToSelector({
         queueItems: typeableQueueItems,
         selector: num,
