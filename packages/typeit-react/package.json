@@ -37,15 +37,15 @@
   "author": "Alex MacArthur <alex@macarthur.me> (https://macarthur.me)",
   "license": "GPL-3.0",
   "dependencies": {
-    "@types/react": "^18.0.7",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "@types/react": "^18.0.12",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
     "typeit": "^8.5.4",
-    "vite": "^2.9.5"
+    "vite": "^2.9.10"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "^7.16.7",
-    "lint-staged": "^12.4.0",
-    "typescript": "^4.6.3"
+    "@babel/preset-typescript": "^7.17.12",
+    "lint-staged": "^13.0.0",
+    "typescript": "^4.7.3"
   }
 }
