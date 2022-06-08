@@ -225,3 +225,9 @@ new TypeIt("#non-broken-strings", {
   breakLines: false,
   loop: true,
 }).go();
+
+new TypeIt("#start-delete", {
+  strings: ["This is not hard-coded."],
+  startDelete: true,
+  loop: true,
+}).go();

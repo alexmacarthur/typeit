@@ -197,3 +197,27 @@ describe("html option", () => {
     expect(instance.getQueue().getItems()).toHaveLength(52);
   });
 });
+
+describe("startDelete option", () => {
+  test("It should completely remove hard-coded string before typing.", (done) => {
+    setHTML`
+    <div>
+      <span id="element">hard-coded!</span>
+    </div>
+  `;
+    const element = document.getElementById("element");
+
+    new TypeIt(element, {
+      strings: "Hello.",
+      speed: 0,
+      startDelete: true,
+      afterComplete: () => {
+        expect(element.innerHTML).toEqual(
+          expect.stringMatching(/^Hello\.<span class="ti-cursor.*?<\/span>$/)
+        );
+
+        done();
+      },
+    }).go();
+  });
+});
