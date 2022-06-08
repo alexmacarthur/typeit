@@ -5,8 +5,8 @@
   "main": "",
   "author": "Alex MacArthur",
   "scripts": {
-    "build": "lerna run build",
-    "publish": "lerna publish",
+    "build": "lerna bootstrap && lerna run build",
+    "publish": "lerna bootstrap && lerna publish",
     "bootstrap": "lerna bootstrap --force-local",
     "test": "lerna run test",
     "prettier": "prettier --write \"./packages/**/*.{md,js,tsx?}\""
