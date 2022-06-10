@@ -46,6 +46,8 @@ export type QueueItem = {
   deletable?: boolean;
 };
 
+export type QueueMapPair = [Symbol, QueueItem];
+
 export type Element = HTMLElement &
   CharacterData &
   Node &
