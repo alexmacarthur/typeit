@@ -21,3 +21,20 @@ global.verifyQueue = ({ queue, totalItems, totalTypeableItems }) => {
 jest.fn().constructor.prototype.times = function () {
   return this.mock.calls.length;
 };
+
+global.makeMocks = () => {
+  const iterator = {
+    next() {
+      return {
+        done: false,
+        value: jest.fn(),
+      };
+    },
+
+    [Symbol.iterator]() {
+      return iterator;
+    },
+  };
+
+  return iterator;
+};

@@ -29,6 +29,7 @@ import {
   QueueItem,
   ActionOpts,
   TypeItInstance,
+  QueueMapPair,
 } from "./types";
 import {
   CURSOR_CLASS,
@@ -184,7 +185,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     let derivedCursorPosition = _getDerivedCursorPosition();
     derivedCursorPosition && (await _move({ value: derivedCursorPosition }));
 
-    // Grab all characters currently mounted to the DOM, 
+    // Grab all characters currently mounted to the DOM,
     // in order to wipe the slate clean before restarting.
     for (let _i of _getAllChars()) {
       await _wait(_delete, _getPace(1));
@@ -251,24 +252,47 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     //   }, 0)
     // );
 
+    let cleanUp = (qKey) => {
+      _disableCursorBlink(false);
+      _queue.done(qKey, !remember);
+    };
+
     try {
-      for (let [queueKey, queueItem] of _queue.getQueue()) {
+      let queueItems = [..._queue.getQueue()] as QueueMapPair[];
+
+      for (let index = 0; index < queueItems.length; index++) {
+        let [queueKey, queueItem] = queueItems[index];
+
         // Only execute items that aren't done yet.
         if (queueItem.done) continue;
 
         if (queueItem.typeable && !_statuses.frozen) _disableCursorBlink(true);
 
-        // Because calling .delete() with no parameters will attempt to 
+        // Because calling .delete() with no parameters will attempt to
         // delete all "typeable" characters, we may overfetch, since some characters
-        // in the queue may already be deleted. This ensures that we do not attempt to 
+        // in the queue may already be deleted. This ensures that we do not attempt to
         // delete a character that isn't actually mounted to the DOM.
-        if (!queueItem.deletable || (queueItem.deletable && _getAllChars().length)) {
-          await fireItem(queueItem, _wait);
+        if (
+          !queueItem.deletable ||
+          (queueItem.deletable && _getAllChars().length)
+        ) {
+          let newIndex = await fireItem(index, queueItems, _wait);
+
+          // Ensure each skipped item goes through the cleanup process,
+          // so that methods like .flush() don't get messed up.
+          Array(newIndex - index)
+            .fill(index + 1)
+            .map((x, y) => x + y)
+            .forEach((i) => {
+              let [key] = queueItems[i];
+
+              cleanUp(key);
+            });
+
+          index = newIndex;
         }
 
-        _disableCursorBlink(false);
-
-        _queue.done(queueKey, !remember);
+        cleanUp(queueKey);
       }
 
       if (!remember) {
@@ -381,7 +405,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
           {
             func: _delete,
             delay: instant ? 0 : _getPace(1),
-            deletable: true
+            deletable: true,
           },
           rounds
         ),
