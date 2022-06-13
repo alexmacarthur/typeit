@@ -40,12 +40,11 @@
     "@types/react": "^18.0.12",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "typeit": "^8.5.5",
-    "vite": "^2.9.10"
+    "typeit": "8.5.5",
+    "vite": "^2.9.12"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.17.12",
-    "lint-staged": "^13.0.0",
     "typescript": "^4.7.3"
   }
 }
