@@ -11,7 +11,7 @@ jobs:
         ref: ${{ github.event.pull_request.head.sha }}
     - uses: actions/setup-node@v2
       with:
-        node-version: 14
+        node-version: 17
     - name: Install Dependencies
       run: npm install && npm run bootstrap
     - name: Run Tests
