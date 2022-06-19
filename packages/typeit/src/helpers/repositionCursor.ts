@@ -7,8 +7,12 @@ export default (
   newCursorPosition: number
 ): void => {  
   let nodeToInsertBefore = allChars[newCursorPosition - 1];
-  let cursor = select(`.${CURSOR_CLASS}`, element);
+  let cursor = select<Node>(`.${CURSOR_CLASS}`, element);
   element = nodeToInsertBefore?.parentNode || element;
-  
-  element.insertBefore(cursor as any, nodeToInsertBefore || null);
+
+  if(nodeToInsertBefore) {
+    return nodeToInsertBefore.before(cursor);
+  }
+
+  (element as Element).append(cursor);
 };

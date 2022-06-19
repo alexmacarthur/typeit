@@ -19,7 +19,7 @@
   "scripts": {
     "build": "vite build && scripts/banner && tsc",
     "tsc": "tsc",
-    "start": "vite serve examples",
+    "start": "vite serve examples --host 0.0.0.0",
     "test": "jest",
     "postinstall": "node ./scripts/notice.js",
     "prepare": "npm run build"
