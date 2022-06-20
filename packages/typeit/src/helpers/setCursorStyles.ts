@@ -32,7 +32,7 @@ export let setCursorStyles = (
 
   // Set animation styles & custom properties.
   appendStyleBlock(
-    `@keyframes blink-${id} { 0% {opacity: 0} 49% {opacity: 0} 50% {opacity: 1} } ${cursorSelector} { display: inline; letter-spacing: -1em; ${customProperties} animation: blink-${id} ${
+    `@keyframes blink-${id} { 0% {opacity: 0} 49% {opacity: 0} 50% {opacity: 1} } ${cursorSelector} { display: inline; ${customProperties} animation: blink-${id} ${
       options.cursorSpeed / 1000
     }s infinite; } ${cursorSelector}.with-delay { animation-delay: 500ms; } ${cursorSelector}.disabled { animation: none; }`,
     id

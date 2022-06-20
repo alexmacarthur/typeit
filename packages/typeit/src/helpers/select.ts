@@ -1,8 +1,8 @@
-let select = <T>(
+let select = (
   selector: string,
   element: Node = document,
   all: boolean = false
-): T | null => {
+): Node | NodeList | null => {
   return element[`querySelector${all ? "All" : ""}`](selector);
 };
 
