@@ -2,9 +2,9 @@ import TypeIt from "../src";
 
 new TypeIt("#example2", {
   speed: 50,
-  strings: ["hello hello hello hello hello"],
+  strings: "one two"
 })
-.move(-8)
+.move(-5)
 .go();
 
 // new TypeIt("#example3", {
