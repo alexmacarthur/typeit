@@ -1,4 +1,5 @@
 import { CURSOR_CLASS } from "../constants";
+import { walkElementNodes } from "./chunkStrings";
 import createElement from "./createElement";
 import createTextNode from "./createTextNode";
 import removeNode from "./removeNode";
@@ -39,7 +40,9 @@ export default (
   let existingWordWrapper = element.querySelector('.ti-wrapper');
 
   if(existingWordWrapper) {
-    toArray(existingWordWrapper.childNodes).forEach(child => {
+    // it s excluding the cursor!!
+    toArray(walkElementNodes(element)).forEach((child) => {
+      console.log(child);
       element.insertBefore(child, existingWordWrapper);
     });
 
@@ -49,6 +52,10 @@ export default (
   let findCharacterIndex = (n) => allChars.findIndex((c) => c.isSameNode(n));
   let nodeToInsertBefore = allChars[newCursorPosition - 1];
   let cursor = select(`.${CURSOR_CLASS}`, element);
+
+  if(!cursor) {
+    debugger;
+  }
   element = nodeToInsertBefore?.parentNode || element;
 
   // Find the nearest word we're in, determined by the nearest spaces.
@@ -60,12 +67,11 @@ export default (
 
   element.insertBefore(cursor as any, nodeToInsertBefore || null);
 
-  console.log("wrappering", charactersToWrap);
-
   if (charactersToWrap.length) {
+
     // Mount a placeholder node that will be replaced with the 
     // "wrapper" containing the word we're inside of. 
-    let mountNode = createTextNode("");
+    let mountNode = createTextNode("X");
     charactersToWrap[0].parentElement.insertBefore(
       mountNode,
       charactersToWrap[0]
@@ -81,6 +87,7 @@ export default (
     let wrapperNode = createElement("span");
     wrapperNode.style.display = "inline-block";
     wrapperNode.classList.add("ti-wrapper");
+
     let wordWrap = charactersToWrapWithCursor.reduce((wrapper, character) => {
       wrapper.prepend(character);
 
@@ -91,5 +98,4 @@ export default (
     // "inline-block" styling around just that word.
     mountNode.replaceWith(wordWrap);
   }
-
 };
