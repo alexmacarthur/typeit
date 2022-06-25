@@ -4,7 +4,7 @@ new TypeIt("#example2", {
   speed: 50,
   strings: "one two"
 })
-.move(-1)
+.move(-2)
 .go();
 
 // new TypeIt("#example3", {

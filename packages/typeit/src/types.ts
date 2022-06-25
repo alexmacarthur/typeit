@@ -49,7 +49,6 @@ export type QueueItem = {
 export type QueueMapPair = [Symbol, QueueItem];
 
 export type Element = HTMLElement &
-  CharacterData &
   Node &
   ChildNode & {
     value: string | number;

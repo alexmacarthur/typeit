@@ -1,4 +1,4 @@
-import { CURSOR_CLASS, DATA_ATTRIBUTE } from "../constants";
+import { CURSOR_CLASS, CURSOR_WRAPPER_CLASS, DATA_ATTRIBUTE } from "../constants";
 import { Element, Options } from "../types";
 import appendStyleBlock from "./appendStyleBlock";
 
@@ -9,8 +9,7 @@ export let cursorFontStyles = {
   "font-style": "",
   "line-height": "",
   color: "",
-  "margin-left": "-.125em",
-  "margin-right": ".125em",
+  transform: "translateX(-.125em)"
 } as const;
 
 export let setCursorStyles = (
@@ -34,7 +33,7 @@ export let setCursorStyles = (
   appendStyleBlock(
     `@keyframes blink-${id} { 0% {opacity: 0} 49% {opacity: 0} 50% {opacity: 1} } ${cursorSelector} { display: inline-block; width: 0; ${customProperties} animation: blink-${id} ${
       options.cursorSpeed / 1000
-    }s infinite; } ${cursorSelector}.with-delay { animation-delay: 500ms; } ${cursorSelector}.disabled { animation: none; }`,
+    }s infinite; } ${cursorSelector}.with-delay { animation-delay: 500ms; } ${cursorSelector}.disabled { animation: none; } .${CURSOR_WRAPPER_CLASS} { display: inline-block; font: inherit; color: inherit; }`,
     id
   );
 };

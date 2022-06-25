@@ -1,8 +1,5 @@
 import { Element } from "../types";
 
-/**
- * @param {object} HTML node
- */
 export default (node: Element | null) => {
   if(!node) return;
 

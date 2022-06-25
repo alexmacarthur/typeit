@@ -15,13 +15,16 @@ beforeEach(() => {
 test("Does not move cursor when stepsToMove is zero.", () => {
   repositionCursor(element, allCharacters, 0);
 
-  expect(document.body.innerHTML).toMatchSnapshot();
+  let expected = `<span id="el">12345<i class="ti-cursor">|</i></span>`;
+  expect(document.body.innerHTML).toEqual(expected);
 });
 
 test("Moves cursor three steps back.", () => {
   repositionCursor(element, allCharacters, 3);
 
-  expect(document.body.innerHTML).toMatchSnapshot();
+  let expected = `<span id="el">1<span class="ti-cursor-wrapper">2<i class="ti-cursor">|</i></span>345</span>`;
+
+  expect(document.body.innerHTML).toEqual(expected);
 });
 
 test("Moves cursor three back and two forward.", () => {
@@ -29,11 +32,13 @@ test("Moves cursor three back and two forward.", () => {
 
   repositionCursor(element, allCharacters, 1);
 
-  expect(document.body.innerHTML).toMatchSnapshot();
+  let expected = `<span id="el">123<span class="ti-cursor-wrapper">4<i class="ti-cursor">|</i></span>5</span>`;
+  expect(document.body.innerHTML).toEqual(expected);
 });
 
 test("Stops moving when at end of string.", () => {
   repositionCursor(element, allCharacters, -100);
 
-  expect(document.body.innerHTML).toMatchSnapshot();
+  let expected = `<span id="el">12345<i class="ti-cursor">|</i></span>`;
+  expect(document.body.innerHTML).toEqual(expected);
 });

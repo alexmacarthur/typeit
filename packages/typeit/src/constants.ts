@@ -2,6 +2,7 @@ import { Options } from "./types";
 
 export const DATA_ATTRIBUTE = "data-typeit-id";
 export const CURSOR_CLASS = "ti-cursor";
+export const CURSOR_WRAPPER_CLASS = "ti-cursor-wrapper";
 export const START = "START";
 export const END = "END";
 export const DEFAULT_STATUSES = {

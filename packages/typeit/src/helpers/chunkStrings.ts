@@ -5,22 +5,6 @@ import { CURSOR_CLASS } from "../constants";
 
 import { Element } from "../types";
 
-export function encodeSpaces (nodes) {
-  return nodes.map((n) => {
-    let value = n.nodeValue || "";
-
-    if (/ /.test(value)) {
-      n.nodeValue = "";
-      
-      value.split("").forEach((v) => {
-        n.nodeValue += "\u00A0";
-      });
-    }
-
-    return n;
-  });
-}
-
 export function walkElementNodes(
   element: Element | Node, 
   shouldReverse: boolean = false, 
@@ -63,9 +47,7 @@ export function walkElementNodes(
     nodes.push(nextNode);
   }
 
-  let orderedNodes = shouldReverse ? nodes.reverse() : nodes;
-
-  return encodeSpaces(orderedNodes);
+  return shouldReverse ? nodes.reverse() : nodes;
 }
 
 /**
