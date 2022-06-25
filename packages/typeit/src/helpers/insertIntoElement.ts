@@ -2,8 +2,7 @@ import isInput from "./isInput";
 import select from "./select";
 import { CURSOR_CLASS } from "../constants";
 import { El } from "../types";
-
-let isBodyElement = (node): boolean => node?.tagName === "BODY";
+import isBodyElement from "./isBodyElement";
 
 /**
  * Inserts a set of content into the element. Intended for SINGLE characters.
@@ -21,7 +20,7 @@ let insertIntoElement = (
   // later be filled with actual characters.
   character.innerHTML = "";
 
-  let target = isBodyElement(character.originalParent) 
+  let target = isBodyElement(character.originalParent as El) 
   ? originalTarget
   
   // If we add one-off fresh elements, there will be no 

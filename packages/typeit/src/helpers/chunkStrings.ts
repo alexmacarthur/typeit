@@ -1,16 +1,14 @@
+import { El } from "../types";
 import toArray from "./toArray";
 import getParsedBody from "./getParsedBody";
 import createTextNode from "./createTextNode";
 import { CURSOR_CLASS } from "../constants";
-
-import { El } from "../types";
 
 export function walkElementNodes(
   element: El | Node, 
   shouldReverse: boolean = false, 
   shouldIncludeCursor: boolean = false
   ): El[] {
-
   let cursor = document.querySelector(`.${CURSOR_CLASS}`);
 
   let walker = document.createTreeWalker(
@@ -42,11 +40,13 @@ export function walkElementNodes(
   let nodes = [];
   
   while (nextNode = walker.nextNode()) {
-    // Necessary for preserving reference to parent nodes as we empty elements during typing.
+    // Necessary for preserving reference to parent nodes
+    // as we empty elements during typing.
     // If this has already been set, don't do it again.
-    console.log(nextNode.originalParent);
+    if (!nextNode.originalParent) {
+      nextNode.originalParent = nextNode.parentNode;
+    }
 
-    nextNode.originalParent = nextNode.parentNode;
     nodes.push(nextNode);
   }
 

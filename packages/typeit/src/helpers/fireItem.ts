@@ -53,7 +53,7 @@ let fireItem = async (
   let futureItem = queueItem;
   let shouldBeGrouped = () => futureItem && !futureItem.delay;
 
-  destroyCursorrWrapper(element);
+  // destroyCursorrWrapper(element);
 
   // Crawl through the queue and group together all items that
   // do not have have a delay and can be executed instantly.
@@ -79,7 +79,7 @@ let fireItem = async (
 
   await wait(() => beforePaint(() => execute(queueItem)), queueItem.delay);
 
-  createCursorWrapper();
+  // createCursorWrapper();
 
   return index;
 };
