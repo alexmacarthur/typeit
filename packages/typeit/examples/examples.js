@@ -5,6 +5,9 @@ new TypeIt("#example2", {
   strings: "one two"
 })
 .move(-2)
+// .pause(500)
+// .type('three')
+// .delete(1)
 .go();
 
 // new TypeIt("#example3", {

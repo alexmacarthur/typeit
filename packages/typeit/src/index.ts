@@ -24,7 +24,7 @@ import isNonVoidElement from "./helpers/isNonVoidElement";
 import wait from "./helpers/wait";
 import { setCursorStyles } from "./helpers/setCursorStyles";
 import {
-  Element,
+  El,
   Options,
   QueueItem,
   ActionOpts,
@@ -70,7 +70,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
 
   let _getPace = (index: number = 0): number => calculatePace(_opts)[index];
 
-  let _getAllChars = (): Element[] => getAllChars(_element);
+  let _getAllChars = (): El[] => getAllChars(_element);
 
   let _maybeAppendPause = (opts: ActionOpts = {}) => {
     let delay = opts.delay;
@@ -110,7 +110,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
    * Provided it's a non-form element and the options is provided,
    * set up the cursor element for the
    */
-  let _setUpCursor = (): void | Element => {
+  let _setUpCursor = (): void | El => {
     if (_elementIsInput()) {
       return;
     }
@@ -124,12 +124,12 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     if (!_shouldRenderCursor) {
       cursor.style.visibility = "hidden";
 
-      return cursor as Element;
+      return cursor as El;
     }
 
     cursor.innerHTML = getParsedBody(_opts.cursorChar).innerHTML;
 
-    return cursor as Element;
+    return cursor as El;
   };
 
   /**
@@ -276,7 +276,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
           !queueItem.deletable ||
           (queueItem.deletable && _getAllChars().length)
         ) {
-          let newIndex = await fireItem(index, queueItems, _wait);
+          let newIndex = await fireItem(index, queueItems, _wait, _element);
 
           // Ensure each skipped item goes through the cleanup process,
           // so that methods like .flush() don't get messed up.

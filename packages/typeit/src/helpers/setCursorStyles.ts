@@ -1,5 +1,5 @@
 import { CURSOR_CLASS, CURSOR_WRAPPER_CLASS, DATA_ATTRIBUTE } from "../constants";
-import { Element, Options } from "../types";
+import { El, Options } from "../types";
 import appendStyleBlock from "./appendStyleBlock";
 
 export let cursorFontStyles = {
@@ -15,7 +15,7 @@ export let cursorFontStyles = {
 export let setCursorStyles = (
   id: string,
   options: Options,
-  element: Element
+  element: El
 ) => {
   let rootSelector = `[${DATA_ATTRIBUTE}='${id}']`;
   let cursorSelector = `${rootSelector} .${CURSOR_CLASS}`;

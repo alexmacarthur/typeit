@@ -1,10 +1,10 @@
 export type TypeItInstance = (
-  element: Element | string,
+  element: El | string,
   options: Options
 ) => void;
 
 export type Character = {
-  node: Element | null;
+  node: El | null;
   content: string | Node;
 };
 
@@ -48,11 +48,9 @@ export type QueueItem = {
 
 export type QueueMapPair = [Symbol, QueueItem];
 
-export type Element = HTMLElement &
-  Node &
-  ChildNode & {
-    value: string | number;
-    originalParent?: HTMLElement;
-  };
+export interface El extends HTMLElement {
+  value: string | number;
+  originalParent?: HTMLElement;
+}
 
 export type Sides = "START" | "END";

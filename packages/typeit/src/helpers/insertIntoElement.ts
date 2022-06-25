@@ -1,7 +1,7 @@
 import isInput from "./isInput";
 import select from "./select";
 import { CURSOR_CLASS } from "../constants";
-import { Element } from "../types";
+import { El } from "../types";
 
 let isBodyElement = (node): boolean => node?.tagName === "BODY";
 
@@ -9,8 +9,8 @@ let isBodyElement = (node): boolean => node?.tagName === "BODY";
  * Inserts a set of content into the element. Intended for SINGLE characters.
  */
 let insertIntoElement = (
-  originalTarget: Element,
-  character: Element
+  originalTarget: El,
+  character: El
 ) => {
   if (isInput(originalTarget)) {
     originalTarget.value = `${originalTarget.value}${character.textContent}`;
@@ -29,7 +29,7 @@ let insertIntoElement = (
   : character.originalParent || originalTarget;
 
   target.insertBefore(
-    character as Element,
+    character as El,
     select("." + CURSOR_CLASS, target) as Node || null
   );
 };

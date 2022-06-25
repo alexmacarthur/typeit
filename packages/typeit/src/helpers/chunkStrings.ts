@@ -3,13 +3,13 @@ import getParsedBody from "./getParsedBody";
 import createTextNode from "./createTextNode";
 import { CURSOR_CLASS } from "../constants";
 
-import { Element } from "../types";
+import { El } from "../types";
 
 export function walkElementNodes(
-  element: Element | Node, 
+  element: El | Node, 
   shouldReverse: boolean = false, 
   shouldIncludeCursor: boolean = false
-  ): Element[] {
+  ): El[] {
 
   let cursor = document.querySelector(`.${CURSOR_CLASS}`);
 
@@ -17,7 +17,7 @@ export function walkElementNodes(
     element,
     NodeFilter.SHOW_ALL,
     { 
-      acceptNode: (node: Element) => {
+      acceptNode: (node: El) => {
         // Include the cursor node, but none of it's children.
 
         if (shouldIncludeCursor) {
@@ -43,6 +43,9 @@ export function walkElementNodes(
   
   while (nextNode = walker.nextNode()) {
     // Necessary for preserving reference to parent nodes as we empty elements during typing.
+    // If this has already been set, don't do it again.
+    console.log(nextNode.originalParent);
+
     nextNode.originalParent = nextNode.parentNode;
     nodes.push(nextNode);
   }
@@ -54,7 +57,7 @@ export function walkElementNodes(
  * Convert string to array of chunks that will be later
  * used to construct a TypeIt queue.
  */
-export function chunkStringAsHtml(string: string): Element[] {
+export function chunkStringAsHtml(string: string): El[] {
   return walkElementNodes(getParsedBody(string));
 }
 
@@ -69,7 +72,7 @@ export function chunkStringAsHtml(string: string): Element[] {
 export function maybeChunkStringAsHtml(
   str: string,
   asHtml = true
-): Partial<Element>[] {
+): Partial<El>[] {
   return asHtml
     ? chunkStringAsHtml(str)
     : toArray(str).map(createTextNode);

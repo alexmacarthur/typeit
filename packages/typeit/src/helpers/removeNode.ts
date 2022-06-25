@@ -1,6 +1,4 @@
-import { Element } from "../types";
-
-export default (node: Element | null) => {
+export default (node: Node): void => {
   if(!node) return;
 
   let nodeParent = node.parentNode as HTMLElement;
@@ -12,5 +10,5 @@ export default (node: Element | null) => {
     // By doing this, we clean up markup as we go along.
     : nodeParent;
 
-  nodeToRemove.remove();
+  (nodeToRemove as Element).remove();
 };
