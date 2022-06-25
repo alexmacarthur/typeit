@@ -10,12 +10,10 @@ import select from "./select";
 let execute = (queueItem: QueueItem) => queueItem.func?.call(this);
 
 let destroyCursorrWrapper = (element) => {
-    console.log('cleaning up');
-
     let wrapper = element.querySelector(`.${CURSOR_WRAPPER_CLASS}`);
 
     if (wrapper) {
-      walkElementNodes(wrapper, true, true).forEach((n) => {
+      walkElementNodes(wrapper, false, true).forEach((n) => {
         wrapper.before(n);
       });
 
@@ -53,7 +51,7 @@ let fireItem = async (
   let futureItem = queueItem;
   let shouldBeGrouped = () => futureItem && !futureItem.delay;
 
-  // destroyCursorrWrapper(element);
+  destroyCursorrWrapper(element);
 
   // Crawl through the queue and group together all items that
   // do not have have a delay and can be executed instantly.
@@ -79,7 +77,7 @@ let fireItem = async (
 
   await wait(() => beforePaint(() => execute(queueItem)), queueItem.delay);
 
-  // createCursorWrapper();
+  createCursorWrapper();
 
   return index;
 };
