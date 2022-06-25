@@ -36,39 +36,48 @@ export default (
   newCursorPosition: number
 ): void => {
 
-  // clean up!
+  // Clean up!
   let existingWordWrapper = element.querySelector('.ti-wrapper');
 
   if(existingWordWrapper) {
-    // it s excluding the cursor!!
-    toArray(walkElementNodes(element)).forEach((child) => {
-      console.log(child);
+    toArray(walkElementNodes(element, false, true)).forEach((child) => {
       element.insertBefore(child, existingWordWrapper);
     });
 
     removeNode(existingWordWrapper);
   }
 
-  let findCharacterIndex = (n) => allChars.findIndex((c) => c.isSameNode(n));
+  let findCharacterIndex = (n, max) => {
+    let index = allChars.findIndex((c) => c.isSameNode(n));
+
+    return Math.min(Math.max(index, 0), max);
+  }
+
   let nodeToInsertBefore = allChars[newCursorPosition - 1];
   let cursor = select(`.${CURSOR_CLASS}`, element);
 
-  if(!cursor) {
-    debugger;
-  }
   element = nodeToInsertBefore?.parentNode || element;
 
   // Find the nearest word we're in, determined by the nearest spaces.
   let previousSpaceIndex = findCharacterIndex(
-    findNearbySpace(cursor, "previous")
+    findNearbySpace(cursor, "previous"), allChars.length
   );
-  let nextSpaceIndex = findCharacterIndex(findNearbySpace(cursor, "next"));
-  let charactersToWrap = allChars.slice(nextSpaceIndex, previousSpaceIndex);
+  let nextSpaceIndex = findCharacterIndex(findNearbySpace(cursor, "next"), allChars.length);
+
+  // slice() does not include the "end" item, so we need to increment it.
+  let charactersToWrap = allChars.slice(nextSpaceIndex, previousSpaceIndex + 1);
+
+  // let elValue = charactersToWrap.reduce((str, i) => {
+  //   str = str + (i.nodeValue || "");
+
+  //   return str;
+  // }, "");
+
+  // console.log(elValue);
 
   element.insertBefore(cursor as any, nodeToInsertBefore || null);
 
   if (charactersToWrap.length) {
-
     // Mount a placeholder node that will be replaced with the 
     // "wrapper" containing the word we're inside of. 
     let mountNode = createTextNode("X");
@@ -88,7 +97,15 @@ export default (
     wrapperNode.style.display = "inline-block";
     wrapperNode.classList.add("ti-wrapper");
 
+    // IT APPEARS TO BE HERE!
     let wordWrap = charactersToWrapWithCursor.reduce((wrapper, character) => {
+
+      // Is the space not getting copied?
+      
+      // if (character.nodeValue == " ") {
+      //   character = "\u200b";
+      // } 
+      
       wrapper.prepend(character);
 
       return wrapper;
@@ -97,5 +114,6 @@ export default (
     // Replace the word with the wrapped version, so that we can enforce
     // "inline-block" styling around just that word.
     mountNode.replaceWith(wordWrap);
+
   }
 };

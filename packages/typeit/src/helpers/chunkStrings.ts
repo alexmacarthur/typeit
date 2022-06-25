@@ -5,17 +5,48 @@ import { CURSOR_CLASS } from "../constants";
 
 import { Element } from "../types";
 
+export function encodeSpaces (nodes) {
+  return nodes.map((n) => {
+    let value = n.nodeValue || "";
+
+    if (/ /.test(value)) {
+      n.nodeValue = "";
+      
+      value.split("").forEach((v) => {
+        n.nodeValue += "\u00A0";
+      });
+    }
+
+    return n;
+  });
+}
+
 export function walkElementNodes(
   element: Element | Node, 
-  shouldReverse: boolean = false
+  shouldReverse: boolean = false, 
+  shouldIncludeCursor: boolean = false
   ): Element[] {
+
+  let cursor = document.querySelector(`.${CURSOR_CLASS}`);
 
   let walker = document.createTreeWalker(
     element,
     NodeFilter.SHOW_ALL,
     { 
-      acceptNode: (node: Element) => { 
-        // Always exclude the cursor + its children.
+      acceptNode: (node: Element) => {
+        // Include the cursor node, but none of it's children.
+
+        if (shouldIncludeCursor) {
+          if(node.classList?.contains(CURSOR_CLASS)) {
+            return NodeFilter.FILTER_ACCEPT;
+          }
+
+          if(cursor.contains(node)) {
+            return NodeFilter.FILTER_REJECT;
+          }
+        }
+
+        // Maybe exclude the cursor and its children.
         return node.classList?.contains(CURSOR_CLASS)
           ? NodeFilter.FILTER_REJECT
           : NodeFilter.FILTER_ACCEPT;
@@ -32,7 +63,9 @@ export function walkElementNodes(
     nodes.push(nextNode);
   }
 
-  return shouldReverse ? nodes.reverse() : nodes;
+  let orderedNodes = shouldReverse ? nodes.reverse() : nodes;
+
+  return encodeSpaces(orderedNodes);
 }
 
 /**
