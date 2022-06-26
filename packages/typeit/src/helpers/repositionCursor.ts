@@ -1,4 +1,4 @@
-import { CURSOR_CLASS, CURSOR_WRAPPER_CLASS } from "../constants";
+import { CURSOR_CLASS } from "../constants";
 import select from "./select";
 import { El } from "../types";
 

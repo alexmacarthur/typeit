@@ -22,7 +22,7 @@ test("Does not move cursor when stepsToMove is zero.", () => {
 test("Moves cursor three steps back.", () => {
   repositionCursor(element, allCharacters, 3);
 
-  let expected = `<span id="el">1<span class="ti-cursor-wrapper">2<i class="ti-cursor">|</i></span>345</span>`;
+  let expected = `<span id="el">12<i class="ti-cursor">|</i>345</span>`;
 
   expect(document.body.innerHTML).toEqual(expected);
 });
@@ -32,7 +32,7 @@ test("Moves cursor three back and two forward.", () => {
 
   repositionCursor(element, allCharacters, 1);
 
-  let expected = `<span id="el">123<span class="ti-cursor-wrapper">4<i class="ti-cursor">|</i></span>5</span>`;
+  let expected = `<span id="el">1234<i class="ti-cursor">|</i>5</span>`;
   expect(document.body.innerHTML).toEqual(expected);
 });
 

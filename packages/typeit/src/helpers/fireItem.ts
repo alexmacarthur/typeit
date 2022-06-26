@@ -1,8 +1,6 @@
-import { CURSOR_WRAPPER_CLASS } from "../constants";
 import { El, QueueItem, QueueMapPair } from "../types";
 import beforePaint from "./beforePaint";
-import createElement from "./createElement";
-import createTextNode from "./createTextNode";
+import createCursorWrapper from "./createCursorWrapper";
 import destroyCursorWrapper from "./destroyCursorWrapper";
 import setCursorAnimation from "./setCursorAnimation";
 
@@ -32,20 +30,19 @@ let rebuildCursorAnimation = (cursor) => {
   }
 };
 
-interface FireItemArgs{
-  index: number, 
-  queueItems: QueueMapPair[], 
-  wait: (...args) => Promise<void>, 
-  cursor: El | void
+interface FireItemArgs {
+  index: number;
+  queueItems: QueueMapPair[];
+  wait: (...args) => Promise<void>;
+  cursor: El | void;
 }
 
-let fireItem = async (
-  {
-    index, 
-    queueItems, 
-    wait, 
-    cursor
-  }: FireItemArgs): Promise<number> => {
+let fireItem = async ({
+  index,
+  queueItems,
+  wait,
+  cursor,
+}: FireItemArgs): Promise<number> => {
   let queueItem = queueItems[index][1];
   let instantQueue = [];
   let tempIndex = index;
@@ -78,7 +75,7 @@ let fireItem = async (
 
   await wait(() => beforePaint(() => execute(queueItem)), queueItem.delay);
 
-  if(cursor) {
+  if (cursor) {
     createCursorWrapper(cursor);
     rebuildCursorAnimation(cursor);
   }

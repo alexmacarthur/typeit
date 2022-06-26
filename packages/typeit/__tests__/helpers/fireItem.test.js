@@ -9,7 +9,7 @@ beforeEach(() => {
 });
 
 describe("all items have delays", () => {
-  it.only("does not group any items for execution.", async () => {    
+  it("does not group any items for execution.", async () => {    
     const beforePaintSpy = jest
       .spyOn(beforePaint, "default")
       .mockImplementation((cb) => cb());
@@ -87,7 +87,12 @@ describe("some items have no delay", () => {
     ];
 
     const index = 0;
-    const resultIndex = await fireItem(index, queueItems, wait);
+    const resultIndex = await fireItem({
+      index,
+      queueItems,
+      wait,
+      cursor
+    });
 
     [mock1, mock2, mock3].forEach((m) => {
       expect(m).toHaveBeenCalledTimes(1);
