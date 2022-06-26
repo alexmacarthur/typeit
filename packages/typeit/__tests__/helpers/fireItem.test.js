@@ -5,11 +5,11 @@ let cursor;
 beforeEach(() => {
   setHTML`<span id="cursor">|</span>`;
 
-  cursor = document.getElementById('cursor');
+  cursor = document.getElementById("cursor");
 });
 
 describe("all items have delays", () => {
-  it("does not group any items for execution.", async () => {    
+  it("does not group any items for execution.", async () => {
     const beforePaintSpy = jest
       .spyOn(beforePaint, "default")
       .mockImplementation((cb) => cb());
@@ -91,7 +91,7 @@ describe("some items have no delay", () => {
       index,
       queueItems,
       wait,
-      cursor
+      cursor,
     });
 
     [mock1, mock2, mock3].forEach((m) => {

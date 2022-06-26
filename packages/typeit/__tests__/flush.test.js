@@ -6,7 +6,7 @@ beforeEach(() => {
 });
 
 describe("deleting queue items", () => {
-  test.only("Deletes queue items after execution.", (done) => {
+  test("Deletes queue items after execution.", (done) => {
     const el = document.getElementById("el");
 
     const instance = new TypeIt(el, { speed: 0 }).type("hello").flush(() => {

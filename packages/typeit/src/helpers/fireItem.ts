@@ -2,7 +2,7 @@ import { El, QueueItem, QueueMapPair } from "../types";
 import beforePaint from "./beforePaint";
 import createCursorWrapper from "./createCursorWrapper";
 import destroyCursorWrapper from "./destroyCursorWrapper";
-import setCursorAnimation from "./setCursorAnimation";
+import rebuildCursorAnimation from "./rebuildCursorAnimation";
 
 let execute = (queueItem: QueueItem) => queueItem.func?.call(this);
 

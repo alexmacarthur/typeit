@@ -2,12 +2,12 @@ import TypeIt from "../src";
 
 new TypeIt("#example2", {
   speed: 220,
-  strings: "one", 
-  cursorSpeed: 1000
+  strings: "one",
+  cursorSpeed: 1000,
 })
-.move(-2)
-.pause(500)
-.go();
+  .move(-2)
+  .pause(500)
+  .go();
 
 // new TypeIt("#example3", {
 //   speed: 50,

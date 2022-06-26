@@ -1,5 +1,5 @@
 beforeEach(() => {
-  global.HTMLElement.prototype.animate = () => {}
+  global.HTMLElement.prototype.animate = () => {};
   global.HTMLElement.prototype.getAnimations = () => [];
 
   // const addMockAnimation = (element, id = "") => {
@@ -13,7 +13,6 @@ beforeEach(() => {
   //   return mockAnimation;
   // };
 });
-
 
 global.setHTML = (html, shouldReturn = false) => {
   let domString = String.raw({ raw: html })
