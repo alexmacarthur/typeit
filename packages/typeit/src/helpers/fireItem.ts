@@ -6,30 +6,6 @@ import setCursorAnimation from "./setCursorAnimation";
 
 let execute = (queueItem: QueueItem) => queueItem.func?.call(this);
 
-let rebuildCursorAnimation = (cursor) => {
-  let animation = cursor.getAnimations()[0];
-
-  if (!animation) {
-    return;
-  }
-  let startTime = animation.startTime;
-
-  animation?.cancel();
-
-  // Create a new animation using the same
-  // configuration as the previous one.
-  let newAnimation = setCursorAnimation({
-    cursor,
-    frames: (animation.effect as any).getKeyframes(),
-    timingOptions:
-      animation.effect.getComputedTiming() as AnimationEffectTiming,
-  });
-
-  if (startTime) {
-    newAnimation.startTime = startTime;
-  }
-};
-
 interface FireItemArgs {
   index: number;
   queueItems: QueueMapPair[];
