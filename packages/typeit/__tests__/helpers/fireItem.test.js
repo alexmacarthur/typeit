@@ -1,11 +1,19 @@
 import * as beforePaint from "../../src/helpers/beforePaint";
 import fireItem from "../../src/helpers/fireItem";
+let cursor;
+
+beforeEach(() => {
+  setHTML`<span id="cursor">|</span>`;
+
+  cursor = document.getElementById('cursor');
+});
 
 describe("all items have delays", () => {
-  it("does not group any items for execution.", async () => {
+  it.only("does not group any items for execution.", async () => {    
     const beforePaintSpy = jest
       .spyOn(beforePaint, "default")
       .mockImplementation((cb) => cb());
+
     const wait = jest.fn((cb) => cb());
     const [mock1, mock2] = makeMocks();
     const queueItems = [
@@ -26,7 +34,12 @@ describe("all items have delays", () => {
     ];
 
     const index = 0;
-    const resultIndex = await fireItem(index, queueItems, wait);
+    const resultIndex = await fireItem({
+      index,
+      queueItems,
+      wait,
+      cursor,
+    });
 
     expect(beforePaintSpy).toHaveBeenCalledTimes(1);
     expect(mock1).toHaveBeenCalledTimes(1);

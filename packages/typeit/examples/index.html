@@ -44,6 +44,22 @@
 </head>
 
 <body>
+  <span id="thing">my thing</span>
+  <script>
+    const a = document.getElementById('thing').animate(
+      [
+        { opacity: '0' },
+        { opacity: '0' },
+        { opacity: '1' },
+      ], {
+        duration: 1000,
+        iterations: Infinity,
+        easing: 'steps(2, start)', 
+        // duration: aliceChange.effect.getComputedTiming().duration / 2
+        // animation.currentTime
+      });
+  </script>
+  
   <div class="container">
     <!-- <section>
       <h2>Single String</h2>

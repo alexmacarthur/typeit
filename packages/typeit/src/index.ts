@@ -40,6 +40,7 @@ import {
 import duplicate from "./helpers/duplicate";
 import countStepsToSelector from "./helpers/countStepsToSelector";
 import fireItem from "./helpers/fireItem";
+import setCursorAnimation from "./helpers/setCursorAnimation";
 
 // Necessary for publicly exposing types.
 export declare type TypeItOptions = Options;
@@ -49,7 +50,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     callback: Function,
     delay: number | undefined,
     silent: boolean = false
-  ) => {
+  ): Promise<void> => {
     if (_statuses.frozen) {
       await new Promise<void>((resolve) => {
         this.unfreeze = () => {
@@ -138,7 +139,15 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
   let _attachCursor = async () => {
     !_elementIsInput() && _cursor && _element.appendChild(_cursor);
 
-    _shouldRenderCursor && setCursorStyles(_id, _opts, _element);
+    if (_shouldRenderCursor) {
+      setCursorStyles(_id, _element);
+      _cursorAnimation = setCursorAnimation({
+        cursor: _cursor as El,
+        timingOptions: {
+          duration: _opts.cursorSpeed,
+        },
+      });
+    }
   };
 
   let _disableCursorBlink = (shouldDisable: boolean): void => {
@@ -276,7 +285,12 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
           !queueItem.deletable ||
           (queueItem.deletable && _getAllChars().length)
         ) {
-          let newIndex = await fireItem(index, queueItems, _wait, _element);
+          let newIndex = await fireItem({
+            index,
+            queueItems,
+            wait: _wait,
+            cursor: _cursor,
+          });
 
           // Ensure each skipped item goes through the cleanup process,
           // so that methods like .flush() don't get messed up.
@@ -602,6 +616,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
   let _element = selectorToElement(element);
   let _timeouts: number[] = [];
   let _cursorPosition = 0;
+  let _cursorAnimation;
   let _predictedCursorPosition = null;
   let _statuses = merge({}, DEFAULT_STATUSES);
 

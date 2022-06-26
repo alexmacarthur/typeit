@@ -1,57 +1,58 @@
-import { CURSOR_CLASS, CURSOR_WRAPPER_CLASS } from "../constants";
+import { CURSOR_WRAPPER_CLASS } from "../constants";
 import { El, QueueItem, QueueMapPair } from "../types";
 import beforePaint from "./beforePaint";
-import { walkElementNodes } from "./chunkStrings";
 import createElement from "./createElement";
 import createTextNode from "./createTextNode";
-import removeNode from "./removeNode";
-import select from "./select";
+import destroyCursorWrapper from "./destroyCursorWrapper";
+import setCursorAnimation from "./setCursorAnimation";
 
 let execute = (queueItem: QueueItem) => queueItem.func?.call(this);
 
-let destroyCursorrWrapper = (element) => {
-    let wrapper = element.querySelector(`.${CURSOR_WRAPPER_CLASS}`);
+let rebuildCursorAnimation = (cursor) => {
+  let animation = cursor.getAnimations()[0];
 
-    if (wrapper) {
-      walkElementNodes(wrapper, false, true).forEach((n) => {
-        wrapper.before(n);
-      });
-
-      removeNode(wrapper);
-    }
-}
-
-let createCursorWrapper = () => {
-  let cursor = select(`.${CURSOR_CLASS}`) as El;
-
-  // Maybe wrap the cursor next to its previous sibling
-  // to avoid line-break and cursor alignment issues.
-  if (cursor.nextSibling && cursor.previousSibling) {
-    let placeholder = createTextNode("");
-
-    cursor.previousSibling.before(placeholder);
-
-    let wrapper = createElement("span");
-    wrapper.classList.add(CURSOR_WRAPPER_CLASS);
-    wrapper.append(cursor.previousSibling, cursor);
-
-    placeholder.replaceWith(wrapper);
+  if (!animation) {
+    return;
   }
+  let startTime = animation.startTime;
+
+  animation?.cancel();
+
+  // Create a new animation using the same
+  // configuration as the previous one.
+  let newAnimation = setCursorAnimation({
+    cursor,
+    frames: (animation.effect as any).getKeyframes(),
+    timingOptions:
+      animation.effect.getComputedTiming() as AnimationEffectTiming,
+  });
+
+  if (startTime) {
+    newAnimation.startTime = startTime;
+  }
+};
+
+interface FireItemArgs{
+  index: number, 
+  queueItems: QueueMapPair[], 
+  wait: (...args) => Promise<void>, 
+  cursor: El | void
 }
 
 let fireItem = async (
-  index: number,
-  queueItems: QueueMapPair[],
-  wait, 
-  element
-): Promise<number> => {
+  {
+    index, 
+    queueItems, 
+    wait, 
+    cursor
+  }: FireItemArgs): Promise<number> => {
   let queueItem = queueItems[index][1];
   let instantQueue = [];
   let tempIndex = index;
   let futureItem = queueItem;
   let shouldBeGrouped = () => futureItem && !futureItem.delay;
 
-  destroyCursorrWrapper(element);
+  cursor && destroyCursorWrapper(cursor);
 
   // Crawl through the queue and group together all items that
   // do not have have a delay and can be executed instantly.
@@ -77,7 +78,10 @@ let fireItem = async (
 
   await wait(() => beforePaint(() => execute(queueItem)), queueItem.delay);
 
-  createCursorWrapper();
+  if(cursor) {
+    createCursorWrapper(cursor);
+    rebuildCursorAnimation(cursor);
+  }
 
   return index;
 };

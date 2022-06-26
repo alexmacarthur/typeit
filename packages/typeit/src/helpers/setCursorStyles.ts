@@ -1,5 +1,5 @@
 import { CURSOR_CLASS, CURSOR_WRAPPER_CLASS, DATA_ATTRIBUTE } from "../constants";
-import { El, Options } from "../types";
+import { El } from "../types";
 import appendStyleBlock from "./appendStyleBlock";
 
 export let cursorFontStyles = {
@@ -14,7 +14,6 @@ export let cursorFontStyles = {
 
 export let setCursorStyles = (
   id: string,
-  options: Options,
   element: El
 ) => {
   let rootSelector = `[${DATA_ATTRIBUTE}='${id}']`;
@@ -31,9 +30,7 @@ export let setCursorStyles = (
 
   // Set animation styles & custom properties.
   appendStyleBlock(
-    `@keyframes blink-${id} { 0% {opacity: 0} 49% {opacity: 0} 50% {opacity: 1} } ${cursorSelector} { display: inline-block; width: 0; ${customProperties} animation: blink-${id} ${
-      options.cursorSpeed / 1000
-    }s infinite; } ${cursorSelector}.with-delay { animation-delay: 500ms; } ${cursorSelector}.disabled { animation: none; } .${CURSOR_WRAPPER_CLASS} { display: inline-block; font: inherit; color: inherit; }`,
+    `${cursorSelector} { display: inline-block; width: 0; ${customProperties} } ${cursorSelector}.with-delay { animation-delay: 500ms; } ${cursorSelector}.disabled { animation: none; } .${CURSOR_WRAPPER_CLASS} { display: inline-block; font: inherit; color: inherit; }`,
     id
   );
 };
