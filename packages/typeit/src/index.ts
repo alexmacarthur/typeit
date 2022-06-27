@@ -141,7 +141,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
 
     if (_shouldRenderCursor) {
       setCursorStyles(_id, _element, !_element.animate, _opts.cursorSpeed);
-      _cursorAnimation = setCursorAnimation({
+      window.a = setCursorAnimation({
         cursor: _cursor as El,
         timingOptions: {
           duration: _opts.cursorSpeed,
@@ -151,11 +151,27 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
   };
 
   let _disableCursorBlink = (shouldDisable: boolean): void => {
-    if (_shouldRenderCursor && _cursor) {
-      _cursor.classList.toggle("disabled", shouldDisable);
-      _cursor.classList.toggle("with-delay", !shouldDisable);
-    }
+    // may need to totally destroy and rebuild
+    let animation = getCursorAnimation();
+
+    if(!animation) return;
+
+    // if(shouldDisable) {
+    //   animation.pause();
+    // } else {
+
+    // }
+
+    animation[shouldDisable ? 'pause' : 'play']();
+
+    // if (_shouldRenderCursor && _cursor) {
+      
+    //   // _cursor.classList.toggle("disabled", shouldDisable);
+    //   _cursor.classList.toggle("with-delay", !shouldDisable);
+    // }
   };
+
+  let getCursorAnimation = () => _cursor.getAnimations()[0];
 
   /**
    * Based on provided strings, generate a TypeIt queue
@@ -644,6 +660,9 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
   let _cursor = _setUpCursor();
 
   _opts.strings = _maybePrependHardcodedStrings(asArray<string>(_opts.strings));
+
+  // Appease old Safari.
+  _cursor.getAnimations = _cursor.getAnimations || (() => []);
 
   // Only generate a queue if we have strings
   // and this isn't a reset of a previous instance,

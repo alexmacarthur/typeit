@@ -31,6 +31,10 @@ let setCursorAnimation = ({
     ...DEFAULT_TIMING_OPTIONS,
     ...timingOptions,
   });
+
+  // animation.play();
+
+  // return animation;
 };
 
 export default setCursorAnimation;
