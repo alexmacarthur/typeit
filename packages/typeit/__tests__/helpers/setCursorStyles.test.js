@@ -34,3 +34,19 @@ it("sets styles", () => {
     );
   });
 });
+
+it("includes CSS animation when Web Animation API is not supported", () => {
+  setHTML`<span id="element"></span>
+  `;
+
+  const id = "10";
+  const element = document.getElementById("element");
+
+  setCursorStyles(id, element, true, 900);
+
+  expect(document.head.innerHTML).toMatch(
+    new RegExp("animation: blink-10 0\\.9s infinite;")
+  );
+
+  console.log(document.head.innerHTML);
+});

@@ -1,12 +1,12 @@
 import { El } from "../types";
 import setCursorAnimation from "./setCursorAnimation";
 
-let rebuildCursorAnimation = (cursor: El) => {
+let rebuildCursorAnimation = (cursor: El): void => {
+  if (!cursor.getAnimations) return;
+
   let animation = cursor.getAnimations()[0];
 
-  if (!animation) {
-    return;
-  }
+  if (!animation) return;
 
   let startTime = animation.startTime;
 

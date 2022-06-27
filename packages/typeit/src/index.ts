@@ -140,7 +140,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     !_elementIsInput() && _cursor && _element.appendChild(_cursor);
 
     if (_shouldRenderCursor) {
-      setCursorStyles(_id, _element);
+      setCursorStyles(_id, _element, !_element.animate, _opts.cursorSpeed);
       _cursorAnimation = setCursorAnimation({
         cursor: _cursor as El,
         timingOptions: {
