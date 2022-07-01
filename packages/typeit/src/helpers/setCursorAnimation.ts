@@ -18,23 +18,16 @@ const DEFAULT_FRAMES: AnimationKeyFrame[] = [
 let setCursorAnimation = ({
   cursor,
   frames = null,
-  timingOptions = {},
+  timingOptions = {}
 }: {
   cursor: El;
   frames?: AnimationKeyFrame[] | null;
   timingOptions: Partial<AnimationEffectTiming>;
 }): Animation | null => {
-  // Basically just to appease older versions of Safari.
-  if (!cursor.animate) return null;
-
   return cursor.animate(frames || DEFAULT_FRAMES, {
     ...DEFAULT_TIMING_OPTIONS,
     ...timingOptions,
   });
-
-  // animation.play();
-
-  // return animation;
 };
 
 export default setCursorAnimation;

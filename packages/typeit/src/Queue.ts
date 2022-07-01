@@ -6,9 +6,14 @@ let Queue = function (initialItems: QueueItem[]) {
    * Add a single or several steps onto the `waiting` queue.
    */
   let add = function (steps: QueueItem[] | QueueItem): typeof Queue {
-    asArray<QueueItem>(steps).forEach((step) =>
-      _q.set(Symbol(step.char?.innerText), { ...step })
-    );
+    asArray<QueueItem>(steps).forEach((step) => {
+
+      step.shouldPauseCursor = function () {
+        return Boolean(this.typeable || this.cursorable || this.deletable);
+      }
+
+      return _q.set(Symbol(step.char?.innerText), { ...step });
+    });
 
     return this;
   };
@@ -48,7 +53,7 @@ let Queue = function (initialItems: QueueItem[]) {
   let getItems = (all: boolean = false): QueueItem[] =>
     all ? rawValues() : rawValues().filter((i) => !i.done);
 
-  let done = (key: Symbol, shouldDestroy: boolean = false) => 
+  let done = (key: Symbol, shouldDestroy: boolean = false) =>
     shouldDestroy ? _q.delete(key) : (_q.get(key).done = true);
 
   let _q = new Map();

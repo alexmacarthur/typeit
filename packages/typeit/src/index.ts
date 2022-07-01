@@ -140,8 +140,8 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     !_elementIsInput() && _cursor && _element.appendChild(_cursor);
 
     if (_shouldRenderCursor) {
-      setCursorStyles(_id, _element, !_element.animate, _opts.cursorSpeed);
-      window.a = setCursorAnimation({
+      setCursorStyles(_id, _element);
+      setCursorAnimation({
         cursor: _cursor as El,
         timingOptions: {
           duration: _opts.cursorSpeed,
@@ -149,29 +149,6 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
       });
     }
   };
-
-  let _disableCursorBlink = (shouldDisable: boolean): void => {
-    // may need to totally destroy and rebuild
-    let animation = getCursorAnimation();
-
-    if(!animation) return;
-
-    // if(shouldDisable) {
-    //   animation.pause();
-    // } else {
-
-    // }
-
-    animation[shouldDisable ? 'pause' : 'play']();
-
-    // if (_shouldRenderCursor && _cursor) {
-      
-    //   // _cursor.classList.toggle("disabled", shouldDisable);
-    //   _cursor.classList.toggle("with-delay", !shouldDisable);
-    // }
-  };
-
-  let getCursorAnimation = () => _cursor.getAnimations()[0];
 
   /**
    * Based on provided strings, generate a TypeIt queue
@@ -278,7 +255,6 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     // );
 
     let cleanUp = (qKey) => {
-      _disableCursorBlink(false);
       _queue.done(qKey, !remember);
     };
 
@@ -290,8 +266,6 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
 
         // Only execute items that aren't done yet.
         if (queueItem.done) continue;
-
-        if (queueItem.typeable && !_statuses.frozen) _disableCursorBlink(true);
 
         // Because calling .delete() with no parameters will attempt to
         // delete all "typeable" characters, we may overfetch, since some characters
@@ -487,6 +461,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
           {
             func: () => _move(directionalStep),
             delay: instant ? 0 : _getPace(),
+            cursorable: true
           },
           Math.abs(numberOfSteps)
         ),

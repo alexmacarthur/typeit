@@ -3,7 +3,9 @@ import { El } from "../types";
 import createElement from "./createElement";
 import createTextNode from "./createTextNode";
 
-let createCursorWrapper = (cursor: El) => {
+// Returns a boolean indicating if the cursor's animation 
+// is due for a restart after DOM nodes have been moved.
+let createCursorWrapper = (cursor: El): boolean => {
   // Maybe wrap the cursor next to its previous sibling
   // to avoid line-break and cursor alignment issues.
   if (cursor.nextSibling && cursor.previousSibling) {
@@ -16,7 +18,11 @@ let createCursorWrapper = (cursor: El) => {
     wrapper.append(cursor.previousSibling, cursor);
 
     placeholder.replaceWith(wrapper);
+
+    return true;
   }
+
+  return false;
 };
 
 export default createCursorWrapper;

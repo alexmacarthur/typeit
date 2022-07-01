@@ -14,9 +14,7 @@ export let cursorFontStyles = {
 
 export let setCursorStyles = (
   id: string,
-  element: El, 
-  includeCssAnimation: boolean,
-  cursorSpeed: number, 
+  element: El
 ) => {
   let rootSelector = `[${DATA_ATTRIBUTE}='${id}']`;
   let cursorSelector = `${rootSelector} .${CURSOR_CLASS}`;
@@ -29,13 +27,6 @@ export let setCursorStyles = (
     },
     ""
   );
-
-  if(includeCssAnimation) {
-    appendStyleBlock(
-      `@keyframes blink-${id} { 0% {opacity: 0} 49% {opacity: 0} 50% {opacity: 1} } ${cursorSelector} { animation: blink-${id} ${cursorSpeed / 1000}s infinite; }`,
-      id
-    );
-  }
 
   // Set animation styles & custom properties.
   appendStyleBlock(

@@ -13,6 +13,18 @@ interface FireItemArgs {
   cursor: El | void;
 }
 
+let maybePauseCursorAnimation = (queueItem: QueueItem, cursor): any[] => {
+  let previousAnimation = cursor && cursor.getAnimations()[0];
+  let previousStartTime = null;
+
+  if (queueItem.shouldPauseCursor()) {
+    previousStartTime = previousAnimation.startTime;
+    previousAnimation.cancel();
+  }
+
+  return [previousAnimation, previousStartTime];
+}
+
 let fireItem = async ({
   index,
   queueItems,
@@ -24,18 +36,17 @@ let fireItem = async ({
   let tempIndex = index;
   let futureItem = queueItem;
   let shouldBeGrouped = () => futureItem && !futureItem.delay;
-
-  cursor && destroyCursorWrapper(cursor);
+  let cursorWrapperDestroyed: boolean = cursor && destroyCursorWrapper(cursor);
 
   // Crawl through the queue and group together all items that
   // do not have have a delay and can be executed instantly.
   while (shouldBeGrouped()) {
     instantQueue.push(futureItem);
-
+    
     shouldBeGrouped() && tempIndex++;
     futureItem = queueItems[tempIndex] ? queueItems[tempIndex][1] : null;
   }
-
+  
   if (instantQueue.length) {
     // All are executed together before the browser has a chance to repaint.
     await beforePaint(async () => {
@@ -43,17 +54,29 @@ let fireItem = async ({
         await execute(q);
       }
     });
-
+    
     // Important! Because we moved into the future, the index
     // needs to be modified and returned for accurate remaining execution.
     return tempIndex - 1;
   }
+  
+  let [previousAnimation, previousStartTime] = maybePauseCursorAnimation(queueItem, cursor);
 
   await wait(() => beforePaint(() => execute(queueItem)), queueItem.delay);
 
-  if (cursor) {
-    createCursorWrapper(cursor);
-    rebuildCursorAnimation(cursor);
+  let cursorWrapperCreated = cursor && createCursorWrapper(cursor);
+
+  if (cursor && (cursorWrapperDestroyed || cursorWrapperCreated || queueItem.shouldPauseCursor())) {
+    let options = previousAnimation?.effect.getComputedTiming() || {};
+
+    // is start time gettin gin the way?
+    // YES!!
+    rebuildCursorAnimation({
+      cursor,
+      startTime: null,
+      frames: previousAnimation?.effect.getKeyframes() || null,
+      timingOptions: {...options, delay: 5500}
+    });
   }
 
   return index;

@@ -1,25 +1,32 @@
 import { El } from "../types";
 import setCursorAnimation from "./setCursorAnimation";
 
-let rebuildCursorAnimation = (cursor: El): void => {
-  if (!cursor.getAnimations) return;
+interface RebuildCursorAnimationArgs {
+  cursor: El;
+  startTime?: number;
+  frames?: AnimationKeyFrame[];
+  timingOptions: Partial<AnimationEffectTiming>
+}
 
+let rebuildCursorAnimation = ({
+  cursor,
+  startTime,
+  frames,
+  timingOptions,
+}: RebuildCursorAnimationArgs): void => {
   let animation = cursor.getAnimations()[0];
 
-  if (!animation) return;
-
-  let startTime = animation.startTime;
-
-  animation.cancel();
+  if (animation) animation.cancel();
 
   // Create a new animation using the same
   // configuration as the previous one.
   let newAnimation = setCursorAnimation({
     cursor,
-    frames: (animation.effect as any).getKeyframes(),
-    timingOptions:
-      animation.effect.getComputedTiming() as AnimationEffectTiming,
+    frames,
+    timingOptions
   });
+
+  console.log(newAnimation);
 
   if (startTime) {
     newAnimation.startTime = startTime;
