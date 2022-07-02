@@ -34,3 +34,4 @@ export const DEFAULT_OPTIONS: Options = {
   afterComplete: () => {},
 };
 export const PLACEHOLDER_CSS = `[${DATA_ATTRIBUTE}]:before {content: '.'; display: inline-block; width: 0; visibility: hidden;}`;
+export const CURSOR_ANIMATION_RESTART_DELAY = 3000;

@@ -1,3 +1,4 @@
+import { CURSOR_ANIMATION_RESTART_DELAY } from "../constants";
 import { El, QueueItem, QueueMapPair } from "../types";
 import beforePaint from "./beforePaint";
 import createCursorWrapper from "./createCursorWrapper";
@@ -9,20 +10,8 @@ let execute = (queueItem: QueueItem) => queueItem.func?.call(this);
 interface FireItemArgs {
   index: number;
   queueItems: QueueMapPair[];
-  wait: (...args) => Promise<void>;
-  cursor: El | void;
-}
-
-let maybePauseCursorAnimation = (queueItem: QueueItem, cursor): any[] => {
-  let previousAnimation = cursor && cursor.getAnimations()[0];
-  let previousStartTime = null;
-
-  if (queueItem.shouldPauseCursor()) {
-    previousStartTime = previousAnimation.startTime;
-    previousAnimation.cancel();
-  }
-
-  return [previousAnimation, previousStartTime];
+  wait: (...args: any) => Promise<void>;
+  cursor: El;
 }
 
 let fireItem = async ({
@@ -36,7 +25,8 @@ let fireItem = async ({
   let tempIndex = index;
   let futureItem = queueItem;
   let shouldBeGrouped = () => futureItem && !futureItem.delay;
-  let cursorWrapperDestroyed: boolean = cursor && destroyCursorWrapper(cursor);
+
+  destroyCursorWrapper(cursor);
 
   // Crawl through the queue and group together all items that
   // do not have have a delay and can be executed instantly.
@@ -59,25 +49,29 @@ let fireItem = async ({
     // needs to be modified and returned for accurate remaining execution.
     return tempIndex - 1;
   }
+
+  let animation = cursor.getAnimations()[0];
+  // if(queueItem.shouldPauseCursor()) {
+    // animation.currentTime = (animation.effect.getComputedTiming().duration as number) / 2;
+    // console.log('canceling');
+    animation.cancel();
+  // }
+  console.log("BEFORE")
   
-  let [previousAnimation, previousStartTime] = maybePauseCursorAnimation(queueItem, cursor);
+  await wait(async () => {
+    await beforePaint(() => {    
+      execute(queueItem);
+    })
+  }, queueItem.delay);
 
-  await wait(() => beforePaint(() => execute(queueItem)), queueItem.delay);
+  console.log("AFTER")
+  // This is getting played too soon. Why is it not waiting all the way?
+  animation.play();
 
-  let cursorWrapperCreated = cursor && createCursorWrapper(cursor);
+  let delay = queueItem.shouldPauseCursor() ? 0 : 0;
+  rebuildCursorAnimation(cursor as El, delay);
 
-  if (cursor && (cursorWrapperDestroyed || cursorWrapperCreated || queueItem.shouldPauseCursor())) {
-    let options = previousAnimation?.effect.getComputedTiming() || {};
-
-    // is start time gettin gin the way?
-    // YES!!
-    rebuildCursorAnimation({
-      cursor,
-      startTime: null,
-      frames: previousAnimation?.effect.getKeyframes() || null,
-      timingOptions: {...options, delay: 5500}
-    });
-  }
+  createCursorWrapper(cursor);
 
   return index;
 };

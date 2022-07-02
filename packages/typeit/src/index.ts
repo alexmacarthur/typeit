@@ -317,7 +317,9 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
         await _prepLoop(delay[0]);
         _fire();
       }, delay[1]);
-    } catch (e) {}
+    } catch (e) {
+      console.error(e);
+    }
 
     return this;
   };

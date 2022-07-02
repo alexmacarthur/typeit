@@ -1,35 +1,40 @@
 import { El } from "../types";
 import setCursorAnimation from "./setCursorAnimation";
 
-interface RebuildCursorAnimationArgs {
-  cursor: El;
-  startTime?: number;
-  frames?: AnimationKeyFrame[];
-  timingOptions: Partial<AnimationEffectTiming>
+declare global {
+  interface AnimationEffect {
+    getKeyframes: () => any
+  }
 }
 
-let rebuildCursorAnimation = ({
-  cursor,
-  startTime,
-  frames,
-  timingOptions,
-}: RebuildCursorAnimationArgs): void => {
+let rebuildCursorAnimation = (cursor: El, delay: number): void => {
   let animation = cursor.getAnimations()[0];
+  let oldCurrentTime: number;
 
-  if (animation) animation.cancel();
+  if (animation) {
+    oldCurrentTime = animation.currentTime;
+    animation.cancel();
+  }
+
+  let timingOptions = {
+    ...animation.effect.getComputedTiming() as AnimationEffectTiming, 
+    delay
+  }
 
   // Create a new animation using the same
   // configuration as the previous one.
   let newAnimation = setCursorAnimation({
     cursor,
-    frames,
+    frames: animation.effect.getKeyframes(),
     timingOptions
   });
 
-  console.log(newAnimation);
-
-  if (startTime) {
-    newAnimation.startTime = startTime;
+  // By setting the currentTime, the animation will
+  // be in sync with the previous one. But when we're 
+  // totally pausing the animation (indicated by a `delay` 
+  // value), there's no need to do this.
+  if (oldCurrentTime) {
+    // newAnimation.currentTime = oldCurrentTime;
   }
 };
 
