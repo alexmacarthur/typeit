@@ -6,8 +6,9 @@ new TypeIt("#example2", {
   cursorSpeed: 1000,
 })
   .pause(3000)
-  // .move('start')
+  .move('start')
   .type("two")
+  .move(2)
   // .pause(500)
   .go();
 

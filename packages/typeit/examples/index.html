@@ -44,21 +44,73 @@
 </head>
 
 <body>
-  <span id="thing">my thing</span>
-  <script>
-    const a = document.getElementById('thing').animate(
+    <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+    <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+
+  <span id="thing" style="position: relative; display: block;">my thing</span>
+  <!-- <script>
+    let a = document.getElementById('thing').animate(
       [
-        { opacity: '0' },
-        { opacity: '0' },
-        { opacity: '1' },
+        {
+          transform: 'rotate(0)'
+        }, 
+        {
+          transform: 'rotate(360deg)'
+        }
       ], {
-        duration: 1000,
+        duration: 5000,
         iterations: Infinity,
-        easing: 'steps(2, start)', 
-        // duration: aliceChange.effect.getComputedTiming().duration / 2
-        // animation.currentTime
       });
-  </script>
+
+      setInterval(() => {
+        let currentTime = a.currentTime;
+
+        a.cancel();
+
+        a = document.getElementById('thing').animate(
+          [
+            {
+              transform: 'rotate(0)'
+            }, 
+            {
+              transform: 'rotate(360deg)'
+            }
+          ], {
+            duration: 5000,
+            iterations: Infinity,
+          });
+          
+          a.currentTime = currentTime;
+
+      }, 1000);
+  </script> -->
+
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+
   
   <div class="container">
     <!-- <section>

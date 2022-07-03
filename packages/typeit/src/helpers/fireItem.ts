@@ -51,12 +51,10 @@ let fireItem = async ({
   }
 
   let animation = cursor.getAnimations()[0];
-  // if(queueItem.shouldPauseCursor()) {
-    // animation.currentTime = (animation.effect.getComputedTiming().duration as number) / 2;
-    // console.log('canceling');
-    animation.cancel();
-  // }
-  console.log("BEFORE")
+  if(queueItem.shouldPauseCursor()) {
+    animation.currentTime = (animation.effect.getComputedTiming().duration as number) / 2;
+    animation.pause();
+  }
   
   await wait(async () => {
     await beforePaint(() => {    
@@ -64,12 +62,12 @@ let fireItem = async ({
     })
   }, queueItem.delay);
 
-  console.log("AFTER")
-  // This is getting played too soon. Why is it not waiting all the way?
-  animation.play();
+  // setTimeout(() => {
+    animation.play();
+  // }, 500)
 
   let delay = queueItem.shouldPauseCursor() ? 0 : 0;
-  rebuildCursorAnimation(cursor as El, delay);
+  // rebuildCursorAnimation(cursor as El, delay);
 
   createCursorWrapper(cursor);
 
