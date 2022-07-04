@@ -51,7 +51,10 @@ let fireItem = async ({
   }
 
   let animation = cursor.getAnimations()[0];
-  let timingOptions = animation.effect.getComputedTiming();
+  let timingOptions = {
+    ...animation.effect.getComputedTiming(),
+    delay: queueItem.shouldPauseCursor() ? CURSOR_ANIMATION_RESTART_DELAY : 0
+  };
   let frames = animation.effect.getKeyframes();
   
   await wait(async () => {
@@ -65,9 +68,11 @@ let fireItem = async ({
     })
   }, queueItem.delay);
 
-  let delay = queueItem.shouldPauseCursor() ? CURSOR_ANIMATION_RESTART_DELAY : 0;
-
-  rebuildCursorAnimation(cursor as El, delay, frames, timingOptions);
+  rebuildCursorAnimation({
+    cursor,
+    frames,
+    timingOptions
+  });
 
   createCursorWrapper(cursor);
 

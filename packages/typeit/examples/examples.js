@@ -1,7 +1,7 @@
 import TypeIt from "../src";
 
 new TypeIt("#example2", {
-  speed: 500,
+  speed: 50,
   strings: "one",
   cursorSpeed: 1000,
   lifeLike: false
@@ -9,8 +9,8 @@ new TypeIt("#example2", {
   .pause(3000)
   .move('start')
   .type("two")
-  // .move(2)
-  // .pause(500)
+  .move(2)
+  .pause(500)
   .go();
 
 // new TypeIt("#example3", {

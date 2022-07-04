@@ -607,7 +607,6 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
   let _element = selectorToElement(element);
   let _timeouts: number[] = [];
   let _cursorPosition = 0;
-  let _cursorAnimation;
   let _predictedCursorPosition = null;
   let _statuses = merge({}, DEFAULT_STATUSES);
 
@@ -635,9 +634,6 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
   let _cursor = _setUpCursor();
 
   _opts.strings = _maybePrependHardcodedStrings(asArray<string>(_opts.strings));
-
-  // Appease old Safari.
-  _cursor.getAnimations = _cursor.getAnimations || (() => []);
 
   // Only generate a queue if we have strings
   // and this isn't a reset of a previous instance,

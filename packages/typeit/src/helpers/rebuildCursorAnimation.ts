@@ -7,17 +7,23 @@ declare global {
   }
 }
 
-let rebuildCursorAnimation = (cursor: El, delay: number, frames, timingOptions): void => {
+interface rebuildCursorAnimationArgs {
+  cursor: El, 
+  frames: AnimationKeyFrame[], 
+  timingOptions: any
+}
+
+let rebuildCursorAnimation = ({
+  cursor,
+  frames, 
+  timingOptions
+}: rebuildCursorAnimationArgs): Animation => {
   let animation = cursor.getAnimations()[0];
   let oldCurrentTime: number;
 
-  if (animation) {
+  if (animation.playState !== "idle") {
     oldCurrentTime = animation.currentTime;
     animation.cancel();
-  }
-
-  if(delay) {
-    timingOptions.delay = delay;
   }
 
   // Create a new animation using the same
@@ -32,9 +38,11 @@ let rebuildCursorAnimation = (cursor: El, delay: number, frames, timingOptions):
   // be in sync with the previous one. But when we're 
   // totally pausing the animation (indicated by a `delay` 
   // value), there's no need to do this.
-  if (oldCurrentTime && !delay) {
+  if (!timingOptions.delay) {
     newAnimation.currentTime = oldCurrentTime;
   }
+
+  return newAnimation;
 };
 
 export default rebuildCursorAnimation;

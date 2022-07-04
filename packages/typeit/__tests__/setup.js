@@ -1,17 +1,6 @@
 beforeEach(() => {
   global.HTMLElement.prototype.animate = () => {};
   global.HTMLElement.prototype.getAnimations = () => [];
-
-  // const addMockAnimation = (element, id = "") => {
-  //   const mockAnimation = {
-  //     finish: jest.fn(),
-  //     id,
-  //   };
-
-  //   element.getAnimations = () => [mockAnimation];
-
-  //   return mockAnimation;
-  // };
 });
 
 global.setHTML = (html, shouldReturn = false) => {
