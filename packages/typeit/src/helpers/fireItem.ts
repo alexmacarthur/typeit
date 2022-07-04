@@ -51,23 +51,23 @@ let fireItem = async ({
   }
 
   let animation = cursor.getAnimations()[0];
-  if(queueItem.shouldPauseCursor()) {
-    animation.currentTime = (animation.effect.getComputedTiming().duration as number) / 2;
-    animation.pause();
-  }
+  let timingOptions = animation.effect.getComputedTiming();
+  let frames = animation.effect.getKeyframes();
   
   await wait(async () => {
+    // Pause the cursor while stuff is happening.
+    if(queueItem.shouldPauseCursor()) {
+      animation.cancel();
+    }
+
     await beforePaint(() => {    
       execute(queueItem);
     })
   }, queueItem.delay);
 
-  // setTimeout(() => {
-    animation.play();
-  // }, 500)
+  let delay = queueItem.shouldPauseCursor() ? CURSOR_ANIMATION_RESTART_DELAY : 0;
 
-  let delay = queueItem.shouldPauseCursor() ? 0 : 0;
-  // rebuildCursorAnimation(cursor as El, delay);
+  rebuildCursorAnimation(cursor as El, delay, frames, timingOptions);
 
   createCursorWrapper(cursor);
 

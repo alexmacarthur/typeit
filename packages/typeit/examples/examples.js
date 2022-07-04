@@ -4,11 +4,12 @@ new TypeIt("#example2", {
   speed: 500,
   strings: "one",
   cursorSpeed: 1000,
+  lifeLike: false
 })
   .pause(3000)
   .move('start')
   .type("two")
-  .move(2)
+  // .move(2)
   // .pause(500)
   .go();
 
