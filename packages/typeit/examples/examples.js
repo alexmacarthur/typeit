@@ -1,17 +1,9 @@
 import TypeIt from "../src";
 
 new TypeIt("#example2", {
-  speed: 50,
-  strings: "one",
-  cursorSpeed: 1000,
-  lifeLike: false
-})
-  .pause(3000)
-  .move('start')
-  .type("two")
-  .move(2)
-  .pause(500)
-  .go();
+  speed: 0
+}).type("hello")
+  .flush();
 
 // new TypeIt("#example3", {
 //   speed: 50,

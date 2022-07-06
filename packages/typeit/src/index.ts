@@ -275,6 +275,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
           !queueItem.deletable ||
           (queueItem.deletable && _getAllChars().length)
         ) {
+
           let newIndex = await fireItem({
             index,
             queueItems,

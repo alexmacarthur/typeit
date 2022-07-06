@@ -1,6 +1,17 @@
 beforeEach(() => {
-  global.HTMLElement.prototype.animate = () => {};
-  global.HTMLElement.prototype.getAnimations = () => [];
+  global.HTMLElement.prototype.animate = () => {
+    return {};
+  };
+  global.HTMLElement.prototype.getAnimations = () => [{
+    effect: {
+      getComputedTiming: () => {
+        return {};
+      }, 
+      getKeyframes: () => []
+    }, 
+    cancel: () => {}, 
+    currentTime: 0
+  }];
 });
 
 global.setHTML = (html, shouldReturn = false) => {

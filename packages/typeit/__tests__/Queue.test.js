@@ -51,7 +51,13 @@ test("It should set initial steps properly.", () => {
 
   let q1 = new Queue(items);
 
-  expect(q1.getItems()).toEqual([{}, {}, {}]);
+  expect(q1.getItems()).toEqual([{
+    shouldPauseCursor: expect.anything()
+  }, {
+    shouldPauseCursor: expect.anything()
+  }, {
+    shouldPauseCursor: expect.anything()
+  }]);
 });
 
 test("It should only return non-done items.", () => {
