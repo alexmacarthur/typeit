@@ -160,7 +160,6 @@ describe("go()", () => {
       let cursorNode = document.querySelector(".ti-cursor");
       expect(cursorNode).not.toBeNull();
       expect(cursorNode.style.visibility).toEqual("hidden");
-      expect(cursorNode.classList.contains("with-delay")).toBe(false);
 
       done();
     };
@@ -401,7 +400,7 @@ describe("reset()", () => {
       strings: "Hi.",
       afterComplete: () => {
         expect(element.innerHTML).toEqual(
-          'Hi.<span class="ti-cursor with-delay">|</span>'
+          'Hi.<span class="ti-cursor">|</span>'
         );
         instance = instance.reset();
         expect(element.innerHTML).toEqual("");

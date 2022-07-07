@@ -280,7 +280,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
             index,
             queueItems,
             wait: _wait,
-            cursor: _cursor,
+            cursor: _cursor as El,
           });
 
           // Ensure each skipped item goes through the cleanup process,

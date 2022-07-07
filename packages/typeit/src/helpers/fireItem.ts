@@ -11,7 +11,7 @@ interface FireItemArgs {
   index: number;
   queueItems: QueueMapPair[];
   wait: (...args: any) => Promise<void>;
-  cursor: El;
+  cursor: El | undefined;
 }
 
 let fireItem = async ({
@@ -26,7 +26,7 @@ let fireItem = async ({
   let futureItem = queueItem;
   let shouldBeGrouped = () => futureItem && !futureItem.delay;
 
-  destroyCursorWrapper(cursor);
+  cursor && destroyCursorWrapper(cursor);
 
   // Crawl through the queue and group together all items that
   // do not have have a delay and can be executed instantly.
@@ -50,17 +50,17 @@ let fireItem = async ({
     return tempIndex - 1;
   }
 
-  let animation = cursor.getAnimations()[0];
-  let timingOptions = {
+  let animation = cursor?.getAnimations()[0];
+  let timingOptions = cursor ? {
     ...animation.effect.getComputedTiming(),
     delay: queueItem.shouldPauseCursor() ? CURSOR_ANIMATION_RESTART_DELAY : 0
-  };
-  let frames = animation.effect.getKeyframes();
+  } : {};
+  let frames = cursor ? animation.effect.getKeyframes() : [];
   
   await wait(async () => {
     // Pause the cursor while stuff is happening.
     if(queueItem.shouldPauseCursor()) {
-      animation.cancel();
+      animation?.cancel();
     }
 
     await beforePaint(() => {    
@@ -74,7 +74,7 @@ let fireItem = async ({
     timingOptions
   });
 
-  createCursorWrapper(cursor);
+  cursor && createCursorWrapper(cursor);
 
   return index;
 };

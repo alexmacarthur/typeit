@@ -30,7 +30,7 @@ export let setCursorStyles = (
 
   // Set animation styles & custom properties.
   appendStyleBlock(
-    `${cursorSelector} { display: inline-block; width: 0; ${customProperties} } ${cursorSelector}.with-delay { animation-delay: 500ms; } ${cursorSelector}.disabled { animation: none; } .${CURSOR_WRAPPER_CLASS} { display: inline-block; font: inherit; color: inherit; }`,
+    `${cursorSelector} { display: inline-block; width: 0; ${customProperties} } .${CURSOR_WRAPPER_CLASS} { display: inline-block; font: inherit; color: inherit; }`,
     id
   );
 };

@@ -15,7 +15,7 @@ describe("deleting fires correctly", () => {
       strings: "abc<strong>def</strong>ghi",
       afterComplete: () => {
         expect(el.innerHTML).toEqual(
-          'abc<span class="ti-cursor with-delay">|</span>'
+          'abc<span class="ti-cursor">|</span>'
         );
         done();
       },
@@ -33,7 +33,7 @@ describe("deleting fires correctly", () => {
       strings: "abc<strong>def</strong>ghi",
       afterComplete: () => {
         expect(el.innerHTML).toEqual(
-          'abc<strong>def</strong><span class="ti-cursor with-delay">|</span>'
+          'abc<strong>def</strong><span class="ti-cursor">|</span>'
         );
         done();
       },
@@ -107,7 +107,7 @@ describe("cursor has been moved", () => {
       speed: 0,
       afterComplete: () => {
         expect(document.body.querySelector("#element").innerHTML).toEqual(
-          'abc <strong>def</strong> g<em><span class="ti-cursor with-delay">|</span>jkl</em> mno'
+          'abc <strong>def</strong> g<em><span class="ti-cursor">|</span>jkl</em> mno'
         );
         done();
       },
@@ -123,7 +123,7 @@ describe("cursor has been moved", () => {
       speed: 0,
       afterComplete: () => {
         expect(document.body.querySelector("#element").innerHTML).toEqual(
-          'abc <span class="ti-cursor with-delay">|</span> mno'
+          'abc <span class="ti-cursor">|</span> mno'
         );
         done();
       },

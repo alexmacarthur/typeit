@@ -1,9 +1,10 @@
 import TypeIt from "../src";
 
 new TypeIt("#example2", {
-  speed: 0
+  speed: 20
 }).type("hello")
-  .flush();
+  .delete()
+  .go();
 
 // new TypeIt("#example3", {
 //   speed: 50,

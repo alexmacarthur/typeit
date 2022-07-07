@@ -65,3 +65,24 @@ describe("animation has already been canceled", () => {
     expect(result.currentTime).toEqual(undefined);
   });
 });
+
+describe("animation has been removed for some other reason", () => {
+    it("does not attempt to cancel a nonexistent animation.", () => {
+    cursor.getAnimations = () => [];
+
+    const setCursorAnimationSpy = jest
+      .spyOn(setCursorAnimation, "default")
+      .mockImplementation(() => {
+        return {}
+      });
+
+    let result = rebuildCursorAnimation({
+      cursor, 
+      frames: [], 
+      timingOptions: {}
+    });
+
+    expect(setCursorAnimationSpy).toHaveBeenCalledTimes(1);
+    expect(result.currentTime).toEqual(undefined);
+  });
+});
