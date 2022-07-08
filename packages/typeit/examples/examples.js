@@ -4,6 +4,7 @@ new TypeIt("#example2", {
   speed: 20
 }).type("hello hello hello hello")
 .move(-1)
+// .move(1)
   // .delete()
   .go();
 

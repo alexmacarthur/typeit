@@ -31,7 +31,9 @@ const findNearbySpace = (cursor, sibling: `previous` | `next`): Node => {
 
 // Returns a boolean indicating if the cursor's animation 
 // is due for a restart after DOM nodes have been moved.
-let createCursorWrapper = (cursor: El) => {
+let createCursorWrapper = (cursor: El | void) => {
+  if(!cursor) return;
+
   let wrapper = cursor.closest(`.${CURSOR_WRAPPER_CLASS}`);
   let element = cursor.parentElement;
   let allChars = toArray(walkElementNodes(element, false, true));
@@ -42,12 +44,12 @@ let createCursorWrapper = (cursor: El) => {
     return Math.min(Math.max(index, 0), allChars.length);
   }
 
-  let previousSpaceIndex = findCharacterIndex(
+  let beginningOfWord = findCharacterIndex(
     findNearbySpace(cursor, "previous")
-  );
+  ) + 1;
 
-  let nextSpaceIndex = findCharacterIndex(findNearbySpace(cursor, "next"));
-  let charactersToWrap = allChars.slice(previousSpaceIndex, nextSpaceIndex + 1);
+  let endOfWord = findCharacterIndex(findNearbySpace(cursor, "next")) - 1;
+  let charactersToWrap = allChars.slice(beginningOfWord, endOfWord + 1);
 
   // Maybe wrap the cursor next to its previous sibling
   // to avoid line-break and cursor alignment issues.
@@ -56,7 +58,8 @@ let createCursorWrapper = (cursor: El) => {
     cursor.previousSibling.before(placeholder);
 
     let wordWrap = createElement("span");
-    wordWrap.innerText = "\u200B"
+
+    wordWrap.innerText = ""
     wordWrap.classList.add(CURSOR_WRAPPER_CLASS);
 
     charactersToWrap.forEach(char => {

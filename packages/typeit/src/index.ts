@@ -41,6 +41,8 @@ import duplicate from "./helpers/duplicate";
 import countStepsToSelector from "./helpers/countStepsToSelector";
 import fireItem from "./helpers/fireItem";
 import setCursorAnimation from "./helpers/setCursorAnimation";
+import createCursorWrapper from "./helpers/createCursorWrapper";
+import destroyCursorWrapper from "./helpers/destroyCursorWrapper";
 
 // Necessary for publicly exposing types.
 export declare type TypeItOptions = Options;
@@ -276,12 +278,16 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
           (queueItem.deletable && _getAllChars().length)
         ) {
 
+          destroyCursorWrapper(_cursor);
+
           let newIndex = await fireItem({
             index,
             queueItems,
             wait: _wait,
             cursor: _cursor as El,
           });
+
+          createCursorWrapper(_cursor);          
 
           // Ensure each skipped item goes through the cleanup process,
           // so that methods like .flush() don't get messed up.
@@ -318,9 +324,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
         await _prepLoop(delay[0]);
         _fire();
       }, delay[1]);
-    } catch (e) {
-      console.error(e);
-    }
+    } catch (e) {}
 
     return this;
   };

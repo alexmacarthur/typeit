@@ -26,7 +26,10 @@ let fireItem = async ({
   let futureItem = queueItem;
   let shouldBeGrouped = () => futureItem && !futureItem.delay;
 
-  // cursor && destroyCursorWrapper(cursor);
+  destroyCursorWrapper(cursor);
+
+  // Only destroy the cursor wrapper if: 
+  // - the cursor is not in the middle.
 
   // Crawl through the queue and group together all items that
   // do not have have a delay and can be executed instantly.
@@ -73,8 +76,6 @@ let fireItem = async ({
     frames,
     timingOptions
   });
-
-  cursor && createCursorWrapper(cursor);
 
   return index;
 };
