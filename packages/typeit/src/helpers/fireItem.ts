@@ -26,7 +26,7 @@ let fireItem = async ({
   let futureItem = queueItem;
   let shouldBeGrouped = () => futureItem && !futureItem.delay;
 
-  cursor && destroyCursorWrapper(cursor);
+  // cursor && destroyCursorWrapper(cursor);
 
   // Crawl through the queue and group together all items that
   // do not have have a delay and can be executed instantly.

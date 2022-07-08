@@ -4,6 +4,22 @@ import getParsedBody from "./getParsedBody";
 import createTextNode from "./createTextNode";
 import { CURSOR_CLASS } from "../constants";
 
+export function encodeSpaces (nodes) {
+  return nodes.map((n) => {
+    let value = n.nodeValue || "";
+
+    if (/ /.test(value)) {
+      n.nodeValue = "";
+      
+      value.split("").forEach((v) => {
+        n.nodeValue += "\u00A0";
+      });
+    }
+
+    return n;
+  });
+}
+
 export function walkElementNodes(
   element: El | Node,
   shouldReverse: boolean = false,
