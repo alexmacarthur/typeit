@@ -259,7 +259,6 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     let cleanUp = (qKey) => {
       _queue.done(qKey, !remember);
     };
-
     try {
       let queueItems = [..._queue.getQueue()] as QueueMapPair[];
 
@@ -278,16 +277,12 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
           (queueItem.deletable && _getAllChars().length)
         ) {
 
-          destroyCursorWrapper(_cursor);
-
           let newIndex = await fireItem({
             index,
             queueItems,
             wait: _wait,
             cursor: _cursor as El,
           });
-
-          createCursorWrapper(_cursor);          
 
           // Ensure each skipped item goes through the cleanup process,
           // so that methods like .flush() don't get messed up.

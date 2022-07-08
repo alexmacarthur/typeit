@@ -1,10 +1,12 @@
 import TypeIt from "../src";
 
 new TypeIt("#example2", {
-  speed: 20
-}).type("hello hello hello hello")
-.move(-1)
-// .move(1)
+  speed: 350, 
+  lifeLike: false
+})
+  .type("123 hello abc")
+  .move(-1, { delay: 2000})
+  // .move(-4)
   // .delete()
   .go();
 

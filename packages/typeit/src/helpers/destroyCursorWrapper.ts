@@ -12,9 +12,9 @@ let destroyCursorWrapper = (cursor: El | void) => {
 
   if (!wrapper) return;
 
-  walkElementNodes(wrapper, false, true).forEach((n) => wrapper.before(n));
+  // walkElementNodes(wrapper, false, true).forEach((n) => wrapper.before(n));
 
-  removeNode(wrapper);
+  // removeNode(wrapper);
 };
 
 export default destroyCursorWrapper;

@@ -34,7 +34,6 @@ const findNearbySpace = (cursor, sibling: `previous` | `next`): Node => {
 let createCursorWrapper = (cursor: El | void) => {
   if(!cursor) return;
 
-  let wrapper = cursor.closest(`.${CURSOR_WRAPPER_CLASS}`);
   let element = cursor.parentElement;
   let allChars = toArray(walkElementNodes(element, false, true));
 
