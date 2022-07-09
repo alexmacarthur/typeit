@@ -31,8 +31,8 @@ const findNearbySpace = (cursor, sibling: `previous` | `next`): Node => {
 
 // Returns a boolean indicating if the cursor's animation 
 // is due for a restart after DOM nodes have been moved.
-let createCursorWrapper = (cursor: El | void) => {
-  if(!cursor) return;
+let createCursorWrapper = (cursor: El | void): boolean => {
+  if(!cursor) return false;
 
   let element = cursor.parentElement;
   let allChars = toArray(walkElementNodes(element, false, true));
@@ -66,7 +66,11 @@ let createCursorWrapper = (cursor: El | void) => {
     });
 
     placeholder.replaceWith(wordWrap);
+
+    return true;
   }
+
+  return false;
 };
 
 export default createCursorWrapper;

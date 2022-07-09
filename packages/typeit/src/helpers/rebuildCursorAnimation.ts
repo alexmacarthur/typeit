@@ -22,8 +22,14 @@ let rebuildCursorAnimation = ({
 
   let animation = cursor.getAnimations()[0];
   let oldCurrentTime: number;
-
+  
+  // An existing animation is actively running... 
+  // so carry over the timing properties we care about. 
   if (animation && animation.playState !== "idle") {
+    timingOptions.delay = animation.effect.getComputedTiming().delay;
+
+    // This needs to be set later, since there's no way to pass 
+    // the current time into the constructor.
     oldCurrentTime = animation.currentTime;
     animation.cancel();
   }
@@ -40,7 +46,7 @@ let rebuildCursorAnimation = ({
   // be in sync with the previous one. But when we're 
   // totally pausing the animation (indicated by a `delay` 
   // value), there's no need to do this.
-  if (!timingOptions.delay && oldCurrentTime) {
+  if (oldCurrentTime) {
     newAnimation.currentTime = oldCurrentTime;
   }
 

@@ -6,7 +6,7 @@ new TypeIt("#example2", {
 })
   .type("123 hello abc")
   .move(-1, { delay: 2000})
-  // .move(-4)
+  .move(-4)
   // .delete()
   .go();
 

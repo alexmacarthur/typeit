@@ -259,6 +259,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     let cleanUp = (qKey) => {
       _queue.done(qKey, !remember);
     };
+
     try {
       let queueItems = [..._queue.getQueue()] as QueueMapPair[];
 

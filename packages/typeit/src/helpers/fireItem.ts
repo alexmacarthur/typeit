@@ -50,6 +50,7 @@ let fireItem = async ({
             : 0,
         }
       : {};
+
     let frames = cursor ? animation.effect.getKeyframes() : [];
 
     if (instantQueue.length) {
@@ -83,15 +84,13 @@ let fireItem = async ({
     return { frames, timingOptions, index };
   };
 
-  destroyCursorWrapper(cursor);
+  let wrapperWasDestroyed = destroyCursorWrapper(cursor);
 
   let { frames, timingOptions, index: newIndex } = await fire();
   
-  // We only need to deal with the cursor wrapper when we're 
-  // doing something that involves typing, deleting, or moving.
-  if(queueItem.shouldPauseCursor()) {
-    createCursorWrapper(cursor);
-    
+  let wrapperWasCreated = createCursorWrapper(cursor);
+  
+  if(queueItem.shouldPauseCursor() || wrapperWasCreated || wrapperWasDestroyed) {  
     rebuildCursorAnimation({
       cursor,
       frames,
