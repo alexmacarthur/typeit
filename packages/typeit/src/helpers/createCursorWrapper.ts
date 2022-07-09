@@ -48,13 +48,20 @@ let createCursorWrapper = (cursor: El | void): boolean => {
   ) + 1;
 
   let endOfWord = findCharacterIndex(findNearbySpace(cursor, "next")) - 1;
+
   let charactersToWrap = allChars.slice(beginningOfWord, endOfWord + 1);
 
+  console.log("===");
+  charactersToWrap.forEach(c => console.log(c));
+  console.log("===");
+  
   // Maybe wrap the cursor next to its previous sibling
   // to avoid line-break and cursor alignment issues.
   if(charactersToWrap.length && cursor.nextSibling && cursor.previousSibling) {
     let placeholder = createTextNode("");
-    cursor.previousSibling.before(placeholder);
+
+    // is this correct? Or do 
+    charactersToWrap[0].before(placeholder);
 
     let wordWrap = createElement("span");
 

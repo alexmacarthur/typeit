@@ -84,10 +84,13 @@ let fireItem = async ({
     return { frames, timingOptions, index };
   };
 
+  console.log('destroy cursor wrapper');
   let wrapperWasDestroyed = destroyCursorWrapper(cursor);
 
   let { frames, timingOptions, index: newIndex } = await fire();
   
+
+  console.log('create cursor wrapper');
   let wrapperWasCreated = createCursorWrapper(cursor);
   
   if(queueItem.shouldPauseCursor() || wrapperWasCreated || wrapperWasDestroyed) {  
