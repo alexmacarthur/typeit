@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Does not move cursor when stepsToMove is zero. 1`] = `"<span id=\\"el\\">12345<i class=\\"ti-cursor\\">|</i></span>"`;
-
-exports[`Moves cursor three back and two forward. 1`] = `"<span id=\\"el\\">1234<i class=\\"ti-cursor\\">|</i>5</span>"`;
-
-exports[`Moves cursor three steps back. 1`] = `"<span id=\\"el\\">12<i class=\\"ti-cursor\\">|</i>345</span>"`;
-
-exports[`Stops moving when at end of string. 1`] = `"<span id=\\"el\\">12345<i class=\\"ti-cursor\\">|</i></span>"`;

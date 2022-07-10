@@ -1,7 +1,7 @@
 import createTextNode from "./createTextNode";
-import { Element } from "../types";
+import { El } from "../types";
 
-let expandTextNodes = (element: Element): Element => {
+let expandTextNodes = (element: El): El => {
   [...element.childNodes].forEach((child) => {
     if (child.nodeValue) {
       [...child.nodeValue].forEach((c) => {
@@ -12,7 +12,7 @@ let expandTextNodes = (element: Element): Element => {
       return;
     }
 
-    expandTextNodes(child as Element);
+    expandTextNodes(child as El);
   });
 
   return element;

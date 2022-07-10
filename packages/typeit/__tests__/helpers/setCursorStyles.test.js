@@ -19,18 +19,13 @@ it("sets styles", () => {
 
   const element = document.getElementById("element");
   const id = "9";
-  const options = {
-    cursorSpeed: 300,
-  };
 
-  setCursorStyles(id, options, element);
+  setCursorStyles(id, element);
 
   expect(document.head.querySelector('style[id="9"]')).not.toBeNull();
 
-  // Blinking animation is being set.
-  expect(document.head.innerHTML).toMatch(
-    /@keyframes blink-(.+) { 0% {opacity: 0} 49% {opacity: 0} 50% {opacity: 1} }/
-  );
+  // Zero-width is being set.
+  expect(document.head.innerHTML).toMatch(/display: inline-block; width: 0;/);
 
   // Custom properties are being set.
   Object.entries(cursorFontStyles).forEach(([styleName]) => {

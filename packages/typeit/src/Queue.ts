@@ -6,9 +6,9 @@ let Queue = function (initialItems: QueueItem[]) {
    * Add a single or several steps onto the `waiting` queue.
    */
   let add = function (steps: QueueItem[] | QueueItem): typeof Queue {
-    asArray<QueueItem>(steps).forEach((step) =>
-      _q.set(Symbol(step.char?.innerText), { ...step })
-    );
+    asArray<QueueItem>(steps).forEach((step) => {
+      return _q.set(Symbol(step.char?.innerText), buildQueueItem({ ...step }));
+    });
 
     return this;
   };
@@ -22,8 +22,16 @@ let Queue = function (initialItems: QueueItem[]) {
   let set = function (index: number, item: QueueItem): void {
     let keys = [..._q.keys()];
 
-    _q.set(keys[index], item);
+    _q.set(keys[index], buildQueueItem(item));
   };
+
+  let buildQueueItem = (queueItem: QueueItem): QueueItem => {
+    queueItem.shouldPauseCursor = function () {
+      return Boolean(this.typeable || this.cursorable || this.deletable);
+    }
+
+    return queueItem;
+  }
 
   /**
    * Move all `executed` queue items to `waiting`.
@@ -48,7 +56,7 @@ let Queue = function (initialItems: QueueItem[]) {
   let getItems = (all: boolean = false): QueueItem[] =>
     all ? rawValues() : rawValues().filter((i) => !i.done);
 
-  let done = (key: Symbol, shouldDestroy: boolean = false) => 
+  let done = (key: Symbol, shouldDestroy: boolean = false) =>
     shouldDestroy ? _q.delete(key) : (_q.get(key).done = true);
 
   let _q = new Map();

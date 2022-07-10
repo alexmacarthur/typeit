@@ -2,6 +2,7 @@ import { Options } from "./types";
 
 export const DATA_ATTRIBUTE = "data-typeit-id";
 export const CURSOR_CLASS = "ti-cursor";
+export const CURSOR_WRAPPER_CLASS = "ti-cursor-wrapper";
 export const START = "START";
 export const END = "END";
 export const DEFAULT_STATUSES = {
@@ -33,3 +34,4 @@ export const DEFAULT_OPTIONS: Options = {
   afterComplete: () => {},
 };
 export const PLACEHOLDER_CSS = `[${DATA_ATTRIBUTE}]:before {content: '.'; display: inline-block; width: 0; visibility: hidden;}`;
+export const CURSOR_ANIMATION_RESTART_DELAY = 500;

@@ -1,10 +1,7 @@
-export type TypeItInstance = (
-  element: Element | string,
-  options: Options
-) => void;
+export type TypeItInstance = (element: El | string, options: Options) => void;
 
 export type Character = {
-  node: Element | null;
+  node: El | null;
   content: string | Node;
 };
 
@@ -42,18 +39,27 @@ export type QueueItem = {
   func?: () => any;
   delay?: number;
   char?: any;
+
+  // A queue item that can be visibly 'typed' to the
+  // screen, including those queued with ".type()" and ".break()"
   typeable?: boolean;
+
   deletable?: boolean;
+
+  // An explicit indicator that a queue item should pause
+  // the cursor animation during execution.
+  cursorable?: boolean;
+
+  // An item should pause the cursor of it's 
+  // EITHER "typeable," "cusorable," or "deleteable."
+  shouldPauseCursor?: () => boolean
 };
 
 export type QueueMapPair = [Symbol, QueueItem];
 
-export type Element = HTMLElement &
-  CharacterData &
-  Node &
-  ChildNode & {
-    value: string | number;
-    originalParent?: HTMLElement;
-  };
+export interface El extends HTMLElement {
+  value: string | number;
+  originalParent?: HTMLElement;
+}
 
 export type Sides = "START" | "END";
