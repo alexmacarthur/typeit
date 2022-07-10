@@ -24,7 +24,7 @@ import isNonVoidElement from "./helpers/isNonVoidElement";
 import wait from "./helpers/wait";
 import { setCursorStyles } from "./helpers/setCursorStyles";
 import {
-  Element,
+  El,
   Options,
   QueueItem,
   ActionOpts,
@@ -40,6 +40,7 @@ import {
 import duplicate from "./helpers/duplicate";
 import countStepsToSelector from "./helpers/countStepsToSelector";
 import fireItem from "./helpers/fireItem";
+import setCursorAnimation from "./helpers/setCursorAnimation";
 
 // Necessary for publicly exposing types.
 export declare type TypeItOptions = Options;
@@ -49,7 +50,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     callback: Function,
     delay: number | undefined,
     silent: boolean = false
-  ) => {
+  ): Promise<void> => {
     if (_statuses.frozen) {
       await new Promise<void>((resolve) => {
         this.unfreeze = () => {
@@ -70,7 +71,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
 
   let _getPace = (index: number = 0): number => calculatePace(_opts)[index];
 
-  let _getAllChars = (): Element[] => getAllChars(_element);
+  let _getAllChars = (): El[] => getAllChars(_element);
 
   let _maybeAppendPause = (opts: ActionOpts = {}) => {
     let delay = opts.delay;
@@ -110,7 +111,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
    * Provided it's a non-form element and the options is provided,
    * set up the cursor element for the
    */
-  let _setUpCursor = (): void | Element => {
+  let _setUpCursor = (): void | El => {
     if (_elementIsInput()) {
       return;
     }
@@ -124,12 +125,12 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     if (!_shouldRenderCursor) {
       cursor.style.visibility = "hidden";
 
-      return cursor as Element;
+      return cursor as El;
     }
 
     cursor.innerHTML = getParsedBody(_opts.cursorChar).innerHTML;
 
-    return cursor as Element;
+    return cursor as El;
   };
 
   /**
@@ -138,13 +139,14 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
   let _attachCursor = async () => {
     !_elementIsInput() && _cursor && _element.appendChild(_cursor);
 
-    _shouldRenderCursor && setCursorStyles(_id, _opts, _element);
-  };
-
-  let _disableCursorBlink = (shouldDisable: boolean): void => {
-    if (_shouldRenderCursor && _cursor) {
-      _cursor.classList.toggle("disabled", shouldDisable);
-      _cursor.classList.toggle("with-delay", !shouldDisable);
+    if (_shouldRenderCursor) {
+      setCursorStyles(_id, _element);
+      setCursorAnimation({
+        cursor: _cursor as El,
+        timingOptions: {
+          duration: _opts.cursorSpeed,
+        },
+      });
     }
   };
 
@@ -253,7 +255,6 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     // );
 
     let cleanUp = (qKey) => {
-      _disableCursorBlink(false);
       _queue.done(qKey, !remember);
     };
 
@@ -266,8 +267,6 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
         // Only execute items that aren't done yet.
         if (queueItem.done) continue;
 
-        if (queueItem.typeable && !_statuses.frozen) _disableCursorBlink(true);
-
         // Because calling .delete() with no parameters will attempt to
         // delete all "typeable" characters, we may overfetch, since some characters
         // in the queue may already be deleted. This ensures that we do not attempt to
@@ -276,7 +275,13 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
           !queueItem.deletable ||
           (queueItem.deletable && _getAllChars().length)
         ) {
-          let newIndex = await fireItem(index, queueItems, _wait);
+
+          let newIndex = await fireItem({
+            index,
+            queueItems,
+            wait: _wait,
+            cursor: _cursor as El,
+          });
 
           // Ensure each skipped item goes through the cleanup process,
           // so that methods like .flush() don't get messed up.
@@ -457,6 +462,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
           {
             func: () => _move(directionalStep),
             delay: instant ? 0 : _getPace(),
+            cursorable: true
           },
           Math.abs(numberOfSteps)
         ),

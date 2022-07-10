@@ -35,7 +35,7 @@ describe("deleting queue items", () => {
 });
 
 describe("callbacks", () => {
-  test("Does not call afterComplete() callback", () => {
+  test("Does not call afterComplete() callback", (done) => {
     const el = document.getElementById("el");
     const afterCompleteCallback = jest.fn();
 

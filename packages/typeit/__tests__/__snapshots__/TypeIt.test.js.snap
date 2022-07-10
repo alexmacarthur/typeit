@@ -5,6 +5,7 @@ Array [
   Object {
     "delay": 250,
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
 ]
 `;
@@ -38,9 +39,11 @@ Array [
   Object {
     "delay": 250,
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
     "typeable": true,
   },
 ]
@@ -49,18 +52,21 @@ Array [
 exports[`delete() Should queue pause after string when defined. 1`] = `
 Object {
   "delay": 300,
+  "shouldPauseCursor": [Function],
 }
 `;
 
 exports[`delete() Should queue pause correctly when options are passed. 1`] = `
 Object {
   "delay": 200,
+  "shouldPauseCursor": [Function],
 }
 `;
 
 exports[`delete() Should queue pause correctly when single digit is passed. 1`] = `
 Object {
   "delay": 50,
+  "shouldPauseCursor": [Function],
 }
 `;
 
@@ -69,12 +75,15 @@ Array [
   Object {
     "delay": 250,
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
 ]
 `;
@@ -84,76 +93,94 @@ Array [
   Object {
     "delay": 250,
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "char": A,
     "delay": 0,
     "func": [Function],
+    "shouldPauseCursor": [Function],
     "typeable": true,
   },
   Object {
     "char": B,
     "delay": 0,
     "func": [Function],
+    "shouldPauseCursor": [Function],
     "typeable": true,
   },
   Object {
     "char": C,
     "delay": 0,
     "func": [Function],
+    "shouldPauseCursor": [Function],
     "typeable": true,
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "delay": 500,
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
     "typeable": true,
   },
   Object {
     "delay": 500,
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "char": E,
     "delay": 0,
     "func": [Function],
+    "shouldPauseCursor": [Function],
     "typeable": true,
   },
   Object {
     "char": F,
     "delay": 0,
     "func": [Function],
+    "shouldPauseCursor": [Function],
     "typeable": true,
   },
   Object {
     "char": G,
     "delay": 0,
     "func": [Function],
+    "shouldPauseCursor": [Function],
     "typeable": true,
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
 ]
 `;
@@ -163,6 +190,7 @@ Array [
   Object {
     "delay": 250,
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
 ]
 `;
@@ -172,76 +200,94 @@ Array [
   Object {
     "delay": 250,
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "char": A,
     "delay": 0,
     "func": [Function],
+    "shouldPauseCursor": [Function],
     "typeable": true,
   },
   Object {
     "char": B,
     "delay": 0,
     "func": [Function],
+    "shouldPauseCursor": [Function],
     "typeable": true,
   },
   Object {
     "char": C,
     "delay": 0,
     "func": [Function],
+    "shouldPauseCursor": [Function],
     "typeable": true,
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "delay": 100,
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
     "typeable": true,
   },
   Object {
     "delay": 500,
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "char": E,
     "delay": 0,
     "func": [Function],
+    "shouldPauseCursor": [Function],
     "typeable": true,
   },
   Object {
     "char": F,
     "delay": 0,
     "func": [Function],
+    "shouldPauseCursor": [Function],
     "typeable": true,
   },
   Object {
     "char": G,
     "delay": 0,
     "func": [Function],
+    "shouldPauseCursor": [Function],
     "typeable": true,
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
 ]
 `;
@@ -251,136 +297,174 @@ Array [
   Object {
     "delay": 250,
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "char": A,
     "delay": 0,
     "func": [Function],
+    "shouldPauseCursor": [Function],
     "typeable": true,
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "delay": 375,
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
     "typeable": true,
   },
   Object {
     "delay": 375,
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "char": B,
     "delay": 0,
     "func": [Function],
+    "shouldPauseCursor": [Function],
     "typeable": true,
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "delay": 375,
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
     "typeable": true,
   },
   Object {
     "delay": 375,
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "char": C,
     "delay": 0,
     "func": [Function],
+    "shouldPauseCursor": [Function],
     "typeable": true,
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "delay": 375,
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
     "typeable": true,
   },
   Object {
     "delay": 375,
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "char": D,
     "delay": 0,
     "func": [Function],
+    "shouldPauseCursor": [Function],
     "typeable": true,
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "delay": 375,
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
     "typeable": true,
   },
   Object {
     "delay": 375,
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "char": E,
     "delay": 0,
     "func": [Function],
+    "shouldPauseCursor": [Function],
     "typeable": true,
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
 ]
 `;
@@ -388,12 +472,14 @@ Array [
 exports[`move() Should queue pause after string when defined. 1`] = `
 Object {
   "delay": 300,
+  "shouldPauseCursor": [Function],
 }
 `;
 
 exports[`move() Should queue pause correctly when options are passed. 1`] = `
 Object {
   "delay": 200,
+  "shouldPauseCursor": [Function],
 }
 `;
 
@@ -402,12 +488,15 @@ Array [
   Object {
     "delay": 250,
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
   Object {
     "func": [Function],
+    "shouldPauseCursor": [Function],
   },
 ]
 `;
@@ -448,11 +537,13 @@ Object {
 exports[`type() Should queue pause after string when defined. 1`] = `
 Object {
   "delay": 300,
+  "shouldPauseCursor": [Function],
 }
 `;
 
 exports[`type() Should queue pause correctly when options are passed. 1`] = `
 Object {
   "delay": 200,
+  "shouldPauseCursor": [Function],
 }
 `;

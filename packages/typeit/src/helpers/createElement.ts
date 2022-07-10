@@ -1,3 +1,3 @@
-import { Element } from "../types";
+import { El } from "../types";
 
-export default (el): Element => document.createElement(el);
+export default (el): El => document.createElement(el);

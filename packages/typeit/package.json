@@ -1,6 +1,6 @@
 {
   "name": "typeit",
-  "version": "8.6.0",
+  "version": "8.6.1-alpha.0",
   "description": "The most versatile animated typing utility on the planet.",
   "author": "Alex MacArthur <alex@macarthur.me> (https://macarthur.me)",
   "license": "GPL-3.0",
@@ -19,7 +19,7 @@
   "scripts": {
     "build": "vite build && scripts/banner && tsc",
     "tsc": "tsc",
-    "start": "vite serve examples",
+    "start": "vite serve examples --host 0.0.0.0",
     "test": "jest",
     "postinstall": "node ./scripts/notice.js",
     "prepare": "npm run build"
@@ -39,13 +39,14 @@
     "url": "git+https://github.com/alexmacarthur/typeit.git"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.18.2",
-    "@babel/preset-typescript": "^7.17.12",
-    "jest": "^28.1.1",
-    "jest-cli": "^28.1.1",
-    "jest-environment-jsdom": "^28.1.1",
-    "typescript": "^4.7.3",
-    "vite": "^2.9.12"
+    "@babel/preset-env": "^7.18.6",
+    "@babel/preset-typescript": "^7.18.6",
+    "@types/web-animations-js": "^2.2.12",
+    "jest": "^28.1.2",
+    "jest-cli": "^28.1.2",
+    "jest-environment-jsdom": "^28.1.2",
+    "typescript": "^4.7.4",
+    "vite": "^2.9.14"
   },
   "jest": {
     "clearMocks": true,

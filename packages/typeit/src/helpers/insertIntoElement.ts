@@ -1,16 +1,15 @@
 import isInput from "./isInput";
 import select from "./select";
 import { CURSOR_CLASS } from "../constants";
-import { Element } from "../types";
-
-let isBodyElement = (node): boolean => node?.tagName === "BODY";
+import { El } from "../types";
+import isBodyElement from "./isBodyElement";
 
 /**
  * Inserts a set of content into the element. Intended for SINGLE characters.
  */
 let insertIntoElement = (
-  originalTarget: Element,
-  character: Element
+  originalTarget: El,
+  character: El
 ) => {
   if (isInput(originalTarget)) {
     originalTarget.value = `${originalTarget.value}${character.textContent}`;
@@ -21,7 +20,7 @@ let insertIntoElement = (
   // later be filled with actual characters.
   character.innerHTML = "";
 
-  let target = isBodyElement(character.originalParent) 
+  let target = isBodyElement(character.originalParent as El) 
   ? originalTarget
   
   // If we add one-off fresh elements, there will be no 
@@ -29,7 +28,7 @@ let insertIntoElement = (
   : character.originalParent || originalTarget;
 
   target.insertBefore(
-    character as Element,
+    character as El,
     select("." + CURSOR_CLASS, target) as Node || null
   );
 };
