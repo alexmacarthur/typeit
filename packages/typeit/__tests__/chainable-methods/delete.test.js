@@ -14,9 +14,7 @@ describe("deleting fires correctly", () => {
       speed: 0,
       strings: "abc<strong>def</strong>ghi",
       afterComplete: () => {
-        expect(el.innerHTML).toEqual(
-          'abc<span class="ti-cursor">|</span>'
-        );
+        expect(el.innerHTML).toEqual('abc<span class="ti-cursor">|</span>');
         done();
       },
     })

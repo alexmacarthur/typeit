@@ -67,6 +67,15 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     silent || (await _opts.afterStep(this));
   };
 
+  let _fireItemWithCursor = (index: number, queueItems: QueueMapPair[]): Promise<number> => {
+    return fireItem({
+            index,
+            queueItems,
+            wait: _wait,
+            cursor: _cursor as El,
+          });
+  }
+
   let _elementIsInput = () => isInput(_element);
 
   let _getPace = (index: number = 0): number => calculatePace(_opts)[index];
@@ -189,8 +198,26 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
 
     // Grab all characters currently mounted to the DOM,
     // in order to wipe the slate clean before restarting.
-    for (let _i of _getAllChars()) {
-      await _wait(_delete, _getPace(1));
+    // 
+    // It's important to first convert each deletion to a 
+    // queue item, so that we can take advantage of the same
+    // cursor-pausing logic (and anything else that might be
+    // introduced in the future).
+    let queueItems: QueueMapPair[] = _getAllChars().map(c => {
+      return [
+        Symbol(), 
+        {
+          func: _delete, 
+          delay: _getPace(1), 
+          deletable: true, 
+          shouldPauseCursor: () => true
+        }
+      ]
+    });
+
+    for(let index = 0; index < queueItems.length; index++) {
+      await _fireItemWithCursor(        index,
+        queueItems);
     }
 
     _queue.reset();
@@ -275,13 +302,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
           !queueItem.deletable ||
           (queueItem.deletable && _getAllChars().length)
         ) {
-
-          let newIndex = await fireItem({
-            index,
-            queueItems,
-            wait: _wait,
-            cursor: _cursor as El,
-          });
+          let newIndex = await _fireItemWithCursor(index, queueItems);
 
           // Ensure each skipped item goes through the cleanup process,
           // so that methods like .flush() don't get messed up.
