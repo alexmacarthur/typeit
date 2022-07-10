@@ -6,13 +6,13 @@ let cursor;
 const addMockAnimation = (element, animationProperties = {}) => {
   const mockAnimation = {
     cancel: jest.fn(),
-    currentTime: 999, 
-    playState: "running", 
+    currentTime: 999,
+    playState: "running",
     effect: {
-      getComputedTiming: () => {}, 
-      getKeyframes: () => ["frame1", "frame2"]
+      getComputedTiming: () => {},
+      getKeyframes: () => ["frame1", "frame2"],
     },
-    ...animationProperties
+    ...animationProperties,
   };
 
   element.getAnimations = () => [mockAnimation];
@@ -26,7 +26,7 @@ let mockAnimation;
 
 beforeEach(() => {
   setHTML`<span id="cursor">|</span>`;
-  
+
   cursor = document.getElementById("cursor");
 
   rebuildCursorAnimationSpy = jest
@@ -50,7 +50,7 @@ describe("cursor should be paused", () => {
           func: () => {},
           delay: 1,
         },
-      ]
+      ],
     ];
 
     const index = 0;
@@ -63,11 +63,11 @@ describe("cursor should be paused", () => {
 
     expect(rebuildCursorAnimationSpy).toHaveBeenCalledTimes(1);
     expect(rebuildCursorAnimationSpy).toHaveBeenCalledWith({
-      cursor, 
-      frames: ["frame1", "frame2"], 
+      cursor,
+      frames: ["frame1", "frame2"],
       timingOptions: {
-        delay: 500
-      }
+        delay: 500,
+      },
     });
 
     expect(mockAnimation.cancel).toHaveBeenCalledTimes(1);
@@ -85,7 +85,7 @@ describe("cursor should NOT be paused", () => {
           func: () => {},
           delay: 1,
         },
-      ]
+      ],
     ];
 
     const index = 0;
@@ -98,17 +98,16 @@ describe("cursor should NOT be paused", () => {
 
     expect(rebuildCursorAnimationSpy).toHaveBeenCalledTimes(1);
     expect(rebuildCursorAnimationSpy).toHaveBeenCalledWith({
-      cursor, 
-      frames: ["frame1", "frame2"], 
+      cursor,
+      frames: ["frame1", "frame2"],
       timingOptions: {
-        delay: 0
-      }
+        delay: 0,
+      },
     });
 
     expect(mockAnimation.cancel).not.toHaveBeenCalledTimes(1);
   });
 });
-
 
 describe("all items have delays", () => {
   it("does not group any items for execution.", async () => {

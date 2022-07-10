@@ -46,25 +46,37 @@ let fireItem = async ({
     return tempIndex - 1;
   }
 
-  let animation = cursor?.getAnimations()[0];
-  let timingOptions = cursor ? {
-    ...animation.effect.getComputedTiming(),
-    delay: queueItem.shouldPauseCursor() ? CURSOR_ANIMATION_RESTART_DELAY : 0
-  } : {};
-  let frames = cursor ? animation.effect.getKeyframes() : [];
-  
-  await wait(async () => {
-    // Pause the cursor while stuff is happening.
-    if(queueItem.shouldPauseCursor()) {
-      animation?.cancel();
+  let fire = async (): Promise<{animation: Animation, timingOptions: object, frames: AnimationKeyFrame[]}> => {
+    // An animation is only registered on the cursor when it's made visible. 
+    // If the cursor has been disabled, there won't be one here.
+    let animation = cursor?.getAnimations()[0];
+    let timingOptions: object, frames: AnimationKeyFrame[];
+
+    if(animation) {
+      timingOptions = cursor ? {
+        ...animation.effect.getComputedTiming(),
+        delay: queueItem.shouldPauseCursor() ? CURSOR_ANIMATION_RESTART_DELAY : 0
+      } : {};
+      frames = cursor ? animation.effect.getKeyframes() : [];
     }
+    
+    await wait(async () => {
+      // Pause the cursor while stuff is happening.
+      if(queueItem.shouldPauseCursor()) {
+        animation?.cancel();
+      }
 
-    await beforePaint(() => {    
-      execute(queueItem);
-    })
-  }, queueItem.delay);
+      await beforePaint(() => {    
+        execute(queueItem);
+      })
+    }, queueItem.delay);
 
-  rebuildCursorAnimation({
+    return { animation, frames, timingOptions };
+  }
+
+  let { animation, frames, timingOptions } = await fire();
+
+  animation && rebuildCursorAnimation({
     cursor,
     frames,
     timingOptions

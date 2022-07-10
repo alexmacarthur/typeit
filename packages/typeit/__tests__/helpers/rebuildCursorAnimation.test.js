@@ -6,16 +6,16 @@ let cursor;
 const addMockAnimation = (element, animationProperties = {}) => {
   const mockAnimation = {
     cancel: jest.fn(),
-    currentTime: 999, 
-    playState: "running", 
+    currentTime: 999,
+    playState: "running",
     effect: {
       getComputedTiming: () => {
         return {
-          delay: 500
-        }
-      }
+          delay: 500,
+        };
+      },
     },
-    ...animationProperties
+    ...animationProperties,
   };
 
   element.getAnimations = () => [mockAnimation];
@@ -35,13 +35,13 @@ describe("animation already exists", () => {
     const setCursorAnimationSpy = jest
       .spyOn(setCursorAnimation, "default")
       .mockImplementation(() => {
-        return {}
+        return {};
       });
 
     let result = rebuildCursorAnimation({
-      cursor, 
-      frames: [], 
-      timingOptions: {}
+      cursor,
+      frames: [],
+      timingOptions: {},
     });
 
     expect(setCursorAnimationSpy).toHaveBeenCalledTimes(1);
@@ -53,18 +53,18 @@ describe("animation already exists", () => {
 describe("animation has already been canceled", () => {
   it("does not cancel it or preserve current time.", () => {
     let mockAnimation = addMockAnimation(cursor, {
-      playState: "idle"
+      playState: "idle",
     });
     const setCursorAnimationSpy = jest
       .spyOn(setCursorAnimation, "default")
       .mockImplementation(() => {
-        return {}
+        return {};
       });
 
     let result = rebuildCursorAnimation({
-      cursor, 
-      frames: [], 
-      timingOptions: {}
+      cursor,
+      frames: [],
+      timingOptions: {},
     });
 
     expect(setCursorAnimationSpy).toHaveBeenCalledTimes(1);
@@ -74,19 +74,19 @@ describe("animation has already been canceled", () => {
 });
 
 describe("animation has been removed for some other reason", () => {
-    it("does not attempt to cancel a nonexistent animation.", () => {
+  it("does not attempt to cancel a nonexistent animation.", () => {
     cursor.getAnimations = () => [];
 
     const setCursorAnimationSpy = jest
       .spyOn(setCursorAnimation, "default")
       .mockImplementation(() => {
-        return {}
+        return {};
       });
 
     let result = rebuildCursorAnimation({
-      cursor, 
-      frames: [], 
-      timingOptions: {}
+      cursor,
+      frames: [],
+      timingOptions: {},
     });
 
     expect(setCursorAnimationSpy).toHaveBeenCalledTimes(1);
