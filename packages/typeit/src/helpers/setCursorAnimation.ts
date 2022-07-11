@@ -24,10 +24,14 @@ let setCursorAnimation = ({
   frames?: AnimationKeyFrame[] | null;
   timingOptions: Partial<AnimationEffectTiming>;
 }): Animation | null => {
-  return cursor.animate(frames || DEFAULT_FRAMES, {
+  let animation = cursor.animate(frames || DEFAULT_FRAMES, {
     ...DEFAULT_TIMING_OPTIONS,
     ...timingOptions,
   });
+
+  animation.id = cursor.dataset.tiAnimationId;
+
+  return animation;
 };
 
 export default setCursorAnimation;

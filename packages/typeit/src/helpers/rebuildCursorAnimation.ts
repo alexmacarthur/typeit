@@ -1,4 +1,5 @@
 import { El } from "../types";
+import getAnimationFromElement from "./getAnimationFromElement";
 import setCursorAnimation from "./setCursorAnimation";
 
 declare global {
@@ -20,7 +21,7 @@ let rebuildCursorAnimation = ({
 }: rebuildCursorAnimationArgs): Animation => {
   if (!cursor) return;
 
-  let animation = cursor.getAnimations()[0];
+  let animation = getAnimationFromElement(cursor);
   let oldCurrentTime: number;
 
   // An existing animation is actively running...
