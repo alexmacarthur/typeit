@@ -164,7 +164,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
    * to be fired for each character in the string.
    */
   let _generateQueue = () => {
-    let strings = _opts.strings.filter((string) => !!string);
+    let strings = (_opts.strings as string[]).filter((string) => !!string);
 
     strings.forEach((string, index) => {
       this.type(string);

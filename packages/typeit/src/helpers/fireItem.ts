@@ -46,13 +46,15 @@ let fireItem = async ({
     return tempIndex - 1;
   }
 
-  let fire = async (): Promise<{animation: Animation, timingOptions: object, frames: AnimationKeyFrame[]}> => {
+  let fire = async (): Promise<{hasAnimation: boolean, timingOptions: object, frames: AnimationKeyFrame[]}> => {
     // An animation is only registered on the cursor when it's made visible. 
     // If the cursor has been disabled, there won't be one here.
-    let animation = cursor?.getAnimations()[0];
+    let animations = cursor?.getAnimations() || [];
+    let animation = animations[0];
+    let hasAnimation = animations.length > 0;
     let timingOptions: object, frames: AnimationKeyFrame[];
 
-    if(animation) {
+    if(hasAnimation) {
       timingOptions = cursor ? {
         ...animation.effect.getComputedTiming(),
         delay: queueItem.shouldPauseCursor() ? CURSOR_ANIMATION_RESTART_DELAY : 0
@@ -62,8 +64,8 @@ let fireItem = async ({
     
     await wait(async () => {
       // Pause the cursor while stuff is happening.
-      if(queueItem.shouldPauseCursor()) {
-        animation?.cancel();
+      if(hasAnimation && queueItem.shouldPauseCursor()) {
+        animation.cancel();
       }
 
       await beforePaint(() => {    
@@ -71,12 +73,12 @@ let fireItem = async ({
       })
     }, queueItem.delay);
 
-    return { animation, frames, timingOptions };
+    return { hasAnimation, frames, timingOptions };
   }
 
-  let { animation, frames, timingOptions } = await fire();
+  let { hasAnimation, frames, timingOptions } = await fire();
 
-  animation && rebuildCursorAnimation({
+  hasAnimation && rebuildCursorAnimation({
     cursor,
     frames,
     timingOptions
