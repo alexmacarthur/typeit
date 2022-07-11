@@ -50,9 +50,9 @@ export type QueueItem = {
   // the cursor animation during execution.
   cursorable?: boolean;
 
-  // An item should pause the cursor of it's 
+  // An item should pause the cursor of it's
   // EITHER "typeable," "cusorable," or "deleteable."
-  shouldPauseCursor?: () => boolean
+  shouldPauseCursor?: () => boolean;
 };
 
 export type QueueMapPair = [Symbol, QueueItem];

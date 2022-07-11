@@ -1,26 +1,33 @@
-import * as React from 'react';
-import { default as TypeItCore, TypeItOptions } from 'typeit';
+import * as React from "react";
+import { default as TypeItCore, TypeItOptions } from "typeit";
 const { useRef, useEffect, useState } = React;
 
 export interface TypeItProps {
-  as?: keyof JSX.IntrinsicElements,
-  options?: TypeItOptions,
-  children?: React.ReactNode,
-  getBeforeInit?: (instance: any) => Function,
-  getAfterInit?: (instance: any) => Function
+  as?: keyof JSX.IntrinsicElements;
+  options?: TypeItOptions;
+  children?: React.ReactNode;
+  getBeforeInit?: (instance: any) => Function;
+  getAfterInit?: (instance: any) => Function;
 }
 
 const defaultProps: TypeItProps = {
-  as: 'span',
+  as: "span",
   options: {},
   getBeforeInit: (instance) => instance,
-  getAfterInit: (instance) => instance
-}
+  getAfterInit: (instance) => instance,
+};
 
 const TypeIt: React.FunctionComponent<TypeItProps> = (props: TypeItProps) => {
   const elementRef = useRef(null);
   const instanceRef = useRef(null);
-  const { options, as, children, getBeforeInit, getAfterInit, ...remainingProps } = props;
+  const {
+    options,
+    as,
+    children,
+    getBeforeInit,
+    getAfterInit,
+    ...remainingProps
+  } = props;
   const [shouldShowChildren, setShouldShowChildren] = useState<boolean>(true);
   const [instanceOptions, setInstanceOptions] = useState(null);
   const DynamicElement = as;
@@ -36,12 +43,12 @@ const TypeIt: React.FunctionComponent<TypeItProps> = (props: TypeItProps) => {
   }
 
   function generateNewInstance() {
-    instanceRef.current = (new TypeItCore(elementRef.current, instanceOptions));
+    instanceRef.current = new TypeItCore(elementRef.current, instanceOptions);
     instanceRef.current = getBeforeInit(instanceRef.current);
     instanceRef.current.go();
     instanceRef.current = getAfterInit(instanceRef.current);
   }
-  
+
   /**
    * After the component mounts (and any children are rendered),
    * we can safely set the strings of the instance using the rendered HTML
@@ -55,14 +62,15 @@ const TypeIt: React.FunctionComponent<TypeItProps> = (props: TypeItProps) => {
   }, [options]);
 
   /**
-   * Once options (and strings) have been defined, we can hide any 
-   * children we might have rendered to make room for the TypeIt 
+   * Once options (and strings) have been defined, we can hide any
+   * children we might have rendered to make room for the TypeIt
    * animation. On cleanup, destroy that instance.
    */
   useEffect(() => {
     if (!instanceOptions) return;
 
-    instanceRef.current?.updateOptions(instanceOptions) || generateNewInstance();
+    instanceRef.current?.updateOptions(instanceOptions) ||
+      generateNewInstance();
   }, [instanceOptions]);
 
   /**
@@ -73,14 +81,14 @@ const TypeIt: React.FunctionComponent<TypeItProps> = (props: TypeItProps) => {
   }, []);
 
   return (
-    <DynamicElement 
-      ref={elementRef} 
+    <DynamicElement
+      ref={elementRef}
       children={shouldShowChildren ? children : null}
-      style={{ opacity: shouldShowChildren ? 0 : 1}}
-      {...remainingProps} 
+      style={{ opacity: shouldShowChildren ? 0 : 1 }}
+      {...remainingProps}
     />
-  )
-}
+  );
+};
 
 TypeIt.defaultProps = defaultProps;
 

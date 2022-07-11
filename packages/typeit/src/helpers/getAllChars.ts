@@ -8,14 +8,13 @@ import { walkElementNodes } from "./chunkStrings";
  * This excludes any cursor character that might exist.
  */
 let getAllChars = (element: El) => {
-    if(isInput(element)) {
-      return toArray(element.value);
-    }
+  if (isInput(element)) {
+    return toArray(element.value);
+  }
 
-    return walkElementNodes(
-      element,
-      true
-    ).filter(c => !(c.childNodes.length > 0));
+  return walkElementNodes(element, true).filter(
+    (c) => !(c.childNodes.length > 0)
+  );
 };
 
 export default getAllChars;

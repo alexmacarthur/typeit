@@ -28,11 +28,11 @@ let fireItem = async ({
   // do not have have a delay and can be executed instantly.
   while (shouldBeGrouped()) {
     instantQueue.push(futureItem);
-    
+
     shouldBeGrouped() && tempIndex++;
     futureItem = queueItems[tempIndex] ? queueItems[tempIndex][1] : null;
   }
-  
+
   if (instantQueue.length) {
     // All are executed together before the browser has a chance to repaint.
     await beforePaint(async () => {
@@ -40,49 +40,58 @@ let fireItem = async ({
         await execute(q);
       }
     });
-    
+
     // Important! Because we moved into the future, the index
     // needs to be modified and returned for accurate remaining execution.
     return tempIndex - 1;
   }
 
-  let fire = async (): Promise<{hasAnimation: boolean, timingOptions: object, frames: AnimationKeyFrame[]}> => {
-    // An animation is only registered on the cursor when it's made visible. 
+  let fire = async (): Promise<{
+    hasAnimation: boolean;
+    timingOptions: object;
+    frames: AnimationKeyFrame[];
+  }> => {
+    // An animation is only registered on the cursor when it's made visible.
     // If the cursor has been disabled, there won't be one here.
     let animations = cursor?.getAnimations() || [];
     let animation = animations[0];
     let hasAnimation = animations.length > 0;
     let timingOptions: object, frames: AnimationKeyFrame[];
 
-    if(hasAnimation) {
-      timingOptions = cursor ? {
-        ...animation.effect.getComputedTiming(),
-        delay: queueItem.shouldPauseCursor() ? CURSOR_ANIMATION_RESTART_DELAY : 0
-      } : {};
+    if (hasAnimation) {
+      timingOptions = cursor
+        ? {
+            ...animation.effect.getComputedTiming(),
+            delay: queueItem.shouldPauseCursor()
+              ? CURSOR_ANIMATION_RESTART_DELAY
+              : 0,
+          }
+        : {};
       frames = cursor ? animation.effect.getKeyframes() : [];
     }
-    
+
     await wait(async () => {
       // Pause the cursor while stuff is happening.
-      if(hasAnimation && queueItem.shouldPauseCursor()) {
+      if (hasAnimation && queueItem.shouldPauseCursor()) {
         animation.cancel();
       }
 
-      await beforePaint(() => {    
+      await beforePaint(() => {
         execute(queueItem);
-      })
+      });
     }, queueItem.delay);
 
     return { hasAnimation, frames, timingOptions };
-  }
+  };
 
   let { hasAnimation, frames, timingOptions } = await fire();
 
-  hasAnimation && rebuildCursorAnimation({
-    cursor,
-    frames,
-    timingOptions
-  });
+  hasAnimation &&
+    rebuildCursorAnimation({
+      cursor,
+      frames,
+      timingOptions,
+    });
 
   return index;
 };

@@ -28,10 +28,10 @@ let Queue = function (initialItems: QueueItem[]) {
   let buildQueueItem = (queueItem: QueueItem): QueueItem => {
     queueItem.shouldPauseCursor = function () {
       return Boolean(this.typeable || this.cursorable || this.deletable);
-    }
+    };
 
     return queueItem;
-  }
+  };
 
   /**
    * Move all `executed` queue items to `waiting`.

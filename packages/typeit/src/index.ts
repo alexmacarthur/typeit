@@ -67,14 +67,17 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     silent || (await _opts.afterStep(this));
   };
 
-  let _fireItemWithCursor = (index: number, queueItems: QueueMapPair[]): Promise<number> => {
+  let _fireItemWithCursor = (
+    index: number,
+    queueItems: QueueMapPair[]
+  ): Promise<number> => {
     return fireItem({
-            index,
-            queueItems,
-            wait: _wait,
-            cursor: _cursor as El,
-          });
-  }
+      index,
+      queueItems,
+      wait: _wait,
+      cursor: _cursor as El,
+    });
+  };
 
   let _elementIsInput = () => isInput(_element);
 
@@ -198,26 +201,25 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
 
     // Grab all characters currently mounted to the DOM,
     // in order to wipe the slate clean before restarting.
-    // 
-    // It's important to first convert each deletion to a 
+    //
+    // It's important to first convert each deletion to a
     // queue item, so that we can take advantage of the same
     // cursor-pausing logic (and anything else that might be
     // introduced in the future).
-    let queueItems: QueueMapPair[] = _getAllChars().map(c => {
+    let queueItems: QueueMapPair[] = _getAllChars().map((c) => {
       return [
-        Symbol(), 
+        Symbol(),
         {
-          func: _delete, 
-          delay: _getPace(1), 
-          deletable: true, 
-          shouldPauseCursor: () => true
-        }
-      ]
+          func: _delete,
+          delay: _getPace(1),
+          deletable: true,
+          shouldPauseCursor: () => true,
+        },
+      ];
     });
 
-    for(let index = 0; index < queueItems.length; index++) {
-      await _fireItemWithCursor(        index,
-        queueItems);
+    for (let index = 0; index < queueItems.length; index++) {
+      await _fireItemWithCursor(index, queueItems);
     }
 
     _queue.reset();
@@ -483,7 +485,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
           {
             func: () => _move(directionalStep),
             delay: instant ? 0 : _getPace(),
-            cursorable: true
+            cursorable: true,
           },
           Math.abs(numberOfSteps)
         ),

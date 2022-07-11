@@ -9,13 +9,10 @@ export let cursorFontStyles = {
   "font-style": "",
   "line-height": "",
   color: "",
-  transform: "translateX(-.125em)"
+  transform: "translateX(-.125em)",
 } as const;
 
-export let setCursorStyles = (
-  id: string,
-  element: El
-) => {
+export let setCursorStyles = (id: string, element: El) => {
   let rootSelector = `[${DATA_ATTRIBUTE}='${id}']`;
   let cursorSelector = `${rootSelector} .${CURSOR_CLASS}`;
   let computedStyles = getComputedStyle(element);

@@ -18,7 +18,7 @@ const DEFAULT_FRAMES: AnimationKeyFrame[] = [
 let setCursorAnimation = ({
   cursor,
   frames = null,
-  timingOptions = {}
+  timingOptions = {},
 }: {
   cursor: El;
   frames?: AnimationKeyFrame[] | null;

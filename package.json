@@ -9,7 +9,7 @@
     "publish": "lerna bootstrap && lerna publish",
     "bootstrap": "lerna bootstrap --force-local",
     "test": "lerna run test",
-    "prettier": "prettier --write \"./packages/**/*.{md,js,tsx?}\""
+    "prettier": "prettier --write \"./packages/**/*.{md,js,tsx,ts}\""
   },
   "lint-staged": {
     "*.{js,md}": "prettier --write"
