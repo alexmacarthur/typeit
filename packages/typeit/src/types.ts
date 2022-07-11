@@ -19,7 +19,7 @@ export type Options = {
   speed?: number;
   startDelay?: number;
   startDelete?: boolean;
-  strings?: string[];
+  strings?: string[] | string;
   waitUntilVisible?: boolean;
   beforeString?: Function;
   afterString?: Function;
