@@ -143,6 +143,11 @@ describe("go()", () => {
   test("Attaches cursor correctly.", (done) => {
     args[1].afterComplete = () => {
       let cursorNode = document.querySelector(".ti-cursor");
+      let element = document.getElementById("element");
+
+      expect(element.dataset.typeitId).toEqual(
+        cursorNode.dataset.tiAnimationId
+      );
       expect(cursorNode.style.visibility).toEqual("");
       expect(cursorNode).not.toBeNull();
       done();
@@ -400,7 +405,9 @@ describe("reset()", () => {
       strings: "Hi.",
       afterComplete: () => {
         expect(element.innerHTML).toEqual(
-          'Hi.<span class="ti-cursor">|</span>'
+          expect.stringMatching(
+            /Hi.<span class="ti-cursor" data-ti-animation-id=".+">|<\/span>/
+          )
         );
         instance = instance.reset();
         expect(element.innerHTML).toEqual("");

@@ -153,6 +153,9 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
 
     if (_shouldRenderCursor) {
       setCursorStyles(_id, _element);
+
+      (_cursor as El).dataset.tiAnimationId = _id;
+
       setCursorAnimation({
         cursor: _cursor as El,
         timingOptions: {
