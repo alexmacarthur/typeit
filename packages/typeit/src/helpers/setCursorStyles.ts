@@ -1,4 +1,4 @@
-import { CURSOR_CLASS, CURSOR_WRAPPER_CLASS, DATA_ATTRIBUTE } from "../constants";
+import { CURSOR_CLASS, DATA_ATTRIBUTE } from "../constants";
 import { El } from "../types";
 import appendStyleBlock from "./appendStyleBlock";
 
@@ -30,7 +30,7 @@ export let setCursorStyles = (
 
   // Set animation styles & custom properties.
   appendStyleBlock(
-    `${cursorSelector} { display: inline-block; width: 0; ${customProperties} } .${CURSOR_WRAPPER_CLASS} { display: inline-block; font: inherit; color: inherit; }`,
+    `${cursorSelector} { display: inline-block; width: 0; ${customProperties} }`,
     id
   );
 };
