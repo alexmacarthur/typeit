@@ -8,6 +8,7 @@ export interface TypeItProps {
   children?: React.ReactNode;
   getBeforeInit?: (instance: any) => Function;
   getAfterInit?: (instance: any) => Function;
+  [key: string]: any;
 }
 
 const defaultProps: TypeItProps = {
