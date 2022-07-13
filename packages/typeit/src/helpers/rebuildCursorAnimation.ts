@@ -1,4 +1,5 @@
 import { El } from "../types";
+import beforePaint from "./beforePaint";
 import getAnimationFromElement from "./getAnimationFromElement";
 import setCursorAnimation from "./setCursorAnimation";
 
@@ -26,7 +27,7 @@ let rebuildCursorAnimation = ({
 
   // An existing animation is actively running...
   // so carry over the timing properties we care about.
-  if (animation && animation.playState !== "idle") {
+  if (animation) {
     timingOptions.delay = animation.effect.getComputedTiming().delay;
 
     // This needs to be set later, since there's no way to pass

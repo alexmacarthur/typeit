@@ -52,9 +52,8 @@ describe("animation already exists", () => {
 
 describe("animation has already been canceled", () => {
   it("does not cancel it or preserve current time.", () => {
-    let mockAnimation = addMockAnimation(cursor, {
-      playState: "idle",
-    });
+    cursor.getAnimations = () => [];
+
     const setCursorAnimationSpy = jest
       .spyOn(setCursorAnimation, "default")
       .mockImplementation(() => {
@@ -68,7 +67,6 @@ describe("animation has already been canceled", () => {
     });
 
     expect(setCursorAnimationSpy).toHaveBeenCalledTimes(1);
-    expect(mockAnimation.cancel).not.toHaveBeenCalled();
     expect(result.currentTime).toEqual(undefined);
   });
 });
