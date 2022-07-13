@@ -48,14 +48,14 @@ let fireItem = async ({
   }
 
   let fire = async (): Promise<{
-    animation: Animation;
     timingOptions: object;
     frames: AnimationKeyFrame[];
   }> => {
     // An animation is only registered on the cursor when it's made visible.
     // If the cursor has been disabled, there won't be one here.
     let animation = getAnimationFromElement(cursor);
-    let timingOptions: object, frames: AnimationKeyFrame[];
+    let timingOptions: object = {};
+    let frames: AnimationKeyFrame[] = null;
 
     if (animation) {
       timingOptions = cursor
@@ -70,7 +70,9 @@ let fireItem = async ({
     }
 
     await wait(async () => {
-      // Pause the cursor while stuff is happening.
+      // If it's a qualified queue item, pause the cursor at the
+      // beginning of the item's execution by destroying the aniatmion.
+      // Immediately after completing, the animation will be recreated (with a delay).
       if (animation && queueItem.shouldPauseCursor()) {
         animation.cancel();
       }
@@ -80,17 +82,16 @@ let fireItem = async ({
       });
     }, queueItem.delay);
 
-    return { animation, frames, timingOptions };
+    return { frames, timingOptions };
   };
 
-  let { animation, frames, timingOptions } = await fire();
+  let { frames, timingOptions } = await fire();
 
-  animation &&
-    rebuildCursorAnimation({
-      cursor,
-      frames,
-      timingOptions,
-    });
+  await rebuildCursorAnimation({
+    cursor,
+    frames,
+    timingOptions,
+  });
 
   return index;
 };
