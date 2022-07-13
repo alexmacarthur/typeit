@@ -79,6 +79,8 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     });
   };
 
+  let _removeNode = (node) => removeNode(node, _element);
+
   let _elementIsInput = () => isInput(_element);
 
   let _getPace = (index: number = 0): number => calculatePace(_opts)[index];
@@ -375,7 +377,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
       return;
     }
 
-    _getAllChars().forEach(removeNode);
+    _getAllChars().forEach(_removeNode);
 
     return;
   };
@@ -388,7 +390,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     if (_elementIsInput()) {
       _element.value = (_element.value as string).slice(0, -1);
     } else {
-      removeNode(allChars[_cursorPosition]);
+      _removeNode(allChars[_cursorPosition]);
     }
   };
 
@@ -557,7 +559,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     _timeouts = destroyTimeouts(_timeouts);
     handleFunctionalArg<boolean>(shouldRemoveCursor) &&
       _cursor &&
-      removeNode(_cursor);
+      _removeNode(_cursor);
     _statuses.destroyed = true;
   };
 
