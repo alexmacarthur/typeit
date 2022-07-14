@@ -1,32 +1,19 @@
 import { El } from "../types";
 import beforePaint from "./beforePaint";
 
-const DEFAULT_TIMING_OPTIONS: Partial<AnimationEffectTiming> = {
-  iterations: Infinity,
-  easing: "steps(2, start)",
-  fill: "forwards",
-};
-
-const DEFAULT_FRAMES: AnimationKeyFrame[] = [0, 0, 1].map((n) => {
-  return { opacity: n };
-});
-
 /**
  * Create and return an animation for the cursor.
  */
 let setCursorAnimation = ({
   cursor,
-  frames = null,
-  timingOptions = {},
+  frames,
+  options,
 }: {
   cursor: El;
-  frames?: AnimationKeyFrame[] | null;
-  timingOptions: Partial<AnimationEffectTiming>;
-}): Animation | null => {
-  let animation = cursor.animate(frames || DEFAULT_FRAMES, {
-    ...DEFAULT_TIMING_OPTIONS,
-    ...timingOptions,
-  });
+  frames: AnimationKeyFrame[];
+  options: Partial<AnimationEffectTiming>;
+}): Animation => {
+  let animation = cursor.animate(frames, options);
 
   animation.pause();
 

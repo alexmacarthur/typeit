@@ -5,10 +5,23 @@ export type Character = {
   content: string | Node;
 };
 
-export type Options = {
+export interface CursorAnimationOptions {
+  frames?: AnimationKeyFrame[];
+  options?: Partial<AnimationEffectTiming>;
+}
+
+export interface CursorOptions {
+  autoPause?: boolean;
+  autoPauseDelay?: number;
+  animation?: CursorAnimationOptions;
+}
+
+export interface Options {
   breakLines?: boolean;
-  cursor?: boolean;
   cursorChar?: string;
+  cursor?: CursorOptions | boolean;
+
+  // @todo: Remove in next major release.
   cursorSpeed?: number;
   deleteSpeed?: null | number;
   html?: boolean;
@@ -26,7 +39,7 @@ export type Options = {
   beforeStep?: Function;
   afterStep?: Function;
   afterComplete?: Function;
-};
+}
 
 export type ActionOpts = Options & {
   to?: Sides;

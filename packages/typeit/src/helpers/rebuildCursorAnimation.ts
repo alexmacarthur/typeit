@@ -1,26 +1,19 @@
-import { El } from "../types";
-import beforePaint from "./beforePaint";
+import { El, CursorOptions } from "../types";
 import getAnimationFromElement from "./getAnimationFromElement";
 import setCursorAnimation from "./setCursorAnimation";
 
-declare global {
-  interface AnimationEffect {
-    getKeyframes: () => any;
-  }
-}
-
 interface rebuildCursorAnimationArgs {
   cursor: El | undefined;
-  frames: AnimationKeyFrame[];
-  timingOptions: any;
+  cursorOptions: CursorOptions;
+  options: any;
 }
 
 let rebuildCursorAnimation = ({
   cursor,
-  frames,
-  timingOptions,
+  options,
+  cursorOptions,
 }: rebuildCursorAnimationArgs): Animation => {
-  if (!cursor) return;
+  if (!cursor || !cursorOptions) return;
 
   let animation = getAnimationFromElement(cursor);
   let oldCurrentTime: number;
@@ -28,7 +21,7 @@ let rebuildCursorAnimation = ({
   // An existing animation is actively running...
   // so carry over the timing properties we care about.
   if (animation) {
-    timingOptions.delay = animation.effect.getComputedTiming().delay;
+    options.delay = animation.effect.getComputedTiming().delay;
 
     // This needs to be set later, since there's no way to pass
     // the current time into the constructor.
@@ -40,14 +33,12 @@ let rebuildCursorAnimation = ({
   // configuration as the previous one.
   let newAnimation = setCursorAnimation({
     cursor,
-    frames,
-    timingOptions,
+    frames: cursorOptions.animation.frames,
+    options,
   });
 
   // By setting the currentTime, the animation will
-  // be in sync with the previous one. But when we're
-  // totally pausing the animation (indicated by a `delay`
-  // value), there's no need to do this.
+  // be in sync with the previous one.
   if (oldCurrentTime) {
     newAnimation.currentTime = oldCurrentTime;
   }

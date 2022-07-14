@@ -30,6 +30,7 @@ import {
   ActionOpts,
   TypeItInstance,
   QueueMapPair,
+  CursorOptions,
 } from "./types";
 import {
   CURSOR_CLASS,
@@ -41,6 +42,7 @@ import duplicate from "./helpers/duplicate";
 import countStepsToSelector from "./helpers/countStepsToSelector";
 import fireItem from "./helpers/fireItem";
 import setCursorAnimation from "./helpers/setCursorAnimation";
+import processCursorOptions from "./helpers/processCursorOptions";
 
 // Necessary for publicly exposing types.
 export declare type TypeItOptions = Options;
@@ -67,7 +69,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     silent || (await _opts.afterStep(this));
   };
 
-  let _fireItemWithCursor = (
+  let _fireItemWithContext = (
     index: number,
     queueItems: QueueMapPair[]
   ): Promise<number> => {
@@ -76,6 +78,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
       queueItems,
       wait: _wait,
       cursor: _cursor as El,
+      cursorOptions: _opts.cursor as CursorOptions,
     });
   };
 
@@ -158,10 +161,15 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
 
       (_cursor as El).dataset.tiAnimationId = _id;
 
+      let { animation } = _opts.cursor as CursorOptions;
+      let { frames, options } = animation;
+
       setCursorAnimation({
+        frames,
         cursor: _cursor as El,
-        timingOptions: {
+        options: {
           duration: _opts.cursorSpeed,
+          ...options,
         },
       });
     }
@@ -224,7 +232,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     });
 
     for (let index = 0; index < queueItems.length; index++) {
-      await _fireItemWithCursor(index, queueItems);
+      await _fireItemWithContext(index, queueItems);
     }
 
     _queue.reset();
@@ -309,7 +317,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
           !queueItem.deletable ||
           (queueItem.deletable && _getAllChars().length)
         ) {
-          let newIndex = await _fireItemWithCursor(index, queueItems);
+          let newIndex = await _fireItemWithContext(index, queueItems);
 
           // Ensure each skipped item goes through the cleanup process,
           // so that methods like .flush() don't get messed up.
@@ -639,6 +647,10 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
   let _predictedCursorPosition = null;
   let _statuses = merge({}, DEFAULT_STATUSES);
 
+  options.cursor = processCursorOptions(
+    options.cursor ?? DEFAULT_OPTIONS.cursor
+  );
+
   let _opts: Options = merge(DEFAULT_OPTIONS, options);
   _opts = merge(_opts, {
     html: !_elementIsInput() && _opts.html,
@@ -647,19 +659,14 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
   });
 
   let _id = generateHash();
-  let _queue = Queue([
-    {
-      func: () => {},
-      delay: _opts.startDelay,
-    },
-  ]);
+  let _queue = Queue([{ delay: _opts.startDelay }]);
 
   _element.dataset.typeitId = _id;
 
   // Used to set a "placeholder" space in the element, so that it holds vertical sizing before anything's typed.
   appendStyleBlock(PLACEHOLDER_CSS);
 
-  let _shouldRenderCursor = _opts.cursor && !_elementIsInput();
+  let _shouldRenderCursor = !!_opts.cursor && !_elementIsInput();
   let _cursor = _setUpCursor();
 
   _opts.strings = _maybePrependHardcodedStrings(asArray<string>(_opts.strings));

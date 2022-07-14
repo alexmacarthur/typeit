@@ -222,13 +222,14 @@ describe("type()", () => {
 describe("move()", () => {
   test("Should bookend action with same options when no options passed.", () => {
     instance = new TypeIt("#element").move(1);
+    const queueItems = instance.getQueue().getItems();
 
-    instance
-      .getQueue()
-      .getItems()
-      .forEach((item) => {
-        expect(item.func.constructor.name).toEqual("Function");
-      });
+    const firstQueueItem = queueItems.shift();
+    expect(firstQueueItem.func).toBe(undefined);
+
+    queueItems.forEach((item) => {
+      expect(item.func.constructor.name).toEqual("Function");
+    });
   });
 
   test("Should temporarily update options when specified.", () => {
@@ -384,6 +385,8 @@ describe("reset()", () => {
     expect(instance.is("destroyed")).toBe(true);
 
     instance = instance.reset();
+
+    // console.log(instance.getOptions());
 
     //-- Ensure the arguments that define these properties were passed.
     expect(instance.getOptions()).toMatchSnapshot();

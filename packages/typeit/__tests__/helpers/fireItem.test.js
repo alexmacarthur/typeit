@@ -59,16 +59,24 @@ describe("cursor should be paused", () => {
       queueItems,
       wait,
       cursor,
+      cursorOptions: {
+        autoPause: true,
+        autoPauseDelay: 500,
+        animation: {
+          frames: ["frame1", "frame2"],
+        },
+      },
     });
 
     expect(rebuildCursorAnimationSpy).toHaveBeenCalledTimes(1);
-    expect(rebuildCursorAnimationSpy).toHaveBeenCalledWith({
-      cursor,
-      frames: ["frame1", "frame2"],
-      timingOptions: {
-        delay: 500,
-      },
-    });
+    expect(rebuildCursorAnimationSpy).toHaveBeenCalledWith(
+      expect.objectContaining({
+        cursor,
+        options: {
+          delay: 500,
+        },
+      })
+    );
 
     expect(mockAnimation.cancel).toHaveBeenCalledTimes(1);
   });
@@ -94,16 +102,27 @@ describe("cursor should NOT be paused", () => {
       queueItems,
       wait,
       cursor,
+      cursorOptions: {
+        animation: {
+          frames: ["frame1", "frame2"],
+        },
+      },
     });
 
     expect(rebuildCursorAnimationSpy).toHaveBeenCalledTimes(1);
-    expect(rebuildCursorAnimationSpy).toHaveBeenCalledWith({
-      cursor,
-      frames: ["frame1", "frame2"],
-      timingOptions: {
-        delay: 0,
-      },
-    });
+    expect(rebuildCursorAnimationSpy).toHaveBeenCalledWith(
+      expect.objectContaining({
+        cursor,
+        options: {
+          delay: 0,
+        },
+        cursorOptions: {
+          animation: {
+            frames: ["frame1", "frame2"],
+          },
+        },
+      })
+    );
 
     expect(mockAnimation.cancel).not.toHaveBeenCalledTimes(1);
   });
