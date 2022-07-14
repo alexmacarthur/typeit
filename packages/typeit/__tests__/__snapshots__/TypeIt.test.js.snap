@@ -4,7 +4,6 @@ exports[`Initial queue only contains startDelay pause. 1`] = `
 Array [
   Object {
     "delay": 250,
-    "func": [Function],
     "shouldPauseCursor": [Function],
   },
 ]
@@ -38,7 +37,6 @@ exports[`break() Should should queue break character object. 1`] = `
 Array [
   Object {
     "delay": 250,
-    "func": [Function],
     "shouldPauseCursor": [Function],
   },
   Object {
@@ -74,7 +72,6 @@ exports[`delete() Should temporarily update options when specified. 1`] = `
 Array [
   Object {
     "delay": 250,
-    "func": [Function],
     "shouldPauseCursor": [Function],
   },
   Object {
@@ -92,7 +89,6 @@ exports[`empty() addSplitPause() Adds different even split pause around strings.
 Array [
   Object {
     "delay": 250,
-    "func": [Function],
     "shouldPauseCursor": [Function],
   },
   Object {
@@ -189,7 +185,6 @@ exports[`empty() addSplitPause() Adds even split pause around strings. 1`] = `
 Array [
   Object {
     "delay": 250,
-    "func": [Function],
     "shouldPauseCursor": [Function],
   },
 ]
@@ -199,7 +194,6 @@ exports[`empty() addSplitPause() Adds split pause around strings when value is a
 Array [
   Object {
     "delay": 250,
-    "func": [Function],
     "shouldPauseCursor": [Function],
   },
   Object {
@@ -296,7 +290,6 @@ exports[`empty() addSplitPause() Inserts split pause around multiple strings. 1`
 Array [
   Object {
     "delay": 250,
-    "func": [Function],
     "shouldPauseCursor": [Function],
   },
   Object {
@@ -487,7 +480,6 @@ exports[`move() Should temporarily update options when specified. 1`] = `
 Array [
   Object {
     "delay": 250,
-    "func": [Function],
     "shouldPauseCursor": [Function],
   },
   Object {
@@ -509,7 +501,28 @@ Object {
   "beforeStep": [Function],
   "beforeString": [Function],
   "breakLines": true,
-  "cursor": true,
+  "cursor": Object {
+    "animation": Object {
+      "frames": Array [
+        Object {
+          "opacity": 0,
+        },
+        Object {
+          "opacity": 0,
+        },
+        Object {
+          "opacity": 1,
+        },
+      ],
+      "options": Object {
+        "easing": "steps(2, start)",
+        "fill": "forwards",
+        "iterations": Infinity,
+      },
+    },
+    "autoPause": true,
+    "autoPauseDelay": 500,
+  },
   "cursorChar": "|",
   "cursorSpeed": 1000,
   "deleteSpeed": null,

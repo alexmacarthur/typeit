@@ -31,13 +31,21 @@ beforeEach(() => {
 
 describe("setting correct options", () => {
   it("sets correct defaults", () => {
-    setCursorAnimation({ cursor });
+    setCursorAnimation({
+      cursor,
+      frames: [{ opacity: 0 }, { opacity: 0 }, { opacity: 1 }],
+      options: {
+        easing: "steps(2, start)",
+        fill: "forwards",
+        iterations: 3,
+      },
+    });
 
     expect(mockAnimate).toBeCalledTimes(1);
     expect(mockAnimate).toBeCalledWith(
       [{ opacity: 0 }, { opacity: 0 }, { opacity: 1 }],
       {
-        iterations: Infinity,
+        iterations: 3,
         easing: "steps(2, start)",
         fill: "forwards",
       }
@@ -48,7 +56,7 @@ describe("setting correct options", () => {
     setCursorAnimation({
       cursor,
       frames: [{ height: "10px" }, { height: "50px" }],
-      timingOptions: {
+      options: {
         iterations: 3,
         easing: "linear",
         fill: "backwards",
