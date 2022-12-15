@@ -1,4 +1,5 @@
 import * as React from "react";
+import { forwardRef } from "react";
 import { default as TypeItCore, TypeItOptions } from "typeit";
 const { useRef, useEffect, useState } = React;
 
@@ -18,20 +19,19 @@ const defaultProps: TypeItProps = {
   getAfterInit: (instance) => instance,
 };
 
+const DynamicElementComponent = forwardRef((props: any, ref) => {
+  const { as: As } = props;
+
+  return <As ref={ref} {...props} />;
+});
+
 const TypeIt: React.FunctionComponent<TypeItProps> = (props: TypeItProps) => {
   const elementRef = useRef(null);
   const instanceRef = useRef(null);
-  const {
-    options,
-    as,
-    children,
-    getBeforeInit,
-    getAfterInit,
-    ...remainingProps
-  } = props;
+  const { options, children, getBeforeInit, getAfterInit, ...remainingProps } =
+    props;
   const [shouldShowChildren, setShouldShowChildren] = useState<boolean>(true);
   const [instanceOptions, setInstanceOptions] = useState(null);
-  const DynamicElement = as;
 
   function calculateOptions() {
     const optionsClone = Object.assign({}, options);
@@ -75,14 +75,14 @@ const TypeIt: React.FunctionComponent<TypeItProps> = (props: TypeItProps) => {
   }, [instanceOptions]);
 
   /**
-   * Destroy the instace whenever the component unmounts.
+   * Destroy the instance whenever the component unmounts.
    */
   useEffect(() => {
     return () => instanceRef.current?.destroy();
   }, []);
 
   return (
-    <DynamicElement
+    <DynamicElementComponent
       ref={elementRef}
       children={shouldShowChildren ? children : null}
       style={{ opacity: shouldShowChildren ? 0 : 1 }}
