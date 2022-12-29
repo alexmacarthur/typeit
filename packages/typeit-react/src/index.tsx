@@ -1,7 +1,5 @@
-import * as React from "react";
-import { forwardRef } from "react";
+import React, { forwardRef, useRef, useEffect, useState } from "react";
 import { default as TypeItCore, TypeItOptions } from "typeit";
-const { useRef, useEffect, useState } = React;
 
 export interface TypeItProps {
   as?: keyof JSX.IntrinsicElements;
