@@ -57,12 +57,6 @@ const TypeIt: React.FunctionComponent<TypeItProps> = (props: TypeItProps) => {
    * defined via the options prop.
    */
   useEffect(() => {
-    /**
-     * For some reason, this effect is firing before the component mounts,
-     * possibly due to the component being run in with strict mode enabled.
-     */
-    if (!elementRef.current) return;
-
     calculateOptions();
 
     setShouldShowChildren(false);
@@ -74,12 +68,6 @@ const TypeIt: React.FunctionComponent<TypeItProps> = (props: TypeItProps) => {
    * animation. On cleanup, destroy that instance.
    */
   useEffect(() => {
-    /**
-     * Again, this effect is firing before the component mounts,
-     * possibly due to the component being run in with strict mode enabled.
-     */
-    if (!elementRef.current) return;
-
     if (!instanceOptions) return;
 
     instanceRef.current?.updateOptions(instanceOptions) ||

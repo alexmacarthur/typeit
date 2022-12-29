@@ -1,6 +1,6 @@
 {
   "name": "typeit-react",
-  "version": "2.6.2",
+  "version": "2.6.3",
   "description": "React component for the most versatile JavaScript animated typing utility on the planet.",
   "homepage": "https://typeitjs.com",
   "main": "dist/index.umd.js",
@@ -38,15 +38,15 @@
   "author": "Alex MacArthur <alex@macarthur.me> (https://macarthur.me)",
   "license": "GPL-3.0",
   "dependencies": {
-    "@types/react": "^18.0.26",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "typeit": "^8.7.1",
-    "vite": "^4.0.1"
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0",
+    "typeit": "^8.7.1"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.18.6",
+    "@types/react": "^18.0.26",
     "terser": "^5.16.1",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.4",
+    "vite": "^4.0.3"
   }
 }
