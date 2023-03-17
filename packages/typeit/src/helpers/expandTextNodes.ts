@@ -1,10 +1,13 @@
 import createTextNode from "./createTextNode";
 import { El } from "../types";
 
-let expandTextNodes = (element: El): El => {
+const expandTextNodes = (
+  element: El,
+  stringSpliterator: (str: string) => string[]
+): El => {
   [...element.childNodes].forEach((child) => {
     if (child.nodeValue) {
-      [...child.nodeValue].forEach((c) => {
+      stringSpliterator(child.nodeValue).forEach((c) => {
         child.parentNode.insertBefore(createTextNode(c), child);
       });
 
@@ -12,7 +15,7 @@ let expandTextNodes = (element: El): El => {
       return;
     }
 
-    expandTextNodes(child as El);
+    expandTextNodes(child as El, stringSpliterator);
   });
 
   return element;

@@ -53,8 +53,11 @@ export function walkElementNodes(
  * Convert string to array of chunks that will be later
  * used to construct a TypeIt queue.
  */
-export function chunkStringAsHtml(string: string): El[] {
-  return walkElementNodes(getParsedBody(string));
+export function chunkStringAsHtml(
+  string: string,
+  stringSpliterator: (str: string) => string[]
+): El[] {
+  return walkElementNodes(getParsedBody(string, stringSpliterator));
 }
 
 /**
@@ -63,11 +66,15 @@ export function chunkStringAsHtml(string: string): El[] {
  *
  * @param {string} str
  * @param {boolean} asHtml
+ * @param {(string) => string[]}stringSpliterator
  * @return {array}
  */
 export function maybeChunkStringAsHtml(
   str: string,
-  asHtml = true
+  asHtml = true,
+  stringSpliterator: (str: string) => string[]
 ): Partial<El>[] {
-  return asHtml ? chunkStringAsHtml(str) : toArray(str).map(createTextNode);
+  return asHtml
+    ? chunkStringAsHtml(str, stringSpliterator)
+    : toArray(stringSpliterator(str)).map(createTextNode);
 }

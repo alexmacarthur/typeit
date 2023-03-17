@@ -355,6 +355,42 @@ exports[`maybeChunkStringAsHtml() Should correctly transform non-HTML string as 
 ]
 `;
 
+exports[`maybeChunkStringAsHtml() Should return correctly split string with emoji. 1`] = `
+[
+  A,
+  n,
+   ,
+  🍕,
+   ,
+  e,
+  m,
+  o,
+  j,
+  i,
+   ,
+  🌷,
+   ,
+  f,
+  i,
+  l,
+  l,
+  e,
+  d,
+   ,
+  👍,
+   ,
+  s,
+  t,
+  r,
+  i,
+  n,
+  g,
+  .,
+   ,
+  ⬆️,
+]
+`;
+
 exports[`maybeChunkStringAsHtml() Should return noderized string when setting is enabled. 1`] = `
 [
   A,

@@ -5,9 +5,9 @@ import expandTextNodes from "./expandTextNodes";
  * Parse a string as HTML and return the body
  * of the parsed document, with all text nodes expanded.
  */
-export default (content): El => {
+export default (content, stringSpliterator: (str: string) => string[]): El => {
   let doc = document.implementation.createHTMLDocument();
   doc.body.innerHTML = content;
 
-  return expandTextNodes(doc.body as El);
+  return expandTextNodes(doc.body as El, stringSpliterator);
 };

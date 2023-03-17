@@ -42,6 +42,7 @@
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-typescript": "^7.18.6",
     "@types/web-animations-js": "^2.2.12",
+    "grapheme-splitter": "^1.0.4",
     "jest": "^29.3.1",
     "jest-cli": "^29.3.1",
     "jest-environment-jsdom": "^29.3.1",
@@ -52,10 +53,12 @@
   "jest": {
     "clearMocks": true,
     "testPathIgnorePatterns": [
-      "<rootDir>/__tests__/setup.js"
+      "<rootDir>/__tests__/setup.js",
+      "<rootDir>/__tests__/helpers/util.js"
     ],
     "setupFilesAfterEnv": [
-      "./__tests__/setup.js"
+      "./__tests__/setup.js",
+      "./__tests__/helpers/util.js"
     ],
     "testEnvironment": "jsdom"
   }

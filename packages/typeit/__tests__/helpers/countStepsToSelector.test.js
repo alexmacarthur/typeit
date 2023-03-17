@@ -1,9 +1,10 @@
 import countStepsToSelector from "../../src/helpers/countStepsToSelector";
 import { chunkStringAsHtml } from "../../src/helpers/chunkStrings";
 import Queue from "../../src/Queue";
+import { DEFAULT_OPTIONS } from "../../src/constants";
 
 let buildQueueFromString = (str) => {
-  let chunks = chunkStringAsHtml(str);
+  let chunks = chunkStringAsHtml(str, DEFAULT_OPTIONS.stringSpliterator);
   let queue = new Queue([]);
 
   chunks.forEach((char) => {
