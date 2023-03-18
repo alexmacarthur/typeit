@@ -1,7 +1,6 @@
 import insertIntoElement from "../../src/helpers/insertIntoElement";
-import getParsedBody from "../../src/helpers/getParsedBody";
 import { walkElementNodes } from "../../src/helpers/chunkStrings";
-import expandTextNodes from "../../src/helpers/expandTextNodes";
+import { defaultExpandTextNodes, defaultGetParsedBody } from "./util";
 
 describe("an input", () => {
   it("inserts text into blank input", () => {
@@ -39,7 +38,7 @@ describe("plain text", () => {
     setHTML`<span id="el"><i class="ti-cursor">|</i></span>`;
     const el = document.body;
 
-    const body = getParsedBody('<span id="el"><em>a</em></span>');
+    const body = defaultGetParsedBody('<span id="el"><em>a</em></span>');
     const em = body.querySelector("em");
     em.originalParent = document.querySelector("#el");
 
@@ -61,10 +60,10 @@ describe("plain text", () => {
     setHTML`<span id="top"><i class="ti-cursor">|</i></span>`;
     const el = document.querySelector("#top");
 
-    const spanEl = getParsedBody(
+    const spanEl = defaultGetParsedBody(
       'a<em id="middle">b<strong id="bottom">c</strong></em>'
     );
-    const nodes = walkElementNodes(expandTextNodes(spanEl));
+    const nodes = walkElementNodes(defaultExpandTextNodes(spanEl));
 
     nodes.forEach((n) => {
       insertIntoElement(el, n);
@@ -79,8 +78,8 @@ describe("plain text", () => {
     setHTML`<span id="top"><i class="ti-cursor">|</i></span>`;
     const el = document.querySelector("#top");
 
-    const spanEl = getParsedBody("a<br/>b<br/>c</em>");
-    const nodes = walkElementNodes(expandTextNodes(spanEl));
+    const spanEl = defaultGetParsedBody("a<br/>b<br/>c</em>");
+    const nodes = walkElementNodes(defaultExpandTextNodes(spanEl));
 
     spanEl.querySelectorAll("br").forEach((b) => {
       delete b.originalParent;

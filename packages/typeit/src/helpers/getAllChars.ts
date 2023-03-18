@@ -7,9 +7,16 @@ import { walkElementNodes } from "./chunkStrings";
  * Get a flattened array of text nodes that have been typed.
  * This excludes any cursor character that might exist.
  */
-let getAllChars = (element: El) => {
+let getAllChars = (
+  element: El,
+  stringSpliterator: (str: string) => string[]
+) => {
   if (isInput(element)) {
-    return toArray(element.value);
+    if (typeof element.value === "string") {
+      return toArray(stringSpliterator(element.value));
+    } else {
+      return toArray(element.value);
+    }
   }
 
   return walkElementNodes(element, true).filter(

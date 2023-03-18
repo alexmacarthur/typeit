@@ -33,6 +33,22 @@ export interface Options {
   startDelay?: number;
   startDelete?: boolean;
   strings?: string[] | string;
+  /**
+   * String splitter function, can be used to split emoji's or graphemes.
+   *
+   * @example
+   * ```js
+   * import GraphemeSplitter from "grapheme-splitter";
+   * const splitter = new GraphemeSplitter();
+   * new TypeIt("#element", {
+   *   strings: "👋🏻👋🏼👋🏽👋🏾👋🏿",
+   *   stringSpliterator: (str) => splitter.splitGraphemes(str),
+   * });
+   * ```
+   * @see https://www.npmjs.com/package/grapheme-splitter
+   * @default null
+   */
+  stringSpliterator?: (str: string) => string[];
   waitUntilVisible?: boolean;
   beforeString?: Function;
   afterString?: Function;

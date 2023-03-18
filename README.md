@@ -25,6 +25,7 @@ For more advanced, controlled typing effects, TypeIt comes with companion functi
 -   Define strings programmatically or directly in the HTML (a useful fallback in case user doesn't have JavaScript enabled, as well as for SEO).
 -   Handle HTML (even nested tags!) with ease, preserving all of its attributes (classes, ids, etc.).
 -   Offered as an ES module for modern bundlers, or a UMD library for loading via a traditional `<script>` tags.
+-   Can optionally support ➡️ 🔥 Emojis 🔥 ⬅️ and other Graphemes with [orling/grapheme-splitter](https://github.com/orling/grapheme-splitter)!
 
 ## License Options
 

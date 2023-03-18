@@ -540,6 +540,7 @@ exports[`reset() Successfully resets when called. 1`] = `
   "speed": 100,
   "startDelay": 250,
   "startDelete": false,
+  "stringSpliterator": [Function],
   "strings": [
     "This is my string!",
   ],

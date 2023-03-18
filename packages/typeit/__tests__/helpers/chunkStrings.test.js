@@ -1,22 +1,26 @@
 import {
-  chunkStringAsHtml,
   maybeChunkStringAsHtml,
   walkElementNodes,
 } from "../../src/helpers/chunkStrings";
-import expandTextNodes from "../../src/helpers/expandTextNodes";
+import GraphemeSplitter from "grapheme-splitter";
+import {
+  defaultChunkStringAsHtml,
+  defaultExpandTextNodes,
+  defaultMaybeChunkStringAsHtml,
+} from "./util";
 
 beforeEach(() => {
   document.body.innerHTML = "";
 });
 
 test("Parses normal string correctly.", () => {
-  let result = chunkStringAsHtml("Hello, this is my string.");
+  let result = defaultChunkStringAsHtml("Hello, this is my string.");
 
   expect(result).toMatchSnapshot();
 });
 
 test("Parses single HTML tag.", () => {
-  let result = chunkStringAsHtml(
+  let result = defaultChunkStringAsHtml(
     "Hello, this is some <strong>bold</strong> text."
   );
 
@@ -24,7 +28,7 @@ test("Parses single HTML tag.", () => {
 });
 
 test("Parses multiple HTML tags.", () => {
-  let result = chunkStringAsHtml(
+  let result = defaultChunkStringAsHtml(
     "Hello, this is some <strong>bold</strong> text, and some <i>italicized</i> text."
   );
 
@@ -32,7 +36,7 @@ test("Parses multiple HTML tags.", () => {
 });
 
 test("Parses HTML tag at beginning of string.", () => {
-  let result = chunkStringAsHtml(
+  let result = defaultChunkStringAsHtml(
     "<strong>Hello!</strong> This is some text with HTML at the beginning."
   );
 
@@ -40,7 +44,7 @@ test("Parses HTML tag at beginning of string.", () => {
 });
 
 test("Parses HTML tag at end of string.", () => {
-  let result = chunkStringAsHtml(
+  let result = defaultChunkStringAsHtml(
     "This is some text with HTML at the <em>end.</em>"
   );
 
@@ -48,7 +52,7 @@ test("Parses HTML tag at end of string.", () => {
 });
 
 test("Parses HTML tag with attributes.", () => {
-  let result = chunkStringAsHtml(
+  let result = defaultChunkStringAsHtml(
     'This string has an <strong class="strong-class" id="strong-id" data-whatever="data-att">element</strong> with attributes.'
   );
 
@@ -58,13 +62,23 @@ test("Parses HTML tag with attributes.", () => {
 describe("maybeChunkStringAsHtml()", () => {
   test("Should return noderized string when setting is enabled.", () => {
     expect(
-      maybeChunkStringAsHtml("A <em>fancy</em> string.")
+      defaultMaybeChunkStringAsHtml("A <em>fancy</em> string.")
     ).toMatchSnapshot();
   });
 
   test("Should correctly transform non-HTML string as character objects.", () => {
     expect(
-      maybeChunkStringAsHtml("A <em>fancy</em> string.", false)
+      defaultMaybeChunkStringAsHtml("A <em>fancy</em> string.", false)
+    ).toMatchSnapshot();
+  });
+  test("Should return correctly split string with emoji.", () => {
+    const splitter = new GraphemeSplitter();
+    expect(
+      maybeChunkStringAsHtml(
+        "An 🍕 emoji 🌷 filled 👍 string. ⬆️",
+        false,
+        (str) => splitter.splitGraphemes(str)
+      )
     ).toMatchSnapshot();
   });
 });
@@ -73,7 +87,7 @@ describe("walkElementNodes()", () => {
   test("Gathers correct number of nodes with original parents attached.", () => {
     setHTML`<h2 id="heading">A<span>B<small>C</small></span></h2>`;
 
-    const el = expandTextNodes(document.getElementById("heading"));
+    const el = defaultExpandTextNodes(document.getElementById("heading"));
     const result = walkElementNodes(el);
     const thirdNode = result[2];
 
@@ -89,7 +103,7 @@ describe("walkElementNodes()", () => {
   test("Reverses nodes when parameter is passed.", () => {
     setHTML`<h2 id="heading">ABC</h2>`;
 
-    const el = expandTextNodes(document.getElementById("heading"));
+    const el = defaultExpandTextNodes(document.getElementById("heading"));
     const result = walkElementNodes(el, true);
 
     expect(result[0].textContent).toEqual("C");
@@ -98,7 +112,7 @@ describe("walkElementNodes()", () => {
   test("Excludes cursor.", () => {
     setHTML`<h2 id="heading"><span>123</span><i class="ti-cursor">|</i></h2>`;
 
-    const el = expandTextNodes(document.getElementById("heading"));
+    const el = defaultExpandTextNodes(document.getElementById("heading"));
     const result = walkElementNodes(el);
     const cursor = result.find((n) => n?.classList?.contains("ti-cursor"));
 

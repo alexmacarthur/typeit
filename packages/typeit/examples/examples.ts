@@ -1,4 +1,5 @@
 import TypeIt from "../src";
+import GraphemeSplitter from "grapheme-splitter";
 
 new TypeIt("#crazy-cursor", {
   speed: 50,
@@ -257,3 +258,21 @@ new TypeIt("#start-delete", {
   startDelete: true,
   loop: true,
 }).go();
+
+const splitter = new GraphemeSplitter();
+new TypeIt("#emoji", {
+  startDelete: true,
+  loop: true,
+  stringSpliterator: (string) => splitter.splitGraphemes(string),
+})
+  .type("👋🏻")
+  .break()
+  .type("⬆️⬆️⬇️⬇️⬅️➡️⬅️➡️🅱️🅰️🏁")
+  .delete(3)
+  .break()
+  .type("👋🏻")
+  .move(-2)
+  .type("🅱️🅰️🏁")
+  .move(2)
+  .pause(10)
+  .go();

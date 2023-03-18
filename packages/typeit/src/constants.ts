@@ -1,4 +1,5 @@
 import { CursorOptions, Options } from "./types";
+import toArray from "./helpers/toArray";
 
 export const DATA_ATTRIBUTE = "data-typeit-id";
 export const CURSOR_CLASS = "ti-cursor";
@@ -41,6 +42,7 @@ export const DEFAULT_OPTIONS: Options & {
   startDelay: 250,
   startDelete: false,
   strings: [],
+  stringSpliterator: (str) => toArray(str),
   waitUntilVisible: false,
   beforeString: () => {},
   afterString: () => {},

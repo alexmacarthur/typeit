@@ -88,7 +88,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
 
   let _getPace = (index: number = 0): number => calculatePace(_opts)[index];
 
-  let _getAllChars = (): El[] => getAllChars(_element);
+  let _getAllChars = (): El[] => getAllChars(_element, _opts.stringSpliterator);
 
   let _maybeAppendPause = (opts: ActionOpts = {}) => {
     let delay = opts.delay;
@@ -145,7 +145,10 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
       return cursor as El;
     }
 
-    cursor.innerHTML = getParsedBody(_opts.cursorChar).innerHTML;
+    cursor.innerHTML = getParsedBody(
+      _opts.cursorChar,
+      _opts.stringSpliterator
+    ).innerHTML;
 
     return cursor as El;
   };
@@ -253,7 +256,7 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
     if (_opts.startDelete) {
       _element.innerHTML = existingMarkup;
 
-      expandTextNodes(_element);
+      expandTextNodes(_element, _opts.stringSpliterator);
 
       _addSplitPause(
         duplicate(
@@ -537,7 +540,11 @@ const TypeIt: TypeItInstance = function (element, options = {}) {
 
     let { instant } = actionOpts;
     let bookEndQueueItems = _generateTemporaryOptionQueueItems(actionOpts);
-    let chars = maybeChunkStringAsHtml(string, _opts.html);
+    let chars = maybeChunkStringAsHtml(
+      string,
+      _opts.html,
+      _opts.stringSpliterator
+    );
 
     let charsAsQueueItems = chars.map((char): QueueItem => {
       return {
