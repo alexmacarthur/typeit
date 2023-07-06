@@ -16,7 +16,7 @@ let rebuildCursorAnimation = ({
   if (!cursor || !cursorOptions) return;
 
   let animation = getAnimationFromElement(cursor);
-  let oldCurrentTime: number;
+  let oldCurrentTime: CSSNumberish;
 
   // An existing animation is actively running...
   // so carry over the timing properties we care about.
