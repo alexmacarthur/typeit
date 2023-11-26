@@ -5,7 +5,7 @@ let cursor;
 
 const addMockAnimation = (element, animationProperties = {}) => {
   const mockAnimation = {
-    cancel: jest.fn(),
+    cancel: vi.fn(),
     currentTime: 999,
     playState: "running",
     effect: {
@@ -29,10 +29,10 @@ beforeEach(() => {
 
   cursor = document.getElementById("cursor");
 
-  rebuildCursorAnimationSpy = jest
+  rebuildCursorAnimationSpy = vi
     .spyOn(rebuildCursorAnimation, "default")
     .mockImplementation(() => {});
-  beforePaintSpy = jest
+  beforePaintSpy = vi
     .spyOn(beforePaint, "default")
     .mockImplementation((cb) => cb());
 
@@ -41,7 +41,7 @@ beforeEach(() => {
 
 describe("cursor should be paused", () => {
   it("animation is cancelled and delay is set on new animation", async () => {
-    const wait = jest.fn((cb) => cb());
+    const wait = vi.fn((cb) => cb());
     const queueItems = [
       [
         Symbol(),
@@ -84,7 +84,7 @@ describe("cursor should be paused", () => {
 
 describe("cursor should NOT be paused", () => {
   it("animation is not cancelled and no delay is set on new animation", async () => {
-    const wait = jest.fn((cb) => cb());
+    const wait = vi.fn((cb) => cb());
     const queueItems = [
       [
         Symbol(),
@@ -130,7 +130,7 @@ describe("cursor should NOT be paused", () => {
 
 describe("all items have delays", () => {
   it("does not group any items for execution.", async () => {
-    const wait = jest.fn((cb) => cb());
+    const wait = vi.fn((cb) => cb());
     const [mock1, mock2] = makeMocks();
     const queueItems = [
       [
@@ -172,7 +172,7 @@ describe("all items have delays", () => {
 describe("some items have no delay", () => {
   it("groups items for execution.", async () => {
     const [mock1, mock2, mock3, mock4] = makeMocks();
-    const wait = jest.fn();
+    const wait = vi.fn();
     const queueItems = [
       [
         Symbol(),

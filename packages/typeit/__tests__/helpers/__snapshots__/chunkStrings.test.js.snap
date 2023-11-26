@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Parses HTML tag at beginning of string. 1`] = `
 [
@@ -322,6 +322,62 @@ exports[`Parses single HTML tag. 1`] = `
   e,
   x,
   t,
+  .,
+]
+`;
+
+exports[`maybeChunkStringAsHtml() > Should correctly transform non-HTML string as character objects. 1`] = `
+[
+  A,
+   ,
+  &lt;,
+  e,
+  m,
+  &gt;,
+  f,
+  a,
+  n,
+  c,
+  y,
+  &lt;,
+  /,
+  e,
+  m,
+  &gt;,
+   ,
+  s,
+  t,
+  r,
+  i,
+  n,
+  g,
+  .,
+]
+`;
+
+exports[`maybeChunkStringAsHtml() > Should return noderized string when setting is enabled. 1`] = `
+[
+  A,
+   ,
+  <em>
+    f
+    a
+    n
+    c
+    y
+  </em>,
+  f,
+  a,
+  n,
+  c,
+  y,
+   ,
+  s,
+  t,
+  r,
+  i,
+  n,
+  g,
   .,
 ]
 `;

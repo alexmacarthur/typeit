@@ -1,4 +1,4 @@
-import TypeIt from "../../src";
+import TypeIt from "../../src/TypeIt.ts";
 import * as wait from "../../src/helpers/wait";
 import * as repositionCursor from "../../src/helpers/repositionCursor";
 import * as countStepsToSelector from "../../src/helpers/countStepsToSelector";
@@ -12,7 +12,7 @@ describe("timeouts fire correctly", () => {
       <span id="element"></span>
     </div>`;
 
-    waitSpy = jest.spyOn(wait, "default");
+    waitSpy = vi.spyOn(wait, "default");
     element = document.getElementById("element");
   });
 
@@ -69,7 +69,7 @@ describe("moves only within range", () => {
       <span id="element"></span>
     </div>`;
 
-    repositionCursorSpy = jest.spyOn(repositionCursor, "default");
+    repositionCursorSpy = vi.spyOn(repositionCursor, "default");
     element = document.getElementById("element");
   });
 
@@ -117,7 +117,7 @@ describe("invalid selectors", () => {
       <span id="element"></span>
     </div>`;
 
-    repositionCursorSpy = jest.spyOn(repositionCursor, "default");
+    repositionCursorSpy = vi.spyOn(repositionCursor, "default");
     element = document.getElementById("element");
   });
 
@@ -157,6 +157,8 @@ describe("invalid selectors", () => {
 });
 
 describe("correct cursor position is passed", () => {
+  let element;
+
   beforeEach(() => {
     setHTML`<div>
       <span id="element"></span>
@@ -166,7 +168,7 @@ describe("correct cursor position is passed", () => {
   });
 
   it("passes predicted cursor position after initial move", () => {
-    let stepCounterSpy = jest.spyOn(countStepsToSelector, "default");
+    let stepCounterSpy = vi.spyOn(countStepsToSelector, "default");
 
     const instance = new TypeIt("#element", {
       speed: 0,

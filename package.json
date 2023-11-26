@@ -9,10 +9,10 @@
     "publish": "lerna bootstrap && lerna publish",
     "bootstrap": "lerna bootstrap --force-local",
     "test": "lerna run test",
-    "prettier": "prettier --write \"./packages/**/*.{md,js,tsx,ts}\""
+    "format": "prettier --write \"./packages/**/*.{md,js,tsx,ts}\""
   },
   "lint-staged": {
-    "*.{js,md}": "prettier --write"
+    "*.{js,ts,tsx,md}": "format --write"
   },
   "devDependencies": {
     "husky": "^8.0.2",

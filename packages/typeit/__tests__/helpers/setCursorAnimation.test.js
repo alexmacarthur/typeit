@@ -12,14 +12,12 @@ beforeEach(() => {
 
   cursor = document.querySelector(".ti-cursor");
 
-  beforePaintSpy = jest
-    .spyOn(beforePaint, "default")
-    .mockImplementation((cb) => {
-      return cb();
-    });
-  mockPause = jest.fn();
-  mockPlay = jest.fn();
-  mockAnimate = jest.fn(() => {
+  beforePaintSpy = vi.spyOn(beforePaint, "default").mockImplementation((cb) => {
+    return cb();
+  });
+  mockPause = vi.fn();
+  mockPlay = vi.fn();
+  mockAnimate = vi.fn(() => {
     return {
       pause: mockPause,
       play: mockPlay,

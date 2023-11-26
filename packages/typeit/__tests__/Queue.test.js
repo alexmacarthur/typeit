@@ -19,7 +19,7 @@ describe("add()", () => {
   });
 
   test("It should add multiple steps passed at once.", () => {
-    let func = jest.fn();
+    let func = vi.fn();
     queue.add([{ func }, { func }, { func }]);
 
     let items = queue.getItems();

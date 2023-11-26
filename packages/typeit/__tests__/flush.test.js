@@ -1,49 +1,57 @@
-import TypeIt from "../src";
+import TypeIt from "../src/TypeIt.ts";
 
 beforeEach(() => {
   setHTML`<span id="el"></span>`;
-  jest.clearAllMocks();
+  vi.clearAllMocks();
 });
 
 describe("deleting queue items", () => {
-  test("Deletes queue items after execution.", (done) => {
+  test("Deletes queue items after execution.", () => {
     const el = document.getElementById("el");
 
-    const instance = new TypeIt(el, { speed: 0 }).type("hello").flush(() => {
-      expect(el.textContent).toEqual("hello|");
-      expect(instance.getQueue().getItems(true)).toEqual([]);
-      done();
+    return new Promise((resolve) => {
+      const instance = new TypeIt(el, { speed: 0 }).type("hello").flush(() => {
+        expect(el.textContent).toEqual("hello|");
+        expect(instance.getQueue().getItems(true)).toEqual([]);
+        resolve();
+      });
     });
   });
 
-  test("Doesn't delete permanent queue items.", (done) => {
+  test("Doesn't delete permanent queue items.", () => {
     const el = document.getElementById("el");
 
-    const instance = new TypeIt(el, {
-      speed: 0,
-      afterComplete: () => {
-        instance.type("goodbye").flush(() => {
-          expect(el.textContent).toEqual("hellogoodbye|");
-          expect(instance.getQueue().getItems(true).length).toBeGreaterThan(0);
-          done();
-        });
-      },
-    })
-      .type("hello")
-      .go();
+    return new Promise((resolve) => {
+      const instance = new TypeIt(el, {
+        speed: 0,
+        afterComplete: () => {
+          instance.type("goodbye").flush(() => {
+            expect(el.textContent).toEqual("hellogoodbye|");
+            expect(instance.getQueue().getItems(true).length).toBeGreaterThan(
+              0
+            );
+            resolve();
+          });
+        },
+      })
+        .type("hello")
+        .go();
+    });
   });
 });
 
 describe("callbacks", () => {
-  test("Does not call afterComplete() callback", (done) => {
+  test("Does not call afterComplete() callback", () => {
     const el = document.getElementById("el");
-    const afterCompleteCallback = jest.fn();
+    const afterCompleteCallback = vi.fn();
 
-    new TypeIt(el, { speed: 0, afterComplete: afterCompleteCallback })
-      .type("hello")
-      .flush(() => {
-        expect(afterCompleteCallback).not.toHaveBeenCalled();
-        done();
-      });
+    return new Promise((resolve) => {
+      new TypeIt(el, { speed: 0, afterComplete: afterCompleteCallback })
+        .type("hello")
+        .flush(() => {
+          expect(afterCompleteCallback).not.toHaveBeenCalled();
+          resolve();
+        });
+    });
   });
 });

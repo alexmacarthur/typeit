@@ -1,7 +1,19 @@
 import asArray from "./helpers/asArray";
 import { QueueItem } from "./types";
 
-let Queue = function (initialItems: QueueItem[]) {
+export interface QueueI {
+  add: (steps: QueueItem[] | QueueItem) => typeof Queue;
+  set: (index: number, item: QueueItem) => void;
+  wipe: () => void;
+  done: (key: Symbol, shouldDestroy?: boolean) => void;
+  reset: () => void;
+  destroy: (key: Symbol) => void;
+  getItems: (all?: boolean) => QueueItem[];
+  getQueue: () => Map<Symbol, QueueItem>;
+  getTypeable: () => QueueItem[];
+}
+
+let Queue = function (initialItems: QueueItem[]): QueueI {
   /**
    * Add a single or several steps onto the `waiting` queue.
    */
@@ -67,9 +79,9 @@ let Queue = function (initialItems: QueueItem[]) {
     add,
     set,
     wipe,
+    done,
     reset,
     destroy,
-    done,
     getItems,
     getQueue,
     getTypeable,

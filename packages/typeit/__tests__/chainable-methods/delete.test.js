@@ -1,8 +1,8 @@
-import TypeIt from "../../src";
+import TypeIt from "../../src/TypeIt.ts";
 import * as wait from "../../src/helpers/wait";
 
 beforeEach(() => {
-  jest.clearAllMocks();
+  vi.clearAllMocks();
 });
 
 describe("deleting fires correctly", () => {
@@ -55,7 +55,7 @@ describe("timeouts fire correctly", () => {
       <span id="element"></span>
     </div>`;
 
-    waitSpy = jest.spyOn(wait, "default");
+    waitSpy = vi.spyOn(wait, "default");
   });
 
   test("Executes correctly when deletion is not instant.", (done) => {

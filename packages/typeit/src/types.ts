@@ -1,5 +1,3 @@
-export type TypeItInstance = (element: El | string, options: Options) => void;
-
 export type Character = {
   node: El | null;
   content: string | Node;
@@ -28,6 +26,8 @@ export interface Options {
   lifeLike?: boolean;
   loop?: boolean;
   loopDelay?: number | number[];
+
+  // @todo Rename to something like "betweenStringDelay"
   nextStringDelay?: number | number[];
   speed?: number;
   startDelay?: number;
@@ -39,6 +39,13 @@ export interface Options {
   beforeStep?: Function;
   afterStep?: Function;
   afterComplete?: Function;
+}
+
+export interface Statuses {
+  started: boolean;
+  completed: boolean;
+  frozen: boolean;
+  destroyed: boolean;
 }
 
 export type ActionOpts = Options & {

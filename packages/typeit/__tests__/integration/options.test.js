@@ -1,4 +1,4 @@
-import TypeIt from "../../src";
+import TypeIt from "../../src/TypeIt";
 
 test("Cursor should function by default.", () => {
   setHTML`<div>'
@@ -199,7 +199,7 @@ describe("html option", () => {
 });
 
 describe("startDelete option", () => {
-  test("It should completely remove hard-coded string before typing.", (done) => {
+  test("It should completely remove hard-coded string before typing.", () => {
     setHTML`
     <div>
       <span id="element">hard-coded!</span>
@@ -207,17 +207,19 @@ describe("startDelete option", () => {
   `;
     const element = document.getElementById("element");
 
-    new TypeIt(element, {
-      strings: "Hello.",
-      speed: 0,
-      startDelete: true,
-      afterComplete: () => {
-        expect(element.innerHTML).toEqual(
-          expect.stringMatching(/^Hello\.<span class="ti-cursor.*?<\/span>$/)
-        );
+    return new Promise((resolve) => {
+      new TypeIt(element, {
+        strings: "Hello.",
+        speed: 0,
+        startDelete: true,
+        afterComplete: () => {
+          expect(element.innerHTML).toEqual(
+            expect.stringMatching(/^Hello\.<span class="ti-cursor.*?<\/span>$/)
+          );
 
-        done();
-      },
-    }).go();
+          resolve();
+        },
+      }).go();
+    });
   });
 });

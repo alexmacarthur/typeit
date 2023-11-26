@@ -10,7 +10,7 @@ let cursorOptions = {
 
 const addMockAnimation = (element, animationProperties = {}) => {
   const mockAnimation = {
-    cancel: jest.fn(),
+    cancel: vi.fn(),
     currentTime: 999,
     playState: "running",
     effect: {
@@ -37,7 +37,7 @@ beforeEach(() => {
 describe("animation already exists", () => {
   it("cancels it.", () => {
     let mockAnimation = addMockAnimation(cursor);
-    const setCursorAnimationSpy = jest
+    const setCursorAnimationSpy = vi
       .spyOn(setCursorAnimation, "default")
       .mockImplementation(() => {
         return {};
@@ -60,7 +60,7 @@ describe("animation has already been cancelled", () => {
   it("does not cancel it or preserve current time.", () => {
     cursor.getAnimations = () => [];
 
-    const setCursorAnimationSpy = jest
+    const setCursorAnimationSpy = vi
       .spyOn(setCursorAnimation, "default")
       .mockImplementation(() => {
         return {};
@@ -82,7 +82,7 @@ describe("animation has been removed for some other reason", () => {
   it("does not attempt to cancel a nonexistent animation.", () => {
     cursor.getAnimations = () => [];
 
-    const setCursorAnimationSpy = jest
+    const setCursorAnimationSpy = vi
       .spyOn(setCursorAnimation, "default")
       .mockImplementation(() => {
         return {};
@@ -104,7 +104,7 @@ describe("cursor options are not passed", () => {
   it("returns early.", () => {
     let mockAnimation = addMockAnimation(cursor);
 
-    const setCursorAnimationSpy = jest.spyOn(setCursorAnimation, "default");
+    const setCursorAnimationSpy = vi.spyOn(setCursorAnimation, "default");
 
     rebuildCursorAnimation({
       cursor,
@@ -120,7 +120,7 @@ describe("cursor options are not passed", () => {
 
 describe("uses provided cursor options", () => {
   it("uses frames", () => {
-    const setCursorAnimationSpy = jest.spyOn(setCursorAnimation, "default");
+    const setCursorAnimationSpy = vi.spyOn(setCursorAnimation, "default");
 
     rebuildCursorAnimation({
       cursor,

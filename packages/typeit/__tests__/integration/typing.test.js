@@ -1,4 +1,4 @@
-import TypeIt from "../../src";
+import TypeIt from "../../src/TypeIt.ts";
 
 test("Generates a queue correctly.", () => {
   setHTML`<div>'

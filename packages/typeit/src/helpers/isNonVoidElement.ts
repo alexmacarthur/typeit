@@ -1,1 +1,1 @@
-export default (el) => /<(.+)>(.*?)<\/(.+)>/.test(el.outerHTML);
+export default (el: any) => /<(.+)>(.*?)<\/(.+)>/.test(el.outerHTML);

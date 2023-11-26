@@ -1,7 +1,7 @@
-import TypeIt from "../src";
+import TypeIt from "../src/TypeIt.ts";
 
 beforeEach(() => {
-  jest.clearAllMocks();
+  vi.clearAllMocks();
 
   setHTML`<div>
     <span id="el"></span>
@@ -11,7 +11,7 @@ beforeEach(() => {
 describe("beforeStep", () => {
   test("it should be called before each step", (done) => {
     const el = document.getElementById("el");
-    const beforeStepMock = jest.fn();
+    const beforeStepMock = vi.fn();
 
     new TypeIt(el, {
       speed: 1,
@@ -28,7 +28,7 @@ describe("beforeStep", () => {
 describe("afterStep", () => {
   test("it should be called after each step", (done) => {
     const el = document.getElementById("el");
-    const afterStepMock = jest.fn();
+    const afterStepMock = vi.fn();
 
     new TypeIt(el, {
       speed: 1,
@@ -45,7 +45,7 @@ describe("afterStep", () => {
 describe("beforeString", () => {
   test("it should be called before each string via configuration object.", (done) => {
     const el = document.getElementById("el");
-    const beforeStringMock = jest.fn();
+    const beforeStringMock = vi.fn();
 
     new TypeIt(el, {
       speed: 1,
@@ -60,7 +60,7 @@ describe("beforeString", () => {
 
   test("it should be called before each string via instance method.", (done) => {
     const el = document.getElementById("el");
-    const beforeStringMock = jest.fn();
+    const beforeStringMock = vi.fn();
 
     new TypeIt(el, {
       speed: 1,
@@ -79,7 +79,7 @@ describe("beforeString", () => {
 describe("afterString", () => {
   test("it should be called after each string set via configuration object", (done) => {
     const el = document.getElementById("el");
-    const afterStringMock = jest.fn();
+    const afterStringMock = vi.fn();
 
     new TypeIt(el, {
       speed: 1,
@@ -94,7 +94,7 @@ describe("afterString", () => {
 
   test("it should be called after each string set via instance method.", (done) => {
     const el = document.getElementById("el");
-    const afterStringMock = jest.fn();
+    const afterStringMock = vi.fn();
 
     new TypeIt(el, {
       speed: 1,

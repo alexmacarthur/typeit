@@ -12,11 +12,11 @@ beforeEach(() => {
     currentTime: 0,
   };
 
-  global.HTMLElement.prototype.animate = () => animation;
-  global.HTMLElement.prototype.getAnimations = () => [animation];
+  globalThis.HTMLElement.prototype.animate = () => animation;
+  globalThis.HTMLElement.prototype.getAnimations = () => [animation];
 });
 
-global.setHTML = (html, shouldReturn = false) => {
+globalThis.setHTML = (html, shouldReturn = false) => {
   let domString = String.raw({ raw: html })
     .replace(/(\r\n|\n|\r)/gm, "")
     .replace(/>\s+</g, "><");
@@ -28,7 +28,7 @@ global.setHTML = (html, shouldReturn = false) => {
   document.body.innerHTML = domString;
 };
 
-global.verifyQueue = ({ queue, totalItems, totalTypeableItems }) => {
+globalThis.verifyQueue = ({ queue, totalItems, totalTypeableItems }) => {
   const queueItems = queue.getItems();
   const typeableItems = queueItems.filter((i) => i.typeable);
 
@@ -36,16 +36,16 @@ global.verifyQueue = ({ queue, totalItems, totalTypeableItems }) => {
   expect(typeableItems).toHaveLength(totalTypeableItems);
 };
 
-jest.fn().constructor.prototype.times = function () {
+vi.fn().constructor.prototype.times = function () {
   return this.mock.calls.length;
 };
 
-global.makeMocks = () => {
+globalThis.makeMocks = () => {
   const iterator = {
     next() {
       return {
         done: false,
-        value: jest.fn(),
+        value: vi.fn(),
       };
     },
 
