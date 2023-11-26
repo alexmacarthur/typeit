@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import TypeIt from "../src/index";
 
+const SuperStrong = ({ children }) => {
+  return <strong style={{ fontSize: "80px" }}>{children}</strong>;
+};
+
 const App = () => {
   const [options, setOptions] = useState({ speed: 50, loop: true });
   const [showElements, setShowElements] = useState(true);
@@ -12,7 +16,13 @@ const App = () => {
           <TypeIt className="test" options={options}>
             This is the first example.
           </TypeIt>
+
+          <TypeIt>
+            Weak text. <SuperStrong>Super strong text.</SuperStrong>
+          </TypeIt>
+
           <br />
+
           <TypeIt>And this is another example.</TypeIt>
           <br />
           <TypeIt

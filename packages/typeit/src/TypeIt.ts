@@ -376,7 +376,7 @@ class TypeIt {
           let newIndex = await this.#fireItemWithContext(index, queueItems);
 
           // Ensure each skipped item goes through the cleanup process,
-          // so that methods like .flush() don't get messed up. There 
+          // so that methods like .flush() don't get messed up. There
           // should only be a difference if the cursor moved.
           //
           // @todo Refactor this. Gotta be a more efficient way.

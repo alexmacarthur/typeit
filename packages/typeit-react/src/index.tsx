@@ -1,21 +1,15 @@
 import React, { forwardRef, useRef, useEffect, useState } from "react";
 import { default as TypeItCore, TypeItOptions } from "typeit";
+import type { TypeIt as ITypeIt } from "typeit";
 
 export interface TypeItProps {
   as?: keyof JSX.IntrinsicElements;
   options?: TypeItOptions;
   children?: React.ReactNode;
-  getBeforeInit?: (instance: any) => Function;
-  getAfterInit?: (instance: any) => Function;
+  getBeforeInit?: (instance: ITypeIt) => Function;
+  getAfterInit?: (instance: ITypeIt) => Function;
   [key: string]: any;
 }
-
-const defaultProps: TypeItProps = {
-  as: "span",
-  options: {},
-  getBeforeInit: (instance) => instance,
-  getAfterInit: (instance) => instance,
-};
 
 const DynamicElementComponent = forwardRef((props: any, ref) => {
   const { as: As } = props;
@@ -23,11 +17,20 @@ const DynamicElementComponent = forwardRef((props: any, ref) => {
   return <As ref={ref} {...props} />;
 });
 
-const TypeIt: React.FunctionComponent<TypeItProps> = (props: TypeItProps) => {
-  const elementRef = useRef(null);
-  const instanceRef = useRef(null);
-  const { options, children, getBeforeInit, getAfterInit, ...remainingProps } =
-    props;
+// Must pull this into a separate variable to avoid React
+// thinking it's a different object on every render.
+const defaultPropOptions = {};
+
+const TypeIt: React.FunctionComponent<TypeItProps> = ({
+  as = "span",
+  options = defaultPropOptions,
+  children = null,
+  getBeforeInit = (instance: ITypeIt) => instance,
+  getAfterInit = (instance: ITypeIt) => instance,
+  ...remainingProps
+}: TypeItProps) => {
+  const elementRef = useRef<HTMLElement>(null);
+  const instanceRef = useRef<ITypeIt>(null);
   const [shouldShowChildren, setShouldShowChildren] = useState<boolean>(true);
   const [instanceOptions, setInstanceOptions] = useState(null);
 
@@ -43,6 +46,7 @@ const TypeIt: React.FunctionComponent<TypeItProps> = (props: TypeItProps) => {
 
   function generateNewInstance() {
     instanceRef.current = new TypeItCore(elementRef.current, instanceOptions);
+
     instanceRef.current = getBeforeInit(instanceRef.current);
     instanceRef.current.go();
     instanceRef.current = getAfterInit(instanceRef.current);
@@ -82,13 +86,12 @@ const TypeIt: React.FunctionComponent<TypeItProps> = (props: TypeItProps) => {
   return (
     <DynamicElementComponent
       ref={elementRef}
+      as={as}
       children={shouldShowChildren ? children : null}
       style={{ opacity: shouldShowChildren ? 0 : 1 }}
       {...remainingProps}
     />
   );
 };
-
-TypeIt.defaultProps = defaultProps;
 
 export default TypeIt;
