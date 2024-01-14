@@ -14,6 +14,9 @@ beforeEach(() => {
 
   globalThis.HTMLElement.prototype.animate = () => animation;
   globalThis.HTMLElement.prototype.getAnimations = () => [animation];
+  globalThis.requestAnimationFrame = (cb) => {
+    cb();
+  }
 });
 
 globalThis.setHTML = (html, shouldReturn = false) => {
