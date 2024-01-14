@@ -13,24 +13,28 @@ const App = () => {
     <>
       {showElements && (
         <>
-          <TypeIt className="test" options={options}>
+          {/* <TypeIt className="test" options={options}>
             This is the first example.
-          </TypeIt>
+          </TypeIt> */}
 
-          <TypeIt>
+          <br />
+
+          <TypeIt as={"h3"}>This will be typed in an H3 tag.</TypeIt>
+
+          {/* <TypeIt>
             Weak text. <SuperStrong>Super strong text.</SuperStrong>
-          </TypeIt>
+          </TypeIt> */}
 
           <br />
 
-          <TypeIt>And this is another example.</TypeIt>
+          {/* <TypeIt>And this is another example.</TypeIt> */}
           <br />
-          <TypeIt
+          {/* <TypeIt
             options={{
               strings: "A final one!",
               ...options,
             }}
-          />
+          /> */}
         </>
       )}
 

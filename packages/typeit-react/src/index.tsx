@@ -1,13 +1,12 @@
-import React, { forwardRef, useRef, useEffect, useState } from "react";
-import { default as TypeItCore, TypeItOptions } from "typeit";
-import type { TypeIt as ITypeIt } from "typeit";
+import React, { forwardRef, useEffect, useRef, useState } from "react";
+import { Options, default as TypeItCore } from "typeit";
 
 export interface TypeItProps {
   as?: keyof JSX.IntrinsicElements;
-  options?: TypeItOptions;
+  options?: Options;
   children?: React.ReactNode;
-  getBeforeInit?: (instance: ITypeIt) => Function;
-  getAfterInit?: (instance: ITypeIt) => Function;
+  getBeforeInit?: (instance: TypeItCore) => TypeItCore;
+  getAfterInit?: (instance: TypeItCore) => TypeItCore;
   [key: string]: any;
 }
 
@@ -25,12 +24,12 @@ const TypeIt: React.FunctionComponent<TypeItProps> = ({
   as = "span",
   options = defaultPropOptions,
   children = null,
-  getBeforeInit = (instance: ITypeIt) => instance,
-  getAfterInit = (instance: ITypeIt) => instance,
+  getBeforeInit = (instance: TypeItCore) => instance,
+  getAfterInit = (instance: TypeItCore) => instance,
   ...remainingProps
 }: TypeItProps) => {
   const elementRef = useRef<HTMLElement>(null);
-  const instanceRef = useRef<ITypeIt>(null);
+  const instanceRef = useRef<TypeItCore>(null);
   const [shouldShowChildren, setShouldShowChildren] = useState<boolean>(true);
   const [instanceOptions, setInstanceOptions] = useState(null);
 

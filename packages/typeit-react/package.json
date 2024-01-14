@@ -1,6 +1,6 @@
 {
   "name": "typeit-react",
-  "version": "2.7.0",
+  "version": "2.7.1",
   "description": "React component for the most versatile JavaScript animated typing utility on the planet.",
   "homepage": "https://typeitjs.com",
   "main": "dist/index.umd.js",
@@ -11,7 +11,7 @@
     "tsc": "tsc",
     "start": "vite serve examples",
     "prettier": "prettier --write \"**/*.{md,js}\"",
-    "test": "echo \"Error: no test specified\" && exit 0",
+    "test": "vitest run src",
     "prepare": "npm run build"
   },
   "files": [
@@ -40,13 +40,18 @@
   "dependencies": {
     "react": ">=18.2.0",
     "react-dom": ">=18.2.0",
-    "typeit": "^8.8.0"
+    "typeit": "^8.8.3"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.23.3",
-    "@types/react": "^18.2.38",
-    "terser": "^5.24.0",
-    "typescript": "^5.3.2",
-    "vite": "^5.0.2"
+    "@testing-library/jest-dom": "^6.2.0",
+    "@testing-library/react": "^14.1.2",
+    "@types/react": "^18.2.47",
+    "jsdom": "^23.2.0",
+    "terser": "^5.26.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.11",
+    "vitest": "^1.2.0",
+    "vitest-dom": "^0.1.1"
   }
 }
