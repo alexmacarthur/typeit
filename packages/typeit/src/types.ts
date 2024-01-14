@@ -77,9 +77,10 @@ export type QueueItem = {
 
 export type QueueMapPair = [Symbol, QueueItem];
 
-export interface El extends HTMLElement {
-  value: string | number;
+export type El = (HTMLElement | HTMLInputElement) & {
   originalParent?: HTMLElement;
-}
+};
+
+// export type NewEl = (HTMLElement | HTMLInputElement) & { originalParent?: HTMLElement };
 
 export type Sides = "START" | "END";

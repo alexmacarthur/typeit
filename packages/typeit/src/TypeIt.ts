@@ -45,6 +45,8 @@ import {
   Statuses,
 } from "./types";
 
+export type { Options, QueueI, QueueItem, Statuses };
+
 class TypeIt {
   private element: El;
   private timeouts: number[];
@@ -324,7 +326,7 @@ class TypeIt {
 
   async #empty() {
     if (this.#elementIsInput()) {
-      this.element.value = "";
+      (this.element as HTMLInputElement).value = "";
       return;
     }
 
@@ -525,7 +527,7 @@ class TypeIt {
     }
   }
 
-  #elementIsInput() {
+  #elementIsInput(): boolean {
     return isInput(this.element);
   }
 
@@ -670,7 +672,9 @@ class TypeIt {
     if (!this.#allChars.length) return;
 
     if (this.#isInput) {
-      this.element.value = (this.element.value as string).slice(0, -1);
+      (this.element as HTMLInputElement).value = (
+        (this.element as HTMLInputElement).value as string
+      ).slice(0, -1);
     } else {
       this.#removeNode(this.#allChars[this.cursorPosition]);
     }
