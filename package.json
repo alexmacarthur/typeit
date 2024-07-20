@@ -5,9 +5,8 @@
   "main": "",
   "author": "Alex MacArthur",
   "scripts": {
-    "build": "lerna bootstrap && lerna run build",
-    "publish": "lerna bootstrap && lerna publish",
-    "bootstrap": "lerna bootstrap --force-local",
+    "build": "lerna run build",
+    "publish": "lerna publish",
     "test": "lerna run test",
     "format": "prettier --write \"./packages/**/*.{md,js,tsx,ts}\""
   },
@@ -15,9 +14,9 @@
     "*.{js,ts,tsx,md}": "format --write"
   },
   "devDependencies": {
-    "husky": "^8.0.2",
-    "lerna": "^6.1.0",
-    "lint-staged": "^13.1.0",
-    "prettier": "^2.8.1"
+    "husky": "^9.1.1",
+    "lerna": "^8.1.6",
+    "lint-staged": "^15.2.7",
+    "prettier": "^3.3.3"
   }
 }

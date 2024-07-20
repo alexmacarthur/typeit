@@ -38,20 +38,20 @@
   "author": "Alex MacArthur <alex@macarthur.me> (https://macarthur.me)",
   "license": "GPL-3.0",
   "dependencies": {
-    "react": ">=18.2.0",
-    "react-dom": ">=18.2.0",
+    "react": ">=18.3.1",
+    "react-dom": ">=18.3.1",
     "typeit": "^8.8.3"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "^7.23.3",
-    "@testing-library/jest-dom": "^6.2.0",
-    "@testing-library/react": "^14.1.2",
-    "@types/react": "^18.2.47",
-    "jsdom": "^23.2.0",
-    "terser": "^5.26.0",
-    "typescript": "^5.3.3",
-    "vite": "^5.0.11",
-    "vitest": "^1.2.0",
+    "@babel/preset-typescript": "^7.24.7",
+    "@testing-library/jest-dom": "^6.4.6",
+    "@testing-library/react": "^16.0.0",
+    "@types/react": "^18.3.3",
+    "jsdom": "^24.1.0",
+    "terser": "^5.31.3",
+    "typescript": "^5.5.3",
+    "vite": "^5.3.4",
+    "vitest": "^2.0.3",
     "vitest-dom": "^0.1.1"
   }
 }
