@@ -149,7 +149,7 @@ describe("go()", () => {
         let element = document.getElementById("element");
 
         expect(element.dataset.typeitId).toEqual(
-          cursorNode.dataset.tiAnimationId
+          cursorNode.dataset.tiAnimationId,
         );
         expect(cursorNode.style.visibility).toEqual("");
         expect(cursorNode).not.toBeNull();
@@ -220,7 +220,7 @@ describe("type()", () => {
     let functionalInstance = new TypeIt("#element").type(() => "a");
 
     expect(instance.getQueue().getItems()).toHaveLength(
-      functionalInstance.getQueue().getItems().length
+      functionalInstance.getQueue().getItems().length,
     );
   });
 });
@@ -262,7 +262,7 @@ describe("move()", () => {
     let functionalInstance = new TypeIt("#element").move(() => 9);
 
     expect(instance.getQueue().getItems()).toHaveLength(
-      functionalInstance.getQueue().getItems().length
+      functionalInstance.getQueue().getItems().length,
     );
   });
 });
@@ -418,8 +418,8 @@ describe("reset()", () => {
         afterComplete: () => {
           expect(element.innerHTML).toEqual(
             expect.stringMatching(
-              /Hi.<span class="ti-cursor" data-ti-animation-id=".+">|<\/span>/
-            )
+              /Hi.<span class="ti-cursor" data-ti-animation-id=".+">|<\/span>/,
+            ),
           );
           instance = instance.reset();
           expect(element.innerHTML).toEqual("");

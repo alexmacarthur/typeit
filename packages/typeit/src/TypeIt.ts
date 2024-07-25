@@ -10,6 +10,7 @@ import asArray from "./helpers/asArray";
 import calculateDelay from "./helpers/calculateDelay";
 import calculatePace from "./helpers/calculatePace";
 import { maybeChunkStringAsHtml } from "./helpers/chunkStrings";
+import cleanUpSkipped from "./helpers/cleanUpSkipped";
 import countStepsToSelector from "./helpers/countStepsToSelector";
 import createElement from "./helpers/createElement";
 import destroyTimeouts from "./helpers/destroyTimeouts";
@@ -175,13 +176,13 @@ class TypeIt {
         func: () => this.#type(createElement("BR")),
         typeable: true,
       },
-      actionOpts
+      actionOpts,
     );
   }
 
   move(
     movementArg: string | number | (() => string | number) | null,
-    actionOpts: ActionOpts = {}
+    actionOpts: ActionOpts = {},
   ) {
     movementArg = handleFunctionalArg<string | number>(movementArg);
 
@@ -207,11 +208,11 @@ class TypeIt {
             delay: instant ? 0 : this.#getPace(),
             cursorable: true,
           },
-          Math.abs(numberOfSteps)
+          Math.abs(numberOfSteps),
         ),
         bookEndQueueItems[1],
       ],
-      actionOpts
+      actionOpts,
     );
   }
 
@@ -220,7 +221,7 @@ class TypeIt {
 
     return this.#queueAndReturn(
       [bookEndQueueItems[0], { func: () => func(this) }, bookEndQueueItems[1]],
-      actionOpts
+      actionOpts,
     );
   }
 
@@ -235,13 +236,13 @@ class TypeIt {
   pause(milliseconds: number | (() => number), actionOpts: ActionOpts = {}) {
     return this.#queueAndReturn(
       { delay: handleFunctionalArg<number>(milliseconds) },
-      actionOpts
+      actionOpts,
     );
   }
 
   delete(
     numCharacters: number | string | (() => number | null) = null,
-    actionOpts: ActionOpts = {}
+    actionOpts: ActionOpts = {},
   ) {
     numCharacters = handleFunctionalArg<number>(numCharacters);
     let bookEndQueueItems = this.#generateTemporaryOptionQueueItems(actionOpts);
@@ -275,11 +276,11 @@ class TypeIt {
             delay: instant ? 0 : this.#getPace(1),
             deletable: true,
           },
-          rounds
+          rounds,
         ),
         bookEndQueueItems[1],
       ],
-      actionOpts
+      actionOpts,
     );
   }
 
@@ -344,17 +345,7 @@ class TypeIt {
   async #fire(remember: boolean = true) {
     this.statuses.started = true;
 
-    // @todo remove this eventually..
-    // console.log(
-    //   "Total time:",
-    //   queueItems.reduce((total, step) => {
-    //     total = total + step.delay;
-
-    //     return total;
-    //   }, 0)
-    // );
-
-    let cleanUp = (qKey) => {
+    let cleanUp = (qKey: Symbol) => {
       this.queue.done(qKey, !remember);
     };
 
@@ -377,19 +368,12 @@ class TypeIt {
         ) {
           let newIndex = await this.#fireItemWithContext(index, queueItems);
 
-          // Ensure each skipped item goes through the cleanup process,
-          // so that methods like .flush() don't get messed up. There
-          // should only be a difference if the cursor moved.
-          //
-          // @todo Refactor this. Gotta be a more efficient way.
-          Array(newIndex - index)
-            .fill(index + 1)
-            .map((x, y) => x + y)
-            .forEach((i) => {
-              let [key] = queueItems[i];
-
-              cleanUp(key);
-            });
+          cleanUpSkipped({
+            index,
+            newIndex,
+            queueItems,
+            cleanUp,
+          });
 
           index = newIndex;
         }
@@ -424,7 +408,7 @@ class TypeIt {
     this.cursorPosition = updateCursorPosition(
       step,
       this.cursorPosition,
-      this.#allChars
+      this.#allChars,
     );
 
     repositionCursor(this.element, this.#allChars, this.cursorPosition);
@@ -468,7 +452,7 @@ class TypeIt {
 
   #fireItemWithContext(
     index: number,
-    queueItems: QueueMapPair[]
+    queueItems: QueueMapPair[],
   ): Promise<number> {
     return fireItem({
       index,
@@ -482,7 +466,7 @@ class TypeIt {
   async #wait(
     callback: Function,
     delay: number | undefined,
-    silent: boolean = false
+    silent: boolean = false,
   ): Promise<void> {
     if (this.statuses.frozen) {
       await new Promise<void>((resolve) => {
@@ -576,7 +560,7 @@ class TypeIt {
               func: this.#delete.bind(this),
               delay: this.#getPace(1),
             },
-            this.queue.getTypeable().length
+            this.queue.getTypeable().length,
           );
 
       this.#addSplitPause(splitItems);
@@ -585,11 +569,11 @@ class TypeIt {
 
   #buildOptions = (options: Options): void => {
     options.cursor = processCursorOptions(
-      options.cursor ?? DEFAULT_OPTIONS.cursor
+      options.cursor ?? DEFAULT_OPTIONS.cursor,
     );
 
     this.opts.strings = this.#prependHardcodedStrings(
-      asArray<string>(this.opts.strings)
+      asArray<string>(this.opts.strings),
     );
 
     this.opts = merge(this.opts, {
@@ -622,8 +606,8 @@ class TypeIt {
             delay: this.#getPace(1),
             deletable: true,
           },
-          this.#allChars.length
-        )
+          this.#allChars.length,
+        ),
       );
 
       return strings;

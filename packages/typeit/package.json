@@ -40,9 +40,9 @@
   },
   "devDependencies": {
     "terser": "^5.31.3",
-    "typescript": "^5.5.3",
+    "typescript": "^5.5.4",
     "vite": "^5.3.4",
-    "vitest": "^2.0.3"
+    "vitest": "^2.0.4"
   },
   "dependencies": {
     "@types/web-animations-js": "^2.2.16"

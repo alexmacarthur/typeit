@@ -9,7 +9,7 @@ describe("a boolean is passed", () => {
         autoPause: true,
         autoPauseDelay: 500,
         animation: expect.anything(),
-      })
+      }),
     );
   });
 
@@ -89,7 +89,7 @@ describe("an object is passed", () => {
           iterations: Infinity,
           easing: "steps(2, start)",
           fill: "forwards",
-        })
+        }),
       );
     });
   });
@@ -112,7 +112,7 @@ describe("an object is passed", () => {
         iterations: 2,
         easing: "steps(2, start)",
         fill: "backwards",
-      })
+      }),
     );
   });
 });

@@ -1,7 +1,7 @@
 let select = (
   selector: string,
   element: Node = document,
-  all: boolean = false
+  all: boolean = false,
 ): Node | NodeList | null => {
   return element[`querySelector${all ? "All" : ""}`](selector);
 };

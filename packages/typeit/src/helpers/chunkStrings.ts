@@ -7,7 +7,7 @@ import { CURSOR_CLASS } from "../constants";
 export function walkElementNodes(
   element: El | Node,
   shouldReverse: boolean = false,
-  shouldIncludeCursor: boolean = false
+  shouldIncludeCursor: boolean = false,
 ): El[] {
   let cursor = (element as HTMLElement).querySelector(`.${CURSOR_CLASS}`);
 
@@ -67,7 +67,7 @@ export function chunkStringAsHtml(string: string): El[] {
  */
 export function maybeChunkStringAsHtml(
   str: string,
-  asHtml = true
+  asHtml = true,
 ): Partial<El>[] {
   return asHtml ? chunkStringAsHtml(str) : toArray(str).map(createTextNode);
 }

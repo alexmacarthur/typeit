@@ -17,7 +17,7 @@ test("Parses normal string correctly.", () => {
 
 test("Parses single HTML tag.", () => {
   let result = chunkStringAsHtml(
-    "Hello, this is some <strong>bold</strong> text."
+    "Hello, this is some <strong>bold</strong> text.",
   );
 
   expect(result).toMatchSnapshot();
@@ -25,7 +25,7 @@ test("Parses single HTML tag.", () => {
 
 test("Parses multiple HTML tags.", () => {
   let result = chunkStringAsHtml(
-    "Hello, this is some <strong>bold</strong> text, and some <i>italicized</i> text."
+    "Hello, this is some <strong>bold</strong> text, and some <i>italicized</i> text.",
   );
 
   expect(result).toMatchSnapshot();
@@ -33,7 +33,7 @@ test("Parses multiple HTML tags.", () => {
 
 test("Parses HTML tag at beginning of string.", () => {
   let result = chunkStringAsHtml(
-    "<strong>Hello!</strong> This is some text with HTML at the beginning."
+    "<strong>Hello!</strong> This is some text with HTML at the beginning.",
   );
 
   expect(result).toMatchSnapshot();
@@ -41,7 +41,7 @@ test("Parses HTML tag at beginning of string.", () => {
 
 test("Parses HTML tag at end of string.", () => {
   let result = chunkStringAsHtml(
-    "This is some text with HTML at the <em>end.</em>"
+    "This is some text with HTML at the <em>end.</em>",
   );
 
   expect(result).toMatchSnapshot();
@@ -49,7 +49,7 @@ test("Parses HTML tag at end of string.", () => {
 
 test("Parses HTML tag with attributes.", () => {
   let result = chunkStringAsHtml(
-    'This string has an <strong class="strong-class" id="strong-id" data-whatever="data-att">element</strong> with attributes.'
+    'This string has an <strong class="strong-class" id="strong-id" data-whatever="data-att">element</strong> with attributes.',
   );
 
   expect(result).toMatchSnapshot();
@@ -58,13 +58,13 @@ test("Parses HTML tag with attributes.", () => {
 describe("maybeChunkStringAsHtml()", () => {
   test("Should return noderized string when setting is enabled.", () => {
     expect(
-      maybeChunkStringAsHtml("A <em>fancy</em> string.")
+      maybeChunkStringAsHtml("A <em>fancy</em> string."),
     ).toMatchSnapshot();
   });
 
   test("Should correctly transform non-HTML string as character objects.", () => {
     expect(
-      maybeChunkStringAsHtml("A <em>fancy</em> string.", false)
+      maybeChunkStringAsHtml("A <em>fancy</em> string.", false),
     ).toMatchSnapshot();
   });
 });
@@ -79,7 +79,7 @@ describe("walkElementNodes()", () => {
 
     // "B" should have an original parent of the <span>.
     expect(thirdNode.originalParent).toMatchObject(
-      document.querySelector("span")
+      document.querySelector("span"),
     );
 
     // Includes each text node, and separate nodes for the parent elements themselves.

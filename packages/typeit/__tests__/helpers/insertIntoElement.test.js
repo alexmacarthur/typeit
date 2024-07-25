@@ -31,7 +31,7 @@ describe("plain text", () => {
     insertIntoElement(el, document.createTextNode("x"));
 
     expect(document.body.innerHTML).toEqual(
-      '<span id="el">x<i class="ti-cursor">|</i></span>'
+      '<span id="el">x<i class="ti-cursor">|</i></span>',
     );
   });
 
@@ -48,12 +48,12 @@ describe("plain text", () => {
 
     insertIntoElement(el, em);
     expect(document.body.innerHTML).toEqual(
-      '<span id="el"><em></em><i class="ti-cursor">|</i></span>'
+      '<span id="el"><em></em><i class="ti-cursor">|</i></span>',
     );
 
     insertIntoElement(el, text);
     expect(document.body.innerHTML).toEqual(
-      '<span id="el"><em>a</em><i class="ti-cursor">|</i></span>'
+      '<span id="el"><em>a</em><i class="ti-cursor">|</i></span>',
     );
   });
 
@@ -62,7 +62,7 @@ describe("plain text", () => {
     const el = document.querySelector("#top");
 
     const spanEl = getParsedBody(
-      'a<em id="middle">b<strong id="bottom">c</strong></em>'
+      'a<em id="middle">b<strong id="bottom">c</strong></em>',
     );
     const nodes = walkElementNodes(expandTextNodes(spanEl));
 
@@ -71,7 +71,7 @@ describe("plain text", () => {
     });
 
     expect(document.body.innerHTML).toEqual(
-      '<span id="top">a<em id="middle">b<strong id="bottom">c</strong></em><i class="ti-cursor">|</i></span>'
+      '<span id="top">a<em id="middle">b<strong id="bottom">c</strong></em><i class="ti-cursor">|</i></span>',
     );
   });
 
@@ -91,7 +91,7 @@ describe("plain text", () => {
     });
 
     expect(document.body.innerHTML).toEqual(
-      '<span id="top">a<br>b<br>c<i class="ti-cursor">|</i></span>'
+      '<span id="top">a<br>b<br>c<i class="ti-cursor">|</i></span>',
     );
   });
 });

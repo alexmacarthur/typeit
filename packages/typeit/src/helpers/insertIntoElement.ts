@@ -25,7 +25,7 @@ let insertIntoElement = (originalTarget: El, character: El) => {
 
   target.insertBefore(
     character as El,
-    (select("." + CURSOR_CLASS, target) as Node) || null
+    (select("." + CURSOR_CLASS, target) as Node) || null,
   );
 };
 

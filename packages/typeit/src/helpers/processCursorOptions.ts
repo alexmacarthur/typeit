@@ -3,7 +3,7 @@ import { CursorOptions } from "../types";
 import merge from "./merge";
 
 let processCursorOptions = (
-  cursorOptions: boolean | CursorOptions
+  cursorOptions: boolean | CursorOptions,
 ): boolean | CursorOptions => {
   if (typeof cursorOptions === "object") {
     let newOptions: CursorOptions = {};
@@ -15,7 +15,7 @@ let processCursorOptions = (
       cursorOptions.animation?.frames || defaultFrames;
     newOptions.animation.options = merge(
       defaultOptions,
-      cursorOptions.animation?.options || {}
+      cursorOptions.animation?.options || {},
     );
     newOptions.autoPause =
       cursorOptions.autoPause ?? DEFAULT_OPTIONS.cursor.autoPause;

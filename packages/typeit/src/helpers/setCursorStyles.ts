@@ -22,12 +22,12 @@ export let setCursorStyles = (id: string, element: El) => {
         value || computedStyles[item]
       });`;
     },
-    ""
+    "",
   );
 
   // Set animation styles & custom properties.
   appendStyleBlock(
     `${cursorSelector} { display: inline-block; width: 0; ${customProperties} }`,
-    id
+    id,
   );
 };

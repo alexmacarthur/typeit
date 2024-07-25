@@ -16,7 +16,7 @@ describe("rendering as specific element", () => {
           }}
         >
           A span tag.
-        </TypeIt>
+        </TypeIt>,
       );
     });
 
@@ -39,7 +39,7 @@ describe("rendering as specific element", () => {
           }}
         >
           An H1 tag.
-        </TypeIt>
+        </TypeIt>,
       );
     });
 

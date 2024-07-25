@@ -70,7 +70,7 @@ describe("moving toward the end", () => {
 
   it("calculates correctly with nested HTML", () => {
     let queue = buildQueueFromString(
-      `23<strong>goodbye<em>ok, then!</em>haha.</strong>whatever.`
+      `23<strong>goodbye<em>ok, then!</em>haha.</strong>whatever.`,
     );
 
     const result = countStepsToSelector({

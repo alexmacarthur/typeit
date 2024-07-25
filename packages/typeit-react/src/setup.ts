@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/vitest';
+import "@testing-library/jest-dom/vitest";
 import { beforeEach } from "vitest";
 import "vitest-dom/extend-expect";
 

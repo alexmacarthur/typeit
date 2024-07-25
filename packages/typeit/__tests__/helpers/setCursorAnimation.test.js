@@ -46,7 +46,7 @@ describe("setting correct options", () => {
         iterations: 3,
         easing: "steps(2, start)",
         fill: "forwards",
-      }
+      },
     );
   });
 
@@ -75,7 +75,7 @@ describe("setting correct options", () => {
         iterations: 3,
         easing: "linear",
         fill: "backwards",
-      }
+      },
     );
   });
 });
