@@ -75,7 +75,7 @@ describe("cursor should be paused", () => {
         options: {
           delay: 500,
         },
-      })
+      }),
     );
 
     expect(mockAnimation.cancel).toHaveBeenCalledTimes(1);
@@ -121,7 +121,7 @@ describe("cursor should NOT be paused", () => {
             frames: ["frame1", "frame2"],
           },
         },
-      })
+      }),
     );
 
     expect(mockAnimation.cancel).not.toHaveBeenCalledTimes(1);

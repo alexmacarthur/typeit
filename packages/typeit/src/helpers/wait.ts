@@ -4,7 +4,7 @@
 let wait = (
   callback: Function,
   delay: number | undefined,
-  timeouts: number[]
+  timeouts: number[],
 ) => {
   return new Promise<void>((resolve) => {
     let cb = async () => {

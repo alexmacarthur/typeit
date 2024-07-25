@@ -8,7 +8,7 @@ export default (element: HTMLElement, func: Function): void => {
         }
       });
     },
-    { threshold: 1.0 }
+    { threshold: 1.0 },
   );
 
   observer.observe(element);

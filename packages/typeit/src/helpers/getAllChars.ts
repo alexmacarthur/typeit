@@ -13,7 +13,7 @@ let getAllChars = (element: El) => {
   }
 
   return walkElementNodes(element, true).filter(
-    (c) => !(c.childNodes.length > 0)
+    (c) => !(c.childNodes.length > 0),
   );
 };
 

@@ -1,6 +1,6 @@
 {
   "name": "typeit",
-  "version": "8.8.3",
+  "version": "8.8.4",
   "description": "The most versatile animated typing utility on the planet.",
   "author": "Alex MacArthur <alex@macarthur.me> (https://macarthur.me)",
   "license": "GPL-3.0",
@@ -40,9 +40,9 @@
   },
   "devDependencies": {
     "terser": "^5.31.3",
-    "typescript": "^5.5.3",
+    "typescript": "^5.5.4",
     "vite": "^5.3.4",
-    "vitest": "^2.0.3"
+    "vitest": "^2.0.4"
   },
   "dependencies": {
     "@types/web-animations-js": "^2.2.16"

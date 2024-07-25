@@ -28,7 +28,7 @@ describe("deleting queue items", () => {
           instance.type("goodbye").flush(() => {
             expect(el.textContent).toEqual("hellogoodbye|");
             expect(instance.getQueue().getItems(true).length).toBeGreaterThan(
-              0
+              0,
             );
             resolve();
           });

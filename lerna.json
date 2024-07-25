@@ -3,6 +3,7 @@
         "packages/*"
     ],
     "version": "independent",
+    "useNx": false,
     "command": {
         "publish": {
             "ignoreChanges": [

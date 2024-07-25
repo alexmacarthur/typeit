@@ -5,7 +5,7 @@ import { El } from "../types";
 export default (
   element: HTMLElement,
   allChars: any[],
-  newCursorPosition: number
+  newCursorPosition: number,
 ): void => {
   let nodeToInsertBefore = allChars[newCursorPosition - 1];
   let cursor = select(`.${CURSOR_CLASS}`, element) as El;

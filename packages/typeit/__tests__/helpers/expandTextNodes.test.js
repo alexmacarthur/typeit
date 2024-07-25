@@ -40,7 +40,7 @@ describe("nested HTML", () => {
     expect(getTextNodes(element.querySelector("strong"))).toHaveLength(7);
     expect(getTextNodes(element.querySelector("strong em"))).toHaveLength(4);
     expect(element.innerHTML).toEqual(
-      "hello, <strong>there, <em>pal!</em></strong>"
+      "hello, <strong>there, <em>pal!</em></strong>",
     );
   });
 });

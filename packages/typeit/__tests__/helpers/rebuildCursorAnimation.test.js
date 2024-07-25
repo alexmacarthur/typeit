@@ -144,7 +144,7 @@ describe("uses provided cursor options", () => {
           { transform: "rotate(360deg)" },
         ],
         options: expect.anything(),
-      })
+      }),
     );
   });
 });

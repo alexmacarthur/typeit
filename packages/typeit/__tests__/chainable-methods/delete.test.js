@@ -16,8 +16,8 @@ describe("deleting fires correctly", () => {
       afterComplete: () => {
         expect(el.innerHTML).toEqual(
           expect.stringMatching(
-            /abc<span class="ti-cursor" data-ti-animation-id=".+">|<\/span>/
-          )
+            /abc<span class="ti-cursor" data-ti-animation-id=".+">|<\/span>/,
+          ),
         );
         done();
       },
@@ -36,8 +36,8 @@ describe("deleting fires correctly", () => {
       afterComplete: () => {
         expect(el.innerHTML).toEqual(
           expect.stringMatching(
-            /abc<strong>def<\/strong><span class="ti-cursor" data-ti-animation-id=".+">|<\/span>/
-          )
+            /abc<strong>def<\/strong><span class="ti-cursor" data-ti-animation-id=".+">|<\/span>/,
+          ),
         );
         done();
       },
@@ -112,8 +112,8 @@ describe("cursor has been moved", () => {
       afterComplete: () => {
         expect(document.body.querySelector("#element").innerHTML).toEqual(
           expect.stringMatching(
-            /abc <strong>def<\/strong> g<em><span class="ti-cursor" data-ti-animation-id=".+">|<\/span>jkl<\/em> mno/
-          )
+            /abc <strong>def<\/strong> g<em><span class="ti-cursor" data-ti-animation-id=".+">|<\/span>jkl<\/em> mno/,
+          ),
         );
         done();
       },
@@ -130,8 +130,8 @@ describe("cursor has been moved", () => {
       afterComplete: () => {
         expect(document.body.querySelector("#element").innerHTML).toEqual(
           expect.stringMatching(
-            /^abc <span class=\"ti-cursor\" data-ti-animation-id=\".+\">|<\/span> mno/
-          )
+            /^abc <span class=\"ti-cursor\" data-ti-animation-id=\".+\">|<\/span> mno/,
+          ),
         );
         done();
       },

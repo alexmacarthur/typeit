@@ -214,7 +214,7 @@ describe("startDelete option", () => {
         startDelete: true,
         afterComplete: () => {
           expect(element.innerHTML).toEqual(
-            expect.stringMatching(/^Hello\.<span class="ti-cursor.*?<\/span>$/)
+            expect.stringMatching(/^Hello\.<span class="ti-cursor.*?<\/span>$/),
           );
 
           resolve();

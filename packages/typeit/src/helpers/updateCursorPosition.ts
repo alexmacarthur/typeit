@@ -1,11 +1,11 @@
 let updateCursorPosition = (
   steps: number,
   cursorPosition: number,
-  printedCharacters: Element[]
+  printedCharacters: Element[],
 ) => {
   return Math.min(
     Math.max(cursorPosition + steps, 0),
-    printedCharacters.length
+    printedCharacters.length,
   );
 };
 
