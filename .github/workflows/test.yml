@@ -12,7 +12,7 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: 20
-    - run: npm install && npm run bootstrap
+    - run: npm install && cd packages/typeit && npm install && cd ../typeit-react && npm install && cd ../../ && npm run build
     - run: npm test
     - uses: preactjs/compressed-size-action@v2
       with:
