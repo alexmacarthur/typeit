@@ -568,7 +568,7 @@ class TypeIt {
   }
 
   #buildOptions = (options: Options): void => {
-    options.cursor = processCursorOptions(
+    this.opts.cursor = processCursorOptions(
       options.cursor ?? DEFAULT_OPTIONS.cursor,
     );
 

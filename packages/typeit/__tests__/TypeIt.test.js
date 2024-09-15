@@ -27,6 +27,45 @@ beforeEach(() => {
   element = document.querySelector("#element");
 });
 
+describe("setting cursor options", () => {
+  test("can set cursor to true", () => {
+    return new Promise((resolve) => {
+      args[1].cursor = true;
+      args[1].afterComplete = resolve;
+
+      new TypeIt(...args).go();
+    });
+  });
+
+  test("can set cursor to false", () => {
+    return new Promise((resolve) => {
+      args[1].cursor = false;
+      args[1].afterComplete = resolve;
+
+      new TypeIt(...args).go();
+    });
+  });
+
+  test("can set cursor to object", () => {
+    return new Promise((resolve) => {
+      args[1].cursor = {
+        animation: {
+          frames: [],
+          options: {
+            iterations: Infinity,
+            easing: "linear",
+            fill: "forwards",
+          },
+        },
+      };
+
+      args[1].afterComplete = resolve;
+
+      new TypeIt(...args).go();
+    });
+  });
+});
+
 test("Initial queue only contains startDelay pause.", () => {
   args[1].strings = [];
   instance = new TypeIt(...args);

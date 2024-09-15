@@ -142,7 +142,7 @@ new TypeIt("#example13", {
     function () {
       console.log("fire!");
     },
-    { delay: 2000 }
+    { delay: 2000 },
   )
   .move(-5, { delay: 2000 })
   .go();
