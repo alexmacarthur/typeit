@@ -1,6 +1,6 @@
 {
   "name": "typeit-react",
-  "version": "2.7.1",
+  "version": "2.7.3",
   "description": "React component for the most versatile JavaScript animated typing utility on the planet.",
   "homepage": "https://typeitjs.com",
   "main": "dist/index.umd.js",
@@ -40,18 +40,18 @@
   "dependencies": {
     "react": ">=18.3.1",
     "react-dom": ">=18.3.1",
-    "typeit": "^8.8.3"
+    "typeit": "^8.8.5"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.24.7",
-    "@testing-library/jest-dom": "^6.4.6",
-    "@testing-library/react": "^16.0.0",
-    "@types/react": "^18.3.3",
-    "jsdom": "^24.1.0",
-    "terser": "^5.31.3",
-    "typescript": "^5.5.3",
-    "vite": "^5.3.4",
-    "vitest": "^2.0.3",
+    "@testing-library/jest-dom": "^6.5.0",
+    "@testing-library/react": "^16.0.1",
+    "@types/react": "^18.3.5",
+    "jsdom": "^25.0.0",
+    "terser": "^5.32.0",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.5",
+    "vitest": "^2.1.1",
     "vitest-dom": "^0.1.1"
   }
 }
