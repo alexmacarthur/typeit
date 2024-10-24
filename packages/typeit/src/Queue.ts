@@ -11,6 +11,7 @@ export interface QueueI {
   getItems: (all?: boolean) => QueueItem[];
   getQueue: () => Map<Symbol, QueueItem>;
   getTypeable: () => QueueItem[];
+  getPendingQueueItems: () => QueueItem[];
 }
 
 let Queue = function (initialItems: QueueItem[]): QueueI {
@@ -60,6 +61,17 @@ let Queue = function (initialItems: QueueItem[]): QueueI {
   let getQueue = () => _q;
   let rawValues = (): QueueItem[] => Array.from(_q.values());
   let destroy = (key: Symbol) => _q.delete(key);
+  let getPendingQueueItems = (): QueueItem[] => {
+    const pending = [];
+
+    for (let [, value] of getQueue()) {
+      if (!value.done) {
+        pending.push(value);
+      }
+    }
+
+    return pending;
+  };
 
   /**
    * Retrieve all items that are still eligible to be executed. By default, only the
@@ -85,6 +97,7 @@ let Queue = function (initialItems: QueueItem[]): QueueI {
     getItems,
     getQueue,
     getTypeable,
+    getPendingQueueItems,
   };
 };
 

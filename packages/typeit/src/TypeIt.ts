@@ -58,11 +58,13 @@ class TypeIt {
     completed: false,
     frozen: false,
     destroyed: false,
+    firing: false,
   };
   private opts: Options;
   private id: string;
   private queue: QueueI;
   private cursor: El | null;
+  private flushCallback: (() => any) | null = null;
 
   unfreeze = () => {};
 
@@ -297,10 +299,26 @@ class TypeIt {
    * When called, all non-done items will be "flushed" --
    * that is, executed, but not remembered.
    */
-  flush(cb: () => any = () => {}) {
+  flush(cb: (() => any) | null = null) {
+    this.flushCallback = cb || this.flushCallback;
+
+    if (this.statuses.firing) {
+      return this;
+    }
+
     this.#attachCursor();
 
-    this.#fire(false).then(cb);
+    // It's possible that while items were being flushed,
+    // more items were added to the queue. If that's the case,
+    // recursively wait until the queue is empty before proceeding.
+    this.#fire(false).then(() => {
+      if (this.queue.getPendingQueueItems().length > 0) {
+        return this.flush();
+      }
+
+      this.flushCallback();
+      this.flushCallback = null;
+    });
 
     return this;
   }
@@ -344,6 +362,7 @@ class TypeIt {
    */
   async #fire(remember: boolean = true) {
     this.statuses.started = true;
+    this.statuses.firing = true;
 
     let cleanUp = (qKey: Symbol) => {
       this.queue.done(qKey, !remember);
@@ -382,10 +401,12 @@ class TypeIt {
       }
 
       if (!remember) {
+        this.statuses.firing = false;
         return this;
       }
 
       this.statuses.completed = true;
+      this.statuses.firing = false;
 
       await this.opts.afterComplete(this);
 
@@ -401,6 +422,7 @@ class TypeIt {
       }, delay[1]);
     } catch (e) {}
 
+    this.statuses.firing = false;
     return this;
   }
 

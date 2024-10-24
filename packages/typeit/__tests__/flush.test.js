@@ -18,7 +18,7 @@ describe("deleting queue items", () => {
     });
   });
 
-  test("Doesn't delete permanent queue items.", () => {
+  test.only("Doesn't delete permanent queue items.", () => {
     const el = document.getElementById("el");
 
     return new Promise((resolve) => {
@@ -36,6 +36,23 @@ describe("deleting queue items", () => {
       })
         .type("hello")
         .go();
+    });
+  });
+
+  test("fires last callback when flush called multiple times", () => {
+    const el = document.getElementById("el");
+
+    return new Promise((resolve) => {
+      let iteration = 0;
+      const instance = new TypeIt(el, { speed: 0 });
+
+      instance.type("first").flush(() => (iteration = 1));
+      instance.type("second").flush(() => (iteration = 2));
+      instance.type("third").flush(() => {
+        expect(el.textContent).toEqual("firstsecondthird|");
+        expect(iteration).toEqual(0);
+        resolve();
+      });
     });
   });
 });

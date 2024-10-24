@@ -46,6 +46,7 @@ export interface Statuses {
   completed: boolean;
   frozen: boolean;
   destroyed: boolean;
+  firing: boolean;
 }
 
 export type ActionOpts = Options & {
