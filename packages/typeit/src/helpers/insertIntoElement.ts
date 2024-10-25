@@ -23,10 +23,20 @@ let insertIntoElement = (originalTarget: El, character: El) => {
       // "originalParent", so always fall back to the default target.
       character.originalParent || originalTarget;
 
-  target.insertBefore(
-    character as El,
-    (select("." + CURSOR_CLASS, target) as Node) || null,
-  );
+  let cursorNode = (select("." + CURSOR_CLASS, target) as Node) || null;
+
+  /**
+   * In edge cases, the target may be two levels up from the cursor node,
+   * making the cursor node's no longer an immediate child, breaking
+   * the insertBefore method.
+   *
+   * During this scenario, reassign the target to the cursor node's parent.
+   */
+  if (cursorNode && cursorNode.parentElement !== target) {
+    target = cursorNode.parentElement;
+  }
+
+  target.insertBefore(character as El, cursorNode);
 };
 
 export default insertIntoElement;

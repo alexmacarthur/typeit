@@ -23,6 +23,42 @@ describe("an input", () => {
   });
 });
 
+describe.only("HTML", () => {
+  it("inserts a character when there's nested HTML", () => {
+    setHTML`<span id="el">
+      <span>
+        <i class="ti-cursor">|</i>
+      </span>
+    </span>`;
+
+    const el = document.getElementById("el");
+
+    insertIntoElement(el, document.createTextNode("x"));
+
+    expect(document.body.innerHTML).toEqual(
+      '<span id="el"><span>x<i class="ti-cursor">|</i></span></span>',
+    );
+  });
+
+  it("inserts a character when there's deeply nested HTML", () => {
+    setHTML`<span id="el">
+      <span>
+        <p>
+          <i class="ti-cursor">|</i>
+        </p>
+      </span>
+    </span>`;
+
+    const el = document.getElementById("el");
+
+    insertIntoElement(el, document.createTextNode("x"));
+
+    expect(document.body.innerHTML).toEqual(
+      '<span id="el"><span><p>x<i class="ti-cursor">|</i></p></span></span>',
+    );
+  });
+});
+
 describe("plain text", () => {
   it("inserts a simple character", () => {
     setHTML`<span id="el"><i class="ti-cursor">|</i></span>`;
